@@ -2,30 +2,28 @@
 
 # Introduction
 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.
+Monorepo for the Frontend apps.
 
 # Getting Started
 
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
+Angular requires versions of `node >= 10.13.0` and `npm >= 6.11.0`. To be able to switch between different node versions it is recommended to install a node version manager. We will use nvm-windows. Follow the installation process [here](https://docs.microsoft.com/en-us/windows/nodejs/setup-on-windows)
 
-1. Installation process
-2. Software dependencies
-3. Latest releases
-4. API references
+After that configure the proxy for nvm, run
+`nvm proxy http://wesserverproxy:3128/` in terminal.
+
+Run `nvm install latest`.
+To select the installed version run `nvm ls` to see the version number then run `nvm use 14.3.0` (v 14.3.0 at the current time).
+
+If you get an error
+
+> exit status 1: 'C:\Users\ [Your first name]' is not recognized as an internal or external command,
+> operable program or batch file.
+
+That is because your user folder in `C:/Users` has a space in it. Follow this fix [here](https://github.com/coreybutler/nvm-windows/issues/405#issuecomment-633395759)
 
 # Build and Test
 
 TODO: Describe and show how to build your code and run the tests.
-
-# Contribute
-
-TODO: Explain how other users and developers can contribute to make your code better.
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
 
 This project was generated using [Nx](https://nx.dev).
 
