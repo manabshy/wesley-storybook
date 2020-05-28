@@ -1,6 +1,7 @@
+<h2>{{ pageTitle }}</h2>
 <wes-stepper
   [steps]="data.progressBar.steps"
-  [currentStepIndex]="3"
+  [currentStepIndex]="currentStepIndex$ | async"
   [currentStepProgressPercentage]="33"
 ></wes-stepper>
 

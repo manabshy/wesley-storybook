@@ -1,9 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 @Component({
   selector: 'wes-stepper',
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StepperComponent implements OnInit {
   @Input() steps: string[] = [];
@@ -14,8 +20,8 @@ export class StepperComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  isStepActive(currentStepIndex: number, stepIndex: number) {
-    return currentStepIndex === stepIndex;
+  isStepActive(stepIndex: number) {
+    return this.currentStepIndex === stepIndex;
   }
 
   isStepComplete(stepIndex: number) {

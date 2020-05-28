@@ -3,7 +3,11 @@
 }
 
 .stepper__step--completed {
+  color: green;
   .stepper__progress {
     width: 100%;
   }
+}
+.stepper__step--active {
+  text-transform: uppercase;
 }
