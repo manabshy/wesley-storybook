@@ -31,6 +31,12 @@
     },
     "shared-ui-stepper": {
       "tags": []
+    },
+    "wpisa-feature-isa-journey": {
+      "tags": []
+    },
+    "wpisa-feature-shell": {
+      "tags": []
     }
   }
 }

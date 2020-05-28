@@ -3,12 +3,18 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ConfigService } from '@wesleyan-frontend/wpisa/data-access';
-import { SharedUiStepperModule } from '@wesleyan-frontend/shared/ui-stepper';
+import { WpisaFeatureShellModule } from '@wesleyan-frontend/wpisa/feature-shell';
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule, SharedUiStepperModule],
+  imports: [
+    BrowserModule,
+    RouterModule,
+    HttpClientModule,
+    WpisaFeatureShellModule,
+  ],
   providers: [
     {
       provide: APP_INITIALIZER,

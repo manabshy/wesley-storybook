@@ -21,6 +21,12 @@
       ],
       "@wesleyan-frontend/shared/ui-stepper": [
         "libs/shared/ui-stepper/src/index.ts"
+      ],
+      "@wesleyan-frontend/wpisa/feature-isa-journey": [
+        "libs/wpisa/feature-isa-journey/src/index.ts"
+      ],
+      "@wesleyan-frontend/wpisa/feature-shell": [
+        "libs/wpisa/feature-shell/src/index.ts"
       ]
     }
   },

@@ -184,6 +184,73 @@
           "style": "scss"
         }
       }
+    },
+    "wpisa-feature-isa-journey": {
+      "projectType": "library",
+      "root": "libs/wpisa/feature-isa-journey",
+      "sourceRoot": "libs/wpisa/feature-isa-journey/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/wpisa/feature-isa-journey/tsconfig.lib.json",
+              "libs/wpisa/feature-isa-journey/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/wpisa/feature-isa-journey/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/wpisa/feature-isa-journey/jest.config.js",
+            "tsConfig": "libs/wpisa/feature-isa-journey/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/wpisa/feature-isa-journey/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "wpisa-feature-shell": {
+      "projectType": "library",
+      "root": "libs/wpisa/feature-shell",
+      "sourceRoot": "libs/wpisa/feature-shell/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/wpisa/feature-shell/tsconfig.lib.json",
+              "libs/wpisa/feature-shell/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/wpisa/feature-shell/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/wpisa/feature-shell/jest.config.js",
+            "tsConfig": "libs/wpisa/feature-shell/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/wpisa/feature-shell/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
