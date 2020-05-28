@@ -15,7 +15,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@wesleyan-frontend/wpisa/data-access": [
+        "libs/wpisa/data-access/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/ui-stepper": [
+        "libs/shared/ui-stepper/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

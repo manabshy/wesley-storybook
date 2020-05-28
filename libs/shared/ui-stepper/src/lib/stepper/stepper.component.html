@@ -1,0 +1,18 @@
+<div class="stepper">
+  <div
+    *ngFor="let step of steps; index as stepIndex; last as isLast"
+    class="stepper__step"
+    [ngClass]="{
+      'stepper__step--active': isStepActive(stepIndex),
+      'stepper__step--completed': isStepComplete(stepIndex)
+    }"
+  >
+    <span>{{ step }}</span>
+    <div *ngIf="!isLast" class="stepper__step-connector">
+      <div
+        class="stepper__progress"
+        [style.width.%]="getIntermediateProgressPercentage(stepIndex)"
+      ></div>
+    </div>
+  </div>
+</div>

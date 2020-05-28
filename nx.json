@@ -25,6 +25,12 @@
     "wpisa-e2e": {
       "tags": [],
       "implicitDependencies": ["wpisa"]
+    },
+    "wpisa-data-access": {
+      "tags": []
+    },
+    "shared-ui-stepper": {
+      "tags": []
     }
   }
 }

@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+
+.stepper__step--completed {
+  .stepper__progress {
+    width: 100%;
+  }
+}

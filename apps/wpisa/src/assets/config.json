@@ -1,0 +1,29 @@
+{
+  "pageTitle": "With profits ISA",
+  "progressBar": {
+    "steps": [
+      "Knowledge check",
+      "Your details",
+      "Investment options",
+      "Declaration",
+      "Confirmation"
+    ]
+  },
+  "knowledgecheck": {
+    "introheading": "A couple of questions to start",
+    "introcontent": "<p>The first step of your application is a quick knowledge check, just to make sure you understand how the With Profits ISA works.\n</p>\n<p>\nWe're required to ask these questions by the Financial Conduct Authority, as we manage investments on your behalf.\n</p>",
+    "introlabel": "Continue",
+    "question1heading": "",
+    "question1intro": "",
+    "section1question1content": "",
+    "section1question2content": "",
+    "question1nextbuttonlabel": "",
+    "question1backbuttonlabel": "",
+    "question2heading": "",
+    "question2intro": "",
+    "section2question1content": "",
+    "section2question2content": "",
+    "question2nextbuttonlabel": "",
+    "question2backbuttonlabel": ""
+  }
+}

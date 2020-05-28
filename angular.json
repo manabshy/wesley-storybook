@@ -10,7 +10,7 @@
       },
       "root": "apps/wpisa",
       "sourceRoot": "apps/wpisa/src",
-      "prefix": "wesleyan-frontend",
+      "prefix": "wes",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -120,10 +120,75 @@
           }
         }
       }
+    },
+    "wpisa-data-access": {
+      "projectType": "library",
+      "root": "libs/wpisa/data-access",
+      "sourceRoot": "libs/wpisa/data-access/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/wpisa/data-access/tsconfig.lib.json",
+              "libs/wpisa/data-access/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/wpisa/data-access/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/wpisa/data-access/jest.config.js",
+            "tsConfig": "libs/wpisa/data-access/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/wpisa/data-access/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-ui-stepper": {
+      "projectType": "library",
+      "root": "libs/shared/ui-stepper",
+      "sourceRoot": "libs/shared/ui-stepper/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui-stepper/tsconfig.lib.json",
+              "libs/shared/ui-stepper/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-stepper/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui-stepper/jest.config.js",
+            "tsConfig": "libs/shared/ui-stepper/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/ui-stepper/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "prefix": "wes"
   },
   "schematics": {
     "@nrwl/angular:application": {
@@ -131,7 +196,12 @@
       "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "style": "scss"
+    },
+    "@schematics/angular:component": {
+      "style": "scss",
+      "prefix": "wes"
     }
   },
   "defaultProject": "wpisa"
