@@ -3,4 +3,10 @@ export interface Config {
   progressBar: {
     steps: string[];
   };
+  start: {
+    pageTitle: string;
+    heading: string;
+    summary: string;
+    label: string;
+  };
 }
