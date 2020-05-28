@@ -23,7 +23,11 @@ export const routes: Route[] = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forRoot(routes), SharedUiStepperModule],
+  imports: [
+    CommonModule,
+    RouterModule.forRoot(routes, { useHash: true }),
+    SharedUiStepperModule,
+  ],
   declarations: [ShellComponent],
   exports: [RouterModule],
   providers: [],
