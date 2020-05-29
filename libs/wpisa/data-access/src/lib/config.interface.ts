@@ -7,7 +7,7 @@ export interface Config {
     pageTitle: string;
     heading: string;
     summary: string;
-    label: string;
+    nextButtonLabel: string;
   };
   knowledgeCheck: KnowledgeCheck;
 }

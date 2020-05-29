@@ -1,4 +1,32 @@
-<h3>{{ pageData.start.heading }}</h3>
-<div [innerHtml]="pageData.start.summary"></div>
-<button>{{ pageData.start.label }}</button>
-<a routerLink="/your-details" routerLinkActive="active">Continue</a>
+<!-- <a routerLink="/your-details" routerLinkActive="active">Continue</a> -->
+<!-- #stepper -->
+<wes-custom-stepper #stepper linear>
+  <cdk-step>
+    <h3>{{ pageData.start.heading }}</h3>
+    <div [innerHtml]="pageData.start.summary"></div>
+
+    <button cdkStepperNext>{{ pageData.start.nextButtonLabel }}</button>
+  </cdk-step>
+  <cdk-step>
+    <h3>{{ pageData.knowledgeCheck.step1.heading }}</h3>
+    <div [innerHtml]="pageData.knowledgeCheck.step1.summary"></div>
+
+    <button (click)="submitQuestion1()">
+      {{ pageData.start.nextButtonLabel }}
+    </button>
+    <button cdkStepperPrevious>
+      {{ pageData.knowledgeCheck.step1.backButtonLabel }}
+    </button>
+  </cdk-step>
+  <cdk-step>
+    <h3>{{ pageData.knowledgeCheck.step2.heading }}</h3>
+    <div [innerHtml]="pageData.knowledgeCheck.step2.summary"></div>
+
+    <button (click)="submitQuestion2()">
+      {{ pageData.knowledgeCheck.step2.nextButtonLabel }}
+    </button>
+    <button cdkStepperPrevious>
+      {{ pageData.knowledgeCheck.step2.backButtonLabel }}
+    </button>
+  </cdk-step>
+</wes-custom-stepper>
