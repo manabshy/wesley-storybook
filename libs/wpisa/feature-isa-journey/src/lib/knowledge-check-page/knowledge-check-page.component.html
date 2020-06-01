@@ -1,83 +1,34 @@
-<!-- <a routerLink="/your-details" routerLinkActive="active">Continue</a> -->
-<!-- #stepper -->
 <wes-custom-stepper #stepper linear>
   <cdk-step>
-    <h3>{{ pageData.start.heading }}</h3>
-    <div [innerHtml]="pageData.start.summary"></div>
+    <h3>{{ pageContent.start.heading }}</h3>
+    <div [innerHtml]="pageContent.start.summary"></div>
 
-    <button cdkStepperNext>{{ pageData.start.nextButtonLabel }}</button>
+    <button cdkStepperNext>{{ pageContent.start.nextButtonLabel }}</button>
   </cdk-step>
+
   <cdk-step>
-    <h3>{{ pageData.knowledgeCheck.step1.heading }}</h3>
-    <div [innerHtml]="pageData.knowledgeCheck.step1.summary"></div>
+    <h3>{{ pageContent.knowledgeCheck.step1.heading }}</h3>
 
-    <form [formGroup]="knowledgeCheckQ1Form" (ngSubmit)="submitQuestion1()">
-      <div>
-        <input
-          type="radio"
-          value="YES"
-          name="question1"
-          formControlName="question1"
-        />
-        <label class="custom-control-label" for="YES">{{
-          pageData.knowledgeCheck.step1.questions[0]
-        }}</label>
-      </div>
-
-      <div>
-        <input
-          type="radio"
-          value="NO"
-          name="question1"
-          formControlName="question1"
-        />
-        <label class="custom-control-label" for="NO">{{
-          pageData.knowledgeCheck.step1.questions[1]
-        }}</label>
-      </div>
-
-      <button type="submit" [disabled]="knowledgeCheckQ1Form.invalid">
-        {{ pageData.start.nextButtonLabel }}
+    <wes-knowledge-check-q1-form (submit)="submitQuestion1()">
+      <button type="submit" [disabled]="!(q1Valid$ | async)">
+        {{ pageContent.start.nextButtonLabel }}
       </button>
       <button cdkStepperPrevious>
-        {{ pageData.knowledgeCheck.step1.backButtonLabel }}
+        {{ pageContent.knowledgeCheck.step1.backButtonLabel }}
       </button>
-    </form>
+    </wes-knowledge-check-q1-form>
   </cdk-step>
+
   <cdk-step>
-    <h3>{{ pageData.knowledgeCheck.step2.heading }}</h3>
-    <div [innerHtml]="pageData.knowledgeCheck.step2.summary"></div>
-    <form [formGroup]="knowledgeCheckQ2Form" (ngSubmit)="submitQuestion2()">
-      <div>
-        <input
-          type="radio"
-          value="YES"
-          name="question2"
-          formControlName="question2"
-        />
-        <label class="custom-control-label" for="YES">{{
-          pageData.knowledgeCheck.step2.questions[0]
-        }}</label>
-      </div>
+    <h3>{{ pageContent.knowledgeCheck.step2.heading }}</h3>
 
-      <div>
-        <input
-          type="radio"
-          value="NO"
-          name="question2"
-          formControlName="question2"
-        />
-        <label class="custom-control-label" for="NO">{{
-          pageData.knowledgeCheck.step2.questions[1]
-        }}</label>
-      </div>
-
-      <button type="submit" [disabled]="knowledgeCheckQ2Form.invalid">
-        {{ pageData.knowledgeCheck.step2.nextButtonLabel }}
+    <wes-knowledge-check-q2-form (submit)="submitQuestion2()">
+      <button type="submit" [disabled]="!(q2Valid$ | async)">
+        {{ pageContent.knowledgeCheck.step2.nextButtonLabel }}
       </button>
       <button cdkStepperPrevious>
-        {{ pageData.knowledgeCheck.step2.backButtonLabel }}
+        {{ pageContent.knowledgeCheck.step2.backButtonLabel }}
       </button>
-    </form>
+    </wes-knowledge-check-q2-form>
   </cdk-step>
 </wes-custom-stepper>

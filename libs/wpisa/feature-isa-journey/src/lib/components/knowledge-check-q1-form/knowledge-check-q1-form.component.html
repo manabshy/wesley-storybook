@@ -1,0 +1,28 @@
+<div [innerHtml]="content.summary"></div>
+<form [formGroup]="formQ1">
+  <div>
+    <input
+      type="radio"
+      value="YES"
+      name="question1"
+      formControlName="question1"
+    />
+    <label class="custom-control-label" for="YES">{{
+      content.questions[0]
+    }}</label>
+  </div>
+
+  <div>
+    <input
+      type="radio"
+      value="NO"
+      name="question1"
+      formControlName="question1"
+    />
+    <label class="custom-control-label" for="NO">{{
+      content.questions[1]
+    }}</label>
+  </div>
+
+  <ng-content></ng-content>
+</form>

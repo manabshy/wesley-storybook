@@ -14,6 +14,7 @@ export class KnowledgeCheckFacade {
   constructor(private knowledgeCheckService: KnowledgeCheckService) {}
 
   submitQuestion(questionIndex: number, answer: string) {
+    console.log('submitting', questionIndex, answer);
     return this.knowledgeCheckService
       .submitAnswer({
         questionIndex,
