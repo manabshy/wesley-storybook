@@ -11,22 +11,73 @@
     <h3>{{ pageData.knowledgeCheck.step1.heading }}</h3>
     <div [innerHtml]="pageData.knowledgeCheck.step1.summary"></div>
 
-    <button (click)="submitQuestion1()">
-      {{ pageData.start.nextButtonLabel }}
-    </button>
-    <button cdkStepperPrevious>
-      {{ pageData.knowledgeCheck.step1.backButtonLabel }}
-    </button>
+    <form [formGroup]="knowledgeCheckQ1Form" (ngSubmit)="submitQuestion1()">
+      <div>
+        <input
+          type="radio"
+          value="YES"
+          name="question1"
+          formControlName="question1"
+        />
+        <label class="custom-control-label" for="YES">{{
+          pageData.knowledgeCheck.step1.questions[0]
+        }}</label>
+      </div>
+
+      <div>
+        <input
+          type="radio"
+          value="NO"
+          name="question1"
+          formControlName="question1"
+        />
+        <label class="custom-control-label" for="NO">{{
+          pageData.knowledgeCheck.step1.questions[1]
+        }}</label>
+      </div>
+
+      <button type="submit" [disabled]="knowledgeCheckQ1Form.invalid">
+        {{ pageData.start.nextButtonLabel }}
+      </button>
+      <button cdkStepperPrevious>
+        {{ pageData.knowledgeCheck.step1.backButtonLabel }}
+      </button>
+    </form>
   </cdk-step>
   <cdk-step>
     <h3>{{ pageData.knowledgeCheck.step2.heading }}</h3>
     <div [innerHtml]="pageData.knowledgeCheck.step2.summary"></div>
+    <form [formGroup]="knowledgeCheckQ2Form" (ngSubmit)="submitQuestion2()">
+      <div>
+        <input
+          type="radio"
+          value="YES"
+          name="question2"
+          formControlName="question2"
+        />
+        <label class="custom-control-label" for="YES">{{
+          pageData.knowledgeCheck.step2.questions[0]
+        }}</label>
+      </div>
 
-    <button (click)="submitQuestion2()">
-      {{ pageData.knowledgeCheck.step2.nextButtonLabel }}
-    </button>
-    <button cdkStepperPrevious>
-      {{ pageData.knowledgeCheck.step2.backButtonLabel }}
-    </button>
+      <div>
+        <input
+          type="radio"
+          value="NO"
+          name="question2"
+          formControlName="question2"
+        />
+        <label class="custom-control-label" for="NO">{{
+          pageData.knowledgeCheck.step2.questions[1]
+        }}</label>
+      </div>
+
+      <button type="submit" [disabled]="knowledgeCheckQ2Form.invalid">
+        {{ pageData.knowledgeCheck.step2.nextButtonLabel }}
+      </button>
+      <button cdkStepperPrevious>
+        {{ pageData.knowledgeCheck.step2.backButtonLabel }}
+      </button>
+    </form>
   </cdk-step>
 </wes-custom-stepper>
