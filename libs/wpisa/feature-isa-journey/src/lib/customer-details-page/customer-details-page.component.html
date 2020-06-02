@@ -1,1 +1,120 @@
-<p>customer-details-page works!</p>
+<h3>{{ pageContent.start.heading }}</h3>
+<div [innerHtml]="pageContent.start.summary"></div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="honorific-prefix">Title</label>
+    <select formControlName="title" name="honorific-prefix">
+      <option *ngFor="let title of ['A', 'B']" value="{{ title }}">{{
+        title
+      }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="given-name">First name</label>
+    <input type="text" name="given-name" formControlName="firstName" />
+  </div>
+  <div>
+    <label for="given-name">Last name</label>
+    <input type="text" name="family-name" formControlName="lastName" />
+  </div>
+  <div formGroupName="dob">
+    <span>Date of birth</span>
+    <input
+      formControlName="day"
+      type="text"
+      name="bday-day"
+      placeholder="DD"
+      maxlength="2"
+    />
+
+    <input
+      formControlName="month"
+      type="text"
+      name="bday-month"
+      placeholder="MM"
+      maxlength="2"
+    />
+
+    <input
+      formControlName="year"
+      type="text"
+      name="bday-year"
+      placeholder="YYYY"
+      maxlength="4"
+    />
+  </div>
+  <div>
+    <label for="profession">Profession</label>
+    <select formControlName="profession" name="profession">
+      <option *ngFor="let title of ['A', 'B']" value="{{ title }}">{{
+        title
+      }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="nationalInsuranceNumber">National insurance number</label>
+    <input
+      type="text"
+      name="nationalInsuranceNumber"
+      formControlName="nationalInsuranceNumber"
+    />
+  </div>
+
+  <div>
+    <label for="nationality">Nationality</label>
+    <select formControlName="nationality" name="nationality">
+      <option *ngFor="let title of ['A', 'B']" value="{{ title }}">{{
+        title
+      }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="email">Personal Email</label>
+    <input type="email" name="email" formControlName="personalEmail" />
+  </div>
+  <div>
+    <label for="personalMobileNumber">Phone</label>
+    <input
+      type="text"
+      name="personalMobileNumber"
+      formControlName="personalMobileNumber"
+    />
+  </div>
+  <div>
+    <input
+      type="checkbox"
+      value="email"
+      name="marketingEmail"
+      formControlName="marketingEmail"
+    />
+    <label for="marketingEmail">Email</label>
+  </div>
+
+  <div>
+    <input
+      type="checkbox"
+      value="phone"
+      name="tel"
+      formControlName="marketingPhone"
+    />
+    <label for="tel">Phone</label>
+  </div>
+  <div>
+    <input
+      type="checkbox"
+      value="post"
+      name="marketingPost"
+      formControlName="marketingPost"
+    />
+    <label for="marketingPost">Post</label>
+  </div>
+
+  <ng-content></ng-content>
+
+  <button type="submit">Continue</button>
+</form>
+<pre>
+    Valid: {{ form.valid | json }}
+    {{ form.value | json }}
+</pre>

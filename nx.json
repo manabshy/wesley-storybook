@@ -37,6 +37,9 @@
     },
     "wpisa-feature-shell": {
       "tags": []
+    },
+    "shared-util-validators": {
+      "tags": []
     }
   }
 }

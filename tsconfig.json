@@ -27,6 +27,9 @@
       ],
       "@wesleyan-frontend/wpisa/feature-shell": [
         "libs/wpisa/feature-shell/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/util-validators": [
+        "libs/shared/util-validators/src/index.ts"
       ]
     }
   },
