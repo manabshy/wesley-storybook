@@ -1,24 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { take, tap, finalize, takeWhile, switchMap } from 'rxjs/operators';
 import { NgFormsManager } from '@ngneat/forms-manager';
 
-import {
-  ConfigService,
-  Config,
-  KnowledgeCheckService,
-} from '@wesleyan-frontend/wpisa/data-access';
-import { CustomStepperComponent } from '../components/custom-stepper/custom-stepper.component';
-import { Router } from '@angular/router';
+import { ConfigService, Config } from '@wesleyan-frontend/wpisa/data-access';
 import { KnowledgeCheckFacade } from '../core/knowledge-check.facade';
+import { CustomStepperComponent } from '../components/custom-stepper/custom-stepper.component';
 import { isaRoutesNames } from '../isa-journey.routes.names';
-import {
-  take,
-  filter,
-  switchMapTo,
-  tap,
-  finalize,
-  takeWhile,
-  switchMap,
-} from 'rxjs/operators';
 
 @Component({
   selector: 'wes-knowledge-check-page',
@@ -30,9 +19,6 @@ export class KnowledgeCheckPageComponent implements OnInit {
 
   pageContent: Config;
 
-  knowledgeCheckQ1Control;
-  knowledgeCheckQ2Control;
-
   q1Valid$ = this.formsManager.validityChanges('knowledgeCheckQ1');
   q2Valid$ = this.formsManager.validityChanges('knowledgeCheckQ2');
 
@@ -40,9 +26,13 @@ export class KnowledgeCheckPageComponent implements OnInit {
     private configService: ConfigService,
     private knowledgeCheckFacade: KnowledgeCheckFacade,
     private router: Router,
-    private formsManager: NgFormsManager
+    private formsManager: NgFormsManager,
+    private titleService: Title
   ) {
     this.pageContent = this.configService.content;
+
+    console.warn('@TODO - set page title tag');
+    this.titleService.setTitle(this.pageContent.start.pageTitle);
   }
 
   ngOnInit(): void {}
@@ -56,7 +46,7 @@ export class KnowledgeCheckPageComponent implements OnInit {
     this.formsManager
       .initialValueChanged('knowledgeCheckQ1')
       .pipe(
-        // takeWhile complete an observable when a condition fails
+        // We use takeWhile because it completes an observable when a condition fails
         takeWhile((hasChanged) => hasChanged === true),
         switchMap(() =>
           this.knowledgeCheckFacade.submitQuestion(0, q1Value).pipe(
@@ -83,7 +73,7 @@ export class KnowledgeCheckPageComponent implements OnInit {
     this.formsManager
       .initialValueChanged('knowledgeCheckQ2')
       .pipe(
-        // takeWhile complete an observable when a condition fails
+        // We use takeWhile because it completes an observable when a condition fails
         takeWhile((hasChanged) => hasChanged === true),
         switchMap(() =>
           this.knowledgeCheckFacade.submitQuestion(1, q2Value).pipe(

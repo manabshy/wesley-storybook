@@ -25,7 +25,10 @@ export const routes: Route[] = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes, {
+      useHash: true,
+      initialNavigation: 'enabled',
+    }),
     SharedUiStepperModule,
   ],
   declarations: [ShellComponent],
