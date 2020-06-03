@@ -1,18 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
-export interface KnowledgeCheckAnswerDTO {
-  attemptId?: string;
-  questionIndex: number;
-  questionText: string;
-  answer: string;
-}
 
-export interface KnowledgeCheckResponse {
-  attemptId: string;
-  error?: boolean;
-}
+import {
+  KnowledgeCheckAnswerDTO,
+  KnowledgeCheckResponse,
+} from './knowledge-check.interface';
 
 @Injectable({
   providedIn: 'root',

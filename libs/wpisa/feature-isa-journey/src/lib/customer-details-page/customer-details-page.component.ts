@@ -26,6 +26,7 @@ import {
   nationalInsuranceNumberValidator,
   isaAgeValidator,
   mobilePhoneUKValidator,
+  emailValidator,
 } from '@wesleyan-frontend/shared/util-validators';
 
 import { KnowledgeCheckFacade } from '../core/knowledge-check.facade';
@@ -78,7 +79,7 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
         [Validators.required, nationalInsuranceNumberValidator],
       ],
       nationality: [null, [Validators.required]],
-      personalEmail: ['', [Validators.required, Validators.email]],
+      personalEmail: ['', [Validators.required, emailValidator]],
       personalMobileNumber: ['', [Validators.required, mobilePhoneUKValidator]],
       marketingEmail: [null],
       marketingPost: [null],

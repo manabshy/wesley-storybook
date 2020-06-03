@@ -63,3 +63,13 @@ export const mobilePhoneUKValidator: ValidatorFn = (
 
   return !isValidPhone ? { invalid: true } : null;
 };
+
+export const emailValidator: ValidatorFn = (
+  control: AbstractControl
+): ValidationErrors | null => {
+  const testRegexp: RegExp = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+
+  const isValidEmail = testRegexp.test(control.value);
+
+  return !isValidEmail ? { invalid: true } : null;
+};
