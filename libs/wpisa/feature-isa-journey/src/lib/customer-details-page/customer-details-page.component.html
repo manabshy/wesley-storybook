@@ -23,25 +23,34 @@
     <input
       formControlName="day"
       type="text"
+      inputmode="numeric"
+      pattern="[0-9]*"
       name="bday-day"
       placeholder="DD"
+      wesNumbersOnly
       maxlength="2"
     />
 
     <input
       formControlName="month"
       type="text"
+      inputmode="numeric"
+      pattern="[0-9]*"
+      maxlength="2"
       name="bday-month"
       placeholder="MM"
-      maxlength="2"
+      wesNumbersOnly
     />
 
     <input
       formControlName="year"
       type="text"
+      inputmode="numeric"
+      pattern="[0-9]*"
+      maxlength="4"
       name="bday-year"
       placeholder="YYYY"
-      maxlength="4"
+      wesNumbersOnly
     />
   </div>
   <div>

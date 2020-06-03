@@ -10,6 +10,7 @@ import { CustomerDetailsPageComponent } from './customer-details-page/customer-d
 import { CustomStepperComponent } from './components/custom-stepper/custom-stepper.component';
 import { KnowledgeCheckQ1FormComponent } from './components/knowledge-check-q1-form/knowledge-check-q1-form.component';
 import { KnowledgeCheckQ2FormComponent } from './components/knowledge-check-q2-form/knowledge-check-q2-form.component';
+import { OnlyNumberDirective } from './only-numbers.directive';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { KnowledgeCheckQ2FormComponent } from './components/knowledge-check-q2-f
     CustomStepperComponent,
     KnowledgeCheckQ1FormComponent,
     KnowledgeCheckQ2FormComponent,
+    OnlyNumberDirective,
   ],
 })
 export class WpisaFeatureIsaJourneyModule {}

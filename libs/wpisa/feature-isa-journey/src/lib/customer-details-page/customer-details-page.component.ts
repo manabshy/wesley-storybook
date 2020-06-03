@@ -1,9 +1,19 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { take, tap, finalize, takeWhile, switchMap } from 'rxjs/operators';
+import {
+  take,
+  tap,
+  finalize,
+  takeWhile,
+  switchMap,
+  startWith,
+  mapTo,
+  map,
+} from 'rxjs/operators';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 import { ConfigService, Config } from '@wesleyan-frontend/wpisa/data-access';
 import { nationalInsuranceNumberValidator } from '@wesleyan-frontend/shared/util-validators';
@@ -60,7 +70,9 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
       withInitialValue: true,
     });
   }
-
+  getType() {
+    return 'text';
+  }
   onSubmit() {}
 
   ngOnDestroy() {
