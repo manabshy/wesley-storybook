@@ -25,6 +25,7 @@ import { ConfigService, Config } from '@wesleyan-frontend/wpisa/data-access';
 import {
   nationalInsuranceNumberValidator,
   isaAgeValidator,
+  mobilePhoneUKValidator,
 } from '@wesleyan-frontend/shared/util-validators';
 
 import { KnowledgeCheckFacade } from '../core/knowledge-check.facade';
@@ -78,7 +79,7 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
       ],
       nationality: [null, [Validators.required]],
       personalEmail: ['', [Validators.required, Validators.email]],
-      personalMobileNumber: [null, Validators.required],
+      personalMobileNumber: ['', [Validators.required, mobilePhoneUKValidator]],
       marketingEmail: [null],
       marketingPost: [null],
       marketingPhone: [null],

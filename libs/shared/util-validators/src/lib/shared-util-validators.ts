@@ -23,7 +23,9 @@ function removeWhitespaceHyphens(value: string) {
   return value.replace(/-|\s/g, '');
 }
 
-/** An ISA customer must be aged between 18 and 74 inclusive  */
+/**
+ * An ISA customer must be aged between 18 and 74 inclusive
+ */
 export const isaAgeValidator: ValidatorFn = (
   control: FormGroup
 ): ValidationErrors | null => {
@@ -45,4 +47,19 @@ export const isaAgeValidator: ValidatorFn = (
   }
 
   return null;
+};
+
+/**
+ * UK Mobile 07 Phone Numbers
+ */
+export const mobilePhoneUKValidator: ValidatorFn = (
+  control: AbstractControl
+): ValidationErrors | null => {
+  const testRegexp: RegExp = /(07\d{3}?)\s?\d{3}\s?\d{3}/;
+  //   const testRegexp: RegExp = /0.*7.*(\d.*){9}/;
+  const cleanValue = removeWhitespaceHyphens(control.value).toUpperCase();
+
+  const isValidPhone = testRegexp.test(cleanValue);
+
+  return !isValidPhone ? { invalid: true } : null;
 };
