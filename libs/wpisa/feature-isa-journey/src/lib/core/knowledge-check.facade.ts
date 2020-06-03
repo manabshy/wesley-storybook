@@ -17,6 +17,7 @@ export class KnowledgeCheckFacade {
     console.log('submitting', questionIndex, answer);
     return this.knowledgeCheckService
       .submitAnswer({
+        questionText: 'test',
         questionIndex,
         answer,
         attemptId: this.knowledgeCheckAttemptId,
