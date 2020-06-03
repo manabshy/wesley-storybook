@@ -12,11 +12,20 @@ import {
   map,
 } from 'rxjs/operators';
 import { NgFormsManager } from '@ngneat/forms-manager';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  ValidatorFn,
+  ValidationErrors,
+} from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { ConfigService, Config } from '@wesleyan-frontend/wpisa/data-access';
-import { nationalInsuranceNumberValidator } from '@wesleyan-frontend/shared/util-validators';
+import {
+  nationalInsuranceNumberValidator,
+  isaAgeValidator,
+} from '@wesleyan-frontend/shared/util-validators';
 
 import { KnowledgeCheckFacade } from '../core/knowledge-check.facade';
 import { isaRoutesNames } from '../isa-journey.routes.names';
@@ -48,11 +57,20 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
       title: [null, Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      dob: this.fb.group({
-        day: ['', Validators.required],
-        month: ['', Validators.required],
-        year: ['', Validators.required],
-      }),
+      dob: this.fb.group(
+        {
+          day: [
+            '',
+            [Validators.required, Validators.min(1), Validators.max(31)],
+          ],
+          month: [
+            '',
+            [Validators.required, Validators.min(1), Validators.max(12)],
+          ],
+          year: ['', Validators.required],
+        },
+        { validators: isaAgeValidator }
+      ),
       profession: [null, Validators.required],
       nationalInsuranceNumber: [
         '',
