@@ -55,8 +55,7 @@ export const isaAgeValidator: ValidatorFn = (
 export const mobilePhoneUKValidator: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {
-  const testRegexp: RegExp = /(07\d{3}?)\s?\d{3}\s?\d{3}/;
-  //   const testRegexp: RegExp = /0.*7.*(\d.*){9}/;
+  const testRegexp: RegExp = /^(07[\d]{9})$/;
   const cleanValue = removeWhitespaceHyphens(control.value).toUpperCase();
 
   const isValidPhone = testRegexp.test(cleanValue);
