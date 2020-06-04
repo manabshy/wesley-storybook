@@ -1,8 +1,17 @@
 import { nationalInsuranceNumberValidator } from './shared-util-validators';
 import { FormControl } from '@angular/forms';
 
-const validValues = ['SN 12 23 34 B', 'SN-12-23-34-B'];
-const invalidValues = ['12 23 34 B'];
+const validValues = [
+  'SN 12 23 34 B',
+  'SN-12-23-34-B',
+  'JA 81 45 74 B',
+  'JA814574B',
+  'JA-81-45-74-B',
+  'Ja 81 45 74 b',
+  'Ja814574b',
+  'Ja-81-45-74-b',
+];
+const invalidValues = ['12 23 34 B', 'JA81457B', 'JA 81 45 7B', 'JA-81-45-7B'];
 
 describe('nationalInsuranceValidator', () => {
   validValues.forEach((value) =>
