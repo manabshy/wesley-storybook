@@ -40,6 +40,9 @@
     },
     "shared-util-validators": {
       "tags": []
+    },
+    "shared-ui-styles": {
+      "tags": []
     }
   }
 }
