@@ -43,6 +43,9 @@
     },
     "shared-ui-styles": {
       "tags": []
+    },
+    "shared-data-access-api": {
+      "tags": []
     }
   }
 }

@@ -296,6 +296,38 @@
           }
         }
       }
+    },
+    "shared-data-access-api": {
+      "projectType": "library",
+      "root": "libs/shared/data-access-api",
+      "sourceRoot": "libs/shared/data-access-api/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/data-access-api/tsconfig.lib.json",
+              "libs/shared/data-access-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/data-access-api/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/data-access-api/jest.config.js",
+            "tsConfig": "libs/shared/data-access-api/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/data-access-api/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

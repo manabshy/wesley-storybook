@@ -30,6 +30,9 @@
       ],
       "@wesleyan-frontend/shared/util-validators": [
         "libs/shared/util-validators/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/data-access-api": [
+        "libs/shared/data-access-api/src/index.ts"
       ]
     }
   },
