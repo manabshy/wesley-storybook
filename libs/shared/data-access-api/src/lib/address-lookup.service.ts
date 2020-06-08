@@ -15,17 +15,15 @@ import {
 export class AddressLookupService {
   constructor(private http: HttpClient) {}
 
-  findByPostcode(postcode: string): Observable<PostcodeLookupAddress[]> {
-    return this.http
-      .get<PostcodeLookupResponse>(
-        `https://apim-dev-digital-wes.azure-api.net/lookups/1.0/postcodeSearch?postcode=${postcode}`
-      )
-      .pipe(map((response) => response.addresses));
+  findByPostcode(postcode: string) {
+    return this.http.get<PostcodeLookupResponse | null>(
+      `api/lookup/search?postcode=${postcode}`
+    );
   }
 
   getAddressDetails(id: string) {
-    return this.http.get<AddressDetails>(
-      `https://apim-dev-digital-wes.azure-api.net/lookups/1.0/addressDetail?moniker=${id}`
+    return this.http.get<AddressDetails | null>(
+      `api/lookup/select?moniker=${id}`
     );
   }
 }

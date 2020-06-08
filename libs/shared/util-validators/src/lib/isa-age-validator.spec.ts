@@ -55,6 +55,8 @@ const invalidDateFormat = [
   { day: 'a', month: '12', year: 1944 },
   { day: 'a', month: 'b', year: 1944 },
   { day: 'a', month: '12', year: 'c' },
+  { day: '33', month: '12', year: 1979 },
+  { day: 31, month: '13', year: 1979 },
 ];
 
 describe('isaAgeValidator', () => {

@@ -18,6 +18,8 @@ import {
   Validators,
   ValidatorFn,
   ValidationErrors,
+  FormControl,
+  AbstractControl,
 } from '@angular/forms';
 import { Observable } from 'rxjs';
 
@@ -43,6 +45,8 @@ import { isaRoutesNames } from '../isa-journey.routes.names';
 export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   pageContent: YourDetails;
   form: FormGroup;
+  submitAttempt = false;
+  controls: { [key: string]: AbstractControl } = {};
 
   constructor(
     private configService: ConfigService,
@@ -57,35 +61,39 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      title: [null, Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      dob: this.fb.group(
-        {
-          day: [
-            '',
-            [Validators.required, Validators.min(1), Validators.max(31)],
-          ],
-          month: [
-            '',
-            [Validators.required, Validators.min(1), Validators.max(12)],
-          ],
-          year: ['', Validators.required],
-        },
-        { validators: isaAgeValidator }
-      ),
-      profession: [null, Validators.required],
-      nationalInsuranceNumber: [
-        '',
-        [Validators.required, nationalInsuranceNumberValidator],
-      ],
-      nationality: [null, [Validators.required]],
-      personalEmail: ['', [Validators.required, emailValidator]],
-      personalMobileNumber: ['', [Validators.required, mobilePhoneUKValidator]],
-      marketingEmail: [null],
-      marketingPost: [null],
-      marketingPhone: [null],
+    this.form = this.fb.group(
+      {
+        title: [null, Validators.required],
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        dob: this.fb.group(
+          {
+            day: [''],
+            month: [''],
+            year: [''],
+          },
+          { validators: isaAgeValidator }
+        ),
+        profession: [null, Validators.required],
+        nationalInsuranceNumber: [
+          '',
+          [Validators.required, nationalInsuranceNumberValidator],
+        ],
+        nationality: [null, [Validators.required]],
+        personalEmail: ['', [Validators.required, emailValidator]],
+        personalMobileNumber: [
+          '',
+          [Validators.required, mobilePhoneUKValidator],
+        ],
+        marketingEmail: [null],
+        marketingPost: [null],
+        marketingPhone: [null],
+      },
+      { updateOn: 'blur' }
+    );
+
+    Object.keys(this.form.controls).forEach((key) => {
+      this.controls[key] = this.form.controls[key];
     });
 
     this.formsManager.upsert('customerPersonalDetails', this.form, {
@@ -95,7 +103,14 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   getType() {
     return 'text';
   }
-  onSubmit() {}
+  onSubmit() {
+    this.submitAttempt = true;
+    this.form.markAllAsTouched();
+
+    if (this.form.valid) {
+      this.router.navigate([`/${isaRoutesNames.INVESTMENT_OPTIONS}`]);
+    }
+  }
 
   ngOnDestroy() {
     this.formsManager.unsubscribe('customerPersonalDetails');

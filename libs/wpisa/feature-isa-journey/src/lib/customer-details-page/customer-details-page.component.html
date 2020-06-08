@@ -1,95 +1,204 @@
 <h3>{{ pageContent.heading }}</h3>
 <div [innerHtml]="pageContent.summary"></div>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="honorific-prefix">Title</label>
-    <select formControlName="title" name="honorific-prefix">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="" novalidate>
+  <div class="form-group">
+    <label for="honorific-prefix">{{ pageContent.title.inputLabel }}</label>
+    <select
+      formControlName="title"
+      name="honorific-prefix"
+      class="form-control"
+    >
       <option *ngFor="let title of ['A', 'B']" value="{{ title }}">{{
         title
       }}</option>
     </select>
-  </div>
-  <div>
-    <label for="given-name">First name</label>
-    <input type="text" name="given-name" formControlName="firstName" />
-  </div>
-  <div>
-    <label for="given-name">Last name</label>
-    <input type="text" name="family-name" formControlName="lastName" />
-  </div>
-  <div formGroupName="dob">
-    <span>Date of birth</span>
-    <input
-      formControlName="day"
-      type="text"
-      inputmode="numeric"
-      pattern="[0-9]*"
-      name="bday-day"
-      placeholder="DD"
-      wesNumbersOnly
-      maxlength="2"
-    />
 
-    <input
-      formControlName="month"
-      type="text"
-      inputmode="numeric"
-      pattern="[0-9]*"
-      maxlength="2"
-      name="bday-month"
-      placeholder="MM"
-      wesNumbersOnly
-    />
-
-    <input
-      formControlName="year"
-      type="text"
-      inputmode="numeric"
-      pattern="[0-9]*"
-      maxlength="4"
-      name="bday-year"
-      placeholder="YYYY"
-      wesNumbersOnly
-    />
+    <ng-container *ngIf="submitAttempt && controls.title.invalid">
+      <span *ngIf="controls.title.errors.required">
+        {{ pageContent.title.inputError }}
+      </span>
+    </ng-container>
   </div>
-  <div>
-    <label for="profession">Profession</label>
-    <select formControlName="profession" name="profession">
+
+  <div class="form-group">
+    <label for="given-name">{{ pageContent.firstName.inputLabel }}</label>
+    <input
+      class="form-control"
+      type="text"
+      name="given-name"
+      formControlName="firstName"
+    />
+    <ng-container *ngIf="submitAttempt && controls.firstName.invalid">
+      <span *ngIf="controls.firstName.errors.required">
+        {{ pageContent.firstName.inputError }}
+      </span>
+    </ng-container>
+  </div>
+
+  <div class="form-group">
+    <label for="given-name">{{ pageContent.surname.inputLabel }}</label>
+    <input
+      class="form-control"
+      type="text"
+      name="family-name"
+      formControlName="lastName"
+    />
+    <ng-container *ngIf="submitAttempt && controls.lastName.invalid">
+      <span *ngIf="controls.lastName.errors.required">
+        {{ pageContent.surname.inputError }}
+      </span>
+    </ng-container>
+  </div>
+
+  <div class="form-group" formGroupName="dob">
+    <span>{{ pageContent.dob.inputLabel }}</span>
+    <div class="row">
+      <input
+        class="form-control col-sm-2"
+        formControlName="day"
+        type="text"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        name="bday-day"
+        placeholder="DD"
+        wesNumbersOnly
+        maxlength="2"
+      />
+
+      <input
+        class="form-control col-sm-2"
+        formControlName="month"
+        type="text"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        maxlength="2"
+        name="bday-month"
+        placeholder="MM"
+        wesNumbersOnly
+      />
+
+      <input
+        class="form-control col-sm-2"
+        formControlName="year"
+        type="text"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        maxlength="4"
+        name="bday-year"
+        placeholder="YYYY"
+        wesNumbersOnly
+      />
+    </div>
+
+    <ng-container *ngIf="submitAttempt && controls.dob.invalid">
+      <span *ngIf="controls.dob.errors.invalidDate">
+        {{ pageContent.dob.inputError }}
+      </span>
+      <span *ngIf="controls.dob.errors.tooYoungOrTooOld">
+        {{ pageContent.dob.inputOtherError }}
+      </span>
+    </ng-container>
+  </div>
+
+  <div class="form-group">
+    <label for="profession">{{ pageContent.profession.inputLabel }}</label>
+    <select class="form-control" formControlName="profession" name="profession">
       <option *ngFor="let title of ['A', 'B']" value="{{ title }}">{{
         title
       }}</option>
     </select>
+    <ng-container *ngIf="submitAttempt && controls.profession.invalid">
+      <span *ngIf="controls.profession.errors.required">
+        {{ pageContent.profession.inputError }}
+      </span>
+    </ng-container>
   </div>
-  <div>
-    <label for="nationalInsuranceNumber">National insurance number</label>
+
+  <div class="form-group">
+    <label for="nationalInsuranceNumber">{{
+      pageContent.niNumber.inputLabel
+    }}</label>
     <input
+      class="form-control"
       type="text"
       name="nationalInsuranceNumber"
       formControlName="nationalInsuranceNumber"
     />
+    <span>{{ pageContent.niNumber }}</span>
+    <ng-container
+      *ngIf="submitAttempt && controls.nationalInsuranceNumber.invalid"
+    >
+      <span *ngIf="controls.nationalInsuranceNumber.errors.required">
+        {{ pageContent.niNumber.inputError }}
+      </span>
+    </ng-container>
   </div>
 
-  <div>
-    <label for="nationality">Nationality</label>
-    <select formControlName="nationality" name="nationality">
+  <div class="form-group">
+    <label for="nationality">{{ pageContent.nationality.inputLabel }}</label>
+    <select
+      class="form-control"
+      formControlName="nationality"
+      name="nationality"
+    >
       <option *ngFor="let title of ['A', 'B']" value="{{ title }}">{{
         title
       }}</option>
     </select>
+
+    <ng-container *ngIf="submitAttempt && controls.nationality.invalid">
+      <span *ngIf="controls.nationality.errors.required">
+        {{ pageContent.nationality.inputError }}
+      </span>
+    </ng-container>
   </div>
-  <div>
-    <label for="email">Personal Email</label>
-    <input type="email" name="email" formControlName="personalEmail" />
-  </div>
-  <div>
-    <label for="personalMobileNumber">Phone</label>
+
+  <div class="form-group">
+    <label for="email">{{
+      pageContent.contactDetails.personalEmail.inputLabel
+    }}</label>
     <input
+      class="form-control"
+      type="email"
+      name="email"
+      formControlName="personalEmail"
+    />
+
+    <span
+      *ngIf="
+        controls.personalEmail.invalid &&
+        (submitAttempt ||
+          controls.personalEmail.dirty ||
+          controls.personalEmail.touched)
+      "
+    >
+      {{ pageContent.contactDetails.personalEmail.inputError }}
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label for="personalMobileNumber">{{
+      pageContent.contactDetails.mobileNumber.inputLabel
+    }}</label>
+    <input
+      class="form-control"
       type="text"
       name="personalMobileNumber"
       formControlName="personalMobileNumber"
     />
+    <span
+      *ngIf="
+        controls.personalMobileNumber.invalid &&
+        (submitAttempt ||
+          controls.personalMobileNumber.dirty ||
+          controls.personalMobileNumber.touched)
+      "
+    >
+      {{ pageContent.contactDetails.mobileNumber.inputError }}
+    </span>
   </div>
+
   <div>
     <input
       type="checkbox"
@@ -123,6 +232,7 @@
 
   <button type="submit">Continue</button>
 </form>
+
 <pre>
     Valid: {{ form.valid | json }}
     {{ form.value | json }}

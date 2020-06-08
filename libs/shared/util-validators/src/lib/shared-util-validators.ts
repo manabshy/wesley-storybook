@@ -4,13 +4,17 @@ import {
   FormGroup,
   ValidationErrors,
 } from '@angular/forms';
-import { differenceInYears, isValid } from 'date-fns';
+import { differenceInYears, isValid, parseISO } from 'date-fns';
 
 export const nationalInsuranceNumberValidator: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {
   const testRegexp: RegExp = /[A-CEGHJ-PR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}s?[0-9]{2}s?[0-9]{2}s?[0-9]{2}s?[A-DFMP ]/;
   const cleanValue = removeWhitespaceHyphens(control.value).toUpperCase();
+
+  if (isEmptyInputValue(control.value)) {
+    return null; // don't validate empty values to allow optional controls
+  }
 
   const isValidNino = testRegexp.test(cleanValue);
 
@@ -36,7 +40,7 @@ export const isaAgeValidator: ValidatorFn = (
   const today = new Date(Date.now());
   const dob = new Date(year, month, day);
 
-  if (!isValid(dob)) {
+  if (!isValid(parseISO(`${year}-${month}-${day}`))) {
     return { invalidDate: true };
   }
 
@@ -58,6 +62,10 @@ export const mobilePhoneUKValidator: ValidatorFn = (
   const testRegexp: RegExp = /^(07[\d]{9})$/;
   const cleanValue = removeWhitespaceHyphens(control.value).toUpperCase();
 
+  if (isEmptyInputValue(control.value)) {
+    return null; // don't validate empty values to allow optional controls
+  }
+
   const isValidPhone = testRegexp.test(cleanValue);
 
   return !isValidPhone ? { invalid: true } : null;
@@ -68,7 +76,16 @@ export const emailValidator: ValidatorFn = (
 ): ValidationErrors | null => {
   const testRegexp: RegExp = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 
+  if (isEmptyInputValue(control.value)) {
+    return null; // don't validate empty values to allow optional controls
+  }
+
   const isValidEmail = testRegexp.test(control.value);
 
   return !isValidEmail ? { invalid: true } : null;
+};
+
+const isEmptyInputValue = (value: any): boolean => {
+  // we don't check for string here so it also works with arrays
+  return value == null || value.length === 0;
 };

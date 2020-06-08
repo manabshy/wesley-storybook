@@ -34,6 +34,7 @@ export interface YourDetails {
   personalInformationLabel: string;
   title: YourDetailsFormInput;
   YourDetailsFormInput: YourDetailsFormInput;
+  firstName: YourDetailsFormInput;
   surname: YourDetailsFormInput;
   dob: YourDetailsDob;
   profession: YourDetailsFormInput;
