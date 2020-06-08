@@ -21,7 +21,10 @@ import {
 } from '@angular/forms';
 import { Observable } from 'rxjs';
 
-import { ConfigService, Config } from '@wesleyan-frontend/wpisa/data-access';
+import {
+  ConfigService,
+  YourDetails,
+} from '@wesleyan-frontend/wpisa/data-access';
 import {
   nationalInsuranceNumberValidator,
   isaAgeValidator,
@@ -38,7 +41,7 @@ import { isaRoutesNames } from '../isa-journey.routes.names';
   styleUrls: ['./customer-details-page.component.scss'],
 })
 export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
-  pageContent: Config;
+  pageContent: YourDetails;
   form: FormGroup;
 
   constructor(
@@ -48,10 +51,9 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     private titleService: Title,
     private fb: FormBuilder
   ) {
-    this.pageContent = this.configService.content;
+    this.pageContent = this.configService.content.yourDetails;
 
-    console.warn('@TODO - set page title tag');
-    this.titleService.setTitle(this.pageContent.start.pageTitle);
+    this.titleService.setTitle(this.pageContent.metaTitle);
   }
 
   ngOnInit(): void {

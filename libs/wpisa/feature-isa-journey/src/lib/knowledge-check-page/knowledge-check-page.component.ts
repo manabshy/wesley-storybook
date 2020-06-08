@@ -30,9 +30,9 @@ export class KnowledgeCheckPageComponent implements OnInit {
     private titleService: Title
   ) {
     this.pageContent = this.configService.content;
+    console.log(this.pageContent);
 
-    console.warn('@TODO - set page title tag');
-    this.titleService.setTitle(this.pageContent.start.pageTitle);
+    this.titleService.setTitle(this.pageContent.knowledgeCheck.metaTitle);
   }
 
   ngOnInit(): void {}
