@@ -154,6 +154,51 @@
     </ng-container>
   </div>
 
+  <!-- <div formGroupName="address">
+    <h3>{{ pageContent.addressDetails.heading }}</h3>
+
+    <div class="form-group">
+      <label for="postcode">{{
+        pageContent.addressDetails.searchForAddress.inputLabel
+      }}</label>
+      <input
+        class="form-control"
+        type="text"
+        name="postcode"
+        formControlName="postcode"
+        #postcodeInput
+      />
+      <ng-container *ngIf="submitAttempt && controls.firstName.invalid">
+        <span *ngIf="controls.firstName.errors.required">
+          {{ pageContent.firstName.inputError }}
+        </span>
+      </ng-container>
+    </div>
+    <button type="button" (click)="findAddress(postcodeInput.value)">
+      {{ pageContent.addressDetails.searchForAddressLabel }}
+    </button>
+
+    <div class="form-group">
+      <label for="address-list">Select address</label>
+      <select
+        formControlName="selectedAddress"
+        name="address-list"
+        class="form-control"
+        (change)="handleAddressSelect($event)"
+      >
+        <option *ngFor="let address of addressList" [value]="address.moniker">{{
+          address.singleLine
+        }}</option>
+      </select>
+
+      <ng-container *ngIf="submitAttempt && controls.title.invalid">
+        <span *ngIf="controls.title.errors.required">
+          {{ pageContent.title.inputError }}
+        </span>
+      </ng-container>
+    </div>
+  </div> -->
+  <wes-address-form></wes-address-form>
   <div class="form-group">
     <label for="email">{{
       pageContent.contactDetails.personalEmail.inputLabel

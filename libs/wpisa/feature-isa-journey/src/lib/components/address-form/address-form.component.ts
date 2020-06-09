@@ -36,68 +36,47 @@ import {
 import {
   AddressLookupService,
   PostcodeLookupAddress,
+  AddressDetails,
 } from '@wesleyan-frontend/shared/data-access-api';
 
-import { KnowledgeCheckFacade } from '../core/knowledge-check.facade';
-import { isaRoutesNames } from '../isa-journey.routes.names';
+import { KnowledgeCheckFacade } from '../../core/knowledge-check.facade';
+import { isaRoutesNames } from '../../isa-journey.routes.names';
 
 @Component({
-  selector: 'wes-customer-details-page',
-  templateUrl: './customer-details-page.component.html',
-  styleUrls: ['./customer-details-page.component.scss'],
+  selector: 'wes-address-form',
+  templateUrl: './address-form.component.html',
+  styleUrls: ['./address-form.component.scss'],
 })
-export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
+export class AddressFormComponent implements OnInit, OnDestroy {
   pageContent: YourDetails;
   form: FormGroup;
   submitAttempt = false;
   controls: { [key: string]: AbstractControl } = {};
   addressList: PostcodeLookupAddress[] = [];
+  isManualAddressVisible = false;
 
   constructor(
     private configService: ConfigService,
-    private router: Router,
     private formsManager: NgFormsManager,
-    private titleService: Title,
     private fb: FormBuilder,
     private addressLookupService: AddressLookupService
   ) {
     this.pageContent = this.configService.content.yourDetails;
-
-    this.titleService.setTitle(this.pageContent.metaTitle);
   }
 
   ngOnInit(): void {
     this.form = this.fb.group(
       {
-        title: [null, Validators.required],
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        dob: this.fb.group(
-          {
-            day: [''],
-            month: [''],
-            year: [''],
-          },
-          { validators: isaAgeValidator }
-        ),
-        profession: [null, Validators.required],
-        nationalInsuranceNumber: [
-          '',
-          [Validators.required, nationalInsuranceNumberValidator],
-        ],
-        nationality: [null, [Validators.required]],
-        address: this.fb.group({
-          postcode: ['', Validators.required],
-          selectedAddress: [''],
-        }),
-        personalEmail: ['', [Validators.required, emailValidator]],
-        personalMobileNumber: [
-          '',
-          [Validators.required, mobilePhoneUKValidator],
-        ],
-        marketingEmail: [null],
-        marketingPost: [null],
-        marketingPhone: [null],
+        postcodeLookup: ['', Validators.required],
+        selectedAddressId: [''],
+        flatNumber: [''],
+        houseNumber: ['', [Validators.required]],
+        houseName: [''],
+        street: ['', [Validators.required]],
+        town: ['', [Validators.required]],
+        region: [''],
+        county: [''],
+        postcode: ['', [Validators.required]],
       },
       { updateOn: 'blur' }
     );
@@ -106,33 +85,60 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
       this.controls[key] = this.form.controls[key];
     });
 
-    this.formsManager.upsert('customerPersonalDetails', this.form, {
+    this.formsManager.upsert('address', this.form, {
       withInitialValue: true,
     });
   }
-  getType() {
-    return 'text';
-  }
+
   onSubmit() {
     this.submitAttempt = true;
     this.form.markAllAsTouched();
 
     if (this.form.valid) {
-      this.router.navigate([`/${isaRoutesNames.INVESTMENT_OPTIONS}`]);
     }
   }
 
   findAddress(postcode) {
     this.addressLookupService
       .findByPostcode(postcode)
-      .pipe(tap((resp) => (this.addressList = resp.addresses)))
+      .pipe(
+        tap((resp) => {
+          console.log(resp);
+          const a =
+            resp === null
+              ? this.controls.postcodeLookup.setErrors({ invalid: true })
+              : (this.addressList = resp.addresses);
+        }),
+        take(1)
+      )
       .subscribe(console.log);
   }
   handleAddressSelect(e) {
     console.log(e.target.value);
     this.addressLookupService
       .getAddressDetails(e.target.value)
+      .pipe(
+        tap((address) => this.updateFormValues(address)),
+        take(1)
+      )
       .subscribe(console.log);
+  }
+
+  showManualAddress() {
+    this.isManualAddressVisible = true;
+  }
+  showFindAddress() {
+    this.isManualAddressVisible = false;
+  }
+
+  updateFormValues(address: AddressDetails) {
+    this.form.patchValue({
+      postcode: address.postcode,
+      town: address.town,
+      country: address.country,
+      houseNumber: address.line1,
+      street: address.line2,
+    });
   }
   ngOnDestroy() {
     this.formsManager.unsubscribe('customerPersonalDetails');
