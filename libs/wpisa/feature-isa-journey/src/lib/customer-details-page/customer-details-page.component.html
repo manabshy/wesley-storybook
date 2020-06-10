@@ -198,7 +198,24 @@
       </ng-container>
     </div>
   </div> -->
-  <wes-address-form></wes-address-form>
+  <wes-address-lookup-form
+    *ngIf="!isManualAddressVisible"
+    formControlName="addressLookup"
+    [touched]="controls.addressLookup.touched"
+    [submitAttempt]="submitAttempt"
+    (showManualAddress)="onShowManualAddress($event)"
+    (selectedAddress)="onSelectedAddress($event)"
+  ></wes-address-lookup-form>
+
+  <ng-container *ngIf="isManualAddressVisible">
+    <button type="button" (click)="onShowAddressLookup()">Find address</button>
+    <wes-address-form
+      formControlName="address"
+      [touched]="controls.address.touched"
+      [submitAttempt]="submitAttempt"
+    ></wes-address-form>
+  </ng-container>
+
   <div class="form-group">
     <label for="email">{{
       pageContent.contactDetails.personalEmail.inputLabel

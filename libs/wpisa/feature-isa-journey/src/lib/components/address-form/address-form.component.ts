@@ -1,16 +1,13 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
 import {
-  take,
-  tap,
-  finalize,
-  takeWhile,
-  switchMap,
-  startWith,
-  mapTo,
-  map,
-} from 'rxjs/operators';
+  Component,
+  OnInit,
+  OnDestroy,
+  forwardRef,
+  Input,
+  SimpleChanges,
+  OnChanges,
+} from '@angular/core';
+
 import { NgFormsManager } from '@ngneat/forms-manager';
 import {
   FormGroup,
@@ -20,127 +17,119 @@ import {
   ValidationErrors,
   FormControl,
   AbstractControl,
+  NG_VALUE_ACCESSOR,
+  ControlValueAccessor,
 } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import {
   ConfigService,
   YourDetails,
 } from '@wesleyan-frontend/wpisa/data-access';
-import {
-  nationalInsuranceNumberValidator,
-  isaAgeValidator,
-  mobilePhoneUKValidator,
-  emailValidator,
-} from '@wesleyan-frontend/shared/util-validators';
-import {
-  AddressLookupService,
-  PostcodeLookupAddress,
-  AddressDetails,
-} from '@wesleyan-frontend/shared/data-access-api';
 
-import { KnowledgeCheckFacade } from '../../core/knowledge-check.facade';
-import { isaRoutesNames } from '../../isa-journey.routes.names';
+import { AddressFormValue } from './address-form-value.interface';
 
 @Component({
   selector: 'wes-address-form',
   templateUrl: './address-form.component.html',
   styleUrls: ['./address-form.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => AddressFormComponent),
+      multi: true,
+    },
+  ],
 })
-export class AddressFormComponent implements OnInit, OnDestroy {
+export class AddressFormComponent
+  implements ControlValueAccessor, OnChanges, OnInit, OnDestroy {
+  @Input() touched: boolean;
+  @Input() submitAttempt = false;
+
+  form = this.fb.group(
+    {
+      flatNumber: [''],
+      houseNumber: ['', [Validators.required]],
+      houseName: [''],
+      street: ['', [Validators.required]],
+      town: ['', [Validators.required]],
+      region: [''],
+      county: [''],
+      postcode: ['', [Validators.required]],
+    },
+    { updateOn: 'blur' }
+  );
+
   pageContent: YourDetails;
-  form: FormGroup;
-  submitAttempt = false;
   controls: { [key: string]: AbstractControl } = {};
-  addressList: PostcodeLookupAddress[] = [];
-  isManualAddressVisible = false;
+
+  private subscription = new Subscription();
+  onChange: any = (_: AddressFormValue) => {};
+  onTouch: any = () => {};
 
   constructor(
     private configService: ConfigService,
     private formsManager: NgFormsManager,
-    private fb: FormBuilder,
-    private addressLookupService: AddressLookupService
+    private fb: FormBuilder
   ) {
     this.pageContent = this.configService.content.yourDetails;
   }
 
+  isFieldInvalid(fieldName: string) {
+    return this.submitAttempt && this.form.get(fieldName).invalid;
+  }
+
   ngOnInit(): void {
-    this.form = this.fb.group(
-      {
-        postcodeLookup: ['', Validators.required],
-        selectedAddressId: [''],
-        flatNumber: [''],
-        houseNumber: ['', [Validators.required]],
-        houseName: [''],
-        street: ['', [Validators.required]],
-        town: ['', [Validators.required]],
-        region: [''],
-        county: [''],
-        postcode: ['', [Validators.required]],
-      },
-      { updateOn: 'blur' }
+    this.subscription.add(
+      this.form.valueChanges.subscribe((value: AddressFormValue) => {
+        this.onChange(value);
+      })
     );
 
     Object.keys(this.form.controls).forEach((key) => {
       this.controls[key] = this.form.controls[key];
     });
 
-    this.formsManager.upsert('address', this.form, {
+    this.formsManager.upsert('manualAddress', this.form, {
       withInitialValue: true,
     });
   }
 
-  onSubmit() {
-    this.submitAttempt = true;
-    this.form.markAllAsTouched();
-
-    if (this.form.valid) {
+  ngOnChanges(simpleChanges: SimpleChanges) {
+    if (simpleChanges['touched'] && simpleChanges['touched'].currentValue) {
+      this.form.markAllAsTouched();
     }
   }
 
-  findAddress(postcode) {
-    this.addressLookupService
-      .findByPostcode(postcode)
-      .pipe(
-        tap((resp) => {
-          console.log(resp);
-          const a =
-            resp === null
-              ? this.controls.postcodeLookup.setErrors({ invalid: true })
-              : (this.addressList = resp.addresses);
-        }),
-        take(1)
-      )
-      .subscribe(console.log);
-  }
-  handleAddressSelect(e) {
-    console.log(e.target.value);
-    this.addressLookupService
-      .getAddressDetails(e.target.value)
-      .pipe(
-        tap((address) => this.updateFormValues(address)),
-        take(1)
-      )
-      .subscribe(console.log);
+  writeValue(value: null | AddressFormValue): void {
+    if (value) {
+      this.form.reset(value);
+    }
   }
 
-  showManualAddress() {
-    this.isManualAddressVisible = true;
-  }
-  showFindAddress() {
-    this.isManualAddressVisible = false;
+  registerOnChange(fn: () => {}): void {
+    this.onChange = fn;
   }
 
-  updateFormValues(address: AddressDetails) {
-    this.form.patchValue({
-      postcode: address.postcode,
-      town: address.town,
-      country: address.country,
-      houseNumber: address.line1,
-      street: address.line2,
+  registerOnTouched(fn: (_: AddressFormValue) => {}): void {
+    this.onTouch = fn;
+  }
+
+  reset() {
+    this.form.reset({
+      flatNumber: '',
+      houseNumber: '',
+      houseName: '',
+      street: '',
+      town: '',
+      region: '',
+      county: '',
+      postcode: '',
     });
   }
+
   ngOnDestroy() {
-    this.formsManager.unsubscribe('customerPersonalDetails');
+    this.formsManager.unsubscribe('manualAddress');
+    this.subscription.unsubscribe();
   }
 }

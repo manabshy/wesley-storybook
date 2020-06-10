@@ -1,0 +1,54 @@
+<form [formGroup]="form">
+  <h3>{{ pageContent.addressDetails.heading }}</h3>
+
+  <div class="form-group">
+    <label for="postcode">{{
+      pageContent.addressDetails.searchForAddress.inputLabel
+    }}</label>
+    <input
+      class="form-control"
+      type="text"
+      name="postcodeLookup"
+      formControlName="postcode"
+      #postcodeInput
+    />
+    <ng-container *ngIf="isFieldInvalid('postcode')">
+      <span>
+        {{ pageContent.addressDetails.searchForAddress.inputError }}
+      </span>
+    </ng-container>
+  </div>
+  <button type="button" (click)="findAddress(postcodeInput.value)">
+    {{ pageContent.addressDetails.searchForAddressLabel }}
+  </button>
+
+  <div class="form-group" *ngIf="addressList.length > 0">
+    <label for="address-list">Select address</label>
+    <select
+      formControlName="selectedAddressId"
+      name="address-list"
+      class="form-control"
+      (change)="onSelectedAddress($event)"
+    >
+      <option *ngFor="let address of addressList" [value]="address.moniker">{{
+        address.singleLine
+      }}</option>
+    </select>
+
+    <ng-container *ngIf="isFieldInvalid('selectedAddressId')">
+      <span>
+        Required
+      </span>
+    </ng-container>
+  </div>
+  {{ isFieldInvalid('selectedAddressId') }}
+  {{ form.value | json }}
+  <p>
+    <ng-container *ngIf="addressList.length > 0"
+      >Can't see your address?</ng-container
+    >
+    <button type="button" (click)="onShowManualAddress()">
+      Enter address manually
+    </button>
+  </p>
+</form>

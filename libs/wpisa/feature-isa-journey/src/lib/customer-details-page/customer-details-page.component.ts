@@ -36,6 +36,7 @@ import {
 import {
   AddressLookupService,
   PostcodeLookupAddress,
+  AddressDetails,
 } from '@wesleyan-frontend/shared/data-access-api';
 
 import { KnowledgeCheckFacade } from '../core/knowledge-check.facade';
@@ -51,7 +52,7 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   form: FormGroup;
   submitAttempt = false;
   controls: { [key: string]: AbstractControl } = {};
-  addressList: PostcodeLookupAddress[] = [];
+  isManualAddressVisible = false;
 
   constructor(
     private configService: ConfigService,
@@ -86,10 +87,8 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
           [Validators.required, nationalInsuranceNumberValidator],
         ],
         nationality: [null, [Validators.required]],
-        address: this.fb.group({
-          postcode: ['', Validators.required],
-          selectedAddress: [''],
-        }),
+        addressLookup: ['', Validators.required],
+        address: ['', Validators.required],
         personalEmail: ['', [Validators.required, emailValidator]],
         personalMobileNumber: [
           '',
@@ -110,8 +109,26 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
       withInitialValue: true,
     });
   }
-  getType() {
-    return 'text';
+  onSelectedAddress(address: AddressDetails) {
+    console.log('Got address', address);
+    this.updateFormValues(address);
+  }
+  onShowManualAddress(event) {
+    this.isManualAddressVisible = true;
+    this.formsManager.clear('manualAddress');
+  }
+  onShowAddressLookup() {
+    this.isManualAddressVisible = false;
+    this.formsManager.clear('addressLookup');
+  }
+  updateFormValues(address: AddressDetails) {
+    this.formsManager.patchValue('manualAddress', {
+      postcode: address.postcode,
+      town: address.town,
+      country: address.country,
+      houseNumber: address.line1,
+      street: address.line2,
+    });
   }
   onSubmit() {
     this.submitAttempt = true;
@@ -122,18 +139,6 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     }
   }
 
-  findAddress(postcode) {
-    this.addressLookupService
-      .findByPostcode(postcode)
-      .pipe(tap((resp) => (this.addressList = resp.addresses)))
-      .subscribe(console.log);
-  }
-  handleAddressSelect(e) {
-    console.log(e.target.value);
-    this.addressLookupService
-      .getAddressDetails(e.target.value)
-      .subscribe(console.log);
-  }
   ngOnDestroy() {
     this.formsManager.unsubscribe('customerPersonalDetails');
   }

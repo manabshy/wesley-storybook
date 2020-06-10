@@ -1,0 +1,25 @@
+{
+  "genericLookups": {
+    "title": [{ "id": "10", "description": "Dr" }],
+    "nationality": [{ "id": "92", "description": "British" }],
+    "marketSegment": [
+      { "id": "GENMEDPRAC", "description": "General Medical Practitioner" }
+    ]
+  },
+  "currentTaxPeriod": {
+    "taxPeriodCode": "2020-2021",
+    "taxPeriodDescription": "2020 to 2021",
+    "startDateTime": "2020-04-06T00:00:00.000Z",
+    "endDateTime": "2021-04-05T23:59:59.000Z",
+    "lumpSumAccepted": true,
+    "monthlyPaymentsAccepted": true,
+    "newISAsAccepted": true,
+    "topUpsAccepted": true,
+    "totalAnnualAllowance": 20000,
+    "minNewLumpSumAmount": 2000,
+    "minTopUpLumpSumAmount": 1000,
+    "minNewMonthlyAmount": 250,
+    "minTopUpMonthlyAmount": 25,
+    "numberOfMonthlyPayments": 11
+  }
+}

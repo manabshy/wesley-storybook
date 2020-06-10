@@ -1,177 +1,99 @@
-<div [formGroup]="form">
-  <h3>{{ pageContent.addressDetails.heading }}</h3>
-
-  <ng-container *ngIf="!isManualAddressVisible">
-    <div class="form-group">
-      <label for="postcode">{{
-        pageContent.addressDetails.searchForAddress.inputLabel
-      }}</label>
-      <input
-        class="form-control"
-        type="text"
-        name="postcodeLookup"
-        formControlName="postcodeLookup"
-        #postcodeInput
-      />
-      <ng-container
-        *ngIf="
-          controls.postcodeLookup.invalid &&
-          (controls.postcodeLookup.dirty || controls.postcodeLookup.touched)
-        "
-      >
-        <span *ngIf="controls.postcodeLookup.invalid">
-          {{ pageContent.addressDetails.searchForAddress.inputError }}
-        </span>
-      </ng-container>
-    </div>
-    <button type="button" (click)="findAddress(postcodeInput.value)">
-      {{ pageContent.addressDetails.searchForAddressLabel }}
-    </button>
-
-    <div class="form-group" *ngIf="addressList.length > 0">
-      <label for="address-list">Select address</label>
-      <select
-        formControlName="selectedAddressId"
-        name="address-list"
-        class="form-control"
-        (change)="handleAddressSelect($event)"
-      >
-        <option *ngFor="let address of addressList" [value]="address.moniker">{{
-          address.singleLine
-        }}</option>
-      </select>
-
-      <ng-container *ngIf="submitAttempt && controls.title.invalid">
-        <span *ngIf="controls.title.errors.required">
-          {{ pageContent.title.inputError }}
-        </span>
-      </ng-container>
-    </div>
-
-    <p>
-      <ng-container *ngIf="addressList.length > 0"
-        >Can't see your address?</ng-container
-      >
-      <button type="button" (click)="showManualAddress()">
-        Enter address manually
-      </button>
-    </p>
-  </ng-container>
-  <ng-container *ngIf="isManualAddressVisible">
-    <button type="button" (click)="showFindAddress()">
-      Find address
-    </button>
-    <div class="form-group">
-      <label for="given-name">Flat number</label>
-      <input
-        class="form-control"
-        type="text"
-        name="given-name"
-        formControlName="flatNumber"
-      />
-      <!-- <ng-container *ngIf="submitAttempt && controls.firstName.invalid">
-          <span *ngIf="controls.firstName.errors.required">
-            {{ pageContent.firstName.inputError }}
-          </span>
-        </ng-container> -->
-    </div>
-    <div class="form-group">
-      <label for="given-name">House number</label>
-      <input
-        class="form-control"
-        type="text"
-        name="given-name"
-        formControlName="houseNumber"
-      />
-      <!-- <ng-container *ngIf="submitAttempt && controls.firstName.invalid">
-          <span *ngIf="controls.firstName.errors.required">
-            {{ pageContent.firstName.inputError }}
-          </span>
-        </ng-container> -->
-    </div>
-    <div class="form-group">
-      <label for="given-name">House name</label>
-      <input
-        class="form-control"
-        type="text"
-        name="given-name"
-        formControlName="houseName"
-      />
-      <!-- <ng-container *ngIf="submitAttempt && controls.firstName.invalid">
-          <span *ngIf="controls.firstName.errors.required">
-            {{ pageContent.firstName.inputError }}
-          </span>
-        </ng-container> -->
-    </div>
-    <div class="form-group">
-      <label for="given-name">Street</label>
-      <input
-        class="form-control"
-        type="text"
-        name="given-name"
-        formControlName="street"
-      />
-      <!-- <ng-container *ngIf="submitAttempt && controls.firstName.invalid">
-          <span *ngIf="controls.firstName.errors.required">
-            {{ pageContent.firstName.inputError }}
-          </span>
-        </ng-container> -->
-    </div>
-    <div class="form-group">
-      <label for="given-name">Town/City</label>
-      <input
-        class="form-control"
-        type="text"
-        name="given-name"
-        formControlName="town"
-      />
-      <!-- <ng-container *ngIf="submitAttempt && controls.firstName.invalid">
-          <span *ngIf="controls.firstName.errors.required">
-            {{ pageContent.firstName.inputError }}
-          </span>
-        </ng-container> -->
-    </div>
-    <div class="form-group">
-      <label for="given-name">Region</label>
-      <input
-        class="form-control"
-        type="text"
-        name="given-name"
-        formControlName="region"
-      />
-      <!-- <ng-container *ngIf="submitAttempt && controls.firstName.invalid">
-          <span *ngIf="controls.firstName.errors.required">
-            {{ pageContent.firstName.inputError }}
-          </span>
-        </ng-container> -->
-    </div>
-    <div class="form-group">
-      <label for="given-name">County</label>
-      <input
-        class="form-control"
-        type="text"
-        name="given-name"
-        formControlName="county"
-      />
-      <!-- <ng-container *ngIf="submitAttempt && controls.firstName.invalid">
-          <span *ngIf="controls.firstName.errors.required">
-            {{ pageContent.firstName.inputError }}
-          </span>
-        </ng-container> -->
-    </div>
-    <div class="form-group">
-      <label for="given-name">Postcode</label>
-      <input
-        class="form-control"
-        type="text"
-        name="given-name"
-        formControlName="postcode"
-      />
-      <!-- <ng-container *ngIf="submitAttempt && controls.firstName.invalid">
-          <span *ngIf="controls.firstName.errors.required">
-            {{ pageContent.firstName.inputError }}
-          </span>
-        </ng-container> -->
-    </div>
-  </ng-container>
-</div>
+<form [formGroup]="form">
+  <div class="form-group">
+    <label for="given-name">Flat number</label>
+    <input
+      class="form-control"
+      type="text"
+      name="given-name"
+      formControlName="flatNumber"
+    />
+  </div>
+  <div class="form-group">
+    <label for="given-name">House number</label>
+    <input
+      class="form-control"
+      type="text"
+      name="given-name"
+      formControlName="houseNumber"
+    />
+    <ng-container *ngIf="isFieldInvalid('houseNumber')">
+      <span *ngIf="controls.houseNumber.errors.required">
+        Please provide errors!
+      </span>
+    </ng-container>
+  </div>
+  <div class="form-group">
+    <label for="given-name">House name</label>
+    <input
+      class="form-control"
+      type="text"
+      name="given-name"
+      formControlName="houseName"
+    />
+    <ng-container *ngIf="isFieldInvalid('houseName')">
+      <span *ngIf="controls.houseName.errors.required">
+        Please provide errors!
+      </span>
+    </ng-container>
+  </div>
+  <div class="form-group">
+    <label for="given-name">Street</label>
+    <input
+      class="form-control"
+      type="text"
+      name="given-name"
+      formControlName="street"
+    />
+    <ng-container *ngIf="isFieldInvalid('street')">
+      <span *ngIf="controls.street.errors.required">
+        Please provide errors!
+      </span>
+    </ng-container>
+  </div>
+  <div class="form-group">
+    <label for="given-name">Town/City</label>
+    <input
+      class="form-control"
+      type="text"
+      name="given-name"
+      formControlName="town"
+    />
+    <ng-container *ngIf="isFieldInvalid('town')">
+      <span *ngIf="controls.town.errors.required">
+        Please provide errors!
+      </span>
+    </ng-container>
+  </div>
+  <div class="form-group">
+    <label for="given-name">Region</label>
+    <input
+      class="form-control"
+      type="text"
+      name="given-name"
+      formControlName="region"
+    />
+  </div>
+  <div class="form-group">
+    <label for="given-name">County</label>
+    <input
+      class="form-control"
+      type="text"
+      name="given-name"
+      formControlName="county"
+    />
+  </div>
+  <div class="form-group">
+    <label for="given-name">Postcode</label>
+    <input
+      class="form-control"
+      type="text"
+      name="given-name"
+      formControlName="postcode"
+    />
+    <ng-container *ngIf="isFieldInvalid('postcode')">
+      <span *ngIf="controls.postcode.errors.required">
+        Please provide errors!
+      </span>
+    </ng-container>
+  </div>
+</form>

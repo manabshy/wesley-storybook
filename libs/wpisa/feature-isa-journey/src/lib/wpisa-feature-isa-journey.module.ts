@@ -12,7 +12,7 @@ import { KnowledgeCheckQ1FormComponent } from './components/knowledge-check-q1-f
 import { KnowledgeCheckQ2FormComponent } from './components/knowledge-check-q2-form/knowledge-check-q2-form.component';
 import { OnlyNumberDirective } from './only-numbers.directive';
 import { AddressFormComponent } from './components/address-form/address-form.component';
-
+import { AddressLookupFormComponent } from './components/address-lookup-form/address-lookup-form.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -28,6 +28,7 @@ import { AddressFormComponent } from './components/address-form/address-form.com
     KnowledgeCheckQ2FormComponent,
     OnlyNumberDirective,
     AddressFormComponent,
+    AddressLookupFormComponent,
   ],
 })
 export class WpisaFeatureIsaJourneyModule {}
