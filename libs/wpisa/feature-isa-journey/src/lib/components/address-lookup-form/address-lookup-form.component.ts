@@ -54,13 +54,10 @@ export class AddressLookupFormComponent
   @Output() showManualAddress = new EventEmitter();
   @Output() selectedAddress = new EventEmitter<AddressDetails>();
 
-  form = this.fb.group(
-    {
-      postcode: ['', Validators.required],
-      selectedAddressId: ['', Validators.required],
-    },
-    { updateOn: 'blur' }
-  );
+  form = this.fb.group({
+    postcode: ['', { validators: [Validators.required], updateOn: 'blur' }],
+    selectedAddressId: ['', Validators.required],
+  });
 
   pageContent: YourDetails;
 
@@ -81,11 +78,14 @@ export class AddressLookupFormComponent
   }
 
   isFieldInvalid(fieldName: string) {
-    return this.submitAttempt && this.form.get(fieldName).invalid;
+    return (
+      (this.form.get(fieldName).invalid && this.form.get(fieldName).dirty) ||
+      (this.form.get(fieldName).invalid && this.submitAttempt)
+    );
   }
+
   findAddress(postcode: string) {
     this.resetAddressList();
-    this.submitAttempt = false;
 
     this.addressLookupService
       .findByPostcode(postcode)
@@ -131,9 +131,7 @@ export class AddressLookupFormComponent
       })
     );
 
-    Object.keys(this.form.controls).forEach((key) => {
-      this.controls[key] = this.form.controls[key];
-    });
+    this.controls = this.form.controls;
 
     this.formsManager.upsert('addressLookup', this.form, {
       withInitialValue: true,

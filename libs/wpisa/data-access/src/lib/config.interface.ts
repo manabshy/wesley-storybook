@@ -11,6 +11,11 @@ export interface Config {
   };
   knowledgeCheck: KnowledgeCheck;
   yourDetails: YourDetails;
+  investmentOptions: InvestmentOptions;
+  validationSummary: {
+    heading: string;
+    summary: string;
+  };
 }
 
 export interface KnowledgeCheck {
@@ -32,17 +37,14 @@ export interface YourDetails {
   heading: string;
   summary: string;
   personalInformationLabel: string;
-  title: YourDetailsFormInput;
-  YourDetailsFormInput: YourDetailsFormInput;
-  firstName: YourDetailsFormInput;
-  surname: YourDetailsFormInput;
+  title: FormInput;
+  firstName: FormInput;
+  surname: FormInput;
   dob: YourDetailsDob;
-  profession: YourDetailsFormInput;
-  niNumber: YourDetailsFormInput;
-  nationality: YourDetailsFormInput;
-  nationalityTooltip: string;
-  dualNationalityLabel: string;
-  addAnotherNationalityLabel: string;
+  profession: FormInput;
+  niNumber: FormInput;
+  niTooltip: string;
+  nationality: FormInput;
   addressDetails: YourDetailsAddressDetails;
   contactDetails: YourDetailsContactDetails;
   marketing: YourDetailsMarketing;
@@ -52,21 +54,31 @@ export interface YourDetails {
 
 export interface YourDetailsAddressDetails {
   heading: string;
-  searchForAddressLabel: string;
-  searchForAddress: YourDetailsFormInput;
+  summary: string;
+  findAddress: string;
+  searchForAddress: FormInput;
   enterAddressManuallyLabel: string;
-  tooltip: string;
+  cantSeeAddressLabel: string;
+  postcode: FormInput;
+  selectYourAddress: FormInput;
+  flatNumber: FormInput;
+  houseNumber: FormInput;
+  houseName: FormInput;
+  street: FormInput;
+  town: FormInput;
+  region: FormInput;
+  county: FormInput;
 }
 
-export interface YourDetailsFormInput {
+export interface FormInput {
   inputLabel: string;
   inputError: string;
 }
 
 export interface YourDetailsContactDetails {
   heading: string;
-  personalEmail: YourDetailsFormInput;
-  mobileNumber: YourDetailsFormInput;
+  personalEmail: FormInput;
+  mobileNumber: FormInput;
 }
 
 export interface YourDetailsDob {
@@ -80,4 +92,75 @@ export interface YourDetailsMarketing {
   email: string;
   phone: string;
   post: string;
+}
+
+export interface InvestmentOptions {
+  metaTitle: string;
+  heading: string;
+  summary: string;
+  singleLumpSum: SingleLumpSum;
+  monthlyPayments: MonthlyPayments;
+  monthlyAndLumpSum: MonthlyAndLumpSum;
+  directDebitDetails: DirectDebitDetails;
+  nextButtonLabel: string;
+  backButtonLabel: string;
+}
+
+export interface DirectDebitDetails {
+  bankName: FormInput;
+  bankNameTooltip: string;
+  accountName: FormInput;
+  accountNumber: FormInput;
+  sortCode: FormInput;
+  heading: string;
+  summary: string;
+  bodyCopy: string;
+}
+
+export interface MonthlyAndLumpSum {
+  title: string;
+  summary: string;
+  monthlyAndLumpSumPayment: MonthlyAndLumpSumPayment;
+}
+
+export interface MonthlyAndLumpSumPayment {
+  heading: string;
+  summary: string;
+  monthlyAmount: FormInput;
+  monthlyHelpText: string;
+  lumpSumAmount: FormInput;
+  lumpSumHelpText: string;
+  lumpSumTooltip: string;
+  nextButtonLabel: string;
+  backButtonLabel: string;
+}
+
+export interface MonthlyPayments {
+  title: string;
+  summary: string;
+  monthlyPayment: MonthlyPayment;
+}
+
+export interface MonthlyPayment {
+  heading: string;
+  summary: string;
+  monthlyAmount: FormInput;
+  monthlyHelpText: string;
+  nextButtonLabel: string;
+  backButtonLabel: string;
+}
+
+export interface SingleLumpSum {
+  title: string;
+  summary: string;
+  lumpSumPayment: LumpSumPayment;
+}
+
+export interface LumpSumPayment {
+  heading: string;
+  summary: string;
+  lumpSumAmount: FormInput;
+  lumpSumHelpText: string;
+  nextButtonLabel: string;
+  backButtonLabel: string;
 }

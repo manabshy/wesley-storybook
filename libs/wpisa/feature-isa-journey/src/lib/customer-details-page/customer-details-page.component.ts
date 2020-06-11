@@ -68,45 +68,50 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.form = this.fb.group(
-      {
-        title: [null, Validators.required],
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        dob: this.fb.group(
-          {
-            day: [''],
-            month: [''],
-            year: [''],
-          },
-          { validators: isaAgeValidator }
-        ),
-        profession: [null, Validators.required],
-        nationalInsuranceNumber: [
-          '',
-          [Validators.required, nationalInsuranceNumberValidator],
-        ],
-        nationality: [null, [Validators.required]],
-        addressLookup: ['', Validators.required],
-        address: ['', Validators.required],
-        personalEmail: ['', [Validators.required, emailValidator]],
-        personalMobileNumber: [
-          '',
-          [Validators.required, mobilePhoneUKValidator],
-        ],
-        marketingEmail: [null],
-        marketingPost: [null],
-        marketingPhone: [null],
-      },
-      { updateOn: 'blur' }
-    );
-
-    Object.keys(this.form.controls).forEach((key) => {
-      this.controls[key] = this.form.controls[key];
+    this.form = this.fb.group({
+      title: [null, Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      dob: this.fb.group(
+        {
+          day: [''],
+          month: [''],
+          year: [''],
+        },
+        { validators: isaAgeValidator }
+      ),
+      profession: [null, Validators.required],
+      nationalInsuranceNumber: [
+        '',
+        [Validators.required, nationalInsuranceNumberValidator],
+      ],
+      nationality: [null, [Validators.required]],
+      addressLookup: ['', Validators.required],
+      manualAddress: ['', Validators.required],
+      personalEmail: [
+        '',
+        { validators: [Validators.required, emailValidator], updateOn: 'blur' },
+      ],
+      personalMobileNumber: [
+        '',
+        {
+          validators: [Validators.required, mobilePhoneUKValidator],
+          updateOn: 'blur',
+        },
+      ],
+      marketingEmail: [null],
+      marketingPost: [null],
+      marketingPhone: [null],
     });
+
+    this.controls = this.form.controls;
 
     this.formsManager.upsert('customerPersonalDetails', this.form, {
       withInitialValue: true,
+    });
+
+    this.formsManager.valueChanges('customerPersonalDetails').subscribe(() => {
+      this.submitAttempt = false;
     });
   }
   onSelectedAddress(address: AddressDetails) {
@@ -115,25 +120,36 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   }
   onShowManualAddress(event) {
     this.isManualAddressVisible = true;
+    this.form.controls.addressLookup.clearValidators();
+    this.form.controls.addressLookup.updateValueAndValidity();
+    this.form.controls.addressLookup.reset({});
+
+    this.form.controls.manualAddress.reset({});
+    this.form.controls.manualAddress.updateValueAndValidity();
     this.formsManager.clear('manualAddress');
   }
   onShowAddressLookup() {
     this.isManualAddressVisible = false;
+    this.form.controls.addressLookup.setValidators([Validators.required]);
+    this.form.controls.addressLookup.updateValueAndValidity();
     this.formsManager.clear('addressLookup');
+
+    this.form.controls.manualAddress.reset({});
+    this.formsManager.clear('manualAddress');
   }
   updateFormValues(address: AddressDetails) {
-    this.formsManager.patchValue('manualAddress', {
+    this.form.controls.manualAddress.patchValue({
       postcode: address.postcode,
       town: address.town,
       country: address.country,
       houseNumber: address.line1,
-      street: address.line2,
+      street: address.line1,
     });
   }
   onSubmit() {
     this.submitAttempt = true;
     this.form.markAllAsTouched();
-
+    console.log(this.form);
     if (this.form.valid) {
       this.router.navigate([`/${isaRoutesNames.INVESTMENT_OPTIONS}`]);
     }

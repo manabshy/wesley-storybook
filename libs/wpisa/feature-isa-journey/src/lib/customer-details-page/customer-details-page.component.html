@@ -154,52 +154,8 @@
     </ng-container>
   </div>
 
-  <!-- <div formGroupName="address">
-    <h3>{{ pageContent.addressDetails.heading }}</h3>
-
-    <div class="form-group">
-      <label for="postcode">{{
-        pageContent.addressDetails.searchForAddress.inputLabel
-      }}</label>
-      <input
-        class="form-control"
-        type="text"
-        name="postcode"
-        formControlName="postcode"
-        #postcodeInput
-      />
-      <ng-container *ngIf="submitAttempt && controls.firstName.invalid">
-        <span *ngIf="controls.firstName.errors.required">
-          {{ pageContent.firstName.inputError }}
-        </span>
-      </ng-container>
-    </div>
-    <button type="button" (click)="findAddress(postcodeInput.value)">
-      {{ pageContent.addressDetails.searchForAddressLabel }}
-    </button>
-
-    <div class="form-group">
-      <label for="address-list">Select address</label>
-      <select
-        formControlName="selectedAddress"
-        name="address-list"
-        class="form-control"
-        (change)="handleAddressSelect($event)"
-      >
-        <option *ngFor="let address of addressList" [value]="address.moniker">{{
-          address.singleLine
-        }}</option>
-      </select>
-
-      <ng-container *ngIf="submitAttempt && controls.title.invalid">
-        <span *ngIf="controls.title.errors.required">
-          {{ pageContent.title.inputError }}
-        </span>
-      </ng-container>
-    </div>
-  </div> -->
   <wes-address-lookup-form
-    *ngIf="!isManualAddressVisible"
+    [style.display]="isManualAddressVisible ? 'none' : 'block'"
     formControlName="addressLookup"
     [touched]="controls.addressLookup.touched"
     [submitAttempt]="submitAttempt"
@@ -207,14 +163,19 @@
     (selectedAddress)="onSelectedAddress($event)"
   ></wes-address-lookup-form>
 
-  <ng-container *ngIf="isManualAddressVisible">
-    <button type="button" (click)="onShowAddressLookup()">Find address</button>
-    <wes-address-form
-      formControlName="address"
-      [touched]="controls.address.touched"
-      [submitAttempt]="submitAttempt"
-    ></wes-address-form>
-  </ng-container>
+  <button
+    *ngIf="isManualAddressVisible"
+    type="button"
+    (click)="onShowAddressLookup()"
+  >
+    Find address
+  </button>
+  <wes-address-form
+    [style.display]="isManualAddressVisible ? 'block' : 'none'"
+    formControlName="manualAddress"
+    [touched]="controls.manualAddress.touched"
+    [submitAttempt]="submitAttempt"
+  ></wes-address-form>
 
   <div class="form-group">
     <label for="email">{{
@@ -291,11 +252,12 @@
   </div>
 
   <ng-content></ng-content>
-
   <button type="submit">Continue</button>
 </form>
 
 <pre>
-    Valid: {{ form.valid | json }}
+    Valid FULL FORM: {{ form.valid | json }}
+    Valid Lookup {{ form.controls.addressLookup.valid }}
+    Valid Manual {{ form.controls.manualAddress.valid }}
     {{ form.value | json }}
 </pre>

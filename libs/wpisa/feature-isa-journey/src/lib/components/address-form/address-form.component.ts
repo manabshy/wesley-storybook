@@ -19,6 +19,8 @@ import {
   AbstractControl,
   NG_VALUE_ACCESSOR,
   ControlValueAccessor,
+  Validator,
+  NG_VALIDATORS,
 } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 
@@ -35,6 +37,11 @@ import { AddressFormValue } from './address-form-value.interface';
   styleUrls: ['./address-form.component.scss'],
   providers: [
     {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => AddressFormComponent),
+      multi: true,
+    },
+    {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => AddressFormComponent),
       multi: true,
@@ -42,7 +49,7 @@ import { AddressFormValue } from './address-form-value.interface';
   ],
 })
 export class AddressFormComponent
-  implements ControlValueAccessor, OnChanges, OnInit, OnDestroy {
+  implements ControlValueAccessor, Validator, OnChanges, OnInit, OnDestroy {
   @Input() touched: boolean;
   @Input() submitAttempt = false;
 
@@ -86,9 +93,7 @@ export class AddressFormComponent
       })
     );
 
-    Object.keys(this.form.controls).forEach((key) => {
-      this.controls[key] = this.form.controls[key];
-    });
+    this.controls = this.form.controls;
 
     this.formsManager.upsert('manualAddress', this.form, {
       withInitialValue: true,
@@ -115,17 +120,16 @@ export class AddressFormComponent
     this.onTouch = fn;
   }
 
-  reset() {
-    this.form.reset({
-      flatNumber: '',
-      houseNumber: '',
-      houseName: '',
-      street: '',
-      town: '',
-      region: '',
-      county: '',
-      postcode: '',
-    });
+  validate(control: AbstractControl): ValidationErrors {
+    if (this.form.valid) {
+      return null;
+    }
+
+    return {
+      invalid: {
+        value: this.form.value,
+      },
+    };
   }
 
   ngOnDestroy() {

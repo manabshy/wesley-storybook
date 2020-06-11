@@ -19,7 +19,7 @@
     </ng-container>
   </div>
   <button type="button" (click)="findAddress(postcodeInput.value)">
-    {{ pageContent.addressDetails.searchForAddressLabel }}
+    {{ pageContent.addressDetails.cantSeeAddressLabel }}
   </button>
 
   <div class="form-group" *ngIf="addressList.length > 0">
@@ -41,8 +41,7 @@
       </span>
     </ng-container>
   </div>
-  {{ isFieldInvalid('selectedAddressId') }}
-  {{ form.value | json }}
+
   <p>
     <ng-container *ngIf="addressList.length > 0"
       >Can't see your address?</ng-container
@@ -52,3 +51,4 @@
     </button>
   </p>
 </form>
+Lookup Valid {{ form.valid }}
