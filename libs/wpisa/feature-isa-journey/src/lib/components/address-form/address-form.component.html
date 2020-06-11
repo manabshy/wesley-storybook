@@ -1,6 +1,8 @@
 <form [formGroup]="form">
   <div class="form-group">
-    <label for="given-name">Flat number</label>
+    <label for="given-name">{{
+      pageContent.addressDetails.flatNumber.inputLabel
+    }}</label>
     <input
       class="form-control"
       type="text"
@@ -9,7 +11,9 @@
     />
   </div>
   <div class="form-group">
-    <label for="given-name">House number</label>
+    <label for="given-name">{{
+      pageContent.addressDetails.houseNumber.inputLabel
+    }}</label>
     <input
       class="form-control"
       type="text"
@@ -18,12 +22,14 @@
     />
     <ng-container *ngIf="isFieldInvalid('houseNumber')">
       <span *ngIf="controls.houseNumber.errors.required">
-        Please provide errors!
+        {{ pageContent.addressDetails.houseNumber.inputError }}
       </span>
     </ng-container>
   </div>
   <div class="form-group">
-    <label for="given-name">House name</label>
+    <label for="given-name">{{
+      pageContent.addressDetails.houseName.inputLabel
+    }}</label>
     <input
       class="form-control"
       type="text"
@@ -32,12 +38,14 @@
     />
     <ng-container *ngIf="isFieldInvalid('houseName')">
       <span *ngIf="controls.houseName.errors.required">
-        Please provide errors!
+        {{ pageContent.addressDetails.houseName.inputError }}
       </span>
     </ng-container>
   </div>
   <div class="form-group">
-    <label for="given-name">Street</label>
+    <label for="given-name">{{
+      pageContent.addressDetails.street.inputLabel
+    }}</label>
     <input
       class="form-control"
       type="text"
@@ -46,12 +54,14 @@
     />
     <ng-container *ngIf="isFieldInvalid('street')">
       <span *ngIf="controls.street.errors.required">
-        Please provide errors!
+        {{ pageContent.addressDetails.street.inputError }}
       </span>
     </ng-container>
   </div>
   <div class="form-group">
-    <label for="given-name">Town/City</label>
+    <label for="given-name">{{
+      pageContent.addressDetails.town.inputLabel
+    }}</label>
     <input
       class="form-control"
       type="text"
@@ -60,12 +70,14 @@
     />
     <ng-container *ngIf="isFieldInvalid('town')">
       <span *ngIf="controls.town.errors.required">
-        Please provide errors!
+        {{ pageContent.addressDetails.town.inputError }}
       </span>
     </ng-container>
   </div>
   <div class="form-group">
-    <label for="given-name">Region</label>
+    <label for="given-name">{{
+      pageContent.addressDetails.region.inputLabel
+    }}</label>
     <input
       class="form-control"
       type="text"
@@ -74,7 +86,9 @@
     />
   </div>
   <div class="form-group">
-    <label for="given-name">County</label>
+    <label for="given-name">{{
+      pageContent.addressDetails.county.inputLabel
+    }}</label>
     <input
       class="form-control"
       type="text"
@@ -83,7 +97,9 @@
     />
   </div>
   <div class="form-group">
-    <label for="given-name">Postcode</label>
+    <label for="given-name">{{
+      pageContent.addressDetails.postcode.inputLabel
+    }}</label>
     <input
       class="form-control"
       type="text"
@@ -92,7 +108,7 @@
     />
     <ng-container *ngIf="isFieldInvalid('postcode')">
       <span *ngIf="controls.postcode.errors.required">
-        Please provide errors!
+        {{ pageContent.addressDetails.postcode.inputError }}
       </span>
     </ng-container>
   </div>

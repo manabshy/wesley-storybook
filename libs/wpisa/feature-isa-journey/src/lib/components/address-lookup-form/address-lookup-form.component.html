@@ -1,9 +1,7 @@
 <form [formGroup]="form">
-  <h3>{{ pageContent.addressDetails.heading }}</h3>
-
   <div class="form-group">
     <label for="postcode">{{
-      pageContent.addressDetails.searchForAddress.inputLabel
+      pageContent.addressDetails.postcode.inputLabel
     }}</label>
     <input
       class="form-control"
@@ -14,16 +12,18 @@
     />
     <ng-container *ngIf="isFieldInvalid('postcode')">
       <span>
-        {{ pageContent.addressDetails.searchForAddress.inputError }}
+        {{ pageContent.addressDetails.postcode.inputError }}
       </span>
     </ng-container>
   </div>
   <button type="button" (click)="findAddress(postcodeInput.value)">
-    {{ pageContent.addressDetails.cantSeeAddressLabel }}
+    {{ pageContent.addressDetails.findAddress }}
   </button>
 
   <div class="form-group" *ngIf="addressList.length > 0">
-    <label for="address-list">Select address</label>
+    <label for="address-list">{{
+      pageContent.addressDetails.selectYourAddress.inputLabel
+    }}</label>
     <select
       formControlName="selectedAddressId"
       name="address-list"
@@ -37,17 +37,17 @@
 
     <ng-container *ngIf="isFieldInvalid('selectedAddressId')">
       <span>
-        Required
+        {{ pageContent.addressDetails.selectYourAddress.inputError }}
       </span>
     </ng-container>
   </div>
 
   <p>
-    <ng-container *ngIf="addressList.length > 0"
-      >Can't see your address?</ng-container
-    >
+    <ng-container *ngIf="addressList.length > 0">{{
+      pageContent.addressDetails.cantSeeAddressLabel
+    }}</ng-container>
     <button type="button" (click)="onShowManualAddress()">
-      Enter address manually
+      {{ pageContent.addressDetails.enterAddressManuallyLabel }}
     </button>
   </p>
 </form>

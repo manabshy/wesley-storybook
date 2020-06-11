@@ -125,7 +125,7 @@
       name="nationalInsuranceNumber"
       formControlName="nationalInsuranceNumber"
     />
-    <span>{{ pageContent.niNumber }}</span>
+    <span>{{ pageContent.niTooltip }}</span>
     <ng-container
       *ngIf="submitAttempt && controls.nationalInsuranceNumber.invalid"
     >
@@ -154,6 +154,8 @@
     </ng-container>
   </div>
 
+  <h3>{{ pageContent.addressDetails.heading }}</h3>
+  <span [innerHTML]="pageContent.addressDetails.summary"></span>
   <wes-address-lookup-form
     [style.display]="isManualAddressVisible ? 'none' : 'block'"
     formControlName="addressLookup"
@@ -168,7 +170,7 @@
     type="button"
     (click)="onShowAddressLookup()"
   >
-    Find address
+    {{ pageContent.addressDetails.findAddress }}
   </button>
   <wes-address-form
     [style.display]="isManualAddressVisible ? 'block' : 'none'"
@@ -177,6 +179,7 @@
     [submitAttempt]="submitAttempt"
   ></wes-address-form>
 
+  <h3>{{ pageContent.contactDetails.heading }}</h3>
   <div class="form-group">
     <label for="email">{{
       pageContent.contactDetails.personalEmail.inputLabel
