@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { tap, catchError } from 'rxjs/operators';
 
-import { KnowledgeCheckService } from '@wesleyan-frontend/wpisa/data-access';
+import { ISAApiService } from '@wesleyan-frontend/wpisa/data-access';
 import { isaRoutesNames } from '../isa-journey.routes.names';
 import { throwError } from 'rxjs';
 
@@ -11,13 +11,13 @@ import { throwError } from 'rxjs';
 export class KnowledgeCheckFacade {
   private knowledgeCheckAttemptId: string;
 
-  constructor(private knowledgeCheckService: KnowledgeCheckService) {}
+  constructor(private isaApiService: ISAApiService) {}
 
   submitQuestion(questionIndex: number, answer: string) {
     console.log('submitting', questionIndex, answer);
     const attemptId = questionIndex === 1 ? null : this.knowledgeCheckAttemptId;
 
-    return this.knowledgeCheckService
+    return this.isaApiService
       .submitAnswer({
         questionText: 'test',
         questionIndex,

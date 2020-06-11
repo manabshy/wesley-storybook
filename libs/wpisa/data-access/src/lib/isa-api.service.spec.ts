@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { KnowledgeCheckService } from './knowledge-check.service';
+import { ISAApiService } from './isa-api.service';
 
 describe('KnowledgeCheckService', () => {
-  let service: KnowledgeCheckService;
+  let service: ISAApiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(KnowledgeCheckService);
+    service = TestBed.inject(ISAApiService);
   });
 
   it('should be created', () => {

@@ -55,7 +55,13 @@ export class AddressLookupFormComponent
   @Output() selectedAddress = new EventEmitter<AddressDetails>();
 
   form = this.fb.group({
-    postcode: ['', { validators: [Validators.required], updateOn: 'blur' }],
+    postcode: [
+      '',
+      {
+        validators: [Validators.required],
+        updateOn: 'blur',
+      },
+    ],
     selectedAddressId: ['', Validators.required],
   });
 
@@ -85,21 +91,27 @@ export class AddressLookupFormComponent
   }
 
   findAddress(postcode: string) {
+    this.submitAttempt = true;
+
     this.resetAddressList();
 
-    this.addressLookupService
-      .findByPostcode(postcode)
-      .pipe(
-        tap((resp) => {
-          console.log(resp);
-          const a =
-            resp === null
-              ? this.controls.postcode.setErrors({ invalid: true })
-              : (this.addressList = resp.addresses);
-        }),
-        take(1)
-      )
-      .subscribe();
+    if (this.form.controls.postcode.valid) {
+      this.submitAttempt = false;
+
+      this.addressLookupService
+        .findByPostcode(postcode)
+        .pipe(
+          tap((resp) => {
+            console.log(resp);
+            const a =
+              resp === null
+                ? this.controls.postcode.setErrors({ invalid: true })
+                : (this.addressList = resp.addresses);
+          }),
+          take(1)
+        )
+        .subscribe();
+    }
   }
 
   onSelectedAddress(e) {

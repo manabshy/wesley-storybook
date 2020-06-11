@@ -1,6 +1,10 @@
 <h3>{{ pageContent.heading }}</h3>
 <div [innerHtml]="pageContent.summary"></div>
 
+<div *ngIf="showOverallError">
+  <span>{{ overallErrorContent.heading }}</span>
+  <span>{{ overallErrorContent.summary }}</span>
+</div>
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="" novalidate>
   <div class="form-group">
     <label for="honorific-prefix">{{ pageContent.title.inputLabel }}</label>
@@ -9,12 +13,12 @@
       name="honorific-prefix"
       class="form-control"
     >
-      <option *ngFor="let title of ['A', 'B']" value="{{ title }}">{{
-        title
+      <option *ngFor="let title of genericLists.title" value="{{ title.id }}">{{
+        title.description
       }}</option>
     </select>
 
-    <ng-container *ngIf="submitAttempt && controls.title.invalid">
+    <ng-container *ngIf="isFieldInvalid('title')">
       <span *ngIf="controls.title.errors.required">
         {{ pageContent.title.inputError }}
       </span>
@@ -29,7 +33,7 @@
       name="given-name"
       formControlName="firstName"
     />
-    <ng-container *ngIf="submitAttempt && controls.firstName.invalid">
+    <ng-container *ngIf="isFieldInvalid('firstName')">
       <span *ngIf="controls.firstName.errors.required">
         {{ pageContent.firstName.inputError }}
       </span>
@@ -44,7 +48,7 @@
       name="family-name"
       formControlName="lastName"
     />
-    <ng-container *ngIf="submitAttempt && controls.lastName.invalid">
+    <ng-container *ngIf="isFieldInvalid('lastName')">
       <span *ngIf="controls.lastName.errors.required">
         {{ pageContent.surname.inputError }}
       </span>
@@ -91,7 +95,7 @@
       />
     </div>
 
-    <ng-container *ngIf="submitAttempt && controls.dob.invalid">
+    <ng-container *ngIf="isFieldInvalid('dob')">
       <span *ngIf="controls.dob.errors.invalidDate">
         {{ pageContent.dob.inputError }}
       </span>
@@ -104,11 +108,13 @@
   <div class="form-group">
     <label for="profession">{{ pageContent.profession.inputLabel }}</label>
     <select class="form-control" formControlName="profession" name="profession">
-      <option *ngFor="let title of ['A', 'B']" value="{{ title }}">{{
-        title
-      }}</option>
+      <option
+        *ngFor="let marketSegment of genericLists.marketSegment"
+        value="{{ marketSegment.id }}"
+        >{{ marketSegment.description }}</option
+      >
     </select>
-    <ng-container *ngIf="submitAttempt && controls.profession.invalid">
+    <ng-container *ngIf="isFieldInvalid('profession')">
       <span *ngIf="controls.profession.errors.required">
         {{ pageContent.profession.inputError }}
       </span>
@@ -126,9 +132,7 @@
       formControlName="nationalInsuranceNumber"
     />
     <span>{{ pageContent.niTooltip }}</span>
-    <ng-container
-      *ngIf="submitAttempt && controls.nationalInsuranceNumber.invalid"
-    >
+    <ng-container *ngIf="isFieldInvalid('nationalInsuranceNumber')">
       <span *ngIf="controls.nationalInsuranceNumber.errors.required">
         {{ pageContent.niNumber.inputError }}
       </span>
@@ -142,12 +146,14 @@
       formControlName="nationality"
       name="nationality"
     >
-      <option *ngFor="let title of ['A', 'B']" value="{{ title }}">{{
-        title
-      }}</option>
+      <option
+        *ngFor="let nationality of genericLists.nationality"
+        value="{{ nationality.id }}"
+        >{{ nationality.description }}</option
+      >
     </select>
 
-    <ng-container *ngIf="submitAttempt && controls.nationality.invalid">
+    <ng-container *ngIf="isFieldInvalid('nationality')">
       <span *ngIf="controls.nationality.errors.required">
         {{ pageContent.nationality.inputError }}
       </span>
@@ -262,5 +268,6 @@
     Valid FULL FORM: {{ form.valid | json }}
     Valid Lookup {{ form.controls.addressLookup.valid }}
     Valid Manual {{ form.controls.manualAddress.valid }}
+    Show BigO {{ showOverallError }}
     {{ form.value | json }}
 </pre>

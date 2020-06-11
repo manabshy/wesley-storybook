@@ -21,11 +21,13 @@ import {
   FormControl,
   AbstractControl,
 } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import {
   ConfigService,
   YourDetails,
+  ISAApiService,
+  LookupCategory,
 } from '@wesleyan-frontend/wpisa/data-access';
 import {
   nationalInsuranceNumberValidator,
@@ -49,10 +51,14 @@ import { isaRoutesNames } from '../isa-journey.routes.names';
 })
 export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   pageContent: YourDetails;
+  overallErrorContent;
+  genericLists: LookupCategory;
   form: FormGroup;
   submitAttempt = false;
+  showOverallError = false;
   controls: { [key: string]: AbstractControl } = {};
   isManualAddressVisible = false;
+  subscriptions = new Subscription();
 
   constructor(
     private configService: ConfigService,
@@ -60,11 +66,19 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     private formsManager: NgFormsManager,
     private titleService: Title,
     private fb: FormBuilder,
-    private addressLookupService: AddressLookupService
+    private addressLookupService: AddressLookupService,
+    private isaApiService: ISAApiService
   ) {
     this.pageContent = this.configService.content.yourDetails;
-
+    this.overallErrorContent = this.configService.content.validationSummary;
     this.titleService.setTitle(this.pageContent.metaTitle);
+    this.isaApiService
+      .getGenericListAndProductData()
+      .pipe(
+        take(1),
+        tap((resp) => (this.genericLists = resp.genericLookups))
+      )
+      .subscribe();
   }
 
   ngOnInit(): void {
@@ -110,14 +124,18 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
       withInitialValue: true,
     });
 
-    this.formsManager.valueChanges('customerPersonalDetails').subscribe(() => {
-      this.submitAttempt = false;
-    });
+    this.subscriptions.add(
+      this.form.statusChanges.subscribe(() => {
+        this.showOverallError = this.form.invalid && this.submitAttempt;
+      })
+    );
   }
+
   onSelectedAddress(address: AddressDetails) {
     console.log('Got address', address);
-    this.updateFormValues(address);
+    this.updateManualAddressFormValues(address);
   }
+
   onShowManualAddress(event) {
     this.isManualAddressVisible = true;
     this.form.controls.addressLookup.clearValidators();
@@ -128,6 +146,7 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     this.form.controls.manualAddress.updateValueAndValidity();
     this.formsManager.clear('manualAddress');
   }
+
   onShowAddressLookup() {
     this.isManualAddressVisible = false;
     this.form.controls.addressLookup.setValidators([Validators.required]);
@@ -137,7 +156,8 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     this.form.controls.manualAddress.reset({});
     this.formsManager.clear('manualAddress');
   }
-  updateFormValues(address: AddressDetails) {
+
+  updateManualAddressFormValues(address: AddressDetails) {
     this.form.controls.manualAddress.patchValue({
       postcode: address.postcode,
       town: address.town,
@@ -146,16 +166,24 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
       street: address.line1,
     });
   }
+
+  isFieldInvalid(field: string) {
+    return this.form.get(field).invalid && this.submitAttempt;
+  }
+
   onSubmit() {
     this.submitAttempt = true;
-    this.form.markAllAsTouched();
+
     console.log(this.form);
     if (this.form.valid) {
       this.router.navigate([`/${isaRoutesNames.INVESTMENT_OPTIONS}`]);
+    } else {
+      this.showOverallError = true;
     }
   }
 
   ngOnDestroy() {
     this.formsManager.unsubscribe('customerPersonalDetails');
+    this.subscriptions.unsubscribe();
   }
 }
