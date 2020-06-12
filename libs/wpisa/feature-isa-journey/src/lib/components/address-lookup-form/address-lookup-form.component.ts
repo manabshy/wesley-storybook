@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 
 import { take, tap } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable, of } from 'rxjs';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import {
   FormBuilder,
@@ -49,10 +49,11 @@ import { AddressLookupFormValue } from './address-lookup-form-value.interface';
 export class AddressLookupFormComponent
   implements ControlValueAccessor, OnChanges, OnInit, OnDestroy {
   @Input() touched: boolean;
-  @Input() submitAttempt = false;
+  @Input() submitAttempt$: Observable<boolean>;
 
-  @Output() showManualAddress = new EventEmitter();
+  @Output() searchedAddress = new EventEmitter<string>();
   @Output() selectedAddress = new EventEmitter<AddressDetails>();
+  @Output() showManualAddress = new EventEmitter();
 
   form = this.fb.group({
     postcode: [
@@ -65,6 +66,7 @@ export class AddressLookupFormComponent
     selectedAddressId: ['', Validators.required],
   });
 
+  private _submitAttempt = false;
   pageContent: YourDetails;
 
   controls: { [key: string]: AbstractControl } = {};
@@ -86,17 +88,18 @@ export class AddressLookupFormComponent
   isFieldInvalid(fieldName: string) {
     return (
       (this.form.get(fieldName).invalid && this.form.get(fieldName).dirty) ||
-      (this.form.get(fieldName).invalid && this.submitAttempt)
+      (this.form.get(fieldName).invalid && this._submitAttempt)
     );
   }
 
   findAddress(postcode: string) {
-    this.submitAttempt = true;
+    this._submitAttempt = true;
+    this.searchedAddress.emit(postcode);
 
     this.resetAddressList();
 
     if (this.form.controls.postcode.valid) {
-      this.submitAttempt = false;
+      this._submitAttempt = false;
 
       this.addressLookupService
         .findByPostcode(postcode)
@@ -141,6 +144,11 @@ export class AddressLookupFormComponent
       this.form.valueChanges.subscribe((value: AddressLookupFormValue) => {
         this.onChange(value);
       })
+    );
+    this.subscription.add(
+      this.submitAttempt$
+        .pipe(tap((attempt) => (this._submitAttempt = attempt)))
+        .subscribe()
     );
 
     this.controls = this.form.controls;

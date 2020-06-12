@@ -10,6 +10,7 @@ import {
   startWith,
   mapTo,
   map,
+  switchMapTo,
 } from 'rxjs/operators';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import {
@@ -21,7 +22,7 @@ import {
   FormControl,
   AbstractControl,
 } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, BehaviorSubject } from 'rxjs';
 
 import {
   ConfigService,
@@ -54,7 +55,8 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   overallErrorContent;
   genericLists: LookupCategory;
   form: FormGroup;
-  submitAttempt = false;
+  private submitAttemptSubject$ = new BehaviorSubject(false);
+  submitAttempt$ = this.submitAttemptSubject$.asObservable();
   showOverallError = false;
   controls: { [key: string]: AbstractControl } = {};
   isManualAddressVisible = false;
@@ -125,10 +127,22 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     });
 
     this.subscriptions.add(
-      this.form.statusChanges.subscribe(() => {
-        this.showOverallError = this.form.invalid && this.submitAttempt;
-      })
+      this.form.statusChanges
+        .pipe(
+          tap((_) =>
+            this.form.valid ? this.submitAttemptSubject$.next(false) : ''
+          ),
+          switchMapTo(this.submitAttempt$),
+          tap((submitAttempt) => {
+            this.showOverallError = this.form.invalid && submitAttempt;
+          })
+        )
+        .subscribe()
     );
+  }
+
+  onFindPostcode(postcode: string) {
+    this.resetManualAddress();
   }
 
   onSelectedAddress(address: AddressDetails) {
@@ -139,22 +153,29 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   onShowManualAddress(event) {
     this.isManualAddressVisible = true;
     this.form.controls.addressLookup.clearValidators();
-    this.form.controls.addressLookup.updateValueAndValidity();
-    this.form.controls.addressLookup.reset({});
+    this.resetAddressLookup();
 
-    this.form.controls.manualAddress.reset({});
-    this.form.controls.manualAddress.updateValueAndValidity();
-    this.formsManager.clear('manualAddress');
+    this.resetManualAddress();
   }
 
   onShowAddressLookup() {
     this.isManualAddressVisible = false;
     this.form.controls.addressLookup.setValidators([Validators.required]);
-    this.form.controls.addressLookup.updateValueAndValidity();
-    this.formsManager.clear('addressLookup');
+    this.resetManualAddress();
 
+    this.resetManualAddress();
+  }
+
+  resetManualAddress() {
+    this.form.controls.manualAddress.updateValueAndValidity();
     this.form.controls.manualAddress.reset({});
     this.formsManager.clear('manualAddress');
+  }
+
+  resetAddressLookup() {
+    this.form.controls.addressLookup.updateValueAndValidity();
+    this.form.controls.addressLookup.reset({});
+    this.formsManager.clear('addressLookup');
   }
 
   updateManualAddressFormValues(address: AddressDetails) {
@@ -168,12 +189,11 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   }
 
   isFieldInvalid(field: string) {
-    return this.form.get(field).invalid && this.submitAttempt;
+    return this.form.get(field).invalid && this.showOverallError;
   }
 
   onSubmit() {
-    this.submitAttempt = true;
-
+    this.submitAttemptSubject$.next(true);
     console.log(this.form);
     if (this.form.valid) {
       this.router.navigate([`/${isaRoutesNames.INVESTMENT_OPTIONS}`]);

@@ -169,12 +169,13 @@
   <h3>{{ pageContent.addressDetails.heading }}</h3>
   <span [innerHTML]="pageContent.addressDetails.summary"></span>
   <wes-address-lookup-form
-    [style.display]="isManualAddressVisible ? 'none' : 'block'"
+    *ngIf="!isManualAddressVisible"
     formControlName="addressLookup"
     [touched]="controls.addressLookup.touched"
-    [submitAttempt]="submitAttempt"
-    (showManualAddress)="onShowManualAddress($event)"
+    [submitAttempt$]="submitAttempt$"
+    (searchedAddress)="onFindPostcode($event)"
     (selectedAddress)="onSelectedAddress($event)"
+    (showManualAddress)="onShowManualAddress($event)"
   ></wes-address-lookup-form>
 
   <button
@@ -188,7 +189,7 @@
     [style.display]="isManualAddressVisible ? 'block' : 'none'"
     formControlName="manualAddress"
     [touched]="controls.manualAddress.touched"
-    [submitAttempt]="submitAttempt"
+    [submitAttempt]="submitAttempt$ | async"
   ></wes-manual-address-form>
 
   <h3>{{ pageContent.contactDetails.heading }}</h3>
@@ -206,7 +207,7 @@
     <span
       *ngIf="
         controls.personalEmail.invalid &&
-        (submitAttempt ||
+        (showOverallError ||
           controls.personalEmail.dirty ||
           controls.personalEmail.touched)
       "
@@ -228,7 +229,7 @@
     <span
       *ngIf="
         controls.personalMobileNumber.invalid &&
-        (submitAttempt ||
+        (showOverallError ||
           controls.personalMobileNumber.dirty ||
           controls.personalMobileNumber.touched)
       "
