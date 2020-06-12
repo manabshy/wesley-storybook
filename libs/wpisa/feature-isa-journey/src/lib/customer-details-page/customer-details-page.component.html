@@ -184,12 +184,12 @@
   >
     {{ pageContent.addressDetails.findAddress }}
   </button>
-  <wes-address-form
+  <wes-manual-address-form
     [style.display]="isManualAddressVisible ? 'block' : 'none'"
     formControlName="manualAddress"
     [touched]="controls.manualAddress.touched"
     [submitAttempt]="submitAttempt"
-  ></wes-address-form>
+  ></wes-manual-address-form>
 
   <h3>{{ pageContent.contactDetails.heading }}</h3>
   <div class="form-group">

@@ -11,7 +11,7 @@ import { CustomStepperComponent } from './components/custom-stepper/custom-stepp
 import { KnowledgeCheckQ1FormComponent } from './components/knowledge-check-q1-form/knowledge-check-q1-form.component';
 import { KnowledgeCheckQ2FormComponent } from './components/knowledge-check-q2-form/knowledge-check-q2-form.component';
 import { OnlyNumberDirective } from './only-numbers.directive';
-import { AddressFormComponent } from './components/address-form/address-form.component';
+import { ManualAddressFormComponent } from './components/manual-address-form/manual-address-form.component';
 import { AddressLookupFormComponent } from './components/address-lookup-form/address-lookup-form.component';
 import { InvalidControlScrollDirective } from './invalid-control-scroll.directive';
 @NgModule({
@@ -29,7 +29,7 @@ import { InvalidControlScrollDirective } from './invalid-control-scroll.directiv
     KnowledgeCheckQ2FormComponent,
     OnlyNumberDirective,
     InvalidControlScrollDirective,
-    AddressFormComponent,
+    ManualAddressFormComponent,
     AddressLookupFormComponent,
   ],
 })

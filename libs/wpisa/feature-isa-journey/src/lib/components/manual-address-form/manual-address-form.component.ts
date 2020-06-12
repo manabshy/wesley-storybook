@@ -29,26 +29,26 @@ import {
   YourDetails,
 } from '@wesleyan-frontend/wpisa/data-access';
 
-import { AddressFormValue } from './address-form-value.interface';
+import { AddressFormValue } from './manual-address-form-value.interface';
 
 @Component({
-  selector: 'wes-address-form',
-  templateUrl: './address-form.component.html',
-  styleUrls: ['./address-form.component.scss'],
+  selector: 'wes-manual-address-form',
+  templateUrl: './manual-address-form.component.html',
+  styleUrls: ['./manual-address-form.component.scss'],
   providers: [
     {
       provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => AddressFormComponent),
+      useExisting: forwardRef(() => ManualAddressFormComponent),
       multi: true,
     },
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => AddressFormComponent),
+      useExisting: forwardRef(() => ManualAddressFormComponent),
       multi: true,
     },
   ],
 })
-export class AddressFormComponent
+export class ManualAddressFormComponent
   implements ControlValueAccessor, Validator, OnChanges, OnInit, OnDestroy {
   @Input() touched: boolean;
   @Input() submitAttempt = false;
