@@ -5,7 +5,13 @@
   <span>{{ overallErrorContent.heading }}</span>
   <span>{{ overallErrorContent.summary }}</span>
 </div>
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="" novalidate>
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  class=""
+  novalidate
+  wesInvalidControlScroll
+>
   <div class="form-group">
     <label for="honorific-prefix">{{ pageContent.title.inputLabel }}</label>
     <select

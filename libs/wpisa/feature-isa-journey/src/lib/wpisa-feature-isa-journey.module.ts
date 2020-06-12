@@ -13,6 +13,7 @@ import { KnowledgeCheckQ2FormComponent } from './components/knowledge-check-q2-f
 import { OnlyNumberDirective } from './only-numbers.directive';
 import { AddressFormComponent } from './components/address-form/address-form.component';
 import { AddressLookupFormComponent } from './components/address-lookup-form/address-lookup-form.component';
+import { InvalidControlScrollDirective } from './invalid-control-scroll.directive';
 @NgModule({
   imports: [
     CommonModule,
@@ -27,6 +28,7 @@ import { AddressLookupFormComponent } from './components/address-lookup-form/add
     KnowledgeCheckQ1FormComponent,
     KnowledgeCheckQ2FormComponent,
     OnlyNumberDirective,
+    InvalidControlScrollDirective,
     AddressFormComponent,
     AddressLookupFormComponent,
   ],

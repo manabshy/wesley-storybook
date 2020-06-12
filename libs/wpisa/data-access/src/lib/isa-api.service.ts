@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 
 import {
   KnowledgeCheckAnswerDTO,
@@ -55,5 +56,9 @@ export class ISAApiService {
         numberOfMonthlyPayments: 11,
       },
     });
+
+    return this.http
+      .get<GenericLookupsResponse>(`/api/isawebapiwrapper/knowledgecheck`)
+      .pipe(shareReplay({ bufferSize: 1, refCount: true }));
   }
 }
