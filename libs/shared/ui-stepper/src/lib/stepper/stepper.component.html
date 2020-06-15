@@ -20,7 +20,12 @@
           'wes-stepper__step-label-container--last': isLast
         }"
       >
-        <span class="wes-stepper__step-label"
+        <span
+          class="wes-stepper__step-label"
+          [ngClass]="{
+            'wes-stepper__step-label--active': isStepActive(stepIndex),
+            'wes-stepper__step-label--completed': isStepComplete(stepIndex)
+          }"
           >{{ stepIndex + 1 }}. {{ step }}</span
         >
       </div>

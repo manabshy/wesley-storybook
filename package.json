@@ -41,6 +41,7 @@
     "@ngneat/forms-manager": "^2.1.0",
     "@nrwl/angular": "9.3.0",
     "bootstrap": "^4.5.0",
+    "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
     "date-fns": "^2.14.0",
     "rxjs": "~6.5.4",
