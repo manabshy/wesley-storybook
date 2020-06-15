@@ -139,7 +139,7 @@
     />
     <span>{{ pageContent.niTooltip }}</span>
     <ng-container *ngIf="isFieldInvalid('nationalInsuranceNumber')">
-      <span *ngIf="controls.nationalInsuranceNumber.errors.required">
+      <span *ngIf="controls.nationalInsuranceNumber.invalid">
         {{ pageContent.niNumber.inputError }}
       </span>
     </ng-container>
@@ -271,10 +271,10 @@
   <button type="submit">Continue</button>
 </form>
 
-<pre>
+<!-- <pre>
     Valid FULL FORM: {{ form.valid | json }}
     Valid Lookup {{ form.controls.addressLookup.valid }}
     Valid Manual {{ form.controls.manualAddress.valid }}
     Show BigO {{ showOverallError }}
     {{ form.value | json }}
-</pre>
+</pre> -->

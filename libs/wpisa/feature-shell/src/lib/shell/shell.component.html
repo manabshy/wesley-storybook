@@ -1,6 +1,9 @@
 <div class="bg-gradient-yellow">
   <div class="container">
-    <wes-stepper [steps]="data.progressBar.steps"></wes-stepper>
+    <wes-stepper
+      [steps]="progressBarContent.steps"
+      [currentStepIndex]="currentStepIndex$ | async"
+    ></wes-stepper>
   </div>
 </div>
 
@@ -11,4 +14,3 @@
     </div>
   </div>
 </div>
-<!-- [currentStepIndex]="currentStepIndex$ | async" -->

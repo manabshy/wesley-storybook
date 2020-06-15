@@ -69,7 +69,8 @@
       border-radius: 50%;
     }
 
-    &--completed {
+    &--completed,
+    &--active {
       background-color: #ffffff;
       border-color: #ffffff;
     }
@@ -87,9 +88,7 @@
     }
 
     &--completed {
-      @include media-breakpoint-up(md) {
-        background-color: #ffffff;
-      }
+      background-color: #ffffff;
     }
   }
 }

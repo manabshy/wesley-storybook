@@ -46,8 +46,6 @@ export class KnowledgeCheckPageComponent implements OnInit {
     this.formsManager
       .initialValueChanged('knowledgeCheckQ1')
       .pipe(
-        // We use takeWhile because it completes an observable when a condition fails
-        takeWhile((hasChanged) => hasChanged === true),
         switchMap(() =>
           this.knowledgeCheckFacade.submitQuestion(1, q1Value).pipe(
             tap((_) =>

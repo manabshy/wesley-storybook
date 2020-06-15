@@ -1,9 +1,11 @@
-import { Route } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
+
 import { KnowledgeCheckPageComponent } from './knowledge-check-page/knowledge-check-page.component';
 import { CustomerDetailsPageComponent } from './customer-details-page/customer-details-page.component';
 import { isaRoutesNames } from './isa-journey.routes.names';
 
-export const isaJourneyRoutes: Route[] = [
+export const routes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
@@ -20,3 +22,9 @@ export const isaJourneyRoutes: Route[] = [
     data: { step: 1 },
   },
 ];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class ISAJourneyRoutingModule {}
