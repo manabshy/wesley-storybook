@@ -1,18 +1,56 @@
-<div class="stepper">
-  <div
-    *ngFor="let step of steps; index as stepIndex; last as isLast"
-    class="stepper__step"
-    [ngClass]="{
-      'stepper__step--active': isStepActive(stepIndex),
-      'stepper__step--completed': isStepComplete(stepIndex)
-    }"
-  >
-    <span>{{ step }}</span>
-    <div *ngIf="!isLast" class="stepper__step-connector">
+<div class="wes-stepper">
+  <div class="wes-stepper__labels-container">
+    <span class="wes-stepper__step-label d-lg-none">{{ mobileHeader }}</span>
+    <ng-container
+      *ngFor="
+        let step of steps;
+        index as stepIndex;
+        last as isLast;
+        first as isFirst
+      "
+    >
       <div
-        class="stepper__progress"
-        [style.width.%]="getIntermediateProgressPercentage(stepIndex)"
+        class="wes-stepper__step-label-container"
+        [ngClass]="{
+          'wes-stepper__step-label-container--active': isStepActive(stepIndex),
+          'wes-stepper__step-label-container--completed': isStepComplete(
+            stepIndex
+          ),
+          'wes-stepper__step-label-container--first': isFirst,
+          'wes-stepper__step-label-container--last': isLast
+        }"
+      >
+        <span class="wes-stepper__step-label"
+          >{{ stepIndex + 1 }}. {{ step }}</span
+        >
+      </div>
+    </ng-container>
+  </div>
+  <div class="wes-stepper__steps-container">
+    <ng-container
+      *ngFor="let step of steps; index as stepIndex; last as isLast"
+    >
+      <div
+        class="wes-stepper__step"
+        [ngClass]="{
+          'wes-stepper__step--active': isStepActive(stepIndex),
+          'wes-stepper__step--completed': isStepComplete(stepIndex)
+        }"
       ></div>
-    </div>
+
+      <div
+        *ngIf="!isLast"
+        class="wes-stepper__step-connector"
+        [ngClass]="{
+          'wes-stepper__step-connector--active': isStepActive(stepIndex),
+          'wes-stepper__step-connector--completed': isStepComplete(stepIndex)
+        }"
+      >
+        <div
+          class="stepper__progress"
+          [style.width.%]="getIntermediateProgressPercentage(stepIndex)"
+        ></div>
+      </div>
+    </ng-container>
   </div>
 </div>

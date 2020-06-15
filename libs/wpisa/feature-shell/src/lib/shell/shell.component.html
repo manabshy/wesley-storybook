@@ -1,8 +1,14 @@
-<h2>{{ pageTitle }}</h2>
-<wes-stepper
-  [steps]="data.progressBar.steps"
-  [currentStepIndex]="currentStepIndex$ | async"
-  [currentStepProgressPercentage]="33"
-></wes-stepper>
+<div class="bg-gradient-yellow">
+  <div class="container">
+    <wes-stepper [steps]="data.progressBar.steps"></wes-stepper>
+  </div>
+</div>
 
-<router-outlet></router-outlet>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<!-- [currentStepIndex]="currentStepIndex$ | async" -->

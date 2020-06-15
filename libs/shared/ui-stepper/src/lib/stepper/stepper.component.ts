@@ -13,12 +13,19 @@ import {
 })
 export class StepperComponent implements OnInit {
   @Input() steps: string[] = [];
-  @Input() currentStepIndex = 0;
-  @Input() currentStepProgressPercentage = 0;
+  @Input() currentStepIndex = 3;
+  @Input() currentStepProgressPercentage = 100;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  get mobileHeader() {
+    return `${this.steps[this.currentStepIndex]} (step ${
+      this.currentStepIndex + 1
+    } of
+            ${this.steps.length})`;
+  }
 
   isStepActive(stepIndex: number) {
     return this.currentStepIndex === stepIndex;
