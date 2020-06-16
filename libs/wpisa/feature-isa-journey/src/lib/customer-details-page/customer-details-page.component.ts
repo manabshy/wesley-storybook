@@ -1,27 +1,14 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import {
-  take,
-  tap,
-  finalize,
-  takeWhile,
-  switchMap,
-  startWith,
-  mapTo,
-  map,
-  switchMapTo,
-} from 'rxjs/operators';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import {
   FormGroup,
   FormBuilder,
   Validators,
-  ValidatorFn,
-  ValidationErrors,
-  FormControl,
   AbstractControl,
 } from '@angular/forms';
+import { tap, switchMapTo } from 'rxjs/operators';
 import { Observable, Subscription, BehaviorSubject } from 'rxjs';
 
 import {
@@ -37,13 +24,12 @@ import {
 } from '@wesleyan-frontend/shared/util-validators';
 import {
   AddressLookupService,
-  PostcodeLookupAddress,
   AddressDetails,
 } from '@wesleyan-frontend/shared/data-access-api';
 
-import { KnowledgeCheckFacade } from '../core/knowledge-check.facade';
 import { isaRoutesNames } from '../isa-journey.routes.names';
 import { CustomerDetailsFacade } from '../core/customer-details.facade';
+import { GenericDropdownItem } from '../core/generic-dropdown-item.interface';
 
 @Component({
   selector: 'wes-customer-details-page',
@@ -61,13 +47,12 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   isManualAddressVisible = false;
   subscriptions = new Subscription();
 
-  titleList$: Observable<{ value: string; description: string }[]> = this
-    .customerDetailsFacade.titleList$;
-  nationalityList$: Observable<{ value: string; description: string }[]> = this
+  titleList$: Observable<GenericDropdownItem[]> = this.customerDetailsFacade
+    .titleList$;
+  nationalityList$: Observable<GenericDropdownItem[]> = this
     .customerDetailsFacade.nationalityList$;
-  marketSegmentList$: Observable<
-    { value: string; description: string }[]
-  > = this.customerDetailsFacade.marketSegmentList$;
+  marketSegmentList$: Observable<GenericDropdownItem[]> = this
+    .customerDetailsFacade.marketSegmentList$;
 
   constructor(
     private configService: ConfigService,

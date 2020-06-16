@@ -8,6 +8,7 @@ import {
 } from '@wesleyan-frontend/wpisa/data-access';
 import { map, take, filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { GenericDropdownItem } from './generic-dropdown-item.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -17,9 +18,9 @@ export class CustomerDetailsFacade {
   genericLookups$: Observable<GenericLookup[]>;
   currentTaxPeriod$: Observable<CurrentTaxPeriod>;
 
-  titleList$;
-  nationalityList$;
-  marketSegmentList$;
+  titleList$: Observable<GenericDropdownItem[]>;
+  nationalityList$: Observable<GenericDropdownItem[]>;
+  marketSegmentList$: Observable<GenericDropdownItem[]>;
 
   constructor(private isaApiService: ISAApiService) {
     this.genericLookupsResponse$ = this.isaApiService.getGenericListAndProductData();
