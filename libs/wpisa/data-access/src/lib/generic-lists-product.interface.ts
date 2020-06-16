@@ -1,6 +1,8 @@
-export interface GenericLookupsResponse {
-  genericLookups: LookupCategory;
-  currentTaxPeriod: CurrentTaxPeriod;
+export interface GenericLookupResponse {
+  data: {
+    genericLookups: GenericLookup[];
+    currentTaxPeriod: CurrentTaxPeriod;
+  };
 }
 
 export interface CurrentTaxPeriod {
@@ -20,13 +22,12 @@ export interface CurrentTaxPeriod {
   numberOfMonthlyPayments: number;
 }
 
-export interface LookupCategory {
-  title: CategoryItem[];
-  nationality: CategoryItem[];
-  marketSegment: CategoryItem[];
+export interface GenericLookup {
+  categoryCode: string;
+  members: Member[];
 }
 
-export interface CategoryItem {
-  id: string;
-  description: string;
+export interface Member {
+  memberId: string;
+  customerDescription: string;
 }

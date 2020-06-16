@@ -19,7 +19,7 @@
       name="honorific-prefix"
       class="form-control"
     >
-      <option *ngFor="let title of genericLists.title" value="{{ title.id }}">{{
+      <option *ngFor="let title of titleList$ | async" value="{{ title.id }}">{{
         title.description
       }}</option>
     </select>
@@ -115,7 +115,7 @@
     <label for="profession">{{ pageContent.profession.inputLabel }}</label>
     <select class="form-control" formControlName="profession" name="profession">
       <option
-        *ngFor="let marketSegment of genericLists.marketSegment"
+        *ngFor="let marketSegment of marketSegmentList$ | async"
         value="{{ marketSegment.id }}"
         >{{ marketSegment.description }}</option
       >
@@ -153,7 +153,7 @@
       name="nationality"
     >
       <option
-        *ngFor="let nationality of genericLists.nationality"
+        *ngFor="let nationality of nationalityList$ | async"
         value="{{ nationality.id }}"
         >{{ nationality.description }}</option
       >

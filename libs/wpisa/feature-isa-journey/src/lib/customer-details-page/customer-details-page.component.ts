@@ -28,7 +28,6 @@ import {
   ConfigService,
   YourDetails,
   ISAApiService,
-  LookupCategory,
 } from '@wesleyan-frontend/wpisa/data-access';
 import {
   nationalInsuranceNumberValidator,
@@ -44,6 +43,7 @@ import {
 
 import { KnowledgeCheckFacade } from '../core/knowledge-check.facade';
 import { isaRoutesNames } from '../isa-journey.routes.names';
+import { CustomerDetailsFacade } from '../core/customer-details.facade';
 
 @Component({
   selector: 'wes-customer-details-page',
@@ -53,7 +53,6 @@ import { isaRoutesNames } from '../isa-journey.routes.names';
 export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   pageContent: YourDetails;
   overallErrorContent;
-  genericLists: LookupCategory;
   form: FormGroup;
   private submitAttemptSubject$ = new BehaviorSubject(false);
   submitAttempt$ = this.submitAttemptSubject$.asObservable();
@@ -62,6 +61,14 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   isManualAddressVisible = false;
   subscriptions = new Subscription();
 
+  titleList$: Observable<{ value: string; description: string }[]> = this
+    .customerDetailsFacade.titleList$;
+  nationalityList$: Observable<{ value: string; description: string }[]> = this
+    .customerDetailsFacade.nationalityList$;
+  marketSegmentList$: Observable<
+    { value: string; description: string }[]
+  > = this.customerDetailsFacade.marketSegmentList$;
+
   constructor(
     private configService: ConfigService,
     private router: Router,
@@ -69,18 +76,12 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     private titleService: Title,
     private fb: FormBuilder,
     private addressLookupService: AddressLookupService,
+    private customerDetailsFacade: CustomerDetailsFacade,
     private isaApiService: ISAApiService
   ) {
     this.pageContent = this.configService.content.yourDetails;
     this.overallErrorContent = this.configService.content.validationSummary;
     this.titleService.setTitle(this.pageContent.metaTitle);
-    this.isaApiService
-      .getGenericListAndProductData()
-      .pipe(
-        take(1),
-        tap((resp) => (this.genericLists = resp.genericLookups))
-      )
-      .subscribe();
   }
 
   ngOnInit(): void {

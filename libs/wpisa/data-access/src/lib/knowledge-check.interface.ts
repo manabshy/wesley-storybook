@@ -6,6 +6,8 @@ export interface KnowledgeCheckAnswerDTO {
 }
 
 export interface KnowledgeCheckResponse {
-  attemptId: string;
-  error?: boolean;
+  data: {
+    attemptId: string;
+    error?: boolean;
+  };
 }
