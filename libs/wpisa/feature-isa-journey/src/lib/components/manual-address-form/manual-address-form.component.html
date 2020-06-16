@@ -1,24 +1,25 @@
 <form [formGroup]="form">
   <div class="form-group">
-    <label for="given-name">{{
+    <label for="flatNumber">{{
       pageContent.addressDetails.flatNumber.inputLabel
     }}</label>
     <input
       class="form-control"
       type="text"
-      name="given-name"
+      name="flatNumber"
       formControlName="flatNumber"
     />
   </div>
   <div class="form-group">
-    <label for="given-name">{{
+    <label for="houseNumber">{{
       pageContent.addressDetails.houseNumber.inputLabel
     }}</label>
     <input
       class="form-control"
       type="text"
-      name="given-name"
+      name="houseName"
       formControlName="houseNumber"
+      autocomplete="address-line1"
     />
     <ng-container *ngIf="isFieldInvalid('houseNumber')">
       <span *ngIf="controls.houseNumber.errors.required">
@@ -27,13 +28,13 @@
     </ng-container>
   </div>
   <div class="form-group">
-    <label for="given-name">{{
+    <label for="houseNumber">{{
       pageContent.addressDetails.houseName.inputLabel
     }}</label>
     <input
       class="form-control"
       type="text"
-      name="given-name"
+      name="houseNumber"
       formControlName="houseName"
     />
     <ng-container *ngIf="isFieldInvalid('houseName')">
@@ -43,14 +44,15 @@
     </ng-container>
   </div>
   <div class="form-group">
-    <label for="given-name">{{
+    <label for="street">{{
       pageContent.addressDetails.street.inputLabel
     }}</label>
     <input
       class="form-control"
       type="text"
-      name="given-name"
+      name="street"
       formControlName="street"
+      autocomplete="address-line2"
     />
     <ng-container *ngIf="isFieldInvalid('street')">
       <span *ngIf="controls.street.errors.required">
@@ -59,14 +61,13 @@
     </ng-container>
   </div>
   <div class="form-group">
-    <label for="given-name">{{
-      pageContent.addressDetails.town.inputLabel
-    }}</label>
+    <label for="town">{{ pageContent.addressDetails.town.inputLabel }}</label>
     <input
       class="form-control"
       type="text"
-      name="given-name"
+      name="town"
       formControlName="town"
+      autocomplete="address-level2"
     />
     <ng-container *ngIf="isFieldInvalid('town')">
       <span *ngIf="controls.town.errors.required">
@@ -75,36 +76,37 @@
     </ng-container>
   </div>
   <div class="form-group">
-    <label for="given-name">{{
+    <label for="region">{{
       pageContent.addressDetails.region.inputLabel
     }}</label>
     <input
       class="form-control"
       type="text"
-      name="given-name"
+      name="region"
       formControlName="region"
     />
   </div>
   <div class="form-group">
-    <label for="given-name">{{
+    <label for="county">{{
       pageContent.addressDetails.county.inputLabel
     }}</label>
     <input
       class="form-control"
       type="text"
-      name="given-name"
+      name="county"
       formControlName="county"
     />
   </div>
   <div class="form-group">
-    <label for="given-name">{{
+    <label for="postcode">{{
       pageContent.addressDetails.postcode.inputLabel
     }}</label>
     <input
       class="form-control"
       type="text"
-      name="given-name"
+      name="postcode"
       formControlName="postcode"
+      autocomplete="postal-code"
     />
     <ng-container *ngIf="isFieldInvalid('postcode')">
       <span *ngIf="controls.postcode.errors.required">

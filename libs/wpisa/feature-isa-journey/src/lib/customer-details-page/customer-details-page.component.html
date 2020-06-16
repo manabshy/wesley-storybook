@@ -32,12 +32,13 @@
   </div>
 
   <div class="form-group">
-    <label for="given-name">{{ pageContent.firstName.inputLabel }}</label>
+    <label for="firstName">{{ pageContent.firstName.inputLabel }}</label>
     <input
       class="form-control"
       type="text"
-      name="given-name"
+      name="firstName"
       formControlName="firstName"
+      autocomplete="given-name"
     />
     <ng-container *ngIf="isFieldInvalid('firstName')">
       <span *ngIf="controls.firstName.errors.required">
@@ -47,12 +48,13 @@
   </div>
 
   <div class="form-group">
-    <label for="given-name">{{ pageContent.surname.inputLabel }}</label>
+    <label for="lastName">{{ pageContent.surname.inputLabel }}</label>
     <input
       class="form-control"
       type="text"
-      name="family-name"
+      name="lastName"
       formControlName="lastName"
+      autocomplete="family-name"
     />
     <ng-container *ngIf="isFieldInvalid('lastName')">
       <span *ngIf="controls.lastName.errors.required">
@@ -74,6 +76,7 @@
         placeholder="DD"
         wesNumbersOnly
         maxlength="2"
+        autocomplete="bday-day"
       />
 
       <input
@@ -86,6 +89,7 @@
         name="bday-month"
         placeholder="MM"
         wesNumbersOnly
+        autocomplete="bday-month"
       />
 
       <input
@@ -98,6 +102,7 @@
         name="bday-year"
         placeholder="YYYY"
         wesNumbersOnly
+        autocomplete="bday-year"
       />
     </div>
 
@@ -194,14 +199,15 @@
 
   <h3>{{ pageContent.contactDetails.heading }}</h3>
   <div class="form-group">
-    <label for="email">{{
+    <label for="personalEmail">{{
       pageContent.contactDetails.personalEmail.inputLabel
     }}</label>
     <input
       class="form-control"
       type="email"
-      name="email"
+      name="personalEmail"
       formControlName="personalEmail"
+      autocomplete="email"
     />
 
     <span
@@ -225,6 +231,7 @@
       type="text"
       name="personalMobileNumber"
       formControlName="personalMobileNumber"
+      autocomplete="tel"
     />
     <span
       *ngIf="
