@@ -14,4 +14,15 @@ export interface AddressDetails {
   town: string;
   postcode: string;
   country: string;
+
+  // flat: string;
+  // buildingName: string;
+  // buildingNumber: string;
+  // street: string;
+  // district: string;
+  // town: string;
+  // county: string;
+  // postcode: string;
+  // countryCode: string;
+  // countryName: string;
 }
