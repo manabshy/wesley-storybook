@@ -16,6 +16,9 @@ import { InvalidControlScrollDirective } from './invalid-control-scroll.directiv
 import { ISAJourneyRoutingModule } from './isa-journey-routing.module';
 import { InvestmentOptionsPageComponent } from './investment-options-page/investment-options-page.component';
 import { InvestmentOptionsFormComponent } from './components/investment-options-form/investment-options-form.component';
+import { LumpSumInvestmentPageComponent } from './lump-sum-investment-page/lump-sum-investment-page.component';
+import { MonthlyPaymentsInvestmentPageComponent } from './monthly-payments-investment-page/monthly-payments-investment-page.component';
+import { LumpSumAndMonthlyPaymentInvestmentPageComponent } from './lump-sum-and-monthly-payment-investment-page/lump-sum-and-monthly-payment-investment-page.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -35,6 +38,9 @@ import { InvestmentOptionsFormComponent } from './components/investment-options-
     AddressLookupFormComponent,
     InvestmentOptionsPageComponent,
     InvestmentOptionsFormComponent,
+    LumpSumInvestmentPageComponent,
+    MonthlyPaymentsInvestmentPageComponent,
+    LumpSumAndMonthlyPaymentInvestmentPageComponent,
   ],
 })
 export class WpisaFeatureIsaJourneyModule {}
