@@ -19,6 +19,8 @@ import { InvestmentOptionsFormComponent } from './components/investment-options-
 import { LumpSumInvestmentPageComponent } from './lump-sum-investment-page/lump-sum-investment-page.component';
 import { MonthlyPaymentsInvestmentPageComponent } from './monthly-payments-investment-page/monthly-payments-investment-page.component';
 import { LumpSumAndMonthlyPaymentInvestmentPageComponent } from './lump-sum-and-monthly-payment-investment-page/lump-sum-and-monthly-payment-investment-page.component';
+import { DeclarationPageComponent } from './declaration-page/declaration-page.component';
+import { PaymentPageComponent } from './payment-page/payment-page.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -41,6 +43,8 @@ import { LumpSumAndMonthlyPaymentInvestmentPageComponent } from './lump-sum-and-
     LumpSumInvestmentPageComponent,
     MonthlyPaymentsInvestmentPageComponent,
     LumpSumAndMonthlyPaymentInvestmentPageComponent,
+    DeclarationPageComponent,
+    PaymentPageComponent,
   ],
 })
 export class WpisaFeatureIsaJourneyModule {}

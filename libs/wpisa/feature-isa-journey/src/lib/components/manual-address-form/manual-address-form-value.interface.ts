@@ -1,4 +1,4 @@
-export interface AddressFormValue {
+export interface ManualAddressFormValue {
   flatNumber: string;
   houseNumber: string;
   houseName: string;

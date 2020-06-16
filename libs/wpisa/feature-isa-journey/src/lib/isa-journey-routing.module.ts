@@ -8,6 +8,8 @@ import { InvestmentOptionsPageComponent } from './investment-options-page/invest
 import { LumpSumInvestmentPageComponent } from './lump-sum-investment-page/lump-sum-investment-page.component';
 import { MonthlyPaymentsInvestmentPageComponent } from './monthly-payments-investment-page/monthly-payments-investment-page.component';
 import { LumpSumAndMonthlyPaymentInvestmentPageComponent } from './lump-sum-and-monthly-payment-investment-page/lump-sum-and-monthly-payment-investment-page.component';
+import { DeclarationPageComponent } from './declaration-page/declaration-page.component';
+import { PaymentPageComponent } from './payment-page/payment-page.component';
 
 export const routes: Route[] = [
   {
@@ -33,17 +35,27 @@ export const routes: Route[] = [
   {
     path: isaRoutesNames.LUMP_SUM_INVESTMENT,
     component: LumpSumInvestmentPageComponent,
-    data: { step: 3 },
+    data: { step: 2 },
   },
   {
     path: isaRoutesNames.MONTHLY_PAYMENTS_INVESTMENT,
     component: MonthlyPaymentsInvestmentPageComponent,
-    data: { step: 3 },
+    data: { step: 2 },
   },
   {
     path: isaRoutesNames.LUMP_SUM_AND_MONTHLY_PAYMENT_INVESTMENT,
     component: LumpSumAndMonthlyPaymentInvestmentPageComponent,
+    data: { step: 2 },
+  },
+  {
+    path: isaRoutesNames.DECLARATION,
+    component: DeclarationPageComponent,
     data: { step: 3 },
+  },
+  {
+    path: isaRoutesNames.PAYMENT,
+    component: PaymentPageComponent,
+    data: { step: 4 },
   },
 ];
 

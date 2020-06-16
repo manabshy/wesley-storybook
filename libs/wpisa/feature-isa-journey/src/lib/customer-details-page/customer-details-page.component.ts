@@ -30,6 +30,7 @@ import {
 import { isaRoutesNames } from '../isa-journey.routes.names';
 import { CustomerDetailsFacade } from '../core/customer-details.facade';
 import { GenericDropdownItem } from '../core/generic-dropdown-item.interface';
+import { AppForms } from '../core/app-forms.interface';
 
 @Component({
   selector: 'wes-customer-details-page',
@@ -57,7 +58,7 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   constructor(
     private configService: ConfigService,
     private router: Router,
-    private formsManager: NgFormsManager,
+    private formsManager: NgFormsManager<AppForms>,
     private titleService: Title,
     private fb: FormBuilder,
     private addressLookupService: AddressLookupService,
@@ -182,6 +183,7 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     this.submitAttemptSubject$.next(true);
     console.log(this.form);
     if (this.form.valid) {
+      this.customerDetailsFacade.submit(this.form.value);
       this.router.navigate([`/${isaRoutesNames.INVESTMENT_OPTIONS}`]);
     } else {
       this.showOverallError = true;

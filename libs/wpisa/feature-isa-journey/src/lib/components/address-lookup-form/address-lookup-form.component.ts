@@ -33,6 +33,7 @@ import {
 } from '@wesleyan-frontend/shared/data-access-api';
 
 import { AddressLookupFormValue } from './address-lookup-form-value.interface';
+import { AppForms } from '../../core/app-forms.interface';
 
 @Component({
   selector: 'wes-address-lookup-form',
@@ -78,7 +79,7 @@ export class AddressLookupFormComponent
 
   constructor(
     private configService: ConfigService,
-    private formsManager: NgFormsManager,
+    private formsManager: NgFormsManager<AppForms>,
     private fb: FormBuilder,
     private addressLookupService: AddressLookupService
   ) {

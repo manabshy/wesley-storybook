@@ -29,7 +29,8 @@ import {
   YourDetails,
 } from '@wesleyan-frontend/wpisa/data-access';
 
-import { AddressFormValue } from './manual-address-form-value.interface';
+import { ManualAddressFormValue } from './manual-address-form-value.interface';
+import { AppForms } from '../../core/app-forms.interface';
 
 @Component({
   selector: 'wes-manual-address-form',
@@ -71,12 +72,12 @@ export class ManualAddressFormComponent
   controls: { [key: string]: AbstractControl } = {};
 
   private subscription = new Subscription();
-  onChange: any = (_: AddressFormValue) => {};
+  onChange: any = (_: ManualAddressFormValue) => {};
   onTouch: any = () => {};
 
   constructor(
     private configService: ConfigService,
-    private formsManager: NgFormsManager,
+    private formsManager: NgFormsManager<AppForms>,
     private fb: FormBuilder
   ) {
     this.pageContent = this.configService.content.yourDetails;
@@ -88,7 +89,7 @@ export class ManualAddressFormComponent
 
   ngOnInit(): void {
     this.subscription.add(
-      this.form.valueChanges.subscribe((value: AddressFormValue) => {
+      this.form.valueChanges.subscribe((value: ManualAddressFormValue) => {
         this.onChange(value);
       })
     );
@@ -106,7 +107,7 @@ export class ManualAddressFormComponent
     }
   }
 
-  writeValue(value: null | AddressFormValue): void {
+  writeValue(value: null | ManualAddressFormValue): void {
     if (value) {
       this.form.reset(value);
     }
@@ -116,7 +117,7 @@ export class ManualAddressFormComponent
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: (_: AddressFormValue) => {}): void {
+  registerOnTouched(fn: (_: ManualAddressFormValue) => {}): void {
     this.onTouch = fn;
   }
 

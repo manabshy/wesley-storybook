@@ -5,6 +5,7 @@ import {
   ConfigService,
   KnowledgeCheckStep,
 } from '@wesleyan-frontend/wpisa/data-access';
+import { AppForms } from '../../core/app-forms.interface';
 
 @Component({
   selector: 'wes-knowledge-check-q2-form',
@@ -17,7 +18,7 @@ export class KnowledgeCheckQ2FormComponent implements OnInit, OnDestroy {
 
   constructor(
     private builder: FormBuilder,
-    private formsManager: NgFormsManager,
+    private formsManager: NgFormsManager<AppForms>,
     private configService: ConfigService
   ) {
     this.content = this.configService.content.knowledgeCheck.step2;
