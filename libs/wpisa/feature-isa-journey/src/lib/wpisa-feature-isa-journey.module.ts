@@ -14,6 +14,8 @@ import { ManualAddressFormComponent } from './components/manual-address-form/man
 import { AddressLookupFormComponent } from './components/address-lookup-form/address-lookup-form.component';
 import { InvalidControlScrollDirective } from './invalid-control-scroll.directive';
 import { ISAJourneyRoutingModule } from './isa-journey-routing.module';
+import { InvestmentOptionsPageComponent } from './investment-options-page/investment-options-page.component';
+import { InvestmentOptionsFormComponent } from './components/investment-options-form/investment-options-form.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -31,6 +33,8 @@ import { ISAJourneyRoutingModule } from './isa-journey-routing.module';
     InvalidControlScrollDirective,
     ManualAddressFormComponent,
     AddressLookupFormComponent,
+    InvestmentOptionsPageComponent,
+    InvestmentOptionsFormComponent,
   ],
 })
 export class WpisaFeatureIsaJourneyModule {}

@@ -1,0 +1,78 @@
+<form [formGroup]="form">
+  <label
+    id="investment-options-radio-group-label"
+    [innerHtml]="content.summary"
+  ></label>
+  <div
+    role="radiogroup"
+    aria-labelledby="investment-options-radio-group-label"
+    class="wes-radio-group"
+  >
+    <div class="wes-radio-button wes-radio-checked" tabindex="-1">
+      <label class="wes-radio-label" for="investment-options-1-radio-input">
+        <div class="wes-radio-container">
+          <div class="wes-radio-outer-circle"></div>
+          <div class="wes-radio-inner-circle"></div>
+          <input
+            type="radio"
+            class="wes-radio-input cdk-visually-hidden"
+            id="investment-options-1-radio-input"
+            tabindex="0"
+            name="investmentOption"
+            value="singleLumpSum"
+            formControlName="investmentOption"
+          />
+        </div>
+        <div class="wes-radio-label-content">
+          <span [innerHtml]="content.singleLumpSum.title"></span>
+          <span [innerHtml]="content.singleLumpSum.summary"></span>
+        </div>
+      </label>
+    </div>
+
+    <div class="wes-radio-button wes-radio-checked" tabindex="-1">
+      <label class="wes-radio-label" for="investment-options-2-radio-input">
+        <div class="wes-radio-container">
+          <div class="wes-radio-outer-circle"></div>
+          <div class="wes-radio-inner-circle"></div>
+          <input
+            type="radio"
+            class="wes-radio-input cdk-visually-hidden"
+            id="investment-options-2-radio-input"
+            tabindex="0"
+            name="investmentOption"
+            value="monthlyPayments"
+            formControlName="investmentOption"
+          />
+        </div>
+        <div class="wes-radio-label-content">
+          <span [innerHtml]="content.monthlyPayments.title"></span>
+          <span [innerHtml]="content.monthlyPayments.summary"></span>
+        </div>
+      </label>
+    </div>
+
+    <div class="wes-radio-button wes-radio-checked" tabindex="-1">
+      <label class="wes-radio-label" for="investment-options-3-radio-input">
+        <div class="wes-radio-container">
+          <div class="wes-radio-outer-circle"></div>
+          <div class="wes-radio-inner-circle"></div>
+          <input
+            type="radio"
+            class="wes-radio-input cdk-visually-hidden"
+            id="investment-options-3-radio-input"
+            tabindex="0"
+            name="investmentOption"
+            value="monthlyAndLumpSum"
+            formControlName="investmentOption"
+          />
+        </div>
+        <div class="wes-radio-label-content">
+          <span [innerHtml]="content.monthlyAndLumpSum.title"></span>
+          <span [innerHtml]="content.monthlyAndLumpSum.summary"></span>
+        </div>
+      </label>
+    </div>
+  </div>
+  <ng-content></ng-content>
+</form>
