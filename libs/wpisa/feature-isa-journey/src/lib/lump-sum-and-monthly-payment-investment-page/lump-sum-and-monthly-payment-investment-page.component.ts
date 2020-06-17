@@ -28,7 +28,7 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent implements OnInit {
     this.pageContent = this.configService.content.investmentOptions.monthlyAndLumpSum.monthlyAndLumpSumPayment;
     console.log(this.pageContent);
 
-    this.titleService.setTitle(this.pageContent.heading);
+    this.titleService.setTitle(this.pageContent.metaTitle);
   }
 
   ngOnInit() {}

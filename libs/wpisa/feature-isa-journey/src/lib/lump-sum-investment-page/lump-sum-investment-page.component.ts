@@ -29,7 +29,7 @@ export class LumpSumInvestmentPageComponent implements OnInit {
     this.pageContent = this.configService.content.investmentOptions.singleLumpSum.lumpSumPayment;
     console.log(this.pageContent);
 
-    this.titleService.setTitle(this.pageContent.heading);
+    this.titleService.setTitle(this.pageContent.metaTitle);
   }
 
   ngOnInit() {}

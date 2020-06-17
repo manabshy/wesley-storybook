@@ -32,7 +32,7 @@ export class KnowledgeCheckPageComponent implements OnInit {
     this.pageContent = this.configService.content;
     console.log(this.pageContent);
 
-    this.titleService.setTitle(this.pageContent.knowledgeCheck.metaTitle);
+    this.titleService.setTitle(this.pageContent.intro.metaTitle);
   }
 
   ngOnInit(): void {}

@@ -39,3 +39,53 @@ export interface MarketingPreferencesDTO {
 export interface NationalityDTO {
   primaryNationality: string;
 }
+
+export interface CustomerSearchResponse {
+  data: {
+    customerSearch: {
+      customerSearchStatus: CustomerSearchStatusStrings;
+      customerId: number;
+    };
+    productSearch: {
+      productSearchStatus: ProductSearchStatusStrings;
+      policyNumber: string;
+    };
+    currentTaxPeriod: {
+      taxPeriodCode: string;
+      taxPeriodDescription: string;
+      startDateTime: Date;
+      endDateTime: Date;
+      lumpSumAccepted: boolean;
+      monthlyPaymentsAccepted: boolean;
+      newISAsAccepted: boolean;
+      topUpsAccepted: boolean;
+      totalAnnualAllowance: number;
+      minNewLumpSumAmount: number;
+      minTopUpLumpSumAmount: number;
+      maxLumpSumAmount: number;
+      minNewMonthlyAmount: number;
+      minTopUpMonthlyAmount: number;
+      maxMonthlyAmount: number;
+      numberOfMonthlyPayments: number;
+    };
+  };
+}
+
+export enum CustomerSearchStatus {
+  NO_MATCH,
+  EXACT_MATCH,
+  PROBABLE_MATCH,
+  PARTIAL_MATCH,
+  MULTIPLE_MATCH,
+}
+
+export type CustomerSearchStatusStrings = keyof typeof CustomerSearchStatus;
+
+export enum ProductSearchStatus {
+  NOT_FOUND,
+  FOUND_TOPUP,
+  FOUND_WUTM,
+  FOUND_INVALID,
+}
+
+export type ProductSearchStatusStringsStrings = keyof typeof ProductSearchStatus;

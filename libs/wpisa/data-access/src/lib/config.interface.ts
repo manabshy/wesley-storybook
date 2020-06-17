@@ -3,7 +3,8 @@ export interface Config {
   progressBar: {
     steps: string[];
   };
-  start: {
+  intro: {
+    metaTitle: string;
     pageTitle: string;
     heading: string;
     summary: string;
@@ -16,6 +17,7 @@ export interface Config {
     heading: string;
     summary: string;
   };
+  declaration: Declaration;
 }
 
 export interface KnowledgeCheck {
@@ -25,6 +27,7 @@ export interface KnowledgeCheck {
 }
 
 export interface KnowledgeCheckStep {
+  metaTitle: string;
   heading: string;
   summary: string;
   questions: string[];
@@ -124,6 +127,7 @@ export interface MonthlyAndLumpSum {
 }
 
 export interface MonthlyAndLumpSumPayment {
+  metaTitle: string;
   heading: string;
   summary: string;
   monthlyAmount: FormInput;
@@ -142,6 +146,7 @@ export interface MonthlyPayments {
 }
 
 export interface MonthlyPayment {
+  metaTitle: string;
   heading: string;
   summary: string;
   monthlyAmount: FormInput;
@@ -157,10 +162,31 @@ export interface SingleLumpSum {
 }
 
 export interface LumpSumPayment {
+  metaTitle: string;
   heading: string;
   summary: string;
   lumpSumAmount: FormInput;
   lumpSumHelpText: string;
   nextButtonLabel: string;
   backButtonLabel: string;
+}
+export interface Declaration {
+  heading: string;
+  summary: string;
+  nextButtonLabel: string;
+  backButtonLabel: string;
+  editLabel: string;
+  yourDetailsLabel: string;
+  directDebitLabel: string;
+  yourInvestmentLabel: string;
+  perMonthLabel: string;
+  totalInvestmentText: string;
+  isaLabel: string;
+  isaRules: string;
+  adviceContent: string;
+  authoriseHeading: string;
+  authoriseContent: string;
+  title: string;
+  content: string;
+  confirmContent: string;
 }

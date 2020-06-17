@@ -1,9 +1,9 @@
 <wes-custom-stepper #stepper linear>
   <cdk-step>
-    <h3>{{ pageContent.start.heading }}</h3>
-    <div [innerHtml]="pageContent.start.summary"></div>
+    <h3>{{ pageContent.intro.heading }}</h3>
+    <div [innerHtml]="pageContent.intro.summary"></div>
 
-    <button cdkStepperNext>{{ pageContent.start.nextButtonLabel }}</button>
+    <button cdkStepperNext>{{ pageContent.intro.nextButtonLabel }}</button>
   </cdk-step>
 
   <cdk-step>
@@ -11,7 +11,7 @@
 
     <wes-knowledge-check-q1-form (submit)="submitQuestion1()">
       <button type="submit" [disabled]="!(q1Valid$ | async)">
-        {{ pageContent.start.nextButtonLabel }}
+        {{ pageContent.intro.nextButtonLabel }}
       </button>
       <button cdkStepperPrevious>
         {{ pageContent.knowledgeCheck.step1.backButtonLabel }}

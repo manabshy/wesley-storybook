@@ -8,7 +8,10 @@ import {
   KnowledgeCheckResponse,
 } from './knowledge-check.interface';
 import { GenericLookupResponse } from './generic-lists-product.interface';
-import { SearchCustomerDTO } from './customer-details.interface';
+import {
+  SearchCustomerDTO,
+  CustomerSearchResponse,
+} from './customer-details.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -95,7 +98,38 @@ export class ISAApiService {
       .pipe(shareReplay({ bufferSize: 1, refCount: true }));
   }
 
-  findCustomer(data: SearchCustomerDTO) {
+  findCustomer(data: SearchCustomerDTO): Observable<CustomerSearchResponse> {
+    const mock = {
+      data: {
+        customerSearch: {
+          customerSearchStatus: 'NO_MATC',
+          customerId: 123456,
+        },
+        productSearch: {
+          productSearchStatus: 'NOT_FOUND',
+          policyNumber: 'ABC1234567',
+        },
+        currentTaxPeriod: {
+          taxPeriodCode: '2020-2021',
+          taxPeriodDescription: '2020 to 2021',
+          startDateTime: '2020-04-06T00:00:00.000Z',
+          endDateTime: '2021-04-05T23:59:59.000',
+          lumpSumAccepted: true,
+          monthlyPaymentsAccepted: true,
+          newISAsAccepted: true,
+          topUpsAccepted: true,
+          totalAnnualAllowance: 20000,
+          minNewLumpSumAmount: 2000,
+          minTopUpLumpSumAmount: 1000,
+          maxLumpSumAmount: 20000,
+          minNewMonthlyAmount: 250,
+          minTopUpMonthlyAmount: 25,
+          maxMonthlyAmount: 1666.66,
+          numberOfMonthlyPayments: 11,
+        },
+      },
+    };
+    return of(mock);
     return this.http.post('/api/isawebapiwrapper/customersearch', data);
   }
 }

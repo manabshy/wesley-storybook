@@ -28,7 +28,7 @@ export class MonthlyPaymentsInvestmentPageComponent implements OnInit {
     this.pageContent = this.configService.content.investmentOptions.monthlyPayments.monthlyPayment;
     console.log(this.pageContent);
 
-    this.titleService.setTitle(this.pageContent.heading);
+    this.titleService.setTitle(this.pageContent.metaTitle);
   }
 
   ngOnInit() {}

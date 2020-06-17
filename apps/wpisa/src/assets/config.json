@@ -8,15 +8,15 @@
       "Confirmation"
     ]
   },
-  "start": {
-    "pageTitle": "With profits ISA",
+  "intro": {
+    "metaTitle": "Intro Meta Title",
     "heading": "A couple of questions to start",
     "summary": "<p>The first step pf your application is a quick knowledge check, just to make sure you understand how the With Profits ISA works.\r\n</p>\r\n<p>\r\nWe're required to ask these questions by the Financial Conduct Authority, as we manage investments on your behalf.\r\n</p>",
     "nextButtonLabel": "Continue"
   },
   "knowledgeCheck": {
-    "metaTitle": "Knowledge check Meta Title",
     "step1": {
+      "metaTitle": "Knowledge check Step1 Meta Title",
       "heading": "Question 1 of 2",
       "summary": "<p>The With Profits ISA aims to steady the ups and downs of investment returns through a process called 'smoothing'. Do you understand what this means?</p>",
       "questions": [
@@ -27,6 +27,7 @@
       "backButtonLabel": "Back to introduction"
     },
     "step2": {
+      "metaTitle": "Knowledge check Step2 Meta Title",
       "heading": "Question 2 of 2",
       "summary": "<p>In times of particularly poor market performance, smoothing alone may not be sufficient to protect all customer from the withdrawals of others. In this case we may apply a Market Value Reduction (MVR). Do you understand what this means?</p>",
       "questions": [
@@ -143,6 +144,7 @@
       "title": "Single lump-sum",
       "summary": "Make an initial one-off payment up to £20,000.",
       "lumpSumPayment": {
+        "metaTitle": "Single lump-sum Meta Title",
         "heading": "How much would you like to invest?",
         "summary": "<p>\nYour initial lump-sum investment can be anywhere between £1,000 and £20,000. We'll take card details from you at the end of the application.\n</p>",
         "lumpSumAmount": {
@@ -158,6 +160,7 @@
       "title": "Monthly payments",
       "summary": "Combine both options to maximise your ISA allowance.",
       "monthlyPayment": {
+        "metaTitle": "Monthly payment Meta Title",
         "heading": "Set up your monthly payments",
         "summary": "<p>How much would you like to pay into your With Profits ISA each month?</p>",
         "monthlyAmount": {
@@ -173,6 +176,7 @@
       "title": "Lump-sum and monthly payments",
       "summary": "Combine both options to maximise your ISA allowance.",
       "monthlyAndLumpSumPayment": {
+        "metaTitle": "Monthly and lump-sum Meta Title",
         "heading": "How much would you like to invest?",
         "summary": "<p>Below you can make a single lump-sum payment to open your ISA, then set up monthly contributions to build your investment. In total, you can invest up to £20,000 before 5th April 2021.</p>",
         "monthlyAmount": {
@@ -218,5 +222,25 @@
   "validationSummary": {
     "heading": "We didn't quite get everything we need...",
     "summary": "Please check back through the form to add any missing information or correct any errors."
+  },
+  "declaration": {
+    "heading": "Please confirm your details",
+    "summary": "<p />Almost there. Please just double-check the information below, and accept the declaration when you're ready. <p />",
+    "nextButtonLabel": "Confirm",
+    "backButtonLabel": "Back to investment options",
+    "editLabel": "Edit details",
+    "yourdetailsLabel": "Your details",
+    "directdebitLabel": "Your Direct Debit details",
+    "yourinvestmentLabel": "Your investment",
+    "perMonthLabel": "per month",
+    "totalInvestmentText": "Total investment for the {tax_year}: ",
+    "isaLabel": "ISA declaration",
+    "isaRules": "<p>HMRC'S ISA rules require you to make a declaration when applying for a new ISA, to confirm that you are eligible to subscribe. Please read and confirm the declaration below to proceed.</p>",
+    "adviceContent": "<p>The answers you provided at the start of this application indicate you have sufficient understanding of the With Profits ISA.</p>\n<p>As you have not received any advice or a recommendation from us during this application, you will need to make your own choice as to the suitability of this ISA for your circumstances.</p>",
+    "authoriseHeading": "I authorise Wesleyan Assurance Society:",
+    "authoriseContent": "<ul>\n<li>To hold my cash subscriptions, any other proceeds in respect of my ISA investments and any other cash</li>\n<li>To make on my behalf any claims to relief from tax is respect of ISA investments.</li>\n</ul>",
+    "title": "I declare that:",
+    "content": "<ul>\n <li>All subscriptions made, and to be made, belong to me</li>\n <li>I am 18 years of age or over</li>\n <li>I have not subscribed/made payments, and will not subscribe/make payments that exceed the overall subscription limit across any combination of permitted ISAs in the same tax year</li>\n <li>I have not subscribed/made payments and will not subscribe/make payments to another stocks and shares ISA in the same tax year that I subscribe to this one</li>\n <li>I am resident in the United Kingdom for tax purposes or, if not so resident, either perform duties which, by virtue of Section 28 of the Income Tax (Earnings &amp; Pensions) Act 2003 (Crown employees serving overseas), are treated as being performed in the United Kingdom or I am married to, or in civil partnership with, a person who performs such duties. I will inform Wesleyan Assurance Society if I cease to be so resident or to perform such duties, or to be married to, or in a civil partnership with, a person who performs such duties.</li>\n <li>I have checked my application for accuracy and completeness, including any statements not entered by me and it is correct to the best of my knowledge and belief.</li>\n <li>I understand that the With Profits ISA is governed by a standard set of terms and conditions and that Wesleyan Assurance Society will administer the plan in line with these.</li>\n</ul>",
+    "confirmContent": "<p>By clicking Confirm, I acknowledge I have read and understood the declarations and agree to them. I wish to enter into a contract with Wesleyan Assurance Society for a With Profits ISA on the basis set out in this application.</p>"
   }
 }
