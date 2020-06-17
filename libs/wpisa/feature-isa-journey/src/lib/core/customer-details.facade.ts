@@ -10,9 +10,11 @@ import {
   SearchCustomerDTO,
   MarketingPreferencesDTO,
   NationalityDTO,
+  CurrentTaxPeriodISALimits,
+  CategoryCode,
 } from '@wesleyan-frontend/wpisa/data-access';
 import { map, take, filter, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { GenericDropdownItem } from './generic-dropdown-item.interface';
 import { CustomerDetailsFormValue } from './customer-details-form.interface';
 import { AddressDetails } from '@wesleyan-frontend/shared/data-access-api';
@@ -22,6 +24,11 @@ import { ManualAddressFormValue } from '../components/manual-address-form/manual
   providedIn: 'root',
 })
 export class CustomerDetailsFacade {
+  private submitSubject$ = new BehaviorSubject<boolean>(false);
+  private currentTaxPeriodISALimitsSubject$ = new BehaviorSubject<CurrentTaxPeriodISALimits | null>(
+    null
+  );
+
   genericLookupsResponse$: Observable<GenericLookupResponse>;
   genericLookups$: Observable<GenericLookup[]>;
   currentTaxPeriod$: Observable<CurrentTaxPeriod>;
@@ -29,6 +36,11 @@ export class CustomerDetailsFacade {
   titleList$: Observable<GenericDropdownItem[]>;
   nationalityList$: Observable<GenericDropdownItem[]>;
   marketSegmentList$: Observable<GenericDropdownItem[]>;
+
+  submitSuccessful$: Observable<boolean> = this.submitSubject$.asObservable();
+  currentTaxPeriodISALimits$: Observable<
+    CurrentTaxPeriodISALimits
+  > = this.currentTaxPeriodISALimitsSubject$.asObservable();
 
   mockFormSubmit = {
     title: '10',
@@ -74,19 +86,23 @@ export class CustomerDetailsFacade {
 
     this.titleList$ = this.genericLookups$.pipe(
       map((lookups) =>
-        lookups.find(({ categoryCode }) => categoryCode === 'TITLE')
+        lookups.find(({ categoryCode }) => categoryCode === CategoryCode.TITLE)
       ),
       map((lookup) => this.mapMembersToSelectList(lookup))
     );
     this.nationalityList$ = this.genericLookups$.pipe(
       map((lookups) =>
-        lookups.find(({ categoryCode }) => categoryCode === 'NATIONALITY')
+        lookups.find(
+          ({ categoryCode }) => categoryCode === CategoryCode.NATIONALITY
+        )
       ),
       map((lookup) => this.mapMembersToSelectList(lookup))
     );
     this.marketSegmentList$ = this.genericLookups$.pipe(
       map((lookups) =>
-        lookups.find(({ categoryCode }) => categoryCode === 'MARKET_SEGMENT')
+        lookups.find(
+          ({ categoryCode }) => categoryCode === CategoryCode.MARKET_SEGMENT
+        )
       ),
       map((lookup) => this.mapMembersToSelectList(lookup))
     );
@@ -96,8 +112,19 @@ export class CustomerDetailsFacade {
     const customerDTO = this.mapCustomerFormToSearchCustomerDTO(
       this.mockFormSubmit
     );
-    console.log(value);
-    this.isaApiService.findCustomer(customerDTO);
+
+    this.isaApiService
+      .findCustomer(customerDTO)
+      .pipe(
+        tap((resp) =>
+          this.currentTaxPeriodISALimitsSubject$.next(
+            resp.data.currentTaxPeriod
+          )
+        ),
+        tap((_) => this.submitSubject$.next(true)),
+        take(1)
+      )
+      .subscribe();
   }
 
   mapCustomerFormToSearchCustomerDTO(

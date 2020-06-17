@@ -50,28 +50,30 @@ export interface CustomerSearchResponse {
       productSearchStatus: ProductSearchStatusStrings;
       policyNumber: string;
     };
-    currentTaxPeriod: {
-      taxPeriodCode: string;
-      taxPeriodDescription: string;
-      startDateTime: Date;
-      endDateTime: Date;
-      lumpSumAccepted: boolean;
-      monthlyPaymentsAccepted: boolean;
-      newISAsAccepted: boolean;
-      topUpsAccepted: boolean;
-      totalAnnualAllowance: number;
-      minNewLumpSumAmount: number;
-      minTopUpLumpSumAmount: number;
-      maxLumpSumAmount: number;
-      minNewMonthlyAmount: number;
-      minTopUpMonthlyAmount: number;
-      maxMonthlyAmount: number;
-      numberOfMonthlyPayments: number;
-    };
+    currentTaxPeriod: CurrentTaxPeriodISALimits;
   };
 }
 
-export enum CustomerSearchStatus {
+export interface CurrentTaxPeriodISALimits {
+  taxPeriodCode: string;
+  taxPeriodDescription: string;
+  startDateTime: Date;
+  endDateTime: Date;
+  lumpSumAccepted: boolean;
+  monthlyPaymentsAccepted: boolean;
+  newISAsAccepted: boolean;
+  topUpsAccepted: boolean;
+  totalAnnualAllowance: number;
+  minNewLumpSumAmount: number;
+  minTopUpLumpSumAmount: number;
+  maxLumpSumAmount: number;
+  minNewMonthlyAmount: number;
+  minTopUpMonthlyAmount: number;
+  maxMonthlyAmount: number;
+  numberOfMonthlyPayments: number;
+}
+
+export const enum CustomerSearchStatus {
   NO_MATCH,
   EXACT_MATCH,
   PROBABLE_MATCH,
@@ -81,11 +83,11 @@ export enum CustomerSearchStatus {
 
 export type CustomerSearchStatusStrings = keyof typeof CustomerSearchStatus;
 
-export enum ProductSearchStatus {
+export const enum ProductSearchStatus {
   NOT_FOUND,
   FOUND_TOPUP,
   FOUND_WUTM,
   FOUND_INVALID,
 }
 
-export type ProductSearchStatusStringsStrings = keyof typeof ProductSearchStatus;
+export type ProductSearchStatusStrings = keyof typeof ProductSearchStatus;

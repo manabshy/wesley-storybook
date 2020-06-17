@@ -10,6 +10,7 @@ import {
 
 import { InvestmentOptionsFacade } from '../core/investment-options.facade';
 import { isaRoutesNames } from '../isa-journey.routes.names';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'wes-investment-options-page',
@@ -18,6 +19,10 @@ import { isaRoutesNames } from '../isa-journey.routes.names';
 })
 export class InvestmentOptionsPageComponent implements OnInit {
   pageContent: InvestmentOptions;
+  pageContent$: Observable<InvestmentOptions> = this.investmentOptionsFacade
+    .pageContent$;
+  currentTaxPeriodISALimits$ = this.investmentOptionsFacade
+    .currentTaxPeriodISALimits$;
 
   nextPageLink = {
     singleLumpSum: isaRoutesNames.LUMP_SUM_INVESTMENT,
@@ -28,13 +33,15 @@ export class InvestmentOptionsPageComponent implements OnInit {
   formValid$ = this.formsManager.validityChanges('investmentOptions');
 
   constructor(
-    private configService: ConfigService,
     private investmentOptionsFacade: InvestmentOptionsFacade,
     private router: Router,
     private formsManager: NgFormsManager,
     private titleService: Title
   ) {
-    this.pageContent = this.configService.content.investmentOptions;
+    this.pageContent$.subscribe((content) => {
+      this.pageContent = content;
+      this.titleService.setTitle(content.metaTitle);
+    });
     console.log(this.pageContent);
 
     this.titleService.setTitle(this.pageContent.metaTitle);

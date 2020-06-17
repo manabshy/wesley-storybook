@@ -23,7 +23,7 @@ export interface CurrentTaxPeriod {
 }
 
 export interface GenericLookup {
-  categoryCode: string;
+  categoryCode: CategoryCodeStrings;
   members: Member[];
 }
 
@@ -31,3 +31,11 @@ export interface Member {
   memberId: string;
   customerDescription: string;
 }
+
+export const enum CategoryCode {
+  TITLE = 'TITLE',
+  MARKET_SEGMENT = 'MARKET_SEGMENT',
+  NATIONALITY = 'NATIONALITY',
+}
+
+export type CategoryCodeStrings = keyof typeof CategoryCode;

@@ -102,7 +102,7 @@ export class ISAApiService {
     const mock = {
       data: {
         customerSearch: {
-          customerSearchStatus: 'NO_MATC',
+          customerSearchStatus: 'NO_MATCH',
           customerId: 123456,
         },
         productSearch: {
@@ -130,6 +130,6 @@ export class ISAApiService {
       },
     };
     return of(mock);
-    return this.http.post('/api/isawebapiwrapper/customersearch', data);
+    // return this.http.post('/api/isawebapiwrapper/customersearch', data);
   }
 }

@@ -8,7 +8,7 @@ import {
   Validators,
   AbstractControl,
 } from '@angular/forms';
-import { tap, switchMapTo } from 'rxjs/operators';
+import { tap, switchMapTo, take } from 'rxjs/operators';
 import { Observable, Subscription, BehaviorSubject } from 'rxjs';
 
 import {
@@ -126,6 +126,40 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
         )
         .subscribe()
     );
+
+    //TODO REMOVE TESTING
+    this.form.patchValue({
+      title: '10',
+      firstName: 'Alex',
+      lastName: 'Cote',
+      dob: {
+        day: '01',
+        month: '02',
+        year: '1980',
+      },
+      profession: 'DENTISTS',
+      nationalInsuranceNumber: 'SN 234 234 A',
+      nationality: '119',
+      addressLookup: {
+        postcode: null,
+        selectedAddressId: null,
+      },
+      manualAddress: {
+        flatNumber: null,
+        houseNumber: '9',
+        houseName: null,
+        street: 'Middle Street',
+        town: 'Rowley',
+        region: 'West Midlands',
+        county: null,
+        postcode: 'B62 9HY',
+      },
+      personalEmail: 'alex.cotelin@wesleyan.co.uk',
+      personalMobileNumber: '07553 770 986',
+      marketingEmail: true,
+      marketingPost: null,
+      marketingPhone: null,
+    });
   }
 
   onFindPostcode(postcode: string) {
@@ -180,7 +214,16 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     console.log(this.form);
     if (this.form.valid) {
       this.customerDetailsFacade.submit(this.form.value);
-      this.router.navigate([`/${isaRoutesNames.INVESTMENT_OPTIONS}`]);
+
+      this.customerDetailsFacade.submitSuccessful$
+        .pipe(
+          tap(console.log),
+          tap((_) =>
+            this.router.navigate([`/${isaRoutesNames.INVESTMENT_OPTIONS}`])
+          ),
+          take(1)
+        )
+        .subscribe();
     } else {
       this.showOverallError = true;
     }

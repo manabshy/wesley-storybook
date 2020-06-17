@@ -5,6 +5,7 @@ import {
   ConfigService,
 } from '@wesleyan-frontend/wpisa/data-access';
 import { NgFormsManager } from '@ngneat/forms-manager';
+import { InvestmentOptionsFacade } from '../../core/investment-options.facade';
 
 @Component({
   selector: 'wes-investment-options-form',
@@ -18,9 +19,11 @@ export class InvestmentOptionsFormComponent implements OnInit, OnDestroy {
   constructor(
     private builder: FormBuilder,
     private formsManager: NgFormsManager,
-    private configService: ConfigService
+    private investmentOptionsFacade: InvestmentOptionsFacade
   ) {
-    this.content = this.configService.content.investmentOptions;
+    this.investmentOptionsFacade.pageContent$.subscribe(
+      (content) => (this.content = content)
+    );
   }
 
   ngOnInit(): void {
