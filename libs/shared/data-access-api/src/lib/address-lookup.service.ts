@@ -23,7 +23,7 @@ export class AddressLookupService {
 
   getAddressDetails(id: string) {
     return this.http.get<AddressDetails | null>(
-      `api/lookup/select?moniker=${id}`
+      `api/lookup/select?moniker=${id}&format=experian`
     );
   }
 }

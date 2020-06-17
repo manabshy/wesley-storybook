@@ -96,38 +96,6 @@ export class ISAApiService {
   }
 
   findCustomer(data: SearchCustomerDTO) {
-    const mock = {
-      customerDetails: {
-        title: 'Professor',
-        forename: 'Michael William',
-        surname: 'Harrington-Smythe',
-        dateOfBirth: '1963-07-06',
-        mobilePhoneNumber: '01216005266',
-        niNumber: 'AB112233Z',
-        emailAddress: 'steven.price@griffiths-waite.co.uk',
-        marketSegmentCode: 'HOSDOCS',
-      },
-      currentAddress: {
-        flat: 'Flat 4A',
-        houseName: 'Ivory Towers',
-        street: 'Great Chiswick Street',
-        district: 'Wimbledon',
-        town: 'London',
-        county: 'Down South',
-        postcode: 'SW18 9PP',
-        countryCode: 'UK',
-        countryName: 'United Kingdom',
-      },
-      nationalityDetails: {
-        primaryNationality: 'English',
-      },
-      customerPermissionGranted: true,
-      marketingPreferences: {
-        permitForPost: true,
-        permitForTelephone: true,
-        permitForEmail: true,
-      },
-    };
-    this.http.post('`/api/isawebapiwrapper/customersearch`', data);
+    return this.http.post('/api/isawebapiwrapper/customersearch', data);
   }
 }
