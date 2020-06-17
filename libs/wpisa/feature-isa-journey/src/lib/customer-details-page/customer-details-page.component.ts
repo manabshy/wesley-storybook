@@ -166,13 +166,9 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   }
 
   updateManualAddressFormValues(address: AddressDetails) {
-    this.form.controls.manualAddress.patchValue({
-      postcode: address.postcode,
-      town: address.town,
-      country: address.country,
-      houseNumber: address.line1,
-      street: address.line1,
-    });
+    this.form.controls.manualAddress.patchValue(
+      this.customerDetailsFacade.mapToManualFormAddress(address)
+    );
   }
 
   isFieldInvalid(field: string) {

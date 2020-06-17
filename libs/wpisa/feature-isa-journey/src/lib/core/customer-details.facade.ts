@@ -15,6 +15,8 @@ import { map, take, filter, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { GenericDropdownItem } from './generic-dropdown-item.interface';
 import { CustomerDetailsFormValue } from './customer-details-form.interface';
+import { AddressDetails } from '@wesleyan-frontend/shared/data-access-api';
+import { ManualAddressFormValue } from '../components/manual-address-form/manual-address-form-value.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -164,6 +166,7 @@ export class CustomerDetailsFacade {
 
     return mappedData;
   }
+
   mapCustomerMarketingPreferences(
     value: CustomerDetailsFormValue
   ): MarketingPreferencesDTO {
@@ -174,6 +177,19 @@ export class CustomerDetailsFacade {
     };
 
     return mappedData;
+  }
+
+  mapToManualFormAddress(address: AddressDetails): ManualAddressFormValue {
+    return {
+      postcode: address.postcode,
+      town: address.town,
+      county: address.county,
+      houseNumber: address.buildingNumber,
+      houseName: address.buildingName,
+      street: address.street,
+      flatNumber: address.flat,
+      region: address.district,
+    };
   }
 
   private mapMembersToSelectList(
