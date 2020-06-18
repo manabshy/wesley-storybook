@@ -76,6 +76,7 @@ export interface YourDetailsAddressDetails {
 export interface FormInput {
   inputLabel: string;
   inputError: string;
+  inputOtherError?: string;
 }
 
 export interface YourDetailsContactDetails {

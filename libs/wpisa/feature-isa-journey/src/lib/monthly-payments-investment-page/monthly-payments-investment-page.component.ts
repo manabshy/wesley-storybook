@@ -15,21 +15,25 @@ import { Title } from '@angular/platform-browser';
 })
 export class MonthlyPaymentsInvestmentPageComponent implements OnInit {
   pageContent: MonthlyPayment;
+  submitAttempt = false;
 
   formValid$ = this.formsManager.validityChanges('investmentOptions');
 
   constructor(
-    private configService: ConfigService,
     private investmentOptionsFacade: InvestmentOptionsFacade,
     private router: Router,
     private formsManager: NgFormsManager,
     private titleService: Title
   ) {
-    this.pageContent = this.configService.content.investmentOptions.monthlyPayments.monthlyPayment;
-    console.log(this.pageContent);
-
-    this.titleService.setTitle(this.pageContent.metaTitle);
+    this.investmentOptionsFacade.pageContent$.subscribe((content) => {
+      this.pageContent = content.monthlyPayments.monthlyPayment;
+      this.titleService.setTitle(this.pageContent.metaTitle);
+    });
   }
 
   ngOnInit() {}
+
+  onSubmit() {
+    this.submitAttempt = true;
+  }
 }

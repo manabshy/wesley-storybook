@@ -1,1 +1,28 @@
-<p>monthly-payment-form works!</p>
+<form [formGroup]="form">
+  <div class="form-group">
+    <label for="amount">{{ content.monthlyAmount.inputLabel }}</label>
+    <input
+      class="form-control"
+      type="text"
+      name="amount"
+      formControlName="amount"
+    />
+    <div>{{ content.monthlyHelpText }}</div>
+    <ng-container *ngIf="isFieldInvalid('amount')">
+      <span
+        *ngIf="
+          form.controls.amount.errors.min ||
+          form.controls.amount.errors.required
+        "
+      >
+        {{ content.monthlyAmount.inputOtherError }}
+      </span>
+      <span *ngIf="form.controls.amount.errors.max">
+        {{ content.monthlyAmount.inputError }}
+      </span>
+    </ng-container>
+  </div>
+
+  <ng-content></ng-content>
+</form>
+Valid {{ form.controls.amount.errors | json }}

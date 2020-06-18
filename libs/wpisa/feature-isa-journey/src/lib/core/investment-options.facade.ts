@@ -76,6 +76,17 @@ export class InvestmentOptionsFacade {
               '{min-new-monthly-amount}',
               formatCurrencyGBP(tax.minNewMonthlyAmount)
             ),
+            monthlyAmount: {
+              ...this.pageContent.monthlyPayments.monthlyPayment.monthlyAmount,
+              inputError: this.pageContent.monthlyPayments.monthlyPayment.monthlyAmount.inputError.replace(
+                '{max-monthly-amount}',
+                formatCurrencyGBP(tax.maxMonthlyAmount)
+              ),
+              inputOtherError: this.pageContent.monthlyPayments.monthlyPayment.monthlyAmount.inputOtherError.replace(
+                '{min-new-monthly-amount}',
+                formatCurrencyGBP(tax.minNewMonthlyAmount)
+              ),
+            },
           },
         },
         monthlyAndLumpSum: {
