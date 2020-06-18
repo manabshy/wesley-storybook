@@ -43,8 +43,6 @@ export class InvestmentOptionsPageComponent implements OnInit {
       this.titleService.setTitle(content.metaTitle);
     });
     console.log(this.pageContent);
-
-    this.titleService.setTitle(this.pageContent.metaTitle);
   }
 
   ngOnInit(): void {}

@@ -18,8 +18,6 @@ export class MonthlyPaymentsInvestmentPageComponent implements OnInit {
   pageContent: MonthlyPayment;
   submitAttempt = false;
 
-  formValid$ = this.formsManager.validityChanges('investmentOptions');
-
   constructor(
     private investmentOptionsFacade: InvestmentOptionsFacade,
     private router: Router,
@@ -37,7 +35,10 @@ export class MonthlyPaymentsInvestmentPageComponent implements OnInit {
   onSubmit() {
     this.submitAttempt = true;
 
-    if (this.formsManager.isValid('monthlyPayment')) {
+    if (
+      this.formsManager.isValid('monthlyPayment') &&
+      this.formsManager.isValid('directDebit')
+    ) {
       this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
     }
   }

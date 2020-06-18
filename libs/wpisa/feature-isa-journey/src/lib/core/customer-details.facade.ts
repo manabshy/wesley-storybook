@@ -109,9 +109,7 @@ export class CustomerDetailsFacade {
   }
 
   submit(value: CustomerDetailsFormValue) {
-    const customerDTO = this.mapCustomerFormToSearchCustomerDTO(
-      this.mockFormSubmit
-    );
+    const customerDTO = this.mapCustomerFormToSearchCustomerDTO(value);
 
     this.isaApiService
       .findCustomer(customerDTO)

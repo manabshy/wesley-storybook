@@ -7,6 +7,7 @@ import { InvestmentOptionsFacade } from '../core/investment-options.facade';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { Title } from '@angular/platform-browser';
+import { isaRoutesNames } from '../isa-journey.routes.names';
 
 @Component({
   selector: 'wes-lump-sum-and-monthly-payment-investment-page',
@@ -15,21 +16,31 @@ import { Title } from '@angular/platform-browser';
 })
 export class LumpSumAndMonthlyPaymentInvestmentPageComponent implements OnInit {
   pageContent: MonthlyAndLumpSumPayment;
-
-  formValid$ = this.formsManager.validityChanges('investmentOptions');
+  submitAttempt = false;
 
   constructor(
-    private configService: ConfigService,
     private investmentOptionsFacade: InvestmentOptionsFacade,
     private router: Router,
     private formsManager: NgFormsManager,
     private titleService: Title
   ) {
-    this.pageContent = this.configService.content.investmentOptions.monthlyAndLumpSum.monthlyAndLumpSumPayment;
-    console.log(this.pageContent);
-
-    this.titleService.setTitle(this.pageContent.metaTitle);
+    this.investmentOptionsFacade.pageContent$.subscribe((content) => {
+      this.pageContent = content.monthlyAndLumpSum.monthlyAndLumpSumPayment;
+      this.titleService.setTitle(this.pageContent.metaTitle);
+    });
   }
 
   ngOnInit() {}
+
+  onSubmit() {
+    this.submitAttempt = true;
+
+    if (
+      this.formsManager.isValid('monthlyPayment') &&
+      this.formsManager.isValid('directDebit') &&
+      this.formsManager.isValid('lumpSumPayment')
+    ) {
+      this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
+    }
+  }
 }

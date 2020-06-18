@@ -138,7 +138,10 @@ export class ISAApiService {
         },
       },
     };
-    return of(mock);
-    // return this.http.post('/api/isawebapiwrapper/customersearch', data);
+
+    return this.http.post<CustomerSearchResponse>(
+      '/api/isawebapiwrapper/customersearch',
+      data
+    );
   }
 }

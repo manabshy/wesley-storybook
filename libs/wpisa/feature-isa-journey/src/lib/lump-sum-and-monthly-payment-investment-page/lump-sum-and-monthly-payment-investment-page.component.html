@@ -1,1 +1,14 @@
 <h3>{{ pageContent.heading }}</h3>
+<div [innerHtml]="pageContent.summary"></div>
+<wes-lump-sum-payment-form
+  [submitAttempt]="submitAttempt"
+></wes-lump-sum-payment-form>
+<hr />
+<wes-monthly-payment-form
+  [submitAttempt]="submitAttempt"
+></wes-monthly-payment-form>
+<wes-direct-debit-form [submitAttempt]="submitAttempt"></wes-direct-debit-form>
+
+<button type="submit" (click)="onSubmit()">
+  {{ pageContent.nextButtonLabel }}
+</button>

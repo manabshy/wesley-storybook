@@ -19,8 +19,6 @@ export class LumpSumInvestmentPageComponent implements OnInit {
   pageContent: LumpSumPayment;
   submitAttempt = false;
 
-  formValid$ = this.formsManager.validityChanges('investmentOptions');
-
   constructor(
     private investmentOptionsFacade: InvestmentOptionsFacade,
     private router: Router,
