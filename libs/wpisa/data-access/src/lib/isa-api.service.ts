@@ -19,11 +19,11 @@ import {
 export class ISAApiService {
   constructor(private http: HttpClient) {}
 
-  submitAnswer(
-    answer: KnowledgeCheckAnswerDTO
+  submitInitialAnswer(
+    answer: Omit<KnowledgeCheckAnswerDTO, 'attemptId'>
   ): Observable<KnowledgeCheckResponse> {
     return this.http.post<KnowledgeCheckResponse>(
-      `/api/isawebapiwrapper/knowledgecheck`,
+      `/api/isawebapiwrapper/knowledgecheckstepinitial`,
       answer,
       {
         headers: new HttpHeaders().set(
@@ -31,6 +31,15 @@ export class ISAApiService {
           'application/x-www-form-urlencoded'
         ),
       }
+    );
+  }
+
+  submitSubsequentAnswer(
+    answer: KnowledgeCheckAnswerDTO
+  ): Observable<KnowledgeCheckResponse> {
+    return this.http.put<KnowledgeCheckResponse>(
+      `/api/isawebapiwrapper/knowledgecheckstepsubsequent`,
+      answer
     );
   }
 

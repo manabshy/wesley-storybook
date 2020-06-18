@@ -10,6 +10,8 @@ import { MonthlyPaymentsInvestmentPageComponent } from './monthly-payments-inves
 import { LumpSumAndMonthlyPaymentInvestmentPageComponent } from './lump-sum-and-monthly-payment-investment-page/lump-sum-and-monthly-payment-investment-page.component';
 import { DeclarationPageComponent } from './declaration-page/declaration-page.component';
 import { PaymentPageComponent } from './payment-page/payment-page.component';
+import { KnowledgeCheckQ1PageComponent } from './knowledge-check-q1-page/knowledge-check-q1-page.component';
+import { KnowledgeCheckQ2PageComponent } from './knowledge-check-q2-page/knowledge-check-q2-page.component';
 
 export const routes: Route[] = [
   {
@@ -20,6 +22,16 @@ export const routes: Route[] = [
   {
     path: isaRoutesNames.KNOWLEDGE_CHECK,
     component: KnowledgeCheckPageComponent,
+    data: { step: 0 },
+  },
+  {
+    path: isaRoutesNames.KNOWLEDGE_CHECK_Q1,
+    component: KnowledgeCheckQ1PageComponent,
+    data: { step: 0 },
+  },
+  {
+    path: isaRoutesNames.KNOWLEDGE_CHECK_Q2,
+    component: KnowledgeCheckQ2PageComponent,
     data: { step: 0 },
   },
   {

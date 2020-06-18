@@ -1,7 +1,6 @@
 export interface KnowledgeCheckAnswerDTO {
-  attemptId?: string;
+  attemptId: string;
   questionIndex: number;
-  questionText: string;
   answer: string;
 }
 

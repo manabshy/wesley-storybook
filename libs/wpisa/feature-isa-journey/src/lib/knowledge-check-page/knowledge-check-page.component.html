@@ -1,10 +1,12 @@
-<wes-custom-stepper #stepper linear>
-  <cdk-step>
-    <h3>{{ pageContent.intro.heading }}</h3>
-    <div [innerHtml]="pageContent.intro.summary"></div>
+<h3>{{ pageContent.intro.heading }}</h3>
+<div [innerHtml]="pageContent.intro.summary"></div>
 
-    <button cdkStepperNext>{{ pageContent.intro.nextButtonLabel }}</button>
-  </cdk-step>
+<button (click)="onNextClicked()">
+  {{ pageContent.intro.nextButtonLabel }}
+</button>
+
+<!-- <wes-custom-stepper #stepper linear>
+  <cdk-step> </cdk-step>
 
   <cdk-step>
     <h3>{{ pageContent.knowledgeCheck.step1.heading }}</h3>
@@ -31,4 +33,4 @@
       </button>
     </wes-knowledge-check-q2-form>
   </cdk-step>
-</wes-custom-stepper>
+</wes-custom-stepper> -->

@@ -1,0 +1,10 @@
+<button>
+  {{ pageContent.knowledgeCheck.step2.backButtonLabel }}
+</button>
+<h3>{{ pageContent.knowledgeCheck.step2.heading }}</h3>
+
+<wes-knowledge-check-q2-form (submit)="submitQuestion2()">
+  <button type="submit" [disabled]="!(q2Valid$ | async)">
+    {{ pageContent.knowledgeCheck.step2.nextButtonLabel }}
+  </button>
+</wes-knowledge-check-q2-form>

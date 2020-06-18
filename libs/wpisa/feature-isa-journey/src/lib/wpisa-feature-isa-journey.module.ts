@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Route } from '@angular/router';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -24,6 +23,8 @@ import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { MonthlyPaymentFormComponent } from './components/monthly-payment-form/monthly-payment-form.component';
 import { LumpSumPaymentFormComponent } from './components/lump-sum-payment-form/lump-sum-payment-form.component';
 import { DirectDebitFormComponent } from './components/direct-debit-form/direct-debit-form.component';
+import { KnowledgeCheckQ1PageComponent } from './knowledge-check-q1-page/knowledge-check-q1-page.component';
+import { KnowledgeCheckQ2PageComponent } from './knowledge-check-q2-page/knowledge-check-q2-page.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -33,6 +34,8 @@ import { DirectDebitFormComponent } from './components/direct-debit-form/direct-
   ],
   declarations: [
     KnowledgeCheckPageComponent,
+    KnowledgeCheckQ1PageComponent,
+    KnowledgeCheckQ2PageComponent,
     CustomerDetailsPageComponent,
     CustomStepperComponent,
     KnowledgeCheckQ1FormComponent,
