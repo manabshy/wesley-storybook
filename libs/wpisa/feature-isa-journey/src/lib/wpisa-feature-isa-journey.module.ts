@@ -21,6 +21,9 @@ import { MonthlyPaymentsInvestmentPageComponent } from './monthly-payments-inves
 import { LumpSumAndMonthlyPaymentInvestmentPageComponent } from './lump-sum-and-monthly-payment-investment-page/lump-sum-and-monthly-payment-investment-page.component';
 import { DeclarationPageComponent } from './declaration-page/declaration-page.component';
 import { PaymentPageComponent } from './payment-page/payment-page.component';
+import { MonthlyPaymentFormComponent } from './components/monthly-payment-form/monthly-payment-form.component';
+import { LumpSumPaymentFormComponent } from './components/lump-sum-payment-form/lump-sum-payment-form.component';
+import { DirectDebitFormComponent } from './components/direct-debit-form/direct-debit-form.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -45,6 +48,9 @@ import { PaymentPageComponent } from './payment-page/payment-page.component';
     LumpSumAndMonthlyPaymentInvestmentPageComponent,
     DeclarationPageComponent,
     PaymentPageComponent,
+    MonthlyPaymentFormComponent,
+    LumpSumPaymentFormComponent,
+    DirectDebitFormComponent,
   ],
 })
 export class WpisaFeatureIsaJourneyModule {}

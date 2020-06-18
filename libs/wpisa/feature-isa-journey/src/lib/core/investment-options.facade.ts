@@ -54,6 +54,18 @@ export class InvestmentOptionsFacade {
               '{min-new-lump-sum-amount}',
               formatCurrencyGBP(tax.minNewLumpSumAmount)
             ),
+            lumpSumAmount: {
+              ...this.pageContent.singleLumpSum.lumpSumPayment.lumpSumAmount,
+              inputError: this.pageContent.singleLumpSum.lumpSumPayment.lumpSumAmount.inputError
+                .replace(
+                  '{min-new-lump-sum-amount}',
+                  formatCurrencyGBP(tax.minNewLumpSumAmount)
+                )
+                .replace(
+                  '{max-lump-sum-amount}',
+                  formatCurrencyGBP(tax.maxLumpSumAmount)
+                ),
+            },
           },
         },
         monthlyPayments: {

@@ -1,0 +1,19 @@
+<form [formGroup]="form">
+  <div class="form-group">
+    <label for="amount">{{ content.lumpSumAmount.inputLabel }}</label>
+    <input
+      class="form-control"
+      type="text"
+      name="amount"
+      formControlName="amount"
+    />
+    <ng-container *ngIf="isFieldInvalid('amount')">
+      <span>
+        {{ content.lumpSumAmount.inputError }}
+      </span>
+    </ng-container>
+  </div>
+
+  <ng-content></ng-content>
+</form>
+Lookup Valid {{ form.valid }}

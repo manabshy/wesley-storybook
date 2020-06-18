@@ -16,21 +16,25 @@ import { Title } from '@angular/platform-browser';
 })
 export class LumpSumInvestmentPageComponent implements OnInit {
   pageContent: LumpSumPayment;
+  submitAttempt = false;
 
   formValid$ = this.formsManager.validityChanges('investmentOptions');
 
   constructor(
-    private configService: ConfigService,
     private investmentOptionsFacade: InvestmentOptionsFacade,
     private router: Router,
     private formsManager: NgFormsManager,
     private titleService: Title
   ) {
-    this.pageContent = this.configService.content.investmentOptions.singleLumpSum.lumpSumPayment;
-    console.log(this.pageContent);
-
-    this.titleService.setTitle(this.pageContent.metaTitle);
+    this.investmentOptionsFacade.pageContent$.subscribe((content) => {
+      this.pageContent = content.singleLumpSum.lumpSumPayment;
+      this.titleService.setTitle(this.pageContent.metaTitle);
+    });
   }
 
   ngOnInit() {}
+
+  onSubmit() {
+    this.submitAttempt = true;
+  }
 }

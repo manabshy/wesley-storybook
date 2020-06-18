@@ -77,9 +77,9 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
       lastName: ['', Validators.required],
       dob: this.fb.group(
         {
-          day: [''],
-          month: [''],
-          year: [''],
+          day: ['', Validators.required],
+          month: ['', Validators.required],
+          year: ['', Validators.required],
         },
         { validators: isaAgeValidator }
       ),

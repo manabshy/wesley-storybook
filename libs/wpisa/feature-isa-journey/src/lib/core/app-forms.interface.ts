@@ -1,6 +1,8 @@
 import { CustomerDetailsFormValue } from './customer-details-form.interface';
 import { ManualAddressFormValue } from '../components/manual-address-form/manual-address-form-value.interface';
 import { AddressLookupFormValue } from '../components/address-lookup-form/address-lookup-form-value.interface';
+import { LumpSumPaymentFormValue } from '../components/lump-sum-payment-form/lump-sum-payment-form-value.interface';
+import { MonthlyPaymentFormValue } from '../components/monthly-payment-form/monthly-payment-form-value.interface';
 
 export interface AppForms {
   knowledgeCheckQ1: {
@@ -15,4 +17,6 @@ export interface AppForms {
   investmentOptions: {
     investmentOption: string;
   };
+  lumpSumPayment: LumpSumPaymentFormValue;
+  monthlyPayment: MonthlyPaymentFormValue;
 }
