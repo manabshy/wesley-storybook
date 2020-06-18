@@ -100,10 +100,9 @@ export class ISAApiService {
         },
       },
     };
-    return of(mock);
 
     return this.http
-      .get<GenericLookupResponse>(`/api/isawebapiwrapper/genericlookup`)
+      .post<GenericLookupResponse>(`/api/isawebapiwrapper/genericlookup`, {})
       .pipe(shareReplay({ bufferSize: 1, refCount: true }));
   }
 

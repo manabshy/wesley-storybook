@@ -6,7 +6,7 @@ import {
   InvestmentOptions,
 } from '@wesleyan-frontend/wpisa/data-access';
 import { CustomerDetailsFacade } from './customer-details.facade';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { formatCurrency } from '@angular/common';
 import { Observable } from 'rxjs';
 
@@ -24,6 +24,7 @@ export class InvestmentOptionsFacade {
   pageContent$: Observable<
     InvestmentOptions
   > = this.currentTaxPeriodISALimits$.pipe(
+    filter((data) => !!data),
     map((tax) => {
       return {
         ...this.pageContent,

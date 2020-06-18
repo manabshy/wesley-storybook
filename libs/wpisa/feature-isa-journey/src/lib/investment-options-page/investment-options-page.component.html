@@ -1,8 +1,10 @@
-<h3>{{ pageContent.heading }}</h3>
-<wes-investment-options-form (submit)="onSubmit()">
-  <button type="submit" [disabled]="!(formValid$ | async)">
-    {{ pageContent.nextButtonLabel }}
-  </button>
-</wes-investment-options-form>
+<ng-container *ngIf="pageContent">
+  <h3>{{ pageContent.heading }}</h3>
+  <wes-investment-options-form (submit)="onSubmit()">
+    <button type="submit" [disabled]="!(formValid$ | async)">
+      {{ pageContent.nextButtonLabel }}
+    </button>
+  </wes-investment-options-form>
+</ng-container>
 
 <!-- <pre>{{ pageContent$ | async | json }}</pre> -->
