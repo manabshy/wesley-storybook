@@ -8,6 +8,7 @@ import { InvestmentOptionsFacade } from '../core/investment-options.facade';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { Title } from '@angular/platform-browser';
+import { isaRoutesNames } from '../isa-journey.routes.names';
 
 @Component({
   selector: 'wes-lump-sum-investment-page',
@@ -36,5 +37,9 @@ export class LumpSumInvestmentPageComponent implements OnInit {
 
   onSubmit() {
     this.submitAttempt = true;
+
+    if (this.formsManager.isValid('lumpSumPayment')) {
+      this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
+    }
   }
 }

@@ -7,6 +7,7 @@ import { InvestmentOptionsFacade } from '../core/investment-options.facade';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { Title } from '@angular/platform-browser';
+import { isaRoutesNames } from '../isa-journey.routes.names';
 
 @Component({
   selector: 'wes-monthly-payments-investment-page',
@@ -35,5 +36,9 @@ export class MonthlyPaymentsInvestmentPageComponent implements OnInit {
 
   onSubmit() {
     this.submitAttempt = true;
+
+    if (this.formsManager.isValid('monthlyPayment')) {
+      this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
+    }
   }
 }
