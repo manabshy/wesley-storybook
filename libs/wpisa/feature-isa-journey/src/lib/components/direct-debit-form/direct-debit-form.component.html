@@ -1,1 +1,78 @@
-<p>direct-debit-form works!</p>
+<form [formGroup]="form">
+  <div>{{ content.bankNameTooltip }}</div>
+  <div class="form-group">
+    <label for="bankName">{{ content.bankName.inputLabel }}</label>
+    <input
+      class="form-control"
+      type="text"
+      name="bankName"
+      formControlName="bankName"
+      spellcheck="false"
+    />
+    <ng-container *ngIf="isFieldInvalid('bankName')">
+      <span>
+        {{ content.bankName.inputError }}
+      </span>
+    </ng-container>
+  </div>
+
+  <div class="form-group">
+    <label for="accountHolderFullName">{{
+      content.accountName.inputLabel
+    }}</label>
+    <input
+      class="form-control"
+      type="text"
+      name="accountHolderFullName"
+      formControlName="accountHolderFullName"
+      spellcheck="false"
+    />
+    <ng-container *ngIf="isFieldInvalid('accountHolderFullName')">
+      <span>
+        {{ content.accountName.inputError }}
+      </span>
+    </ng-container>
+  </div>
+
+  <div class="form-group">
+    <label for="accountNumber">{{ content.accountNumber.inputLabel }}</label>
+    <input
+      class="form-control"
+      type="text"
+      name="accountNumber"
+      formControlName="accountNumber"
+      inputmode="numeric"
+      spellcheck="false"
+    />
+    <ng-container *ngIf="isFieldInvalid('accountNumber')">
+      <span>
+        {{ content.accountNumber.inputError }}
+      </span>
+    </ng-container>
+  </div>
+
+  <div class="form-group">
+    <label for="sortCode">{{ content.sortCode.inputLabel }}</label>
+    <input
+      class="form-control"
+      type="text"
+      name="sortCode"
+      formControlName="sortCode"
+      inputmode="numeric"
+      spellcheck="false"
+    />
+    <ng-container *ngIf="isFieldInvalid('sortCode')">
+      <span>
+        {{ content.sortCode.inputError }}
+      </span>
+    </ng-container>
+  </div>
+  <ng-content></ng-content>
+</form>
+Valid {{ form.valid }}
+
+<div class="direct-debit-guarantee">
+  <h3>{{ content.heading }}</h3>
+  <div [innerHtml]="content.summary"></div>
+  <div [innerHtml]="content.bodyCopy"></div>
+</div>

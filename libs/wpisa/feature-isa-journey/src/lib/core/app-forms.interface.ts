@@ -3,6 +3,7 @@ import { ManualAddressFormValue } from '../components/manual-address-form/manual
 import { AddressLookupFormValue } from '../components/address-lookup-form/address-lookup-form-value.interface';
 import { LumpSumPaymentFormValue } from '../components/lump-sum-payment-form/lump-sum-payment-form-value.interface';
 import { MonthlyPaymentFormValue } from '../components/monthly-payment-form/monthly-payment-form-value.interface';
+import { DirectDebitFormValue } from '../components/direct-debit-form/direct-debit-form-value.interface';
 
 export interface AppForms {
   knowledgeCheckQ1: {
@@ -19,4 +20,5 @@ export interface AppForms {
   };
   lumpSumPayment: LumpSumPaymentFormValue;
   monthlyPayment: MonthlyPaymentFormValue;
+  direcDebit: DirectDebitFormValue;
 }
