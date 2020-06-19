@@ -85,6 +85,43 @@ export const emailValidator: ValidatorFn = (
   return !isValidEmail ? { invalid: true } : null;
 };
 
+export const totalAnnualAllowanceValidator = (
+  lumpSumAmountControl: AbstractControl,
+  numberOfMonthlyPayments: number,
+  totalAnnualAllowance: number
+): ValidatorFn => {
+  return (control: AbstractControl): ValidationErrors => {
+    const isValidTotalAmount = isValidTotalAnnualAllowance(
+      lumpSumAmountControl.value,
+      control.value,
+      numberOfMonthlyPayments,
+      totalAnnualAllowance
+    );
+
+    return !isValidTotalAmount ? { totalAnnualAllowance: true } : null;
+  };
+};
+
+/**
+ * Total investment must not exceed £20,000
+ * (Lump Sum amount + (n x regular contribution amounts)) must not exceed £20,000
+ * @param lumpSumAmount
+ * @param monthlyAmount
+ * @param numberOfMonthlyPayments
+ * @param totalAnnualAllowance
+ */
+const isValidTotalAnnualAllowance = (
+  lumpSumAmount: number,
+  monthlyAmount: number,
+  numberOfMonthlyPayments: number,
+  totalAnnualAllowance: number
+): boolean => {
+  return (
+    lumpSumAmount + numberOfMonthlyPayments * monthlyAmount <=
+    totalAnnualAllowance
+  );
+};
+
 const isEmptyInputValue = (value: any): boolean => {
   // we don't check for string here so it also works with arrays
   return value == null || value.length === 0;

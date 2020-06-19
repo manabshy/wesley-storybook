@@ -1,14 +1,68 @@
 <h3>{{ pageContent.heading }}</h3>
 <div [innerHtml]="pageContent.summary"></div>
-<wes-lump-sum-payment-form
-  [submitAttempt]="submitAttempt"
-></wes-lump-sum-payment-form>
-<hr />
-<wes-monthly-payment-form
-  [submitAttempt]="submitAttempt"
-></wes-monthly-payment-form>
-<wes-direct-debit-form [submitAttempt]="submitAttempt"></wes-direct-debit-form>
 
-<button type="submit" (click)="onSubmit()">
-  {{ pageContent.nextButtonLabel }}
-</button>
+<form [formGroup]="form" wesInvalidControlScroll>
+  <div class="form-group">
+    <label for="lumpSumAmount">{{
+      pageContent.lumpSumAmount.inputLabel
+    }}</label>
+    <input
+      class="form-control"
+      type="text"
+      name="lumpSumAmount"
+      formControlName="lumpSumAmount"
+    />
+    <ng-container *ngIf="isFieldInvalid('lumpSumAmount')">
+      <span>
+        {{ pageContent.lumpSumAmount.inputError }}
+      </span>
+    </ng-container>
+  </div>
+  <div>{{ pageContent.lumpSumTooltip }}</div>
+  <hr />
+
+  <div class="form-group">
+    <label for="monthlyAmount">{{
+      pageContent.monthlyAmount.inputLabel
+    }}</label>
+    <input
+      class="form-control"
+      type="text"
+      name="monthlyAmount"
+      formControlName="monthlyAmount"
+    />
+    <div>{{ pageContent.monthlyHelpText }}</div>
+    <ng-container *ngIf="isFieldInvalid('monthlyAmount')">
+      <span
+        *ngIf="
+          form.controls.monthlyAmount.errors.min ||
+          form.controls.monthlyAmount.errors.required
+        "
+      >
+        {{ pageContent.monthlyAmount.inputOtherError }}
+      </span>
+      <span *ngIf="form.controls.monthlyAmount.errors.max">
+        {{ pageContent.monthlyAmount.inputError }}
+      </span>
+      <span *ngIf="form.controls.monthlyAmount.errors.totalAnnualAllowance">
+        Total is maxxed!
+      </span>
+    </ng-container>
+  </div>
+
+  <wes-direct-debit-form
+    formControlName="directDebit"
+    [submitAttempt]="submitAttempt"
+  ></wes-direct-debit-form>
+
+  <button type="submit" (click)="onSubmit()">
+    {{ pageContent.nextButtonLabel }}
+  </button>
+</form>
+<pre>
+    Valid FULL FORM: {{ form.valid | json }}
+
+    Valid DD {{ form.controls.directDebit.valid }}
+
+    {{ form.value | json }}
+</pre>

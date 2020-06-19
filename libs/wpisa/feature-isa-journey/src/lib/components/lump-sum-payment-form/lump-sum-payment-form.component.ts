@@ -1,7 +1,10 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LumpSumPayment } from '@wesleyan-frontend/wpisa/data-access';
 import { NgFormsManager } from '@ngneat/forms-manager';
+import { take } from 'rxjs/operators';
+
+import { LumpSumPayment } from '@wesleyan-frontend/wpisa/data-access';
+
 import { InvestmentOptionsFacade } from '../../core/investment-options.facade';
 
 @Component({
@@ -25,20 +28,22 @@ export class LumpSumPaymentFormComponent implements OnInit, OnDestroy {
     private formsManager: NgFormsManager,
     private investmentOptionsFacade: InvestmentOptionsFacade
   ) {
-    this.investmentOptionsFacade.pageContent$.subscribe((content) => {
-      this.content = content.singleLumpSum.lumpSumPayment;
-      console.log(content);
-    });
+    this.investmentOptionsFacade.pageContent$
+      .pipe(take(1))
+      .subscribe((content) => {
+        this.content = content.singleLumpSum.lumpSumPayment;
+        console.log(content);
+      });
 
-    this.investmentOptionsFacade.currentTaxPeriodISALimits$.subscribe(
-      (limits) => {
+    this.investmentOptionsFacade.currentTaxPeriodISALimits$
+      .pipe(take(1))
+      .subscribe((limits) => {
         this.form.controls.amount.setValidators([
           Validators.required,
           Validators.min(limits.minNewLumpSumAmount),
           Validators.max(limits.maxLumpSumAmount),
         ]);
-      }
-    );
+      });
   }
 
   ngOnInit(): void {

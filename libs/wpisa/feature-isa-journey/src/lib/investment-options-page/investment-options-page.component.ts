@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
@@ -10,20 +10,20 @@ import {
 
 import { InvestmentOptionsFacade } from '../core/investment-options.facade';
 import { isaRoutesNames } from '../isa-journey.routes.names';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'wes-investment-options-page',
   templateUrl: './investment-options-page.component.html',
   styleUrls: ['./investment-options-page.component.scss'],
 })
-export class InvestmentOptionsPageComponent implements OnInit {
+export class InvestmentOptionsPageComponent implements OnInit, OnDestroy {
   pageContent: InvestmentOptions;
   pageContent$: Observable<InvestmentOptions> = this.investmentOptionsFacade
     .pageContent$;
   currentTaxPeriodISALimits$ = this.investmentOptionsFacade
     .currentTaxPeriodISALimits$;
-
+  subscriptions$ = new Subscription();
   nextPageLink = {
     singleLumpSum: isaRoutesNames.LUMP_SUM_INVESTMENT,
     monthlyPayments: isaRoutesNames.MONTHLY_PAYMENTS_INVESTMENT,
@@ -38,10 +38,12 @@ export class InvestmentOptionsPageComponent implements OnInit {
     private formsManager: NgFormsManager,
     private titleService: Title
   ) {
-    this.pageContent$.subscribe((content) => {
-      this.pageContent = content;
-      this.titleService.setTitle(content.metaTitle);
-    });
+    this.subscriptions$.add(
+      this.pageContent$.subscribe((content) => {
+        this.pageContent = content;
+        this.titleService.setTitle(content.metaTitle);
+      })
+    );
   }
 
   ngOnInit(): void {}
@@ -55,5 +57,8 @@ export class InvestmentOptionsPageComponent implements OnInit {
     if (this.formsManager.isValid('investmentOptions')) {
       this.router.navigate([`/${this.nextPageLink[selectedInvestmentOption]}`]);
     }
+  }
+  ngOnDestroy() {
+    this.subscriptions$.unsubscribe();
   }
 }

@@ -3,6 +3,7 @@ import { MonthlyPayment } from '@wesleyan-frontend/wpisa/data-access';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { InvestmentOptionsFacade } from '../../core/investment-options.facade';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'wes-monthly-payment-form',
@@ -30,15 +31,15 @@ export class MonthlyPaymentFormComponent implements OnInit, OnDestroy {
       console.log(content);
     });
 
-    this.investmentOptionsFacade.currentTaxPeriodISALimits$.subscribe(
-      (limits) => {
+    this.investmentOptionsFacade.currentTaxPeriodISALimits$
+      .pipe(take(1))
+      .subscribe((limits) => {
         this.form.controls.amount.setValidators([
           Validators.required,
           Validators.min(limits.minNewMonthlyAmount),
           Validators.max(limits.maxMonthlyAmount),
         ]);
-      }
-    );
+      });
   }
 
   ngOnInit(): void {

@@ -16,7 +16,7 @@ import {
 import { map, take, filter, tap } from 'rxjs/operators';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { GenericDropdownItem } from './generic-dropdown-item.interface';
-import { CustomerDetailsFormValue } from './customer-details-form.interface';
+import { CustomerDetailsFormValue } from './customer-details-form-value.interface';
 import { AddressDetails } from '@wesleyan-frontend/shared/data-access-api';
 import { ManualAddressFormValue } from '../components/manual-address-form/manual-address-form-value.interface';
 

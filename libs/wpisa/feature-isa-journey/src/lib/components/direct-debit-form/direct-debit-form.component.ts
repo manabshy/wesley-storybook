@@ -1,20 +1,46 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnDestroy,
+  forwardRef,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
+import {
+  FormGroup,
+  Validators,
+  FormBuilder,
+  NG_VALUE_ACCESSOR,
+  ControlValueAccessor,
+} from '@angular/forms';
 import {
   LumpSumPayment,
   DirectDebitDetails,
 } from '@wesleyan-frontend/wpisa/data-access';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { InvestmentOptionsFacade } from '../../core/investment-options.facade';
+import { DirectDebitFormValue } from './direct-debit-form-value.interface';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'wes-direct-debit-form',
   templateUrl: './direct-debit-form.component.html',
   styleUrls: ['./direct-debit-form.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DirectDebitFormComponent),
+      multi: true,
+    },
+  ],
 })
-export class DirectDebitFormComponent implements OnInit, OnDestroy {
+export class DirectDebitFormComponent
+  implements ControlValueAccessor, OnChanges, OnInit, OnDestroy {
   @Input() submitAttempt = false;
+
   content: DirectDebitDetails;
+  private subscription = new Subscription();
 
   form: FormGroup = this.builder.group(
     {
@@ -45,6 +71,9 @@ export class DirectDebitFormComponent implements OnInit, OnDestroy {
     { updateOn: 'blur' }
   );
 
+  onChange: any = (_: DirectDebitFormValue) => {};
+  onTouch: any = () => {};
+
   constructor(
     private builder: FormBuilder,
     private formsManager: NgFormsManager,
@@ -57,6 +86,12 @@ export class DirectDebitFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.subscription.add(
+      this.form.valueChanges.subscribe((value: DirectDebitFormValue) => {
+        this.onChange(value);
+      })
+    );
+
     this.formsManager.upsert('directDebit', this.form, {
       withInitialValue: true,
     });
@@ -69,19 +104,28 @@ export class DirectDebitFormComponent implements OnInit, OnDestroy {
     );
   }
 
+  ngOnChanges(simpleChanges: SimpleChanges) {
+    if (simpleChanges['touched'] && simpleChanges['touched'].currentValue) {
+      this.form.markAllAsTouched();
+    }
+  }
+
+  writeValue(value: null | DirectDebitFormValue): void {
+    if (value) {
+      this.form.reset(value);
+    }
+  }
+
+  registerOnChange(fn: () => {}): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: (_: DirectDebitFormValue) => {}): void {
+    this.onTouch = fn;
+  }
+
   ngOnDestroy() {
     this.formsManager.unsubscribe('directDebit');
+    this.subscription.unsubscribe();
   }
-  //   accountHolderFullName:
-  //   type: string
-  //   maxLength: 100
-  // sortCode:
-  //   type: string
-  //   maxLength: 100
-  // accountNumber:
-  //   type: string
-  //   maxLength: 100
-  // bankName:
-  //   type: string
-  //   maxLength: 100
 }
