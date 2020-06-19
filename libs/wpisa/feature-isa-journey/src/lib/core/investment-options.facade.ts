@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
+import { formatCurrency } from '@angular/common';
+import { Observable } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
+import { assocPath } from 'ramda';
 
 import {
   ISAApiService,
   ConfigService,
   InvestmentOptions,
 } from '@wesleyan-frontend/wpisa/data-access';
+
 import { CustomerDetailsFacade } from './customer-details.facade';
-import { map, filter } from 'rxjs/operators';
-import { formatCurrency } from '@angular/common';
-import { Observable } from 'rxjs';
 
 function formatCurrencyGBP(value: number) {
   return formatCurrency(value, 'en-gb', '£', 'GBP', '1.0-2');
@@ -26,6 +28,18 @@ export class InvestmentOptionsFacade {
   > = this.currentTaxPeriodISALimits$.pipe(
     filter((data) => !!data),
     map((tax) => {
+      const newOb = assocPath(
+        ['summary'],
+        this.pageContent.summary
+          .replace('{tax-year}', tax.taxPeriodDescription)
+          .replace(
+            '{total-annual-allowance}',
+            formatCurrencyGBP(tax.totalAnnualAllowance)
+          ),
+        this.pageContent
+      );
+
+      //   console.log('R', newOb);
       return {
         ...this.pageContent,
         summary: this.pageContent.summary
@@ -114,5 +128,7 @@ export class InvestmentOptionsFacade {
     private customerDetailsFacade: CustomerDetailsFacade
   ) {
     this.pageContent = this.configService.content.investmentOptions;
+
+    assocPath();
   }
 }
