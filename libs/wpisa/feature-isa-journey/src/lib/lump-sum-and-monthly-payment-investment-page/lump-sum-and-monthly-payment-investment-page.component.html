@@ -2,52 +2,51 @@
 <div [innerHtml]="pageContent.summary"></div>
 
 <form [formGroup]="form" wesInvalidControlScroll>
-  <div class="form-group">
-    <label for="lumpSumAmount">{{
-      pageContent.lumpSumAmount.inputLabel
-    }}</label>
-    <input
-      class="form-control"
-      type="text"
-      name="lumpSumAmount"
-      formControlName="lumpSumAmount"
-    />
-    <ng-container *ngIf="isFieldInvalid('lumpSumAmount')">
-      <span>
-        {{ pageContent.lumpSumAmount.inputError }}
-      </span>
-    </ng-container>
-  </div>
-  <div>{{ pageContent.lumpSumTooltip }}</div>
-  <hr />
+  <div class="form-group" formGroupName="totalAmount">
+    <div class="form-group">
+      <label for="lumpSumAmount">{{
+        pageContent.lumpSumAmount.inputLabel
+      }}</label>
+      <input
+        class="form-control"
+        type="text"
+        name="lumpSumAmount"
+        formControlName="lumpSumAmount"
+      />
+      <ng-container *ngIf="isFieldInvalid('totalAmount.lumpSumAmount')">
+        <span>
+          {{ pageContent.lumpSumAmount.inputError }}
+        </span>
+      </ng-container>
+    </div>
+    <div>{{ pageContent.lumpSumTooltip }}</div>
+    <hr />
 
-  <div class="form-group">
-    <label for="monthlyAmount">{{
-      pageContent.monthlyAmount.inputLabel
-    }}</label>
-    <input
-      class="form-control"
-      type="text"
-      name="monthlyAmount"
-      formControlName="monthlyAmount"
-    />
-    <div>{{ pageContent.monthlyHelpText }}</div>
-    <ng-container *ngIf="isFieldInvalid('monthlyAmount')">
-      <span
-        *ngIf="
-          form.controls.monthlyAmount.errors.min ||
-          form.controls.monthlyAmount.errors.required
-        "
-      >
-        {{ pageContent.monthlyAmount.inputOtherError }}
-      </span>
-      <span *ngIf="form.controls.monthlyAmount.errors.max">
-        {{ pageContent.monthlyAmount.inputError }}
-      </span>
-      <span *ngIf="form.controls.monthlyAmount.errors.totalAnnualAllowance">
-        Total is maxxed!
-      </span>
-    </ng-container>
+    <div class="form-group">
+      <label for="monthlyAmount">{{
+        pageContent.monthlyAmount.inputLabel
+      }}</label>
+      <input
+        class="form-control"
+        type="text"
+        name="monthlyAmount"
+        formControlName="monthlyAmount"
+      />
+      <div>{{ pageContent.monthlyHelpText }}</div>
+      <ng-container *ngIf="isFieldInvalid('totalAmount.monthlyAmount')">
+        <span
+          *ngIf="monthlyControl.errors.min || monthlyControl.errors.required"
+        >
+          {{ pageContent.monthlyAmount.inputOtherError }}
+        </span>
+        <span *ngIf="monthlyControl.errors.max">
+          {{ pageContent.monthlyAmount.inputError }}
+        </span>
+        <span *ngIf="monthlyControl.errors.totalAnnualAllowance">
+          Total is maxxed!
+        </span>
+      </ng-container>
+    </div>
   </div>
 
   <wes-direct-debit-form
@@ -59,10 +58,12 @@
     {{ pageContent.nextButtonLabel }}
   </button>
 </form>
-<pre>
+<!-- <pre>
     Valid FULL FORM: {{ form.valid | json }}
 
     Valid DD {{ form.controls.directDebit.valid }}
 
     {{ form.value | json }}
-</pre>
+    {{ monthlyControl.errors | json }}
+
+</pre> -->

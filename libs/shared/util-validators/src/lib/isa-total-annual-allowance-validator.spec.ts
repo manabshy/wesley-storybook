@@ -64,30 +64,32 @@ const invalidValues = [
 describe('totalAnnualAllowanceValidator', () => {
   validValues.forEach((value) =>
     it(`LumpSum:${value.lumpSumAmount} Monthly:${value.monthlyAmount} NoMonths:${value.numberOfMonthlyPayments} should be valid`, () => {
-      const lumpSumControl = new FormControl(value.lumpSumAmount);
-      const monthlyControl = new FormControl(value.monthlyAmount);
+      const formGroup = getTotalAmountFormGroup(value);
 
       expect(
         totalAnnualAllowanceValidator(
-          lumpSumControl,
           value.numberOfMonthlyPayments,
           value.totalAnnualAllowance
-        )(monthlyControl)
+        )(formGroup)
       ).toBeNull();
     })
   );
 
   invalidValues.forEach((value) =>
     it(`LumpSum:${value.lumpSumAmount} Monthly:${value.monthlyAmount} NoMonths:${value.numberOfMonthlyPayments} should be invalid`, () => {
-      const lumpSumControl = new FormControl(value.lumpSumAmount);
-      const monthlyControl = new FormControl(value.monthlyAmount);
+      const formGroup = getTotalAmountFormGroup(value);
       expect(
         totalAnnualAllowanceValidator(
-          lumpSumControl,
           value.numberOfMonthlyPayments,
           value.totalAnnualAllowance
-        )(monthlyControl)
+        )(formGroup)
       ).toEqual({ totalAnnualAllowance: true });
     })
   );
 });
+
+const getTotalAmountFormGroup = (value) =>
+  new FormGroup({
+    lumpSumAmount: new FormControl(value.lumpSumAmount),
+    monthlyAmount: new FormControl(value.monthlyAmount),
+  });

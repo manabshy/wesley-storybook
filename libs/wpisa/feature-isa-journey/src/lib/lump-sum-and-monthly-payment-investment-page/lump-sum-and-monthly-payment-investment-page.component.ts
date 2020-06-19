@@ -20,7 +20,7 @@ import {
   ValidationErrors,
   FormControl,
 } from '@angular/forms';
-import { take } from 'rxjs/operators';
+import { take, tap, filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -34,30 +34,36 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
   submitAttempt = false;
   subscriptions$ = new Subscription();
 
-  form = this.builder.group({
-    lumpSumAmount: [
-      null,
-      {
-        validators: [Validators.required],
-        updateOn: 'blur',
-      },
-    ],
-    monthlyAmount: [
-      null,
-      {
-        validators: [Validators.required],
-        updateOn: 'blur',
-      },
-    ],
+  form = this.fb.group({
+    totalAmount: this.fb.group({
+      lumpSumAmount: [
+        null,
+        {
+          validators: [Validators.required],
+          updateOn: 'blur',
+        },
+      ],
+      monthlyAmount: [
+        null,
+        {
+          validators: [Validators.required],
+          updateOn: 'blur',
+        },
+      ],
+    }),
     directDebit: [null, Validators.required],
   });
+
+  lumpSumControl = this.form.get('totalAmount.lumpSumAmount');
+  monthlyControl = this.form.get('totalAmount.monthlyAmount');
+  totalAmountControl = this.form.get('totalAmount');
 
   constructor(
     private investmentOptionsFacade: InvestmentOptionsFacade,
     private router: Router,
     private formsManager: NgFormsManager,
     private titleService: Title,
-    private builder: FormBuilder
+    private fb: FormBuilder
   ) {
     this.subscriptions$.add(
       this.investmentOptionsFacade.pageContent$.subscribe((content) => {
@@ -69,27 +75,42 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
 
   ngOnInit() {
     this.subscriptions$.add(
-      this.investmentOptionsFacade.currentTaxPeriodISALimits$.subscribe(
-        (limits) => {
-          console.log(limits);
-          this.form.controls.monthlyAmount.setValidators([
-            Validators.required,
-            Validators.min(limits.minNewMonthlyAmount),
-            Validators.max(limits.maxMonthlyAmount),
-            totalAnnualAllowanceValidator(
-              this.form.controls.lumpSumAmount,
-              limits.numberOfMonthlyPayments,
-              limits.totalAnnualAllowance
-            ),
-          ]);
+      this.investmentOptionsFacade.currentTaxPeriodISALimits$
+        .pipe(
+          tap((limits) =>
+            this.lumpSumControl.setValidators([
+              Validators.required,
+              Validators.min(limits.minNewLumpSumAmount),
+              Validators.max(limits.maxLumpSumAmount),
+            ])
+          ),
+          tap((limits) =>
+            this.monthlyControl.setValidators([
+              Validators.required,
+              Validators.min(limits.minNewMonthlyAmount),
+              Validators.max(limits.maxMonthlyAmount),
+            ])
+          ),
+          tap((limits) =>
+            this.totalAmountControl.setValidators([
+              totalAnnualAllowanceValidator(
+                limits.numberOfMonthlyPayments,
+                limits.totalAnnualAllowance
+              ),
+            ])
+          )
+        )
+        .subscribe()
+    );
 
-          this.form.controls.lumpSumAmount.setValidators([
-            Validators.required,
-            Validators.min(limits.minNewLumpSumAmount),
-            Validators.max(limits.maxLumpSumAmount),
-          ]);
-        }
-      )
+    this.subscriptions$.add(
+      this.totalAmountControl.statusChanges
+        .pipe(
+          filter((status) => status === 'INVALID'),
+          filter((_) => this.hasTotalAnnualAllowanceError()),
+          tap((_) => this.setMonthlyFieldInvalid())
+        )
+        .subscribe()
     );
 
     this.formsManager.upsert('lumpSumAndMonthly', this.form, {
@@ -109,6 +130,19 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
     return (
       (this.form.get(fieldName).invalid && this.form.get(fieldName).dirty) ||
       (this.form.get(fieldName).invalid && this.submitAttempt)
+    );
+  }
+
+  private setMonthlyFieldInvalid(): void {
+    return this.monthlyControl.setErrors(this.totalAmountControl.errors, {
+      emitEvent: false,
+    });
+  }
+
+  private hasTotalAnnualAllowanceError(): boolean {
+    return (
+      this.totalAmountControl.errors &&
+      !!this.totalAmountControl.errors.totalAnnualAllowance
     );
   }
 

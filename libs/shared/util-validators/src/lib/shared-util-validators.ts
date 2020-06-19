@@ -86,14 +86,20 @@ export const emailValidator: ValidatorFn = (
 };
 
 export const totalAnnualAllowanceValidator = (
-  lumpSumAmountControl: AbstractControl,
   numberOfMonthlyPayments: number,
   totalAnnualAllowance: number
 ): ValidatorFn => {
-  return (control: AbstractControl): ValidationErrors => {
+  return (control: FormGroup): ValidationErrors => {
+    const lumpSumAmount = control.get('lumpSumAmount').value;
+    const monthlyAmount = control.get('monthlyAmount').value;
+
+    if (isEmptyInputValue(lumpSumAmount) || isEmptyInputValue(monthlyAmount)) {
+      return null;
+    }
+
     const isValidTotalAmount = isValidTotalAnnualAllowance(
-      parseFloat(lumpSumAmountControl.value),
-      parseFloat(control.value),
+      parseFloat(lumpSumAmount),
+      parseFloat(monthlyAmount),
       numberOfMonthlyPayments,
       totalAnnualAllowance
     );
@@ -103,7 +109,7 @@ export const totalAnnualAllowanceValidator = (
 };
 
 /**
- * Total investment must not exceed £20,000
+ * ISA Total investment must not exceed £20,000
  * (Lump Sum amount + (n x regular contribution amounts)) must not exceed £20,000
  * @param lumpSumAmount
  * @param monthlyAmount
