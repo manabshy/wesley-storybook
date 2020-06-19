@@ -1,7 +1,7 @@
 <h3>{{ pageContent.heading }}</h3>
 <div [innerHtml]="pageContent.summary"></div>
 
-<form [formGroup]="form" wesInvalidControlScroll>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
   <div class="form-group" formGroupName="totalAmount">
     <div class="form-group">
       <label for="lumpSumAmount">{{
@@ -54,7 +54,7 @@
     [submitAttempt]="submitAttempt"
   ></wes-direct-debit-form>
 
-  <button type="submit" (click)="onSubmit()">
+  <button type="submit">
     {{ pageContent.nextButtonLabel }}
   </button>
 </form>

@@ -9,6 +9,8 @@ import { NgFormsManager } from '@ngneat/forms-manager';
 import { Title } from '@angular/platform-browser';
 import { isaRoutesNames } from '../isa-journey.routes.names';
 import { Subscription } from 'rxjs';
+import { Validators, FormBuilder } from '@angular/forms';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'wes-monthly-payments-investment-page',
@@ -20,11 +22,23 @@ export class MonthlyPaymentsInvestmentPageComponent
   pageContent: MonthlyPayment;
   submitAttempt = false;
   subscriptions$ = new Subscription();
+  form = this.fb.group({
+    amount: [
+      null,
+      {
+        validators: [Validators.required],
+        updateOn: 'blur',
+      },
+    ],
+    directDebit: [null, Validators.required],
+  });
+  amountControl = this.form.controls.amount;
 
   constructor(
     private investmentOptionsFacade: InvestmentOptionsFacade,
     private router: Router,
     private formsManager: NgFormsManager,
+    private fb: FormBuilder,
     private titleService: Title
   ) {
     this.subscriptions$.add(
@@ -35,20 +49,43 @@ export class MonthlyPaymentsInvestmentPageComponent
     );
   }
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    this.subscriptions$.add(
+      this.investmentOptionsFacade.currentTaxPeriodISALimits$
+        .pipe(
+          tap((limits) =>
+            this.form.controls.amount.setValidators([
+              Validators.required,
+              Validators.min(limits.minNewMonthlyAmount),
+              Validators.max(limits.maxMonthlyAmount),
+            ])
+          )
+        )
+        .subscribe()
+    );
+
+    this.formsManager.upsert('monthlyPayment', this.form, {
+      withInitialValue: true,
+    });
+  }
 
   onSubmit() {
     this.submitAttempt = true;
 
-    if (
-      this.formsManager.isValid('monthlyPayment') &&
-      this.formsManager.isValid('directDebit')
-    ) {
+    if (this.form.valid) {
       this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
     }
   }
 
+  isFieldInvalid(fieldName: string) {
+    return (
+      (this.form.get(fieldName).invalid && this.form.get(fieldName).dirty) ||
+      (this.form.get(fieldName).invalid && this.submitAttempt)
+    );
+  }
+
   ngOnDestroy() {
     this.subscriptions$.unsubscribe();
+    this.formsManager.unsubscribe('monthlyPayment');
   }
 }

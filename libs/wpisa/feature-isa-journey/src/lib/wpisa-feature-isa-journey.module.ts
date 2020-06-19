@@ -20,7 +20,6 @@ import { MonthlyPaymentsInvestmentPageComponent } from './monthly-payments-inves
 import { LumpSumAndMonthlyPaymentInvestmentPageComponent } from './lump-sum-and-monthly-payment-investment-page/lump-sum-and-monthly-payment-investment-page.component';
 import { DeclarationPageComponent } from './declaration-page/declaration-page.component';
 import { PaymentPageComponent } from './payment-page/payment-page.component';
-import { MonthlyPaymentFormComponent } from './components/monthly-payment-form/monthly-payment-form.component';
 import { LumpSumPaymentFormComponent } from './components/lump-sum-payment-form/lump-sum-payment-form.component';
 import { DirectDebitFormComponent } from './components/direct-debit-form/direct-debit-form.component';
 import { KnowledgeCheckQ1PageComponent } from './knowledge-check-q1-page/knowledge-check-q1-page.component';
@@ -51,7 +50,6 @@ import { KnowledgeCheckQ2PageComponent } from './knowledge-check-q2-page/knowled
     LumpSumAndMonthlyPaymentInvestmentPageComponent,
     DeclarationPageComponent,
     PaymentPageComponent,
-    MonthlyPaymentFormComponent,
     LumpSumPaymentFormComponent,
     DirectDebitFormComponent,
   ],

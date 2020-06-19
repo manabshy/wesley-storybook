@@ -2,7 +2,7 @@ import { CustomerDetailsFormValue } from './customer-details-form-value.interfac
 import { ManualAddressFormValue } from '../components/manual-address-form/manual-address-form-value.interface';
 import { AddressLookupFormValue } from '../components/address-lookup-form/address-lookup-form-value.interface';
 import { LumpSumPaymentFormValue } from '../components/lump-sum-payment-form/lump-sum-payment-form-value.interface';
-import { MonthlyPaymentFormValue } from '../components/monthly-payment-form/monthly-payment-form-value.interface';
+import { MonthlyPaymentFormValue } from './monthly-payment-form-value.interface';
 import { DirectDebitFormValue } from '../components/direct-debit-form/direct-debit-form-value.interface';
 import { LumpSumAndMonthlyFormValue } from './lump-sum-and-monthly-form-value.interface';
 
@@ -21,6 +21,6 @@ export interface AppForms {
   };
   lumpSumPayment: LumpSumPaymentFormValue;
   monthlyPayment: MonthlyPaymentFormValue;
-  direcDebit: DirectDebitFormValue;
   lumpSumAndMonthly: LumpSumAndMonthlyFormValue;
+  direcDebit: DirectDebitFormValue;
 }

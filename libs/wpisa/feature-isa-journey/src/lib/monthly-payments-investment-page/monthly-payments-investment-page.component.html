@@ -1,11 +1,42 @@
 <h3>{{ pageContent.heading }}</h3>
 <div [innerHtml]="pageContent.summary"></div>
 
-<wes-monthly-payment-form [submitAttempt]="submitAttempt">
-</wes-monthly-payment-form>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
+  <div class="form-group">
+    <label for="amount">{{ pageContent.monthlyAmount.inputLabel }}</label>
+    <input
+      class="form-control"
+      type="text"
+      name="amount"
+      formControlName="amount"
+    />
+    <div>{{ pageContent.monthlyHelpText }}</div>
+    <ng-container *ngIf="isFieldInvalid('amount')">
+      <span *ngIf="amountControl.errors.min || amountControl.errors.required">
+        {{ pageContent.monthlyAmount.inputOtherError }}
+      </span>
+      <span *ngIf="amountControl.errors.max">
+        {{ pageContent.monthlyAmount.inputError }}
+      </span>
+    </ng-container>
+  </div>
 
-<wes-direct-debit-form [submitAttempt]="submitAttempt"></wes-direct-debit-form>
+  <wes-direct-debit-form
+    formControlName="directDebit"
+    [submitAttempt]="submitAttempt"
+  ></wes-direct-debit-form>
 
-<button type="submit" (click)="onSubmit()">
-  {{ pageContent.nextButtonLabel }}
-</button>
+  <button type="submit">
+    {{ pageContent.nextButtonLabel }}
+  </button>
+</form>
+
+<pre>
+    Valid FULL FORM: {{ form.valid | json }}
+
+    Valid DD {{ form.controls.directDebit.valid }}
+
+    {{ form.value | json }}
+    {{ form.controls.directDebit.errors | json }}
+
+</pre>

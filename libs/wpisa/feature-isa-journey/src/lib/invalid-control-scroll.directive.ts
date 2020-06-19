@@ -41,7 +41,7 @@ export class InvalidControlScrollDirective {
     const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
       'input.ng-invalid, select.ng-invalid'
     );
-    console.log(firstInvalidControl);
+
     this.containerEl.scroll({
       top: this.getTopOffset(firstInvalidControl),
       left: 0,
