@@ -6,6 +6,7 @@ import { NgFormsManager } from '@ngneat/forms-manager';
 import {
   ConfigService,
   InvestmentOptions,
+  CurrentTaxPeriodISALimits,
 } from '@wesleyan-frontend/wpisa/data-access';
 
 import { InvestmentOptionsFacade } from '../core/investment-options.facade';
@@ -19,17 +20,18 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class InvestmentOptionsPageComponent implements OnInit, OnDestroy {
   pageContent: InvestmentOptions;
-  pageContent$: Observable<InvestmentOptions> = this.investmentOptionsFacade
-    .pageContent$;
-  currentTaxPeriodISALimits$ = this.investmentOptionsFacade
-    .currentTaxPeriodISALimits$;
-  subscriptions$ = new Subscription();
+  limits: CurrentTaxPeriodISALimits;
   nextPageLink = {
     singleLumpSum: isaRoutesNames.LUMP_SUM_INVESTMENT,
     monthlyPayments: isaRoutesNames.MONTHLY_PAYMENTS_INVESTMENT,
     monthlyAndLumpSum: isaRoutesNames.LUMP_SUM_AND_MONTHLY_PAYMENT_INVESTMENT,
   };
 
+  pageContent$: Observable<InvestmentOptions> = this.investmentOptionsFacade
+    .pageContent$;
+  currentTaxPeriodISALimits$ = this.investmentOptionsFacade
+    .currentTaxPeriodISALimits$;
+  subscriptions$ = new Subscription();
   formValid$ = this.formsManager.validityChanges('investmentOptions');
 
   constructor(
@@ -42,6 +44,12 @@ export class InvestmentOptionsPageComponent implements OnInit, OnDestroy {
       this.pageContent$.subscribe((content) => {
         this.pageContent = content;
         this.titleService.setTitle(content.metaTitle);
+      })
+    );
+
+    this.subscriptions$.add(
+      this.currentTaxPeriodISALimits$.subscribe((limits) => {
+        this.limits = limits;
       })
     );
   }

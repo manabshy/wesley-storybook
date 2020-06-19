@@ -1,6 +1,11 @@
 <ng-container *ngIf="pageContent">
   <h3>{{ pageContent.heading }}</h3>
-  <wes-investment-options-form (submit)="onSubmit()">
+  <wes-investment-options-form
+    [content]="pageContent$ | async"
+    [isLumpSumAvailable]="limits.lumpSumAccepted"
+    [isMonthlyAvailable]="limits.monthlyPaymentsAccepted"
+    (submit)="onSubmit()"
+  >
     <button type="submit" [disabled]="!(formValid$ | async)">
       {{ pageContent.nextButtonLabel }}
     </button>

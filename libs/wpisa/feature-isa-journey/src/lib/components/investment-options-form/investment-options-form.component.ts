@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   InvestmentOptions,
@@ -13,24 +13,21 @@ import { InvestmentOptionsFacade } from '../../core/investment-options.facade';
   styleUrls: ['./investment-options-form.component.scss'],
 })
 export class InvestmentOptionsFormComponent implements OnInit, OnDestroy {
-  form: FormGroup;
-  content: InvestmentOptions;
+  @Input() content: InvestmentOptions;
+  @Input() isLumpSumAvailable = false;
+  @Input() isMonthlyAvailable = false;
+
+  form: FormGroup = this.builder.group({
+    investmentOption: [null, Validators.required],
+  });
 
   constructor(
     private builder: FormBuilder,
     private formsManager: NgFormsManager,
     private investmentOptionsFacade: InvestmentOptionsFacade
-  ) {
-    this.investmentOptionsFacade.pageContent$.subscribe(
-      (content) => (this.content = content)
-    );
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.form = this.builder.group({
-      investmentOption: [null, Validators.required],
-    });
-
     this.formsManager.upsert('investmentOptions', this.form, {
       withInitialValue: true,
     });

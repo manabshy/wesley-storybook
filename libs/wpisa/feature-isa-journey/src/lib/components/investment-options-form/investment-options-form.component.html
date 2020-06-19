@@ -8,7 +8,11 @@
     aria-labelledby="investment-options-radio-group-label"
     class="wes-radio-group"
   >
-    <div class="wes-radio-button wes-radio-checked" tabindex="-1">
+    <div
+      *ngIf="isLumpSumAvailable"
+      class="wes-radio-button wes-radio-checked"
+      tabindex="-1"
+    >
       <label class="wes-radio-label" for="investment-options-1-radio-input">
         <div class="wes-radio-container">
           <div class="wes-radio-outer-circle"></div>
@@ -30,7 +34,11 @@
       </label>
     </div>
 
-    <div class="wes-radio-button wes-radio-checked" tabindex="-1">
+    <div
+      *ngIf="isMonthlyAvailable"
+      class="wes-radio-button wes-radio-checked"
+      tabindex="-1"
+    >
       <label class="wes-radio-label" for="investment-options-2-radio-input">
         <div class="wes-radio-container">
           <div class="wes-radio-outer-circle"></div>
@@ -52,7 +60,11 @@
       </label>
     </div>
 
-    <div class="wes-radio-button wes-radio-checked" tabindex="-1">
+    <div
+      *ngIf="isLumpSumAvailable && isMonthlyAvailable"
+      class="wes-radio-button wes-radio-checked"
+      tabindex="-1"
+    >
       <label class="wes-radio-label" for="investment-options-3-radio-input">
         <div class="wes-radio-container">
           <div class="wes-radio-outer-circle"></div>

@@ -20,6 +20,24 @@ const validValues = [
     numberOfMonthlyPayments: 0,
     totalAnnualAllowance: 20000,
   },
+  {
+    lumpSumAmount: '1000.50',
+    monthlyAmount: '1466.66',
+    numberOfMonthlyPayments: 12,
+    totalAnnualAllowance: 20000,
+  },
+  {
+    lumpSumAmount: 1000.5,
+    monthlyAmount: 1466.66,
+    numberOfMonthlyPayments: 12,
+    totalAnnualAllowance: 20000,
+  },
+  {
+    lumpSumAmount: 1000.5,
+    monthlyAmount: 1000,
+    numberOfMonthlyPayments: 10,
+    totalAnnualAllowance: 11000.5,
+  },
 ];
 
 const invalidValues = [
@@ -32,6 +50,12 @@ const invalidValues = [
   {
     lumpSumAmount: 2000,
     monthlyAmount: 1666.66,
+    numberOfMonthlyPayments: 11,
+    totalAnnualAllowance: 20000,
+  },
+  {
+    lumpSumAmount: '2000',
+    monthlyAmount: '1666.66',
     numberOfMonthlyPayments: 11,
     totalAnnualAllowance: 20000,
   },

@@ -92,8 +92,8 @@ export const totalAnnualAllowanceValidator = (
 ): ValidatorFn => {
   return (control: AbstractControl): ValidationErrors => {
     const isValidTotalAmount = isValidTotalAnnualAllowance(
-      lumpSumAmountControl.value,
-      control.value,
+      parseFloat(lumpSumAmountControl.value),
+      parseFloat(control.value),
       numberOfMonthlyPayments,
       totalAnnualAllowance
     );
