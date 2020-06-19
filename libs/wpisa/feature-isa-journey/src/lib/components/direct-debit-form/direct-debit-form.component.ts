@@ -13,21 +13,32 @@ import {
   FormBuilder,
   NG_VALUE_ACCESSOR,
   ControlValueAccessor,
+  AbstractControl,
+  ValidationErrors,
+  NG_VALIDATORS,
+  Validator,
 } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { NgFormsManager } from '@ngneat/forms-manager';
+
 import {
   LumpSumPayment,
   DirectDebitDetails,
 } from '@wesleyan-frontend/wpisa/data-access';
-import { NgFormsManager } from '@ngneat/forms-manager';
+
 import { InvestmentOptionsFacade } from '../../core/investment-options.facade';
 import { DirectDebitFormValue } from './direct-debit-form-value.interface';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'wes-direct-debit-form',
   templateUrl: './direct-debit-form.component.html',
   styleUrls: ['./direct-debit-form.component.scss'],
   providers: [
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => DirectDebitFormComponent),
+      multi: true,
+    },
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => DirectDebitFormComponent),
@@ -36,7 +47,7 @@ import { Subscription } from 'rxjs';
   ],
 })
 export class DirectDebitFormComponent
-  implements ControlValueAccessor, OnChanges, OnInit, OnDestroy {
+  implements ControlValueAccessor, Validator, OnChanges, OnInit, OnDestroy {
   @Input() submitAttempt = false;
 
   content: DirectDebitDetails;
@@ -122,6 +133,18 @@ export class DirectDebitFormComponent
 
   registerOnTouched(fn: (_: DirectDebitFormValue) => {}): void {
     this.onTouch = fn;
+  }
+
+  validate(control: AbstractControl): ValidationErrors {
+    if (this.form.valid) {
+      return null;
+    }
+
+    return {
+      invalid: {
+        value: this.form.value,
+      },
+    };
   }
 
   ngOnDestroy() {
