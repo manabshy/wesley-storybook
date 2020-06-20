@@ -6,6 +6,7 @@ import { Title } from '@angular/platform-browser';
 import {
   MonthlyAndLumpSumPayment,
   ConfigService,
+  DirectDebitDetails,
 } from '@wesleyan-frontend/wpisa/data-access';
 
 import { totalAnnualAllowanceValidator } from '@wesleyan-frontend/shared/util-validators';
@@ -31,6 +32,7 @@ import { Subscription } from 'rxjs';
 export class LumpSumAndMonthlyPaymentInvestmentPageComponent
   implements OnInit, OnDestroy {
   pageContent: MonthlyAndLumpSumPayment;
+  directDebitContent: DirectDebitDetails;
   submitAttempt = false;
   subscriptions$ = new Subscription();
 
@@ -68,6 +70,7 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
     this.subscriptions$.add(
       this.investmentOptionsFacade.pageContent$.subscribe((content) => {
         this.pageContent = content.monthlyAndLumpSum.monthlyAndLumpSumPayment;
+        this.directDebitContent = content.directDebitDetails;
         this.titleService.setTitle(this.pageContent.metaTitle);
       })
     );

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   MonthlyPayment,
   ConfigService,
+  DirectDebitDetails,
 } from '@wesleyan-frontend/wpisa/data-access';
 import { InvestmentOptionsFacade } from '../core/investment-options.facade';
 import { Router } from '@angular/router';
@@ -20,6 +21,7 @@ import { tap } from 'rxjs/operators';
 export class MonthlyPaymentsInvestmentPageComponent
   implements OnInit, OnDestroy {
   pageContent: MonthlyPayment;
+  directDebitContent: DirectDebitDetails;
   submitAttempt = false;
   subscriptions$ = new Subscription();
   form = this.fb.group({
@@ -44,6 +46,7 @@ export class MonthlyPaymentsInvestmentPageComponent
     this.subscriptions$.add(
       this.investmentOptionsFacade.pageContent$.subscribe((content) => {
         this.pageContent = content.monthlyPayments.monthlyPayment;
+        this.directDebitContent = content.directDebitDetails;
         this.titleService.setTitle(this.pageContent.metaTitle);
       })
     );

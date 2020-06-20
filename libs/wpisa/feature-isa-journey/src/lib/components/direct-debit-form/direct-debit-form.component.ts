@@ -49,8 +49,8 @@ import { DirectDebitFormValue } from './direct-debit-form-value.interface';
 export class DirectDebitFormComponent
   implements ControlValueAccessor, Validator, OnChanges, OnInit, OnDestroy {
   @Input() submitAttempt = false;
+  @Input() content: DirectDebitDetails;
 
-  content: DirectDebitDetails;
   private subscription = new Subscription();
 
   form: FormGroup = this.builder.group(
@@ -87,14 +87,8 @@ export class DirectDebitFormComponent
 
   constructor(
     private builder: FormBuilder,
-    private formsManager: NgFormsManager,
-    private investmentOptionsFacade: InvestmentOptionsFacade
-  ) {
-    this.investmentOptionsFacade.pageContent$.subscribe((content) => {
-      this.content = content.directDebitDetails;
-      console.log(content);
-    });
-  }
+    private formsManager: NgFormsManager
+  ) {}
 
   ngOnInit(): void {
     this.subscription.add(

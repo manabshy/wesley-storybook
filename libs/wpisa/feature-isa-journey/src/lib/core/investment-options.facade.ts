@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { formatCurrency } from '@angular/common';
 import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
-import { compose, assocPath, replace, over, lensPath } from 'ramda';
+import { map, filter, shareReplay, tap } from 'rxjs/operators';
+import { compose, assocPath, replace, over, lensPath, reduce } from 'ramda';
 
 import {
   ISAApiService,
@@ -28,190 +28,82 @@ export class InvestmentOptionsFacade {
   > = this.currentTaxPeriodISALimits$.pipe(
     filter((data) => !!data),
     map((tax) => {
-      const placeholdersReplaced = compose(
-        over(
-          lensPath(['summary']),
-          compose(
-            replace('{tax-year}', tax.taxPeriodDescription),
-            replace(
-              '{total-annual-allowance}',
-              formatCurrencyGBP(tax.totalAnnualAllowance)
-            )
-          )
-        ),
-        over(
-          lensPath(['singleLumpSum', 'summary']),
+      const replacePlaceholders = (data: string) =>
+        compose(
+          replace('{tax-year}', tax.taxPeriodDescription),
+          replace(
+            '{total-annual-allowance}',
+            formatCurrencyGBP(tax.totalAnnualAllowance)
+          ),
+          replace(
+            '{min-new-monthly-amount}',
+            formatCurrencyGBP(tax.minNewMonthlyAmount)
+          ),
+          replace(
+            '{max-monthly-amount}',
+            formatCurrencyGBP(tax.maxMonthlyAmount)
+          ),
+          replace(
+            '{min-new-lump-sum-amount}',
+            formatCurrencyGBP(tax.minNewLumpSumAmount)
+          ),
           replace(
             '{max-lump-sum-amount}',
             formatCurrencyGBP(tax.maxLumpSumAmount)
           )
-        ),
-        over(
-          lensPath(['singleLumpSum', 'lumpSumPayment', 'summary']),
-          compose(
-            replace(
-              '{min-new-lump-sum-amount}',
-              formatCurrencyGBP(tax.minNewLumpSumAmount)
-            ),
-            replace(
-              '{max-lump-sum-amount}',
-              formatCurrencyGBP(tax.maxLumpSumAmount)
-            )
-          )
-        ),
-        over(
-          lensPath(['singleLumpSum', 'lumpSumPayment', 'lumpSumHelpText']),
-          compose(
-            replace(
-              '{min-new-lump-sum-amount}',
-              formatCurrencyGBP(tax.minNewLumpSumAmount)
-            )
-          )
-        ),
-        over(
-          lensPath([
-            'singleLumpSum',
-            'lumpSumPayment',
-            'lumpSumAmount',
-            'inputError',
-          ]),
-          compose(
-            replace(
-              '{min-new-lump-sum-amount}',
-              formatCurrencyGBP(tax.minNewLumpSumAmount)
-            ),
-            replace(
-              '{max-lump-sum-amount}',
-              formatCurrencyGBP(tax.maxLumpSumAmount)
-            )
-          )
-        ),
-        over(
-          lensPath(['monthlyPayments', 'monthlyPayment', 'monthlyHelpText']),
-          compose(
-            replace(
-              '{min-new-monthly-amount}',
-              formatCurrencyGBP(tax.minNewMonthlyAmount)
-            )
-          )
-        ),
-        over(
-          lensPath([
-            'monthlyPayments',
-            'monthlyPayment',
-            'monthlyAmount',
-            'inputError',
-          ]),
-          compose(
-            replace(
-              '{max-monthly-amount}',
-              formatCurrencyGBP(tax.maxMonthlyAmount)
-            )
-          )
-        ),
-        over(
-          lensPath([
-            'monthlyPayments',
-            'monthlyPayment',
-            'monthlyAmount',
-            'inputOtherError',
-          ]),
-          compose(
-            replace(
-              '{min-new-monthly-amount}',
-              formatCurrencyGBP(tax.minNewMonthlyAmount)
-            )
-          )
-        ),
-        over(
-          lensPath([
-            'monthlyAndLumpSum',
-            'monthlyAndLumpSumPayment',
-            'monthlyHelpText',
-          ]),
-          compose(
-            replace(
-              '{min-new-monthly-amount}',
-              formatCurrencyGBP(tax.minNewMonthlyAmount)
-            )
-          )
-        ),
-        over(
-          lensPath([
-            'monthlyAndLumpSum',
-            'monthlyAndLumpSumPayment',
-            'lumpSumHelpText',
-          ]),
-          compose(
-            replace(
-              '{min-new-lump-sum-amount}',
-              formatCurrencyGBP(tax.minNewLumpSumAmount)
-            )
-          )
-        ),
-        over(
-          lensPath([
-            'monthlyAndLumpSum',
-            'monthlyAndLumpSumPayment',
-            'summary',
-          ]),
-          compose(
-            replace(
-              '{total-annual-allowance}',
-              formatCurrencyGBP(tax.totalAnnualAllowance)
-            )
-          )
-        ),
-        over(
-          lensPath([
-            'monthlyAndLumpSum',
-            'monthlyAndLumpSumPayment',
-            'lumpSumAmount',
-            'inputError',
-          ]),
-          compose(
-            replace(
-              '{min-new-lump-sum-amount}',
-              formatCurrencyGBP(tax.minNewLumpSumAmount)
-            ),
-            replace(
-              '{max-lump-sum-amount}',
-              formatCurrencyGBP(tax.maxLumpSumAmount)
-            )
-          )
-        ),
-        over(
-          lensPath([
-            'monthlyAndLumpSum',
-            'monthlyAndLumpSumPayment',
-            'monthlyAmount',
-            'inputError',
-          ]),
-          compose(
-            replace(
-              '{max-monthly-amount}',
-              formatCurrencyGBP(tax.maxMonthlyAmount)
-            )
-          )
-        ),
-        over(
-          lensPath([
-            'monthlyAndLumpSum',
-            'monthlyAndLumpSumPayment',
-            'monthlyAmount',
-            'inputOtherError',
-          ]),
-          compose(
-            replace(
-              '{min-new-monthly-amount}',
-              formatCurrencyGBP(tax.minNewMonthlyAmount)
-            )
-          )
-        )
-      )(this.pageContent);
+        )(data);
 
-      return placeholdersReplaced;
-    })
+      const stringPaths = [
+        ['summary'],
+        ['singleLumpSum', 'summary'],
+        ['singleLumpSum', 'lumpSumPayment', 'summary'],
+        ['singleLumpSum', 'lumpSumPayment', 'lumpSumHelpText'],
+        ['singleLumpSum', 'lumpSumPayment', 'lumpSumAmount', 'inputError'],
+        ['monthlyPayments', 'monthlyPayment', 'monthlyHelpText'],
+        ['monthlyPayments', 'monthlyPayment', 'monthlyAmount', 'inputError'],
+        [
+          'monthlyPayments',
+          'monthlyPayment',
+          'monthlyAmount',
+          'inputOtherError',
+        ],
+        ['monthlyAndLumpSum', 'monthlyAndLumpSumPayment', 'monthlyHelpText'],
+        ['monthlyAndLumpSum', 'monthlyAndLumpSumPayment', 'lumpSumHelpText'],
+        ['monthlyAndLumpSum', 'monthlyAndLumpSumPayment', 'summary'],
+        [
+          'monthlyAndLumpSum',
+          'monthlyAndLumpSumPayment',
+          'lumpSumAmount',
+          'inputError',
+        ],
+        [
+          'monthlyAndLumpSum',
+          'monthlyAndLumpSumPayment',
+          'monthlyAmount',
+          'inputError',
+        ],
+        [
+          'monthlyAndLumpSum',
+          'monthlyAndLumpSumPayment',
+          'monthlyAmount',
+          'inputOtherError',
+        ],
+      ];
+      const replacePlaceholdersAtPath = (content) => (path: string[]) =>
+        over(lensPath(path), replacePlaceholders, content);
+
+      return reduce(
+        (
+          placeholdersReplaced: InvestmentOptions,
+          pathToBeTransformed: string[]
+        ) =>
+          replacePlaceholdersAtPath(placeholdersReplaced)(pathToBeTransformed),
+        this.pageContent,
+        stringPaths
+      );
+    }),
+    tap((v) => console.log('pageContent$', v)),
+    shareReplay({ bufferSize: 1, refCount: true })
   );
 
   constructor(
