@@ -38,13 +38,13 @@
         <span
           *ngIf="monthlyControl.errors.min || monthlyControl.errors.required"
         >
-          {{ pageContent.monthlyAmount.inputOtherError }}
+          {{ pageContent.monthlyAmount.inputMinError }}
         </span>
         <span *ngIf="monthlyControl.errors.max">
-          {{ pageContent.monthlyAmount.inputError }}
+          {{ pageContent.monthlyAmount.inputMaxError }}
         </span>
         <span *ngIf="monthlyControl.errors.totalAnnualAllowance">
-          Total is maxxed!
+          {{ pageContent.monthlyAmount.inputOtherError }}
         </span>
       </ng-container>
     </div>

@@ -225,22 +225,28 @@
   },
   "declaration": {
     "heading": "Please confirm your details",
-    "summary": "<p />Almost there. Please just double-check the information below, and accept the declaration when you're ready. <p />",
+    "summary": "\u003cp /\u003eAlmost there. Please just double-check th information below, and accept the declaration when you\u0027re ready. \u003cp /\u003e",
     "nextButtonLabel": "Confirm",
     "backButtonLabel": "Back to investment options",
     "editLabel": "Edit details",
-    "yourdetailsLabel": "Your details",
-    "directdebitLabel": "Your Direct Debit details",
-    "yourinvestmentLabel": "Your investment",
+    "yourDetailsLabel": "Your details",
+    "directDebitLabel": "Your Direct Debit details",
+    "yourInvestmentLabel": "Your investment",
     "perMonthLabel": "per month",
-    "totalInvestmentText": "Total investment for the {tax_year}: ",
+    "totalInvestmentText": "Total investment for the {tax_year}:  ",
     "isaLabel": "ISA declaration",
-    "isaRules": "<p>HMRC'S ISA rules require you to make a declaration when applying for a new ISA, to confirm that you are eligible to subscribe. Please read and confirm the declaration below to proceed.</p>",
-    "adviceContent": "<p>The answers you provided at the start of this application indicate you have sufficient understanding of the With Profits ISA.</p>\n<p>As you have not received any advice or a recommendation from us during this application, you will need to make your own choice as to the suitability of this ISA for your circumstances.</p>",
-    "authoriseHeading": "I authorise Wesleyan Assurance Society:",
-    "authoriseContent": "<ul>\n<li>To hold my cash subscriptions, any other proceeds in respect of my ISA investments and any other cash</li>\n<li>To make on my behalf any claims to relief from tax is respect of ISA investments.</li>\n</ul>",
-    "title": "I declare that:",
-    "content": "<ul>\n <li>All subscriptions made, and to be made, belong to me</li>\n <li>I am 18 years of age or over</li>\n <li>I have not subscribed/made payments, and will not subscribe/make payments that exceed the overall subscription limit across any combination of permitted ISAs in the same tax year</li>\n <li>I have not subscribed/made payments and will not subscribe/make payments to another stocks and shares ISA in the same tax year that I subscribe to this one</li>\n <li>I am resident in the United Kingdom for tax purposes or, if not so resident, either perform duties which, by virtue of Section 28 of the Income Tax (Earnings &amp; Pensions) Act 2003 (Crown employees serving overseas), are treated as being performed in the United Kingdom or I am married to, or in civil partnership with, a person who performs such duties. I will inform Wesleyan Assurance Society if I cease to be so resident or to perform such duties, or to be married to, or in a civil partnership with, a person who performs such duties.</li>\n <li>I have checked my application for accuracy and completeness, including any statements not entered by me and it is correct to the best of my knowledge and belief.</li>\n <li>I understand that the With Profits ISA is governed by a standard set of terms and conditions and that Wesleyan Assurance Society will administer the plan in line with these.</li>\n</ul>",
-    "confirmContent": "<p>By clicking Confirm, I acknowledge I have read and understood the declarations and agree to them. I wish to enter into a contract with Wesleyan Assurance Society for a With Profits ISA on the basis set out in this application.</p>"
+    "isaRules": "\u003cp\u003eHMRC\u0027S ISA rules require you to make a declaration when applying for a new ISA,to confirm that you are eligible to subscribe. Please read and confirm the declaration below to proceed.\u003c/p\u003e",
+    "adviceContent": "\u003cp\u003eThe answers you provided at the start of this application indicate you have sufficient understanding of the With Profits ISA.\u003c/p\u003e\n\u003cp\u003eAs you have not received any advice or a recommendation from us during this application, you will need to make your own choice as to the suitability of this ISA for your circumstances.\u003c/p\u003e",
+    "authoriseCheckbox": {
+      "inputLabel": "I authorise Wesleyan Assurance Society: ",
+      "inputError": "Please tick the \u0027I authorise\u0027 checkbox before confirming your declaration"
+    },
+    "authoriseContent": "\u003cul\u003e\n\u003cli\u003eTo hold my cash subscriptions, any other proceeds in respect of my ISA investments and any other cash\u003c/li\u003e\n\u003cli\u003eTo make on my behalf any claims to relief from tax is respect of ISA investments.\u003c/li\u003e\n\u003c/ul\u003e",
+    "declarationCheckbox": {
+      "inputLabel": "I declare that: ",
+      "inputError": "Please tick the \u0027I declare\u0027 checkbox before confirming your declaration"
+    },
+    "content": "\u003cul\u003e\n    \u003cli\u003eAll subscriptions made, and to be made, belong to me\u003c/li\u003e\n    \u003cli\u003eI am 18 years of age or over\u003c/li\u003e\n    \u003cli\u003eI have not subscribed/made payments,and will not subscribe/make payments that exceed the overall subscription limit across any combination of permitted ISAs in the same tax year\u003c/li\u003e\n    \u003cli\u003eI have not subscribed/made payments and will not subscribe/make payments to another stocks and shares ISA in the same tax year that I subscribe to this one\u003c/li\u003e\n    \u003cli\u003eI am resident in the United Kingdom for tax purposes or, if not so resident, either perform duties which, by virtue of Section 28 of the Income Tax (Earnings \u0026amp; Pensions) Act 2003 (Crown employees serving overseas), are treated as being performed in the United Kingdom or I am married to, or in civil partnership with, a person who performs such duties. I will inform Wesleyan Assurance Society if I cease to be so resident or to perform such duties, or to be married to, or in a civil partnership with, a person who performs such duties.\u003c/li\u003e\n    \u003cli\u003eI have checked my application for accuracy and completeness, including any statements not entered by me and it is correct to the best of my knowledge and belief.\u003c/li\u003e\n    \u003cli\u003eI understand that the With Profits ISA is governed by a standard set of terms and conditions and that Wesleyan Assurance Society will administer the plan in line with these.\u003c/li\u003e\n\u003c/ul\u003e",
+    "confirmContent": "\u003cp\u003eBy clicking Confirm, I acknowledge I have read and understood the declarations and agree to them. I wish to enter into a contract with Wesleyan Assurance Society for a With Profits ISA on the basis set out in this application.\u003c/p\u003e"
   }
 }

@@ -217,6 +217,24 @@ export class CustomerDetailsFacade {
     };
   }
 
+  getNationalityById$(id: string) {
+    return this.nationalityList$.pipe(
+      map((list) => list.find((item) => item.value === id).description)
+    );
+  }
+
+  getTitleById$(id: string) {
+    return this.titleList$.pipe(
+      map((list) => list.find((item) => item.value === id).description)
+    );
+  }
+
+  getProfessionById$(id: string) {
+    return this.marketSegmentList$.pipe(
+      map((list) => list.find((item) => item.value === id).description)
+    );
+  }
+
   private mapMembersToSelectList(
     lookup: GenericLookup
   ): { value: string; description: string }[] {

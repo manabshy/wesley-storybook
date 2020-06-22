@@ -5,6 +5,7 @@ import { LumpSumPaymentFormValue } from '../components/lump-sum-payment-form/lum
 import { MonthlyPaymentFormValue } from './monthly-payment-form-value.interface';
 import { DirectDebitFormValue } from '../components/direct-debit-form/direct-debit-form-value.interface';
 import { LumpSumAndMonthlyFormValue } from './lump-sum-and-monthly-form-value.interface';
+import { DeclarationFormValue } from './declaration-form-value.interface';
 
 export interface AppForms {
   knowledgeCheckQ1: {
@@ -23,4 +24,5 @@ export interface AppForms {
   monthlyPayment: MonthlyPaymentFormValue;
   lumpSumAndMonthly: LumpSumAndMonthlyFormValue;
   direcDebit: DirectDebitFormValue;
+  declaration: DeclarationFormValue;
 }

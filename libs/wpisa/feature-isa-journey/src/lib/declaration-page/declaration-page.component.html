@@ -1,1 +1,64 @@
-<p>declaration-page works!</p>
+<a [routerLink]="investmentOptionLink">{{ pageContent.backButtonLabel }}</a>
+<h3>{{ pageContent.heading }}</h3>
+<div [innerHtml]="pageContent.summary"></div>
+
+<pre
+  >{{ personalDetailsContent$ | async | json }}
+</pre>
+
+<h4>{{ pageContent.isaLabel }}</h4>
+<div [innerHtml]="pageContent.isaRules"></div>
+<div [innerHtml]="pageContent.adviceContent"></div>
+<hr />
+<form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
+  <div class="wes-checkbox" id="wes-checkbox-1">
+    <label class="wes-checkbox-layout" for="wes-checkbox-1-input">
+      <div class="wes-checkbox-inner-container">
+        <input
+          type="checkbox"
+          class="wes-checkbox-input cdk-visually-hidden"
+          id="wes-checkbox-1-input"
+          tabindex="0"
+          aria-checked="false"
+          formControlName="authorise"
+        />
+      </div>
+      <span class="wes-checkbox-label">{{
+        pageContent.authoriseCheckbox.inputLabel
+      }}</span>
+      <ng-container *ngIf="isFieldInvalid('authorise')">
+        <span>
+          {{ pageContent.authoriseCheckbox.inputError }}
+        </span>
+      </ng-container>
+    </label>
+  </div>
+  <div [innerHtml]="pageContent.authoriseContent"></div>
+
+  <div class="wes-checkbox" id="wes-checkbox-2">
+    <label class="wes-checkbox-layout" for="wes-checkbox-2-input">
+      <div class="wes-checkbox-inner-container">
+        <input
+          type="checkbox"
+          class="wes-checkbox-input cdk-visually-hidden"
+          id="wes-checkbox-2-input"
+          tabindex="0"
+          aria-checked="false"
+          formControlName="declaration"
+        />
+      </div>
+      <span class="wes-checkbox-label">{{
+        pageContent.declarationCheckbox.inputLabel
+      }}</span>
+      <ng-container *ngIf="isFieldInvalid('declaration')">
+        <span>
+          {{ pageContent.declarationCheckbox.inputError }}
+        </span>
+      </ng-container>
+    </label>
+  </div>
+  <div [innerHtml]="pageContent.content"></div>
+
+  <div [innerHtml]="pageContent.confirmContent"></div>
+  <button type="submit">{{ pageContent.nextButtonLabel }}</button>
+</form>

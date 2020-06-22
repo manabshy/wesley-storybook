@@ -131,7 +131,10 @@ export interface MonthlyAndLumpSumPayment {
   metaTitle: string;
   heading: string;
   summary: string;
-  monthlyAmount: FormInput;
+  monthlyAmount: Omit<FormInput, 'inputError'> & {
+    inputMinError: string;
+    inputMaxError: string;
+  };
   monthlyHelpText: string;
   lumpSumAmount: FormInput;
   lumpSumHelpText: string;
@@ -150,7 +153,10 @@ export interface MonthlyPayment {
   metaTitle: string;
   heading: string;
   summary: string;
-  monthlyAmount: FormInput;
+  monthlyAmount: Omit<FormInput, 'inputError'> & {
+    inputMinError: string;
+    inputMaxError: string;
+  };
   monthlyHelpText: string;
   nextButtonLabel: string;
   backButtonLabel: string;
@@ -174,6 +180,7 @@ export interface LumpSumPayment {
 export interface Declaration {
   heading: string;
   summary: string;
+  metaTitle: string;
   nextButtonLabel: string;
   backButtonLabel: string;
   editLabel: string;
@@ -185,9 +192,9 @@ export interface Declaration {
   isaLabel: string;
   isaRules: string;
   adviceContent: string;
-  authoriseHeading: string;
+  authoriseCheckbox: FormInput;
   authoriseContent: string;
-  title: string;
+  declarationCheckbox: FormInput;
   content: string;
   confirmContent: string;
 }
