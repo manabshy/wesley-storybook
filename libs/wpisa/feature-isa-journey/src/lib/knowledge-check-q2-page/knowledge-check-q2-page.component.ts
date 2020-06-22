@@ -5,8 +5,8 @@ import { take, tap, finalize, takeWhile, switchMap } from 'rxjs/operators';
 import { NgFormsManager } from '@ngneat/forms-manager';
 
 import { ConfigService, Config } from '@wesleyan-frontend/wpisa/data-access';
+
 import { KnowledgeCheckFacade } from '../core/knowledge-check.facade';
-import { CustomStepperComponent } from '../components/custom-stepper/custom-stepper.component';
 import { isaRoutesNames } from '../isa-journey.routes.names';
 
 @Component({
@@ -16,7 +16,7 @@ import { isaRoutesNames } from '../isa-journey.routes.names';
 })
 export class KnowledgeCheckQ2PageComponent implements OnInit {
   pageContent: Config;
-
+  question1Link = `/${isaRoutesNames.KNOWLEDGE_CHECK_Q1}`;
   q2Valid$ = this.formsManager.validityChanges('knowledgeCheckQ2');
 
   constructor(

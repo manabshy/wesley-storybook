@@ -19,6 +19,8 @@ import { Subscription } from 'rxjs';
 export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
   pageContent: LumpSumPayment;
   submitAttempt = false;
+  investmentOptionLink = `/${isaRoutesNames.INVESTMENT_OPTIONS}`;
+
   subscriptions$ = new Subscription();
 
   constructor(

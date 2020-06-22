@@ -26,6 +26,7 @@ export class InvestmentOptionsPageComponent implements OnInit, OnDestroy {
     monthlyPayments: isaRoutesNames.MONTHLY_PAYMENTS_INVESTMENT,
     monthlyAndLumpSum: isaRoutesNames.LUMP_SUM_AND_MONTHLY_PAYMENT_INVESTMENT,
   };
+  yourDetailsLink = `/${isaRoutesNames.YOUR_DETAILS}`;
 
   pageContent$: Observable<InvestmentOptions> = this.investmentOptionsFacade
     .pageContent$;

@@ -23,6 +23,8 @@ export class MonthlyPaymentsInvestmentPageComponent
   pageContent: MonthlyPayment;
   directDebitContent: DirectDebitDetails;
   submitAttempt = false;
+  investmentOptionLink = `/${isaRoutesNames.INVESTMENT_OPTIONS}`;
+
   subscriptions$ = new Subscription();
   form = this.fb.group({
     amount: [

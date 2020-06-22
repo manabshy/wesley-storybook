@@ -16,7 +16,7 @@ import { isaRoutesNames } from '../isa-journey.routes.names';
 })
 export class KnowledgeCheckQ1PageComponent implements OnInit {
   pageContent: Config;
-
+  introLink = `/${isaRoutesNames.KNOWLEDGE_CHECK}`;
   q1Valid$ = this.formsManager.validityChanges('knowledgeCheckQ1');
 
   constructor(
