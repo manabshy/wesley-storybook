@@ -54,21 +54,41 @@ export class DirectDebitFormComponent
 
   private subscription = new Subscription();
 
-  form: FormGroup = this.builder.group(
+  form: FormGroup = this.fb.group(
     {
       accountHolderFullName: [
         null,
         [Validators.required, Validators.maxLength(100)],
       ],
-      sortCode: [
-        null,
-        [
-          Validators.required,
-          Validators.pattern('[0-9]*'),
-          Validators.minLength(6),
-          Validators.maxLength(6),
+      sortCode: this.fb.group({
+        c1: [
+          null,
+          [
+            Validators.required,
+            Validators.pattern('[0-9]*'),
+            Validators.minLength(2),
+            Validators.maxLength(2),
+          ],
         ],
-      ],
+        c2: [
+          null,
+          [
+            Validators.required,
+            Validators.pattern('[0-9]*'),
+            Validators.minLength(2),
+            Validators.maxLength(2),
+          ],
+        ],
+        c3: [
+          null,
+          [
+            Validators.required,
+            Validators.pattern('[0-9]*'),
+            Validators.minLength(2),
+            Validators.maxLength(2),
+          ],
+        ],
+      }),
       accountNumber: [
         null,
         [
@@ -87,7 +107,7 @@ export class DirectDebitFormComponent
   onTouch: any = () => {};
 
   constructor(
-    private builder: FormBuilder,
+    private fb: FormBuilder,
     private formsManager: NgFormsManager<AppForms>
   ) {}
 

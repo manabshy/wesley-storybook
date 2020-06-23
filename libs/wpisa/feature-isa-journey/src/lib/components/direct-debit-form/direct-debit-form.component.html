@@ -52,15 +52,37 @@
       </ng-container>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" formGroupName="sortCode">
       <label for="sortCode">{{ content.sortCode.inputLabel }}</label>
       <input
         class="form-control"
         type="text"
-        name="sortCode"
-        formControlName="sortCode"
+        name="sortCode-c1"
+        formControlName="c1"
         inputmode="numeric"
         spellcheck="false"
+        maxlength="2"
+        wesNumbersOnly
+      />
+      <input
+        class="form-control"
+        type="text"
+        name="sortCode-c2"
+        formControlName="c2"
+        inputmode="numeric"
+        spellcheck="false"
+        maxlength="2"
+        wesNumbersOnly
+      />
+      <input
+        class="form-control"
+        type="text"
+        name="sortCode-c3"
+        formControlName="c3"
+        inputmode="numeric"
+        spellcheck="false"
+        maxlength="2"
+        wesNumbersOnly
       />
       <ng-container *ngIf="isFieldInvalid('sortCode')">
         <span>

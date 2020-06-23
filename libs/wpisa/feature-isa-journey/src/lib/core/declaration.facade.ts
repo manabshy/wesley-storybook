@@ -154,7 +154,10 @@ export class DeclarationFacade implements OnInit {
         label: 'Account number',
         value: formValue.accountNumber,
       },
-      sortCode: { label: 'Sort code', value: formValue.sortCode },
+      sortCode: {
+        label: 'Sort code',
+        value: `${formValue.sortCode.c1}-${formValue.sortCode.c2}-${formValue.sortCode.c3}`,
+      },
     };
   }
 
