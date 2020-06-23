@@ -57,7 +57,7 @@ export class ManualAddressFormComponent
   form = this.fb.group(
     {
       flatNumber: [''],
-      houseNumber: ['', [Validators.required]],
+      houseNumber: [''],
       houseName: [''],
       street: ['', [Validators.required]],
       town: ['', [Validators.required]],
@@ -65,7 +65,10 @@ export class ManualAddressFormComponent
       county: [''],
       postcode: ['', [Validators.required]],
     },
-    { updateOn: 'blur' }
+    {
+      updateOn: 'blur',
+      validators: [this.atLeastOneOf('houseNumber', 'houseName')],
+    }
   );
 
   pageContent: YourDetails;
@@ -105,6 +108,44 @@ export class ManualAddressFormComponent
     if (simpleChanges['touched'] && simpleChanges['touched'].currentValue) {
       this.form.markAllAsTouched();
     }
+  }
+
+  isFieldEmpty(fieldName: string, fg: FormGroup) {
+    const field = fg.get(fieldName).value;
+    if (typeof field === 'number') {
+      return field && field >= 0 ? true : false;
+    }
+    if (typeof field === 'string') {
+      return field && field.length > 0 ? true : false;
+    }
+  }
+
+  atLeastOneOf(...fields: string[]) {
+    return (fg: FormGroup): ValidationErrors | null => {
+      const isValid = fields.some((fieldName) =>
+        this.isFieldEmpty(fieldName, fg)
+      );
+
+      const firstControl = fg.get(fields[0]);
+      if (!isValid) {
+        firstControl.setValidators(Validators.required);
+        firstControl.setErrors({ required: true });
+        firstControl.markAsDirty();
+      } else {
+        firstControl.clearValidators();
+        firstControl.markAsPristine();
+        firstControl.updateValueAndValidity({
+          onlySelf: true,
+          emitEvent: false,
+        });
+      }
+
+      return isValid
+        ? null
+        : ({
+            atLeastOne: true,
+          } as ValidationErrors);
+    };
   }
 
   writeValue(value: null | ManualAddressFormValue): void {

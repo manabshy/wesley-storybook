@@ -183,8 +183,6 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     this.isManualAddressVisible = false;
     this.form.controls.addressLookup.setValidators([Validators.required]);
     this.resetManualAddress();
-
-    this.resetManualAddress();
   }
 
   resetManualAddress() {
