@@ -117,6 +117,8 @@ export class DeclarationFacade implements OnInit {
       this.customerDetailsFacade.currentTaxPeriodISALimits$,
     ]).pipe(
       map(([lumpSumAmount, monthlyAmount, isaLimits]) => ({
+        showLumpSum: lumpSumAmount ? true : false,
+        showMonthly: monthlyAmount ? true : false,
         lumpSumPayment: {
           label: 'Lump-sum amount',
           value: `${formatCurrencyGBP(lumpSumAmount)}`,

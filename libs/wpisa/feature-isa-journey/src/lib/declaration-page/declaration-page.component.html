@@ -2,15 +2,101 @@
 <h3>{{ pageContent.heading }}</h3>
 <div [innerHtml]="pageContent.summary"></div>
 
-<a [routerLink]="yourInvestmentLink">{{ pageContent.editLabel }}</a>
-<a [routerLink]="yourInvestmentLink">{{ pageContent.editLabel }}</a>
-<a [routerLink]="yourDetailsLink">{{ pageContent.editLabel }}</a>
-<pre
+<!-- <pre
   >{{ selectedInvestmentOption$ | async | json }}
   >{{ investmentCardViewModelData$ | async | json }}
   >{{ directDebitContent$ | async | json }}
   >{{ personalDetailsContent$ | async | json }}
-</pre>
+</pre> -->
+<ng-container *ngIf="investmentCardViewModelData$ | async as investment">
+  <div class="wes-investment-card">
+    <div class="wes-card-title">
+      <div>{{ pageContent.yourInvestmentLabel }}</div>
+      <div>
+        <a [routerLink]="yourInvestmentLink">{{ pageContent.editLabel }}</a>
+      </div>
+    </div>
+    <div class="wes-card-body">
+      <div *ngIf="investment.showLumpSum">
+        <span>{{ investment.lumpSumPayment.label }}</span
+        ><span>{{ investment.lumpSumPayment.value }}</span>
+      </div>
+      <div *ngIf="investment.showMonthly">
+        <span>{{ investment.monthlyPayment.label }}</span
+        ><span
+          >{{ investment.monthlyPayment.value }}
+          {{ pageContent.perMonthLabel }}</span
+        >
+      </div>
+      <div>
+        <span>{{ investment.total.label }}</span
+        ><span>{{ investment.total.value }}</span>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="directDebitContent$ | async as dd">
+  <div class="wes-investment-card">
+    <div class="wes-card-title">
+      <div>{{ pageContent.directDebitLabel }}</div>
+      <div>
+        <a [routerLink]="yourInvestmentLink">{{ pageContent.editLabel }}</a>
+      </div>
+    </div>
+    <div class="wes-card-body">
+      <div>
+        <span>{{ dd.accountNumber.label }}</span
+        ><span>{{ dd.accountNumber.value }}</span>
+      </div>
+      <div>
+        <span>{{ dd.sortCode.label }}</span
+        ><span>{{ dd.sortCode.value }}</span>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="personalDetailsContent$ | async as personalDetails">
+  <div class="wes-investment-card">
+    <div class="wes-card-title">
+      <div>{{ pageContent.yourDetailsLabel }}</div>
+      <div>
+        <a [routerLink]="yourDetailsLink">{{ pageContent.editLabel }}</a>
+      </div>
+    </div>
+    <div class="wes-card-body">
+      <div>
+        <span>{{ personalDetails.name.label }}</span
+        ><span>{{ personalDetails.name.value }}</span>
+      </div>
+      <div>
+        <span>{{ personalDetails.dob.label }}</span
+        ><span>{{ personalDetails.dob.value }}</span>
+      </div>
+      <div>
+        <span>{{ personalDetails.profession.label }}</span
+        ><span>{{ personalDetails.profession.value }}</span>
+      </div>
+      <div>
+        <span>{{ personalDetails.nationality.label }}</span
+        ><span>{{ personalDetails.nationality.value }}</span>
+      </div>
+      <div>
+        <span>{{ personalDetails.emailAddress.label }}</span
+        ><span>{{ personalDetails.emailAddress.value }}</span>
+      </div>
+      <div>
+        <span>{{ personalDetails.phoneNumber.label }}</span
+        ><span>{{ personalDetails.phoneNumber.value }}</span>
+      </div>
+      <div>
+        <span>{{ personalDetails.homeAddress.label }}</span
+        ><span>{{ personalDetails.homeAddress.value }}</span>
+      </div>
+    </div>
+  </div>
+</ng-container>
 
 <h4>{{ pageContent.isaLabel }}</h4>
 <div [innerHtml]="pageContent.isaRules"></div>
