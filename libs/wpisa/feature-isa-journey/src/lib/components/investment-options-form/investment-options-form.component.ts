@@ -6,6 +6,8 @@ import {
 } from '@wesleyan-frontend/wpisa/data-access';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { InvestmentOptionsFacade } from '../../core/investment-options.facade';
+import { InvestmentOptionPaymentType } from '../../core/investment-option-form-value.interface';
+import { AppForms } from '../../core/app-forms.interface';
 
 @Component({
   selector: 'wes-investment-options-form',
@@ -17,13 +19,17 @@ export class InvestmentOptionsFormComponent implements OnInit, OnDestroy {
   @Input() isLumpSumAvailable = false;
   @Input() isMonthlyAvailable = false;
 
+  lumpSumValue = InvestmentOptionPaymentType.LUMP_SUM;
+  monthlyValue = InvestmentOptionPaymentType.MONTHLY;
+  monthlyAndLumpSumValue = InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM;
+
   form: FormGroup = this.builder.group({
     investmentOption: [null, Validators.required],
   });
 
   constructor(
     private builder: FormBuilder,
-    private formsManager: NgFormsManager,
+    private formsManager: NgFormsManager<AppForms>,
     private investmentOptionsFacade: InvestmentOptionsFacade
   ) {}
 

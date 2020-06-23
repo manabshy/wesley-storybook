@@ -28,6 +28,7 @@ import {
 
 import { InvestmentOptionsFacade } from '../../core/investment-options.facade';
 import { DirectDebitFormValue } from './direct-debit-form-value.interface';
+import { AppForms } from '../../core/app-forms.interface';
 
 @Component({
   selector: 'wes-direct-debit-form',
@@ -87,7 +88,7 @@ export class DirectDebitFormComponent
 
   constructor(
     private builder: FormBuilder,
-    private formsManager: NgFormsManager
+    private formsManager: NgFormsManager<AppForms>
   ) {}
 
   ngOnInit(): void {

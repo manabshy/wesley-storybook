@@ -2,7 +2,13 @@
 <h3>{{ pageContent.heading }}</h3>
 <div [innerHtml]="pageContent.summary"></div>
 
+<a [routerLink]="yourInvestmentLink">{{ pageContent.editLabel }}</a>
+<a [routerLink]="yourInvestmentLink">{{ pageContent.editLabel }}</a>
+<a [routerLink]="yourDetailsLink">{{ pageContent.editLabel }}</a>
 <pre
+  >{{ selectedInvestmentOption$ | async | json }}
+  >{{ investmentCardViewModelData$ | async | json }}
+  >{{ directDebitContent$ | async | json }}
   >{{ personalDetailsContent$ | async | json }}
 </pre>
 

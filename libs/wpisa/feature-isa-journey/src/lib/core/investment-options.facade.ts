@@ -3,7 +3,7 @@ import { formatCurrency } from '@angular/common';
 import { Observable } from 'rxjs';
 import { map, filter, shareReplay, tap } from 'rxjs/operators';
 import { compose, assocPath, replace, over, lensPath, reduce } from 'ramda';
-
+import { format } from 'date-fns';
 import {
   ISAApiService,
   ConfigService,
@@ -12,10 +12,8 @@ import {
 } from '@wesleyan-frontend/wpisa/data-access';
 
 import { CustomerDetailsFacade } from './customer-details.facade';
+import { formatCurrencyGBP } from './util-functions';
 
-function formatCurrencyGBP(value: number) {
-  return formatCurrency(value, 'en-gb', '£', 'GBP', '1.0-2');
-}
 @Injectable({
   providedIn: 'root',
 })
@@ -49,7 +47,12 @@ export class InvestmentOptionsFacade {
   ) {
     const replacePlaceholders = (data: string) =>
       compose(
-        replace('{tax-year}', tax.taxPeriodDescription),
+        replace(
+          '{tax-year}',
+          format(new Date(tax.startDateTime), 'yyyy') +
+            '/' +
+            format(new Date(tax.endDateTime), 'yy')
+        ),
         replace(
           '{total-annual-allowance}',
           formatCurrencyGBP(tax.totalAnnualAllowance)

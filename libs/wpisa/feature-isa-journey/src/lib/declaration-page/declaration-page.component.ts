@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { isaRoutesNames } from '../isa-journey.routes.names';
 import { Subscription, Observable } from 'rxjs';
-import { InvestmentOptionsFacade } from '../core/investment-options.facade';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { Title } from '@angular/platform-browser';
@@ -9,6 +8,9 @@ import { Declaration } from '@wesleyan-frontend/wpisa/data-access';
 import { DeclarationFacade } from '../core/declaration.facade';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PersonalDetailsViewModel } from '../core/personsal-details-view-model.interface';
+import { DirectDebitViewModel } from '../core/direct-debit-view-model.interface';
+import { tap } from 'rxjs/operators';
+import { InvestmentOptionPaymentType } from '../core/investment-option-form-value.interface';
 
 @Component({
   selector: 'wes-declaration-page',
@@ -19,7 +21,21 @@ export class DeclarationPageComponent implements OnInit, OnDestroy {
   pageContent: Declaration;
   personalDetailsContent$: Observable<PersonalDetailsViewModel> = this
     .declarationFacade.personalDetailsViewModelData$;
+  directDebitContent$: Observable<DirectDebitViewModel> = this.declarationFacade
+    .directDebitViewModelData$;
+  investmentCardViewModelData$ = this.declarationFacade
+    .investmentCardViewModelData$;
+  selectedInvestmentOption$ = this.declarationFacade.selectedInvestmentOption$;
+  investmentOptionsPageLinkMap = {
+    [InvestmentOptionPaymentType.LUMP_SUM]: isaRoutesNames.LUMP_SUM_INVESTMENT,
+    [InvestmentOptionPaymentType.MONTHLY]:
+      isaRoutesNames.MONTHLY_PAYMENTS_INVESTMENT,
+    [InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM]:
+      isaRoutesNames.LUMP_SUM_AND_MONTHLY_PAYMENT_INVESTMENT,
+  };
   investmentOptionLink = `/${isaRoutesNames.INVESTMENT_OPTIONS}`;
+  yourDetailsLink = `/${isaRoutesNames.YOUR_DETAILS}`;
+  yourInvestmentLink = '';
   submitAttempt = false;
   subscriptions$ = new Subscription();
 
@@ -42,6 +58,16 @@ export class DeclarationPageComponent implements OnInit, OnDestroy {
         this.titleService.setTitle(content.metaTitle);
         console.log(this.pageContent);
       })
+    );
+
+    this.subscriptions$.add(
+      this.selectedInvestmentOption$
+        .pipe(
+          tap((investmentOption) => {
+            this.yourInvestmentLink = `/${this.investmentOptionsPageLinkMap[investmentOption]}`;
+          })
+        )
+        .subscribe()
     );
   }
   ngOnInit(): void {

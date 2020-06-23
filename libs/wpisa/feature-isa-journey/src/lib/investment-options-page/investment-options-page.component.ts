@@ -12,6 +12,7 @@ import {
 import { InvestmentOptionsFacade } from '../core/investment-options.facade';
 import { isaRoutesNames } from '../isa-journey.routes.names';
 import { Observable, Subscription } from 'rxjs';
+import { InvestmentOptionPaymentType } from '../core/investment-option-form-value.interface';
 
 @Component({
   selector: 'wes-investment-options-page',
@@ -22,9 +23,11 @@ export class InvestmentOptionsPageComponent implements OnInit, OnDestroy {
   pageContent: InvestmentOptions;
   limits: CurrentTaxPeriodISALimits;
   nextPageLink = {
-    singleLumpSum: isaRoutesNames.LUMP_SUM_INVESTMENT,
-    monthlyPayments: isaRoutesNames.MONTHLY_PAYMENTS_INVESTMENT,
-    monthlyAndLumpSum: isaRoutesNames.LUMP_SUM_AND_MONTHLY_PAYMENT_INVESTMENT,
+    [InvestmentOptionPaymentType.LUMP_SUM]: isaRoutesNames.LUMP_SUM_INVESTMENT,
+    [InvestmentOptionPaymentType.MONTHLY]:
+      isaRoutesNames.MONTHLY_PAYMENTS_INVESTMENT,
+    [InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM]:
+      isaRoutesNames.LUMP_SUM_AND_MONTHLY_PAYMENT_INVESTMENT,
   };
   yourDetailsLink = `/${isaRoutesNames.YOUR_DETAILS}`;
 

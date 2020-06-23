@@ -6,6 +6,7 @@ import { MonthlyPaymentFormValue } from './monthly-payment-form-value.interface'
 import { DirectDebitFormValue } from '../components/direct-debit-form/direct-debit-form-value.interface';
 import { LumpSumAndMonthlyFormValue } from './lump-sum-and-monthly-form-value.interface';
 import { DeclarationFormValue } from './declaration-form-value.interface';
+import { InvestmentOptionFormValue } from './investment-option-form-value.interface';
 
 export interface AppForms {
   knowledgeCheckQ1: {
@@ -17,12 +18,10 @@ export interface AppForms {
   addressLookup: AddressLookupFormValue;
   manualAddress: ManualAddressFormValue;
   customerPersonalDetails: CustomerDetailsFormValue;
-  investmentOptions: {
-    investmentOption: string;
-  };
+  investmentOptions: InvestmentOptionFormValue;
   lumpSumPayment: LumpSumPaymentFormValue;
   monthlyPayment: MonthlyPaymentFormValue;
   lumpSumAndMonthly: LumpSumAndMonthlyFormValue;
-  direcDebit: DirectDebitFormValue;
+  directDebit: DirectDebitFormValue;
   declaration: DeclarationFormValue;
 }
