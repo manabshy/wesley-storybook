@@ -1,12 +1,12 @@
 export interface KnowledgeCheckAnswerDTO {
-  attemptId: string;
+  attemptId: number;
   questionIndex: number;
   answer: string;
 }
 
 export interface KnowledgeCheckResponse {
   data: {
-    attemptId: string;
+    attemptId: number;
     error?: boolean;
   };
 }

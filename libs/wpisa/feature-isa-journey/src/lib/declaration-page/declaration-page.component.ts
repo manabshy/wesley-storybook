@@ -7,9 +7,9 @@ import { Title } from '@angular/platform-browser';
 import { Declaration } from '@wesleyan-frontend/wpisa/data-access';
 import { DeclarationFacade } from '../core/declaration.facade';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PersonalDetailsViewModel } from '../core/personsal-details-view-model.interface';
+import { PersonalDetailsViewModel } from '../core/personal-details-view-model.interface';
 import { DirectDebitViewModel } from '../core/direct-debit-view-model.interface';
-import { tap } from 'rxjs/operators';
+import { tap, filter, switchMapTo } from 'rxjs/operators';
 import { InvestmentOptionPaymentType } from '../core/investment-option-form-value.interface';
 
 @Component({
@@ -80,7 +80,22 @@ export class DeclarationPageComponent implements OnInit, OnDestroy {
     this.submitAttempt = true;
 
     if (this.form.valid) {
-      //   this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
+      this.selectedInvestmentOption$
+        .pipe(
+          filter(
+            (investmentOption) =>
+              investmentOption === InvestmentOptionPaymentType.MONTHLY
+          ),
+          switchMapTo(
+            this.declarationFacade.submitMonthlyISA().pipe(
+              tap(console.log),
+              tap((_) =>
+                this.router.navigate([`/${isaRoutesNames.CONFIRMATION}`])
+              )
+            )
+          )
+        )
+        .subscribe();
     }
   }
 

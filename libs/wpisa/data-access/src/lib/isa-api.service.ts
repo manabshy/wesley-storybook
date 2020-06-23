@@ -12,6 +12,10 @@ import {
   SearchCustomerDTO,
   CustomerSearchResponse,
 } from './customer-details.interface';
+import {
+  SubmitTransactionDTO,
+  GetTransactionIdResponse,
+} from './transaction.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -142,5 +146,18 @@ export class ISAApiService {
       '/api/isawebapiwrapper/customersearch',
       data
     );
+  }
+
+  getTransactionId(): Observable<GetTransactionIdResponse> {
+    return this.http.post<GetTransactionIdResponse>(
+      '/api/isawebapiwrapper/gettransaction',
+      {}
+    );
+  }
+
+  submitTransaction(
+    transaction: Partial<SubmitTransactionDTO>
+  ): Observable<{}> {
+    return this.http.put<{}>('/api/isawebapiwrapper/transaction', {});
   }
 }

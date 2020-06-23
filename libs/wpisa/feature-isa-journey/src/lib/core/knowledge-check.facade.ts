@@ -9,7 +9,7 @@ import { throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class KnowledgeCheckFacade {
-  private knowledgeCheckAttemptId: string;
+  knowledgeCheckAttemptId: number;
 
   constructor(private isaApiService: ISAApiService) {}
 

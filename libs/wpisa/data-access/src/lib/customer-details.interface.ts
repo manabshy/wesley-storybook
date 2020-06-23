@@ -2,12 +2,11 @@ export interface SearchCustomerDTO {
   customerDetails: PersonalDetailsDTO;
   currentAddress: CurrentAddressDTO;
   nationalityDetails?: NationalityDTO;
-  customerPermissionGranted?: boolean;
   marketingPreferences: MarketingPreferencesDTO;
 }
 
 export interface CurrentAddressDTO {
-  flat: string;
+  flat?: string;
   houseName: string;
   houseNumber: string;
   street: string;

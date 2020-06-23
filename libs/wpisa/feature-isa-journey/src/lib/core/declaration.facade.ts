@@ -1,19 +1,37 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Observable, of, BehaviorSubject, combineLatest } from 'rxjs';
-import { map, filter, tap, take, startWith } from 'rxjs/operators';
+import {
+  Observable,
+  of,
+  BehaviorSubject,
+  combineLatest,
+  throwError,
+} from 'rxjs';
+import {
+  map,
+  filter,
+  tap,
+  take,
+  startWith,
+  catchError,
+  switchMap,
+} from 'rxjs/operators';
 import { format } from 'date-fns';
 import {
   ISAApiService,
   ConfigService,
   Declaration,
   CurrentTaxPeriodISALimits,
+  SubmitTransactionDTO,
+  PaymentType,
+  DirectDebitType,
+  OnlineDirectDebitDetails,
 } from '@wesleyan-frontend/wpisa/data-access';
 
 import { CustomerDetailsFacade } from './customer-details.facade';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { AppForms } from './app-forms.interface';
 import { CustomerDetailsFormValue } from './customer-details-form-value.interface';
-import { PersonalDetailsViewModel } from './personsal-details-view-model.interface';
+import { PersonalDetailsViewModel } from './personal-details-view-model.interface';
 import { ManualAddressFormValue } from '../components/manual-address-form/manual-address-form-value.interface';
 import { DirectDebitViewModel } from './direct-debit-view-model.interface';
 import { DirectDebitFormValue } from '../components/direct-debit-form/direct-debit-form-value.interface';
@@ -23,6 +41,8 @@ import {
   InvestmentOptionPaymentTypeStrings,
   InvestmentOptionPaymentType,
 } from './investment-option-form-value.interface';
+import { isaRoutesNames } from '../isa-journey.routes.names';
+import { KnowledgeCheckFacade } from './knowledge-check.facade';
 
 @Injectable({
   providedIn: 'root',
@@ -48,6 +68,7 @@ export class DeclarationFacade implements OnInit {
     private isaApiService: ISAApiService,
     private configService: ConfigService,
     private customerDetailsFacade: CustomerDetailsFacade,
+    private knowledgeCheckFacade: KnowledgeCheckFacade,
     private formManager: NgFormsManager<AppForms>
   ) {
     this.pageContent = this.configService.content.declaration;
@@ -144,8 +165,6 @@ export class DeclarationFacade implements OnInit {
     );
   }
 
-  ngOnInit() {}
-
   mapDirectDebitFormValuesToViewModel(
     formValue: DirectDebitFormValue
   ): DirectDebitViewModel {
@@ -231,6 +250,73 @@ export class DeclarationFacade implements OnInit {
       .subscribe();
 
     return data;
+  }
+
+  submitMonthlyISA() {
+    return this.isaApiService.getTransactionId().pipe(
+      map((result) => result.data.transactionId),
+      switchMap((transactionId) =>
+        this.isaApiService
+          .submitTransaction(this.getMonthlyTransactionDTO(transactionId))
+          .pipe(
+            catchError((err) => {
+              window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+
+              return throwError(err);
+            })
+          )
+      ),
+      catchError((err) => {
+        window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+
+        return throwError(err);
+      })
+    );
+  }
+
+  getMonthlyTransactionDTO(
+    transactionId: string
+  ): Omit<SubmitTransactionDTO, 'lumpPaymentDetails' | 'lumpAmount'> {
+    const mappedCustomerDTO = this.customerDetailsFacade.mapCustomerFormToSearchCustomerDTO(
+      this.formManager.getControl('customerPersonalDetails').value
+    );
+
+    const dto = {
+      currentAddress: mappedCustomerDTO.currentAddress,
+      customerDetails: mappedCustomerDTO.customerDetails,
+      nationalityDetails: mappedCustomerDTO.nationalityDetails,
+      marketingPreferences: mappedCustomerDTO.marketingPreferences,
+      transactionId: transactionId,
+      appTestAttemptId: this.knowledgeCheckFacade.knowledgeCheckAttemptId,
+      taxPeriodCode: '',
+      paymentType: PaymentType.Regular,
+      regularAmount: this.formManager.getControl('monthlyPayment', 'amount')
+        .value,
+      directDebitType: DirectDebitType.ONLINE,
+      onlineDirectDebitDetails: this.mapDirectDebit(
+        this.formManager.getControl('monthlyPayment', 'directDebit').value
+      ),
+      customerPermissionGranted: true,
+    };
+
+    this.customerDetailsFacade.currentTaxPeriodISALimits$
+      .pipe(
+        tap((value) => (dto.taxPeriodCode = value.taxPeriodCode)),
+        take(1)
+      )
+      .subscribe();
+    return dto;
+  }
+
+  mapDirectDebit(value: DirectDebitFormValue): OnlineDirectDebitDetails {
+    return {
+      accountHolderFullName: value.accountHolderFullName,
+      sortCode: `${value.sortCode.c1}-${value.sortCode.c2}-${value.sortCode.c3}`,
+      accountNumber: value.accountNumber,
+      bankName: value.bankName,
+      customerConfimedDD: true,
+      accountValidated: false,
+    };
   }
 
   calculateTotalInvestment(
