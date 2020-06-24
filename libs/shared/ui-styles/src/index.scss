@@ -1,4 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
+@import '~@angular/cdk/overlay-prebuilt.css';
 @import './lib/global';
 @import './lib/vars/globals/index';
 @import './lib/components/wes-stepper';
+@import './lib/components/wes-progress-spinner';

@@ -46,6 +46,9 @@
     },
     "shared-data-access-api": {
       "tags": []
+    },
+    "shared-ui-progress-spinner": {
+      "tags": []
     }
   }
 }

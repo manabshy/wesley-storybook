@@ -33,6 +33,9 @@
       ],
       "@wesleyan-frontend/shared/data-access-api": [
         "libs/shared/data-access-api/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/ui-progress-spinner": [
+        "libs/shared/ui-progress-spinner/src/index.ts"
       ]
     }
   },

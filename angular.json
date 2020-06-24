@@ -37,7 +37,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "none",
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
@@ -320,6 +320,41 @@
             "tsConfig": "libs/shared/data-access-api/tsconfig.spec.json",
             "passWithNoTests": true,
             "setupFile": "libs/shared/data-access-api/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-ui-progress-spinner": {
+      "projectType": "library",
+      "root": "libs/shared/ui-progress-spinner",
+      "sourceRoot": "libs/shared/ui-progress-spinner/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui-progress-spinner/tsconfig.lib.json",
+              "libs/shared/ui-progress-spinner/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/ui-progress-spinner/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui-progress-spinner/jest.config.js",
+            "tsConfig": "libs/shared/ui-progress-spinner/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/ui-progress-spinner/src/test-setup.ts"
           }
         }
       },

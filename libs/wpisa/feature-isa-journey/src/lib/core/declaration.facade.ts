@@ -28,6 +28,7 @@ import {
   DirectDebitType,
   OnlineDirectDebitDetails,
 } from '@wesleyan-frontend/wpisa/data-access';
+import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
 import { CustomerDetailsFacade } from './customer-details.facade';
 import { AppForms } from './app-forms.interface';
@@ -70,7 +71,8 @@ export class DeclarationFacade {
     private configService: ConfigService,
     private customerDetailsFacade: CustomerDetailsFacade,
     private knowledgeCheckFacade: KnowledgeCheckFacade,
-    private formManager: NgFormsManager<AppForms>
+    private formManager: NgFormsManager<AppForms>,
+    private loadingService: OverlayProgressSpinnerService
   ) {
     this.pageContent = this.configService.content.declaration;
     this.pageContentSubject$.next(this.pageContent);
@@ -254,12 +256,15 @@ export class DeclarationFacade {
   }
 
   submitMonthlyISA() {
+    this.loadingService.show();
+
     return this.isaApiService.getTransactionId().pipe(
       map((result) => result.data.transactionId),
       concatMap((transactionId) => {
         const dto = this.getMonthlyTransactionDTO(transactionId);
 
         return this.isaApiService.submitTransaction(dto).pipe(
+          tap((_) => this.loadingService.hide()),
           catchError((err) => {
             window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
             return throwError(err);

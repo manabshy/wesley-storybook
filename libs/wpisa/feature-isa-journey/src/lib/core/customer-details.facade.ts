@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { map, take, filter, tap } from 'rxjs/operators';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 import {
   ISAApiService,
@@ -13,11 +15,11 @@ import {
   CurrentTaxPeriodISALimits,
   CategoryCode,
 } from '@wesleyan-frontend/wpisa/data-access';
-import { map, take, filter, tap } from 'rxjs/operators';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
+import { AddressDetails } from '@wesleyan-frontend/shared/data-access-api';
+
 import { GenericDropdownItem } from './generic-dropdown-item.interface';
 import { CustomerDetailsFormValue } from './customer-details-form-value.interface';
-import { AddressDetails } from '@wesleyan-frontend/shared/data-access-api';
 import { ManualAddressFormValue } from '../components/manual-address-form/manual-address-form-value.interface';
 
 @Injectable({
@@ -75,7 +77,10 @@ export class CustomerDetailsFacade {
     marketingPhone: null,
   };
 
-  constructor(private isaApiService: ISAApiService) {
+  constructor(
+    private isaApiService: ISAApiService,
+    private loadingService: OverlayProgressSpinnerService
+  ) {
     this.genericLookupsResponse$ = this.isaApiService.getGenericListAndProductData();
     this.genericLookups$ = this.genericLookupsResponse$.pipe(
       map((data) => data.data.genericLookups)
@@ -110,6 +115,7 @@ export class CustomerDetailsFacade {
 
   submit(value: CustomerDetailsFormValue) {
     const customerDTO = this.mapCustomerFormToSearchCustomerDTO(value);
+    this.loadingService.show();
 
     this.isaApiService
       .findCustomer(customerDTO)
@@ -120,6 +126,7 @@ export class CustomerDetailsFacade {
           )
         ),
         tap((_) => this.submitSubject$.next(true)),
+        tap((_) => this.loadingService.hide()),
         take(1)
       )
       .subscribe();
