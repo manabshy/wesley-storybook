@@ -1,4 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
+import { NgFormsManager } from '@ngneat/forms-manager';
 import {
   Observable,
   of,
@@ -13,9 +14,10 @@ import {
   take,
   startWith,
   catchError,
-  switchMap,
+  concatMap,
 } from 'rxjs/operators';
 import { format } from 'date-fns';
+
 import {
   ISAApiService,
   ConfigService,
@@ -28,7 +30,6 @@ import {
 } from '@wesleyan-frontend/wpisa/data-access';
 
 import { CustomerDetailsFacade } from './customer-details.facade';
-import { NgFormsManager } from '@ngneat/forms-manager';
 import { AppForms } from './app-forms.interface';
 import { CustomerDetailsFormValue } from './customer-details-form-value.interface';
 import { PersonalDetailsViewModel } from './personal-details-view-model.interface';
@@ -47,7 +48,7 @@ import { KnowledgeCheckFacade } from './knowledge-check.facade';
 @Injectable({
   providedIn: 'root',
 })
-export class DeclarationFacade implements OnInit {
+export class DeclarationFacade {
   private pageContent: Declaration;
   private pageContentSubject$ = new BehaviorSubject<Declaration>(null);
   private personalDetailsViewModelDataSubject$ = new BehaviorSubject<
@@ -255,20 +256,18 @@ export class DeclarationFacade implements OnInit {
   submitMonthlyISA() {
     return this.isaApiService.getTransactionId().pipe(
       map((result) => result.data.transactionId),
-      switchMap((transactionId) =>
-        this.isaApiService
-          .submitTransaction(this.getMonthlyTransactionDTO(transactionId))
-          .pipe(
-            catchError((err) => {
-              window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+      concatMap((transactionId) => {
+        const dto = this.getMonthlyTransactionDTO(transactionId);
 
-              return throwError(err);
-            })
-          )
-      ),
+        return this.isaApiService.submitTransaction(dto).pipe(
+          catchError((err) => {
+            window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+            return throwError(err);
+          })
+        );
+      }),
       catchError((err) => {
         window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
-
         return throwError(err);
       })
     );

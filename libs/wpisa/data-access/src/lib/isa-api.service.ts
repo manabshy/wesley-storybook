@@ -158,6 +158,6 @@ export class ISAApiService {
   submitTransaction(
     transaction: Partial<SubmitTransactionDTO>
   ): Observable<{}> {
-    return this.http.put<{}>('/api/isawebapiwrapper/transaction', {});
+    return this.http.put<{}>('/api/isawebapiwrapper/transaction', transaction);
   }
 }
