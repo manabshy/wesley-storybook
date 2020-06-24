@@ -3,11 +3,23 @@
 <h3>{{ pageContent.heading }}</h3>
 <div [innerHtml]="pageContent.summary"></div>
 
-<wes-lump-sum-payment-form
-  [submitAttempt]="submitAttempt"
-  (submit)="onSubmit()"
->
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="amount">{{ pageContent.lumpSumAmount.inputLabel }}</label>
+    <input
+      class="form-control"
+      type="text"
+      name="amount"
+      formControlName="amount"
+    />
+    <ng-container *ngIf="isFieldInvalid('amount')">
+      <span>
+        {{ pageContent.lumpSumAmount.inputError }}
+      </span>
+    </ng-container>
+  </div>
+
   <button type="submit">
     {{ pageContent.nextButtonLabel }}
   </button>
-</wes-lump-sum-payment-form>
+</form>

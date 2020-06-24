@@ -1,15 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {
-  InvestmentOptions,
-  ConfigService,
-  LumpSumPayment,
-} from '@wesleyan-frontend/wpisa/data-access';
-import { InvestmentOptionsFacade } from '../core/investment-options.facade';
 import { Router } from '@angular/router';
-import { NgFormsManager } from '@ngneat/forms-manager';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-import { isaRoutesNames } from '../isa-journey.routes.names';
+import { NgFormsManager } from '@ngneat/forms-manager';
 import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
+
+import { LumpSumPayment } from '@wesleyan-frontend/wpisa/data-access';
+
+import { InvestmentOptionsFacade } from '../core/investment-options.facade';
+import { isaRoutesNames } from '../isa-journey.routes.names';
 
 @Component({
   selector: 'wes-lump-sum-investment-page',
@@ -23,10 +23,15 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
 
   subscriptions$ = new Subscription();
 
+  form: FormGroup = this.fb.group({
+    amount: [null, [Validators.required]],
+  });
+
   constructor(
     private investmentOptionsFacade: InvestmentOptionsFacade,
     private router: Router,
     private formsManager: NgFormsManager,
+    private fb: FormBuilder,
     private titleService: Title
   ) {
     this.subscriptions$.add(
@@ -35,9 +40,30 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
         this.titleService.setTitle(this.pageContent.metaTitle);
       })
     );
+
+    this.investmentOptionsFacade.currentTaxPeriodISALimits$
+      .pipe(take(1))
+      .subscribe((limits) => {
+        this.form.controls.amount.setValidators([
+          Validators.required,
+          Validators.min(limits.minNewLumpSumAmount),
+          Validators.max(limits.maxLumpSumAmount),
+        ]);
+      });
   }
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    this.formsManager.upsert('lumpSumPayment', this.form, {
+      withInitialValue: true,
+    });
+  }
+
+  isFieldInvalid(fieldName: string) {
+    return (
+      (this.form.get(fieldName).invalid && this.form.get(fieldName).dirty) ||
+      (this.form.get(fieldName).invalid && this.submitAttempt)
+    );
+  }
 
   onSubmit() {
     this.submitAttempt = true;
@@ -48,6 +74,7 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.formsManager.unsubscribe('lumpSumPayment');
     this.subscriptions$.unsubscribe();
   }
 }

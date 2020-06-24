@@ -71,6 +71,7 @@ export class MonthlyPaymentsInvestmentPageComponent
 
     this.formsManager.upsert('monthlyPayment', this.form, {
       withInitialValue: true,
+      persistState: true,
     });
   }
 

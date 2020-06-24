@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
+import {
+  NG_FORMS_MANAGER_CONFIG,
+  NgFormsManagerConfig,
+} from '@ngneat/forms-manager';
 
 import { KnowledgeCheckPageComponent } from './knowledge-check-page/knowledge-check-page.component';
 import { CustomerDetailsPageComponent } from './customer-details-page/customer-details-page.component';
@@ -20,7 +24,6 @@ import { MonthlyPaymentsInvestmentPageComponent } from './monthly-payments-inves
 import { LumpSumAndMonthlyPaymentInvestmentPageComponent } from './lump-sum-and-monthly-payment-investment-page/lump-sum-and-monthly-payment-investment-page.component';
 import { DeclarationPageComponent } from './declaration-page/declaration-page.component';
 import { PaymentPageComponent } from './payment-page/payment-page.component';
-import { LumpSumPaymentFormComponent } from './components/lump-sum-payment-form/lump-sum-payment-form.component';
 import { DirectDebitFormComponent } from './components/direct-debit-form/direct-debit-form.component';
 import { KnowledgeCheckQ1PageComponent } from './knowledge-check-q1-page/knowledge-check-q1-page.component';
 import { KnowledgeCheckQ2PageComponent } from './knowledge-check-q2-page/knowledge-check-q2-page.component';
@@ -50,8 +53,18 @@ import { KnowledgeCheckQ2PageComponent } from './knowledge-check-q2-page/knowled
     LumpSumAndMonthlyPaymentInvestmentPageComponent,
     DeclarationPageComponent,
     PaymentPageComponent,
-    LumpSumPaymentFormComponent,
     DirectDebitFormComponent,
+  ],
+  providers: [
+    {
+      provide: NG_FORMS_MANAGER_CONFIG,
+      useValue: new NgFormsManagerConfig({
+        debounceTime: 200, // defaults to 300
+        storage: {
+          key: 'NgFormManager',
+        },
+      }),
+    },
   ],
 })
 export class WpisaFeatureIsaJourneyModule {}
