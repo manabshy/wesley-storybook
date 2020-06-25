@@ -14,7 +14,13 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e",
+          "build-storybook"
+        ]
       }
     }
   },
@@ -24,7 +30,9 @@
     },
     "wpisa-e2e": {
       "tags": [],
-      "implicitDependencies": ["wpisa"]
+      "implicitDependencies": [
+        "wpisa"
+      ]
     },
     "wpisa-data-access": {
       "tags": []
@@ -55,6 +63,12 @@
     },
     "shared-ui-site-footer": {
       "tags": []
+    },
+    "shared-ui-stepper-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "shared-ui-stepper"
+      ]
     }
   }
 }
