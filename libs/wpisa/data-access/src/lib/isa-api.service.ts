@@ -28,13 +28,7 @@ export class ISAApiService {
   ): Observable<KnowledgeCheckResponse> {
     return this.http.post<KnowledgeCheckResponse>(
       `/api/isawebapiwrapper/knowledgecheckstepinitial`,
-      answer,
-      {
-        headers: new HttpHeaders().set(
-          'Content-Type',
-          'application/x-www-form-urlencoded'
-        ),
-      }
+      answer
     );
   }
 

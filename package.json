@@ -7,7 +7,7 @@
     "nx": "nx",
     "start": "ng serve",
     "build": "ng build",
-    "supply:isa": "ng build --prod --baseHref=/savings-and-investments/with-profits-isa",
+    "supply:isa": "ng build --prod --baseHref=/savings-and-investments/with-profits-isa/apply/ --deployUrl=/assets/Wesleyan/isa/",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",

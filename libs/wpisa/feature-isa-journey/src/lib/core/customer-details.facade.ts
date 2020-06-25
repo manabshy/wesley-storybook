@@ -33,7 +33,6 @@ export class CustomerDetailsFacade {
 
   genericLookupsResponse$: Observable<GenericLookupResponse>;
   genericLookups$: Observable<GenericLookup[]>;
-  currentTaxPeriod$: Observable<CurrentTaxPeriod>;
 
   titleList$: Observable<GenericDropdownItem[]>;
   nationalityList$: Observable<GenericDropdownItem[]>;
@@ -84,9 +83,6 @@ export class CustomerDetailsFacade {
     this.genericLookupsResponse$ = this.isaApiService.getGenericListAndProductData();
     this.genericLookups$ = this.genericLookupsResponse$.pipe(
       map((data) => data.data.genericLookups)
-    );
-    this.currentTaxPeriod$ = this.genericLookupsResponse$.pipe(
-      map((data) => data.data.currentTaxPeriod)
     );
 
     this.titleList$ = this.genericLookups$.pipe(
