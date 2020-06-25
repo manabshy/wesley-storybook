@@ -1,0 +1,130 @@
+.c-financial-summary-breakdown {
+  opacity: 0;
+  height: 0;
+
+  .c-pie-chart__canvas {
+    opacity: 0;
+  }
+
+  @include media-breakpoint-down(md) {
+    .c-pie-chart__chart {
+      width: 250px !important;
+      height: 250px !important;
+      margin: 0 auto;
+    }
+  }
+
+  .c-financial-summary-breakdown__button {
+    @include media-breakpoint-up(sm) {
+      width: rem(150px);
+      margin: rem(30px) auto 0;
+    }
+    @include media-breakpoint-up(md) {
+      margin-top: 0;
+    }
+  }
+
+  &--active {
+    opacity: 1;
+    height: auto;
+
+    .c-financial-summary-breakdown__equation {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease-in-out 0.1s, transform 0.5s ease-in-out 0.1s;
+    }
+
+    @for $i from 1 through 10 {
+      .c-financial-summary-breakdown__details {
+        &:nth-child(#{$i}n) {
+          .c-financial-summary-breakdown__legend {
+            opacity: 1;
+            transform: translateY(0);
+
+            transition: opacity 0.5s ease-in-out 0.1s;
+
+            @include media-breakpoint-up(sm) {
+              transition: opacity 0.5s ease-in-out #{$i * 0.1 + 0.1}s,
+                transform 0.5s ease-in-out #{$i * 0.1 + 0.1}s;
+            }
+          }
+        }
+      }
+    }
+
+    .c-pie-chart__canvas {
+      animation: FadeIn 0.8s 0.5s ease-in forwards;
+    }
+  }
+
+  &__equation {
+    padding: $space * 2 0 $space * 1.5;
+
+    opacity: 0;
+
+    @include media-breakpoint-up(sm) {
+      transform: translateY($space);
+    }
+
+    &__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+
+      &:last-child {
+        justify-content: flex-start;
+      }
+
+      @media (max-width: 374px) {
+        justify-content: flex-start;
+
+        &:first-child {
+          .number--rg {
+            margin-left: 10px;
+          }
+
+          > div:last-child {
+            flex-basis: 100%;
+            margin-top: 10px;
+          }
+        }
+      }
+
+      + .c-financial-summary-breakdown__equation__inner {
+        @include media-breakpoint-down(xs) {
+          margin-top: $space;
+        }
+      }
+    }
+
+    .c-financial-value__value {
+      font-size: 1.625rem;
+    }
+
+    p {
+      white-space: nowrap;
+    }
+  }
+
+  &__details {
+    padding: rem(24px) 0 rem(45px);
+    border-top: 1px solid $color-grey-20;
+    @include media-breakpoint-up(md) {
+      padding-bottom: rem(40px);
+    }
+  }
+
+  &__legend {
+    width: 100%;
+    margin-top: 2 * $space;
+
+    opacity: 0;
+
+    @include media-breakpoint-up(sm) {
+      width: 45%;
+      margin-top: 0;
+      transform: translateY($space);
+    }
+  }
+}

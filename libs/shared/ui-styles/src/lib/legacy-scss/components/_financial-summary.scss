@@ -1,0 +1,11 @@
+.c-financial-summary {
+  overflow: hidden;
+
+  &__disclaimer {
+    background-color: $color-white;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    box-shadow: 0 3px 5px 2px rgba(225, 225, 225, 0.3);
+    border-top: 1px solid $color-grey-20;
+  }
+}

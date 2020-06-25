@@ -1,0 +1,112 @@
+.modal-title {
+  position: absolute;
+  text-transform: none;
+  font-size: 22px;
+}
+
+.modal-header {
+  &.close {
+    margin-top: -35px;
+    margin-right: -35px;
+    margin-bottom: 10px;
+  }
+}
+
+.modal-header,
+.modal-body {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.modal-body {
+  table {
+    td {
+      min-width: 100px;
+    }
+  }
+}
+
+.modal-content {
+  padding: 20px 40px;
+}
+
+.c-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  transition: opacity 0.4s 0.2s;
+  opacity: 0;
+
+  &__inner {
+    position: relative;
+    background: #fff;
+    padding: rem(40px) rem(20px) rem(36px);
+    border-radius: $border-radius;
+    overflow: hidden;
+
+    @include media-breakpoint-up(sm) {
+      padding: rem(32px) rem(40px) rem(36px);
+    }
+
+    @include media-breakpoint-up(md) {
+      padding: rem(50px) rem(30px) rem(36px);
+    }
+
+    h2 {
+      margin-bottom: rem(12px);
+    }
+
+    p {
+      margin-bottom: rem(35px);
+    }
+  }
+
+  &.ReactModal__Content--after-open {
+    opacity: 1;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background-color: rgba(87, 87, 87, 0.3);
+  
+    transition: opacity 0.4s;
+    opacity: 0;
+  
+    &.ReactModal__Overlay--after-open {
+      opacity: 1;
+    }
+  }
+
+  &__oblique {
+    position: absolute;
+    width: 150%;
+    height: 8rem;
+    background-color: $color-grey;
+    transform: rotate(-8deg);
+    z-index: 0;
+    @include rem((
+      top: -80px,
+      left: -90px,
+    ));
+  }
+
+  &__icon {
+    position: relative;
+    margin-bottom: rem(15px);
+
+    @include media-breakpoint-up(sm) {
+      margin-bottom: rem(40px);
+    }
+
+    @include media-breakpoint-up(md) {
+      margin-bottom: rem(15px);
+    }
+  }
+}

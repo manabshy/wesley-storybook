@@ -1,0 +1,203 @@
+/**
+ * Tooltips
+ *
+ * reusable tooltip related mixins and placeholders. Specific tooltips have their
+ * own scss partials.
+ */
+
+@mixin tooltipUpArrow($arrowColor: $color-brand-gold, $position: bottom) {
+  &:after,
+  &:before {
+    #{$position}: 100%;
+    right: 50%;
+    border: solid transparent;
+    content: ' ';
+    height: 0;
+    width: 0;
+    border-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &:before {
+    border-bottom-color: $arrowColor;
+    z-index: 2;
+    @if $position == top {
+      @include rem(
+        (
+          border-width: 7px,
+          margin-right: -7px,
+        )
+      );
+    }
+    @if $position == bottom {
+      @include rem(
+        (
+          border-width: 8px,
+          margin-right: -8px,
+        )
+      );
+    }
+  }
+
+  &:after {
+    border-bottom-color: $color-white;
+    z-index: 3;
+    @if $position == top {
+      @include rem(
+        (
+          border-width: 8px,
+          margin-right: -8px,
+        )
+      );
+    }
+    @if $position == bottom {
+      @include rem(
+        (
+          border-width: 7px,
+          margin-right: -7px,
+        )
+      );
+    }
+  }
+}
+
+@mixin tooltipLeftArrow($arrowColor: $color-brand-gold) {
+  &:after,
+  &:before {
+    bottom: 50%;
+    right: 100%;
+    border: solid transparent;
+    content: ' ';
+    height: 0;
+    width: 0;
+    border-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &:before {
+    border-right-color: $arrowColor;
+    @include rem(
+      (
+        border-width: 8px,
+        margin-bottom: -8px,
+      )
+    );
+  }
+
+  &:after {
+    border-right-color: $color-white;
+    @include rem(
+      (
+        border-width: 7px,
+        margin-bottom: -7px,
+      )
+    );
+  }
+}
+
+@mixin tooltipDownArrow($arrowColor: $color-brand-gold, $position: top) {
+  &:after,
+  &:before {
+    #{$position}: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: ' ';
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &:after {
+    border-color: rgba(0, 0, 0, 0);
+    border-top-color: $color-white;
+    z-index: 2;
+
+    @if $position == top {
+      @include rem(
+        (
+          border-width: 7px,
+          margin-left: -7px,
+        )
+      );
+    }
+    @if $position == bottom {
+      @include rem(
+        (
+          border-width: 8px,
+          margin-left: -8px,
+        )
+      );
+    }
+  }
+
+  &:before {
+    border-color: rgba(0, 0, 0, 0);
+    border-top-color: $arrowColor;
+    z-index: 1;
+
+    @if $position == top {
+      @include rem(
+        (
+          border-width: 8px,
+          margin-left: -8px,
+        )
+      );
+    }
+    @if $position == bottom {
+      @include rem(
+        (
+          border-width: 7px,
+          margin-left: -7px,
+        )
+      );
+    }
+  }
+}
+
+%tooltip {
+  display: inline-block;
+  width: rem(20px);
+  height: rem(20px);
+  font-size: rem(13px);
+  line-height: rem(20px);
+}
+
+%tooltip-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  color: $color-white;
+  background: $color-brand-gold;
+  text-align: center;
+  border-radius: 50%;
+}
+
+%tooltip-box {
+  position: absolute;
+  padding: rem(10px);
+  background: $color-white;
+  border: 1px solid $color-brand-gold;
+  border-radius: $border-radius;
+  color: $color-slate;
+  z-index: 4;
+  transition: opacity 0.25s linear;
+}
+
+%tooltip-text {
+  display: block;
+  text-align: left;
+  font-weight: normal;
+  font-size: rem(12px);
+  line-height: rem(20px);
+}
+
+%tooltip-close {
+  cursor: pointer;
+  position: absolute;
+  top: rem(7px);
+  right: rem(10px);
+}

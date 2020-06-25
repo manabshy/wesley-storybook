@@ -1,0 +1,140 @@
+/**
+ * Help & Support Search
+ */
+.c-help-support-search {
+  &__bg {
+    &--active {
+      position: fixed;
+      z-index: 5;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &__form {
+    position: relative;
+    z-index: 5;
+  }
+
+  &__input {
+    height: rem(79px);
+    padding: $space rem(80px) $space rem(30px);
+    background: $color-white;
+    font-size: rem(17px);
+    border-radius: $border-radius;
+    border: 0;
+    box-shadow: 0 0 5px 2px rgba(30, 38, 48, 0.05);
+    color: rgba($color-slate, 0.7);
+
+    &--showPanel {
+      border-radius: $border-radius $border-radius 0 0;
+    }
+
+    &:focus {
+      border-color: $color-grey-20;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: rem(14px);
+    right: rem(11px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: rem(50px);
+    height: rem(50px);
+    border: 2px solid $color-brand-gold;
+    background: $color-white;
+  }
+
+  &__results-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+    padding: $space * 2 rem(12px);
+    background: $color-grey;
+    border-radius: 0 0 $border-radius $border-radius;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  &__results-header {
+    padding-left: rem(12px);
+    font-size: rem(15px);
+    text-transform: capitalize;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+  }
+
+  &__results {
+    overflow: hidden;
+    padding: 0 $space;
+    margin-bottom: $space;
+    background: $color-white;
+    border-radius: rem(2px);
+  }
+
+  &__result {
+    display: block;
+    padding: $space * 2 0;
+    border-bottom: 1px solid $color-gray-15;
+    font-size: rem(15px);
+    line-height: rem(24px);
+
+    &:last-child {
+      margin-bottom: 0;
+      border: 0;
+    }
+
+    &--link {
+      cursor: pointer;
+    }
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    &__result-title {
+      flex: 0 0 40%;
+      padding-right: $space;
+    }
+
+    &__result-snippet {
+      flex: 0 0 60%;
+    }
+  }
+
+  &__no-results {
+    padding: $space;
+    padding-top: 0;
+    font-size: rem(15px);
+    line-height: rem(24px);
+
+    p {
+      max-width: rem(650px);
+    }
+
+    @include media-breakpoint-up(md) {}
+  }
+
+  &__contact-details {
+    padding-top: $space;
+    border-top: 1px solid $color-grey-20;
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+      padding-top: $space * 2;
+    }
+
+    &>div {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+.c-risk-investment {
+  margin-bottom: rem(32px);
+}
+
+.c-risk-investment__label {
+  position: relative;
+  display: block;
+  margin: rem(16px) 0;
+  font-weight: 600;
+  line-height: rem(24px);
+}
+
+.c-risk-investment__selected {
+  font-size: rem(17px);
+  margin-bottom: rem(12px);
+
+  @include media-breakpoint-up(sm) {
+    position: absolute;
+    margin-left: $grid-gutter-width / 2;
+    white-space: nowrap;
+    top: 50%;
+    margin-top: rem(10px);
+    left: 66%;
+  }
+}
+
+.c-risk-investment__buttons {
+  max-width: rem(300px);
+
+  @include media-breakpoint-down(sm) {
+    display: flex;
+    justify-content: space-between;
+
+    .c-radio-button--riskInvestment {
+      margin-right: 0;
+    }
+  }
+}
+
+.c-risk-investment__scale {
+  padding: 0 $grid-gutter-width / 2;
+  display: flex;
+  width: rem(320px);
+  justify-content: space-between;
+}

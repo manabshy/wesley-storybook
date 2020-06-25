@@ -1,0 +1,46 @@
+/*------------------------------------*\
+    #THEME FOR ADVICE MODULE
+\*------------------------------------*/
+
+/**
+ * Your goals, our advice
+ */
+
+.t-advice-module {
+  position: relative;
+
+  h1 {
+    @include rem(margin-bottom, 58px);
+  }
+  .c-button {
+    @include rem(margin-top, 16px);
+  }
+  .c-list {
+    @include media-breakpoint-down(sm) {
+      padding-left: 0;
+      border-top: 1px solid $color-dim-20;
+      @include rem(padding-top, 16px);
+    }
+    @include media-breakpoint-down(md) {
+      li {
+        margin-left: -#{$grid-gutter-width};
+        align-items: top;
+        @include rem(margin-bottom, 16px);
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      border-left: 1px solid $color-dim-20;
+    }
+  }
+
+  .mobile-button {
+    .c-button__standard {
+      padding: 0.775rem 1.9rem;
+    }
+  }
+
+  .c-caption {
+    @include rem(margin-top, 25px);
+  }
+}

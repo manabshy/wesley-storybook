@@ -1,0 +1,57 @@
+.c-tooltip-disabledAlt {
+  position: absolute;
+  display: none; /* Hide the tooltip by default */
+  width: 100%;
+  height: 0;
+
+  @include media-breakpoint-up(lg) {
+    left: 100%;
+    bottom: 0;
+    min-height: rem(62px);
+    max-width: rem(300px);
+    margin-left: 1rem;
+  }
+
+  .c-form__input:hover &,
+  .c-form__input:focus {
+    /* Show the tooltip on hover */
+    display: block;
+
+    @include media-breakpoint-up(lg) {
+      display: inline-block;
+    }
+  }
+}
+
+.c-tooltip-disabledAlt__content {
+  @extend %tooltip-box;
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-top: rem(10px);
+  @include media-breakpoint-down(md) {
+    @include tooltipUpArrow();
+  }
+  @include media-breakpoint-up(lg) {
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: 0;
+    @include tooltipLeftArrow();
+  }
+}
+
+.c-tooltip-disabledAlt__text {
+  @extend %tooltip-text;
+  margin-right: rem(12px);
+  @include media-breakpoint-up(lg) {
+    margin-right: 0;
+  }
+}
+
+.c-tooltip-disabledAlt__close {
+  @extend %tooltip-close;
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}

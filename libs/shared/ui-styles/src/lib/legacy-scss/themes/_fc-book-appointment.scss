@@ -1,0 +1,34 @@
+/*------------------------------------*\
+    #THEME FOR FC BOOKING
+\*------------------------------------*/
+
+/**
+ * Your information so far
+ */
+.t-fc-book-appointment {
+  .o-your-info {
+    [class^='col-'] {
+      &:first-child {
+        border-bottom: 1px solid rgba($color-slate, 0.1);
+        @include media-breakpoint-up(md) {
+          border-bottom: 0;
+          border-right: 1px solid rgba($color-slate, 0.1);
+        }
+      }
+    }
+    .c-icon:not(.c-icon-chevron) {
+      width: 102px;
+    }
+  }
+  button[type='submit'] {
+    @include rem(margin-bottom, 39px);
+  }
+  .c-form__step-two {
+    .c-list--horizontal {
+      margin-bottom: 1rem;
+      li {
+        @include rem(margin-right, 20px);
+      }
+    }
+  }
+}

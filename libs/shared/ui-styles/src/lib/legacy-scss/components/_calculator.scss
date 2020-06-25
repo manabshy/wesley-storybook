@@ -1,0 +1,129 @@
+/**
+ * Various Calc styling
+ */
+
+/**
+ * Header
+ */
+.module__inner-container {
+  @include rem(padding, 20px);
+
+  @include media-breakpoint-up(md) {
+    @include rem(padding, 40px 20px 20px);
+  }
+
+  .card-columns {
+    @include rem(padding-bottom, 20px);
+  }
+}
+
+/* fix #77245 - needed in Firefox only */
+label.w-100 {
+	div.input-group-append {
+		.c-icon {
+			display: none !important;
+		}
+	}
+}
+label.w-100 {
+	div.input-group-append {
+		.d-flex {
+		.c-icon {
+			display: inline-block !important;
+		}
+		}
+	}
+}
+
+.c-heading--calculator {
+  font-family: $font-secondary-strong;
+  @include rem(
+    (
+      margin: 21px 0 29px,
+      font-size: 40px,
+      line-height: 40px,
+    )
+  );
+  @include media-breakpoint-up(sm) {
+    @include rem(
+      (
+        margin: 52px 0 43px,
+      )
+    );
+  }
+  @include media-breakpoint-up(md) {
+    @include rem(
+      (
+        margin: 56px 0,
+        font-size: 60px,
+        line-height: 64px,
+      )
+    );
+  }
+}
+
+/**
+ * Footer
+ */
+.c-calculator__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .c-button,
+  .c-link {
+    @include rem(font-size, 14px);
+    margin-bottom: rem(12px);
+    text-align: center;
+  }
+
+  .c-button,
+  .c-link {
+    flex: 0 0 100%;
+  }
+
+  .c-button__standard {
+    width: 100%;
+  }
+
+  .c-link {
+    order: 2;
+  }
+
+  @include media-breakpoint-only(xs) {
+    .c-button {
+      @include rem(margin-bottom, 20px);
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    flex-direction: row;
+    justify-content: space-between;
+
+    &--single-button {
+      justify-content: flex-end;
+    }
+
+    .c-button,
+    .c-link {
+      flex: 0 0 auto;
+    }
+
+    .c-button {
+      width: auto;
+    }
+
+    .c-link {
+      order: 0;
+    }
+  }
+}
+
+/**
+ * Custom Input
+ */
+[name='term'] {
+  width: 64px;
+  height: 62px;
+  text-align: center;
+}

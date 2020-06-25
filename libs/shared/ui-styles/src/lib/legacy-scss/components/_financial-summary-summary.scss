@@ -1,0 +1,66 @@
+.c-financial-summary-summary {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+
+  .c-financial-value {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+    display: inline-block;
+
+    @media (max-width: 374px) {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    @include media-breakpoint-up(sm) {
+      transform: translateY($space);
+      display: block;
+    }
+
+    @include media-breakpoint-up(lg) {
+      display: inline-block;
+    }
+  }
+
+  .c-financial-summary-summary__chart {
+    @include media-breakpoint-up(sm) {
+      margin-top: rem(-30px);
+      margin-right: rem(10px);
+    }
+    @include media-breakpoint-up(md) {
+      margin-right: rem(0);
+    }
+    @include media-breakpoint-up(lg) {
+      margin-right: rem(63px);
+    }
+  }
+
+  .c-pie-chart__canvas {
+    opacity: 0;
+  }
+
+  &--active {
+    opacity: 1;
+    height: auto;
+    visibility: visible;
+
+    @for $i from 1 through 10 {
+      .c-financial-value:nth-of-type(#{$i}n) {
+        opacity: 1;
+        transform: translateY(0);
+
+        transition: opacity 0.5s ease-in-out 0.1s;
+
+        @include media-breakpoint-up(sm) {
+          transition: opacity 0.5s ease-in-out #{$i * 0.1}s,
+            transform 0.5s ease-in-out #{$i * 0.1}s;
+        }
+      }
+    }
+
+    .c-pie-chart__canvas {
+      animation: FadeIn 0.8s 0.5s ease-in forwards;
+    }
+  }
+}

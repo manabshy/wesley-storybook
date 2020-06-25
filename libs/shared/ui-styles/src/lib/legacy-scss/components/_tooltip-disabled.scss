@@ -1,0 +1,42 @@
+.c-tooltip-disabled {
+  display: block;
+  width: 100%;
+  min-height: rem(50px);
+  height: auto;
+  padding-top: rem(10px);
+  z-index: 0;
+
+  @include media-breakpoint-up(sm) {
+    position: absolute;
+    display: inline-block;
+    bottom: 0;
+    left: 100%;
+    padding-top: 0;
+    margin-left: 1rem;
+    height: rem(62px);
+    max-width: rem(210px);
+  }
+}
+
+.c-tooltip-disabled__content {
+  @extend %tooltip-box;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  position: relative;
+  z-index: 0;
+
+  @include media-breakpoint-down(xs) {
+    width: 100%;
+    @include tooltipUpArrow();
+  }
+  @include media-breakpoint-up(sm) {
+    top: 50%;
+    transform: translateY(-50%);
+    @include tooltipLeftArrow();
+  }
+}
+
+.c-tooltip-disabled__text {
+  @extend %tooltip-text;
+}

@@ -49,6 +49,12 @@
     },
     "shared-ui-progress-spinner": {
       "tags": []
+    },
+    "shared-ui-site-header": {
+      "tags": []
+    },
+    "shared-ui-site-footer": {
+      "tags": []
     }
   }
 }

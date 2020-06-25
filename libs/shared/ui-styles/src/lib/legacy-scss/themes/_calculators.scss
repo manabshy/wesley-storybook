@@ -1,0 +1,23 @@
+/**
+ * Calculator specific styles
+ */
+.t-calculator {
+  // Border colour modifyier on mobile
+  .bg--gold-grad {
+    [class^='border'] {
+      border-color: $color-white !important;
+    }
+  }
+
+  .c-form__group {
+    @include media-breakpoint-up(sm) {
+      width: 45%;
+    }
+    @include media-breakpoint-only(md) {
+      width: 60%;
+    }
+    label {
+      width: 100%;
+    }
+  }
+}

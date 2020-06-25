@@ -1,0 +1,78 @@
+/*------------------------------------*\
+    #FOOTER
+\*------------------------------------*/
+
+.c-footer {
+  padding: rem(50px) 0 rem(30px);
+  background: $color-white;
+  @include rem(font-size, 15px);
+
+  @include media-breakpoint-only(xs) {
+    [class*='col-'] {
+      padding-left: rem(20px);
+      padding-right: rem(20px);
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding: rem(50px) 0 rem(35px);
+  }
+
+  .c-navigation {
+    a {
+      font-weight: 600;
+      @include rem(font-size, 15px);
+    }
+    @include media-breakpoint-down(md) {
+      li {
+        &:nth-child(4),
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    @include media-breakpoint-up(sm) {
+      &--footer-nav-secondary {
+        margin-top: rem(30px);
+        margin-bottom: rem(10px);
+        li {
+          display: inline-block;
+          margin: 0 rem(22px) 0 0;
+        }
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      &--footer-nav-secondary {
+        margin-top: rem(8px);
+
+        li.last {
+          margin-right: 0.4rem;
+        }
+      }
+    }
+
+    &--social-media {
+      @include media-breakpoint-up(sm) {
+        float: right;
+      }
+    }
+  }
+
+  .c-footer__logo {
+    padding: 0 10px;
+  }
+
+  .c-logo {
+    display: inline-block;
+    width: 148px;
+    height: 47px;
+    margin-bottom: 22px;
+  }
+
+  .col-6.order-sm-last {   
+    flex-basis: auto;    
+    width: auto;
+  }
+}

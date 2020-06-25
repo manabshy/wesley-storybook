@@ -1,0 +1,24 @@
+.c-calculator-selection {
+  padding: $space;
+  @include rem(
+    (
+      font-size: 17px,
+    )
+  );
+
+  .c-button {
+    background: $color-grey;
+  }
+
+  @include media-breakpoint-up(md) {
+    padding: $space * 2 $space;
+  }
+}
+
+.c-calculator-selection__title {
+  text-transform: none;
+}
+
+.c-calculator-selection .c-button {
+  font-weight: normal;
+}

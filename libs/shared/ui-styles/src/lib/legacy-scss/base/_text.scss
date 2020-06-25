@@ -1,0 +1,111 @@
+/*------------------------------------*\
+    #TEXT
+\*------------------------------------*/
+
+/**
+ * Paragraph base styles
+ */
+
+.c-pull {
+  font-weight: 700;
+
+  color: $color-brand-charcoal;
+
+  @include rem(
+    (
+      font-size: 21px,
+      line-height: 32px,
+    )
+  );
+  @include media-breakpoint-up(md) {
+    @include rem(
+      (
+        font-size: 22px,
+        line-height: 32px,
+      )
+    );
+  }
+}
+
+.c-sell {
+  font-style: italic;
+
+  @include rem(
+    (
+      font-size: 18px,
+      line-height: 30px,
+    )
+  );
+  @include media-breakpoint-up(md) {
+    @include rem(
+      (
+        font-size: 18px,
+        line-height: 28px,
+      )
+    );
+  }
+  @include media-breakpoint-up(lg) {
+    @include rem(
+      (
+        font-size: 20px,
+        line-height: 32px,
+      )
+    );
+  }
+}
+
+.c-caption {
+  opacity: 0.7;
+
+  @include rem(
+    (
+      font-size: 13px,
+      line-height: 20px,
+    )
+  );
+}
+
+.c-text {
+  &__bold {
+    font-weight: 700;
+  }
+  &__italic {
+    font-style: italic;
+  }
+  &--small {
+    @include rem(
+      (
+        font-size: 12px,
+        line-height: 20px,
+      )
+    );
+  }
+  &--medium {
+    @include rem(
+      (
+        font-size: 17px,
+        line-height: 30px,
+      )
+    );
+  }
+  &--large {
+    @include rem(
+      (
+        font-size: 21px,
+        line-height: 30px,
+      )
+    );
+  }
+}
+
+/**
+ * Placeholders
+ */
+%c-body {
+  @include rem(
+    (
+      font-size: 15px,
+    )
+  );
+  line-height: 1.5;
+}

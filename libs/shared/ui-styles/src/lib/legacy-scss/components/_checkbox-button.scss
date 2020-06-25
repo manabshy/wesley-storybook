@@ -1,0 +1,26 @@
+/*------------------------------------*\
+    #CHECKBOX BUTTON
+\*------------------------------------*/
+
+/**
+ * Customised checkbox that
+ * features tick and border animation
+ */
+.c-checkbox-button {
+  .c-input__container {
+    padding: 0.8em;
+    height: 100%;
+    display: table;
+    span {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+  .c-icon__tick {
+    @include media-breakpoint-up(md) {
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+}

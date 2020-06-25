@@ -1,0 +1,44 @@
+.c-truncated-text {
+  &--budgetIntro {
+    display: block;
+    line-height: rem(24px);
+    @include media-breakpoint-up(md) {
+      width: 50%;
+      &.c-truncated-text--expanded {
+        width: 100%;
+        column-count: 2;
+        column-gap: 1.25rem;
+      }
+    }
+  }
+}
+
+.c-truncated-text {
+  $line-height: 1.5rem;
+  margin-bottom: 1rem;
+
+  .-expand {
+    display: inline-block;
+  }
+
+  .-collapse {
+    display: none;
+  }
+
+  &.-show {
+    .-expand {
+      display: none;
+    }
+
+    .-collapse {
+      display: inline-block;
+    }
+  }
+
+  &.-short-text {
+    .-expand,
+    .-collapse {
+      display: none;
+    }
+  }
+}

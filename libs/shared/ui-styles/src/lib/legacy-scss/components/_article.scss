@@ -1,0 +1,21 @@
+/*------------------------------------*\
+    #ARTICLES
+\*------------------------------------*/
+
+.c-article {
+  position: relative;
+  p {
+    @include rem(
+      (
+        font-size: 17px,
+        line-height: 30px,
+      )
+    );
+    color: $color-brand-charcoal;
+  }
+  &__list {
+    .c-card {
+      @include rem(margin-top, 25px);
+    }
+  }
+}

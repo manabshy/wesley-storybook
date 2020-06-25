@@ -1,0 +1,465 @@
+/**
+ * Header
+ */
+
+ body.nav-is-open {
+  overflow: hidden;
+}
+
+.c-header {
+  &-nav {
+    @include media-breakpoint-down(sm) {
+      pointer-events: none;
+      &.nav-is-open {
+        pointer-events: all;
+      }
+    }
+  }
+
+
+  &__main {
+    height: 60px;
+    position: relative;
+    box-shadow: $box-shadow-light-black;
+    background-color: $color-white;
+    display: flex;
+    align-items: center;
+
+    @include media-breakpoint-up(md) {
+      height: 69px;
+    }
+
+    .c-header-nav {
+      z-index: 8;
+      &__list {
+        padding: 0;
+        margin: 0; 
+
+        @include media-breakpoint-up(md) {
+          li.c-header-nav__item.has-subLinks {
+            display: inline-flex;
+            .nav-chevron{
+              display: none;
+            }
+          }
+        }
+      }
+      /// global 
+      &__item {
+        @include rem(font-size, 14px);
+        .nav-chevron {
+          background-repeat: no-repeat;
+          background-position: center;
+          position: absolute;
+          padding: 1.4rem 1.9rem;
+          right: 1.3rem;
+          border-left: 1px solid hsla(0,0%,100%,.15);
+          margin: 10px 0;
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    // Navigation
+    @include media-breakpoint-down(sm) {
+      .c-header-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        opacity: 0;
+
+        transition: opacity 0.3s ease-in-out;
+
+        color: $color-white;
+        background-color: $color-gray-63;
+
+        max-height: 0;
+
+        .c-logo {
+          margin-top: 6px;
+        }
+
+        &.nav-is-open {
+          opacity: 1;
+          max-height: none;
+          min-height: 100vh;
+        }
+
+        &__list {
+          @include rem(margin, 30px 20px 0 20px);
+        }
+
+        // background of subitems
+        &__subNav{
+          background: hsla(0,0%,100%,.15);
+        }
+
+        /// media sm
+        &__item {
+          &.has-subLinks {
+            ul {
+              &.open {
+                display:block;
+              }
+              &.closed {
+                display: none;
+              }
+            }
+          }
+          display: block;
+          border-top: 1px solid rgba($color-white, 0.15);
+          border-bottom: 1px solid rgba($color-white, 0.15);
+          
+          .nav-chevron {
+            &__up {
+              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20px' height='20px' viewBox='0 0 20 20' %3E%3Cg id='Chevron-Up' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg id='Chevron' transform='translate(10.000000, 10.500000) scale(1, -1) translate(-10.000000, -10.500000) translate(3.000000, 7.000000)' stroke='%23FEBD11' stroke-width='2'%3E%3Cpath d='M14,0 L7,7 L14,0 Z M0,0 L7,7 L0,0 Z' id='Shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            }
+
+            &__down {
+              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20px' height='20px' viewBox='0 0 20 20' %3E%3Cg id='Chevron-Down' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg id='Chevron' transform='translate(3.000000, 7.000000)' stroke='%23FEBD11' stroke-width='2'%3E%3Cpath d='M14,0 L7,7 L14,0 Z M0,0 L7,7 L0,0 Z' id='Shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            }
+          }
+      }
+
+        &__link 
+        {
+          display: block;
+          color: $color-white;
+          @include rem(padding, 20px 20px 20px 0);
+          &:focus {
+            color: $color-white;
+          }
+          &.active {
+            .c-header-nav__link-label {
+              position: relative;
+              &:after {
+                position: absolute;
+                bottom: rem(-3px);
+                left: 0;
+                width: 100%;
+                height: 2px;
+                content: '';
+                transition: all $anim-speed-quick $anim-ease-in-out 0s;
+                background-color: $color-brand-gold;
+              }
+            }
+          }
+        }
+
+      &__iconlink 
+      {
+        display: block;
+        color: $color-white;
+        @include rem(padding, 20px 20px 20px 0);               
+     
+      }
+     
+      &__svgicon{
+        svg .wesleyan-nav-icon{ stroke-width : 1px; stroke : $color-white  }           
+      }
+      &__iconlink__label
+      {
+        display : inline;
+        visibility: visible;
+        color: $color-white;
+        position: relative;
+        margin-left: 20px;
+        &:after {
+          position: absolute;
+          
+        }
+      }
+     
+        &__subNav {
+          padding-left: $space;
+        }
+        &__subNav-link 
+        {
+          display: block;
+          padding: $space 0;
+          color: $color-white;
+          &:focus {
+            color: $color-white;
+          }
+          &.active {
+            .c-header-nav__subNav-link-label {
+              position: relative;
+              &:after {
+                position: absolute;
+                bottom: rem(-3px);
+                left: 0;
+                width: 100%;
+                height: 2px;
+                content: '';
+                background-color: $color-brand-gold;
+              }
+            }
+          }                     
+        }  
+        
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      .c-header-nav__item {
+        &.has-subLinks {
+          display: grid;
+          display: -moz-grid;
+          display: -ms-grid;
+            ul {
+              &.open {
+                display:block;
+              }
+              &.closed {
+                display: none;
+              }
+            }
+        }
+        .nav-chevron {
+          display: block;
+          &__up {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20px' height='20px' viewBox='0 0 20 20' %3E%3Cg id='Chevron-Up' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg id='Chevron' transform='translate(10.000000, 10.500000) scale(1, -1) translate(-10.000000, -10.500000) translate(3.000000, 7.000000)' stroke='%23FEBD11' stroke-width='2'%3E%3Cpath d='M14,0 L7,7 L14,0 Z M0,0 L7,7 L0,0 Z' id='Shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+          }
+
+          &__down {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20px' height='20px' viewBox='0 0 20 20' %3E%3Cg id='Chevron-Down' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg id='Chevron' transform='translate(3.000000, 7.000000)' stroke='%23FEBD11' stroke-width='2'%3E%3Cpath d='M14,0 L7,7 L14,0 Z M0,0 L7,7 L0,0 Z' id='Shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+          }
+        }
+      }
+    }
+    
+    @include media-breakpoint-up(md) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .c-logo {
+        flex: 0 0 auto;
+      }
+
+      .c-header-nav {
+        flex: 1 0 auto;
+        display: flex;
+        justify-content: flex-end;
+
+        // background of subitems
+        &__subNav{
+          background: hsla(0,0%,100%,.15);
+        }
+
+        /// media md
+        &__item {
+          position: relative;
+          display: inline-flex;
+          justify-content: center;
+
+          &:last-child {
+            border-left: 1px solid rgba($color-black, 0.2);
+
+            .c-header-nav__link {
+              margin: 0 rem(40px);
+            }
+          }
+
+          &:hover .c-header-nav__subNav {
+           
+            display: block;
+          }
+        }
+
+        &__link {
+          position: relative;
+          color: $color-slate;
+          cursor: pointer;
+          @include rem(
+            (
+              padding: 24px 0,
+              margin: 0 24px,
+            )
+          );
+          [data-useragent*='MSIE 10.0'] & {
+            line-height: rem(66px);
+          }
+          &:after {
+            position: absolute;
+            left: 0;
+            width: 0;
+            visibility: hidden;
+            height: 2px;
+            content: '';
+            transition: all $anim-speed-quick $anim-ease-in-out 0s;
+            background-color: $color-brand-gold;
+            bottom: 50%;
+            transform: translate(0, 1em);
+          }
+
+          &:focus,
+          &:hover {
+            text-decoration: none;
+            color: $color-brand-charcoal;
+            &:after {
+              visibility: visible;
+              width: 100%;
+            }
+          }
+
+          &.active {
+            font-weight: 700;
+            &:after {
+              width: 100%;
+              visibility: visible;
+            }
+          }
+        }
+        &__iconlink 
+        {
+          position: relative;
+          color: $color-slate;
+          cursor: pointer;
+           @include rem(
+            (
+              padding: 22px 0,
+              margin: 0 22px,
+            )
+          );
+          [data-useragent*='MSIE 10.0'] & {
+            line-height: rem(66px);
+          }
+          &:hover{
+            .wesleyan-nav-icon{ stroke-width : 1px; stroke : #FEBD11;  }
+          }
+          &:after {
+            position: absolute;
+            left: 0;
+            width: 0;
+            visibility: hidden;
+            height: 0px;
+            content: '';
+            bottom: 50%;
+            transform: translate(0, 1em);
+          }          
+        
+        }   
+        &__iconlink__label{display: none;}
+       
+        &__subNav {
+          display: none;
+          position: absolute;
+          top: 100%;
+          background: $color-gray-63;
+          @media all and (-ms-high-contrast: none) {
+            right: 17.5%;
+            left: 17.5%;
+            padding-right: 0;
+            padding-left: 0;
+            text-align: center;
+          }
+          &:before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            margin-left: rem(-10px);
+            border-left: rem(10px) solid transparent;
+            border-right: rem(10px) solid transparent;
+            border-bottom: rem(10px) solid $color-gray-63;
+          }
+          &.icon-menu-width{width: 228px;} 
+        }
+        &__subNav-link {
+          display: block;
+          padding: $space;
+          color: $color-white;
+          &:focus {
+            color: $color-white;
+          }
+          &.active,
+          &:hover {
+            .c-header-nav__subNav-link-label:after {
+              width: 100%;
+              visibility: visible;
+            }
+          }
+        }
+        &__subNav-link-label {
+          position: relative;
+          &:after {
+            position: absolute;
+            bottom: rem(-3px);
+            left: 0;
+            width: 0;
+            visibility: hidden;
+            height: 2px;
+            content: '';
+            transition: width $anim-speed-quick $anim-ease-in-out 0s;
+            background-color: $color-brand-gold;
+          }
+        }
+      }
+    }
+
+    .c-logo {
+      display: inline-flex;
+
+      @include rem(padding, 18px 20px);
+      svg {
+        width: 114px;
+        height: 13px;
+        @include media-breakpoint-up(md) {
+          width: 141px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}
+
+// Burger Menu
+.c-burger-toggle {
+  display: none;
+  @include media-breakpoint-down(sm) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: absolute;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 5;
+
+    .line {
+      width: 26px;
+      height: 2px;
+      background-color: $color-brand-gold;
+      display: block;
+      transition: transform $anim-speed-quick $anim-ease-in-out,
+        opacity $anim-speed-quick $anim-ease-in-out;
+
+      &:nth-child(2) {
+        width: 20px;
+        margin: 6px 0 6px 6px;
+      }
+    }
+  
+    &.is-active {
+      z-index: 9;
+      .line {
+        &:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+    }
+  }
+}

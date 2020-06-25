@@ -1,0 +1,14 @@
+.c-section-header {
+  width: 100%;
+  padding-top: rem(30px);
+
+  @include media-breakpoint-up(sm) {
+    width: 75%;
+    padding-top: rem(36px);
+  }
+
+  @include media-breakpoint-up(md) {
+    width: 50%;
+    padding-top: rem(54px);
+  }
+}

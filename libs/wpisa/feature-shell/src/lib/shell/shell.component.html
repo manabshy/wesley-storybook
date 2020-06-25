@@ -1,3 +1,7 @@
+<wes-ui-site-header *ngIf="isDevEnv">
+  <!-- Only show for development, Sitecore wraps the app with header and footer-->
+</wes-ui-site-header>
+
 <div class="bg-gradient-yellow">
   <div class="container">
     <wes-stepper
@@ -14,3 +18,7 @@
     </div>
   </div>
 </div>
+
+<wes-ui-site-footer *ngIf="isDevEnv">
+  <!-- Only show for development, Sitecore wraps the app with header and footer-->
+</wes-ui-site-footer>

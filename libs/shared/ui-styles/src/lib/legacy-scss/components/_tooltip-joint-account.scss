@@ -1,0 +1,63 @@
+.c-tooltip-jointAccount {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.c-tooltip-jointAccount__icon {
+  display: inline-block;
+
+  &:hover,
+  &:focus {
+    & + .c-tooltip-jointAccount__content {
+      /* Show the tooltip on hover */
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    &--active + .c-tooltip-jointAccount__content {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .c-icon {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+.c-tooltip-jointAccount__content {
+  @extend %tooltip-box;
+
+  /* Hide the tooltip by default */
+  visibility: hidden;
+  opacity: 0;
+
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: rem(280px);
+  min-width: rem(200px);
+  min-height: rem(46px);
+  margin-left: rem(10px);
+  @include tooltipLeftArrow();
+  font-size: rem(12px);
+  line-height: rem(20px);
+}
+
+.c-tooltip-jointAccount__text {
+  @extend %tooltip-text;
+  margin-right: rem(15px);
+  @include media-breakpoint-up(lg) {
+    margin-right: 0;
+  }
+}
+
+.c-tooltip-jointAccount__close {
+  @extend %tooltip-close;
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}

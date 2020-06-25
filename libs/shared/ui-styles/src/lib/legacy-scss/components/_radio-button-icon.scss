@@ -1,0 +1,39 @@
+/*------------------------------------*\
+    #RADIO BUTTON WITH ICON
+\*------------------------------------*/
+
+/**
+ * Customised radio button that features
+ * the tick and border animation with an icon
+ */
+
+.c-radio-icon {
+  .c-input__container {
+    // Overal "padding" is 24px, the SVG viewbox
+    // dictates we reduce padding top and bottom to 4px
+    position: relative;
+    padding: 10px 0;
+    height: 100%;
+    display: table;
+    &__wrapper {
+      display: table-cell;
+      vertical-align: top;
+    }
+  }
+  .c-icon:not(.c-icon-tick) {
+    // Firefox fix
+    display: block;
+
+    width: 100%;
+    // Icons height needs to be 48px
+    // Number worked out by increasing container size
+    // This is due to the SVG viewbox
+    max-height: 72px;
+  }
+
+  input[type='radio'] {
+    &:checked + .c-input__container {
+      background-color: $color-white;
+    }
+  }
+}

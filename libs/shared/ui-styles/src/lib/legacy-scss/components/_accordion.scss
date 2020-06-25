@@ -1,0 +1,18 @@
+.accordion
+{
+    padding-top: 20px;
+    
+    li {
+        list-style: initial;
+        margin-left: 40px;
+
+        &.item {
+            margin: 0;
+            list-style: none;
+
+            .field-heading {
+                padding-right: 25px;
+            }
+        }
+    }
+}

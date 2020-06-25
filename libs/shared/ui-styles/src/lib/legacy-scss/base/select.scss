@@ -1,0 +1,55 @@
+.select__wrap {
+  position: relative;
+  display: block;
+  height: rem(53px);
+  background-color: $color-grey;
+  &:after {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 20px;
+    bottom: 0;
+    width: 18px;
+    height: 10px;
+    margin: auto;
+    content: '';
+    transition: transform $anim-speed-super-quick;
+    pointer-events: none;
+    background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDE2IDkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHRpdGxlPgogICAgVUkvSWNvbi9DaGV2cm9uL0dvbGQKICA8L3RpdGxlPgogIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2U9IiNGRUJEMTEiIHN0cm9rZS13aWR0aD0iMiI+CiAgICA8cGF0aCBkPSJNMTUgMUw4IDhNMSAxbDcgNy03LTd6Ii8+CiAgPC9nPgo8L3N2Zz4K')
+      0 0 no-repeat;
+  }
+}
+
+.select__el {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding-left: 0.8em;
+  padding-right: 50px;
+  border-radius: $border-radius;
+  border: 1px solid $color-grey-20;
+  border-radius: $border-radius;
+  line-height: rem(51px);
+  border-radius: $border-radius;
+  background: transparent;
+  outline: $color-brand-gold;
+  color: $color-brand-charcoal;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  transition: border-color $anim-speed-quick $anim-ease-in-out;
+  &::-ms-expand {
+    display: none;
+  }
+
+  &:focus-within {
+    border-color: $color-brand-gold;
+  }
+
+  &:focus::-ms-value {
+    color: $color-brand-charcoal;
+    background: transparent;
+  }
+}

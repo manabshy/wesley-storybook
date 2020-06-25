@@ -1,0 +1,23 @@
+/*------------------------------------*\
+    #TRIANGLES
+\*------------------------------------*/
+
+.c-triangle__container {
+  position: relative;
+}
+
+/**
+ * Placeholder for
+ * rotating triangles
+ */
+%rotate-left {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  transform: rotate(-90deg) translate3d(-50%, 0, 0);
+  transform-origin: top left;
+  &:last-child {
+    z-index: 1;
+  }
+}

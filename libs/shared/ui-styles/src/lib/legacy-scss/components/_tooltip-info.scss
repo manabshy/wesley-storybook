@@ -1,0 +1,102 @@
+.c-tooltip-info {
+  @extend %tooltip;
+
+  @include media-breakpoint-up(md) {
+    position: relative;
+  }
+}
+
+.c-tooltip-info__icon {
+  @extend %tooltip-icon;
+
+  @include media-breakpoint-down(sm) {
+    &--active,
+    &:hover,
+    &:focus {
+      position: relative;
+      z-index: 5;
+      @include tooltipUpArrow($color-brand-gold, top);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    & + .c-tooltip-info__content {
+      /* Show the tooltip on hover */
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.c-tooltip-info__content {
+  @extend %tooltip-box;
+
+  /* Hide the tooltip by default */
+  visibility: hidden;
+  opacity: 0;
+  white-space: normal;
+
+  @include media-breakpoint-down(sm) {
+    left: 0;
+    right: 5%;
+    margin-top: rem(14px);
+  }
+
+  @include media-breakpoint-up(md) {
+    top: 50%;
+    left: rem(30px);
+    transform: translateY(-50%);
+    white-space: normal;
+    z-index: 200;
+    min-width: rem(280px);
+
+    @include tooltipLeftArrow();
+  }
+}
+.c-tooltip-info__content--active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.c-tooltip-info__text {
+  @extend %tooltip-text;
+  margin-right: rem(12px);
+  font-size: rem(14px);
+
+  @include media-breakpoint-up(lg) {
+    margin-right: 0;
+  }
+
+  // For rich text tooltip
+  ol {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: my-counter;
+    font-size: rem(12px);
+    line-height: rem(18px);
+
+    li {
+      counter-increment: my-counter;
+      margin-bottom: $space;
+
+      &::before {
+        content: counter(my-counter) '. ';
+        font-weight: bold;
+      }
+    }
+  }
+  p {
+    font-size: rem(12px);
+    line-height: rem(18px);
+  }
+}
+
+.c-tooltip-info__close {
+  @extend %tooltip-close;
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}

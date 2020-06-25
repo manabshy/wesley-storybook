@@ -1,0 +1,196 @@
+/*------------------------------------*\
+    #CTA BANNER
+\*------------------------------------*/
+
+.c-booking-module {
+  overflow: hidden;
+
+  box-shadow: $box-shadow-light-black;
+
+  @include media-breakpoint-up(sm) {
+    overflow: hidden;
+
+    height: 320px;
+  }
+  @include media-breakpoint-up(md) {
+    &:hover {
+      .c-button {
+        a {
+          &:after {
+            visibility: visible;
+
+            width: 100%;
+          }
+        }
+      }
+
+      .c-triangle__wrapper {
+        &:first-child {
+          .svg-container {
+            transform: translate3d(-30px, 0, 0);
+          }
+        }
+        &:last-child {
+          .svg-container {
+            .c-triangle {
+              width: 180px;
+              height: 245px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .container,
+  .row {
+    @include media-breakpoint-up(sm) {
+      height: 320px;
+    }
+  }
+
+  &__text,
+  &__img-wrap {
+    @include media-breakpoint-up(sm) {
+      width: 50%;
+      height: 100%;
+      max-height: 100%;
+
+      flex: 0 0 50%;
+    }
+  }
+  &__text {
+    position: relative;
+
+    display: flex;
+
+    @include media-breakpoint-up(sm) {
+      order: 1;
+    }
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    @include media-breakpoint-only(xs) {
+      @include rem(padding, 40px 25px);
+    }
+    .text-container {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  &__img-wrap {
+    position: relative;
+
+    @include media-breakpoint-up(sm) {
+      order: 2;
+    }
+    @include media-breakpoint-down(xs) {
+      img {
+        max-width: 100%;
+      }
+    }
+    @include media-breakpoint-up(sm) {
+      float: right;
+      img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: auto;
+
+        min-width: 50vw;
+
+        margin: auto;
+
+        vertical-align: middle;
+      }
+    }
+
+    .c-triangle {
+      &__wrapper {
+        // White Triangle
+        &:first-child {
+          .svg-container {
+            transition: transform $anim-speed-quick linear;
+            transform: translate3d(0, 0, 0);
+
+            @include media-breakpoint-up(sm) {
+              &:before {
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                display: block;
+
+                width: 30px;
+                height: 320px;
+
+                content: '';
+
+                background: white;
+              }
+            }
+            .c-triangle {
+              @include media-breakpoint-only(xs) {
+                right: 0;
+                bottom: 0;
+                left: 0;
+
+                width: 100%;
+                height: 18.5vw;
+              }
+              @include media-breakpoint-up(sm) {
+                top: 103px;
+                left: -73px;
+
+                width: 320px;
+                height: 115px;
+
+                transform: rotate(90deg) scale(-1, 1);
+              }
+            }
+          }
+        }
+        // Yellow Triangle
+        &:last-child {
+          .svg-container {
+            .c-triangle {
+              transition: width $anim-speed-quick linear,
+                height $anim-speed-quick linear;
+
+              @include media-breakpoint-only(xs) {
+                position: absolute;
+                right: -1px;
+
+                width: 14.4vw;
+                height: 40.4vw;
+
+                transform: rotate(90deg) translate3d(50%, 0, 0);
+                transform-origin: top right;
+              }
+              @include media-breakpoint-up(sm) {
+                width: 157px;
+                height: 224px;
+
+                transform: translate3d(-20%, 0, 0);
+              }
+            }
+          }
+        }
+      }
+    }
+    .svg-container {
+      svg {
+        position: absolute;
+
+        @include media-breakpoint-up(sm) {
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+}

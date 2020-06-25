@@ -1,0 +1,68 @@
+/**
+ * Dashboard
+ */
+
+// Removed margin from Dashboard Overview page only
+.dashboard-overview {
+  .c-footer {
+    margin-top: 0 !important;
+  }
+}
+.c-header-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  overflow: hidden;
+
+  &.sticky--scroll {
+    transform: none;
+    top: 0;
+    svg {
+      width: 100%;
+    }
+  }
+
+  &.sticky--medium {
+    transform: translateY(rem(-200px));
+  }
+
+  &.sticky--small {
+    transform: translateY(rem(-300px));
+  }
+
+  &.sticky--tabbed {
+    transform: translateY(rem(-160px));
+  }
+
+  &.sticky--help-and-support {
+    transform: translateY(rem(-240px));
+
+    @include media-breakpoint-up(md) {
+      transform: translateY(rem(-350px));
+    }
+  }
+}
+.c-triangle-wrapper {
+  position: relative;
+  background: linear-gradient(
+    to right,
+    $color-utility-caution 0%,
+    $color-canary 100%
+  );
+  height: 708px;
+  width: 100%;
+
+  @include media-breakpoint-down(sm) {
+    height: 505px;
+  }
+}
+.c-triangle-solid-light-grey {
+  position: absolute;
+  left: -0;
+  right: 0;
+  bottom: -1px;
+  max-height: rem(265px);
+  min-width: 100%;
+}

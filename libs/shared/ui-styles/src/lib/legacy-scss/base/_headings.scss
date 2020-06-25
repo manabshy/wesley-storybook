@@ -1,0 +1,111 @@
+/*------------------------------------*\
+    #HEADINGS
+\*------------------------------------*/
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $font;
+  font-weight: 300;
+
+  color: $color-text;
+
+  @include rem(margin, 0 0 20px 0);
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  @include rem(
+    (
+      font-size: 46px,
+      line-height: 52px,
+    )
+  );
+  @include media-breakpoint-up(md) {
+    @include rem(
+      (
+        font-size: 48px,
+        line-height: 56px,
+      )
+    );
+  }
+  @include media-breakpoint-up(lg) {
+    @include rem(
+      (
+        font-size: 58px,
+        line-height: 68px,
+      )
+    );
+  }
+}
+
+h2 {
+  @include rem(
+    (
+      font-size: 30px,
+      line-height: 40px,
+    )
+  );
+  @include media-breakpoint-up(md) {
+    @include rem(
+      (
+        font-size: 32px,
+        line-height: 44px,
+      )
+    );
+  }
+}
+
+h3 {
+  font-weight: 400;
+
+  @include rem(
+    (
+      font-size: 19px,
+      line-height: 28px,
+    )
+  );
+  @include media-breakpoint-up(md) {
+    @include rem(
+      (
+        font-size: 20px,
+        line-height: 28px,
+      )
+    );
+  }
+}
+
+h4 {
+  font-family: $font-secondary-strong;
+
+  text-transform: uppercase;
+
+  color: rgba($color-slate, 0.78);
+
+  @include rem(
+    (
+      font-size: 17px,
+      line-height: 20px,
+    )
+  );
+}
+
+.text-transform-none {
+  text-transform: none;
+}
+
+.semi-bold {
+  font-weight: 600 !important;
+}
+
+.c-heading--dashboard {
+  font-family: $font-secondary-strong;
+  @include rem(
+    (
+      font-size: 60px,
+      margin: 30px 0,
+    )
+  );
+}

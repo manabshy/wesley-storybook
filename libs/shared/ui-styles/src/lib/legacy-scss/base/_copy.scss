@@ -1,0 +1,70 @@
+.copy {
+  font-family: $font;
+  font-weight: 400;
+  width: 100%;
+
+  &--longform {
+    @include rem(
+      (
+        font-size: 17px,
+        line-height: 28px,
+      )
+    );
+  }
+
+  &--shortform {
+    @include rem(
+      (
+        font-size: 15px,
+        line-height: 24px,
+      )
+    );
+    @include media-breakpoint-only(sm) {
+      &.c-contact-heading {
+        @include rem(min-height, 48px);
+      }
+    }
+  }
+}
+
+.text-semi-bold {
+  font-weight: 600 !important;
+}
+
+.text-white {
+  color: $color-white !important;
+}
+
+.text-sm {
+  @include rem(
+    (
+      font-size: 14px,
+      line-height: 1.3,
+    )
+  );
+}
+
+a {
+  color: inherit;
+}
+
+p {
+  @include media-breakpoint-only(xs) {
+    line-height: 1.6;
+  }
+}
+
+.field-title {
+    margin-top: rem(21px);
+    margin-bottom: rem(23px);
+
+    @include media-breakpoint-up(sm) {
+      margin-top: rem(41px);
+      margin-bottom: rem(33px);
+    }
+
+    @include media-breakpoint-up(md) {
+      margin-top: rem(54px);
+      margin-bottom: rem(42px);
+    }
+  }

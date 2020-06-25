@@ -1,0 +1,612 @@
+/*------------------------------------*\
+    #FORMS
+\*------------------------------------*/
+
+/**
+ * Global styles for form elements
+ */
+.c-form {
+  /**
+   * Form groups
+   */
+  &__group {
+    position: relative;
+
+    @include rem(margin-top, 39px);
+
+    @include media-breakpoint-only(xs) {
+      label {
+        display: block;
+      }
+    }
+
+    &--submit {
+      @include media-breakpoint-down(sm) {
+        @include rem(
+          (
+            margin-top: 30px,
+            margin-bottom: 30px,
+          )
+        );
+      }
+    }
+  }
+
+  /**
+   * Field labels
+   */
+  &__label {
+    font-weight: bold;
+
+    padding-left: 0;
+
+    color: $color-slate;
+
+    @include rem(
+      (
+        font-size: 15px,
+        line-height: 22px,
+        margin-top: 0,
+        margin-bottom: 10px,
+      )
+    );
+  }
+
+  /**
+   * Input/ error icon group
+   */
+  &__input {
+    position: relative;
+  }
+
+  // Specific to the FC booking form
+  .bg--grey {
+    @include rem(padding, 25px 23px);
+  }
+
+  &--search {
+    label {
+      position: relative;
+      width: 100%;
+      font-weight: 700;
+    }
+
+    input {
+      background-color: $color-white;
+      margin-top: 0.4em;
+      border-radius: 0;
+      @include rem(
+        (
+          padding: 0.75em 0.8em,
+          height: 50px,
+        )
+      );
+    }
+
+    [type="submit"] {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      padding: 0;
+      border: 2px $color-brand-gold solid;
+      @include rem(
+        (
+          height: 50px,
+          width: 50px,
+        )
+      );
+    }
+  }
+}
+
+/**
+ * Fields
+ */
+input,
+textarea {
+  font-family: $font;
+  @include rem(
+    (
+      font-size: 15px,
+      line-height: 24px,
+    )
+  );
+  position: relative;
+
+  width: 100%;
+  padding: 1.2em 0.8em;
+
+  transition: border-color $anim-speed-quick $anim-ease-in-out, outline $anim-speed-quick $anim-ease-in-out;
+
+  color: $color-slate;
+  border: 1px solid $color-grey-20;
+  border-radius: $border-radius;
+  outline: $color-brand-gold;
+  background-color: $color-grey;
+  -webkit-appearance: none;
+
+  &:focus {
+    border: 1px solid $color-brand-gold;
+  }
+
+  &::-ms-clear {
+    display: none;
+  }
+}
+.input-text-firefox {
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+  &:focus {
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+  }
+  &:active {
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+  }
+}
+
+.bg--grey input,
+.bg--grey textarea,
+.bg--grey .select__wrap,
+.bg--grey .c-input--border .c-input__container {
+  background-color: rgba($color-white, 0.8);
+}
+
+/**
+ * Label
+ */
+label {
+  position: relative;
+}
+
+/**
+ * Radio buttons
+ */
+.c-radio-button {
+  line-height: $radio-button-size;
+
+  position: relative;
+  display: block;
+
+  margin-bottom: $input-label-padding;
+
+  @include media-breakpoint-up(sm) {
+    display: inline-block;
+    margin-right: rem(12px);
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &--riskInvestment {
+    display: inline-block;
+    margin-right: rem(12px);
+    margin-bottom: 0;
+    text-align: center;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__label {
+    @include media-breakpoint-down(xs) {
+      display: block;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .c-icon-tick {
+    left: 0.2em;
+
+    width: 1.5em;
+  }
+
+  .c-input__container {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  input[type="radio"] {
+    position: absolute;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    + label {
+      position: relative;
+
+      margin-bottom: 0;
+      padding-left: $radio-button-size + 5px;
+
+      cursor: pointer;
+
+      &:before,
+      &:after {
+        position: absolute;
+
+        content: "";
+        transition: all $anim-speed-quick $anim-ease;
+
+        border-radius: 50%;
+      }
+
+      &:before {
+        top: 0;
+        bottom: 0;
+        left: 0;
+
+        width: $radio-button-size;
+        height: $radio-button-size;
+        margin: auto;
+
+        cursor: pointer;
+
+        border: 1px solid $color-grey-20;
+        box-shadow: inset 0 0 0 $radio-button-half-size $color-white;
+      }
+
+      // Ripple animation
+      &:after {
+        left: $radio-button-half-size;
+
+        width: calc(#{$radio-button-size} * 3);
+        height: calc(#{$radio-button-size} * 3);
+      }
+    }
+
+    &:checked + label {
+      @extend %tickAnimation;
+
+      &:before {
+        border: 1px solid $color-white;
+        background: $color-brand-gold;
+        box-shadow: inset 0 0 0 0 $color-white;
+      }
+    }
+  }
+}
+
+.c-radio-button__alt {
+  padding: rem(10px) rem(15px);
+  border: 1px solid $color-brand-gold;
+  font-size: rem(17px);
+  cursor: pointer;
+
+  .c-radio-button__input:checked + &,
+  .c-radio-button__input:focus + & {
+    color: $color-white;
+    border-color: $color-brand-slate;
+    background-color: $color-brand-slate;
+  }
+
+  .c-radio-button--riskInvestment & {
+    min-width: 50px;
+  }
+}
+
+.c-form__radio-group {
+  @include media-breakpoint-down(xs) {
+    display: block;
+  }
+
+  @include media-breakpoint-up(sm) {
+    float: left;
+  }
+}
+
+.c-form__radio-group + span.d-block.copy.copy--shortform {
+  clear: both;
+}
+
+/**
+ * Square radio buttons
+ */
+.c-radio--square-radio {
+  position: relative;
+  display: inline-block;
+  @include rem(margin-bottom, 12px);
+
+  @include media-breakpoint-down(xs) {
+    display: block;
+
+    label {
+      display: block;
+    }
+  }
+
+  &--label {
+    @include rem(
+      (
+        padding: 10px 15px,
+        margin-right: 10px,
+      )
+    );
+    cursor: pointer;
+    background-color: $color-white;
+    border: 1px solid $color-brand-gold;
+  }
+
+  input[type="radio"] {
+    position: absolute;
+    left: 0;
+
+    &:checked + .c-radio--square-radio--label {
+      color: $color-white;
+      border-color: $color-brand-slate;
+      background-color: $color-brand-slate;
+    }
+  }
+}
+
+/**
+ * Checkbox
+ */
+.c-checkbox {
+  position: relative;
+
+  input[type="checkbox"] {
+    position: absolute;
+
+    opacity: 0;
+
+    + label {
+      position: relative;
+
+      margin-bottom: 0;
+      padding-left: $checkbox-size + 12px;
+
+      cursor: pointer;
+
+      &:before,
+      &:after {
+        position: absolute;
+
+        content: "";
+        transition: all $anim-speed-quick $anim-ease;
+      }
+
+      &:before {
+        top: 0;
+        bottom: 0;
+        left: 0;
+
+        width: $checkbox-size;
+        height: $checkbox-size;
+        margin: auto;
+
+        border: 1px solid $color-grey-20;
+        border-radius: $border-radius;
+        background-color: $color-white;
+      }
+
+      // Ripple animation
+      &:after {
+        left: calc(#{$checkbox-size} / 2);
+
+        width: calc(#{$checkbox-size} * 3);
+        height: calc(#{$checkbox-size} * 3);
+      }
+    }
+
+    &:checked + label {
+      &:before {
+        border-color: $color-brand-gold;
+        background-color: $color-brand-gold;
+      }
+    }
+  }
+
+  .c-icon-tick {
+    left: 0;
+
+    width: 1.3em;
+  }
+}
+
+/**
+ * Focus state
+ */
+.c-radio-button,
+.c-checkbox {
+  input[type="radio"],
+  input[type="checkbox"] {
+    &:focus + label:before {
+      border-color: $color-brand-gold;
+    }
+  }
+}
+
+/**
+ * Tick animation
+ */
+.c-radio-button,
+.c-checkbox {
+  .c-icon-tick {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    margin: auto;
+  }
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    &:checked + label {
+      @extend %tickAnimation;
+    }
+  }
+}
+
+/**
+ * Ripple animation
+ */
+.c-radio-button,
+.c-checkbox {
+  input[type="radio"],
+  input[type="checkbox"] {
+    + label {
+      &:after {
+        top: 49%;
+
+        transform: translate(-50%, -50%) scale(0);
+
+        opacity: 0;
+        background: rgba($color-brand-gold, 0.3);
+      }
+    }
+
+    &:checked + label {
+      &:after {
+        transform: translate(-50%, -50%) scale(1);
+
+        @extend %ripple;
+      }
+    }
+  }
+}
+
+.c-input--border {
+  .c-input__container,
+  .c-icon {
+    pointer-events: none;
+  }
+}
+
+/**
+ * Error Input Message
+ */
+.c-icon-error {
+  display: none;
+}
+
+.field-validation-error {
+  display: inline-block;
+  padding-top: 12px;
+}
+
+.input-validation-error {
+  position: relative;
+
+  display: inline-block;
+
+  border: 1px solid $color-utility-negative;
+  outline: $color-utility-negative;
+
+  &:focus-within {
+    border-color: $color-utility-negative !important;
+  }
+
+  + .c-icon-error {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    display: block;
+
+    width: 32px;
+    height: 32px;
+    margin: auto;
+    transform: translateX(50%);
+
+    @include media-breakpoint-only(xs) {
+      top: 100%;
+      left: 50%;
+      margin: -14px 0;
+      transform: translateX(-50%);
+    }
+
+    .c-icon-error {
+      display: block;
+    }
+
+    + .field-validation-error {
+      display: block;
+    }
+  }
+}
+
+.field-validation-error {
+  color: $color-utility-negative;
+
+  @include rem(font-size, 14px);
+}
+
+/**
+ * Disabled state
+ */
+.has-icon {
+  position: relative;
+}
+
+input:disabled {
+  color: $color-gray-50;
+  -webkit-text-fill-color: $color-gray-50;
+}
+
+.input-group-prepend,
+.input-group-append {
+  position: relative;
+}
+
+// IE 10 fix for inputs spilling over their container
+html[data-useragent*="MSIE 10.0"] {
+  .input-group-prepend {
+    width: 90%;
+  }
+}
+
+input:disabled + .c-icon-padlock {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  right: rem(20px);
+  z-index: 1;
+}
+
+input:disabled + svg.c-icon-padlock {
+  width: rem(12px);
+  height: rem(17px);
+}
+
+.c-form {
+  &__postcode-search {
+    .c-button__standard {
+      padding-top: 1.3125rem;
+      padding-bottom: 1.45rem;
+
+      .loading {
+        margin-left: 18px;
+      }
+    }
+
+    .c-button-disabled {
+      border-color: #e1e1e1;
+      cursor: default;
+      color: #e1e1e1;
+
+      &:after {
+        display: none !important;
+      }
+    }
+
+    .button-dots.dot-falling {
+      float: left;
+    }
+  }
+}

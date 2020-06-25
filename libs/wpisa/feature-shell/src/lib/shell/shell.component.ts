@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, isDevMode } from '@angular/core';
 import {
   Router,
   ActivatedRoute,
@@ -20,14 +20,16 @@ import { ConfigService } from '@wesleyan-frontend/wpisa/data-access';
 export class ShellComponent {
   currentStepIndex$: Observable<number>;
   progressBarContent;
+  isDevEnv = false;
 
   constructor(
     private configService: ConfigService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
-    this.progressBarContent = this.configService.content.progressBar;
+    this.isDevEnv = isDevMode();
 
+    this.progressBarContent = this.configService.content.progressBar;
     this.currentStepIndex$ = this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
       startWith(this.activatedRoute),

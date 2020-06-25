@@ -1,4 +1,58 @@
+/*------------------------------------*\
+    $LIBRARIES
+\*------------------------------------*/
+/*------------------------------------*\
+    $BOOTSTRAP CONFIGS
+\*------------------------------------*/
+@import './lib/legacy-scss/abstracts/bootstrap-overrides';
 @import '~bootstrap/scss/bootstrap';
+@import './lib/legacy-scss/abstracts/bootstrap-function-overrides';
+/*------------------------------------*\
+    $ABSTRACTS
+\*------------------------------------*/
+@import './lib/legacy-scss/abstracts/mixins';
+@import './lib/legacy-scss/abstracts/variables';
+
+/*------------------------------------*\
+    $BASE
+\*------------------------------------*/
+@import './lib/legacy-scss/base/body';
+@import './lib/legacy-scss/base/animation';
+@import './lib/legacy-scss/base/fonts';
+// @import './lib/legacy-scss/base/select';
+@import './lib/legacy-scss/base/text';
+// @import './lib/legacy-scss/base/forms';
+@import './lib/legacy-scss/base/global-classes';
+@import './lib/legacy-scss/base/headings';
+@import './lib/legacy-scss/base/links';
+@import './lib/legacy-scss/base/lists';
+@import './lib/legacy-scss/base/text';
+@import './lib/legacy-scss/base/utilities';
+@import './lib/legacy-scss/base/copy';
+@import './lib/legacy-scss/base/icon';
+@import './lib/legacy-scss/base/numbers';
+/*------------------------------------*\
+    $COMPONENTS
+\*------------------------------------*/
+// @import './lib/legacy-scss/components/article';
+// @import './lib/legacy-scss/components/booking-module';
+@import './lib/legacy-scss/components/buttons';
+// @import './lib/legacy-scss/components/card';
+// @import './lib/legacy-scss/components/checkbox-button';
+@import './lib/legacy-scss/components/footer';
+@import './lib/legacy-scss/components/header';
+@import './lib/legacy-scss/components/headline';
+// @import './lib/legacy-scss/components/hero';
+@import './lib/legacy-scss/components/icons';
+// @import './lib/legacy-scss/components/incentive';
+// @import './lib/legacy-scss/components/input-border';
+@import './lib/legacy-scss/components/messaging';
+@import './lib/legacy-scss/components/navigation';
+@import './lib/legacy-scss/components/page-header';
+// @import './lib/legacy-scss/components/quote';
+// @import './lib/legacy-scss/components/radio-button-icon';
+@import './lib/legacy-scss/components/triangle';
+
 @import '~@angular/cdk/a11y-prebuilt.css';
 @import '~@angular/cdk/overlay-prebuilt.css';
 @import './lib/global';

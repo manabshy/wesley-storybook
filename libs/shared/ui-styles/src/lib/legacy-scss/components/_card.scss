@@ -1,0 +1,223 @@
+/*------------------------------------*\
+    #CARD
+\*------------------------------------*/
+
+.c-card {
+  position: relative;
+
+  overflow: hidden;
+
+  width: 100%;
+  max-width: 100%;
+
+  box-shadow: $box-shadow-light-black;
+
+  @include media-breakpoint-down(md) {
+    .c-triangle:not(.c-triangle__white-solid) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+
+      transform: rotate(-90deg) translate3d(-50%, 0, 0);
+      transform-origin: top left;
+      &:last-child {
+        z-index: 1;
+      }
+    }
+  }
+  figure {
+    margin: 0;
+    padding: 0;
+
+    text-align: left;
+
+    color: $color-brand-charcoal;
+
+    @include rem(
+      (
+        font-size: 20px,
+        line-height: 28px,
+      )
+    );
+  }
+  figcaption {
+    @include rem(
+      (
+        padding: 33px 25px,
+      )
+    );
+  }
+  &__img-scaled {
+    width: 100%;
+  }
+  &__img-wrap {
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    @include media-breakpoint-up(lg) {
+      float: left;
+
+      width: 50%;
+      height: 100%;
+    }
+  }
+  .img-container {
+    position: relative;
+
+    @include media-breakpoint-up(lg) {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/**
+ * FC Card
+ */
+
+.c-card--fc {
+  @include media-breakpoint-up(lg) {
+    overflow: hidden;
+
+    height: 336px;
+    max-height: 336px;
+  }
+  img {
+    @include media-breakpoint-up(lg) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      width: auto;
+      min-width: 100%;
+      max-width: none;
+      min-height: 100%;
+      margin: auto;
+
+      vertical-align: middle;
+    }
+  }
+  .c-triangle {
+    &__container {
+      @include media-breakpoint-up(lg) {
+        position: relative;
+
+        float: right;
+
+        width: 120px;
+        height: 100%;
+
+        transform: scale(-1, -1);
+      }
+    }
+    &__wrapper {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      @include media-breakpoint-up(lg) {
+        top: 0;
+
+        width: 100%;
+        height: 100%;
+        margin: auto;
+      }
+      svg {
+        position: absolute;
+        bottom: 0;
+      }
+      &:first-child {
+        .svg-container {
+          padding-top: 12%;
+
+          @include media-breakpoint-up(lg) {
+            padding-top: 336px;
+          }
+          svg {
+            width: 21.8vw;
+            height: 62.2vw;
+            max-height: 398px;
+            max-width: 139px;
+
+            @include media-breakpoint-up(lg) {
+              z-index: 1;
+              left: 40%;
+
+              width: 106px;
+              height: 150px;
+
+              transform: scale(1, -1);
+            }
+          }
+        }
+      }
+      &:last-child {
+        .svg-container {
+          padding-top: 20%;
+
+          @include media-breakpoint-up(lg) {
+            padding-top: 336px;
+          }
+          svg {
+            bottom: 0;
+            left: 0;
+
+            width: 100%;
+            height: 11.44vw;
+
+            @include media-breakpoint-down(md) {
+              max-height: 65px;
+            }
+            @include media-breakpoint-up(lg) {
+              bottom: 0;
+              left: 0;
+
+              width: 120px;
+              height: 336px;
+            }
+          }
+        }
+      }
+      .svg-container {
+        position: relative;
+
+        height: 0;
+      }
+    }
+  }
+  .c-card {
+    &__content-wrap {
+      position: relative;
+      z-index: 1000;
+
+      width: 100%;
+
+      @include rem(padding, 30px 25px);
+      @include media-breakpoint-up(md) {
+        @include rem(padding, 45px 50px);
+      }
+      @include media-breakpoint-up(lg) {
+        float: left;
+
+        width: 50%;
+
+        @include rem(padding, 30px 70px);
+      }
+      blockquote {
+        @include rem(margin, 40px 0 60px);
+      }
+    }
+  }
+}

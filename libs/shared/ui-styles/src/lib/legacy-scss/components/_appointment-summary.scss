@@ -1,0 +1,26 @@
+.c-appointment-summary {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  padding: rem(26px) rem(24px) rem(30px);
+
+  @include media-breakpoint-up(sm) {
+    align-items: center;
+  }
+}
+
+.c-appointment-summary__title {
+  margin-bottom: rem(10px);
+  font-weight: 600;
+}
+
+.c-appointment-summary__body {
+  margin-bottom: rem(20px);
+}
+
+.c-appointment-summary__image {
+  flex: 0 0 auto;
+  margin-bottom: rem(16px);
+  max-width: 120px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}

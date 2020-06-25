@@ -1,0 +1,66 @@
+.template--terms {
+  padding: 0 10px;
+
+  &__content {
+    padding-top: rem(28px);
+  }
+
+  @include media-breakpoint-up(sm) {
+    // original file: 'src/svg/bg-triangles-h.svg' - https://yoksel.github.io/url-encoder/
+    background-image: url("data:image/svg+xml,%3Csvg width='768' height='272' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3Cpath id='a' d='M0 0h272v768H0z'/%3E%3ClinearGradient x1='66.288%25' y1='0%25' x2='14.753%25' y2='97.389%25' id='c'%3E%3Cstop stop-color='%23FEBD11' offset='0%25'/%3E%3Cstop stop-color='%23FEDD36' stop-opacity='.312' offset='64.754%25'/%3E%3Cstop stop-color='%23FEDD36' stop-opacity='.101' offset='100%25'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg transform='matrix(0 -1 -1 0 768 272)' fill='none' fill-rule='evenodd'%3E%3Cmask id='b' fill='%23fff'%3E%3Cuse xlink:href='%23a'/%3E%3C/mask%3E%3Cpath fill='%23FEBD11' mask='url(%23b)' d='M0 768L584.08-893l584.08 1661z'/%3E%3Cpath fill='url(%23c)' mask='url(%23b)' d='M0 0l202.58 577L405.16 0z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    padding-top: 23%;
+
+    @media (orientation: landscape) {
+      background-position: center -50px;
+      padding-top: 15%;
+    }
+
+    &__content {
+      padding-top: rem(60px);
+    }
+
+    h1 {
+      margin-bottom: rem(43px);
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    // original file: 'src/svg/bg-triangles-v.svg' - https://yoksel.github.io/url-encoder/
+    background-image: url("data:image/svg+xml,%3Csvg width='554' height='696' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3Cpath id='a' d='M0 0h554v696H0z' /%3E%3ClinearGradient x1='66.288%25' y1='0%25' x2='14.753%25' y2='97.389%25' id='c'%3E%3Cstop stop-color='%23FEBD11' offset='0%25' /%3E%3Cstop stop-color='%23FEDD36' stop-opacity='.312' offset='64.754%25' /%3E%3Cstop stop-color='%23FEDD36' stop-opacity='.101' offset='100%25' /%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cmask id='b' fill='%23fff'%3E%3Cuse xlink:href='%23a' /%3E%3C/mask%3E%3Cpath fill='%23FEBD11' mask='url(%23b)' d='M0 696L413.08-478 826.16 696z' /%3E%3Cpath fill='url(%23c)' mask='url(%23b)' d='M0 0l277.08 787L554.16 0z' /%3E%3C/g%3E%3C/svg%3E%0A");
+    background-position: 540px;
+    background-size: cover;
+
+    padding-top: 0;
+    min-height: calc(100vh - 69px); // header height
+  }
+
+  @include media-breakpoint-up(lg) {
+    background-position: 800px;
+  }
+
+  @media screen and (min-height: 700px) and (min-width: map-get($grid-breakpoints, md)) {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &__content {
+      padding-top: 0;
+    }
+
+    h1 {
+      margin-bottom: rem(47px);
+    }
+  }
+
+  .c-scrollbar {
+    height: 160px;
+
+    @include media-breakpoint-up(sm) {
+      height: 224px;
+    }
+  }
+}

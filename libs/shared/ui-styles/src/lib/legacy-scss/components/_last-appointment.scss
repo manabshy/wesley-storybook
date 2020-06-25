@@ -1,0 +1,47 @@
+.c-last-appointment {
+  display: flex;
+  padding: rem(22px);
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  @include media-breakpoint-up(sm) {
+    padding: rem(24px);
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.c-last-appointment__icon {
+  flex: 0 0 rem(54px);
+  margin-top: rem(15px);
+
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 auto;
+    margin: 0 0 rem(7px) 0;
+    .c-icon-calendar-ring {
+      width: rem(44px) !important;
+      height: rem(44px) !important;
+    }
+  }
+}
+
+.c-last-appointment__content {
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 100%;
+  }
+}
+
+.c-last-appointment__strapline {
+  margin-bottom: rem(5px);
+  font-size: rem(15px);
+  line-height: rem(24px);
+}
+
+.c-last-appointment__date {
+  margin-bottom: rem(14px);
+  font-size: rem(26px);
+  line-height: rem(28px);
+}

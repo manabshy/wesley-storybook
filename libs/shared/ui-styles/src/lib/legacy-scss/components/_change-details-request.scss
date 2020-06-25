@@ -1,0 +1,34 @@
+.request-details-change {
+  position: relative;
+
+  .hide-element {
+    display: none;
+  }
+  #request-details-change__request-change {
+    z-index: 99;
+    padding: 50px;
+    width: 100%;
+
+    .request-details-change__info h2 {
+      color: #40474f;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: 28px;
+      margin-top: 0px;
+    }
+
+    ul.details-change-list li::before {
+      content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+      color: #FEBD11;
+      display: inline-block; /* Needed to add space between the bullet and the text */
+      width: 1em; /* Also needed for space (tweak if needed) */
+      margin-left: 14px;
+    }
+  }
+  &__form-close {
+    padding-top: 24px;
+    padding-right: 24px;
+    display: block;
+  }
+}

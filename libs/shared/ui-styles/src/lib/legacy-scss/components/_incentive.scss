@@ -1,0 +1,95 @@
+/*------------------------------------*\
+    #INCENTIVE BANNER
+\*------------------------------------*/
+
+.c-incentive {
+  position: relative;
+  @include rem(padding, 64px 0px 208px 0px);
+  @include media-breakpoint-up(sm) {
+    @include rem(padding, 0px 0px 0px 0px);
+    .row {
+      min-height: 385px;
+    }
+  }
+  .svg-container {
+    position: absolute;
+    width: 100%;
+
+    &:first-child {
+      padding-top: 320px;
+      @include media-breakpoint-up(sm) {
+        padding-top: 555px;
+      }
+      @include media-breakpoint-up(md) {
+        padding-top: 956px;
+      }
+    }
+    &:last-child {
+      padding-top: 214px;
+      @include media-breakpoint-up(sm) {
+        padding-top: 358px;
+      }
+      @include media-breakpoint-up(md) {
+        padding-top: 596px;
+      }
+    }
+  }
+
+  .c-triangle {
+    position: absolute;
+    top: 0;
+    &__wrapper {
+      position: absolute;
+      top: 65%;
+      right: 0;
+      width: 150px;
+      height: 320px;
+      transform: rotate(90deg) scale(-1, 1);
+      transform-origin: top right;
+      z-index: -1;
+      @include media-breakpoint-up(sm) {
+        top: 36%;
+        width: 245px;
+        height: 555px;
+      }
+      @include media-breakpoint-up(md) {
+        top: 0;
+        width: 337px;
+        height: 956px;
+      }
+    }
+    &__semi-transparent {
+      width: 84px;
+      height: 214px;
+      &:last-child {
+        left: -21px;
+      }
+      @include media-breakpoint-up(sm) {
+        width: 136px;
+        height: 358px;
+        &:last-child {
+          left: -32px;
+        }
+      }
+      @include media-breakpoint-up(md) {
+        width: 210px;
+        height: 596px;
+        &:last-child {
+          left: -48px;
+        }
+      }
+    }
+    &__light-grey-semi-transparent {
+      width: 130px;
+      height: 320px;
+      @include media-breakpoint-up(sm) {
+        width: 212px;
+        height: 555px;
+      }
+      @include media-breakpoint-up(md) {
+        width: 337px;
+        height: 956px;
+      }
+    }
+  }
+}

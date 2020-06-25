@@ -1,0 +1,84 @@
+.c-tooltip-parameter {
+  @extend %tooltip;
+  flex-shrink: 0;
+  @include media-breakpoint-up(md) {
+    position: relative;
+  }
+}
+
+.c-tooltip-parameter__icon {
+  @extend %tooltip-icon;
+
+  @include media-breakpoint-down(sm) {
+    &--active,
+    &:hover,
+    &:focus {
+      position: relative;
+      @include tooltipDownArrow($color-brand-gold, bottom);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    & + .c-tooltip-parameter__content {
+      /* Show the tooltip on hover */
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.c-tooltip-parameter__content {
+  @extend %tooltip-box;
+
+  /* Hide the tooltip by default */
+  visibility: hidden;
+  opacity: 0;
+
+  display: block;
+  left: 0%;
+  bottom: rem(59px);
+  margin-left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  width: 80%;
+  margin-bottom: 0;
+  @include media-breakpoint-up(sm) {
+    left: auto;
+    right: -2%;
+    bottom: rem(70px);
+    margin-left: 0;
+    transform: none;
+  }
+  @include media-breakpoint-up(md) {
+    @include tooltipDownArrow();
+    right: auto;
+    left: 0;
+    bottom: 100%;
+    min-width: rem(200px);
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: rem(15px);
+    z-index: 1;
+  }
+
+  &--active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.c-tooltip-parameter__text {
+  @extend %tooltip-text;
+  margin-right: rem(12px);
+  @include media-breakpoint-up(lg) {
+    margin-right: 0;
+  }
+}
+
+.c-tooltip-parameter__close {
+  @extend %tooltip-close;
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}

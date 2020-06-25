@@ -1,0 +1,223 @@
+/**
+ * Goals & Objectives
+ */
+
+.c-goals.card-columns {
+  widows: 1;
+  orphans: 1;
+  @include media-breakpoint-only(xs) {
+    column-count: 1;
+  }
+}
+
+.c-goals {
+
+  &--columns {
+    column-count: 1;
+    column-gap: 1.25rem;
+    widows: 1;
+    orphans: 1;
+    @include media-breakpoint-up(sm) {
+      column-count: 2;
+      widows: 2;
+      orphans: 2;
+    }
+    .c-goal--calcs {
+      display: block;
+    }
+    @media all and (-ms-high-contrast: none) {
+      .c-goal--calcs {
+        display: inline-block;
+      }
+    }
+    .module {
+      width: 100%;
+    }
+  }
+
+  &--flex {
+    .c-goal--calcs {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-flow: row wrap;
+      .module {
+        flex: 100% 0 0;
+      }
+      @include media-breakpoint-up(sm) {
+        flex-flow: row nowrap;
+        .module {
+          flex: 50% 0 0;
+          &:first-child {
+            margin-right: 0.625rem;
+          }
+          &:last-child {
+            margin-left: 0.625rem;
+          }
+        }
+      }
+    }
+  }
+
+  &--single-calc {
+    .c-goal--calcs {
+      @include media-breakpoint-up(sm) {
+        .module {
+          &:first-child {
+            margin-right: 0;
+          }
+          &:last-child {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &--empty {
+    padding: rem(10px) rem(20px) rem(32px);
+    border: 1px dashed rgba(87, 87, 87, 0.5);
+    background: $color-grey;
+    border-radius: $border-radius;
+    text-align: center;
+    margin-bottom: rem(20px);
+
+    @include media-breakpoint-up(sm) {
+      padding-right: rem(120px);
+      padding-left: rem(120px);
+      margin-bottom: 0;
+    }
+
+    @include media-breakpoint-up(md) {
+      padding-right: rem(350px);
+      padding-left: rem(350px);
+    }
+
+    span.c-icon {
+      transform: scale(1.2);
+    }
+
+    .c-icon svg {
+      width: rem(90px);
+      height: rem(80px);
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    p {
+      line-height: rem(24px);
+    }
+
+    p:last-of-type {
+      opacity: 0.8;
+    }
+
+    a.c-link {
+      font-size: rem(14px);
+    }
+  }
+}
+
+.c-goal {
+  margin-bottom: 1.25rem;
+  width: 100%;
+  
+  @include media-breakpoint-up(lg) {
+    width: calc(50% - 10px);
+  }
+
+  &__header {
+    border-bottom: 1px solid $color-grey-20;
+    .c-icon {
+      width: 70px;
+      height: 70px;
+
+      svg {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &--lg {
+      .c-goal__header__text {
+        @include media-breakpoint-up(sm) {
+          font-size: rem(24px);
+        }
+      }
+    }
+  }
+
+  .module.--info {
+    overflow: hidden;
+    padding: rem(28px) rem(20px) rem(32px);
+    background: $color-grey;
+    border-radius: $border-radius;
+    text-align: center;
+
+    @include media-breakpoint-up(sm) {
+      padding: rem(28px) rem(60px) rem(32px);
+    }
+
+    .--info__icon {
+      margin-bottom: rem(20px);
+    }
+
+    .--info__cta {
+      font-size: rem(14px);
+    }
+  }
+
+  // Joint icon in Goal
+  .c-icon-joint svg {
+    border: 1px solid $color-grey-20;
+    cursor: pointer;
+  }
+
+  // Icon next to list
+  .c-list + .c-icon-joint {
+    float: left;
+    @include rem(margin, 0 10px 0 0);
+  }
+
+  // Icon next to description
+  span + .c-icon-joint {
+    display: block;
+    @include rem(margin, 10px 0 0);
+  }
+}
+
+.module {
+  &.cta--info {
+    background-color: $color-grey;
+    border-radius: 0;
+    padding: 20px;
+    margin-bottom: 10px;
+    display: table;
+
+    .--info__icon{
+      display: table-cell;
+      vertical-align: top;
+        @include media-breakpoint-down(xs) {
+          display: block;
+        }
+    }
+    .--info__text{
+      display: table-cell;
+      vertical-align: top;
+      padding-left: 10px;
+
+        @include media-breakpoint-down(xs) {
+          display: block;
+          padding: 0;
+          margin-top: 10px;
+        }
+      p {
+        margin: 0;
+      }
+    }
+
+    
+  }
+}

@@ -1,0 +1,159 @@
+.c-my-account-dashboard,
+.c-help-support-dashboard {
+  font-size: rem(15px);
+  line-height: rem(24px);
+
+  .c-button--has-icon {
+    @include media-breakpoint-up(md) {
+      flex-direction: column;
+    }
+    @include media-breakpoint-only(xs) {
+      .c-icon {
+        @include rem(margin-right, 15px);
+      }
+    }
+  }
+
+  &__ctas {
+    padding: rem(20px);
+
+    @include media-breakpoint-up(sm) {
+      margin-bottom: rem(8px);
+    }
+  }
+
+  &__ctas-list {
+    margin-top: rem(16px);
+    @include media-breakpoint-up(sm) {
+      display: flex;
+      margin-top: rem(32px);
+    }
+  }
+
+  &__ctas-item {
+    padding: 0;
+    @include media-breakpoint-up(sm) {
+      flex: 1;
+
+      & {
+        @include media-breakpoint-up(md) {
+          border-left: 1px solid $color-grey-20;
+        }
+      }
+      &:first-child {
+        border-left: 0;
+      }
+    }
+  }
+
+  &__cta-inner {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-right: rem(20px);
+    padding-bottom: rem(20px);
+    text-align: center;
+
+    @include media-breakpoint-up(sm) {
+      flex-flow: column;
+      align-items: center;
+      padding-left: rem(18px);
+    }
+  }
+
+  &__cta-icon {
+    width: 32px;
+    height: 38px;
+    display: flex;
+    align-items: stretch;
+
+    @include media-breakpoint-up(sm) {
+      flex: 0 100% 100%;
+      margin-bottom: rem(4px);
+    }
+  }
+
+  &__button {
+    margin-top: rem(6px);
+    margin-left: rem(8px);
+    a {
+      font-size: rem(14px);
+      line-height: rem(20px);
+      color: $color-slate;
+
+      &:after {
+        visibility: visible;
+        width: 100%;
+      }
+
+      &:hover {
+        color: $color-slate;
+      }
+
+      &:hover:after {
+        background-color: $color-slate;
+      }
+    }
+
+    @include media-breakpoint-up(sm) {
+      flex: 0 0 100%;
+      margin: 0;
+    }
+
+    .c-icon {
+      width: 14px;
+
+      @include media-breakpoint-up(sm) {
+        margin-bottom: rem(4px);
+      }
+    }
+  }
+
+  &__form {
+    position: relative;
+    padding: 1.25rem;
+    background: $color-grey;
+    border-radius: 0 0 $border-radius $border-radius;
+    input {
+      @include rem(font-size, 15px);
+    }
+    label {
+      display: block;
+      width: 100%;
+      font-size: rem(15px);
+      span {
+        margin-bottom: 0 !important;
+        font-weight: 700 !important;
+      }
+    }
+  }
+
+  &__input {
+    background-color: $color-white;
+    margin-top: 0.4em;
+    border-radius: 0;
+    @include rem(
+      (
+        padding: 0.75em 0.8em,
+        height: 50px,
+      )
+    );
+  }
+
+  &__submit {
+    position: absolute;
+    bottom: rem(28px);
+    right: 1.25rem;
+    padding: 0;
+    border: 2px $color-brand-gold solid;
+    background: transparent;
+    @include rem(
+      (
+        height: 50px,
+        width: 50px,
+      )
+    );
+    cursor: pointer;
+  }
+}

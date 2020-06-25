@@ -363,6 +363,70 @@
           "style": "scss"
         }
       }
+    },
+    "shared-ui-site-header": {
+      "projectType": "library",
+      "root": "libs/shared/ui-site-header",
+      "sourceRoot": "libs/shared/ui-site-header/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui-site-header/tsconfig.lib.json",
+              "libs/shared/ui-site-header/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-site-header/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui-site-header/jest.config.js",
+            "tsConfig": "libs/shared/ui-site-header/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/ui-site-header/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-ui-site-footer": {
+      "projectType": "library",
+      "root": "libs/shared/ui-site-footer",
+      "sourceRoot": "libs/shared/ui-site-footer/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui-site-footer/tsconfig.lib.json",
+              "libs/shared/ui-site-footer/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-site-footer/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui-site-footer/jest.config.js",
+            "tsConfig": "libs/shared/ui-site-footer/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/ui-site-footer/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

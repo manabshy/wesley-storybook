@@ -1,0 +1,23 @@
+body.privacy-policy {
+    background: $main-bg-grey;
+
+    h1 {
+        margin-bottom: 5px;
+    }
+    
+    .toggle-header {
+        font-weight: bold;
+        padding: 10px 0;
+        border-top: 1px solid $main-bg-grey;
+        border-bottom: 1px solid $main-bg-grey;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+            
+    .field-heading:after {
+        content: url("/images/icons/chevron-down.png");
+        right: 20px;
+        position: absolute;
+    }
+}

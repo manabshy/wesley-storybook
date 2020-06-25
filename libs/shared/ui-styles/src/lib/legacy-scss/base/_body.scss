@@ -1,0 +1,38 @@
+/*------------------------------------*\
+    #BODY
+\*------------------------------------*/
+
+/**
+ * Body base styles
+ */
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: $font;
+  font-weight: 400;
+
+  min-height: 100vh;
+
+  color: $color-slate;
+  background: $color-white;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  text-size-adjust: 100%;
+  @extend %c-body;
+
+  &.dashboard,
+  &.dashboard-overview {
+    background-color: $main-bg-grey;
+  }
+}
+
+// Adds grey background to all dashboard react containers
+// inside the styleguide
+div[class^='rsg--preview'] {
+  background-color: $main-bg-grey;
+}
