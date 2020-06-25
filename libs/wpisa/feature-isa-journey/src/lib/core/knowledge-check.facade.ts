@@ -32,7 +32,7 @@ export class KnowledgeCheckFacade {
           (response) => (this.knowledgeCheckAttemptId = response.data.attemptId)
         ),
         catchError((err) => {
-          window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+          window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
 
           return throwError(err);
         })
@@ -51,7 +51,7 @@ export class KnowledgeCheckFacade {
       .pipe(
         tap((_) => this.loadingService.hide()),
         catchError((err) => {
-          window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+          window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
 
           return throwError(err);
         })

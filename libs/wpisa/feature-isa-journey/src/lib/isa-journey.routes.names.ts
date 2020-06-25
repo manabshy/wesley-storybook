@@ -11,5 +11,5 @@ export const isaRoutesNames = {
   LUMP_SUM_AND_MONTHLY_PAYMENT_INVESTMENT: 'lump-sum-and-monthly-payment',
   DECLARATION: 'declaration',
   PAYMENT: 'payment',
-  CONFIRMATION: 'confirmation',
+  CONFIRMATION: 'savings-and-investments/with-profits-isa/confirmation',
 };

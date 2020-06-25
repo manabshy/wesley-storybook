@@ -90,7 +90,7 @@ export class DeclarationPageComponent implements OnInit, OnDestroy {
             this.declarationFacade.submitMonthlyISA().pipe(
               tap(console.log),
               tap((_) =>
-                this.router.navigate([`/${isaRoutesNames.CONFIRMATION}`])
+                window.open(`/${isaRoutesNames.CONFIRMATION}`, '_self')
               )
             )
           )

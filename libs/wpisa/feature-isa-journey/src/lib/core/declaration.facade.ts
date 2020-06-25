@@ -272,7 +272,7 @@ export class DeclarationFacade {
         );
       }),
       catchError((err) => {
-        window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+        window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
         return throwError(err);
       })
     );
