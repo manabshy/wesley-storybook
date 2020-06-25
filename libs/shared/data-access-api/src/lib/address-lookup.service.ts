@@ -17,13 +17,13 @@ export class AddressLookupService {
 
   findByPostcode(postcode: string) {
     return this.http.get<PostcodeLookupResponse | null>(
-      `api/lookup/search?postcode=${postcode}`
+      `/api/lookup/search?postcode=${postcode}`
     );
   }
 
   getAddressDetails(id: string) {
     return this.http.get<AddressDetails | null>(
-      `api/lookup/select?moniker=${id}&format=experian`
+      `/api/lookup/select?moniker=${id}&format=experian`
     );
   }
 }
