@@ -21,17 +21,10 @@
             "polyfills": "apps/wpisa/src/polyfills.ts",
             "tsConfig": "apps/wpisa/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "apps/wpisa/src/favicon.ico",
-              "apps/wpisa/src/assets"
-            ],
-            "styles": [
-              "libs/shared/ui-styles/src/index.scss"
-            ],
+            "assets": ["apps/wpisa/src/favicon.ico", "apps/wpisa/src/assets"],
+            "styles": ["libs/shared/ui-styles/src/index.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "libs/shared/ui-styles/src/lib"
-              ]
+              "includePaths": ["libs/shared/ui-styles/src/lib"]
             },
             "scripts": []
           },
@@ -91,10 +84,7 @@
               "apps/wpisa/tsconfig.app.json",
               "apps/wpisa/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/wpisa/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/wpisa/**"]
           }
         },
         "test": {
@@ -129,13 +119,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/wpisa-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/wpisa-e2e/**"
-            ]
+            "tsConfig": ["apps/wpisa-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/wpisa-e2e/**"]
           }
         }
       }
@@ -153,10 +138,7 @@
               "libs/wpisa/data-access/tsconfig.lib.json",
               "libs/wpisa/data-access/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/wpisa/data-access/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/wpisa/data-access/**"]
           }
         },
         "test": {
@@ -188,10 +170,7 @@
               "libs/shared/ui-stepper/tsconfig.lib.json",
               "libs/shared/ui-stepper/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/ui-stepper/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-stepper/**"]
           }
         },
         "test": {
@@ -288,10 +267,7 @@
               "libs/wpisa/feature-shell/tsconfig.lib.json",
               "libs/wpisa/feature-shell/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/wpisa/feature-shell/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/wpisa/feature-shell/**"]
           }
         },
         "test": {
@@ -323,10 +299,7 @@
               "libs/shared/util-validators/tsconfig.lib.json",
               "libs/shared/util-validators/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/util-validators/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/shared/util-validators/**"]
           }
         },
         "test": {
@@ -348,13 +321,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/shared/ui-styles/tsconfig.lib.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/ui-styles/**"
-            ]
+            "tsConfig": ["libs/shared/ui-styles/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-styles/**"]
           }
         }
       }
@@ -372,10 +340,7 @@
               "libs/shared/data-access-api/tsconfig.lib.json",
               "libs/shared/data-access-api/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/data-access-api/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/shared/data-access-api/**"]
           }
         },
         "test": {
@@ -442,10 +407,7 @@
               "libs/shared/ui-site-header/tsconfig.lib.json",
               "libs/shared/ui-site-header/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/ui-site-header/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-site-header/**"]
           }
         },
         "test": {
@@ -477,10 +439,7 @@
               "libs/shared/ui-site-footer/tsconfig.lib.json",
               "libs/shared/ui-site-footer/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/ui-site-footer/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-site-footer/**"]
           }
         },
         "test": {
@@ -520,14 +479,71 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/shared-ui-stepper-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/shared-ui-stepper-e2e/**"
-            ]
+            "tsConfig": ["apps/shared-ui-stepper-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/shared-ui-stepper-e2e/**"]
           }
+        }
+      }
+    },
+    "shared-storybook": {
+      "projectType": "library",
+      "root": "libs/shared/storybook",
+      "sourceRoot": "libs/shared/storybook/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/storybook/tsconfig.lib.json",
+              "libs/shared/storybook/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/storybook/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/storybook/jest.config.js",
+            "tsConfig": "libs/shared/storybook/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/storybook/src/test-setup.ts"
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/shared/storybook/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/shared-storybook",
+            "config": {
+              "configFolder": "libs/shared/storybook/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
         }
       }
     }

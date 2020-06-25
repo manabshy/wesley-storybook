@@ -1,0 +1,15 @@
+.bg-solid-white {
+  background-color: $global-colour-white;
+}
+
+.bg-solid-grey-50 {
+  background-color: $global-colour-grey-50;
+}
+
+.bg-gradient-yellow {
+  background: linear-gradient(
+    133.23deg,
+    $global-colour-gold-900 0%,
+    $global-colour-yellow-700 100%
+  );
+}

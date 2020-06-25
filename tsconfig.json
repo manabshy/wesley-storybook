@@ -42,6 +42,9 @@
       ],
       "@wesleyan-frontend/shared/ui-site-footer": [
         "libs/shared/ui-site-footer/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/storybook": [
+        "libs/shared/storybook/src/index.ts"
       ]
     }
   },
