@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { Observable, Subject } from 'rxjs';
 import { mapTo, scan, map, distinctUntilChanged } from 'rxjs/operators';
@@ -14,7 +15,7 @@ export class OverlayProgressSpinnerService {
 
   private spin$: Subject<number> = new Subject();
 
-  constructor(private overlay: Overlay) {
+  constructor(private overlay: Overlay, private liveAnnouncer: LiveAnnouncer) {
     this.spinnerTopRef = this.overlay.create({
       hasBackdrop: true,
       positionStrategy: this.overlay
@@ -45,15 +46,17 @@ export class OverlayProgressSpinnerService {
       });
   }
   show() {
-    console.log('show');
+    // console.log('show');
     this.spin$.next(1);
+    this.liveAnnouncer.announce('Loading, please wait');
   }
   hide() {
-    console.log('hide');
+    // console.log('hide');
     this.spin$.next(-1);
+    this.liveAnnouncer.clear();
   }
   reset() {
-    console.log('reset');
+    // console.log('reset');
     this.spin$.next(0);
   }
 }

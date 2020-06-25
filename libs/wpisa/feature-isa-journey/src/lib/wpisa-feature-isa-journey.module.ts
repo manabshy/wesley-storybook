@@ -28,6 +28,7 @@ import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { DirectDebitFormComponent } from './components/direct-debit-form/direct-debit-form.component';
 import { KnowledgeCheckQ1PageComponent } from './knowledge-check-q1-page/knowledge-check-q1-page.component';
 import { KnowledgeCheckQ2PageComponent } from './knowledge-check-q2-page/knowledge-check-q2-page.component';
+import { ButtonLoaderDirective } from './button-loader.directive';
 @NgModule({
   imports: [
     CommonModule,
@@ -56,6 +57,7 @@ import { KnowledgeCheckQ2PageComponent } from './knowledge-check-q2-page/knowled
     DeclarationPageComponent,
     PaymentPageComponent,
     DirectDebitFormComponent,
+    ButtonLoaderDirective,
   ],
   providers: [
     {

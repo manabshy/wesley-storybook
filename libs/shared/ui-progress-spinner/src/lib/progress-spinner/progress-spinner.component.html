@@ -1,1 +1,7 @@
-<div class="wes-spinner"></div>
+<div
+  class="wes-spinner"
+  [ngClass]="{
+    'wes-spinner--overlay': spinnerLocation === 'overlay',
+    'wes-spinner--button': spinnerLocation === 'button'
+  }"
+></div>

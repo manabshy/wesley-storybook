@@ -56,6 +56,8 @@ export class AddressLookupFormComponent
   @Output() selectedAddress = new EventEmitter<AddressDetails>();
   @Output() showManualAddress = new EventEmitter();
 
+  findingAddress = false;
+
   form = this.fb.group({
     postcode: [
       '',
@@ -101,17 +103,18 @@ export class AddressLookupFormComponent
 
     if (this.form.controls.postcode.valid) {
       this._submitAttempt = false;
+      this.findingAddress = true;
 
       this.addressLookupService
         .findByPostcode(postcode)
         .pipe(
           tap((resp) => {
-            console.log(resp);
             const a =
               resp === null
                 ? this.controls.postcode.setErrors({ invalid: true })
                 : (this.addressList = resp.addresses);
           }),
+          tap((_) => (this.findingAddress = false)),
           take(1)
         )
         .subscribe();
