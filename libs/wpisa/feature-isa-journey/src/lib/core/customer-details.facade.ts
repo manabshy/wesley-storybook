@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, take, filter, tap } from 'rxjs/operators';
+import { map, take, filter, tap, switchMap } from 'rxjs/operators';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 import {
@@ -21,6 +21,7 @@ import { AddressDetails } from '@wesleyan-frontend/shared/data-access-api';
 import { GenericDropdownItem } from './generic-dropdown-item.interface';
 import { CustomerDetailsFormValue } from './customer-details-form-value.interface';
 import { ManualAddressFormValue } from '../components/manual-address-form/manual-address-form-value.interface';
+import { AppStateFacade } from './app-state-facade';
 
 @Injectable({
   providedIn: 'root',
@@ -78,6 +79,7 @@ export class CustomerDetailsFacade {
 
   constructor(
     private isaApiService: ISAApiService,
+    private appStateFacade: AppStateFacade,
     private loadingService: OverlayProgressSpinnerService
   ) {
     this.genericLookupsResponse$ = this.isaApiService.getGenericListAndProductData();
@@ -107,11 +109,24 @@ export class CustomerDetailsFacade {
       ),
       map((lookup) => this.mapMembersToSelectList(lookup))
     );
+
+    this.saveCurrentTaxPeriodToAppState();
+
+    this.rehydrateCurrentTaxPeriodFromAppState();
   }
 
   submit(value: CustomerDetailsFormValue) {
     const customerDTO = this.mapCustomerFormToSearchCustomerDTO(value);
     this.loadingService.show();
+
+    this.appStateFacade
+      .saveFormState([
+        'customerPersonalDetails',
+        'addressLookup',
+        'manualAddress',
+      ])
+      .pipe(take(1))
+      .subscribe();
 
     this.isaApiService
       .findCustomer(customerDTO)
@@ -236,6 +251,25 @@ export class CustomerDetailsFacade {
     return this.marketSegmentList$.pipe(
       map((list) => list.find((item) => item.value === id).description)
     );
+  }
+
+  private rehydrateCurrentTaxPeriodFromAppState() {
+    if (this.appStateFacade.state.currentTaxPeriod) {
+      this.currentTaxPeriodISALimitsSubject$.next(
+        this.appStateFacade.state.currentTaxPeriod
+      );
+    }
+  }
+
+  private saveCurrentTaxPeriodToAppState() {
+    this.currentTaxPeriodISALimits$
+      .pipe(
+        filter((data) => !!data),
+        switchMap((currentTaxPeriod) =>
+          this.appStateFacade.save({ currentTaxPeriod })
+        )
+      )
+      .subscribe();
   }
 
   private mapMembersToSelectList(

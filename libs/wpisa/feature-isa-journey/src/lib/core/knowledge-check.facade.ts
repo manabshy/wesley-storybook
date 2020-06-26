@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
-import { tap, catchError } from 'rxjs/operators';
+import { tap, catchError, take } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
-import { ISAApiService } from '@wesleyan-frontend/wpisa/data-access';
+import {
+  ISAApiService,
+  SessionStorageService,
+} from '@wesleyan-frontend/wpisa/data-access';
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
 import { isaRoutesNames } from '../isa-journey.routes.names';
+import { AppStateFacade } from './app-state-facade';
+import { NgFormsManager, NgFormsManagerConfig } from '@ngneat/forms-manager';
+import { AppForms } from './app-forms.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -15,11 +21,17 @@ export class KnowledgeCheckFacade {
 
   constructor(
     private isaApiService: ISAApiService,
-    private loadingService: OverlayProgressSpinnerService
-  ) {}
+    private appState: AppStateFacade,
+    private loadingService: OverlayProgressSpinnerService,
+    private formManager: NgFormsManager<AppForms>
+  ) {
+    this.knowledgeCheckAttemptId = this.appState.state.attemptId;
+  }
 
   submitQuestion1(answer: string) {
     this.loadingService.show();
+
+    this.appState.saveFormState('knowledgeCheckQ1').pipe(take(1)).subscribe();
 
     return this.isaApiService
       .submitInitialAnswer({
@@ -41,6 +53,8 @@ export class KnowledgeCheckFacade {
 
   submitQuestion2(answer: string) {
     this.loadingService.show();
+
+    this.appState.saveFormState('knowledgeCheckQ2').pipe(take(1)).subscribe();
 
     return this.isaApiService
       .submitSubsequentAnswer({

@@ -13,6 +13,8 @@ import { InvestmentOptionsFacade } from '../core/investment-options.facade';
 import { isaRoutesNames } from '../isa-journey.routes.names';
 import { Observable, Subscription } from 'rxjs';
 import { InvestmentOptionPaymentType } from '../core/investment-option-form-value.interface';
+import { AppStateFacade } from '../core/app-state-facade';
+import { AppForms } from '../core/app-forms.interface';
 
 @Component({
   selector: 'wes-investment-options-page',
@@ -40,8 +42,9 @@ export class InvestmentOptionsPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private investmentOptionsFacade: InvestmentOptionsFacade,
+    private appStateFacade: AppStateFacade,
     private router: Router,
-    private formsManager: NgFormsManager,
+    private formsManager: NgFormsManager<AppForms>,
     private titleService: Title
   ) {
     this.subscriptions$.add(
@@ -58,7 +61,14 @@ export class InvestmentOptionsPageComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.formsManager.hasControl('investmentOptions')) {
+      this.formsManager.patchValue(
+        'investmentOptions',
+        this.appStateFacade.state.forms.investmentOptions
+      );
+    }
+  }
 
   onSubmit() {
     const selectedInvestmentOption = this.formsManager.getControl(
@@ -67,6 +77,7 @@ export class InvestmentOptionsPageComponent implements OnInit, OnDestroy {
     ).value;
 
     if (this.formsManager.isValid('investmentOptions')) {
+      this.investmentOptionsFacade.submitInvestmentOptionsForm();
       this.router.navigate([`/${this.nextPageLink[selectedInvestmentOption]}`]);
     }
   }

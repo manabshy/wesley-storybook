@@ -1,5 +1,6 @@
 export * from './lib/wpisa-data-access.module';
 export * from './lib/config.service';
+export * from './lib/session-storage.service';
 export * from './lib/isa-api.service';
 
 export * from './lib/config.interface';

@@ -15,6 +15,7 @@ import {
   ConfigService,
   YourDetails,
   ISAApiService,
+  SessionStorageService,
 } from '@wesleyan-frontend/wpisa/data-access';
 import {
   nationalInsuranceNumberValidator,
@@ -31,6 +32,7 @@ import { isaRoutesNames } from '../isa-journey.routes.names';
 import { CustomerDetailsFacade } from '../core/customer-details.facade';
 import { GenericDropdownItem } from '../core/generic-dropdown-item.interface';
 import { AppForms } from '../core/app-forms.interface';
+import { AppStateFacade } from '../core/app-state-facade';
 
 @Component({
   selector: 'wes-customer-details-page',
@@ -63,7 +65,8 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private addressLookupService: AddressLookupService,
     private customerDetailsFacade: CustomerDetailsFacade,
-    private isaApiService: ISAApiService
+    private isaApiService: ISAApiService,
+    private appStateFacade: AppStateFacade
   ) {
     this.pageContent = this.configService.content.yourDetails;
     this.overallErrorContent = this.configService.content.validationSummary;
@@ -112,6 +115,13 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     this.formsManager.upsert('customerPersonalDetails', this.form, {
       withInitialValue: true,
     });
+
+    if (this.formsManager.hasControl('customerPersonalDetails')) {
+      this.formsManager.patchValue(
+        'customerPersonalDetails',
+        this.appStateFacade.state.forms.customerPersonalDetails
+      );
+    }
 
     this.subscriptions.add(
       this.form.statusChanges

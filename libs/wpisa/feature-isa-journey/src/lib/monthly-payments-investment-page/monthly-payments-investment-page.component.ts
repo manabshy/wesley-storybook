@@ -71,7 +71,6 @@ export class MonthlyPaymentsInvestmentPageComponent
 
     this.formsManager.upsert('monthlyPayment', this.form, {
       withInitialValue: true,
-      persistState: true,
     });
   }
 
@@ -79,6 +78,7 @@ export class MonthlyPaymentsInvestmentPageComponent
     this.submitAttempt = true;
 
     if (this.form.valid) {
+      this.investmentOptionsFacade.submitMonthlyForm();
       this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
     }
   }

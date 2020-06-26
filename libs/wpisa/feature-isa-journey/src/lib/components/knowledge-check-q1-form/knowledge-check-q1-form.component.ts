@@ -7,6 +7,7 @@ import {
   KnowledgeCheckStep,
 } from '@wesleyan-frontend/wpisa/data-access';
 import { AppForms } from '../../core/app-forms.interface';
+import { AppStateFacade } from '../../core/app-state-facade';
 
 @Component({
   selector: 'wes-knowledge-check-q1-form',
@@ -20,7 +21,8 @@ export class KnowledgeCheckQ1FormComponent implements OnInit, OnDestroy {
   constructor(
     private builder: FormBuilder,
     private formsManager: NgFormsManager<AppForms>,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private appState: AppStateFacade
   ) {
     this.content = this.configService.content.knowledgeCheck.step1;
   }
@@ -33,6 +35,13 @@ export class KnowledgeCheckQ1FormComponent implements OnInit, OnDestroy {
     this.formsManager.upsert('knowledgeCheckQ1', this.formQ1, {
       withInitialValue: true,
     });
+
+    if (this.appState.state.forms.knowledgeCheckQ1) {
+      this.formsManager.patchValue(
+        'knowledgeCheckQ1',
+        this.appState.state.forms.knowledgeCheckQ1
+      );
+    }
   }
 
   ngOnDestroy() {

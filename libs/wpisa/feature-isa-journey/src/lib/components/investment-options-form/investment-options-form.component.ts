@@ -8,6 +8,7 @@ import { NgFormsManager } from '@ngneat/forms-manager';
 import { InvestmentOptionsFacade } from '../../core/investment-options.facade';
 import { InvestmentOptionPaymentType } from '../../core/investment-option-form-value.interface';
 import { AppForms } from '../../core/app-forms.interface';
+import { AppStateFacade } from '../../core/app-state-facade';
 
 @Component({
   selector: 'wes-investment-options-form',
@@ -30,13 +31,20 @@ export class InvestmentOptionsFormComponent implements OnInit, OnDestroy {
   constructor(
     private builder: FormBuilder,
     private formsManager: NgFormsManager<AppForms>,
-    private investmentOptionsFacade: InvestmentOptionsFacade
+    private appStateFacade: AppStateFacade
   ) {}
 
   ngOnInit(): void {
     this.formsManager.upsert('investmentOptions', this.form, {
       withInitialValue: true,
     });
+
+    if (this.formsManager.hasControl('investmentOptions')) {
+      this.formsManager.patchValue(
+        'investmentOptions',
+        this.appStateFacade.state.forms.investmentOptions
+      );
+    }
   }
 
   ngOnDestroy() {

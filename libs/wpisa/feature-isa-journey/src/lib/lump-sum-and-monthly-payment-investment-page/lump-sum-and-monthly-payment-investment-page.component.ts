@@ -126,6 +126,7 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
     this.submitAttempt = true;
 
     if (this.form.valid) {
+      this.investmentOptionsFacade.submitLumpSumAndMonthlyForm();
       this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
     }
   }

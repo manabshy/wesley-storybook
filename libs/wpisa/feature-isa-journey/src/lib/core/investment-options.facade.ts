@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { formatCurrency } from '@angular/common';
 import { Observable } from 'rxjs';
-import { map, filter, shareReplay, tap } from 'rxjs/operators';
+import { map, filter, shareReplay, tap, take } from 'rxjs/operators';
 import { compose, assocPath, replace, over, lensPath, reduce } from 'ramda';
 import { format } from 'date-fns';
 import {
@@ -13,6 +13,7 @@ import {
 
 import { CustomerDetailsFacade } from './customer-details.facade';
 import { formatCurrencyGBP } from './util-functions';
+import { AppStateFacade } from './app-state-facade';
 
 @Injectable({
   providedIn: 'root',
@@ -34,9 +35,9 @@ export class InvestmentOptionsFacade {
   );
 
   constructor(
-    private isaApiService: ISAApiService,
     private configService: ConfigService,
-    private customerDetailsFacade: CustomerDetailsFacade
+    private customerDetailsFacade: CustomerDetailsFacade,
+    private appStateFacade: AppStateFacade
   ) {
     this.pageContent = this.configService.content.investmentOptions;
   }
@@ -126,5 +127,37 @@ export class InvestmentOptionsFacade {
       pageContent,
       stringPaths
     );
+  }
+
+  submitInvestmentOptionsForm() {
+    this.appStateFacade
+      .saveFormState('investmentOptions')
+      .pipe(take(1))
+      .subscribe();
+  }
+
+  submitLumpSumAndMonthlyForm() {
+    this.appStateFacade
+      .saveFormState('lumpSumAndMonthly', [
+        { formName: 'lumpSumAndMonthly', controlName: ['directDebit'] },
+      ])
+      .pipe(take(1))
+      .subscribe();
+  }
+
+  submitLumpSumForm() {
+    this.appStateFacade
+      .saveFormState('lumpSumPayment')
+      .pipe(take(1))
+      .subscribe();
+  }
+
+  submitMonthlyForm() {
+    this.appStateFacade
+      .saveFormState('monthlyPayment', [
+        { formName: 'monthlyPayment', controlName: ['directDebit'] },
+      ])
+      .pipe(take(1))
+      .subscribe();
   }
 }

@@ -64,9 +64,6 @@ import { ButtonLoaderDirective } from './button-loader.directive';
       provide: NG_FORMS_MANAGER_CONFIG,
       useValue: new NgFormsManagerConfig({
         debounceTime: 200, // defaults to 300
-        storage: {
-          key: 'NgFormManager',
-        },
       }),
     },
   ],
