@@ -32,9 +32,7 @@ export class InvestmentOptionsFormComponent implements OnInit, OnDestroy {
     private builder: FormBuilder,
     private formsManager: NgFormsManager<AppForms>,
     private appStateFacade: AppStateFacade
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.formsManager.upsert('investmentOptions', this.form, {
       withInitialValue: true,
     });
@@ -46,6 +44,8 @@ export class InvestmentOptionsFormComponent implements OnInit, OnDestroy {
       );
     }
   }
+
+  ngOnInit(): void {}
 
   ngOnDestroy() {
     this.formsManager.unsubscribe('investmentOptions');

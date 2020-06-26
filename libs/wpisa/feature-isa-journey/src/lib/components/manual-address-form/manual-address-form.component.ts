@@ -84,6 +84,10 @@ export class ManualAddressFormComponent
     private fb: FormBuilder
   ) {
     this.pageContent = this.configService.content.yourDetails;
+
+    this.formsManager.upsert('manualAddress', this.form, {
+      withInitialValue: true,
+    });
   }
 
   isFieldInvalid(fieldName: string) {
@@ -98,10 +102,6 @@ export class ManualAddressFormComponent
     );
 
     this.controls = this.form.controls;
-
-    this.formsManager.upsert('manualAddress', this.form, {
-      withInitialValue: true,
-    });
   }
 
   ngOnChanges(simpleChanges: SimpleChanges) {

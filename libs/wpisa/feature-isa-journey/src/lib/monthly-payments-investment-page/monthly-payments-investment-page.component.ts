@@ -12,6 +12,7 @@ import { isaRoutesNames } from '../isa-journey.routes.names';
 import { Subscription } from 'rxjs';
 import { Validators, FormBuilder } from '@angular/forms';
 import { tap } from 'rxjs/operators';
+import { AppStateFacade } from '../core/app-state-facade';
 
 @Component({
   selector: 'wes-monthly-payments-investment-page',
@@ -40,6 +41,7 @@ export class MonthlyPaymentsInvestmentPageComponent
 
   constructor(
     private investmentOptionsFacade: InvestmentOptionsFacade,
+    private appStateFacade: AppStateFacade,
     private router: Router,
     private formsManager: NgFormsManager,
     private fb: FormBuilder,
@@ -52,6 +54,17 @@ export class MonthlyPaymentsInvestmentPageComponent
         this.titleService.setTitle(this.pageContent.metaTitle);
       })
     );
+
+    this.formsManager.upsert('monthlyPayment', this.form, {
+      withInitialValue: true,
+    });
+
+    if (this.appStateFacade.state.forms.monthlyPayment) {
+      this.formsManager.patchValue(
+        'monthlyPayment',
+        this.appStateFacade.state.forms.monthlyPayment
+      );
+    }
   }
 
   ngOnInit(): void {
@@ -68,10 +81,6 @@ export class MonthlyPaymentsInvestmentPageComponent
         )
         .subscribe()
     );
-
-    this.formsManager.upsert('monthlyPayment', this.form, {
-      withInitialValue: true,
-    });
   }
 
   onSubmit() {

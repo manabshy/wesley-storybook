@@ -40,9 +40,45 @@ import { AppStateFacade } from '../core/app-state-facade';
   styleUrls: ['./customer-details-page.component.scss'],
 })
 export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
+  form: FormGroup = this.fb.group({
+    title: [null, Validators.required],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    dob: this.fb.group(
+      {
+        day: ['', Validators.required],
+        month: ['', Validators.required],
+        year: ['', Validators.required],
+      },
+      { validators: isaAgeValidator }
+    ),
+    profession: [null, Validators.required],
+    nationalInsuranceNumber: [
+      '',
+      [Validators.required, nationalInsuranceNumberValidator],
+    ],
+    nationality: [null, [Validators.required]],
+    addressLookup: ['', Validators.required],
+    manualAddress: ['', Validators.required],
+    personalEmail: [
+      '',
+      { validators: [Validators.required, emailValidator], updateOn: 'blur' },
+    ],
+    personalMobileNumber: [
+      '',
+      {
+        validators: [Validators.required, mobilePhoneUKValidator],
+        updateOn: 'blur',
+      },
+    ],
+    marketingEmail: [null],
+    marketingPost: [null],
+    marketingPhone: [null],
+  });
+
   pageContent: YourDetails;
   overallErrorContent;
-  form: FormGroup;
+
   private submitAttemptSubject$ = new BehaviorSubject(false);
   submitAttempt$ = this.submitAttemptSubject$.asObservable();
   showOverallError = false;
@@ -63,52 +99,12 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     private formsManager: NgFormsManager<AppForms>,
     private titleService: Title,
     private fb: FormBuilder,
-    private addressLookupService: AddressLookupService,
     private customerDetailsFacade: CustomerDetailsFacade,
-    private isaApiService: ISAApiService,
     private appStateFacade: AppStateFacade
   ) {
     this.pageContent = this.configService.content.yourDetails;
     this.overallErrorContent = this.configService.content.validationSummary;
     this.titleService.setTitle(this.pageContent.metaTitle);
-  }
-
-  ngOnInit(): void {
-    this.form = this.fb.group({
-      title: [null, Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      dob: this.fb.group(
-        {
-          day: ['', Validators.required],
-          month: ['', Validators.required],
-          year: ['', Validators.required],
-        },
-        { validators: isaAgeValidator }
-      ),
-      profession: [null, Validators.required],
-      nationalInsuranceNumber: [
-        '',
-        [Validators.required, nationalInsuranceNumberValidator],
-      ],
-      nationality: [null, [Validators.required]],
-      addressLookup: ['', Validators.required],
-      manualAddress: ['', Validators.required],
-      personalEmail: [
-        '',
-        { validators: [Validators.required, emailValidator], updateOn: 'blur' },
-      ],
-      personalMobileNumber: [
-        '',
-        {
-          validators: [Validators.required, mobilePhoneUKValidator],
-          updateOn: 'blur',
-        },
-      ],
-      marketingEmail: [null],
-      marketingPost: [null],
-      marketingPhone: [null],
-    });
 
     this.controls = this.form.controls;
 
@@ -116,13 +112,15 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
       withInitialValue: true,
     });
 
-    if (this.formsManager.hasControl('customerPersonalDetails')) {
+    if (this.appStateFacade.state.forms.customerPersonalDetails) {
       this.formsManager.patchValue(
         'customerPersonalDetails',
         this.appStateFacade.state.forms.customerPersonalDetails
       );
     }
+  }
 
+  ngOnInit(): void {
     this.subscriptions.add(
       this.form.statusChanges
         .pipe(

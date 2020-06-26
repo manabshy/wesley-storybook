@@ -26,7 +26,6 @@ import {
   DirectDebitDetails,
 } from '@wesleyan-frontend/wpisa/data-access';
 
-import { InvestmentOptionsFacade } from '../../core/investment-options.facade';
 import { DirectDebitFormValue } from './direct-debit-form-value.interface';
 import { AppForms } from '../../core/app-forms.interface';
 
@@ -109,7 +108,11 @@ export class DirectDebitFormComponent
   constructor(
     private fb: FormBuilder,
     private formsManager: NgFormsManager<AppForms>
-  ) {}
+  ) {
+    this.formsManager.upsert('directDebit', this.form, {
+      withInitialValue: true,
+    });
+  }
 
   ngOnInit(): void {
     this.subscription.add(
@@ -117,10 +120,6 @@ export class DirectDebitFormComponent
         this.onChange(value);
       })
     );
-
-    this.formsManager.upsert('directDebit', this.form, {
-      withInitialValue: true,
-    });
   }
 
   isFieldInvalid(fieldName: string) {

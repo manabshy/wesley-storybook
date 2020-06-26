@@ -86,6 +86,10 @@ export class AddressLookupFormComponent
     private addressLookupService: AddressLookupService
   ) {
     this.pageContent = this.configService.content.yourDetails;
+
+    this.formsManager.upsert('addressLookup', this.form, {
+      withInitialValue: true,
+    });
   }
 
   isFieldInvalid(fieldName: string) {
@@ -156,10 +160,6 @@ export class AddressLookupFormComponent
     );
 
     this.controls = this.form.controls;
-
-    this.formsManager.upsert('addressLookup', this.form, {
-      withInitialValue: true,
-    });
   }
 
   ngOnChanges(simpleChanges: SimpleChanges) {

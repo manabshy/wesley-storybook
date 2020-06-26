@@ -14,7 +14,9 @@ import { AppStateFacade } from '../../core/app-state-facade';
   styleUrls: ['./knowledge-check-q2-form.component.scss'],
 })
 export class KnowledgeCheckQ2FormComponent implements OnInit, OnDestroy {
-  form: FormGroup;
+  form: FormGroup = this.builder.group({
+    question2: [null, Validators.required],
+  });
   content: KnowledgeCheckStep;
 
   constructor(
@@ -24,24 +26,20 @@ export class KnowledgeCheckQ2FormComponent implements OnInit, OnDestroy {
     private appState: AppStateFacade
   ) {
     this.content = this.configService.content.knowledgeCheck.step2;
-  }
-
-  ngOnInit(): void {
-    this.form = this.builder.group({
-      question2: [null, Validators.required],
-    });
 
     this.formsManager.upsert('knowledgeCheckQ2', this.form, {
       withInitialValue: true,
     });
 
-    if (this.appState.state.forms.knowledgeCheckQ1) {
+    if (this.appState.state.forms.knowledgeCheckQ2) {
       this.formsManager.patchValue(
         'knowledgeCheckQ2',
         this.appState.state.forms.knowledgeCheckQ2
       );
     }
   }
+
+  ngOnInit(): void {}
 
   ngOnDestroy() {
     this.formsManager.unsubscribe('knowledgeCheckQ2');

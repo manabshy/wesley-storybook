@@ -10,6 +10,8 @@ import { LumpSumPayment } from '@wesleyan-frontend/wpisa/data-access';
 
 import { InvestmentOptionsFacade } from '../core/investment-options.facade';
 import { isaRoutesNames } from '../isa-journey.routes.names';
+import { AppStateFacade } from '../core/app-state-facade';
+import { AppForms } from '../core/app-forms.interface';
 
 @Component({
   selector: 'wes-lump-sum-investment-page',
@@ -29,8 +31,9 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private investmentOptionsFacade: InvestmentOptionsFacade,
+    private appStateFacade: AppStateFacade,
     private router: Router,
-    private formsManager: NgFormsManager,
+    private formsManager: NgFormsManager<AppForms>,
     private fb: FormBuilder,
     private titleService: Title
   ) {
@@ -50,13 +53,20 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
           Validators.max(limits.maxLumpSumAmount),
         ]);
       });
-  }
 
-  ngOnInit(): void {
     this.formsManager.upsert('lumpSumPayment', this.form, {
       withInitialValue: true,
     });
+
+    if (this.appStateFacade.state.forms.lumpSumPayment) {
+      this.formsManager.patchValue(
+        'lumpSumPayment',
+        this.appStateFacade.state.forms.lumpSumPayment
+      );
+    }
   }
+
+  ngOnInit(): void {}
 
   isFieldInvalid(fieldName: string) {
     return (

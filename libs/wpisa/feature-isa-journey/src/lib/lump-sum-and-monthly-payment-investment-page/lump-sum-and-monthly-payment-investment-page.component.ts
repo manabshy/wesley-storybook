@@ -23,6 +23,8 @@ import {
 } from '@angular/forms';
 import { take, tap, filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { AppStateFacade } from '../core/app-state-facade';
+import { AppForms } from '../core/app-forms.interface';
 
 @Component({
   selector: 'wes-lump-sum-and-monthly-payment-investment-page',
@@ -63,8 +65,9 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
 
   constructor(
     private investmentOptionsFacade: InvestmentOptionsFacade,
+    private appStateFacade: AppStateFacade,
     private router: Router,
-    private formsManager: NgFormsManager,
+    private formsManager: NgFormsManager<AppForms>,
     private titleService: Title,
     private fb: FormBuilder
   ) {
@@ -75,6 +78,17 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
         this.titleService.setTitle(this.pageContent.metaTitle);
       })
     );
+
+    this.formsManager.upsert('lumpSumAndMonthly', this.form, {
+      withInitialValue: true,
+    });
+
+    if (this.appStateFacade.state.forms.lumpSumAndMonthly) {
+      this.formsManager.patchValue(
+        'lumpSumAndMonthly',
+        this.appStateFacade.state.forms.lumpSumAndMonthly
+      );
+    }
   }
 
   ngOnInit() {
@@ -116,10 +130,6 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
         )
         .subscribe()
     );
-
-    this.formsManager.upsert('lumpSumAndMonthly', this.form, {
-      withInitialValue: true,
-    });
   }
 
   onSubmit() {
