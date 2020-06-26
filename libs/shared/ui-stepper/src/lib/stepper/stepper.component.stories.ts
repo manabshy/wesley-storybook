@@ -1,4 +1,5 @@
 import { text, number, boolean, array } from '@storybook/addon-knobs';
+
 import { moduleMetadata } from '@storybook/angular';
 
 import { StepperComponent } from './stepper.component';
@@ -14,12 +15,16 @@ export default {
   ],
 };
 
-export const primary = () => ({
+export const withBackground = () => ({
   moduleMetadata: {
     imports: [],
   },
-  addon: {},
   component: StepperComponent,
+  template: `<div class="bg-gradient-yellow">
+  <div class="container">
+    <wes-stepper [steps]="steps" [currentStepIndex]="currentStepIndex"></wes-stepper>
+  </div>
+  </div>`,
   props: {
     steps: array('steps', [
       'Knowledge check',
@@ -32,12 +37,13 @@ export const primary = () => ({
     currentStepProgressPercentage: number('currentStepProgressPercentage', 100),
   },
 });
-export const withBackground = () => ({
+
+export const noBackground = () => ({
   moduleMetadata: {
     imports: [],
   },
+  addon: {},
   component: StepperComponent,
-  template: `<div class="bg-gradient-yellow"><wes-stepper [steps]="steps" [currentStepIndex]="currentStepIndex"></wes-stepper></div>`,
   props: {
     steps: array('steps', [
       'Knowledge check',
