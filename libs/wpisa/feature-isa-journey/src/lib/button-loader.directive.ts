@@ -6,6 +6,7 @@ import {
   ViewContainerRef,
   ComponentFactoryResolver,
   ComponentRef,
+  HostBinding,
 } from '@angular/core';
 import { ProgressSpinnerComponent } from 'libs/shared/ui-progress-spinner/src/lib/progress-spinner/progress-spinner.component';
 
@@ -16,10 +17,16 @@ export class ButtonLoaderDirective {
   spinner: ProgressSpinnerComponent;
   spinnerRef: ComponentRef<ProgressSpinnerComponent>;
   savedText: string;
+  isLoading = false;
 
   //   @Input() loadText?: string;
   @Input() set wesButtonLoader(value: boolean) {
+    this.isLoading = value;
     this.toggle(value);
+  }
+
+  @HostBinding('class.wes-button--loading') get loading() {
+    return this.isLoading;
   }
 
   constructor(
@@ -36,6 +43,14 @@ export class ButtonLoaderDirective {
   }
 
   show() {
+    // Set the button to maintain the same dimensions, even once we put the spinner inside.
+    this.element.nativeElement.style.width = `${
+      (this.element.nativeElement as HTMLElement).offsetWidth
+    }px`;
+    this.element.nativeElement.style.height = `${
+      (this.element.nativeElement as HTMLElement).offsetHeight
+    }px`;
+
     // Create the spinner
     const factory = this.componentFactoryResolver.resolveComponentFactory(
       ProgressSpinnerComponent

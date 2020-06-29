@@ -5,7 +5,7 @@
     $BOOTSTRAP CONFIGS
 \*------------------------------------*/
 @import './lib/legacy-scss/abstracts/bootstrap-overrides';
-@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap-grid';
 @import './lib/legacy-scss/abstracts/bootstrap-function-overrides';
 /*------------------------------------*\
     $ABSTRACTS
@@ -16,19 +16,19 @@
 /*------------------------------------*\
     $BASE
 \*------------------------------------*/
-@import './lib/legacy-scss/base/body';
+// @import './lib/legacy-scss/base/body';
 @import './lib/legacy-scss/base/animation';
-@import './lib/legacy-scss/base/fonts';
+// @import './lib/legacy-scss/base/fonts';
 // @import './lib/legacy-scss/base/select';
 @import './lib/legacy-scss/base/text';
 // @import './lib/legacy-scss/base/forms';
 @import './lib/legacy-scss/base/global-classes';
-@import './lib/legacy-scss/base/headings';
+// @import './lib/legacy-scss/base/headings';
 @import './lib/legacy-scss/base/links';
 @import './lib/legacy-scss/base/lists';
 @import './lib/legacy-scss/base/text';
 @import './lib/legacy-scss/base/utilities';
-@import './lib/legacy-scss/base/copy';
+// @import './lib/legacy-scss/base/copy';
 @import './lib/legacy-scss/base/icon';
 @import './lib/legacy-scss/base/numbers';
 /*------------------------------------*\
@@ -58,5 +58,6 @@
 @import './lib/global';
 @import './lib/vars/globals/index';
 @import './lib/base/index';
+@import './lib/components/wes-buttons';
 @import './lib/components/wes-stepper';
 @import './lib/components/wes-progress-spinner';

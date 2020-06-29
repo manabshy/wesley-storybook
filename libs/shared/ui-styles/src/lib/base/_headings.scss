@@ -1,0 +1,116 @@
+/*------------------------------------*\
+    #HEADINGS
+\*------------------------------------*/
+
+$heading-colour: $global-colour-grey-900;
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $font;
+  color: $heading-colour;
+  text-rendering: optimizeLegibility;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-weight: 300;
+  @include rem(
+    (
+      font-size: $global-dimension-static-font-size-900,
+      line-height: $global-dimension-static-line-height-1100,
+    )
+  );
+  @include media-breakpoint-up(md) {
+    @include rem(
+      (
+        font-size: $global-dimension-static-font-size-1000,
+        line-height: $global-dimension-static-line-height-1200,
+      )
+    );
+  }
+}
+
+h2 {
+  @include rem(
+    (
+      font-size: $global-dimension-static-font-size-600,
+      line-height: $global-dimension-static-line-height-1000,
+    )
+  );
+  @include media-breakpoint-up(md) {
+    @include rem(
+      (
+        font-size: $global-dimension-static-font-size-800,
+        line-height: $global-dimension-static-line-height-1100,
+      )
+    );
+  }
+}
+
+h3 {
+  @include rem(
+    (
+      font-size: $global-dimension-static-font-size-500,
+      line-height: $global-dimension-static-line-height-800,
+    )
+  );
+  @include media-breakpoint-up(md) {
+    @include rem(
+      (
+        font-size: $global-dimension-static-font-size-600,
+        line-height: $global-dimension-static-line-height-900,
+      )
+    );
+  }
+}
+
+h4 {
+  font-weight: 600;
+  @include rem(
+    (
+      font-size: $global-dimension-static-font-size-400,
+      line-height: $global-dimension-static-line-height-600,
+    )
+  );
+  @include media-breakpoint-up(md) {
+    @include rem(
+      (
+        font-size: $global-dimension-static-font-size-500,
+        line-height: $global-dimension-static-line-height-800,
+      )
+    );
+  }
+}
+
+h5 {
+  font-weight: 600;
+
+  @include rem(
+    (
+      font-size: $global-dimension-static-font-size-400,
+      line-height: $global-dimension-static-line-height-600,
+    )
+  );
+  @include media-breakpoint-up(md) {
+    @include rem(
+      (
+        font-size: $global-dimension-static-font-size-500,
+        line-height: $global-dimension-static-line-height-800,
+      )
+    );
+  }
+}
+
+h6 {
+  font-weight: bold;
+
+  @include rem(
+    (
+      font-size: $global-dimension-static-font-size-300,
+      line-height: $global-dimension-static-line-height-600,
+    )
+  );
+}

@@ -1,0 +1,41 @@
+/*------------------------------------*\
+    #LINKS
+\*------------------------------------*/
+$link-text-color: $global-colour-grey-900;
+$link-underline-color: $global-colour-gold-900;
+$link-text-color-hover: $global-colour-grey-900;
+$link-underline-color-hover: $global-colour-grey-900;
+$link-underline-thickness: 2px;
+$link-text-font-weight: bold;
+
+/**
+ * Links
+ */
+
+a {
+  color: $link-text-color;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+
+    color: $link-text-color;
+  }
+}
+
+.wes-link {
+  text-decoration: none;
+  display: inline;
+  font-weight: $link-text-font-weight;
+
+  color: $link-text-color;
+  cursor: pointer;
+
+  border-bottom: $link-underline-thickness solid $link-underline-color;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    border-bottom-color: $link-underline-color-hover;
+  }
+}

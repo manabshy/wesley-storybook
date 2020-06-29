@@ -188,6 +188,7 @@
   <button
     *ngIf="isManualAddressVisible"
     type="button"
+    class="wes-button wes-button__link"
     (click)="onShowAddressLookup()"
   >
     {{ pageContent.addressDetails.findAddress }}
@@ -277,7 +278,7 @@
   </div>
 
   <ng-content></ng-content>
-  <button type="submit">Continue</button>
+  <button class="wes-button wes-button__primary" type="submit">Continue</button>
 </form>
 
 <!-- <pre>

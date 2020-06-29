@@ -5,26 +5,27 @@
 /**
  * Grid - Breakpoints
  */
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 992px,
-  lg: 1366px,
-);
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 576px,
+//   md: 992px,
+//   lg: 1366px,
+// );
 
 /**
  * Grid - Max widths
  */
 $container-max-widths: (
-  sm: 700px,
-  md: 902px,
-  lg: 1264px,
+  sm: 540px,
+  md: 700px,
+  lg: 960px,
+  xl: 1172px,
 );
 
 /**
  * Grid - Gutter widths
  */
-$grid-gutter-width: 20px;
+$grid-gutter-width: 28px;
 
 /**
  * CSS Columns

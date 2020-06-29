@@ -18,6 +18,7 @@
     </ng-container>
   </div>
   <button
+    class="wes-button wes-button__primary"
     type="button"
     [wesButtonLoader]="findingAddress"
     (click)="findAddress(postcodeInput.value)"
@@ -51,7 +52,11 @@
     <ng-container *ngIf="addressList.length > 0">{{
       pageContent.addressDetails.cantSeeAddressLabel
     }}</ng-container>
-    <button type="button" (click)="onShowManualAddress()">
+    <button
+      type="button"
+      class="wes-button wes-button__link"
+      (click)="onShowManualAddress()"
+    >
       {{ pageContent.addressDetails.enterAddressManuallyLabel }}
     </button>
   </p>

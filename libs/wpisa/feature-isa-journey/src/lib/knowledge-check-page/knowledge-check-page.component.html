@@ -1,36 +1,6 @@
 <h3>{{ pageContent.intro.heading }}</h3>
 <div [innerHtml]="pageContent.intro.summary"></div>
 
-<button (click)="onNextClicked()">
+<button class="wes-button wes-button__primary" (click)="onNextClicked()">
   {{ pageContent.intro.nextButtonLabel }}
 </button>
-
-<!-- <wes-custom-stepper #stepper linear>
-  <cdk-step> </cdk-step>
-
-  <cdk-step>
-    <h3>{{ pageContent.knowledgeCheck.step1.heading }}</h3>
-
-    <wes-knowledge-check-q1-form (submit)="submitQuestion1()">
-      <button type="submit" [disabled]="!(q1Valid$ | async)">
-        {{ pageContent.intro.nextButtonLabel }}
-      </button>
-      <button cdkStepperPrevious>
-        {{ pageContent.knowledgeCheck.step1.backButtonLabel }}
-      </button>
-    </wes-knowledge-check-q1-form>
-  </cdk-step>
-
-  <cdk-step>
-    <h3>{{ pageContent.knowledgeCheck.step2.heading }}</h3>
-
-    <wes-knowledge-check-q2-form (submit)="submitQuestion2()">
-      <button type="submit" [disabled]="!(q2Valid$ | async)">
-        {{ pageContent.knowledgeCheck.step2.nextButtonLabel }}
-      </button>
-      <button cdkStepperPrevious>
-        {{ pageContent.knowledgeCheck.step2.backButtonLabel }}
-      </button>
-    </wes-knowledge-check-q2-form>
-  </cdk-step>
-</wes-custom-stepper> -->

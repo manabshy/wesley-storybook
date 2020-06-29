@@ -1,0 +1,16 @@
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: $font;
+  font-size: 1.125rem;
+  min-height: 100vh;
+
+  color: $color-slate;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  text-size-adjust: 100%;
+}

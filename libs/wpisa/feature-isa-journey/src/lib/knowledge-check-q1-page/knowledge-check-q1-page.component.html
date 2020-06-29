@@ -4,7 +4,11 @@
 <h3>{{ pageContent.knowledgeCheck.step1.heading }}</h3>
 
 <wes-knowledge-check-q1-form (submit)="submitQuestion1()">
-  <button type="submit" [disabled]="!(q1Valid$ | async)">
+  <button
+    class="wes-button wes-button__primary"
+    type="submit"
+    [disabled]="!(q1Valid$ | async)"
+  >
     {{ pageContent.knowledgeCheck.step1.nextButtonLabel }}
   </button>
 </wes-knowledge-check-q1-form>
