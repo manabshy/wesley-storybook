@@ -20,7 +20,7 @@ export const withBackground = () => ({
     imports: [],
   },
   component: StepperComponent,
-  template: `<div class="bg-gradient-yellow">
+  template: `<div class="wes-bg-gradient-yellow">
   <div class="container">
     <wes-stepper [steps]="steps" [currentStepIndex]="currentStepIndex"></wes-stepper>
   </div>

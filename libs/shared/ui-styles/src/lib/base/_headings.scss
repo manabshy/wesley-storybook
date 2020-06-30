@@ -43,6 +43,7 @@ h1,
 
 h2,
 .wes-h2 {
+  font-weight: normal;
   @include rem(
     (
       font-size: $global-dimension-static-font-size-600,
@@ -61,6 +62,7 @@ h2,
 
 h3,
 .wes-h3 {
+  font-weight: normal;
   @include rem(
     (
       font-size: $global-dimension-static-font-size-500,

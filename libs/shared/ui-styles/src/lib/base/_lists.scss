@@ -14,7 +14,7 @@ ul {
   list-style: none;
 
   @include rem(padding, 0 0 0 28px);
-  @extend %c-body;
+  @extend p;
 
   .wes-list-bullets {
     &:before {
