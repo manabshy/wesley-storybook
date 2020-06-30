@@ -14,7 +14,7 @@
   /**
    * Primary Button
    */
-  &__primary {
+  &-primary {
     z-index: 1;
     display: inline-block;
     overflow: hidden;
@@ -65,7 +65,7 @@
   /**
    * Link button
    */
-  &__link {
+  &-link {
     @extend .wes-link;
 
     display: inline;
@@ -100,6 +100,38 @@
 
     &:after {
       transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &-cta {
+    color: $global-colour-grey-900;
+    background: $global-colour-white;
+    font-weight: bold;
+
+    @include rem(
+      (
+        font-size: 16px,
+        padding: 16px 32px,
+      )
+    );
+    border-width: 0;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    background-image: linear-gradient(
+      110deg,
+      $global-colour-grey-900 50%,
+      transparent 51%
+    );
+    background-size: 100px 100px; /* some initial size to get the slanted appearance */
+    background-position: -50px -50px; /* negative positioning to hide it initially */
+    background-repeat: no-repeat;
+    transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.4s;
+
+    &:hover {
+      background-size: 200% 200%; /* 200% because gradient is colored only for 50% */
+      background-position: 0px 0px; /* bring it fully into view */
+      color: $global-colour-white;
     }
   }
 }
