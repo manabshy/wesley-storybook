@@ -1,5 +1,5 @@
 /*------------------------------------*\
-    #BOOTSTRAP OVERIDES
+    #BOOTSTRAP OVERRIDES
 \*------------------------------------*/
 
 /**
@@ -25,7 +25,8 @@ $container-max-widths: (
 /**
  * Grid - Gutter widths
  */
-$grid-gutter-width: 28px;
+$grid-gutter-width: 20px;
+$grid-gutter-width-xl: 28px;
 
 /**
  * CSS Columns
@@ -45,17 +46,46 @@ $spacers: map-merge(
   (
     0: 0,
     1: (
-      $spacer * 0.25,
-    ),
-    2: (
       $spacer * 0.5,
     ),
-    3: $spacer,
+    2: (
+      $spacer * 1,
+    ),
+    3: (
+      $spacer * 1.5,
+    ),
     4: (
-      $spacer * 1.25,
+      $spacer * 2,
     ),
     5: (
+      $spacer * 2.5,
+    ),
+    6: (
       $spacer * 3,
+    ),
+    7: (
+      $spacer * 3.5,
+    ),
+    8: (
+      $spacer * 4,
+    ),
+    9: (
+      $spacer * 4.5,
+    ),
+    10: (
+      $spacer * 5,
+    ),
+    11: (
+      $spacer * 5.5,
+    ),
+    12: (
+      $spacer * 6,
+    ),
+    13: (
+      $spacer * 6.5,
+    ),
+    14: (
+      $spacer * 7,
     ),
   ),
   $spacers

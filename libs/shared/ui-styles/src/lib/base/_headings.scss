@@ -8,14 +8,22 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+.wes-h1,
+.wes-h2,
+.wes-h3,
+.wes-h4,
+.wes-h5,
+.wes-h6 {
   font-family: $font;
   color: $heading-colour;
   text-rendering: optimizeLegibility;
   letter-spacing: 0;
+  margin-top: 0;
 }
 
-h1 {
+h1,
+.wes-h1 {
   font-weight: 300;
   @include rem(
     (
@@ -33,7 +41,8 @@ h1 {
   }
 }
 
-h2 {
+h2,
+.wes-h2 {
   @include rem(
     (
       font-size: $global-dimension-static-font-size-600,
@@ -50,7 +59,8 @@ h2 {
   }
 }
 
-h3 {
+h3,
+.wes-h3 {
   @include rem(
     (
       font-size: $global-dimension-static-font-size-500,
@@ -67,7 +77,8 @@ h3 {
   }
 }
 
-h4 {
+h4,
+.wes-h4 {
   font-weight: 600;
   @include rem(
     (
@@ -85,7 +96,8 @@ h4 {
   }
 }
 
-h5 {
+h5,
+.wes-h5 {
   font-weight: 600;
 
   @include rem(
@@ -104,7 +116,8 @@ h5 {
   }
 }
 
-h6 {
+h6,
+.wes-h6 {
   font-weight: bold;
 
   @include rem(

@@ -45,7 +45,8 @@
       ],
       "@wesleyan-frontend/shared/storybook": [
         "libs/shared/storybook/src/index.ts"
-      ]
+      ],
+      "@wesleyan-frontend/shared/assets": ["libs/shared/assets/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

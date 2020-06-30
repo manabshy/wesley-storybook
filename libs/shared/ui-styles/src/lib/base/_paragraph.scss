@@ -1,4 +1,16 @@
 p {
   margin-top: 0;
-  line-height: 28px;
+  margin-bottom: 0;
+  @include rem(
+    (
+      line-height: 28px,
+    )
+  );
+}
+p + p {
+  @include rem(
+    (
+      margin-top: 20px,
+    )
+  );
 }

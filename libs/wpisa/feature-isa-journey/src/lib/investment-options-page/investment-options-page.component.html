@@ -1,6 +1,8 @@
 <ng-container *ngIf="pageContent">
-  <a [routerLink]="yourDetailsLink">{{ pageContent.backButtonLabel }}</a>
-  <h3>{{ pageContent.heading }}</h3>
+  <a class="wes-link" [routerLink]="yourDetailsLink">{{
+    pageContent.backButtonLabel
+  }}</a>
+  <h1>{{ pageContent.heading }}</h1>
   <wes-investment-options-form
     [content]="pageContent"
     [isLumpSumAvailable]="limits.lumpSumAccepted"

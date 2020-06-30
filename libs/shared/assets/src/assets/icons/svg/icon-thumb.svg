@@ -1,0 +1,19 @@
+<svg viewBox="0 0 16 9" class="c-icon c-icon-thumb" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false">
+  <title>
+    Thumb
+  </title>
+  <defs>
+    <circle id="a" cx="19" cy="19" r="7"/>
+    <filter x="-14.3%" y="-14.3%" width="128.6%" height="128.6%" filterUnits="objectBoundingBox" id="b">
+      <feGaussianBlur stdDeviation="1.5" in="SourceAlpha" result="shadowBlurInner1"/>
+      <feOffset dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" in="shadowInnerInner1"/>
+    </filter>
+  </defs>
+  <g transform="translate(1 1)" fill="none" fill-rule="evenodd">
+    <circle stroke="#E1E1E1" fill="#FFF" cx="19" cy="19" r="19"/>
+    <use fill="#FEBD11" xlink:href="#a"/>
+    <use fill="#000" filter="url(#b)" xlink:href="#a"/>
+  </g>
+</svg>

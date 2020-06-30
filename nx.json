@@ -30,9 +30,7 @@
     },
     "wpisa-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "wpisa"
-      ]
+      "implicitDependencies": ["wpisa"]
     },
     "wpisa-data-access": {
       "tags": []
@@ -66,11 +64,12 @@
     },
     "shared-ui-stepper-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "shared-ui-stepper"
-      ]
+      "implicitDependencies": ["shared-ui-stepper"]
     },
     "shared-storybook": {
+      "tags": []
+    },
+    "shared-assets": {
       "tags": []
     }
   }

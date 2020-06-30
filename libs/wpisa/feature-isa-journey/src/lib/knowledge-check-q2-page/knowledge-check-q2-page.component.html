@@ -1,8 +1,8 @@
-<a [routerLink]="question1Link">{{
+<a class="wes-link" [routerLink]="question1Link">{{
   pageContent.knowledgeCheck.step2.backButtonLabel
 }}</a>
 
-<h3>{{ pageContent.knowledgeCheck.step2.heading }}</h3>
+<h1>{{ pageContent.knowledgeCheck.step2.heading }}</h1>
 
 <wes-knowledge-check-q2-form (submit)="submitQuestion2()">
   <button
