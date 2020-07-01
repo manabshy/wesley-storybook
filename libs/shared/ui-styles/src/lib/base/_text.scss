@@ -10,12 +10,15 @@
   &-semi-bold {
     font-weight: 600;
   }
+
   &-bold {
     font-weight: 700;
   }
+
   &-italic {
     font-style: italic;
   }
+
   &-xs {
     @include rem(
       (
@@ -24,6 +27,7 @@
       )
     );
   }
+
   &-s {
     @include rem(
       (
@@ -32,6 +36,7 @@
       )
     );
   }
+
   &-m {
     @include rem(
       (
@@ -40,13 +45,48 @@
       )
     );
   }
+
   &-l {
     @include rem(
       (
         font-size: 22px,
-        line-height: 30px,
+        line-height: 32px,
       )
     );
+  }
+
+  &-mega {
+    @include rem(
+      (
+        font-size: 38px,
+        line-height: 48px,
+      )
+    );
+    @include media-breakpoint-up(md) {
+      @include rem(
+        (
+          font-size: 54px,
+          line-height: 72px,
+        )
+      );
+    }
+  }
+
+  &-intro {
+    @include rem(
+      (
+        font-size: 20px,
+        line-height: 28px,
+      )
+    );
+    @include media-breakpoint-up(md) {
+      @include rem(
+        (
+          font-size: 22px,
+          line-height: 32px,
+        )
+      );
+    }
   }
 
   &-longform {
@@ -63,7 +103,6 @@
       (
         font-size: 16px,
         line-height: 24px,
-        margin-bottom: 20px,
       )
     );
   }
