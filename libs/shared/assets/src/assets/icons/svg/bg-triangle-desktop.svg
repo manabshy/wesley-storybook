@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg  viewBox="0 0 871 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>EC3FA72A-CE41-4F54-A934-8CF97A8F2C80</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="871" height="600"></rect>
+        <linearGradient x1="36.9092429%" y1="0%" x2="63.0913396%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#FEBD11" offset="0%"></stop>
+            <stop stop-color="#FEDD36" stop-opacity="0.3" offset="60%"></stop>
+            <stop stop-color="#FEDD36" stop-opacity="0.1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="🔴-1.-Product-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1_ISA-Product-Page_1366" transform="translate(0.000000, -72.000000)">
+            <g id="Hero" transform="translate(0.000000, 72.000000)">
+                <g id="Background">
+                    <g id="Shapes-Group">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Rectangle"></g>
+                        <g id="Trianlge_White" mask="url(#mask-2)" fill="#FFFFFF">
+                            <g transform="translate(329.000000, 0.000000)" id="Triangle">
+                                <polygon points="0 0 541.403287 0 270.701643 750"></polygon>
+                            </g>
+                        </g>
+                        <rect id="Rectangle" fill="#FEBD11" mask="url(#mask-2)" x="0" y="0" width="653" height="600"></rect>
+                        <g id="Triangle_Half" mask="url(#mask-2)" fill="#FEBD11">
+                            <g transform="translate(653.000000, 0.000000)" id="Trapezoid">
+                                <polygon points="-1.87156911e-15 600 -1.64488885e-13 0 217.5 600"></polygon>
+                            </g>
+                        </g>
+                        <g id="Triangle_Gradient" mask="url(#mask-2)" fill="url(#linearGradient-3)">
+                            <g transform="translate(330.000000, 0.000000)" id="Triangle">
+                                <polygon points="0 0 540.719697 0 270.359848 750"></polygon>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
