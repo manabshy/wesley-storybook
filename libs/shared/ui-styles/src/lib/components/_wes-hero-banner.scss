@@ -1,26 +1,29 @@
-.c-cross-sell-module {
+.wes-hero-banner {
   box-shadow: none;
   position: relative;
   z-index: 0;
 
-  @include media-breakpoint-down(sm) {
-    box-shadow: none;
-    height: auto;
-    overflow: hidden;
-    padding-bottom: 50px;
+  padding-bottom: 42px;
 
-    .pl-5 {
-      padding-left: 1.5rem !important;
-    }
-  }
+  //   @include media-breakpoint-down(sm) {
+  box-shadow: none;
+  height: auto;
+  overflow: hidden;
+  // padding-bottom: 50px;
 
-  @include media-breakpoint-up(sm) {
+  // .pl-5 {
+  //   padding-left: 1.5rem !important;
+  // }
+  //   }
+
+  @include media-breakpoint-up(md) {
     overflow: hidden;
     height: 363px;
+    padding-bottom: 72px;
   }
 
   &__text {
-    padding-top: 370px;
+    padding-top: 208px;
 
     .text-container {
       padding-left: 1.25rem;
@@ -31,9 +34,9 @@
       }
     }
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(md) {
       height: 363px;
-      padding-top: 0;
+      padding-top: 424px;
 
       .text-container {
         padding-left: 2.125rem;
@@ -79,6 +82,8 @@
       svg#mobile {
         width: 100%;
         display: inline-block;
+        height: 360px;
+        // margin-top: 112px;
       }
 
       svg#tablet,

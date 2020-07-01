@@ -50,12 +50,18 @@ export const paragraphs = () => ({
 export const lists = () => ({
   template: `
     <div class="" style="padding:3rem">
-    <ul class="wes-list">
-    <li class="wes-list-bullets">Tailored, one-to-one advice from our Financial Consultants available at your home or place of work</li>
-    <li class="wes-list-bullets">First appointments typically last an hour and will help us understand your current financial situation and long-term goals</li>
-    <li class="wes-list-bullets">After the appointment your Financial Consultant will create a plan of action to help you achieve your goals</li>
-    <li class="wes-list-bullets">Your Financial Consultant will then guide you through the process of purchasing and monitoring the performance of these products</li>
-  </ul>
+    <ul class="wes-list wes-list-bullets">
+        <li class="">Tailored, one-to-one advice from our Financial Consultants available at your home or place of work</li>
+        <li class="">First appointments typically last an hour and will help us understand your current financial situation and long-term goals</li>
+        <li class="">After the appointment your Financial Consultant will create a plan of action to help you achieve your goals</li>
+        <li class="">Your Financial Consultant will then guide you through the process of purchasing and monitoring the performance of these products</li>
+    </ul>
 
+    <ul class="wes-list wes-list-ticks">
+        <li class="">Tailored, one-to-one advice from our Financial Consultants available at your home or place of work</li>
+        <li class="">First appointments typically last an hour and will help us understand your current financial situation and long-term goals</li>
+        <li class="">After the appointment your Financial Consultant will create a plan of action to help you achieve your goals</li>
+        <li class="">Your Financial Consultant will then guide you through the process of purchasing and monitoring the performance of these products</li>
+    </ul>
     </div>`,
 });
