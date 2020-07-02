@@ -30,6 +30,12 @@
     background-repeat: no-repeat;
     background-color: $global-colour-gold-900;
 
+    background-image: linear-gradient(
+      0deg,
+      $global-colour-gold-900 45%,
+      $global-colour-grey-900 44%
+    );
+
     background-position-x: 160%;
     background-position: top;
     background-size: contain;
@@ -64,6 +70,11 @@
     @include media-breakpoint-up(xl) {
       background-position-x: right;
       background-position-y: inherit;
+      background-image: linear-gradient(
+        90deg,
+        $global-colour-gold-900 45%,
+        $global-colour-grey-900 44%
+      );
 
       svg#mobile {
         display: none;
@@ -74,6 +85,17 @@
         height: 100%;
         margin-left: -600px;
       }
+    }
+
+    .triangles-desktop {
+      height: 100%;
+      width: 1000px;
+      background-image: url("data:image/svg+xml,%3Csvg id='desktop' viewBox='0 0 871 600' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' %3E%3Ctitle%3EEC3FA72A-CE41-4F54-A934-8CF97A8F2C80%3C/title%3E%3Cdefs%3E%3Crect id='path-1' x='0' y='0' width='871' height='600'%3E%3C/rect%3E%3ClinearGradient x1='36.9092429%25' y1='0%25' x2='63.0913396%25' y2='100%25' id='linearGradient-3' %3E%3Cstop stop-color='%23FEBD11' offset='0%25'%3E%3C/stop%3E%3Cstop stop-color='%23FEDD36' stop-opacity='0.3' offset='60%25'%3E%3C/stop%3E%3Cstop stop-color='%23FEDD36' stop-opacity='0.1' offset='100%25'%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cg id='🔴-1.-Product-Page' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' %3E%3Cg id='1_ISA-Product-Page_1366' transform='translate(0.000000, -72.000000)' %3E%3Cg id='Hero' transform='translate(0.000000, 72.000000)'%3E%3Cg id='Background'%3E%3Cg id='Shapes-Group'%3E%3Cmask id='mask-2' fill='white'%3E%3Cuse xlink:href='%23path-1'%3E%3C/use%3E%3C/mask%3E%3Cg id='Rectangle'%3E%3C/g%3E%3Cg id='Trianlge_White' mask='url(%23mask-2)' fill='%23FFFFFF'%3E%3Cg transform='translate(329.000000, 0.000000)' id='Triangle' %3E%3Cpolygon points='0 0 541.403287 0 270.701643 750' %3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3Crect id='Rectangle' fill='%23FEBD11' mask='url(%23mask-2)' x='0' y='0' width='653' height='600' %3E%3C/rect%3E%3Cg id='Triangle_Half' mask='url(%23mask-2)' fill='%23FEBD11'%3E%3Cg transform='translate(653.000000, 0.000000)' id='Trapezoid' %3E%3Cpolygon points='-1.87156911e-15 600 -1.64488885e-13 0 217.5 600' %3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3Cg id='Triangle_Gradient' mask='url(%23mask-2)' fill='url(%23linearGradient-3)' %3E%3Cg transform='translate(330.000000, 0.000000)' id='Triangle' %3E%3Cpolygon points='0 0 540.719697 0 270.359848 750' %3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+      display: inline-block;
+      margin-left: -400px;
+      display: none;
     }
   }
 }
