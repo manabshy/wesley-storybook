@@ -1,7 +1,10 @@
 <ng-container *ngIf="pageContent">
-  <a class="wes-link" [routerLink]="yourDetailsLink">{{
-    pageContent.backButtonLabel
-  }}</a>
+  <a
+    class="wes-link wes-text-s mb-3 mb-md-4 d-inline-block"
+    [routerLink]="yourDetailsLink"
+    data-test="lnkBack"
+    >{{ pageContent.backButtonLabel }}</a
+  >
   <h1>{{ pageContent.heading }}</h1>
   <wes-investment-options-form
     [content]="pageContent"
@@ -10,8 +13,9 @@
     (submit)="onSubmit()"
   >
     <button
-      class="wes-button wes-button-primary"
+      class="wes-button wes-button-primary mt-5 mt-md-6"
       type="submit"
+      data-test="btnContinue"
       [disabled]="!(formValid$ | async)"
     >
       {{ pageContent.nextButtonLabel }}

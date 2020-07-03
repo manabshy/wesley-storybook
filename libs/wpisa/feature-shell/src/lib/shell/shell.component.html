@@ -1,7 +1,3 @@
-<wes-ui-site-header *ngIf="isDevEnv">
-  <!-- Only show for development, Sitecore wraps the app with header and footer-->
-</wes-ui-site-header>
-
 <div class="wes-bg-gradient-yellow">
   <div class="container">
     <wes-stepper
@@ -13,12 +9,10 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+    <div
+      class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 pt-4 pt-md-7 pb-8 pb-md-9"
+    >
       <router-outlet></router-outlet>
     </div>
   </div>
 </div>
-
-<wes-ui-site-footer *ngIf="isDevEnv">
-  <!-- Only show for development, Sitecore wraps the app with header and footer-->
-</wes-ui-site-footer>

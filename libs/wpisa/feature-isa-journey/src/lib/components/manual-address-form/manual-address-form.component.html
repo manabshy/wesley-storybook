@@ -1,6 +1,6 @@
 <form [formGroup]="form">
   <div class="form-group">
-    <label for="flatNumber">{{
+    <label for="flatNumber" data-test="lblFlatNumber">{{
       pageContent.addressDetails.flatNumber.inputLabel
     }}</label>
     <input
@@ -8,10 +8,11 @@
       type="text"
       name="flatNumber"
       formControlName="flatNumber"
+      data-test="txtFlatNumber"
     />
   </div>
   <div class="form-group">
-    <label for="houseNumber">{{
+    <label for="houseNumber" data-test="txtHouseNumber">{{
       pageContent.addressDetails.houseNumber.inputLabel
     }}</label>
     <input
@@ -20,6 +21,7 @@
       name="houseName"
       formControlName="houseNumber"
       autocomplete="address-line1"
+      data-test="txtHouseNumber"
     />
     <ng-container *ngIf="isFieldInvalid('houseNumber')">
       <span *ngIf="controls.houseNumber.errors.required">
@@ -28,7 +30,7 @@
     </ng-container>
   </div>
   <div class="form-group">
-    <label for="houseNumber">{{
+    <label for="houseNumber" data-test="lblHouseNumber">{{
       pageContent.addressDetails.houseName.inputLabel
     }}</label>
     <input
@@ -36,6 +38,7 @@
       type="text"
       name="houseNumber"
       formControlName="houseName"
+      data-test="txtHouseNumber"
     />
     <ng-container *ngIf="isFieldInvalid('houseName')">
       <span *ngIf="controls.houseName.errors.required">
@@ -44,7 +47,7 @@
     </ng-container>
   </div>
   <div class="form-group">
-    <label for="street">{{
+    <label for="street" data-test="lblStreet">{{
       pageContent.addressDetails.street.inputLabel
     }}</label>
     <input
@@ -53,6 +56,7 @@
       name="street"
       formControlName="street"
       autocomplete="address-line2"
+      data-test="txtStreet"
     />
     <ng-container *ngIf="isFieldInvalid('street')">
       <span *ngIf="controls.street.errors.required">
@@ -61,13 +65,16 @@
     </ng-container>
   </div>
   <div class="form-group">
-    <label for="town">{{ pageContent.addressDetails.town.inputLabel }}</label>
+    <label for="town" data-test="lblTown">{{
+      pageContent.addressDetails.town.inputLabel
+    }}</label>
     <input
       class="form-control"
       type="text"
       name="town"
       formControlName="town"
       autocomplete="address-level2"
+      data-test="txtTown"
     />
     <ng-container *ngIf="isFieldInvalid('town')">
       <span *ngIf="controls.town.errors.required">
@@ -76,7 +83,7 @@
     </ng-container>
   </div>
   <div class="form-group">
-    <label for="region">{{
+    <label for="region" data-test="lblRegion">{{
       pageContent.addressDetails.region.inputLabel
     }}</label>
     <input
@@ -84,10 +91,11 @@
       type="text"
       name="region"
       formControlName="region"
+      data-test="txtRegion"
     />
   </div>
   <div class="form-group">
-    <label for="county">{{
+    <label for="county" data-test="lblCounty">{{
       pageContent.addressDetails.county.inputLabel
     }}</label>
     <input
@@ -95,10 +103,11 @@
       type="text"
       name="county"
       formControlName="county"
+      data-test="txtCounty"
     />
   </div>
   <div class="form-group">
-    <label for="postcode">{{
+    <label for="postcode" data-test="lblPostcode">{{
       pageContent.addressDetails.postcode.inputLabel
     }}</label>
     <input
@@ -107,6 +116,7 @@
       name="postcode"
       formControlName="postcode"
       autocomplete="postal-code"
+      data-test="txtPostcode"
     />
     <ng-container *ngIf="isFieldInvalid('postcode')">
       <span *ngIf="controls.postcode.errors.required">

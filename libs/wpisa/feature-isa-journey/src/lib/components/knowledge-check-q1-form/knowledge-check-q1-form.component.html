@@ -1,37 +1,20 @@
-<!-- <div [innerHtml]="content.summary"></div> -->
 <form [formGroup]="formQ1">
-  <!-- <div>
-    <input
-      type="radio"
-      value="YES"
-      name="question1"
-      formControlName="question1"
-    />
-    <label class="custom-control-label" for="YES">{{
-      content.questions[0]
-    }}</label>
-  </div>
-
-  <div>
-    <input
-      type="radio"
-      value="NO"
-      name="question1"
-      formControlName="question1"
-    />
-    <label class="custom-control-label" for="NO">{{
-      content.questions[1]
-    }}</label>
-  </div> -->
-
-  <label id="question1-radio-group-label" [innerHtml]="content.summary"></label>
+  <label
+    id="question1-radio-group-label"
+    [innerHtml]="content.summary"
+    data-test="lblQuestion"
+  ></label>
   <div
     role="radiogroup"
     aria-labelledby="question1-radio-group-label"
     class="wes-radio-group"
   >
     <div class="wes-radio-button wes-radio-checked" tabindex="-1">
-      <label class="wes-radio-label" for="question1-1-radio-input">
+      <label
+        class="wes-radio-label"
+        for="question1-1-radio-input"
+        data-test="lblAnswer1"
+      >
         <div class="wes-radio-container">
           <div class="wes-radio-outer-circle"></div>
           <div class="wes-radio-inner-circle"></div>
@@ -43,6 +26,7 @@
             name="question1"
             value="Yes"
             formControlName="question1"
+            data-test="rbAnswer1"
           />
         </div>
         <div
@@ -53,7 +37,11 @@
     </div>
 
     <div class="wes-radio-button wes-radio-checked" tabindex="-1">
-      <label class="wes-radio-label" for="question1-2-radio-input">
+      <label
+        class="wes-radio-label"
+        for="question1-2-radio-input"
+        data-test="lblAnswer2"
+      >
         <div class="wes-radio-container">
           <div class="wes-radio-outer-circle"></div>
           <div class="wes-radio-inner-circle"></div>
@@ -65,6 +53,7 @@
             name="question1"
             value="No"
             formControlName="question1"
+            data-test="rbAnswer2"
           />
         </div>
         <div

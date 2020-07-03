@@ -1,6 +1,6 @@
 <form [formGroup]="form">
   <div class="form-group">
-    <label for="postcode">{{
+    <label for="postcode" data-test="lblFindAddressPostcode">{{
       pageContent.addressDetails.postcode.inputLabel
     }}</label>
     <input
@@ -9,6 +9,7 @@
       name="postcodeLookup"
       formControlName="postcode"
       autocomplete="postal-code"
+      data-test="txtFindAddressPostcode"
       #postcodeInput
     />
     <ng-container *ngIf="isFieldInvalid('postcode')">
@@ -20,6 +21,7 @@
   <button
     class="wes-button wes-button-primary"
     type="button"
+    data-test="btnFindAddress"
     [wesButtonLoader]="findingAddress"
     (click)="findAddress(postcodeInput.value)"
   >
@@ -27,7 +29,7 @@
   </button>
 
   <div class="form-group" *ngIf="addressList.length > 0">
-    <label for="address-list">{{
+    <label for="address-list" data-test="lblAddressList">{{
       pageContent.addressDetails.selectYourAddress.inputLabel
     }}</label>
     <select
@@ -35,6 +37,7 @@
       name="address-list"
       class="form-control"
       (change)="onSelectedAddress($event)"
+      data-test="ddAddressList"
     >
       <option *ngFor="let address of addressList" [value]="address.moniker">{{
         address.singleLine
@@ -56,6 +59,7 @@
       type="button"
       class="wes-button wes-button-link"
       (click)="onShowManualAddress()"
+      data-test="btnEnterAddressManually"
     >
       {{ pageContent.addressDetails.enterAddressManuallyLabel }}
     </button>

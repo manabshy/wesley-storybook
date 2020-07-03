@@ -1,6 +1,10 @@
 <h1>{{ pageContent.intro.heading }}</h1>
 <div [innerHtml]="pageContent.intro.summary"></div>
 
-<button class="wes-button wes-button-primary" (click)="onNextClicked()">
+<button
+  class="wes-button wes-button-primary mt-5 mt-md-6"
+  data-test="btnContinue"
+  (click)="onNextClicked()"
+>
   {{ pageContent.intro.nextButtonLabel }}
 </button>

@@ -1,28 +1,67 @@
-<div [innerHtml]="content.summary"></div>
 <form [formGroup]="form">
-  <div>
-    <input
-      type="radio"
-      value="YES"
-      name="question2"
-      formControlName="question2"
-    />
-    <label class="custom-control-label" for="YES">{{
-      content.questions[0]
-    }}</label>
-  </div>
+  <label
+    id="question2-radio-group-label"
+    [innerHtml]="content.summary"
+    data-test="lblQuestion"
+  ></label>
+  <div
+    role="radiogroup"
+    aria-labelledby="question2-radio-group-label"
+    class="wes-radio-group"
+  >
+    <div class="wes-radio-button wes-radio-checked" tabindex="-1">
+      <label
+        class="wes-radio-label"
+        for="question2-1-radio-input"
+        data-test="lblAnswer1"
+      >
+        <div class="wes-radio-container">
+          <div class="wes-radio-outer-circle"></div>
+          <div class="wes-radio-inner-circle"></div>
+          <input
+            type="radio"
+            class="wes-radio-input cdk-visually-hidden"
+            id="question2-1-radio-input"
+            tabindex="0"
+            name="question2"
+            value="Yes"
+            formControlName="question2"
+            data-test="rbAnswer1"
+          />
+        </div>
+        <div
+          class="wes-radio-label-content"
+          [innerHtml]="content.questions[0]"
+        ></div>
+      </label>
+    </div>
 
-  <div>
-    <input
-      type="radio"
-      value="NO"
-      name="question2"
-      formControlName="question2"
-    />
-    <label class="custom-control-label" for="NO">{{
-      content.questions[1]
-    }}</label>
+    <div class="wes-radio-button wes-radio-checked" tabindex="-1">
+      <label
+        class="wes-radio-label"
+        for="question2-2-radio-input"
+        data-test="lblAnswer2"
+      >
+        <div class="wes-radio-container">
+          <div class="wes-radio-outer-circle"></div>
+          <div class="wes-radio-inner-circle"></div>
+          <input
+            type="radio"
+            class="wes-radio-input cdk-visually-hidden"
+            id="question2-2-radio-input"
+            tabindex="0"
+            name="question2"
+            value="No"
+            formControlName="question2"
+            data-test="rbAnswer2"
+          />
+        </div>
+        <div
+          class="wes-radio-label-content"
+          [innerHtml]="content.questions[1]"
+        ></div>
+      </label>
+    </div>
   </div>
-
   <ng-content></ng-content>
 </form>

@@ -1,13 +1,17 @@
-<a class="wes-link" [routerLink]="question1Link">{{
-  pageContent.knowledgeCheck.step2.backButtonLabel
-}}</a>
+<a
+  class="wes-link wes-text-s mb-3 mb-md-4 d-inline-block"
+  [routerLink]="question1Link"
+  data-test="lnkBack"
+  >{{ pageContent.knowledgeCheck.step2.backButtonLabel }}</a
+>
 
 <h1>{{ pageContent.knowledgeCheck.step2.heading }}</h1>
 
 <wes-knowledge-check-q2-form (submit)="submitQuestion2()">
   <button
-    class="wes-button wes-button-primary"
+    class="wes-button wes-button-primary mt-5 mt-md-6"
     type="submit"
+    data-test="btnContinue"
     [disabled]="!(q2Valid$ | async)"
   >
     {{ pageContent.knowledgeCheck.step2.nextButtonLabel }}

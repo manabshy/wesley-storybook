@@ -1,6 +1,8 @@
-<a class="wes-link" [routerLink]="investmentOptionLink">{{
-  pageContent.backButtonLabel
-}}</a>
+<a
+  class="wes-link wes-text-s mb-3 mb-md-4 d-inline-block"
+  [routerLink]="investmentOptionLink"
+  >{{ pageContent.backButtonLabel }}</a
+>
 
 <h1>{{ pageContent.heading }}</h1>
 <div [innerHtml]="pageContent.summary"></div>
@@ -31,7 +33,11 @@
     [submitAttempt]="submitAttempt"
   ></wes-direct-debit-form>
 
-  <button class="wes-button wes-button-primary" type="submit">
+  <button
+    class="wes-button wes-button-primary mt-5 mt-md-6"
+    type="submit"
+    data-test="btnContinue"
+  >
     {{ pageContent.nextButtonLabel }}
   </button>
 </form>
