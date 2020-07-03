@@ -35,7 +35,6 @@
       class="wes-hero-banner__shapes"
       style="background-image: url(assets/images/ISA_new.jpg);"
     >
-      <div class="triangles-desktop"></div>
       <svg
         id="desktop"
         viewBox="0 0 871 600"
@@ -288,6 +287,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12 col-md-4 offset-md-1 order-md-2 pb-6 pl-md-0">
+          <!-- For highlighting on scroll is using bootstrap scrollspy, so this needs added on the <body>data-spy="scroll" data-target="" -->
           <ul class="nav wes-nav wes-nav-vertical sticky-top">
             <li class="nav-item">
               <a class="nav-link active" href="#chargesSection">Charges</a>
@@ -306,7 +306,7 @@
           </ul>
         </div>
         <div class="col-xs-12 col-md-7 pr-md-0">
-          <section id="chargesSection" class="mb-6 wes-text-shortform">
+          <div id="chargesSection" class="mb-6 wes-text-shortform">
             <h4 class="wes-h6">Charges</h4>
             <p>
               When you open a With Profits ISA, you’re agreeing to an Annual
@@ -316,9 +316,9 @@
               initial charge - but apply online, and there'll be no initial
               charge to pay.
             </p>
-          </section>
+          </div>
 
-          <section id="sectionSMVR" class="mb-6 wes-text-shortform">
+          <div id="sectionSMVR" class="mb-6 wes-text-shortform">
             <h4 class="wes-h6">
               Smoothing and Market Value Reductions (MVR)
             </h4>
@@ -340,9 +340,9 @@
               from a high volume of withdrawals being made by other customers at
               unfairly high valuations.
             </p>
-          </section>
+          </div>
 
-          <section id="sectionISARules" class="mb-8 wes-text-shortform">
+          <div id="sectionISARules" class="mb-8 wes-text-shortform">
             <h4 class="wes-h6">ISA and tax rules</h4>
             <p>
               You’ll pay no personal income tax or capital gains tax on your
@@ -380,15 +380,15 @@
               within 30 days of the date you receive your cancellation notice
               (part of your plan documentation).
             </p>
-          </section>
+          </div>
 
-          <section id="sectionKeyDocuments" class="wes-text-shortform">
+          <div id="sectionKeyDocuments" class="wes-text-shortform">
             <h4 class="wes-h6">Key documents</h4>
             <p>
               Before you apply to open a With Profits ISA, please read the
               following documents:
             </p>
-          </section>
+          </div>
         </div>
       </div>
     </div>
