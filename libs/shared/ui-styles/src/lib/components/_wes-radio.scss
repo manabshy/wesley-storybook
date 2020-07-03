@@ -1,0 +1,83 @@
+$wes-radio-size: 28px;
+$wes-radio-inner-size: 20px;
+
+// Top-level host container.
+.wes-radio-button {
+  display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+}
+
+.wes-radio-label {
+  @include user-select(none);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  //   white-space: nowrap;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.wes-radio-container {
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  width: $wes-radio-size;
+  height: $wes-radio-size;
+  flex-shrink: 0;
+}
+
+.wes-radio-outer-circle {
+  box-sizing: border-box;
+  position: absolute;
+  height: $wes-radio-size;
+  width: $wes-radio-size;
+  left: 0;
+  top: 0;
+  border: 2px solid #b3b5b9;
+  border-radius: 50%;
+
+  .wes-radio-checked & {
+    border-color: $global-colour-gold-900;
+  }
+
+  .cdk-focused & {
+    border-color: $global-colour-grey-900;
+    box-shadow: 0 0 0 2px $global-colour-gold-900;
+  }
+
+  .wes-radio-error & {
+    border-color: #d72d41;
+  }
+}
+
+.wes-radio-inner-circle {
+  box-sizing: border-box;
+  position: absolute;
+  border-radius: 50%;
+  height: $wes-radio-inner-size;
+  width: $wes-radio-inner-size;
+  left: calc(50% - #{$wes-radio-inner-size / 2});
+  top: calc(50% - #{$wes-radio-inner-size / 2});
+  background-color: $global-colour-gold-900;
+
+  display: none;
+
+  .wes-radio-checked & {
+    display: block;
+  }
+}
+
+.wes-radio-label-content {
+  @include user-select(auto);
+  display: inline-block;
+  order: 0;
+  line-height: inherit;
+  padding-left: 32px;
+  padding-right: 0;
+}
+
+.wes-radio-disabled,
+.wes-radio-disabled .wes-radio-label {
+  cursor: default;
+}
