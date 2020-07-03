@@ -82,10 +82,32 @@ $wes-stepper-label-default-colour: $global-colour-grey-900;
       border-radius: 50%;
     }
 
+    &-icon {
+      height: 6px;
+      width: 8px;
+      background-image: url('/assets/icons/svg/icon-tick-short.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      display: none;
+    }
+
     &--completed,
     &--active {
       background-color: $wes-stepper-active-colour;
       border-color: $wes-stepper-active-colour;
+    }
+
+    &--completed {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include media-breakpoint-up(md) {
+        .wes-stepper__step-icon {
+          display: block;
+        }
+      }
     }
   }
 

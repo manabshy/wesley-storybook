@@ -41,7 +41,9 @@
           'wes-stepper__step--active': isStepActive(stepIndex),
           'wes-stepper__step--completed': isStepComplete(stepIndex)
         }"
-      ></div>
+      >
+        <span class="wes-stepper__step-icon"></span>
+      </div>
 
       <div
         *ngIf="!isLast"
