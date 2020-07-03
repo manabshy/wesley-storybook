@@ -1,6 +1,7 @@
 <a
   class="wes-link wes-text-s mb-3 mb-md-4 d-inline-block"
   [routerLink]="investmentOptionLink"
+  data-test="lnkBackToInvestmentOptions"
   >{{ pageContent.backButtonLabel }}</a
 >
 <h1>{{ pageContent.heading }}</h1>
@@ -17,9 +18,12 @@
     <div class="wes-card-title">
       <div>{{ pageContent.yourInvestmentLabel }}</div>
       <div>
-        <a class="wes-link" [routerLink]="yourInvestmentLink">{{
-          pageContent.editLabel
-        }}</a>
+        <a
+          class="wes-link"
+          [routerLink]="yourInvestmentLink"
+          data-test="lnkBackToYourInvestment"
+          >{{ pageContent.editLabel }}</a
+        >
       </div>
     </div>
     <div class="wes-card-body">
@@ -47,9 +51,12 @@
     <div class="wes-card-title">
       <div>{{ pageContent.directDebitLabel }}</div>
       <div>
-        <a class="wes-link" [routerLink]="yourInvestmentLink">{{
-          pageContent.editLabel
-        }}</a>
+        <a
+          class="wes-link"
+          [routerLink]="yourInvestmentLink"
+          data-test="lnkBackToDD"
+          >{{ pageContent.editLabel }}</a
+        >
       </div>
     </div>
     <div class="wes-card-body">
@@ -70,9 +77,12 @@
     <div class="wes-card-title">
       <div>{{ pageContent.yourDetailsLabel }}</div>
       <div>
-        <a class="wes-link" [routerLink]="yourDetailsLink">{{
-          pageContent.editLabel
-        }}</a>
+        <a
+          class="wes-link"
+          [routerLink]="yourDetailsLink"
+          data-test="lnkBackToPersonalDetails"
+          >{{ pageContent.editLabel }}</a
+        >
       </div>
     </div>
     <div class="wes-card-body">
@@ -114,7 +124,11 @@
 <hr />
 <form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
   <div class="wes-checkbox" id="wes-checkbox-1">
-    <label class="wes-checkbox-layout" for="wes-checkbox-1-input">
+    <label
+      class="wes-checkbox-layout"
+      for="wes-checkbox-1-input"
+      data-test="lblAuthorise"
+    >
       <div class="wes-checkbox-inner-container">
         <input
           type="checkbox"
@@ -123,6 +137,7 @@
           tabindex="0"
           aria-checked="false"
           formControlName="authorise"
+          data-test="cbAuthorise"
         />
       </div>
       <span class="wes-checkbox-label">{{
@@ -138,7 +153,11 @@
   <div [innerHtml]="pageContent.authoriseContent"></div>
 
   <div class="wes-checkbox" id="wes-checkbox-2">
-    <label class="wes-checkbox-layout" for="wes-checkbox-2-input">
+    <label
+      class="wes-checkbox-layout"
+      for="wes-checkbox-2-input"
+      data-test="lblDeclaration"
+    >
       <div class="wes-checkbox-inner-container">
         <input
           type="checkbox"
@@ -147,6 +166,7 @@
           tabindex="0"
           aria-checked="false"
           formControlName="declaration"
+          data-test="cbDeclaration"
         />
       </div>
       <span class="wes-checkbox-label">{{

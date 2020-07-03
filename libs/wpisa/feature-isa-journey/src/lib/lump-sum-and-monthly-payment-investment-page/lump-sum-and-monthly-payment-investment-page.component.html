@@ -1,6 +1,7 @@
 <a
   class="wes-link wes-text-s mb-3 mb-md-4 d-inline-block"
   [routerLink]="investmentOptionLink"
+  data-test="lnkBack"
   >{{ pageContent.backButtonLabel }}</a
 >
 <h1>{{ pageContent.heading }}</h1>
@@ -9,7 +10,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
   <div class="form-group" formGroupName="totalAmount">
     <div class="form-group">
-      <label for="lumpSumAmount">{{
+      <label for="lumpSumAmount" data-test="lblLumpSumAmount">{{
         pageContent.lumpSumAmount.inputLabel
       }}</label>
       <input
@@ -17,6 +18,7 @@
         type="text"
         name="lumpSumAmount"
         formControlName="lumpSumAmount"
+        data-test="txtLumpSumAmount"
       />
       <ng-container *ngIf="isFieldInvalid('totalAmount.lumpSumAmount')">
         <span>
@@ -28,7 +30,7 @@
     <hr />
 
     <div class="form-group">
-      <label for="monthlyAmount">{{
+      <label for="monthlyAmount" data-test="lblMonthlyAmount">{{
         pageContent.monthlyAmount.inputLabel
       }}</label>
       <input
@@ -36,6 +38,7 @@
         type="text"
         name="monthlyAmount"
         formControlName="monthlyAmount"
+        data-test="txtMonthlyAmount"
       />
       <div>{{ pageContent.monthlyHelpText }}</div>
       <ng-container *ngIf="isFieldInvalid('totalAmount.monthlyAmount')">

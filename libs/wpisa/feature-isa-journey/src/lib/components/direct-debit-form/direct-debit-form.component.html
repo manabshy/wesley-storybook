@@ -2,13 +2,16 @@
   <form [formGroup]="form">
     <div>{{ content.bankNameTooltip }}</div>
     <div class="form-group">
-      <label for="bankName">{{ content.bankName.inputLabel }}</label>
+      <label for="bankName" data-test="lblBankName">{{
+        content.bankName.inputLabel
+      }}</label>
       <input
         class="form-control"
         type="text"
         name="bankName"
         formControlName="bankName"
         spellcheck="false"
+        data-test="txtBankName"
       />
       <ng-container *ngIf="isFieldInvalid('bankName')">
         <span>
@@ -18,7 +21,7 @@
     </div>
 
     <div class="form-group">
-      <label for="accountHolderFullName">{{
+      <label for="accountHolderFullName" data-test="lblAccountHolderFullName">{{
         content.accountName.inputLabel
       }}</label>
       <input
@@ -27,6 +30,7 @@
         name="accountHolderFullName"
         formControlName="accountHolderFullName"
         spellcheck="false"
+        data-test="txtAccountHolderFullName"
       />
       <ng-container *ngIf="isFieldInvalid('accountHolderFullName')">
         <span>
@@ -36,7 +40,9 @@
     </div>
 
     <div class="form-group">
-      <label for="accountNumber">{{ content.accountNumber.inputLabel }}</label>
+      <label for="accountNumber" data-test="lblAccountNumber">{{
+        content.accountNumber.inputLabel
+      }}</label>
       <input
         class="form-control"
         type="text"
@@ -44,6 +50,7 @@
         formControlName="accountNumber"
         inputmode="numeric"
         spellcheck="false"
+        data-test="txtAccountNumber"
       />
       <ng-container *ngIf="isFieldInvalid('accountNumber')">
         <span>
@@ -53,7 +60,9 @@
     </div>
 
     <div class="form-group" formGroupName="sortCode">
-      <label for="sortCode">{{ content.sortCode.inputLabel }}</label>
+      <label for="sortCode" data-test="lblSortCode">{{
+        content.sortCode.inputLabel
+      }}</label>
       <input
         class="form-control"
         type="text"
@@ -63,6 +72,7 @@
         spellcheck="false"
         maxlength="2"
         wesNumbersOnly
+        data-test="txtSortCode1"
       />
       <input
         class="form-control"
@@ -73,6 +83,7 @@
         spellcheck="false"
         maxlength="2"
         wesNumbersOnly
+        data-test="txtSortCode2"
       />
       <input
         class="form-control"
@@ -83,6 +94,7 @@
         spellcheck="false"
         maxlength="2"
         wesNumbersOnly
+        data-test="txtSortCode3"
       />
       <ng-container *ngIf="isFieldInvalid('sortCode')">
         <span>

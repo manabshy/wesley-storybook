@@ -1,6 +1,7 @@
 <a
   class="wes-link wes-text-s mb-3 mb-md-4 d-inline-block"
   [routerLink]="investmentOptionLink"
+  data-test="lnkBack"
   >{{ pageContent.backButtonLabel }}</a
 >
 
@@ -9,12 +10,15 @@
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="amount">{{ pageContent.lumpSumAmount.inputLabel }}</label>
+    <label for="amount" data-test="lblAmount">{{
+      pageContent.lumpSumAmount.inputLabel
+    }}</label>
     <input
       class="form-control"
       type="text"
       name="amount"
       formControlName="amount"
+      data-test="txtAmount"
     />
     <ng-container *ngIf="isFieldInvalid('amount')">
       <span>
