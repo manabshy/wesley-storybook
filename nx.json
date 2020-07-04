@@ -74,6 +74,9 @@
     },
     "shared-ui-form-radio": {
       "tags": []
+    },
+    "shared-ui-form-checkbox": {
+      "tags": []
     }
   }
 }

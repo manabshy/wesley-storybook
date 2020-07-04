@@ -9,6 +9,7 @@ import {
 
 import { SharedUiProgressSpinnerModule } from '@wesleyan-frontend/shared/ui-progress-spinner';
 import { SharedUiFormRadioModule } from '@wesleyan-frontend/shared/ui-form-radio';
+import { SharedUiFormCheckboxModule } from '@wesleyan-frontend/shared/ui-form-checkbox';
 
 import { KnowledgeCheckPageComponent } from './knowledge-check-page/knowledge-check-page.component';
 import { CustomerDetailsPageComponent } from './customer-details-page/customer-details-page.component';
@@ -39,6 +40,7 @@ import { ButtonLoaderDirective } from './button-loader.directive';
     ISAJourneyRoutingModule,
     SharedUiProgressSpinnerModule,
     SharedUiFormRadioModule,
+    SharedUiFormCheckboxModule,
   ],
   declarations: [
     KnowledgeCheckPageComponent,

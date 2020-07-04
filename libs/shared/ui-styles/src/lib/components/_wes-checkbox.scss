@@ -1,0 +1,114 @@
+$wes-checkbox-size: 28px;
+$wes-checkbox-inner-size: 20px;
+$wes-checkbox-outer-default-colour: $global-colour-grey-300;
+$wes-checkbox-outer-checked-colour: $global-colour-gold-900;
+$wes-checkbox-outer-error-colour: $global-colour-red-700;
+
+$wes-checkbox-inner-checked-colour: $global-colour-gold-900;
+
+//Adapted from mat-checkbox.scss
+
+// Applied to elements that appear to make up the outer box of the checkmark, such as the frame
+// that contains the border and the actual background element that contains the marks.
+%wes-checkbox-outer-box {
+  position: absolute;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.wes-checkbox {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wes-checkbox-layout {
+  // Disable text selection on the label itself, because having text selected
+  // will prevent focus from reaching the label. Below we'll re-enable it only
+  // for the label's content so that people can still select the text.
+  @include user-select(none);
+
+  // `cursor: inherit` ensures that the wrapper element gets the same cursor as the mat-checkbox
+  // (e.g. pointer by default, regular when disabled), instead of the browser default.
+  cursor: inherit;
+  align-items: baseline;
+  vertical-align: middle;
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.wes-checkbox-label {
+  // Re-enable text selection for the checkbox's content since
+  // we disabled it above in the `.wes-checkbox-layout`.
+  @include user-select(auto);
+}
+
+.wes-checkbox-inner-container {
+  display: inline-block;
+  height: $wes-checkbox-size;
+  width: $wes-checkbox-size;
+  line-height: 0;
+  margin: auto;
+  margin-right: 16px;
+  order: 0;
+  position: relative;
+  vertical-align: middle;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.wes-checkbox-inner-container-no-side-margin {
+  margin: {
+    left: 0;
+    right: 0;
+  }
+}
+
+.wes-checkbox-frame {
+  @extend %wes-checkbox-outer-box;
+
+  height: $wes-checkbox-size;
+  width: $wes-checkbox-size;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 2px solid $wes-checkbox-outer-default-colour;
+  background-color: #ffffff;
+
+  .wes-checkbox-checked & {
+    border-color: $wes-checkbox-outer-checked-colour;
+  }
+  .wes-checkbox-error & {
+    border-color: $wes-checkbox-outer-error-colour;
+  }
+
+  .wes-checkbox.cdk-keyboard-focused & {
+    @extend %focus-state;
+  }
+}
+
+.wes-checkbox-background {
+  @extend %wes-checkbox-outer-box;
+
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+
+  height: $wes-checkbox-inner-size;
+  width: $wes-checkbox-inner-size;
+  left: calc(50% - #{$wes-checkbox-inner-size / 2});
+  top: calc(50% - #{$wes-checkbox-inner-size / 2});
+
+  svg {
+    position: absolute;
+    opacity: 0;
+    height: 7px;
+    width: 11px;
+  }
+
+  .wes-checkbox-checked & {
+    background-color: $wes-checkbox-inner-checked-colour;
+
+    svg {
+      opacity: 1;
+    }
+  }
+}

@@ -601,6 +601,41 @@
           "style": "scss"
         }
       }
+    },
+    "shared-ui-form-checkbox": {
+      "projectType": "library",
+      "root": "libs/shared/ui-form-checkbox",
+      "sourceRoot": "libs/shared/ui-form-checkbox/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui-form-checkbox/tsconfig.lib.json",
+              "libs/shared/ui-form-checkbox/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/ui-form-checkbox/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui-form-checkbox/jest.config.js",
+            "tsConfig": "libs/shared/ui-form-checkbox/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/ui-form-checkbox/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

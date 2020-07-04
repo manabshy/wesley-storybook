@@ -49,6 +49,9 @@
       "@wesleyan-frontend/shared/assets": ["libs/shared/assets/src/index.ts"],
       "@wesleyan-frontend/shared/ui-form-radio": [
         "libs/shared/ui-form-radio/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/ui-form-checkbox": [
+        "libs/shared/ui-form-checkbox/src/index.ts"
       ]
     }
   },
