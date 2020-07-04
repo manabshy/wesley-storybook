@@ -41,7 +41,7 @@ $wes-radio-inner-size: 20px;
     border-color: $global-colour-gold-900;
   }
 
-  .cdk-focused & {
+  .cdk-keyboard-focused & {
     border-color: $global-colour-grey-900;
     box-shadow: 0 0 0 2px $global-colour-gold-900;
   }

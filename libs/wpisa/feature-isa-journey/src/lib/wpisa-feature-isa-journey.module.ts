@@ -6,7 +6,9 @@ import {
   NG_FORMS_MANAGER_CONFIG,
   NgFormsManagerConfig,
 } from '@ngneat/forms-manager';
+
 import { SharedUiProgressSpinnerModule } from '@wesleyan-frontend/shared/ui-progress-spinner';
+import { SharedUiFormRadioModule } from '@wesleyan-frontend/shared/ui-form-radio';
 
 import { KnowledgeCheckPageComponent } from './knowledge-check-page/knowledge-check-page.component';
 import { CustomerDetailsPageComponent } from './customer-details-page/customer-details-page.component';
@@ -36,6 +38,7 @@ import { ButtonLoaderDirective } from './button-loader.directive';
     CdkStepperModule,
     ISAJourneyRoutingModule,
     SharedUiProgressSpinnerModule,
+    SharedUiFormRadioModule,
   ],
   declarations: [
     KnowledgeCheckPageComponent,

@@ -4,84 +4,19 @@
     [innerHtml]="content.summary"
     data-test="lblQuestion"
   ></label>
-  <!--
-  <mat-radio-group id="shipping-method" formControlName="method" class="db">
-    <mat-radio-button
-      class="mb2"
-      *ngFor="let shippingMethod of shippingMethods"
-      [value]="shippingMethod.id"
-    >
-      <span class="ws-normal">
-        <span class="fw5">
-          {{ shippingMethod.price ? (shippingMethod.price | currency) : '' }}
-          {{ shippingMethod.type }}:
-        </span>
-        {{ 'SHIPPING.GET_IT_BY' | translate }}
-      </span>
-    </mat-radio-button>
-  </mat-radio-group>
-  <mat-error *ngIf="shippingPageForm.get(['method']).hasError('required')">
-    {{ 'ERRORS.REQUIRED' | translate }}
-  </mat-error>
--->
-  <div
-    role="radiogroup"
-    aria-labelledby="question1-radio-group-label"
-    class="wes-radio-group"
-  >
-    <div class="wes-radio-button" tabindex="-1">
-      <label
-        class="wes-radio-label"
-        for="question1-1-radio-input"
-        data-test="lblAnswer1"
-      >
-        <div class="wes-radio-container">
-          <div class="wes-radio-outer-circle"></div>
-          <div class="wes-radio-inner-circle"></div>
-          <input
-            type="radio"
-            class="wes-radio-input cdk-visually-hidden"
-            id="question1-1-radio-input"
-            tabindex="0"
-            name="question1"
-            value="Yes"
-            formControlName="question1"
-            data-test="rbAnswer1"
-          />
-        </div>
-        <div
-          class="wes-radio-label-content"
-          [innerHtml]="content.questions[0]"
-        ></div>
-      </label>
-    </div>
 
-    <div class="wes-radio-button" tabindex="-1">
-      <label
-        class="wes-radio-label"
-        for="question1-2-radio-input"
-        data-test="lblAnswer2"
-      >
-        <div class="wes-radio-container">
-          <div class="wes-radio-outer-circle"></div>
-          <div class="wes-radio-inner-circle"></div>
-          <input
-            type="radio"
-            class="wes-radio-input cdk-visually-hidden"
-            id="question1-2-radio-input"
-            tabindex="0"
-            name="question1"
-            value="No"
-            formControlName="question1"
-            data-test="rbAnswer2"
-          />
-        </div>
-        <div
-          class="wes-radio-label-content"
-          [innerHtml]="content.questions[1]"
-        ></div>
-      </label>
-    </div>
-  </div>
+  <wes-radio-group
+    id="question1"
+    aria-labelledby="question1-radio-group-label"
+    formControlName="question1"
+  >
+    <wes-radio-button id="answerYes" value="Yes">
+      <span [innerHtml]="content.questions[0]"></span>
+    </wes-radio-button>
+    <wes-radio-button id="answerNo" value="No">
+      <span [innerHtml]="content.questions[1]"></span>
+    </wes-radio-button>
+  </wes-radio-group>
+
   <ng-content></ng-content>
 </form>

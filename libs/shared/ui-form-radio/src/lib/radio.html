@@ -1,0 +1,39 @@
+<label
+  [attr.for]="inputId"
+  [attr.data-test]="labelTestId"
+  class="wes-radio-label"
+  #label
+>
+  <div class="wes-radio-container">
+    <div class="wes-radio-outer-circle"></div>
+    <div class="wes-radio-inner-circle"></div>
+    <input
+      #input
+      class="wes-radio-input cdk-visually-hidden"
+      type="radio"
+      [id]="inputId"
+      [checked]="checked"
+      [disabled]="disabled"
+      [tabIndex]="tabIndex"
+      [attr.name]="name"
+      [attr.value]="value"
+      [required]="required"
+      [attr.aria-label]="ariaLabel"
+      [attr.aria-labelledby]="ariaLabelledby"
+      [attr.aria-describedby]="ariaDescribedby"
+      [attr.data-test]="inputTestId"
+      (change)="_onInputChange($event)"
+      (click)="_onInputClick($event)"
+    />
+  </div>
+
+  <!-- The label content for radio control. -->
+  <div
+    class="wes-radio-label-content"
+    [class.wes-radio-label-before]="labelPosition == 'before'"
+  >
+    <!-- Add an invisible span so JAWS can read the label -->
+    <span style="display: none;">&nbsp;</span>
+    <ng-content></ng-content>
+  </div>
+</label>

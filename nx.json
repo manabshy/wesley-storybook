@@ -71,6 +71,9 @@
     },
     "shared-assets": {
       "tags": []
+    },
+    "shared-ui-form-radio": {
+      "tags": []
     }
   }
 }
