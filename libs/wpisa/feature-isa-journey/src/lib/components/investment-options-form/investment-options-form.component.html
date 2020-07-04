@@ -1,106 +1,57 @@
 <form [formGroup]="form">
   <label
-    id="investment-options-radio-group-label"
+    id="investmentOptionLabel"
+    class="mb-6 mb-md-7 mb-lg-8"
     [innerHtml]="content.summary"
     data-test="lblInvestmentOption"
   ></label>
-  <div
-    role="radiogroup"
-    aria-labelledby="investment-options-radio-group-label"
-    class="wes-radio-group"
+
+  <wes-radio-group
+    aria-labelledby="investmentOptionsLabel"
+    formControlName="investmentOption"
   >
-    <div
+    <wes-radio-button
       *ngIf="isLumpSumAvailable"
-      class="wes-radio-button wes-radio-checked"
-      tabindex="-1"
+      class="mb-4"
+      [value]="lumpSumValue"
+      labelTestId="lblLumpSum"
+      inputTestId="rbLumpSum"
     >
-      <label
-        class="wes-radio-label"
-        for="investment-options-1-radio-input"
-        data-test="lblLumpSum"
-      >
-        <div class="wes-radio-container">
-          <div class="wes-radio-outer-circle"></div>
-          <div class="wes-radio-inner-circle"></div>
-          <input
-            type="radio"
-            class="wes-radio-input cdk-visually-hidden"
-            id="investment-options-1-radio-input"
-            tabindex="0"
-            name="investmentOption"
-            [value]="lumpSumValue"
-            formControlName="investmentOption"
-            data-test="rbLumpSum"
-          />
-        </div>
-        <div class="wes-radio-label-content">
-          <span [innerHtml]="content.singleLumpSum.title"></span>
-          <span [innerHtml]="content.singleLumpSum.summary"></span>
-        </div>
-      </label>
-    </div>
+      <span
+        class="wes-text-semi-bold"
+        [innerHtml]="content.singleLumpSum.title"
+      ></span>
+      <p [innerHtml]="content.singleLumpSum.summary"></p>
+    </wes-radio-button>
 
-    <div
+    <wes-radio-button
       *ngIf="isMonthlyAvailable"
-      class="wes-radio-button wes-radio-checked"
-      tabindex="-1"
+      class="mb-4"
+      [value]="monthlyValue"
+      labelTestId="lblMonthly"
+      inputTestId="rbMonthly"
     >
-      <label
-        class="wes-radio-label"
-        for="investment-options-2-radio-input"
-        data-test="lblMonthly"
-      >
-        <div class="wes-radio-container">
-          <div class="wes-radio-outer-circle"></div>
-          <div class="wes-radio-inner-circle"></div>
-          <input
-            type="radio"
-            class="wes-radio-input cdk-visually-hidden"
-            id="investment-options-2-radio-input"
-            tabindex="0"
-            name="investmentOption"
-            [value]="monthlyValue"
-            formControlName="investmentOption"
-            data-test="rbMonthly"
-          />
-        </div>
-        <div class="wes-radio-label-content">
-          <span [innerHtml]="content.monthlyPayments.title"></span>
-          <span [innerHtml]="content.monthlyPayments.summary"></span>
-        </div>
-      </label>
-    </div>
+      <span
+        class="wes-text-semi-bold"
+        [innerHtml]="content.monthlyPayments.title"
+      ></span>
+      <p [innerHtml]="content.monthlyPayments.summary"></p>
+    </wes-radio-button>
 
-    <div
+    <wes-radio-button
       *ngIf="isLumpSumAvailable && isMonthlyAvailable"
-      class="wes-radio-button wes-radio-checked"
-      tabindex="-1"
+      class="mb-4"
+      [value]="monthlyAndLumpSumValue"
+      labelTestId="lblMonthlyAndLumpSum"
+      inputTestId="rbMonthlyAndLumpSum"
     >
-      <label
-        class="wes-radio-label"
-        for="investment-options-3-radio-input"
-        data-test="lblMonthlyAndLumpSum"
-      >
-        <div class="wes-radio-container">
-          <div class="wes-radio-outer-circle"></div>
-          <div class="wes-radio-inner-circle"></div>
-          <input
-            type="radio"
-            class="wes-radio-input cdk-visually-hidden"
-            id="investment-options-3-radio-input"
-            tabindex="0"
-            name="investmentOption"
-            [value]="monthlyAndLumpSumValue"
-            formControlName="investmentOption"
-            data-test="rbMonthlyAndLumpSum"
-          />
-        </div>
-        <div class="wes-radio-label-content">
-          <span [innerHtml]="content.monthlyAndLumpSum.title"></span>
-          <span [innerHtml]="content.monthlyAndLumpSum.summary"></span>
-        </div>
-      </label>
-    </div>
-  </div>
+      <span
+        class="wes-text-semi-bold"
+        [innerHtml]="content.monthlyAndLumpSum.title"
+      ></span>
+      <p [innerHtml]="content.monthlyAndLumpSum.summary"></p>
+    </wes-radio-button>
+  </wes-radio-group>
+
   <ng-content></ng-content>
 </form>

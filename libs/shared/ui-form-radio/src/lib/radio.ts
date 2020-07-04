@@ -397,7 +397,7 @@ export abstract class _MatRadioButtonBase extends _MatRadioButtonMixinBase
     return this._labelTestId;
   }
   set labelTestId(value: string) {
-    this._labelTestId = `lbl-${value}`;
+    this._labelTestId = value;
   }
   /** The unique test ID for the input. */
   @Input()
@@ -405,7 +405,7 @@ export abstract class _MatRadioButtonBase extends _MatRadioButtonMixinBase
     return this._inputTestId;
   }
   set inputTestId(value: string) {
-    this._inputTestId = `rb-${value}`;
+    this._inputTestId = value;
   }
 
   /** Analog to HTML 'name' attribute used to group radios for unique selection. */

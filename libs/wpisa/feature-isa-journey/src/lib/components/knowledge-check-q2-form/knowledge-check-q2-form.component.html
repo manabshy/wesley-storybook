@@ -1,67 +1,28 @@
 <form [formGroup]="form">
   <label
-    id="question2-radio-group-label"
+    id="question2Label"
+    class="mb-6 mb-md-7 mb-lg-8"
     [innerHtml]="content.summary"
     data-test="lblQuestion"
   ></label>
-  <div
-    role="radiogroup"
-    aria-labelledby="question2-radio-group-label"
-    class="wes-radio-group"
-  >
-    <div class="wes-radio-button wes-radio-checked" tabindex="-1">
-      <label
-        class="wes-radio-label"
-        for="question2-1-radio-input"
-        data-test="lblAnswer1"
-      >
-        <div class="wes-radio-container">
-          <div class="wes-radio-outer-circle"></div>
-          <div class="wes-radio-inner-circle"></div>
-          <input
-            type="radio"
-            class="wes-radio-input cdk-visually-hidden"
-            id="question2-1-radio-input"
-            tabindex="0"
-            name="question2"
-            value="Yes"
-            formControlName="question2"
-            data-test="rbAnswer1"
-          />
-        </div>
-        <div
-          class="wes-radio-label-content"
-          [innerHtml]="content.questions[0]"
-        ></div>
-      </label>
-    </div>
 
-    <div class="wes-radio-button wes-radio-checked" tabindex="-1">
-      <label
-        class="wes-radio-label"
-        for="question2-2-radio-input"
-        data-test="lblAnswer2"
-      >
-        <div class="wes-radio-container">
-          <div class="wes-radio-outer-circle"></div>
-          <div class="wes-radio-inner-circle"></div>
-          <input
-            type="radio"
-            class="wes-radio-input cdk-visually-hidden"
-            id="question2-2-radio-input"
-            tabindex="0"
-            name="question2"
-            value="No"
-            formControlName="question2"
-            data-test="rbAnswer2"
-          />
-        </div>
-        <div
-          class="wes-radio-label-content"
-          [innerHtml]="content.questions[1]"
-        ></div>
-      </label>
-    </div>
-  </div>
+  <wes-radio-group aria-labelledby="question2Label" formControlName="question2">
+    <wes-radio-button
+      class="mb-4"
+      value="Yes"
+      labelTestId="lblAnswerYes"
+      inputTestId="rbAnswerYes"
+    >
+      <span [innerHtml]="content.questions[0]"></span>
+    </wes-radio-button>
+    <wes-radio-button
+      class="mb-4"
+      value="No"
+      labelTestId="lblAnswerNo"
+      inputTestId="rbAnswerNo"
+    >
+      <span [innerHtml]="content.questions[1]"></span>
+    </wes-radio-button>
+  </wes-radio-group>
   <ng-content></ng-content>
 </form>

@@ -1,19 +1,26 @@
 <form [formGroup]="formQ1">
   <label
-    id="question1-radio-group-label"
+    id="question1Label"
+    class="mb-6 mb-md-7 mb-lg-8"
     [innerHtml]="content.summary"
     data-test="lblQuestion"
   ></label>
 
-  <wes-radio-group
-    id="question1"
-    aria-labelledby="question1-radio-group-label"
-    formControlName="question1"
-  >
-    <wes-radio-button id="answerYes" value="Yes">
+  <wes-radio-group aria-labelledby="question1Label" formControlName="question1">
+    <wes-radio-button
+      class="mb-4"
+      value="Yes"
+      labelTestId="lblAnswerYes"
+      inputTestId="rbAnswerYes"
+    >
       <span [innerHtml]="content.questions[0]"></span>
     </wes-radio-button>
-    <wes-radio-button id="answerNo" value="No">
+    <wes-radio-button
+      class="mb-4"
+      value="No"
+      labelTestId="lblAnswerNo"
+      inputTestId="rbAnswerNo"
+    >
       <span [innerHtml]="content.questions[1]"></span>
     </wes-radio-button>
   </wes-radio-group>

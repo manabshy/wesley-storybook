@@ -32,7 +32,7 @@ export class KnowledgeCheckQ1FormComponent implements OnInit, OnDestroy {
       withInitialValue: true,
     });
 
-    if (this.appState.state.forms.knowledgeCheckQ1) {
+    if (this.appState.state?.forms?.knowledgeCheckQ1) {
       this.formsManager.patchValue(
         'knowledgeCheckQ1',
         this.appState.state.forms.knowledgeCheckQ1

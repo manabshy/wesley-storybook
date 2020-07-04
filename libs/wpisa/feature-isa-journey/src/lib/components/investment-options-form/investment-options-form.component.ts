@@ -37,7 +37,7 @@ export class InvestmentOptionsFormComponent implements OnInit, OnDestroy {
       withInitialValue: true,
     });
 
-    if (this.formsManager.hasControl('investmentOptions')) {
+    if (this.appStateFacade.state?.forms?.investmentOptions) {
       this.formsManager.patchValue(
         'investmentOptions',
         this.appStateFacade.state.forms.investmentOptions
