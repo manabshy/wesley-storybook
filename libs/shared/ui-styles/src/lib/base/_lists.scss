@@ -2,17 +2,16 @@
     #LISTS
 \*------------------------------------*/
 
-// Remove browser styling
-// from CMS content
+//Default list style
 ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  @extend .wes-list;
+  @extend .wes-list-bullets;
 }
 
 .wes-list {
+  margin: 0;
+  padding: 0;
   list-style: none;
-
   @extend p;
 
   &-bullets {

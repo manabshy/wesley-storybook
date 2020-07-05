@@ -76,6 +76,7 @@ $wes-checkbox-inner-checked-colour: $global-colour-gold-900;
   .wes-checkbox-checked & {
     border-color: $wes-checkbox-outer-checked-colour;
   }
+
   .wes-checkbox-error & {
     border-color: $wes-checkbox-outer-error-colour;
   }

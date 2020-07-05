@@ -1,0 +1,58 @@
+import { Input, Component } from '@angular/core';
+
+@Component({
+  selector: 'wes-form-field-error',
+  template: `
+    <div
+      class="wes-form-field-error-message"
+      [style.visibility]="hasError ? 'visible' : 'hidden'"
+    >
+      <span>
+        <svg
+          width="16px"
+          height="16px"
+          viewBox="0 0 16 16"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g
+              id="6_1_Declaration_Validation_768"
+              transform="translate(-138.000000, -2139.000000)"
+            >
+              <g id="Declaration" transform="translate(94.000000, 1575.000000)">
+                <g id="Checkbox_1" transform="translate(0.000000, 522.000000)">
+                  <g id="Checkbox">
+                    <g id="Icon" transform="translate(44.000000, 42.000000)">
+                      <g id="Error-icon">
+                        <circle
+                          id="Oval"
+                          fill="#D72D41"
+                          cx="8"
+                          cy="8"
+                          r="8"
+                        ></circle>
+                        <path
+                          d="M8.76388889,9 L9,4 L7,4 L7.23611111,9 L8.76388889,9 Z M8.00956938,12 C8.32216906,12 8.56539075,11.9120975 8.73923445,11.7362924 C8.91307815,11.5604874 9,11.3159269 9,11.002611 C9,10.6858138 8.91626794,10.4395126 8.74880383,10.2637076 C8.58133971,10.0879025 8.33492823,10 8.00956938,10 C7.68102073,10 7.43062201,10.0879025 7.25837321,10.2637076 C7.0861244,10.4395126 7,10.6858138 7,11.002611 C7,11.3159269 7.08931419,11.5604874 7.26794258,11.7362924 C7.44657097,11.9120975 7.6937799,12 8.00956938,12 Z"
+                          id="!"
+                          fill="#FFFFFF"
+                          fill-rule="nonzero"
+                        ></path>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
+        &nbsp;
+        <ng-content></ng-content>
+      </span>
+    </div>
+  `,
+})
+export class FormFieldErrorComponent {
+  @Input() hasError = true;
+}

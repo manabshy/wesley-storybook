@@ -121,65 +121,43 @@
 <h4>{{ pageContent.isaLabel }}</h4>
 <div [innerHtml]="pageContent.isaRules"></div>
 <div [innerHtml]="pageContent.adviceContent"></div>
-<hr />
+<hr class="my-5" />
 <form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
-  <div class="wes-checkbox" id="wes-checkbox-1">
-    <label
-      class="wes-checkbox-layout"
-      for="wes-checkbox-1-input"
-      data-test="lblAuthorise"
-    >
-      <div class="wes-checkbox-inner-container">
-        <input
-          type="checkbox"
-          class="wes-checkbox-input cdk-visually-hidden"
-          id="wes-checkbox-1-input"
-          tabindex="0"
-          aria-checked="false"
-          formControlName="authorise"
-          data-test="cbAuthorise"
-        />
-      </div>
-      <span class="wes-checkbox-label">{{
-        pageContent.authoriseCheckbox.inputLabel
-      }}</span>
-      <ng-container *ngIf="isFieldInvalid('authorise')">
-        <span>
-          {{ pageContent.authoriseCheckbox.inputError }}
-        </span>
-      </ng-container>
-    </label>
-  </div>
-  <div [innerHtml]="pageContent.authoriseContent"></div>
+  <wes-checkbox
+    formControlName="authorise"
+    class="d-block mb-1"
+    [ngClass]="{ 'wes-checkbox-error': isFieldInvalid('authorise') }"
+    labelTestId="lblAuthorise"
+    inputTestId="cbAuthorise"
+    ><strong>{{
+      pageContent.authoriseCheckbox.inputLabel
+    }}</strong></wes-checkbox
+  >
+  <wes-form-field-error *ngIf="isFieldInvalid('authorise')">{{
+    pageContent.authoriseCheckbox.inputError
+  }}</wes-form-field-error>
 
-  <div class="wes-checkbox" id="wes-checkbox-2">
-    <label
-      class="wes-checkbox-layout"
-      for="wes-checkbox-2-input"
-      data-test="lblDeclaration"
-    >
-      <div class="wes-checkbox-inner-container">
-        <input
-          type="checkbox"
-          class="wes-checkbox-input cdk-visually-hidden"
-          id="wes-checkbox-2-input"
-          tabindex="0"
-          aria-checked="false"
-          formControlName="declaration"
-          data-test="cbDeclaration"
-        />
-      </div>
-      <span class="wes-checkbox-label">{{
-        pageContent.declarationCheckbox.inputLabel
-      }}</span>
-      <ng-container *ngIf="isFieldInvalid('declaration')">
-        <span>
-          {{ pageContent.declarationCheckbox.inputError }}
-        </span>
-      </ng-container>
-    </label>
-  </div>
-  <div [innerHtml]="pageContent.content"></div>
+  <div
+    class="t-and-c-list mb-6"
+    [innerHtml]="pageContent.authoriseContent"
+  ></div>
+
+  <wes-checkbox
+    formControlName="declaration"
+    class="d-block mb-1"
+    [ngClass]="{ 'wes-checkbox-error': isFieldInvalid('declaration') }"
+    labelTestId="lblDeclaration"
+    inputTestId="cbDeclaration"
+    ><strong>{{
+      pageContent.declarationCheckbox.inputLabel
+    }}</strong></wes-checkbox
+  >
+  <wes-form-field-error *ngIf="isFieldInvalid('declaration')">
+    <span>
+      {{ pageContent.declarationCheckbox.inputError }}
+    </span>
+  </wes-form-field-error>
+  <div class="t-and-c-list mb-5" [innerHtml]="pageContent.content"></div>
 
   <div [innerHtml]="pageContent.confirmContent"></div>
   <button

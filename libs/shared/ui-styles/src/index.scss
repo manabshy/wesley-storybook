@@ -17,7 +17,7 @@
 @import './lib/legacy-scss/base/text';
 @import './lib/legacy-scss/base/global-classes';
 @import './lib/legacy-scss/base/links';
-@import './lib/legacy-scss/base/lists';
+// @import './lib/legacy-scss/base/lists';
 @import './lib/legacy-scss/base/text';
 @import './lib/legacy-scss/base/utilities';
 @import './lib/legacy-scss/base/icon';
@@ -48,5 +48,6 @@
 @import './lib/components/wes-progress-spinner';
 @import './lib/components/wes-hero-banner';
 @import './lib/components/wes-nav';
+@import './lib/components/wes-forms';
 @import './lib/components/wes-radio';
 @import './lib/components/wes-checkbox';
