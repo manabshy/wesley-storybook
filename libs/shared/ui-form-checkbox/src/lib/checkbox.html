@@ -1,4 +1,9 @@
-<label [attr.for]="inputId" class="wes-checkbox-layout" #label>
+<label
+  [attr.for]="inputId"
+  [attr.data-test]="labelTestId"
+  class="wes-checkbox-layout"
+  #label
+>
   <div
     class="wes-checkbox-inner-container"
     [class.wes-checkbox-inner-container-no-side-margin]="!checkboxLabel.textContent || !checkboxLabel.textContent.trim()"
@@ -18,6 +23,7 @@
       [attr.aria-labelledby]="ariaLabelledby"
       [attr.aria-checked]="_getAriaChecked()"
       [attr.aria-describedby]="ariaDescribedby"
+      [attr.data-test]="inputTestId"
       (change)="_onInteractionEvent($event)"
       (click)="_onInputClick($event)"
     />

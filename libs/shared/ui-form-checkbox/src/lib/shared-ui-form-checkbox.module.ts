@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ObserversModule } from '@angular/cdk/observers';
 import { MatCommonModule, MatRippleModule } from '@angular/material/core';
-import { MatCheckbox } from './checkbox';
+import { WesCheckbox } from './checkbox';
 import { MatCheckboxRequiredValidator } from './checkbox-required-validator';
 
 /** This module is used by both original and MDC-based checkbox implementations. */
@@ -20,7 +20,7 @@ export class _MatCheckboxRequiredValidatorModule {}
     ObserversModule,
     _MatCheckboxRequiredValidatorModule,
   ],
-  exports: [MatCheckbox, MatCommonModule, _MatCheckboxRequiredValidatorModule],
-  declarations: [MatCheckbox],
+  exports: [WesCheckbox, MatCommonModule, _MatCheckboxRequiredValidatorModule],
+  declarations: [WesCheckbox],
 })
 export class SharedUiFormCheckboxModule {}

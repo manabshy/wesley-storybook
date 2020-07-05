@@ -61,7 +61,7 @@ let nextUniqueId = 0;
  */
 export const MAT_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => MatCheckbox),
+  useExisting: forwardRef(() => WesCheckbox),
   multi: true,
 };
 
@@ -83,7 +83,7 @@ export const enum TransitionCheckState {
 /** Change event object emitted by MatCheckbox. */
 export class MatCheckboxChange {
   /** The source MatCheckbox of the event. */
-  source: MatCheckbox;
+  source: WesCheckbox;
   /** The new `checked` value of the checkbox. */
   checked: boolean;
 }
@@ -110,9 +110,9 @@ const _MatCheckboxMixinBase: HasTabIndexCtor &
  * See: https://material.io/design/components/selection-controls.html
  */
 @Component({
-  selector: 'mat-checkbox',
+  selector: 'wes-checkbox',
   templateUrl: 'checkbox.html',
-  exportAs: 'matCheckbox',
+  exportAs: 'wesCheckbox',
   host: {
     class: 'wes-checkbox',
     '[id]': 'id',
@@ -128,7 +128,7 @@ const _MatCheckboxMixinBase: HasTabIndexCtor &
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MatCheckbox extends _MatCheckboxMixinBase
+export class WesCheckbox extends _MatCheckboxMixinBase
   implements
     ControlValueAccessor,
     AfterViewInit,
@@ -154,13 +154,31 @@ export class MatCheckbox extends _MatCheckboxMixinBase
   @Input('aria-describedby') ariaDescribedby: string;
 
   private _uniqueId: string = `wes-checkbox-${++nextUniqueId}`;
-
+  private _labelTestId: string = `lbl-${this.inputId}`;
+  private _inputTestId: string = `rb-${this.inputId}`;
   /** A unique id for the checkbox input. If none is supplied, it will be auto-generated. */
   @Input() id: string = this._uniqueId;
 
   /** Returns the unique id for the visual hidden input. */
   get inputId(): string {
     return `${this.id || this._uniqueId}-input`;
+  }
+
+  /** The unique test ID for the label. */
+  @Input()
+  get labelTestId(): string {
+    return this._labelTestId;
+  }
+  set labelTestId(value: string) {
+    this._labelTestId = value;
+  }
+  /** The unique test ID for the input. */
+  @Input()
+  get inputTestId(): string {
+    return this._inputTestId;
+  }
+  set inputTestId(value: string) {
+    this._inputTestId = value;
   }
 
   /** Whether the checkbox is required. */
