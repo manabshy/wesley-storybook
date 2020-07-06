@@ -1,3 +1,30 @@
 .wes-form-field-error-message {
   color: $global-colour-red-700;
 }
+
+//Below is temp, needs refactoring
+label {
+  display: block;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+.form-control {
+  border: 1px solid #b3b5b9;
+  border-radius: 4px;
+  background-color: #ffffff;
+  padding: 14px 16px;
+
+  &:hover {
+    border-color: #40474f;
+  }
+  .form-field-error & {
+    border: 2px solid #d72d41;
+    background-color: #fefafb;
+  }
+  &:focus {
+    @extend %focus-state;
+  }
+}

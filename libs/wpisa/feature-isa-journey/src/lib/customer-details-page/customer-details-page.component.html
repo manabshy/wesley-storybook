@@ -1,5 +1,5 @@
 <h1>{{ pageContent.heading }}</h1>
-<div [innerHtml]="pageContent.summary"></div>
+<div class="mb-6 mb-md-7" [innerHtml]="pageContent.summary"></div>
 
 <div *ngIf="showOverallError">
   <span>{{ overallErrorContent.heading }}</span>
@@ -35,6 +35,47 @@
       </span>
     </ng-container>
   </div>
+
+  <!-- <mat-form-field
+    appearance="fill"
+    class="mat-form-field mat-primary mat-form-field-type-mat-input mat-form-field-appearance-fill mat-form-field-can-float mat-form-field-has-label mat-form-field-hide-placeholder"
+    ><div class="mat-form-field-wrapper">
+      <div class="mat-form-field-flex">
+        <div class="mat-form-field-prefix">
+          <span matprefix="" class="">$&nbsp;</span>
+        </div>
+
+        <div class="mat-form-field-infix">
+          <input
+            matinput=""
+            type="number"
+            class="mat-input-element mat-form-field-autofill-control example-right-align cdk-text-field-autofill-monitored"
+            id="mat-input-11"
+            aria-invalid="false"
+            aria-required="false"
+          />
+          <span class="mat-form-field-label-wrapper">
+            <label
+              class="mat-form-field-label mat-empty mat-form-field-empty"
+              id="mat-form-field-label-29"
+              for="mat-input-11"
+              aria-owns="mat-input-11"
+            >
+              <mat-label class="">Amount</mat-label>
+            </label></span
+          >
+        </div>
+        <div class="mat-form-field-suffix">
+          <span matsuffix="" class="">.00</span>
+        </div>
+      </div>
+
+      <div class="mat-form-field-subscript-wrapper">
+        <div class="mat-form-field-hint-wrapper">
+          <div class="mat-form-field-hint-spacer"></div>
+        </div>
+      </div></div
+  ></mat-form-field> -->
 
   <div class="form-group">
     <label for="firstName" data-test="lblFirstName">{{
@@ -274,27 +315,32 @@
     </span>
   </div>
 
-  <wes-checkbox
-    formControlName="marketingEmail"
-    class="d-block mb-2"
-    labelTestId="lblMarketingEmail"
-    inputTestId="cbMarketingEmail"
-    >Email</wes-checkbox
-  >
-  <wes-checkbox
-    formControlName="marketingPhone"
-    class="d-block mb-2"
-    labelTestId="lblMarketingPhone"
-    inputTestId="cbMarketingPhone"
-    >Phone</wes-checkbox
-  >
-  <wes-checkbox
-    formControlName="marketingPost"
-    class="d-block"
-    labelTestId="lblMarketingPost"
-    inputTestId="cbMarketingPost"
-    >Post</wes-checkbox
-  >
+  <div class="mb-4" [innerHTML]="pageContent.marketing.heading"></div>
+
+  <div class="mb-3">
+    <wes-checkbox
+      formControlName="marketingEmail"
+      class="d-block mb-2"
+      labelTestId="lblMarketingEmail"
+      inputTestId="cbMarketingEmail"
+      >{{ pageContent.marketing.email }}</wes-checkbox
+    >
+    <wes-checkbox
+      formControlName="marketingPhone"
+      class="d-block mb-2"
+      labelTestId="lblMarketingPhone"
+      inputTestId="cbMarketingPhone"
+      >{{ pageContent.marketing.phone }}</wes-checkbox
+    >
+    <wes-checkbox
+      formControlName="marketingPost"
+      class="d-block"
+      labelTestId="lblMarketingPost"
+      inputTestId="cbMarketingPost"
+      >{{ pageContent.marketing.post }}</wes-checkbox
+    >
+  </div>
+  <div [innerHTML]="pageContent.privacy"></div>
 
   <button
     class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
