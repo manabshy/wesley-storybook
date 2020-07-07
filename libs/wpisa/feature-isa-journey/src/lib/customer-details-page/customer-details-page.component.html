@@ -6,14 +6,17 @@
   <span>{{ overallErrorContent.summary }}</span>
 </div>
 <form
+  id="customerDetailsForm"
   [formGroup]="form"
   (ngSubmit)="onSubmit()"
   class=""
   novalidate
   wesInvalidControlScroll
 >
-  <wes-form-field>
-    <wes-label>{{ pageContent.title.inputLabel }}</wes-label>
+  <wes-form-field id="titleFormField">
+    <wes-label data-test="lblTitle">{{
+      pageContent.title.inputLabel
+    }}</wes-label>
 
     <select
       wesNativeControl
@@ -36,30 +39,14 @@
     </wes-error>
   </wes-form-field>
 
-  <!-- <div class="form-group">
-    <label for="honorific-prefix" data-test="lblTitle">{{
-      pageContent.title.inputLabel
-    }}</label>
-    <select
-      formControlName="title"
-      name="honorific-prefix"
-      class="form-control"
-      data-test="ddTitle"
-    >
-      <option
-        *ngFor="let title of titleList$ | async"
-        value="{{ title.value }}"
-        >{{ title.description }}</option
-      >
-    </select>
-  </div> -->
-  <wes-form-field>
+  <wes-form-field class="">
     <wes-label data-test="lblFirstName">{{
       pageContent.firstName.inputLabel
     }}</wes-label>
     <input
       wesInput
       type="text"
+      class="test"
       formControlName="firstName"
       autocomplete="given-name"
       data-test="txtFirstName"
@@ -90,7 +77,9 @@
   </wes-form-field>
 
   <div class="form-group" formGroupName="dob">
-    <label data-test="lblDoB">{{ pageContent.dob.inputLabel }}</label>
+    <label class="wes-form-field-label" data-test="lblDoB">{{
+      pageContent.dob.inputLabel
+    }}</label>
     <div class="">
       <wes-form-field class="dob-box dob-box-1">
         <input
@@ -151,14 +140,14 @@
     </wes-error>
   </div>
 
-  <div class="form-group">
-    <label for="profession" data-test="txtProfession">{{
+  <wes-form-field>
+    <wes-label data-test="txtProfession">{{
       pageContent.profession.inputLabel
-    }}</label>
+    }}</wes-label>
+
     <select
-      class="form-control"
+      wesNativeControl
       formControlName="profession"
-      name="profession"
       data-test="ddProfession"
     >
       <option
@@ -167,12 +156,13 @@
         >{{ marketSegment.description }}</option
       >
     </select>
-    <ng-container *ngIf="isFieldInvalid('profession')">
-      <span *ngIf="controls.profession.errors.required">
+
+    <wes-error *ngIf="isFieldInvalid('profession')">
+      <wes-form-field-error *ngIf="controls.profession.errors.required">
         {{ pageContent.profession.inputError }}
-      </span>
-    </ng-container>
-  </div>
+      </wes-form-field-error>
+    </wes-error>
+  </wes-form-field>
 
   <wes-form-field>
     <wes-label data-test="lblNino">{{
@@ -191,14 +181,14 @@
     >
   </wes-form-field>
 
-  <div class="form-group">
-    <label for="nationality" data-test="lblNationality">{{
+  <wes-form-field>
+    <wes-label data-test="lblNationality">{{
       pageContent.nationality.inputLabel
-    }}</label>
+    }}</wes-label>
+
     <select
-      class="form-control"
+      wesNativeControl
       formControlName="nationality"
-      name="nationality"
       data-test="ddNationality"
     >
       <option
@@ -208,12 +198,12 @@
       >
     </select>
 
-    <ng-container *ngIf="isFieldInvalid('nationality')">
-      <span *ngIf="controls.nationality.errors.required">
+    <wes-error *ngIf="isFieldInvalid('nationality')">
+      <wes-form-field-error *ngIf="controls.nationality.errors.required">
         {{ pageContent.nationality.inputError }}
-      </span>
-    </ng-container>
-  </div>
+      </wes-form-field-error>
+    </wes-error>
+  </wes-form-field>
 
   <h3>{{ pageContent.addressDetails.heading }}</h3>
   <span [innerHTML]="pageContent.addressDetails.summary"></span>

@@ -190,11 +190,10 @@ select.wes-input-element {
 
   .wes-form-field-infix::after {
     content: '';
-    width: 0;
-    height: 0;
-    border-left: $arrow-size solid transparent;
-    border-right: $arrow-size solid transparent;
-    border-top: $arrow-size solid;
+    width: 16px;
+    height: 10px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 9' xmlns='http://www.w3.org/2000/svg' focusable='false'%3E%3Cg fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round' stroke='%2340474F' stroke-width='2'%3E%3Cpath d='M15 1L8 8M1 1l7 7-7-7z'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
     position: absolute;
     top: 50%;
     right: 0;

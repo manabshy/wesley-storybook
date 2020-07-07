@@ -2,10 +2,25 @@
   display: block;
 }
 
-.dob-box-1,
-.dob-box-2 {
-  width: 60px;
+#customerDetailsForm {
+  .wes-form-field {
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  .dob-box-1,
+  .dob-box-2 {
+    display: inline-block;
+    width: 60px;
+  }
+  .dob-box-3 {
+    display: inline-block;
+    width: 80px;
+  }
 }
-.dob-box-3 {
-  width: 80px;
+
+#titleFormField {
+  .wes-form-field-wrapper {
+    width: 30%;
+  }
 }

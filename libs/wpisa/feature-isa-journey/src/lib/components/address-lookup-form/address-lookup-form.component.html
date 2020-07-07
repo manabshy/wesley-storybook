@@ -27,14 +27,14 @@
     {{ pageContent.addressDetails.findAddress }}
   </button>
 
-  <div class="form-group" *ngIf="addressList.length > 0">
-    <label for="address-list" data-test="lblAddressList">{{
+  <wes-form-field *ngIf="addressList.length > 0">
+    <wes-label data-test="lblAddressList">{{
       pageContent.addressDetails.selectYourAddress.inputLabel
-    }}</label>
+    }}</wes-label>
+
     <select
+      wesNativeControl
       formControlName="selectedAddressId"
-      name="address-list"
-      class="form-control"
       (change)="onSelectedAddress($event)"
       data-test="ddAddressList"
     >
@@ -43,13 +43,12 @@
       }}</option>
     </select>
 
-    <ng-container *ngIf="isFieldInvalid('selectedAddressId')">
-      <span>
+    <wes-error *ngIf="isFieldInvalid('selectedAddressId')">
+      <wes-form-field-error>
         {{ pageContent.addressDetails.selectYourAddress.inputError }}
-      </span>
-    </ng-container>
-  </div>
-
+      </wes-form-field-error>
+    </wes-error>
+  </wes-form-field>
   <p>
     <ng-container *ngIf="addressList.length > 0">{{
       pageContent.addressDetails.cantSeeAddressLabel

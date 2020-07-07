@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  OnDestroy,
+  ViewEncapsulation,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { NgFormsManager } from '@ngneat/forms-manager';
@@ -38,6 +44,7 @@ import { AppStateFacade } from '../core/app-state-facade';
   selector: 'wes-customer-details-page',
   templateUrl: './customer-details-page.component.html',
   styleUrls: ['./customer-details-page.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   form: FormGroup = this.fb.group({
