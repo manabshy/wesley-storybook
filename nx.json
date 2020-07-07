@@ -77,6 +77,12 @@
     },
     "shared-ui-form-checkbox": {
       "tags": []
+    },
+    "shared-ui-form-input": {
+      "tags": []
+    },
+    "shared-ui-form-field": {
+      "tags": []
     }
   }
 }

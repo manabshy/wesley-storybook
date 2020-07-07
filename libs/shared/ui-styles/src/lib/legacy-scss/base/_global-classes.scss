@@ -20,8 +20,8 @@
   opacity: 1;
 }
 
-.screenreader-hidden{
-	display: none;
+.screenreader-hidden {
+  display: none;
 }
 
 /**
@@ -82,7 +82,7 @@
   }
 
   &--no-shadow {
-    box-shadow: 0;
+    box-shadow: none;
   }
 
   @include media-breakpoint-down(sm) {
@@ -113,10 +113,10 @@
   margin-bottom: 10px;
   text-align: center;
 }
-.content-heading{
+.content-heading {
   width: 90%;
   margin-top: 2.5rem;
 }
-.content-body{
+.content-body {
   width: 70%;
 }

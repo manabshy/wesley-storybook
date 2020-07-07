@@ -52,6 +52,12 @@
       ],
       "@wesleyan-frontend/shared/ui-form-checkbox": [
         "libs/shared/ui-form-checkbox/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/ui-form-input": [
+        "libs/shared/ui-form-input/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/ui-form-field": [
+        "libs/shared/ui-form-field/src/index.ts"
       ]
     }
   },

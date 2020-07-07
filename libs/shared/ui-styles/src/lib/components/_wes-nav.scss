@@ -1,6 +1,7 @@
 // Using .nav/.nav-link/active from bootstrap so scrollspy can work
 .wes-nav,
 .nav {
+  list-style: none;
   display: flex;
   font-weight: 600;
   &-vertical {

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   NG_FORMS_MANAGER_CONFIG,
   NgFormsManagerConfig,
@@ -10,6 +11,8 @@ import {
 import { SharedUiProgressSpinnerModule } from '@wesleyan-frontend/shared/ui-progress-spinner';
 import { SharedUiFormRadioModule } from '@wesleyan-frontend/shared/ui-form-radio';
 import { SharedUiFormCheckboxModule } from '@wesleyan-frontend/shared/ui-form-checkbox';
+import { SharedUiFormFieldModule } from '@wesleyan-frontend/shared/ui-form-field';
+import { SharedUiFormInputModule } from '@wesleyan-frontend/shared/ui-form-input';
 
 import { KnowledgeCheckPageComponent } from './knowledge-check-page/knowledge-check-page.component';
 import { CustomerDetailsPageComponent } from './customer-details-page/customer-details-page.component';
@@ -36,12 +39,15 @@ import { FormFieldErrorComponent } from './components/form-field-error.component
 @NgModule({
   imports: [
     CommonModule,
+    // BrowserAnimationsModule,
     ReactiveFormsModule,
     CdkStepperModule,
     ISAJourneyRoutingModule,
     SharedUiProgressSpinnerModule,
     SharedUiFormRadioModule,
     SharedUiFormCheckboxModule,
+    SharedUiFormFieldModule,
+    SharedUiFormInputModule,
   ],
   declarations: [
     FormFieldErrorComponent,

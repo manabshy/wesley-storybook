@@ -39,7 +39,7 @@ export class InvalidControlScrollDirective {
 
   private scrollToFirstInvalidControl() {
     const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
-      'input.ng-invalid, select.ng-invalid'
+      '.ng-invalid'
     );
 
     this.containerEl.scroll({
