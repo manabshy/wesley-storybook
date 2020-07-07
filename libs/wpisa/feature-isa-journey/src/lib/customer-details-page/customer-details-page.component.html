@@ -12,7 +12,31 @@
   novalidate
   wesInvalidControlScroll
 >
-  <div class="form-group">
+  <wes-form-field>
+    <wes-label>{{ pageContent.title.inputLabel }}</wes-label>
+
+    <select
+      wesNativeControl
+      formControlName="title"
+      class="form-control"
+      data-test="ddTitle"
+    >
+      <option
+        *ngFor="let title of titleList$ | async"
+        value="{{ title.value }}"
+      >
+        {{ title.description }}
+      </option>
+    </select>
+
+    <wes-error *ngIf="isFieldInvalid('title')">
+      <wes-form-field-error *ngIf="controls.title.errors.required">
+        {{ pageContent.title.inputError }}
+      </wes-form-field-error>
+    </wes-error>
+  </wes-form-field>
+
+  <!-- <div class="form-group">
     <label for="honorific-prefix" data-test="lblTitle">{{
       pageContent.title.inputLabel
     }}</label>
@@ -28,13 +52,7 @@
         >{{ title.description }}</option
       >
     </select>
-
-    <ng-container *ngIf="isFieldInvalid('title')">
-      <span *ngIf="controls.title.errors.required">
-        {{ pageContent.title.inputError }}
-      </span>
-    </ng-container>
-  </div>
+  </div> -->
   <wes-form-field>
     <wes-label data-test="lblFirstName">{{
       pageContent.firstName.inputLabel

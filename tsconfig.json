@@ -58,6 +58,9 @@
       ],
       "@wesleyan-frontend/shared/ui-form-field": [
         "libs/shared/ui-form-field/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/ui-form-select": [
+        "libs/shared/ui-form-select/src/index.ts"
       ]
     }
   },

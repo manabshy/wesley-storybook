@@ -13,6 +13,7 @@ import { SharedUiFormRadioModule } from '@wesleyan-frontend/shared/ui-form-radio
 import { SharedUiFormCheckboxModule } from '@wesleyan-frontend/shared/ui-form-checkbox';
 import { SharedUiFormFieldModule } from '@wesleyan-frontend/shared/ui-form-field';
 import { SharedUiFormInputModule } from '@wesleyan-frontend/shared/ui-form-input';
+import { SharedUiFormSelectModule } from '@wesleyan-frontend/shared/ui-form-select';
 
 import { KnowledgeCheckPageComponent } from './knowledge-check-page/knowledge-check-page.component';
 import { CustomerDetailsPageComponent } from './customer-details-page/customer-details-page.component';
@@ -48,6 +49,7 @@ import { FormFieldErrorComponent } from './components/form-field-error.component
     SharedUiFormCheckboxModule,
     SharedUiFormFieldModule,
     SharedUiFormInputModule,
+    // SharedUiFormSelectModule,
   ],
   declarations: [
     FormFieldErrorComponent,

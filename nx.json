@@ -83,6 +83,9 @@
     },
     "shared-ui-form-field": {
       "tags": []
+    },
+    "shared-ui-form-select": {
+      "tags": []
     }
   }
 }
