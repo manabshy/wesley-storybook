@@ -9,27 +9,29 @@
 <div [innerHtml]="pageContent.summary"></div>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
-  <div class="form-group">
-    <label for="amount" data-test="lblAmount">{{
+  <wes-form-field>
+    <wes-label data-test="lblAmount">{{
       pageContent.monthlyAmount.inputLabel
-    }}</label>
+    }}</wes-label>
     <input
-      class="form-control"
+      wesInput
       type="text"
-      name="amount"
       formControlName="amount"
       data-test="txtAmount"
     />
-    <div>{{ pageContent.monthlyHelpText }}</div>
-    <ng-container *ngIf="isFieldInvalid('amount')">
-      <span *ngIf="amountControl.errors.min || amountControl.errors.required">
+    <span wesPrefix>£&nbsp;</span>
+    <wes-hint>{{ pageContent.monthlyHelpText }}</wes-hint>
+    <wes-error *ngIf="isFieldInvalid('amount')">
+      <wes-form-field-error
+        *ngIf="amountControl.errors.min || amountControl.errors.required"
+      >
         {{ pageContent.monthlyAmount.inputMinError }}
-      </span>
-      <span *ngIf="amountControl.errors.max">
+      </wes-form-field-error>
+      <wes-form-field-error *ngIf="amountControl.errors.max">
         {{ pageContent.monthlyAmount.inputMaxError }}
-      </span>
-    </ng-container>
-  </div>
+      </wes-form-field-error>
+    </wes-error>
+  </wes-form-field>
 
   <wes-direct-debit-form
     formControlName="directDebit"

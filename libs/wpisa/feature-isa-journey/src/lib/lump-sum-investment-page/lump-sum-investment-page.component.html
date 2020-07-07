@@ -9,23 +9,24 @@
 <div [innerHtml]="pageContent.summary"></div>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="amount" data-test="lblAmount">{{
+  <wes-form-field>
+    <wes-label data-test="lblAmount">{{
       pageContent.lumpSumAmount.inputLabel
-    }}</label>
+    }}</wes-label>
     <input
-      class="form-control"
+      wesInput
       type="text"
-      name="amount"
       formControlName="amount"
       data-test="txtAmount"
     />
-    <ng-container *ngIf="isFieldInvalid('amount')">
-      <span>
+    <span wesPrefix>£&nbsp;</span>
+    <wes-hint>{{ pageContent.lumpSumHelpText }}</wes-hint>
+    <wes-error *ngIf="isFieldInvalid('amount')">
+      <wes-form-field-error>
         {{ pageContent.lumpSumAmount.inputError }}
-      </span>
-    </ng-container>
-  </div>
+      </wes-form-field-error>
+    </wes-error>
+  </wes-form-field>
 
   <button
     class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"

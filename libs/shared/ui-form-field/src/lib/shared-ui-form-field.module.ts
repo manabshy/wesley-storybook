@@ -2,34 +2,32 @@ import { ObserversModule } from '@angular/cdk/observers';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatCommonModule } from '@angular/material/core';
-import { MatError } from './error';
-import { MatFormField } from './form-field';
-import { MatHint } from './hint';
-import { MatLabel } from './label';
-import { MatPlaceholder } from './placeholder';
-import { MatPrefix } from './prefix';
-import { MatSuffix } from './suffix';
+import { WesError } from './error';
+import { WesFormField } from './form-field';
+import { WesHint } from './hint';
+import { WesLabel } from './label';
+// import { MatPlaceholder } from './placeholder';
+import { WesPrefix } from './prefix';
+import { WesSuffix } from './suffix';
 
 @NgModule({
   declarations: [
-    MatError,
-    MatFormField,
-    MatHint,
-    MatLabel,
-    MatPlaceholder,
-    MatPrefix,
-    MatSuffix,
+    WesError,
+    WesFormField,
+    WesHint,
+    WesLabel,
+    WesPrefix,
+    WesSuffix,
   ],
   imports: [CommonModule, MatCommonModule, ObserversModule],
   exports: [
     MatCommonModule,
-    MatError,
-    MatFormField,
-    MatHint,
-    MatLabel,
-    MatPlaceholder,
-    MatPrefix,
-    MatSuffix,
+    WesError,
+    WesFormField,
+    WesHint,
+    WesLabel,
+    WesPrefix,
+    WesSuffix,
   ],
 })
 export class SharedUiFormFieldModule {}

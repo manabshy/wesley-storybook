@@ -1,9 +1,16 @@
+// Min amount of space between start and end hint.
+$wes-form-field-hint-min-space: 1em !default;
+// Infix stretches to fit the container, but naturally wants to be this wide. We set this in order
+// to have a a consistent natural size for the various types of controls that can go in a form
+// field.
+$wes-form-field-default-infix-width: 180px !default;
+
 .wes-form-field-error-message {
   color: $global-colour-red-700;
 }
 
 // The Input element proper.
-.mat-input-element {
+.wes-input-element {
   // Font needs to be inherited, because by default <input> has a system font.
   font: inherit;
 
@@ -28,7 +35,7 @@
 
   // User agent stylesheets set the text-align of inputs explicitly to "start". Those can be
   // easily overwritten by targeting the input element using a simple CSS selector, but since
-  // the text-align will be applied most of the time on the `mat-form-field` to also align the
+  // the text-align will be applied most of the time on the `wes-form-field` to also align the
   // placeholder, the alignment should be inherited here.
   text-align: inherit;
 
@@ -101,7 +108,7 @@
     }
   }
 
-  .mat-form-field-hide-placeholder & {
+  .wes-form-field-hide-placeholder & {
     // Note that we can't use something like visibility: hidden or
     // display: none, because IE ends up preventing the user from
     // focusing the input altogether.
@@ -123,7 +130,7 @@
 }
 
 // Prevents IE from always adding a scrollbar by default.
-textarea.mat-input-element {
+textarea.wes-input-element {
   // Only allow resizing along the Y axis.
   resize: vertical;
   overflow: auto;
@@ -133,7 +140,7 @@ textarea.mat-input-element {
   }
 }
 
-textarea.mat-input-element {
+textarea.wes-input-element {
   // The 2px padding prevents scrollbars from appearing on Chrome even when they aren't needed.
   // We also add a negative margin to negate the effect of the padding on the layout.
   padding: 2px 0;
@@ -141,7 +148,7 @@ textarea.mat-input-element {
 }
 
 // Remove the native select down arrow and replace it with material design arrow
-select.mat-input-element {
+select.wes-input-element {
   -moz-appearance: none;
   -webkit-appearance: none;
   position: relative;
@@ -156,7 +163,7 @@ select.mat-input-element {
     display: none;
   }
 
-  // The `outline: none` from `.mat-input-element` works on all browsers, however Firefox also
+  // The `outline: none` from `.wes-input-element` works on all browsers, however Firefox also
   // adds a special `focus-inner` which we have to disable explicitly. See:
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Firefox
   &::-moz-focus-inner {
@@ -178,10 +185,10 @@ select.mat-input-element {
   }
 }
 
-.mat-form-field-type-mat-native-select {
+.wes-form-field-type-wes-native-select {
   $arrow-size: 5px;
 
-  .mat-form-field-infix::after {
+  .wes-form-field-infix::after {
     content: '';
     width: 0;
     height: 0;
@@ -197,36 +204,45 @@ select.mat-input-element {
     pointer-events: none;
   }
 
-  .mat-input-element {
+  .wes-input-element {
     // The arrow is 2 * $arrow-size wide and we add one more width for some spacing.
     $padding: $arrow-size * 3;
     padding-right: $padding;
   }
 
   // Ensure that long labels don't collide with the select arrow.
-  .mat-form-field-label-wrapper {
+  .wes-form-field-label-wrapper {
     max-width: calc(100% - #{$arrow-size * 2});
   }
 
-  &.mat-form-field-appearance-outline .mat-form-field-infix::after {
+  &.wes-form-field-appearance-outline .wes-form-field-infix::after {
     margin-top: -$arrow-size;
   }
 
-  &.mat-form-field-appearance-fill .mat-form-field-infix::after {
+  &.wes-form-field-appearance-fill .wes-form-field-infix::after {
     margin-top: -$arrow-size * 2;
   }
 }
-
-//Below is temp, needs refactoring
-.mat-form-field-label {
-  display: block;
-  font-weight: 600;
+.wes-form-field-flex {
+  display: inline-flex;
+  align-items: baseline;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-.form-group {
-  margin-bottom: 2rem;
+.wes-form-field {
+  display: inline-block;
+  position: relative;
+
+  // To avoid problems with text-align.
+  text-align: left;
 }
-.mat-form-field-wrapper {
+
+// Global wrapper. We need to apply margin to the element for spacing, but
+// cannot apply it to the host element directly.
+.wes-form-field-wrapper {
+  position: relative;
+
   border: 1px solid #b3b5b9;
   border-radius: 4px;
   background-color: #ffffff;
@@ -235,11 +251,104 @@ select.mat-input-element {
   &:hover {
     border-color: #40474f;
   }
-  .mat-form-field-invalid & {
+  .wes-form-field-invalid & {
     border: 2px solid #d72d41;
     background-color: #fefafb;
   }
-  .mat-focused & {
+  .wes-focused & {
     @extend %focus-state;
   }
+}
+
+// We use a flex layout to baseline align the prefix and suffix elements.
+// The underline is outside of it so it can cover all of the elements under this flex container.
+.wes-form-field-flex {
+  display: inline-flex;
+  align-items: baseline;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.wes-form-field-prefix,
+.wes-form-field-suffix {
+  white-space: nowrap;
+  flex: none;
+  position: relative;
+}
+
+.wes-form-field-infix {
+  display: block;
+  position: relative;
+  flex: auto;
+  min-width: 0;
+  width: $wes-form-field-default-infix-width;
+}
+
+.wes-form-field-label {
+  font: inherit;
+  pointer-events: none; // We shouldn't catch mouse events (let them through).
+  font-weight: 600;
+
+  // Put ellipsis text overflow.
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+// Server-side rendered matInput with focus or a placeholder attribute but placeholder not shown
+// (used as a pure CSS stand-in for wes-form-field-should-float).
+.wes-input-server:focus + .wes-form-field-label-wrapper .wes-form-field-label,
+.wes-input-server[placeholder]:not(:placeholder-shown)
+  + .wes-form-field-label-wrapper
+  .wes-form-field-label {
+  display: none;
+
+  .wes-form-field-can-float & {
+    display: block;
+  }
+}
+
+// Wrapper for the hints and error messages.
+.wes-form-field-subscript-wrapper {
+  //   position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden; // prevents multi-line errors from overlapping the control
+}
+
+// Scale down icons in the label and hint to be the same size as the text.
+.wes-form-field-subscript-wrapper,
+.wes-form-field-label-wrapper {
+  .wes-icon {
+    width: 1em;
+    height: 1em;
+    font-size: inherit;
+    vertical-align: baseline;
+  }
+}
+
+// Clears the floats on the hints. This is necessary for the hint animation to work.
+.wes-form-field-hint-wrapper {
+  display: flex;
+}
+
+// Spacer used to make sure start and end hints have enough space between them.
+.wes-form-field-hint-spacer {
+  flex: 1 0 $wes-form-field-hint-min-space;
+}
+
+// Single error message displayed beneath the form field underline.
+.wes-error {
+  display: block;
+}
+
+// Element that can used to reliably align content in relation to the form field control.
+.wes-form-field-control-wrapper {
+  position: relative;
+}
+
+//Below is temp, needs refactoring
+.wes-form-field-label {
+  display: block;
 }

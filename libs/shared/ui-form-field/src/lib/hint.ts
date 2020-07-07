@@ -18,24 +18,24 @@ let nextUniqueId = 0;
  * *Note*: This is not part of the public API as the MDC-based form-field will not
  * need a lightweight token for `MatHint` and we want to reduce breaking changes.
  */
-export const _MAT_HINT = new InjectionToken<MatHint>('MatHint');
+export const _MAT_HINT = new InjectionToken<WesHint>('WesHint');
 
 /** Hint text to be shown underneath the form field control. */
 @Directive({
-  selector: 'mat-hint',
+  selector: 'wes-hint',
   host: {
-    class: 'mat-hint',
-    '[class.mat-right]': 'align == "end"',
+    class: 'wes-hint',
+    '[class.wes-right]': 'align == "end"',
     '[attr.id]': 'id',
     // Remove align attribute to prevent it from interfering with layout.
     '[attr.align]': 'null',
   },
-  providers: [{ provide: _MAT_HINT, useExisting: MatHint }],
+  providers: [{ provide: _MAT_HINT, useExisting: WesHint }],
 })
-export class MatHint {
+export class WesHint {
   /** Whether to align the hint label at the start or end of the line. */
   @Input() align: 'start' | 'end' = 'start';
 
   /** Unique ID for the hint. Used for the aria-describedby on the form field control. */
-  @Input() id: string = `mat-hint-${nextUniqueId++}`;
+  @Input() id: string = `wes-hint-${nextUniqueId++}`;
 }

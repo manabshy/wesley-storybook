@@ -1,23 +1,22 @@
 <form [formGroup]="form">
-  <div class="form-group">
-    <label for="postcode" data-test="lblFindAddressPostcode">{{
+  <wes-form-field>
+    <wes-label data-test="lblFindAddressPostcode">{{
       pageContent.addressDetails.postcode.inputLabel
-    }}</label>
+    }}</wes-label>
     <input
-      class="form-control"
+      wesInput
       type="text"
-      name="postcodeLookup"
       formControlName="postcode"
       autocomplete="postal-code"
       data-test="txtFindAddressPostcode"
       #postcodeInput
     />
-    <ng-container *ngIf="isFieldInvalid('postcode')">
-      <span>
+    <wes-error *ngIf="isFieldInvalid('postcode')">
+      <wes-form-field-error>
         {{ pageContent.addressDetails.postcode.inputError }}
-      </span>
-    </ng-container>
-  </div>
+      </wes-form-field-error>
+    </wes-error>
+  </wes-form-field>
   <button
     class="wes-button wes-button-primary"
     type="button"

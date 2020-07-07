@@ -1,106 +1,117 @@
 <ng-container *ngIf="content">
   <form [formGroup]="form">
     <div>{{ content.bankNameTooltip }}</div>
-    <div class="form-group">
-      <label for="bankName" data-test="lblBankName">{{
-        content.bankName.inputLabel
-      }}</label>
-      <input
-        class="form-control"
-        type="text"
-        name="bankName"
-        formControlName="bankName"
-        spellcheck="false"
-        data-test="txtBankName"
-      />
-      <ng-container *ngIf="isFieldInvalid('bankName')">
-        <span>
-          {{ content.bankName.inputError }}
-        </span>
-      </ng-container>
+    <div class="row">
+      <wes-form-field class="col-12 col-lg-10">
+        <wes-label data-test="lblBankName">{{
+          content.bankName.inputLabel
+        }}</wes-label>
+        <input
+          wesInput
+          type="text"
+          formControlName="bankName"
+          spellcheck="false"
+          data-test="txtBankName"
+        />
+        <wes-error *ngIf="isFieldInvalid('bankName')">
+          <wes-form-field-error>
+            {{ content.bankName.inputError }}
+          </wes-form-field-error>
+        </wes-error>
+      </wes-form-field>
     </div>
 
-    <div class="form-group">
-      <label for="accountHolderFullName" data-test="lblAccountHolderFullName">{{
+    <wes-form-field>
+      <wes-label data-test="lblAccountHolderFullName">{{
         content.accountName.inputLabel
-      }}</label>
+      }}</wes-label>
       <input
-        class="form-control"
+        wesInput
         type="text"
-        name="accountHolderFullName"
         formControlName="accountHolderFullName"
         spellcheck="false"
         data-test="txtAccountHolderFullName"
       />
-      <ng-container *ngIf="isFieldInvalid('accountHolderFullName')">
-        <span>
+      <wes-error *ngIf="isFieldInvalid('accountHolderFullName')">
+        <wes-form-field-error>
           {{ content.accountName.inputError }}
-        </span>
-      </ng-container>
-    </div>
+        </wes-form-field-error>
+      </wes-error>
+    </wes-form-field>
 
-    <div class="form-group">
-      <label for="accountNumber" data-test="lblAccountNumber">{{
+    <wes-form-field>
+      <wes-label data-test="lblAccountNumber">{{
         content.accountNumber.inputLabel
-      }}</label>
+      }}</wes-label>
       <input
-        class="form-control"
+        wesInput
         type="text"
-        name="accountNumber"
         formControlName="accountNumber"
         inputmode="numeric"
         spellcheck="false"
         data-test="txtAccountNumber"
       />
-      <ng-container *ngIf="isFieldInvalid('accountNumber')">
-        <span>
+      <wes-error *ngIf="isFieldInvalid('accountNumber')">
+        <wes-form-field-error>
           {{ content.accountNumber.inputError }}
-        </span>
-      </ng-container>
-    </div>
+        </wes-form-field-error>
+      </wes-error>
+    </wes-form-field>
 
-    <div class="form-group" formGroupName="sortCode">
-      <label for="sortCode" data-test="lblSortCode">{{
-        content.sortCode.inputLabel
-      }}</label>
-      <input
-        class="form-control"
-        type="text"
-        name="sortCode-c1"
-        formControlName="c1"
-        inputmode="numeric"
-        spellcheck="false"
-        maxlength="2"
-        wesNumbersOnly
-        data-test="txtSortCode1"
-      />
-      <input
-        class="form-control"
-        type="text"
-        name="sortCode-c2"
-        formControlName="c2"
-        inputmode="numeric"
-        spellcheck="false"
-        maxlength="2"
-        wesNumbersOnly
-        data-test="txtSortCode2"
-      />
-      <input
-        class="form-control"
-        type="text"
-        name="sortCode-c3"
-        formControlName="c3"
-        inputmode="numeric"
-        spellcheck="false"
-        maxlength="2"
-        wesNumbersOnly
-        data-test="txtSortCode3"
-      />
-      <ng-container *ngIf="isFieldInvalid('sortCode')">
-        <span>
-          {{ content.sortCode.inputError }}
-        </span>
-      </ng-container>
+    <div class="row" formGroupName="sortCode">
+      <div class="col-lg-5">
+        <label
+          class="wes-form-field-label"
+          for="sortCode"
+          data-test="lblSortCode"
+          >{{ content.sortCode.inputLabel }}</label
+        >
+        <div class="boxes">
+          <wes-form-field class="sort-code-box">
+            <input
+              wesInput
+              type="text"
+              formControlName="c1"
+              inputmode="numeric"
+              spellcheck="false"
+              maxlength="2"
+              wesNumbersOnly
+              data-test="txtSortCode1"
+            />
+          </wes-form-field>
+
+          <wes-form-field class="sort-code-box mx-2">
+            <input
+              wesInput
+              type="text"
+              formControlName="c2"
+              inputmode="numeric"
+              spellcheck="false"
+              maxlength="2"
+              wesNumbersOnly
+              data-test="txtSortCode2"
+            />
+          </wes-form-field>
+
+          <wes-form-field class="sort-code-box">
+            <input
+              wesInput
+              type="text"
+              formControlName="c3"
+              inputmode="numeric"
+              spellcheck="false"
+              maxlength="2"
+              wesNumbersOnly
+              data-test="txtSortCode3"
+            />
+          </wes-form-field>
+        </div>
+        <wes-error *ngIf="isFieldInvalid('sortCode')">
+          <wes-form-field-error>
+            {{ content.sortCode.inputError }}
+          </wes-form-field-error>
+        </wes-error>
+      </div>
     </div>
     <ng-content></ng-content>
   </form>

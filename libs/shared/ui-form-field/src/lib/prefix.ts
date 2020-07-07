@@ -13,11 +13,11 @@ import { Directive, InjectionToken } from '@angular/core';
  * alternative token to the actual `MatPrefix` class which could cause unnecessary
  * retention of the class and its directive metadata.
  */
-export const MAT_PREFIX = new InjectionToken<MatPrefix>('MatPrefix');
+export const MAT_PREFIX = new InjectionToken<WesPrefix>('WesPrefix');
 
 /** Prefix to be placed in front of the form field. */
 @Directive({
-  selector: '[matPrefix]',
-  providers: [{ provide: MAT_PREFIX, useExisting: MatPrefix }],
+  selector: '[wesPrefix]',
+  providers: [{ provide: MAT_PREFIX, useExisting: WesPrefix }],
 })
-export class MatPrefix {}
+export class WesPrefix {}

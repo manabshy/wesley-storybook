@@ -66,12 +66,12 @@ const _MatInputMixinBase: CanUpdateErrorStateCtor &
 
 /** Directive that allows a native input to work inside a `MatFormField`. */
 @Directive({
-  selector: `input[matInput], textarea[matInput], select[matNativeControl],
-      input[matNativeControl], textarea[matNativeControl]`,
-  exportAs: 'matInput',
+  selector: `input[wesInput], textarea[wesInput], select[wesNativeControl],
+      input[wesNativeControl], textarea[wesNativeControl]`,
+  exportAs: 'wesInput',
   host: {
-    class: 'mat-input-element',
-    '[class.mat-input-server]': '_isServer',
+    class: 'wes-input-element',
+    '[class.wes-input-server]': '_isServer',
     // Native input properties that are overwritten by Angular inputs need to be synced with
     // the native input element. Otherwise property bindings for those don't work.
     '[attr.id]': 'id',
@@ -83,9 +83,9 @@ const _MatInputMixinBase: CanUpdateErrorStateCtor &
     '[attr.aria-invalid]': 'errorState',
     '[attr.aria-required]': 'required.toString()',
   },
-  providers: [{ provide: MatFormFieldControl, useExisting: MatInput }],
+  providers: [{ provide: MatFormFieldControl, useExisting: WesInput }],
 })
-export class MatInput extends _MatInputMixinBase
+export class WesInput extends _MatInputMixinBase
   implements
     MatFormFieldControl<any>,
     OnChanges,
@@ -93,7 +93,7 @@ export class MatInput extends _MatInputMixinBase
     AfterViewInit,
     DoCheck,
     CanUpdateErrorState {
-  protected _uid = `mat-input-${nextUniqueId++}`;
+  protected _uid = `wes-input-${nextUniqueId++}`;
   protected _previousNativeValue: any;
   private _inputValueAccessor: { value: any };
   /** The aria-describedby attribute on the input for improved a11y. */
@@ -124,7 +124,7 @@ export class MatInput extends _MatInputMixinBase
    * Implemented as part of MatFormFieldControl.
    * @docs-private
    */
-  controlType: string = 'mat-input';
+  controlType: string = 'wes-input';
 
   /**
    * Implemented as part of MatFormFieldControl.
@@ -298,8 +298,8 @@ export class MatInput extends _MatInputMixinBase
 
     if (this._isNativeSelect) {
       this.controlType = (element as HTMLSelectElement).multiple
-        ? 'mat-native-select-multiple'
-        : 'mat-native-select';
+        ? 'wes-native-select-multiple'
+        : 'wes-native-select';
     }
   }
 

@@ -9,52 +9,55 @@
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
   <div class="form-group" formGroupName="totalAmount">
-    <div class="form-group">
-      <label for="lumpSumAmount" data-test="lblLumpSumAmount">{{
+    <wes-form-field>
+      <wes-label data-test="lblLumpSumAmount">{{
         pageContent.lumpSumAmount.inputLabel
-      }}</label>
+      }}</wes-label>
       <input
-        class="form-control"
+        wesInput
         type="text"
-        name="lumpSumAmount"
         formControlName="lumpSumAmount"
         data-test="txtLumpSumAmount"
       />
-      <ng-container *ngIf="isFieldInvalid('totalAmount.lumpSumAmount')">
-        <span>
+      <span wesPrefix>£&nbsp;</span>
+      <wes-hint>{{ pageContent.lumpSumTooltip }}</wes-hint>
+      <wes-error *ngIf="isFieldInvalid('totalAmount.lumpSumAmount')">
+        <wes-form-field-error>
           {{ pageContent.lumpSumAmount.inputError }}
-        </span>
-      </ng-container>
-    </div>
-    <div>{{ pageContent.lumpSumTooltip }}</div>
+        </wes-form-field-error>
+      </wes-error>
+    </wes-form-field>
+
     <hr />
 
-    <div class="form-group">
-      <label for="monthlyAmount" data-test="lblMonthlyAmount">{{
+    <wes-form-field>
+      <wes-label data-test="lblMonthlyAmount">{{
         pageContent.monthlyAmount.inputLabel
-      }}</label>
+      }}</wes-label>
       <input
-        class="form-control"
+        wesInput
         type="text"
-        name="monthlyAmount"
         formControlName="monthlyAmount"
         data-test="txtMonthlyAmount"
       />
-      <div>{{ pageContent.monthlyHelpText }}</div>
-      <ng-container *ngIf="isFieldInvalid('totalAmount.monthlyAmount')">
-        <span
+      <span wesPrefix>£&nbsp;</span>
+      <wes-hint>{{ pageContent.monthlyHelpText }}</wes-hint>
+      <wes-error *ngIf="isFieldInvalid('totalAmount.monthlyAmount')">
+        <wes-form-field-error
           *ngIf="monthlyControl.errors.min || monthlyControl.errors.required"
         >
           {{ pageContent.monthlyAmount.inputMinError }}
-        </span>
-        <span *ngIf="monthlyControl.errors.max">
+        </wes-form-field-error>
+        <wes-form-field-error *ngIf="monthlyControl.errors.max">
           {{ pageContent.monthlyAmount.inputMaxError }}
-        </span>
-        <span *ngIf="monthlyControl.errors.totalAnnualAllowance">
+        </wes-form-field-error>
+        <wes-form-field-error
+          *ngIf="monthlyControl.errors.totalAnnualAllowance"
+        >
           {{ pageContent.monthlyAmount.inputOtherError }}
-        </span>
-      </ng-container>
-    </div>
+        </wes-form-field-error>
+      </wes-error>
+    </wes-form-field>
   </div>
 
   <wes-direct-debit-form

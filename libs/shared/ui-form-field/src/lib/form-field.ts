@@ -37,7 +37,7 @@ import {
 } from '@angular/material/core';
 import { fromEvent, merge, Subject } from 'rxjs';
 import { startWith, take, takeUntil } from 'rxjs/operators';
-import { MAT_ERROR, MatError } from './error';
+import { MAT_ERROR, WesError } from './error';
 import { matFormFieldAnimations } from './form-field-animations';
 import { MatFormFieldControl } from './form-field-control';
 import {
@@ -45,11 +45,11 @@ import {
   getMatFormFieldMissingControlError,
   getMatFormFieldPlaceholderConflictError,
 } from './form-field-errors';
-import { _MAT_HINT, MatHint } from './hint';
-import { MatLabel } from './label';
-import { MatPlaceholder } from './placeholder';
-import { MAT_PREFIX, MatPrefix } from './prefix';
-import { MAT_SUFFIX, MatSuffix } from './suffix';
+import { _MAT_HINT, WesHint } from './hint';
+import { WesLabel } from './label';
+// import { MatPlaceholder } from './placeholder';
+import { MAT_PREFIX, WesPrefix } from './prefix';
+import { MAT_SUFFIX, WesSuffix } from './suffix';
 import { Platform } from '@angular/cdk/platform';
 import { NgControl } from '@angular/forms';
 import { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';
@@ -106,12 +106,12 @@ export const MAT_FORM_FIELD_DEFAULT_OPTIONS = new InjectionToken<
  * as alternative token to the actual `MatFormField` class which would cause unnecessary
  * retention of the `MatFormField` class and its component metadata.
  */
-export const MAT_FORM_FIELD = new InjectionToken<MatFormField>('MatFormField');
+export const MAT_FORM_FIELD = new InjectionToken<WesFormField>('WesFormField');
 
 /** Container for form controls that applies Material Design styling and behavior. */
 @Component({
-  selector: 'mat-form-field',
-  exportAs: 'matFormField',
+  selector: 'wes-form-field',
+  exportAs: 'wesFormField',
   templateUrl: 'form-field.html',
   // MatInput is a directive and can't have styles, so we need to include its styles here
   // in form-field-input.css. The MatInput styles are fairly minimal so it shouldn't be a
@@ -126,19 +126,18 @@ export const MAT_FORM_FIELD = new InjectionToken<MatFormField>('MatFormField');
   //   ],
   animations: [matFormFieldAnimations.transitionMessages],
   host: {
-    class: 'mat-form-field',
-    '[class.mat-form-field-appearance-standard]': 'appearance == "standard"',
-    '[class.mat-form-field-appearance-fill]': 'appearance == "fill"',
-    '[class.mat-form-field-appearance-outline]': 'appearance == "outline"',
-    '[class.mat-form-field-appearance-legacy]': 'appearance == "legacy"',
-    '[class.mat-form-field-invalid]': '_control.errorState',
-    '[class.mat-form-field-can-float]': '_canLabelFloat',
-    '[class.mat-form-field-should-float]': '_shouldLabelFloat()',
-    '[class.mat-form-field-has-label]': '_hasFloatingLabel()',
-    '[class.mat-form-field-hide-placeholder]': '_hideControlPlaceholder()',
-    '[class.mat-form-field-disabled]': '_control.disabled',
-    '[class.mat-form-field-autofilled]': '_control.autofilled',
-    '[class.mat-focused]': '_control.focused',
+    class: 'wes-form-field',
+    '[class.wes-form-field-appearance-standard]': 'appearance == "standard"',
+    '[class.wes-form-field-appearance-fill]': 'appearance == "fill"',
+    '[class.wes-form-field-appearance-outline]': 'appearance == "outline"',
+    '[class.wes-form-field-appearance-legacy]': 'appearance == "legacy"',
+    '[class.wes-form-field-invalid]': '_control.errorState',
+    '[class.wes-form-field-can-float]': '_canLabelFloat',
+    '[class.wes-form-field-should-float]': '_shouldLabelFloat()',
+    '[class.wes-form-field-hide-placeholder]': '_hideControlPlaceholder()',
+    '[class.wes-form-field-disabled]': '_control.disabled',
+    '[class.wes-form-field-autofilled]': '_control.autofilled',
+    '[class.wes-focused]': '_control.focused',
     '[class.mat-accent]': 'color == "accent"',
     '[class.mat-warn]': 'color == "warn"',
     '[class.ng-untouched]': '_shouldForward("untouched")',
@@ -153,9 +152,9 @@ export const MAT_FORM_FIELD = new InjectionToken<MatFormField>('MatFormField');
   inputs: ['color'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: MAT_FORM_FIELD, useExisting: MatFormField }],
+  providers: [{ provide: MAT_FORM_FIELD, useExisting: WesFormField }],
 })
-export class MatFormField extends _MatFormFieldMixinBase
+export class WesFormField extends _MatFormFieldMixinBase
   implements
     AfterContentInit,
     AfterContentChecked,
@@ -230,10 +229,10 @@ export class MatFormField extends _MatFormFieldMixinBase
   private _hintLabel = '';
 
   // Unique id for the hint label.
-  _hintLabelId: string = `mat-hint-${nextUniqueId++}`;
+  _hintLabelId: string = `wes-hint-${nextUniqueId++}`;
 
   // Unique id for the internal form field label.
-  _labelId = `mat-form-field-label-${nextUniqueId++}`;
+  _labelId = `wes-form-field-label-${nextUniqueId++}`;
 
   /**
    * Whether the label should always float, never float or float as the user types.
@@ -290,26 +289,26 @@ export class MatFormField extends _MatFormFieldMixinBase
   }
   private _explicitFormFieldControl: MatFormFieldControl<any>;
 
-  @ContentChild(MatLabel) _labelChildNonStatic: MatLabel;
-  @ContentChild(MatLabel, { static: true }) _labelChildStatic: MatLabel;
+  @ContentChild(WesLabel) _labelChildNonStatic: WesLabel;
+  @ContentChild(WesLabel, { static: true }) _labelChildStatic: WesLabel;
   get _labelChild() {
     return this._labelChildNonStatic || this._labelChildStatic;
   }
 
-  @ContentChild(MatPlaceholder) _placeholderChild: MatPlaceholder;
+  //   @ContentChild(MatPlaceholder) _placeholderChild: MatPlaceholder;
 
   // TODO: Remove cast once https://github.com/angular/angular/pull/37506 is available.
   @ContentChildren(MAT_ERROR as any, { descendants: true })
-  _errorChildren: QueryList<MatError>;
+  _errorChildren: QueryList<WesError>;
   // TODO: Remove cast once https://github.com/angular/angular/pull/37506 is available.
   @ContentChildren(_MAT_HINT as any, { descendants: true })
-  _hintChildren: QueryList<MatHint>;
+  _hintChildren: QueryList<WesHint>;
   // TODO: Remove cast once https://github.com/angular/angular/pull/37506 is available.
   @ContentChildren(MAT_PREFIX as any, { descendants: true })
-  _prefixChildren: QueryList<MatPrefix>;
+  _prefixChildren: QueryList<WesPrefix>;
   // TODO: Remove cast once https://github.com/angular/angular/pull/37506 is available.
   @ContentChildren(MAT_SUFFIX as any, { descendants: true })
-  _suffixChildren: QueryList<MatSuffix>;
+  _suffixChildren: QueryList<WesSuffix>;
 
   constructor(
     public _elementRef: ElementRef,
@@ -353,13 +352,13 @@ export class MatFormField extends _MatFormFieldMixinBase
 
     if (control.controlType) {
       this._elementRef.nativeElement.classList.add(
-        `mat-form-field-type-${control.controlType}`
+        `wes-form-field-type-${control.controlType}`
       );
     }
 
     // Subscribe to changes in the child control state in order to update the form field UI.
     control.stateChanges.pipe(startWith(null!)).subscribe(() => {
-      this._validatePlaceholders();
+      //   this._validatePlaceholders();
       this._syncDescribedByIds();
       this._changeDetectorRef.markForCheck();
     });
@@ -442,12 +441,12 @@ export class MatFormField extends _MatFormFieldMixinBase
     return ngControl && ngControl[prop];
   }
 
-  _hasPlaceholder() {
-    return !!(
-      (this._control && this._control.placeholder) ||
-      this._placeholderChild
-    );
-  }
+  //   _hasPlaceholder() {
+  //     return !!(
+  //       (this._control && this._control.placeholder) ||
+  //       this._placeholderChild
+  //     );
+  //   }
 
   _hasLabel() {
     return !!this._labelChild;
@@ -468,13 +467,13 @@ export class MatFormField extends _MatFormFieldMixinBase
     );
   }
 
-  _hasFloatingLabel() {
-    // In the legacy appearance the placeholder is promoted to a label if no label is given.
-    return (
-      this._hasLabel() ||
-      (this.appearance === 'legacy' && this._hasPlaceholder())
-    );
-  }
+  //   _hasFloatingLabel() {
+  //     // In the legacy appearance the placeholder is promoted to a label if no label is given.
+  //     return (
+  //       this._hasLabel() ||
+  //       (this.appearance === 'legacy' && this._hasPlaceholder())
+  //     );
+  //   }
 
   /** Determines whether to display hints or errors. */
   _getDisplayedMessages(): 'error' | 'hint' {
@@ -486,34 +485,34 @@ export class MatFormField extends _MatFormFieldMixinBase
   }
 
   /** Animates the placeholder up and locks it in position. */
-  _animateAndLockLabel(): void {
-    if (this._hasFloatingLabel() && this._canLabelFloat) {
-      // If animations are disabled, we shouldn't go in here,
-      // because the `transitionend` will never fire.
-      if (this._animationsEnabled && this._label) {
-        this._showAlwaysAnimate = true;
+  //   _animateAndLockLabel(): void {
+  //     if (this._hasFloatingLabel() && this._canLabelFloat) {
+  //       // If animations are disabled, we shouldn't go in here,
+  //       // because the `transitionend` will never fire.
+  //       if (this._animationsEnabled && this._label) {
+  //         this._showAlwaysAnimate = true;
 
-        fromEvent(this._label.nativeElement, 'transitionend')
-          .pipe(take(1))
-          .subscribe(() => {
-            this._showAlwaysAnimate = false;
-          });
-      }
+  //         fromEvent(this._label.nativeElement, 'transitionend')
+  //           .pipe(take(1))
+  //           .subscribe(() => {
+  //             this._showAlwaysAnimate = false;
+  //           });
+  //       }
 
-      this.floatLabel = 'always';
-      this._changeDetectorRef.markForCheck();
-    }
-  }
+  //       this.floatLabel = 'always';
+  //       this._changeDetectorRef.markForCheck();
+  //     }
+  //   }
 
   /**
    * Ensure that there is only one placeholder (either `placeholder` attribute on the child control
    * or child element with the `mat-placeholder` directive).
    */
-  private _validatePlaceholders() {
-    if (this._control.placeholder && this._placeholderChild) {
-      throw getMatFormFieldPlaceholderConflictError();
-    }
-  }
+  //   private _validatePlaceholders() {
+  //     if (this._control.placeholder) {
+  //       throw getMatFormFieldPlaceholderConflictError();
+  //     }
+  //   }
 
   /** Does any extra processing that is required when handling the hints. */
   private _processHints() {
@@ -527,9 +526,9 @@ export class MatFormField extends _MatFormFieldMixinBase
    */
   private _validateHints() {
     if (this._hintChildren) {
-      let startHint: MatHint;
-      let endHint: MatHint;
-      this._hintChildren.forEach((hint: MatHint) => {
+      let startHint: WesHint;
+      let endHint: WesHint;
+      this._hintChildren.forEach((hint: WesHint) => {
         if (hint.align === 'start') {
           if (startHint || this.hintLabel) {
             throw getMatFormFieldDuplicatedHintError('start');
@@ -626,9 +625,9 @@ export class MatFormField extends _MatFormFieldMixinBase
 
     const container = this._connectionContainerRef.nativeElement;
     const startEls = container.querySelectorAll(
-      '.mat-form-field-outline-start'
+      '.wes-form-field-outline-start'
     );
-    const gapEls = container.querySelectorAll('.mat-form-field-outline-gap');
+    const gapEls = container.querySelectorAll('.wes-form-field-outline-gap');
 
     if (this._label && this._label.nativeElement.children.length) {
       const containerRect = container.getBoundingClientRect();

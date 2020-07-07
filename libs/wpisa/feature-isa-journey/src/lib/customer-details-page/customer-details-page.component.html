@@ -35,115 +35,102 @@
       </span>
     </ng-container>
   </div>
-  <mat-form-field>
-    <mat-label data-test="lblFirstName">{{
+  <wes-form-field>
+    <wes-label data-test="lblFirstName">{{
       pageContent.firstName.inputLabel
-    }}</mat-label>
+    }}</wes-label>
     <input
-      matInput
-      formControlName="firstName"
-      autocomplete="given-name"
-      data-test="txtFirstName"
-    />
-    <mat-error *ngIf="isFieldInvalid('firstName')">
-      <wes-form-field-error>{{
-        pageContent.firstName.inputError
-      }}</wes-form-field-error></mat-error
-    >
-  </mat-form-field>
-
-  <div class="form-group">
-    <label for="firstName" data-test="lblFirstName">{{
-      pageContent.firstName.inputLabel
-    }}</label>
-    <input
-      class="form-control"
+      wesInput
       type="text"
-      name="firstName"
       formControlName="firstName"
       autocomplete="given-name"
       data-test="txtFirstName"
     />
-    <ng-container *ngIf="isFieldInvalid('firstName')">
-      <span *ngIf="controls.firstName.errors.required">
+    <wes-error *ngIf="isFieldInvalid('firstName')">
+      <wes-form-field-error>
         {{ pageContent.firstName.inputError }}
-      </span>
-    </ng-container>
-  </div>
+      </wes-form-field-error>
+    </wes-error>
+  </wes-form-field>
 
-  <div class="form-group">
-    <label for="lastName" data-test="lblLastName">{{
+  <wes-form-field>
+    <wes-label data-test="lblLastName">{{
       pageContent.surname.inputLabel
-    }}</label>
+    }}</wes-label>
     <input
-      class="form-control"
+      wesInput
       type="text"
-      name="lastName"
       formControlName="lastName"
       autocomplete="family-name"
-      data-test="lblLastName"
+      data-test="txtLastName"
     />
-    <ng-container *ngIf="isFieldInvalid('lastName')">
-      <span *ngIf="controls.lastName.errors.required">
-        {{ pageContent.surname.inputError }}
-      </span>
-    </ng-container>
-  </div>
+    <wes-error *ngIf="isFieldInvalid('lastName')">
+      <wes-form-field-error>{{
+        pageContent.surname.inputError
+      }}</wes-form-field-error></wes-error
+    >
+  </wes-form-field>
 
   <div class="form-group" formGroupName="dob">
     <label data-test="lblDoB">{{ pageContent.dob.inputLabel }}</label>
-    <div class="row">
-      <input
-        class="form-control col-sm-2"
-        formControlName="day"
-        type="text"
-        inputmode="numeric"
-        pattern="[0-9]*"
-        name="bday-day"
-        placeholder="DD"
-        wesNumbersOnly
-        maxlength="2"
-        autocomplete="bday-day"
-        data-test="txtDoBDay"
-      />
-
-      <input
-        class="form-control col-sm-2"
-        formControlName="month"
-        type="text"
-        inputmode="numeric"
-        pattern="[0-9]*"
-        maxlength="2"
-        name="bday-month"
-        placeholder="MM"
-        wesNumbersOnly
-        autocomplete="bday-month"
-        data-test="txtDoBMonth"
-      />
-
-      <input
-        class="form-control col-sm-2"
-        formControlName="year"
-        type="text"
-        inputmode="numeric"
-        pattern="[0-9]*"
-        maxlength="4"
-        name="bday-year"
-        placeholder="YYYY"
-        wesNumbersOnly
-        autocomplete="bday-year"
-        data-test="txtDoBYear"
-      />
+    <div class="">
+      <wes-form-field class="dob-box dob-box-1">
+        <input
+          wesInput
+          type="text"
+          class="form-control col-sm-2"
+          formControlName="day"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          name="bday-day"
+          placeholder="DD"
+          wesNumbersOnly
+          maxlength="2"
+          autocomplete="bday-day"
+          data-test="txtDoBDay"
+        />
+      </wes-form-field>
+      <wes-form-field class="dob-box dob-box-2 mx-2">
+        <input
+          wesInput
+          type="text"
+          class="form-control col-sm-2"
+          formControlName="month"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          name="bday-month"
+          placeholder="MM"
+          wesNumbersOnly
+          maxlength="2"
+          autocomplete="bday-month"
+          data-test="txtDoBMonth"
+        />
+      </wes-form-field>
+      <wes-form-field class="dob-box dob-box-3">
+        <input
+          wesInput
+          type="text"
+          class="form-control col-sm-2"
+          formControlName="year"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          name="bday-year"
+          placeholder="YYYY"
+          wesNumbersOnly
+          maxlength="4"
+          autocomplete="bday-year"
+          data-test="txtDoBYear"
+        />
+      </wes-form-field>
     </div>
-
-    <ng-container *ngIf="isFieldInvalid('dob')">
-      <span *ngIf="controls.dob.errors.invalidDate">
+    <wes-error *ngIf="isFieldInvalid('dob')">
+      <wes-form-field-error *ngIf="controls.dob.errors.invalidDate">
         {{ pageContent.dob.inputError }}
-      </span>
-      <span *ngIf="controls.dob.errors.tooYoungOrTooOld">
+      </wes-form-field-error>
+      <wes-form-field-error *ngIf="controls.dob.errors.tooYoungOrTooOld">
         {{ pageContent.dob.inputOtherError }}
-      </span>
-    </ng-container>
+      </wes-form-field-error>
+    </wes-error>
   </div>
 
   <div class="form-group">
@@ -169,24 +156,22 @@
     </ng-container>
   </div>
 
-  <div class="form-group">
-    <label for="nationalInsuranceNumber" data-test="lblNino">{{
+  <wes-form-field>
+    <wes-label data-test="lblNino">{{
       pageContent.niNumber.inputLabel
-    }}</label>
+    }}</wes-label>
     <input
-      class="form-control"
+      wesInput
       type="text"
-      name="nationalInsuranceNumber"
       formControlName="nationalInsuranceNumber"
       data-test="txtNino"
     />
-    <span>{{ pageContent.niTooltip }}</span>
-    <ng-container *ngIf="isFieldInvalid('nationalInsuranceNumber')">
-      <span *ngIf="controls.nationalInsuranceNumber.invalid">
-        {{ pageContent.niNumber.inputError }}
-      </span>
-    </ng-container>
-  </div>
+    <wes-error *ngIf="isFieldInvalid('nationalInsuranceNumber')">
+      <wes-form-field-error>{{
+        pageContent.niNumber.inputError
+      }}</wes-form-field-error></wes-error
+    >
+  </wes-form-field>
 
   <div class="form-group">
     <label for="nationality" data-test="lblNationality">{{
@@ -241,20 +226,19 @@
   ></wes-manual-address-form>
 
   <h3>{{ pageContent.contactDetails.heading }}</h3>
-  <div class="form-group">
-    <label for="personalEmail" data-test="lblPersonalEmail">{{
+
+  <wes-form-field>
+    <wes-label data-test="lblPersonalEmail">{{
       pageContent.contactDetails.personalEmail.inputLabel
-    }}</label>
+    }}</wes-label>
     <input
-      class="form-control"
+      wesInput
       type="email"
-      name="personalEmail"
       formControlName="personalEmail"
       autocomplete="email"
       data-test="txtPersonalEmail"
     />
-
-    <span
+    <wes-error
       *ngIf="
         controls.personalEmail.invalid &&
         (showOverallError ||
@@ -262,23 +246,24 @@
           controls.personalEmail.touched)
       "
     >
-      {{ pageContent.contactDetails.personalEmail.inputError }}
-    </span>
-  </div>
+      <wes-form-field-error>{{
+        pageContent.contactDetails.personalEmail.inputError
+      }}</wes-form-field-error></wes-error
+    >
+  </wes-form-field>
 
-  <div class="form-group">
-    <label for="personalMobileNumber" data-test="lblPersonalMobileNumber">{{
+  <wes-form-field>
+    <wes-label data-test="lblPersonalMobileNumber">{{
       pageContent.contactDetails.mobileNumber.inputLabel
-    }}</label>
+    }}</wes-label>
     <input
-      class="form-control"
+      wesInput
       type="text"
-      name="personalMobileNumber"
       formControlName="personalMobileNumber"
       autocomplete="tel"
       data-test="textPersonalMobileNumber"
     />
-    <span
+    <wes-error
       *ngIf="
         controls.personalMobileNumber.invalid &&
         (showOverallError ||
@@ -286,9 +271,11 @@
           controls.personalMobileNumber.touched)
       "
     >
-      {{ pageContent.contactDetails.mobileNumber.inputError }}
-    </span>
-  </div>
+      <wes-form-field-error>{{
+        pageContent.contactDetails.mobileNumber.inputError
+      }}</wes-form-field-error></wes-error
+    >
+  </wes-form-field>
 
   <div class="mb-4" [innerHTML]="pageContent.marketing.heading"></div>
 

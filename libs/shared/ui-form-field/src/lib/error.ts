@@ -15,18 +15,18 @@ let nextUniqueId = 0;
  * alternative token to the actual `MatError` class which could cause unnecessary
  * retention of the class and its directive metadata.
  */
-export const MAT_ERROR = new InjectionToken<MatError>('MatError');
+export const MAT_ERROR = new InjectionToken<WesError>('WesError');
 
 /** Single error message to be shown underneath the form field. */
 @Directive({
-  selector: 'mat-error',
+  selector: 'wes-error',
   host: {
-    class: 'mat-error',
+    class: 'wes-error',
     role: 'alert',
     '[attr.id]': 'id',
   },
-  providers: [{ provide: MAT_ERROR, useExisting: MatError }],
+  providers: [{ provide: MAT_ERROR, useExisting: WesError }],
 })
-export class MatError {
-  @Input() id: string = `mat-error-${nextUniqueId++}`;
+export class WesError {
+  @Input() id: string = `wes-error-${nextUniqueId++}`;
 }

@@ -10,6 +10,6 @@ import { Directive } from '@angular/core';
 
 /** The floating label for a `mat-form-field`. */
 @Directive({
-  selector: 'mat-label',
+  selector: 'wes-label',
 })
-export class MatLabel {}
+export class WesLabel {}

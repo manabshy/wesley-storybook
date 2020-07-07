@@ -1,128 +1,127 @@
 <form [formGroup]="form">
-  <div class="form-group">
-    <label for="flatNumber" data-test="lblFlatNumber">{{
+  <wes-form-field>
+    <wes-label data-test="lblFlatNumber">{{
       pageContent.addressDetails.flatNumber.inputLabel
-    }}</label>
+    }}</wes-label>
     <input
-      class="form-control"
+      wesInput
       type="text"
-      name="flatNumber"
       formControlName="flatNumber"
       data-test="txtFlatNumber"
     />
-  </div>
-  <div class="form-group">
-    <label for="houseNumber" data-test="txtHouseNumber">{{
+  </wes-form-field>
+
+  <wes-form-field>
+    <wes-label data-test="lblHouseNumber">{{
       pageContent.addressDetails.houseNumber.inputLabel
-    }}</label>
+    }}</wes-label>
     <input
-      class="form-control"
+      wesInput
       type="text"
-      name="houseName"
       formControlName="houseNumber"
       autocomplete="address-line1"
       data-test="txtHouseNumber"
     />
-    <ng-container *ngIf="isFieldInvalid('houseNumber')">
-      <span *ngIf="controls.houseNumber.errors.required">
+    <wes-error *ngIf="isFieldInvalid('houseNumber')">
+      <wes-form-field-error *ngIf="controls.houseNumber.errors.required">
         {{ pageContent.addressDetails.houseNumber.inputError }}
-      </span>
-    </ng-container>
-  </div>
-  <div class="form-group">
-    <label for="houseNumber" data-test="lblHouseNumber">{{
+      </wes-form-field-error>
+    </wes-error>
+  </wes-form-field>
+
+  <wes-form-field>
+    <wes-label data-test="lblHouseName">{{
       pageContent.addressDetails.houseName.inputLabel
-    }}</label>
+    }}</wes-label>
     <input
-      class="form-control"
+      wesInput
       type="text"
-      name="houseNumber"
       formControlName="houseName"
-      data-test="txtHouseNumber"
+      data-test="txtHouseName"
     />
-    <ng-container *ngIf="isFieldInvalid('houseName')">
-      <span *ngIf="controls.houseName.errors.required">
+    <wes-error *ngIf="isFieldInvalid('houseName')">
+      <wes-form-field-error *ngIf="controls.houseName.errors.required">
         {{ pageContent.addressDetails.houseName.inputError }}
-      </span>
-    </ng-container>
-  </div>
-  <div class="form-group">
-    <label for="street" data-test="lblStreet">{{
+      </wes-form-field-error>
+    </wes-error>
+  </wes-form-field>
+
+  <wes-form-field>
+    <wes-label data-test="lblStreet">{{
       pageContent.addressDetails.street.inputLabel
-    }}</label>
+    }}</wes-label>
     <input
-      class="form-control"
+      wesInput
       type="text"
-      name="street"
       formControlName="street"
       autocomplete="address-line2"
       data-test="txtStreet"
     />
-    <ng-container *ngIf="isFieldInvalid('street')">
-      <span *ngIf="controls.street.errors.required">
+    <wes-error *ngIf="isFieldInvalid('street')">
+      <wes-form-field-error *ngIf="controls.street.errors.required">
         {{ pageContent.addressDetails.street.inputError }}
-      </span>
-    </ng-container>
-  </div>
-  <div class="form-group">
-    <label for="town" data-test="lblTown">{{
+      </wes-form-field-error>
+    </wes-error>
+  </wes-form-field>
+
+  <wes-form-field>
+    <wes-label data-test="lblTown">{{
       pageContent.addressDetails.town.inputLabel
-    }}</label>
+    }}</wes-label>
     <input
-      class="form-control"
+      wesInput
       type="text"
-      name="town"
       formControlName="town"
       autocomplete="address-level2"
       data-test="txtTown"
     />
-    <ng-container *ngIf="isFieldInvalid('town')">
-      <span *ngIf="controls.town.errors.required">
+    <wes-error *ngIf="isFieldInvalid('town')">
+      <wes-form-field-error *ngIf="controls.town.errors.required">
         {{ pageContent.addressDetails.town.inputError }}
-      </span>
-    </ng-container>
-  </div>
-  <div class="form-group">
-    <label for="region" data-test="lblRegion">{{
+      </wes-form-field-error>
+    </wes-error>
+  </wes-form-field>
+
+  <wes-form-field>
+    <wes-label data-test="lblRegion">{{
       pageContent.addressDetails.region.inputLabel
-    }}</label>
+    }}</wes-label>
     <input
-      class="form-control"
+      wesInput
       type="text"
-      name="region"
       formControlName="region"
       data-test="txtRegion"
     />
-  </div>
-  <div class="form-group">
-    <label for="county" data-test="lblCounty">{{
+  </wes-form-field>
+
+  <wes-form-field>
+    <wes-label data-test="lblCounty">{{
       pageContent.addressDetails.county.inputLabel
-    }}</label>
+    }}</wes-label>
     <input
-      class="form-control"
+      wesInput
       type="text"
-      name="county"
       formControlName="county"
       data-test="txtCounty"
     />
-  </div>
-  <div class="form-group">
-    <label for="postcode" data-test="lblPostcode">{{
+  </wes-form-field>
+
+  <wes-form-field>
+    <wes-label data-test="lblPostcode">{{
       pageContent.addressDetails.postcode.inputLabel
-    }}</label>
+    }}</wes-label>
     <input
-      class="form-control"
+      wesInput
       type="text"
-      name="postcode"
       formControlName="postcode"
       autocomplete="postal-code"
       data-test="txtPostcode"
     />
-    <ng-container *ngIf="isFieldInvalid('postcode')">
-      <span *ngIf="controls.postcode.errors.required">
+    <wes-error *ngIf="isFieldInvalid('postcode')">
+      <wes-form-field-error *ngIf="controls.postcode.errors.required">
         {{ pageContent.addressDetails.postcode.inputError }}
-      </span>
-    </ng-container>
-  </div>
+      </wes-form-field-error>
+    </wes-error>
+  </wes-form-field>
 </form>
 <!-- Valid {{ form.valid }} -->
