@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-  <wes-form-field>
+  <wes-form-field id="postcodeFormField" class="d-block mb-3">
     <wes-label data-test="lblFindAddressPostcode">{{
       pageContent.addressDetails.postcode.inputLabel
     }}</wes-label>
@@ -18,7 +18,8 @@
     </wes-error>
   </wes-form-field>
   <button
-    class="wes-button wes-button-primary"
+    id="findButton"
+    class="wes-button wes-button-primary d-block w-100 mb-3"
     type="button"
     data-test="btnFindAddress"
     [wesButtonLoader]="findingAddress"
@@ -27,7 +28,7 @@
     {{ pageContent.addressDetails.findAddress }}
   </button>
 
-  <wes-form-field *ngIf="addressList.length > 0">
+  <wes-form-field class="d-block mb-3" *ngIf="addressList.length > 0">
     <wes-label data-test="lblAddressList">{{
       pageContent.addressDetails.selectYourAddress.inputLabel
     }}</wes-label>

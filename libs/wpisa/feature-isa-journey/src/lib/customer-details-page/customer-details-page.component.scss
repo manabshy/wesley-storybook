@@ -1,3 +1,6 @@
+// @import 'abstract/index';
+
+$formFieldBorderBottom: 32px;
 :host {
   display: block;
 }
@@ -5,22 +8,41 @@
 #customerDetailsForm {
   .wes-form-field {
     display: block;
-    margin-bottom: 32px;
   }
 
   .dob-box-1,
   .dob-box-2 {
     display: inline-block;
-    width: 60px;
+    width: 66px;
+    text-align: center;
   }
   .dob-box-3 {
     display: inline-block;
     width: 80px;
+    text-align: center;
   }
 }
 
 #titleFormField {
+  margin-bottom: $formFieldBorderBottom;
   .wes-form-field-wrapper {
     width: 30%;
   }
+}
+#dobFormField {
+  margin-bottom: $formFieldBorderBottom;
+}
+#firstNameFormField,
+#lastNameFormField,
+#professionFormField,
+#ninoFormField,
+#nationalityFormField,
+#emailFormField,
+#phoneFormField {
+  margin-bottom: $formFieldBorderBottom;
+  //   @include media-breakpoint-up(lg) {
+  //     .wes-form-field-wrapper {
+  //       width: 75%;
+  //     }
+  //   }
 }

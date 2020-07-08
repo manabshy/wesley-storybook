@@ -295,19 +295,6 @@ select.wes-input-element {
   overflow: hidden;
 }
 
-// Server-side rendered matInput with focus or a placeholder attribute but placeholder not shown
-// (used as a pure CSS stand-in for wes-form-field-should-float).
-.wes-input-server:focus + .wes-form-field-label-wrapper .wes-form-field-label,
-.wes-input-server[placeholder]:not(:placeholder-shown)
-  + .wes-form-field-label-wrapper
-  .wes-form-field-label {
-  display: none;
-
-  .wes-form-field-can-float & {
-    display: block;
-  }
-}
-
 // Wrapper for the hints and error messages.
 .wes-form-field-subscript-wrapper {
   //   position: absolute;
@@ -337,9 +324,14 @@ select.wes-input-element {
   flex: 1 0 $wes-form-field-hint-min-space;
 }
 
-// Single error message displayed beneath the form field underline.
+.wes-hint {
+  margin-top: 8px;
+}
+
+// Single error message displayed beneath the form field.
 .wes-error {
   display: block;
+  margin-top: 8px;
 }
 
 // Element that can used to reliably align content in relation to the form field control.
@@ -350,4 +342,5 @@ select.wes-input-element {
 //Below is temp, needs refactoring
 .wes-form-field-label {
   display: block;
+  margin-bottom: 8px;
 }

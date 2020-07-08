@@ -39,14 +39,13 @@
     </wes-error>
   </wes-form-field>
 
-  <wes-form-field class="">
+  <wes-form-field id="firstNameFormField">
     <wes-label data-test="lblFirstName">{{
       pageContent.firstName.inputLabel
     }}</wes-label>
     <input
       wesInput
       type="text"
-      class="test"
       formControlName="firstName"
       autocomplete="given-name"
       data-test="txtFirstName"
@@ -58,7 +57,7 @@
     </wes-error>
   </wes-form-field>
 
-  <wes-form-field>
+  <wes-form-field id="lastNameFormField">
     <wes-label data-test="lblLastName">{{
       pageContent.surname.inputLabel
     }}</wes-label>
@@ -76,16 +75,16 @@
     >
   </wes-form-field>
 
-  <div class="form-group" formGroupName="dob">
+  <div id="dobFormField" formGroupName="dob">
     <label class="wes-form-field-label" data-test="lblDoB">{{
       pageContent.dob.inputLabel
     }}</label>
     <div class="">
       <wes-form-field class="dob-box dob-box-1">
+        <span id="dobDay" class="cdk-visually-hidden">Date of birth Day</span>
         <input
           wesInput
           type="text"
-          class="form-control col-sm-2"
           formControlName="day"
           inputmode="numeric"
           pattern="[0-9]*"
@@ -95,13 +94,16 @@
           maxlength="2"
           autocomplete="bday-day"
           data-test="txtDoBDay"
+          aria-labelledby="dobDay"
         />
       </wes-form-field>
       <wes-form-field class="dob-box dob-box-2 mx-2">
+        <span id="dobMonth" class="cdk-visually-hidden"
+          >Date of birth Month</span
+        >
         <input
           wesInput
           type="text"
-          class="form-control col-sm-2"
           formControlName="month"
           inputmode="numeric"
           pattern="[0-9]*"
@@ -111,13 +113,15 @@
           maxlength="2"
           autocomplete="bday-month"
           data-test="txtDoBMonth"
+          aria-labelledby="dobMonth"
         />
       </wes-form-field>
       <wes-form-field class="dob-box dob-box-3">
+        <span id="dobYear" class="cdk-visually-hidden">Date of birth Year</span>
+
         <input
           wesInput
           type="text"
-          class="form-control col-sm-2"
           formControlName="year"
           inputmode="numeric"
           pattern="[0-9]*"
@@ -127,6 +131,7 @@
           maxlength="4"
           autocomplete="bday-year"
           data-test="txtDoBYear"
+          aria-labelledby="dobYear"
         />
       </wes-form-field>
     </div>
@@ -140,7 +145,7 @@
     </wes-error>
   </div>
 
-  <wes-form-field>
+  <wes-form-field id="professionFormField">
     <wes-label data-test="txtProfession">{{
       pageContent.profession.inputLabel
     }}</wes-label>
@@ -164,7 +169,7 @@
     </wes-error>
   </wes-form-field>
 
-  <wes-form-field>
+  <wes-form-field id="ninoFormField">
     <wes-label data-test="lblNino">{{
       pageContent.niNumber.inputLabel
     }}</wes-label>
@@ -174,6 +179,7 @@
       formControlName="nationalInsuranceNumber"
       data-test="txtNino"
     />
+    <wes-hint>{{ pageContent.niTooltip }}</wes-hint>
     <wes-error *ngIf="isFieldInvalid('nationalInsuranceNumber')">
       <wes-form-field-error>{{
         pageContent.niNumber.inputError
@@ -181,7 +187,7 @@
     >
   </wes-form-field>
 
-  <wes-form-field>
+  <wes-form-field id="nationalityFormField">
     <wes-label data-test="lblNationality">{{
       pageContent.nationality.inputLabel
     }}</wes-label>
@@ -205,37 +211,40 @@
     </wes-error>
   </wes-form-field>
 
-  <h3>{{ pageContent.addressDetails.heading }}</h3>
-  <span [innerHTML]="pageContent.addressDetails.summary"></span>
-  <wes-address-lookup-form
-    *ngIf="!isManualAddressVisible"
-    formControlName="addressLookup"
-    [touched]="controls.addressLookup.touched"
-    [submitAttempt$]="submitAttempt$"
-    (searchedAddress)="onFindPostcode($event)"
-    (selectedAddress)="onSelectedAddress($event)"
-    (showManualAddress)="onShowManualAddress($event)"
-  ></wes-address-lookup-form>
+  <div class="mb-6">
+    <h3>{{ pageContent.addressDetails.heading }}</h3>
+    <div class="mb-4" [innerHTML]="pageContent.addressDetails.summary"></div>
 
-  <button
-    *ngIf="isManualAddressVisible"
-    type="button"
-    class="wes-button wes-button-link"
-    (click)="onShowAddressLookup()"
-    data-test="btnShowFindAddress"
-  >
-    {{ pageContent.addressDetails.findAddress }}
-  </button>
-  <wes-manual-address-form
-    [style.display]="isManualAddressVisible ? 'block' : 'none'"
-    formControlName="manualAddress"
-    [touched]="controls.manualAddress.touched"
-    [submitAttempt]="submitAttempt$ | async"
-  ></wes-manual-address-form>
+    <wes-address-lookup-form
+      *ngIf="!isManualAddressVisible"
+      formControlName="addressLookup"
+      [touched]="controls.addressLookup.touched"
+      [submitAttempt$]="submitAttempt$"
+      (searchedAddress)="onFindPostcode($event)"
+      (selectedAddress)="onSelectedAddress($event)"
+      (showManualAddress)="onShowManualAddress($event)"
+    ></wes-address-lookup-form>
+
+    <button
+      *ngIf="isManualAddressVisible"
+      type="button"
+      class="wes-button wes-button-link"
+      (click)="onShowAddressLookup()"
+      data-test="btnShowFindAddress"
+    >
+      {{ pageContent.addressDetails.findAddress }}
+    </button>
+    <wes-manual-address-form
+      [style.display]="isManualAddressVisible ? 'block' : 'none'"
+      formControlName="manualAddress"
+      [touched]="controls.manualAddress.touched"
+      [submitAttempt]="submitAttempt$ | async"
+    ></wes-manual-address-form>
+  </div>
 
   <h3>{{ pageContent.contactDetails.heading }}</h3>
 
-  <wes-form-field>
+  <wes-form-field id="emailFormField">
     <wes-label data-test="lblPersonalEmail">{{
       pageContent.contactDetails.personalEmail.inputLabel
     }}</wes-label>
@@ -260,7 +269,7 @@
     >
   </wes-form-field>
 
-  <wes-form-field>
+  <wes-form-field id="phoneFormField">
     <wes-label data-test="lblPersonalMobileNumber">{{
       pageContent.contactDetails.mobileNumber.inputLabel
     }}</wes-label>

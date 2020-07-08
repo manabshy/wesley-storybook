@@ -44,7 +44,7 @@ import { AppStateFacade } from '../core/app-state-facade';
   selector: 'wes-customer-details-page',
   templateUrl: './customer-details-page.component.html',
   styleUrls: ['./customer-details-page.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  //   encapsulation: ViewEncapsulation.None,
 })
 export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   form: FormGroup = this.fb.group({
@@ -119,7 +119,7 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
       withInitialValue: true,
     });
 
-    if (this.appStateFacade.state.forms.customerPersonalDetails) {
+    if (this.appStateFacade.state?.forms?.customerPersonalDetails) {
       this.formsManager.patchValue(
         'customerPersonalDetails',
         this.appStateFacade.state.forms.customerPersonalDetails

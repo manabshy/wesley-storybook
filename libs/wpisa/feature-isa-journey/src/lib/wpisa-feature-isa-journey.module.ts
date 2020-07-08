@@ -36,7 +36,7 @@ import { DirectDebitFormComponent } from './components/direct-debit-form/direct-
 import { KnowledgeCheckQ1PageComponent } from './knowledge-check-q1-page/knowledge-check-q1-page.component';
 import { KnowledgeCheckQ2PageComponent } from './knowledge-check-q2-page/knowledge-check-q2-page.component';
 import { ButtonLoaderDirective } from './button-loader.directive';
-import { FormFieldErrorComponent } from './components/form-field-error.component';
+import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
 @NgModule({
   imports: [
     CommonModule,

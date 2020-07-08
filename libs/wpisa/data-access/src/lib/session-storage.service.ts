@@ -110,7 +110,7 @@ export class SessionStorageService {
   }
 
   private get() {
-    // return of({ state: '{}' }); //TODO Remove
+    return of({ state: '{}' }); //TODO Remove
     return of({ state: mockFormsStateString }); //TODO Remove
 
     return this.http.get<{ state: string }>(`/api/isawebapiwrapper/appstate`);

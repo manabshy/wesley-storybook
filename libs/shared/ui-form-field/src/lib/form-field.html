@@ -13,6 +13,7 @@
     [class.wes-accent]="color == 'accent'"
     [class.wes-warn]="color == 'warn'"
     #label
+    *ngIf="_hasLabel()"
   >
     <ng-content select="wes-label"></ng-content>
   </label>

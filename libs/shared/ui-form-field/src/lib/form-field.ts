@@ -189,7 +189,7 @@ export class WesFormField extends _MatFormFieldMixinBase
       this._outlineGapCalculationNeededOnStable = true;
     }
   }
-  _appearance: MatFormFieldAppearance;
+  _appearance: MatFormFieldAppearance = 'standard';
 
   /** Whether the required marker should be hidden. */
   @Input()
@@ -330,7 +330,7 @@ export class WesFormField extends _MatFormFieldMixinBase
 
     // Set the default through here so we invoke the setter on the first run.
     this.appearance =
-      _defaults && _defaults.appearance ? _defaults.appearance : 'legacy';
+      _defaults && _defaults.appearance ? _defaults.appearance : 'standard';
     this._hideRequiredMarker =
       _defaults && _defaults.hideRequiredMarker != null
         ? _defaults.hideRequiredMarker
