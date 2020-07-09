@@ -2,6 +2,8 @@
 .wes-nav,
 .nav {
   list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   font-weight: 600;
   &-vertical {
