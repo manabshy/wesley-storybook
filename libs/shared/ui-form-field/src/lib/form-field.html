@@ -12,6 +12,7 @@
     [class.wes-form-field-empty]="_control.empty && !_shouldAlwaysFloat"
     [class.wes-accent]="color == 'accent'"
     [class.wes-warn]="color == 'warn'"
+    [attr.data-test]="labelTestId"
     #label
     *ngIf="_hasLabel()"
   >

@@ -10,7 +10,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
   <div class="form-group" formGroupName="totalAmount">
     <wes-form-field>
-      <wes-label data-test="lblLumpSumAmount">{{
+      <wes-label labelTestId="lblLumpSumAmount">{{
         pageContent.lumpSumAmount.inputLabel
       }}</wes-label>
       <input
@@ -31,7 +31,7 @@
     <hr />
 
     <wes-form-field>
-      <wes-label data-test="lblMonthlyAmount">{{
+      <wes-label labelTestId="lblMonthlyAmount">{{
         pageContent.monthlyAmount.inputLabel
       }}</wes-label>
       <input

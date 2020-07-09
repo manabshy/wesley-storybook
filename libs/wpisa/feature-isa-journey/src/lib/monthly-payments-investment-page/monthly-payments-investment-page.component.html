@@ -10,7 +10,7 @@
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
   <wes-form-field>
-    <wes-label data-test="lblAmount">{{
+    <wes-label labelTestId="lblAmount">{{
       pageContent.monthlyAmount.inputLabel
     }}</wes-label>
     <input

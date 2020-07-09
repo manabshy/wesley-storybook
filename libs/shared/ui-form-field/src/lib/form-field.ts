@@ -593,6 +593,9 @@ export class WesFormField extends _MatFormFieldMixinBase
     }
   }
 
+  get labelTestId() {
+    return this._hasLabel() ? this._labelChild.labelTestId : this._labelId;
+  }
   /**
    * Updates the width and position of the gap in the outline. Only relevant for the outline
    * appearance.

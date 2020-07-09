@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12 col-md-4">
       <wes-form-field id="postcodeFormField" class="d-block mb-3 mb-md-2">
-        <wes-label data-test="lblFindAddressPostcode">{{
+        <wes-label labelTestId="lblFindAddressPostcode">{{
           pageContent.addressDetails.postcode.inputLabel
         }}</wes-label>
         <input
@@ -35,7 +35,7 @@
   </div>
 
   <wes-form-field class="d-block mb-3" *ngIf="addressList.length > 0">
-    <wes-label data-test="lblAddressList">{{
+    <wes-label labelTestId="lblAddressList">{{
       pageContent.addressDetails.selectYourAddress.inputLabel
     }}</wes-label>
 

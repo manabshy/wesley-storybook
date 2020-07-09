@@ -6,10 +6,12 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import { Directive } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 
 /** The floating label for a `mat-form-field`. */
 @Directive({
   selector: 'wes-label',
 })
-export class WesLabel {}
+export class WesLabel {
+  @Input() labelTestId;
+}
