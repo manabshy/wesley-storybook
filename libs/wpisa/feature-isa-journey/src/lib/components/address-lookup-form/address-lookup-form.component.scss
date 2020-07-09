@@ -1,0 +1,7 @@
+#findButton {
+  width: 100%;
+  //@TODO replace with bootstrap mixin
+  @media (min-width: 768px) {
+    width: initial;
+  }
+}

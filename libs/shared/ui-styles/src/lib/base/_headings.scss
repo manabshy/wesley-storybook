@@ -29,6 +29,7 @@ h1,
     (
       font-size: $global-dimension-static-font-size-900,
       line-height: $global-dimension-static-line-height-1100,
+      margin-bottom: 24px,
     )
   );
   @include media-breakpoint-up(md) {
@@ -36,6 +37,7 @@ h1,
       (
         font-size: $global-dimension-static-font-size-1000,
         line-height: $global-dimension-static-line-height-1200,
+        margin-bottom: 24px,
       )
     );
   }
@@ -48,6 +50,7 @@ h2,
     (
       font-size: $global-dimension-static-font-size-600,
       line-height: $global-dimension-static-line-height-1000,
+      margin-bottom: 24px,
     )
   );
   @include media-breakpoint-up(md) {
@@ -55,6 +58,7 @@ h2,
       (
         font-size: $global-dimension-static-font-size-800,
         line-height: $global-dimension-static-line-height-1100,
+        margin-bottom: 24px,
       )
     );
   }
@@ -67,6 +71,7 @@ h3,
     (
       font-size: $global-dimension-static-font-size-500,
       line-height: $global-dimension-static-line-height-800,
+      margin-bottom: 24px,
     )
   );
   @include media-breakpoint-up(md) {
@@ -74,6 +79,7 @@ h3,
       (
         font-size: $global-dimension-static-font-size-600,
         line-height: $global-dimension-static-line-height-900,
+        margin-bottom: 24px,
       )
     );
   }
@@ -86,6 +92,7 @@ h4,
     (
       font-size: $global-dimension-static-font-size-400,
       line-height: $global-dimension-static-line-height-600,
+      margin-bottom: 16px,
     )
   );
   @include media-breakpoint-up(md) {
@@ -93,6 +100,7 @@ h4,
       (
         font-size: $global-dimension-static-font-size-500,
         line-height: $global-dimension-static-line-height-800,
+        margin-bottom: 16px,
       )
     );
   }
@@ -106,6 +114,7 @@ h5,
     (
       font-size: $global-dimension-static-font-size-400,
       line-height: $global-dimension-static-line-height-600,
+      margin-bottom: 16px,
     )
   );
   @include media-breakpoint-up(md) {
@@ -113,6 +122,7 @@ h5,
       (
         font-size: $global-dimension-static-font-size-500,
         line-height: $global-dimension-static-line-height-800,
+        margin-bottom: 16px,
       )
     );
   }
@@ -126,6 +136,7 @@ h6,
     (
       font-size: $global-dimension-static-font-size-300,
       line-height: $global-dimension-static-line-height-600,
+      margin-bottom: 16px,
     )
   );
 }

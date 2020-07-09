@@ -18,7 +18,7 @@
     z-index: 1;
     display: inline-block;
     overflow: hidden;
-    line-height: 1;
+
     white-space: nowrap;
     font-weight: bold;
 
@@ -29,7 +29,8 @@
     @include rem(
       (
         font-size: 16px,
-        padding: 16px 32px,
+        padding: 14px 32px,
+        line-height: 24px,
       )
     );
 

@@ -1,32 +1,38 @@
 <form [formGroup]="form">
-  <wes-form-field id="postcodeFormField" class="d-block mb-3">
-    <wes-label data-test="lblFindAddressPostcode">{{
-      pageContent.addressDetails.postcode.inputLabel
-    }}</wes-label>
-    <input
-      wesInput
-      type="text"
-      formControlName="postcode"
-      autocomplete="postal-code"
-      data-test="txtFindAddressPostcode"
-      #postcodeInput
-    />
-    <wes-error *ngIf="isFieldInvalid('postcode')">
-      <wes-form-field-error>
-        {{ pageContent.addressDetails.postcode.inputError }}
-      </wes-form-field-error>
-    </wes-error>
-  </wes-form-field>
-  <button
-    id="findButton"
-    class="wes-button wes-button-primary d-block w-100 mb-3"
-    type="button"
-    data-test="btnFindAddress"
-    [wesButtonLoader]="findingAddress"
-    (click)="findAddress(postcodeInput.value)"
-  >
-    {{ pageContent.addressDetails.findAddress }}
-  </button>
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <wes-form-field id="postcodeFormField" class="d-block mb-3 mb-md-2">
+        <wes-label data-test="lblFindAddressPostcode">{{
+          pageContent.addressDetails.postcode.inputLabel
+        }}</wes-label>
+        <input
+          wesInput
+          type="text"
+          formControlName="postcode"
+          autocomplete="postal-code"
+          data-test="txtFindAddressPostcode"
+          #postcodeInput
+        />
+        <wes-error *ngIf="isFieldInvalid('postcode')">
+          <wes-form-field-error>
+            {{ pageContent.addressDetails.postcode.inputError }}
+          </wes-form-field-error>
+        </wes-error>
+      </wes-form-field>
+    </div>
+    <div class="col-12 col-md-8 align-self-end">
+      <button
+        id="findButton"
+        class="wes-button wes-button-primary d-block mb-3 mb-md-2"
+        type="button"
+        data-test="btnFindAddress"
+        [wesButtonLoader]="findingAddress"
+        (click)="findAddress(postcodeInput.value)"
+      >
+        {{ pageContent.addressDetails.findAddress }}
+      </button>
+    </div>
+  </div>
 
   <wes-form-field class="d-block mb-3" *ngIf="addressList.length > 0">
     <wes-label data-test="lblAddressList">{{
@@ -50,10 +56,11 @@
       </wes-form-field-error>
     </wes-error>
   </wes-form-field>
-  <p>
-    <ng-container *ngIf="addressList.length > 0">{{
-      pageContent.addressDetails.cantSeeAddressLabel
-    }}</ng-container>
+  <p class="wes-text-s">
+    <ng-container *ngIf="addressList.length > 0"
+      >{{ pageContent.addressDetails.cantSeeAddressLabel }}&nbsp;</ng-container
+    >
+
     <button
       type="button"
       class="wes-button wes-button-link"

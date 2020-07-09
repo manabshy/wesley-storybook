@@ -63,14 +63,16 @@
     @include rem(
       (
         font-size: 38px,
-        line-height: 48px,
+        line-height: 44px,
+        margin-bottom: 24px,
       )
     );
     @include media-breakpoint-up(md) {
       @include rem(
         (
           font-size: 54px,
-          line-height: 72px,
+          line-height: 64px,
+          margin-bottom: 24px,
         )
       );
     }

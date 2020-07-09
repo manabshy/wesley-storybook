@@ -211,8 +211,8 @@
     </wes-error>
   </wes-form-field>
 
-  <div class="mb-6">
-    <h3>{{ pageContent.addressDetails.heading }}</h3>
+  <div class="my-6 my-md-7 my-lg-8">
+    <h2 class="wes-h4">{{ pageContent.addressDetails.heading }}</h2>
     <div class="mb-4" [innerHTML]="pageContent.addressDetails.summary"></div>
 
     <wes-address-lookup-form
@@ -228,7 +228,7 @@
     <button
       *ngIf="isManualAddressVisible"
       type="button"
-      class="wes-button wes-button-link"
+      class="wes-button wes-button-link mb-4"
       (click)="onShowAddressLookup()"
       data-test="btnShowFindAddress"
     >
@@ -242,7 +242,7 @@
     ></wes-manual-address-form>
   </div>
 
-  <h3>{{ pageContent.contactDetails.heading }}</h3>
+  <h2 class="wes-h4 mb-4">{{ pageContent.contactDetails.heading }}</h2>
 
   <wes-form-field id="emailFormField">
     <wes-label data-test="lblPersonalEmail">{{
@@ -294,7 +294,7 @@
     >
   </wes-form-field>
 
-  <div class="mb-4" [innerHTML]="pageContent.marketing.heading"></div>
+  <div class="mb-4 mt-6" [innerHTML]="pageContent.marketing.heading"></div>
 
   <div class="mb-3">
     <wes-checkbox
