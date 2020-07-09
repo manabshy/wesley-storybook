@@ -235,6 +235,7 @@
       {{ pageContent.addressDetails.findAddress }}
     </button>
     <wes-manual-address-form
+      id="manualAddressForm"
       [style.display]="isManualAddressVisible ? 'block' : 'none'"
       formControlName="manualAddress"
       [touched]="controls.manualAddress.touched"

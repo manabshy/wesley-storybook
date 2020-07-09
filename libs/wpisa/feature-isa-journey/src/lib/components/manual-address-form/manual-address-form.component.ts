@@ -6,6 +6,7 @@ import {
   Input,
   SimpleChanges,
   OnChanges,
+  ViewEncapsulation,
 } from '@angular/core';
 
 import { NgFormsManager } from '@ngneat/forms-manager';
@@ -36,6 +37,8 @@ import { AppForms } from '../../core/app-forms.interface';
   selector: 'wes-manual-address-form',
   templateUrl: './manual-address-form.component.html',
   styleUrls: ['./manual-address-form.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [
     {
       provide: NG_VALIDATORS,

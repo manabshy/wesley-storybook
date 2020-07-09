@@ -23,16 +23,24 @@ $formFieldBorderBottom: 32px;
   }
 }
 
-#titleFormField {
-  margin-bottom: $formFieldBorderBottom;
+#manualAddressForm {
+  .wes-form-field {
+    margin-bottom: $formFieldBorderBottom;
+  }
+}
 
+#titleFormField,
+#manualPostcodeFormField,
+#flatNumberFormField,
+#houseNumberFormField {
   @media (min-width: 768px) {
     .wes-form-field-wrapper {
-      width: 30%;
+      width: 37.25%;
     }
   }
 }
-#dobFormField {
+#dobFormField,
+#titleFormField {
   margin-bottom: $formFieldBorderBottom;
 }
 #firstNameFormField,
@@ -41,7 +49,12 @@ $formFieldBorderBottom: 32px;
 #ninoFormField,
 #nationalityFormField,
 #emailFormField,
-#phoneFormField {
+#phoneFormField,
+#houseNameFormField,
+#streetFormField,
+#townFormField,
+#regionFormField,
+#countyFormField {
   margin-bottom: $formFieldBorderBottom;
 
   //@TODO replace with mixin
