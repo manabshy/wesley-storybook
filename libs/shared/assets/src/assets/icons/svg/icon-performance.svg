@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>BF34A63C-F89B-467B-A83E-31585FEC5883</title>
+    <g id="🟢-1.-Product-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1_ISA-Product-Page_1366" transform="translate(-441.000000, -1392.000000)">
+            <g id="In-Page-Menu" transform="translate(0.000000, 1368.000000)">
+                <g id="Group-4" transform="translate(356.000000, 24.000000)">
+                    <g id="Tab" transform="translate(85.000000, 0.000000)">
+                        <g id="Icon">
+                            <rect id="Rectangle" stroke="#1E2630" x="0.5" y="15.5" width="5" height="8" rx="1"></rect>
+                            <rect id="Rectangle" stroke="#1E2630" opacity="0.900000036" x="9.5" y="12.5" width="5" height="11" rx="1"></rect>
+                            <path d="M23.5,0.5 C16.5068359,7.16666667 8.6735026,10.5 0,10.5" id="Path-5" stroke="#FEBD11"></path>
+                            <rect id="Rectangle" stroke="#1E2630" x="18.5" y="8.5" width="5" height="15" rx="1"></rect>
+                            <g id="Group" transform="translate(21.000000, 0.000000)" stroke="#FEBD11" stroke-linecap="round">
+                                <line x1="0.5" y1="0.5" x2="2.5" y2="0.5" id="Line"></line>
+                                <line x1="2.5" y1="2.5" x2="2.5" y2="0.5" id="Line"></line>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

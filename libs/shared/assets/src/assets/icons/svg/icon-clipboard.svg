@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>0F001E5F-7E06-48C6-9347-234F2B9145C9</title>
+    <g id="🟢-1.-Product-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1_ISA-Product-Page_1366" transform="translate(-715.000000, -1392.000000)">
+            <g id="In-Page-Menu" transform="translate(0.000000, 1368.000000)">
+                <g id="Group-7" transform="translate(661.000000, 24.000000)">
+                    <g id="Tab" transform="translate(54.000000, 0.000000)">
+                        <g id="Icon">
+                            <g id="Group" transform="translate(2.000000, 0.000000)" stroke="#1E2630">
+                                <path d="M14.4910889,3.5 L18.6363636,3.5 C19.1133368,3.5 19.5,3.94771525 19.5,4.5 L19.5,22.5 C19.5,23.0522847 19.1133368,23.5 18.6363636,23.5 L1.36363636,23.5 C0.886663171,23.5 0.5,23.0522847 0.5,22.5 L0.5,4.5 C0.5,3.94771525 0.886663171,3.5 1.36363636,3.5 L5.45874023,3.5" id="Path"></path>
+                                <path d="M11,0.5 L8.5,1 L8.5,2.49841326 L5.5,3 L6,5.5 L14.5,5 L14,2.5 L11.5030035,2.5 L11,0.5 Z" id="Combined-Shape"></path>
+                            </g>
+                            <line x1="17.5" y1="9.5" x2="6.5" y2="9.5" id="Line-6" stroke="#FEBD11" stroke-linecap="round"></line>
+                            <line x1="17.5" y1="12.5" x2="6.5" y2="12.5" id="Line-6" stroke="#FEBD11" stroke-linecap="round"></line>
+                            <line x1="14.5" y1="18.5" x2="6.5" y2="18.5" id="Line-6" stroke="#FEBD11" stroke-linecap="round"></line>
+                            <line x1="17.5" y1="15.5" x2="6.5" y2="15.5" id="Line-6" stroke="#FEBD11" stroke-linecap="round"></line>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
