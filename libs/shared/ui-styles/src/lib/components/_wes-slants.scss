@@ -1,0 +1,29 @@
+%wes-slant {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 56px;
+  width: 100%;
+}
+
+.wes-slant {
+  &-top-right-grey-50 {
+    @extend %wes-slant;
+
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1366 56' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Component_Page-Slants' transform='translate(-277.000000, -4612.000000)' fill='%23F6F6F6'%3E%3Cpolygon id='Slant/Top/Right/Background-Grey' points='277 4668 277 4612 1643 4612'%3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  &-combined-1 {
+    @extend %wes-slant;
+
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1366 57' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='🟢-1.-Product-Page' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Component_Page-Slants' transform='translate(-277.000000, -689.000000)'%3E%3Cg id='Group-2' transform='translate(277.000000, 161.000000)'%3E%3Cg id='Slant/Large' transform='translate(0.000000, 528.000000)'%3E%3Crect id='Background_Btm' fill='%23F6F6F6' x='0' y='0' width='1366' height='56'%3E%3C/rect%3E%3Cpolygon id='Background_Top' fill='%2340474F' transform='translate(683.000000, 28.000000) scale(-1, -1) translate(-683.000000, -28.000000) ' points='1366 0 1366 56 0 56'%3E%3C/polygon%3E%3Cg id='Slant_Half' transform='translate(0.000000, 0.500000)' fill='%23FEBD11'%3E%3Cpolygon id='Path' points='0 0 683 28 0 56'%3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  &-combined-2 {
+    @extend %wes-slant;
+    background-color: white;
+    background-size: contain;
+
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 683 56' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='🟢-1.-Product-Page' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Component_Page-Slants' transform='translate(-277.000000, -4987.000000)' fill='%23FEBD11'%3E%3Cpolygon id='Slant-Triangle/Left/Wesleyan-Gold_10' points='277 4987 960 5015 277 5043'%3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 1366 56' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='🟢-1.-Product-Page' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Component_Page-Slants' transform='translate(-277.000000, -4772.000000)' fill='%23F6F6F6'%3E%3Cpolygon id='Slant/Bottom/Left/Background-Grey' points='277 4772 277 4828 1643 4828'%3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
