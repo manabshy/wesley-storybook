@@ -11,6 +11,11 @@
   cursor: pointer;
   color: $color-text;
 
+  .wes-button-label + .wes-icon,
+  .wes-icon + .wes-button-label {
+    margin-left: rem(8px);
+  }
+
   /**
    * Primary Button
    */

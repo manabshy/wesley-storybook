@@ -1,0 +1,42 @@
+.wes-icon {
+  &-size-s {
+    @include rem(
+      (
+        width: 16px,
+        height: 16px,
+      )
+    );
+  }
+  &-size-m {
+    @include rem(
+      (
+        width: 24px,
+        height: 24px,
+      )
+    );
+  }
+  &-size-l {
+    @include rem(
+      (
+        width: 32px,
+        height: 32px,
+      )
+    );
+  }
+  &-size-l {
+    @include rem(
+      (
+        width: 40px,
+        height: 40px,
+      )
+    );
+  }
+  &-size-xl {
+    @include rem(
+      (
+        width: 48px,
+        height: 48px,
+      )
+    );
+  }
+}
