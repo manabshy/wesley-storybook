@@ -124,8 +124,8 @@
       $global-colour-grey-900 50%,
       transparent 51%
     );
-    background-size: 100px 100px; /* some initial size to get the slanted appearance */
-    background-position: -50px -50px; /* negative positioning to hide it initially */
+    background-size: 0 100%; /* some initial size to get the slanted appearance */
+    background-position: -50px 0px; /* negative positioning to hide it initially */
     background-repeat: no-repeat;
     transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.4s;
 
@@ -133,6 +133,63 @@
       background-size: 200% 200%; /* 200% because gradient is colored only for 50% */
       background-position: 0px 0px; /* bring it fully into view */
       color: $global-colour-white;
+    }
+  }
+
+  &-cta-large {
+    color: $global-colour-grey-900;
+    background: $global-colour-white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    @include rem(
+      (
+        padding: 24px 32px,
+      )
+    );
+    @include media-breakpoint-up(md) {
+      @include rem(
+        (
+          padding: 32px,
+        )
+      );
+    }
+
+    .wes-icon {
+      margin-bottom: rem(16px);
+      path.svg-path-color-change {
+        fill: $global-colour-gold-900;
+        transition-delay: 0.4s;
+        transition: fill ease-out 0.2s;
+      }
+      line.svg-path-color-change {
+        stroke: $global-colour-gold-900;
+        transition-delay: 0.4s;
+        transition: stroke ease-out 0.2s;
+      }
+    }
+
+    background-image: linear-gradient(
+      110deg,
+      $global-colour-gold-900 50%,
+      transparent 51%
+    );
+    background-size: 100px 100%; /* some initial size to get the slanted appearance */
+    background-position: -100px 0; /* negative positioning to hide it initially */
+    background-repeat: no-repeat;
+    transition: background-size cubic-bezier(0.37, 0, 0.63, 1) 0.4s;
+
+    &:hover {
+      background-size: 200% 200%; /* 200% because gradient is colored only for 50% */
+      background-position: 0px 0px; /* bring it fully into view */
+
+      .wes-icon path.svg-path-color-change {
+        fill: $global-colour-white;
+      }
+      .wes-icon line.svg-path-color-change {
+        stroke: $global-colour-white;
+      }
     }
   }
 }
