@@ -23,7 +23,7 @@
       )
     );
   }
-  &-size-l {
+  &-size-xl {
     @include rem(
       (
         width: 40px,
@@ -31,7 +31,7 @@
       )
     );
   }
-  &-size-xl {
+  &-size-xxl {
     @include rem(
       (
         width: 48px,

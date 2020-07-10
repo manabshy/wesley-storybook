@@ -1,0 +1,53 @@
+.wes-download-card {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-left: 2px solid transparent;
+  border-radius: 4px;
+  background-color: $global-colour-white;
+  box-shadow: inset 0px 0px 0 1px $global-colour-grey-100;
+  border-left: 2px solid transparent;
+  transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.3s;
+  @include rem(
+    (
+      padding: 24px 18px,
+    )
+  );
+
+  &:hover {
+    box-shadow: inset 0px 0px 0 1px $global-colour-grey-900;
+    svg path#docCardArrow {
+      transition: d cubic-bezier(0.37, 0, 0.63, 1) 0.3s;
+
+      //d: path('M2,5 C2,2 8,2 8,5'); need path of arrow down
+    }
+  }
+
+  &:before {
+    content: '';
+    width: 2px;
+    position: absolute;
+    left: -2px;
+    top: 2px;
+    bottom: 2px;
+    background-color: $global-colour-gold-900;
+  }
+
+  .wes-icon {
+    display: block;
+    width: 32px;
+    height: 32px;
+  }
+  &-text-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 18px;
+  }
+
+  &-label {
+    font-weight: 600;
+  }
+  &-sub {
+    font-weight: 600;
+  }
+}
