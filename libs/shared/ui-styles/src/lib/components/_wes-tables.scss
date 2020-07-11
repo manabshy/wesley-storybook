@@ -1,0 +1,81 @@
+@mixin grey-delimiter-side {
+  content: '';
+  position: absolute;
+  width: 1px;
+  background-color: $global-colour-grey-100;
+  top: rem(16px);
+  bottom: rem(16px);
+  right: 0;
+}
+
+.wes-table-style-1 {
+  background-color: $global-colour-grey-50;
+  display: inline-block;
+  position: relative;
+  padding: 0 rem(16px);
+  //Yellow line top side
+  &:before {
+    content: '';
+    position: absolute;
+    background-color: $global-colour-gold-900;
+
+    height: 2px;
+    left: 2px;
+    top: -2px;
+    right: 2px;
+
+    //Yellow line left side
+    @include media-breakpoint-up(md) {
+      height: auto;
+      width: 2px;
+      left: -2px;
+      top: 2px;
+      bottom: 2px;
+    }
+  }
+
+  td {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    padding: rem(24px);
+    width: 50%;
+
+    @include media-breakpoint-down(sm) {
+      &:not(:nth-child(even)) {
+        &:after {
+          @include grey-delimiter-side;
+        }
+      }
+      //Border bottom for all cells apart from last 2
+      &:not(:nth-last-child(-n + 2)) {
+        border-bottom: 1px solid $global-colour-grey-100;
+      }
+    }
+
+    @include media-breakpoint-only(md) {
+      width: 33%;
+      &:not(:nth-child(3n + 3)) {
+        &:after {
+          @include grey-delimiter-side;
+        }
+      }
+      //Border bottom for all cells apart from last 3
+      &:not(:nth-last-child(-n + 3)) {
+        border-bottom: 1px solid $global-colour-grey-100;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: auto;
+      padding: rem(24px) 2rem;
+      border-bottom: none;
+
+      &:not(:last-child) {
+        &:after {
+          @include grey-delimiter-side;
+        }
+      }
+    }
+  }
+}
