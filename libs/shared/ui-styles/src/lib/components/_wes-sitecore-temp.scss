@@ -1,0 +1,24 @@
+.wes-bg-style-1 {
+  background-repeat: no-repeat;
+  background-size: 100% 440px;
+}
+
+.wes-2-pages-container {
+  flex-direction: column;
+
+  .wes-2-pages-page-container {
+    &:first-child {
+      border-bottom: 1px solid $global-colour-grey-100;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    flex-direction: row;
+    .wes-2-pages-page-container {
+      &:first-child {
+        border-bottom: none;
+        border-right: 1px solid $global-colour-grey-100;
+      }
+    }
+  }
+}
