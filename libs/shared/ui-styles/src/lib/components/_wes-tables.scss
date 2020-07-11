@@ -79,3 +79,15 @@
     }
   }
 }
+
+.wes-table-style-2 {
+  thead {
+    font-weight: 600;
+  }
+  tr {
+    border-bottom: 1px solid $global-colour-grey-100;
+  }
+  td {
+    padding: rem(16px);
+  }
+}
