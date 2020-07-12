@@ -32,6 +32,7 @@ import {
 
 import { ManualAddressFormValue } from './manual-address-form-value.interface';
 import { AppForms } from '../../core/app-forms.interface';
+import { OnSubmitOrHasValueErrorStateMatcher } from '../../core/error-state-matcher';
 
 @Component({
   selector: 'wes-manual-address-form',
@@ -54,8 +55,10 @@ import { AppForms } from '../../core/app-forms.interface';
 })
 export class ManualAddressFormComponent
   implements ControlValueAccessor, Validator, OnChanges, OnInit, OnDestroy {
-  @Input() touched: boolean;
+  @Input() touched = false;
   @Input() submitAttempt = false;
+
+  errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
 
   form = this.fb.group(
     {
@@ -110,6 +113,12 @@ export class ManualAddressFormComponent
   ngOnChanges(simpleChanges: SimpleChanges) {
     if (simpleChanges['touched'] && simpleChanges['touched'].currentValue) {
       this.form.markAllAsTouched();
+    }
+    if (
+      simpleChanges['submitAttempt'] &&
+      simpleChanges['submitAttempt'].currentValue
+    ) {
+      this.errorStateMatcher.submitted = true;
     }
   }
 

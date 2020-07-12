@@ -104,6 +104,7 @@ export class AddressLookupFormComponent
     this.searchedAddress.emit(postcode);
 
     this.resetAddressList();
+    this.form.markAllAsTouched();
 
     if (this.form.controls.postcode.valid) {
       this._submitAttempt = false;
@@ -155,7 +156,10 @@ export class AddressLookupFormComponent
     );
     this.subscription.add(
       this.submitAttempt$
-        .pipe(tap((attempt) => (this._submitAttempt = attempt)))
+        .pipe(
+          tap((attempt) => (this._submitAttempt = attempt)),
+          tap((_) => this.form.markAllAsTouched())
+        )
         .subscribe()
     );
 

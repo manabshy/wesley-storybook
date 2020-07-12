@@ -54,6 +54,7 @@
       wesInput
       type="text"
       formControlName="street"
+      [errorStateMatcher]="errorStateMatcher"
       autocomplete="address-line2"
       data-test="txtStreet"
     />
@@ -72,6 +73,7 @@
       wesInput
       type="text"
       formControlName="town"
+      [errorStateMatcher]="errorStateMatcher"
       autocomplete="address-level2"
       data-test="txtTown"
     />
@@ -114,6 +116,7 @@
       wesInput
       type="text"
       formControlName="postcode"
+      [errorStateMatcher]="errorStateMatcher"
       autocomplete="postal-code"
       data-test="txtPostcode"
     />

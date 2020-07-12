@@ -10,6 +10,7 @@
           wesInput
           type="text"
           formControlName="bankName"
+          [errorStateMatcher]="errorStateMatcher"
           spellcheck="false"
           data-test="txtBankName"
         />
@@ -29,6 +30,7 @@
         wesInput
         type="text"
         formControlName="accountHolderFullName"
+        [errorStateMatcher]="errorStateMatcher"
         spellcheck="false"
         data-test="txtAccountHolderFullName"
       />
@@ -47,6 +49,7 @@
         wesInput
         type="text"
         formControlName="accountNumber"
+        [errorStateMatcher]="errorStateMatcher"
         inputmode="numeric"
         spellcheck="false"
         data-test="txtAccountNumber"
@@ -72,6 +75,7 @@
               wesInput
               type="text"
               formControlName="c1"
+              [errorStateMatcher]="errorStateMatcher"
               inputmode="numeric"
               spellcheck="false"
               maxlength="2"
@@ -85,6 +89,7 @@
               wesInput
               type="text"
               formControlName="c2"
+              [errorStateMatcher]="errorStateMatcher"
               inputmode="numeric"
               spellcheck="false"
               maxlength="2"
@@ -98,6 +103,7 @@
               wesInput
               type="text"
               formControlName="c3"
+              [errorStateMatcher]="errorStateMatcher"
               inputmode="numeric"
               spellcheck="false"
               maxlength="2"
@@ -115,7 +121,6 @@
     </div>
     <ng-content></ng-content>
   </form>
-  Valid {{ form.valid }}
 
   <div class="direct-debit-guarantee">
     <h3>{{ content.heading }}</h3>

@@ -17,6 +17,7 @@ import {
   ValidationErrors,
   NG_VALIDATORS,
   Validator,
+  FormControl,
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { NgFormsManager } from '@ngneat/forms-manager';
@@ -28,6 +29,7 @@ import {
 
 import { DirectDebitFormValue } from './direct-debit-form-value.interface';
 import { AppForms } from '../../core/app-forms.interface';
+import { OnSubmitOrHasValueErrorStateMatcher } from '../../core/error-state-matcher';
 
 @Component({
   selector: 'wes-direct-debit-form',
@@ -49,8 +51,10 @@ import { AppForms } from '../../core/app-forms.interface';
 export class DirectDebitFormComponent
   implements ControlValueAccessor, Validator, OnChanges, OnInit, OnDestroy {
   @Input() submitAttempt = false;
+  @Input() touched = false;
   @Input() content: DirectDebitDetails;
 
+  errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
   private subscription = new Subscription();
 
   form: FormGroup = this.fb.group(
@@ -124,14 +128,20 @@ export class DirectDebitFormComponent
 
   isFieldInvalid(fieldName: string) {
     return (
-      (this.form.get(fieldName).invalid && this.form.get(fieldName).dirty) ||
-      (this.form.get(fieldName).invalid && this.submitAttempt)
+      this.form.get(fieldName).invalid &&
+      (this.form.get(fieldName).dirty || this.submitAttempt)
     );
   }
 
   ngOnChanges(simpleChanges: SimpleChanges) {
     if (simpleChanges['touched'] && simpleChanges['touched'].currentValue) {
       this.form.markAllAsTouched();
+    }
+    if (
+      simpleChanges['submitAttempt'] &&
+      simpleChanges['submitAttempt'].currentValue
+    ) {
+      this.errorStateMatcher.submitted = true;
     }
   }
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { isEmpty } from 'ramda';
 
 const mockFormsStateString = JSON.stringify({
   attemptId: 618,
@@ -113,8 +114,8 @@ export class SessionStorageService {
   }
 
   private get() {
-    return of({ state: '{}' }); //TODO Remove
-    // return of({ state: mockFormsStateString }); //TODO Remove
+    // return of({ state: '{}' }); //TODO Remove
+    return of({ state: mockFormsStateString }); //TODO Remove
 
     return this.http.get<{ state: string }>(`/api/isawebapiwrapper/appstate`);
   }
@@ -123,7 +124,7 @@ export class SessionStorageService {
     return this.get()
       .toPromise()
       .then((data) => {
-        this.appState = data.state;
+        this.appState = isEmpty(data) ? '' : data.state;
       });
   }
 

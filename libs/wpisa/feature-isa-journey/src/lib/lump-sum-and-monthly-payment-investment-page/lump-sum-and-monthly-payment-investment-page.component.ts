@@ -62,6 +62,7 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
   lumpSumControl = this.form.get('totalAmount.lumpSumAmount');
   monthlyControl = this.form.get('totalAmount.monthlyAmount');
   totalAmountControl = this.form.get('totalAmount');
+  directDebitControl = this.form.get('directDebit');
 
   constructor(
     private investmentOptionsFacade: InvestmentOptionsFacade,
@@ -134,6 +135,7 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
 
   onSubmit() {
     this.submitAttempt = true;
+    this.form.markAllAsTouched();
 
     if (this.form.valid) {
       this.investmentOptionsFacade.submitLumpSumAndMonthlyForm();

@@ -77,7 +77,7 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.submitAttempt = true;
-
+    this.form.markAllAsTouched();
     if (this.formsManager.isValid('lumpSumPayment')) {
       this.investmentOptionsFacade.submitLumpSumForm();
       this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);

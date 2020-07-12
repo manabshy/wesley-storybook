@@ -38,6 +38,7 @@ export class MonthlyPaymentsInvestmentPageComponent
     directDebit: [null, Validators.required],
   });
   amountControl = this.form.controls.amount;
+  directDebitControl = this.form.controls.directDebit;
 
   constructor(
     private investmentOptionsFacade: InvestmentOptionsFacade,
@@ -85,7 +86,7 @@ export class MonthlyPaymentsInvestmentPageComponent
 
   onSubmit() {
     this.submitAttempt = true;
-
+    this.form.markAllAsTouched();
     if (this.form.valid) {
       this.investmentOptionsFacade.submitMonthlyForm();
       this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);

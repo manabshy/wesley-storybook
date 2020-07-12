@@ -39,6 +39,7 @@ import { CustomerDetailsFacade } from '../core/customer-details.facade';
 import { GenericDropdownItem } from '../core/generic-dropdown-item.interface';
 import { AppForms } from '../core/app-forms.interface';
 import { AppStateFacade } from '../core/app-state-facade';
+import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
 
 @Component({
   selector: 'wes-customer-details-page',
@@ -92,6 +93,7 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   controls: { [key: string]: AbstractControl } = {};
   isManualAddressVisible = false;
   subscriptions = new Subscription();
+  errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
 
   titleList$: Observable<GenericDropdownItem[]> = this.customerDetailsFacade
     .titleList$;
@@ -137,6 +139,7 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
           switchMapTo(this.submitAttempt$),
           tap((submitAttempt) => {
             this.showOverallError = this.form.invalid && submitAttempt;
+            this.errorStateMatcher.submitted = this.showOverallError;
           })
         )
         .subscribe()
@@ -182,7 +185,6 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   }
 
   onSelectedAddress(address: AddressDetails) {
-    console.log('Got address', address);
     this.updateManualAddressFormValues(address);
   }
 
@@ -224,7 +226,10 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.submitAttemptSubject$.next(true);
+    this.form.markAllAsTouched();
+
     console.log(this.form);
+
     if (this.form.valid) {
       this.customerDetailsFacade.submit(this.form.value);
 
