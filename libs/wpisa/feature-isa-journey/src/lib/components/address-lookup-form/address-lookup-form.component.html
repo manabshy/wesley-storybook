@@ -14,8 +14,13 @@
           #postcodeInput
         />
         <wes-error *ngIf="isFieldInvalid('postcode')">
-          <wes-form-field-error>
+          <wes-form-field-error *ngIf="controls.postcode.hasError('required')">
             {{ pageContent.addressDetails.postcode.inputError }}
+          </wes-form-field-error>
+          <wes-form-field-error
+            *ngIf="controls.postcode.hasError('postcodeOrServiceFailure')"
+          >
+            {{ pageContent.addressDetails.postcode.inputOtherError }}
           </wes-form-field-error>
         </wes-error>
       </wes-form-field>

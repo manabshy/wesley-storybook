@@ -10,8 +10,8 @@ import {
   EventEmitter,
 } from '@angular/core';
 
-import { take, tap } from 'rxjs/operators';
-import { Subscription, Observable, of } from 'rxjs';
+import { take, tap, catchError, finalize } from 'rxjs/operators';
+import { Subscription, Observable, of, throwError } from 'rxjs';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import {
   FormBuilder,
@@ -94,8 +94,8 @@ export class AddressLookupFormComponent
 
   isFieldInvalid(fieldName: string) {
     return (
-      (this.form.get(fieldName).invalid && this.form.get(fieldName).dirty) ||
-      (this.form.get(fieldName).invalid && this._submitAttempt)
+      this.form.get(fieldName).invalid &&
+      (this.form.get(fieldName).dirty || this._submitAttempt)
     );
   }
 
@@ -107,19 +107,25 @@ export class AddressLookupFormComponent
     this.form.markAllAsTouched();
 
     if (this.form.controls.postcode.valid) {
-      this._submitAttempt = false;
       this.findingAddress = true;
+      this._submitAttempt = false;
 
       this.addressLookupService
         .findByPostcode(postcode)
         .pipe(
           tap((resp) => {
-            const a =
-              resp === null
-                ? this.controls.postcode.setErrors({ invalid: true })
-                : (this.addressList = resp.addresses);
+            if (resp === null) {
+              this.setPostcodeInvalidOrServiceFailure();
+            } else {
+              this.addressList = resp.addresses;
+            }
           }),
-          tap((_) => (this.findingAddress = false)),
+          catchError((err) => {
+            this.setPostcodeInvalidOrServiceFailure();
+
+            return throwError(err);
+          }),
+          finalize(() => (this.findingAddress = false)),
           take(1)
         )
         .subscribe();
@@ -146,6 +152,11 @@ export class AddressLookupFormComponent
   resetAddressList() {
     this.addressList = [];
     this.form.controls.selectedAddressId.reset('');
+  }
+
+  setPostcodeInvalidOrServiceFailure() {
+    this.controls.postcode.setErrors({ postcodeOrServiceFailure: true });
+    this.controls.postcode.markAsDirty();
   }
 
   ngOnInit(): void {
