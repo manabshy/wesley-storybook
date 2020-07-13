@@ -291,6 +291,7 @@ export class DeclarationFacade {
         );
 
         return this.isaApiService.getPaymentUrl(dto).pipe(
+          tap(() => this.loadingService.reset()),
           tap((data) => {
             this.paymentUrlSubject$.next(data.paymentUrl);
           }),
@@ -319,6 +320,7 @@ export class DeclarationFacade {
         );
 
         return this.isaApiService.getPaymentUrl(dto).pipe(
+          tap(() => this.loadingService.reset()),
           tap((data) => {
             this.paymentUrlSubject$.next(data.paymentUrl);
           }),
