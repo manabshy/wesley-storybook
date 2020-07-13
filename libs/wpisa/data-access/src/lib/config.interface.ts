@@ -18,6 +18,7 @@ export interface Config {
     summary: string;
   };
   declaration: Declaration;
+  payment: IFramePayment;
 }
 
 export interface KnowledgeCheck {
@@ -197,4 +198,12 @@ export interface Declaration {
   declarationCheckbox: FormInput;
   content: string;
   confirmContent: string;
+}
+
+export interface IFramePayment {
+  metaTitle: string;
+  heading: string;
+  summary: string;
+  infoCopy: string;
+  backButtonLabel: string;
 }

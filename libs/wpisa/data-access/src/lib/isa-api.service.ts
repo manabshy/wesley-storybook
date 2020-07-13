@@ -154,4 +154,13 @@ export class ISAApiService {
   ): Observable<{}> {
     return this.http.put<{}>('/api/isawebapiwrapper/transaction', transaction);
   }
+
+  getPaymentUrl(
+    transaction: Partial<SubmitTransactionDTO>
+  ): Observable<{ paymentUrl: string }> {
+    return this.http.post<{ paymentUrl: string }>(
+      '/api/isawebapiwrapper/getpaymenturl',
+      transaction
+    );
+  }
 }

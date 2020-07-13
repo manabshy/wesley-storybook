@@ -248,5 +248,16 @@
     },
     "content": "\u003cul\u003e\n    \u003cli\u003eAll subscriptions made, and to be made, belong to me\u003c/li\u003e\n    \u003cli\u003eI am 18 years of age or over\u003c/li\u003e\n    \u003cli\u003eI have not subscribed/made payments,and will not subscribe/make payments that exceed the overall subscription limit across any combination of permitted ISAs in the same tax year\u003c/li\u003e\n    \u003cli\u003eI have not subscribed/made payments and will not subscribe/make payments to another stocks and shares ISA in the same tax year that I subscribe to this one\u003c/li\u003e\n    \u003cli\u003eI am resident in the United Kingdom for tax purposes or, if not so resident, either perform duties which, by virtue of Section 28 of the Income Tax (Earnings \u0026amp; Pensions) Act 2003 (Crown employees serving overseas), are treated as being performed in the United Kingdom or I am married to, or in civil partnership with, a person who performs such duties. I will inform Wesleyan Assurance Society if I cease to be so resident or to perform such duties, or to be married to, or in a civil partnership with, a person who performs such duties.\u003c/li\u003e\n    \u003cli\u003eI have checked my application for accuracy and completeness, including any statements not entered by me and it is correct to the best of my knowledge and belief.\u003c/li\u003e\n    \u003cli\u003eI understand that the With Profits ISA is governed by a standard set of terms and conditions and that Wesleyan Assurance Society will administer the plan in line with these.\u003c/li\u003e\n\u003c/ul\u003e",
     "confirmContent": "\u003cp\u003eBy clicking Confirm, I acknowledge I have read and understood the declarations and agree to them. I wish to enter into a contract with Wesleyan Assurance Society for a With Profits ISA on the basis set out in this application.\u003c/p\u003e"
+  },
+  "endPoints": {
+    "errorPage": "/savings-and-investments/with-profits-isa/error",
+    "confirmationPage": "/savings-and-investments/with-profits-isa/confirmation"
+  },
+  "payment": {
+    "metaTitle": "sdfsdf",
+    "heading": "We're ready for those card details now",
+    "summary": "<p>\nPlease enter your debit card details below for your lump-sum payment of: {lump-sum}\n</p>\n<p>\nPlease note, you must use a debit card for this payment - so please ensure you have sufficient funds in your account to avoid any back charges.\n</p>",
+    "infoCopy": "Don't navigate away from this page while your payment is being processed, or your application may be affected.",
+    "backButtonLabel": "Back"
   }
 }

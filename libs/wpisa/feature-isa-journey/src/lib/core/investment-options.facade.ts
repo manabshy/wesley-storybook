@@ -138,9 +138,7 @@ export class InvestmentOptionsFacade {
 
   submitLumpSumAndMonthlyForm() {
     this.appStateFacade
-      .saveFormState('lumpSumAndMonthly', [
-        { formName: 'lumpSumAndMonthly', controlName: ['directDebit'] },
-      ])
+      .saveFormState('lumpSumAndMonthly')
       .pipe(take(1))
       .subscribe();
   }
@@ -154,9 +152,7 @@ export class InvestmentOptionsFacade {
 
   submitMonthlyForm() {
     this.appStateFacade
-      .saveFormState('monthlyPayment', [
-        { formName: 'monthlyPayment', controlName: ['directDebit'] },
-      ])
+      .saveFormState('monthlyPayment')
       .pipe(take(1))
       .subscribe();
   }

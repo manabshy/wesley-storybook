@@ -1,15 +1,17 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { isaRoutesNames } from '../isa-journey.routes.names';
-import { Subscription, Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { NgFormsManager } from '@ngneat/forms-manager';
 import { Title } from '@angular/platform-browser';
-import { Declaration } from '@wesleyan-frontend/wpisa/data-access';
-import { DeclarationFacade } from '../core/declaration.facade';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgFormsManager } from '@ngneat/forms-manager';
+import { tap, filter, switchMapTo } from 'rxjs/operators';
+import { Subscription, Observable } from 'rxjs';
+
+import { Declaration } from '@wesleyan-frontend/wpisa/data-access';
+
+import { isaRoutesNames } from '../isa-journey.routes.names';
+import { DeclarationFacade } from '../core/declaration.facade';
 import { PersonalDetailsViewModel } from '../core/personal-details-view-model.interface';
 import { DirectDebitViewModel } from '../core/direct-debit-view-model.interface';
-import { tap, filter, switchMapTo } from 'rxjs/operators';
 import { InvestmentOptionPaymentType } from '../core/investment-option-form-value.interface';
 
 @Component({
@@ -80,22 +82,59 @@ export class DeclarationPageComponent implements OnInit, OnDestroy {
     this.submitAttempt = true;
 
     if (this.form.valid) {
-      this.selectedInvestmentOption$
-        .pipe(
-          filter(
-            (investmentOption) =>
-              investmentOption === InvestmentOptionPaymentType.MONTHLY
-          ),
-          switchMapTo(
-            this.declarationFacade.submitMonthlyISA().pipe(
-              tap(console.log),
-              tap((_) =>
-                window.open(`/${isaRoutesNames.CONFIRMATION}`, '_self')
+      this.subscriptions$.add(
+        this.selectedInvestmentOption$
+          .pipe(
+            filter(
+              (investmentOption) =>
+                investmentOption === InvestmentOptionPaymentType.MONTHLY
+            ),
+            switchMapTo(
+              this.declarationFacade.submitMonthlyISA().pipe(
+                tap(console.log),
+                tap((_) =>
+                  window.open(`/${isaRoutesNames.CONFIRMATION}`, '_self')
+                )
               )
             )
           )
-        )
-        .subscribe();
+          .subscribe()
+      );
+
+      this.subscriptions$.add(
+        this.selectedInvestmentOption$
+          .pipe(
+            filter(
+              (investmentOption) =>
+                investmentOption === InvestmentOptionPaymentType.LUMP_SUM
+            ),
+            switchMapTo(
+              this.declarationFacade.submitLumpSumISA().pipe(
+                tap(console.log),
+                tap((_) => this.router.navigate([`${isaRoutesNames.PAYMENT}`]))
+              )
+            )
+          )
+          .subscribe()
+      );
+
+      this.subscriptions$.add(
+        this.selectedInvestmentOption$
+          .pipe(
+            filter(
+              (investmentOption) =>
+                investmentOption ===
+                InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
+            ),
+            switchMapTo(
+              this.declarationFacade.submitLumpSumAndMonthlyISA().pipe(
+                tap(console.log),
+                tap((_) => this.router.navigate([`${isaRoutesNames.PAYMENT}`]))
+              )
+            )
+          )
+          .subscribe()
+      );
     }
   }
 

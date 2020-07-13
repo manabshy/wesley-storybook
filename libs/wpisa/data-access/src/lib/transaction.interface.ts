@@ -13,7 +13,7 @@ export interface SubmitTransactionDTO extends SearchCustomerDTO {
   paymentType: PaymentTypeStrings;
   lumpAmount: number;
   regularAmount: number;
-  lumpPaymentDetails: LumpPaymentDetails;
+  lumpPaymentDetails?: LumpPaymentDetails;
   directDebitType: DirectDebitTypeStrings;
   onlineDirectDebitDetails: OnlineDirectDebitDetails;
   customerPermissionGranted: boolean;
@@ -54,7 +54,7 @@ export interface OnlineDirectDebitDetails {
 }
 
 export const enum PaymentType {
-  Lump = 'Lump',
+  LumpSum = 'LumpSum',
   Regular = 'Regular',
   Both = 'Both',
 }

@@ -15,6 +15,7 @@ import {
   startWith,
   catchError,
   concatMap,
+  finalize,
 } from 'rxjs/operators';
 import { format } from 'date-fns';
 
@@ -55,9 +56,10 @@ export class DeclarationFacade {
   private personalDetailsViewModelDataSubject$ = new BehaviorSubject<
     PersonalDetailsViewModel
   >(null);
-
   private customerPersonalDetailsFormValue: CustomerDetailsFormValue;
+  private paymentUrlSubject$ = new BehaviorSubject<string>(null);
 
+  paymentUrl$ = this.paymentUrlSubject$.asObservable();
   pageContent$ = this.pageContentSubject$.asObservable();
   personalDetailsViewModelData$ = this.personalDetailsViewModelDataSubject$.asObservable();
   selectedInvestmentOption$: Observable<InvestmentOptionPaymentTypeStrings>;
@@ -278,6 +280,64 @@ export class DeclarationFacade {
     );
   }
 
+  submitLumpSumISA() {
+    this.loadingService.show();
+
+    return this.isaApiService.getTransactionId().pipe(
+      map((result) => result.data.transactionId),
+      concatMap((transactionId) => {
+        const dto = this.getLumpSumTransactionDTO(
+          transactionId + Math.random().toString(36).substring(2) //TODO REMOVE RANDOM
+        );
+
+        return this.isaApiService.getPaymentUrl(dto).pipe(
+          tap((data) => {
+            this.paymentUrlSubject$.next(data.paymentUrl);
+          }),
+          catchError((err) => {
+            window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+            return throwError(err);
+          })
+        );
+      }),
+      catchError((err) => {
+        window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+        return throwError(err);
+      }),
+      finalize(() => this.loadingService.hide())
+    );
+  }
+
+  submitLumpSumAndMonthlyISA() {
+    this.loadingService.show();
+
+    return this.isaApiService.getTransactionId().pipe(
+      map((result) => result.data.transactionId),
+      concatMap((transactionId) => {
+        const dto = this.getLumpSumAndMonthlyTransactionDTO(
+          transactionId + Math.random().toString(36).substring(2) //TODO REMOVE RANDOM
+        );
+
+        return this.isaApiService.getPaymentUrl(dto).pipe(
+          tap((data) => {
+            this.paymentUrlSubject$.next(data.paymentUrl);
+          }),
+          tap((_) => this.loadingService.hide()),
+          catchError((err) => {
+            window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+            return throwError(err);
+          })
+        );
+      }),
+      catchError((err) => {
+        console.log('isa both', err);
+        window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+        return throwError(err);
+      }),
+      finalize(() => this.loadingService.hide())
+    );
+  }
+
   getMonthlyTransactionDTO(
     transactionId: string
   ): Omit<SubmitTransactionDTO, 'lumpPaymentDetails' | 'lumpAmount'> {
@@ -299,6 +359,78 @@ export class DeclarationFacade {
       directDebitType: DirectDebitType.ONLINE,
       onlineDirectDebitDetails: this.mapDirectDebit(
         this.formManager.getControl('monthlyPayment', 'directDebit').value
+      ),
+      customerPermissionGranted: true,
+    };
+
+    this.customerDetailsFacade.currentTaxPeriodISALimits$
+      .pipe(
+        tap((value) => (dto.taxPeriodCode = value.taxPeriodCode)),
+        take(1)
+      )
+      .subscribe();
+    return dto;
+  }
+
+  getLumpSumTransactionDTO(
+    transactionId: string
+  ): Omit<
+    SubmitTransactionDTO,
+    'directDebitType' | 'regularAmount' | 'onlineDirectDebitDetails'
+  > {
+    const mappedCustomerDTO = this.customerDetailsFacade.mapCustomerFormToSearchCustomerDTO(
+      this.formManager.getControl('customerPersonalDetails').value
+    );
+
+    const dto = {
+      currentAddress: mappedCustomerDTO.currentAddress,
+      customerDetails: mappedCustomerDTO.customerDetails,
+      nationalityDetails: mappedCustomerDTO.nationalityDetails,
+      marketingPreferences: mappedCustomerDTO.marketingPreferences,
+      transactionId: transactionId,
+      appTestAttemptId: this.knowledgeCheckFacade.knowledgeCheckAttemptId,
+      taxPeriodCode: '',
+      paymentType: PaymentType.LumpSum,
+      lumpAmount: this.formManager.getControl('lumpSumPayment', 'amount').value,
+      customerPermissionGranted: true,
+    };
+
+    this.customerDetailsFacade.currentTaxPeriodISALimits$
+      .pipe(
+        tap((value) => (dto.taxPeriodCode = value.taxPeriodCode)),
+        take(1)
+      )
+      .subscribe();
+    return dto;
+  }
+
+  getLumpSumAndMonthlyTransactionDTO(
+    transactionId: string
+  ): SubmitTransactionDTO {
+    const mappedCustomerDTO = this.customerDetailsFacade.mapCustomerFormToSearchCustomerDTO(
+      this.formManager.getControl('customerPersonalDetails').value
+    );
+
+    const dto = {
+      currentAddress: mappedCustomerDTO.currentAddress,
+      customerDetails: mappedCustomerDTO.customerDetails,
+      nationalityDetails: mappedCustomerDTO.nationalityDetails,
+      marketingPreferences: mappedCustomerDTO.marketingPreferences,
+      transactionId: transactionId,
+      appTestAttemptId: this.knowledgeCheckFacade.knowledgeCheckAttemptId,
+      taxPeriodCode: '',
+      paymentType: PaymentType.Both,
+      lumpAmount: this.formManager.getControl(
+        'lumpSumAndMonthly',
+        'totalAmount.lumpSumAmount'
+      ).value,
+      regularAmount: this.formManager.getControl(
+        'lumpSumAndMonthly',
+        'totalAmount.monthlyAmount'
+      ).value,
+      directDebitType: DirectDebitType.ONLINE,
+      onlineDirectDebitDetails: this.mapDirectDebit(
+        this.formManager.getControl('lumpSumAndMonthly', 'directDebit').value
       ),
       customerPermissionGranted: true,
     };

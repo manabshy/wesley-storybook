@@ -65,11 +65,23 @@ const mockFormsStateString = JSON.stringify({
     },
     monthlyPayment: {
       amount: '300.55',
+      directDebit: {
+        accountHolderFullName: 'James Bond',
+        sortCode: { c1: '12', c2: '00', c3: '33' },
+        accountNumber: '12312312',
+        bankName: 'RBS',
+      },
     },
     lumpSumAndMonthly: {
       totalAmount: {
         lumpSumAmount: '10000.55',
         monthlyAmount: '300.67',
+      },
+      directDebit: {
+        accountHolderFullName: 'James Bond',
+        sortCode: { c1: '12', c2: '00', c3: '33' },
+        accountNumber: '12312312',
+        bankName: 'RBS',
       },
     },
     lumpSumPayment: {
@@ -124,7 +136,7 @@ export class SessionStorageService {
     return this.get()
       .toPromise()
       .then((data) => {
-        this.appState = isEmpty(data) ? '' : data.state;
+        this.appState = isEmpty(data.state) ? '{}' : data.state;
       });
   }
 
