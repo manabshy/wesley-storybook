@@ -34,6 +34,7 @@ import {
 
 import { AddressLookupFormValue } from './address-lookup-form-value.interface';
 import { AppForms } from '../../core/app-forms.interface';
+import { OnSubmitOrHasValueErrorStateMatcher } from '../../core/error-state-matcher';
 
 @Component({
   selector: 'wes-address-lookup-form',
@@ -57,7 +58,7 @@ export class AddressLookupFormComponent
   @Output() showManualAddress = new EventEmitter();
 
   findingAddress = false;
-
+  errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
   form = this.fb.group({
     postcode: [
       '',
@@ -101,6 +102,7 @@ export class AddressLookupFormComponent
 
   findAddress(postcode: string) {
     this._submitAttempt = true;
+    this.errorStateMatcher.submitted = true;
     this.searchedAddress.emit(postcode);
 
     this.resetAddressList();
@@ -109,6 +111,7 @@ export class AddressLookupFormComponent
     if (this.form.controls.postcode.valid) {
       this.findingAddress = true;
       this._submitAttempt = false;
+      this.errorStateMatcher.submitted = false;
 
       this.addressLookupService
         .findByPostcode(postcode)
@@ -169,7 +172,8 @@ export class AddressLookupFormComponent
       this.submitAttempt$
         .pipe(
           tap((attempt) => (this._submitAttempt = attempt)),
-          tap((_) => this.form.markAllAsTouched())
+          tap((_) => this.form.markAllAsTouched()),
+          tap((_) => (this.errorStateMatcher.submitted = this._submitAttempt))
         )
         .subscribe()
     );

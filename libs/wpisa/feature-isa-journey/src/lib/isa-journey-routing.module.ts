@@ -67,7 +67,7 @@ export const routes: Route[] = [
   {
     path: isaRoutesNames.PAYMENT,
     component: PaymentPageComponent,
-    data: { step: 4 },
+    data: { step: 3 },
   },
 ];
 

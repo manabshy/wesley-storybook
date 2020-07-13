@@ -54,7 +54,8 @@ $formFieldBorderBottom: 32px;
 #streetFormField,
 #townFormField,
 #regionFormField,
-#countyFormField {
+#countyFormField,
+#addressLookupResultList {
   margin-bottom: $formFieldBorderBottom;
 
   //@TODO replace with mixin

@@ -1,6 +1,6 @@
 <form [formGroup]="form">
   <div class="row">
-    <div class="col-12 col-md-4">
+    <div class="col-12">
       <wes-form-field id="postcodeFormField" class="d-block mb-3 mb-md-2">
         <wes-label labelTestId="lblFindAddressPostcode">{{
           pageContent.addressDetails.postcode.inputLabel
@@ -9,10 +9,12 @@
           wesInput
           type="text"
           formControlName="postcode"
+          [errorStateMatcher]="errorStateMatcher"
           autocomplete="postal-code"
           data-test="txtFindAddressPostcode"
           #postcodeInput
         />
+
         <wes-error *ngIf="isFieldInvalid('postcode')">
           <wes-form-field-error *ngIf="controls.postcode.hasError('required')">
             {{ pageContent.addressDetails.postcode.inputError }}
@@ -24,11 +26,10 @@
           </wes-form-field-error>
         </wes-error>
       </wes-form-field>
-    </div>
-    <div class="col-12 col-md-8 align-self-end">
+
       <button
         id="findButton"
-        class="wes-button wes-button-primary d-block mb-3 mb-md-2"
+        class="wes-button wes-button-primary mb-3 mb-md-2"
         type="button"
         data-test="btnFindAddress"
         [wesButtonLoader]="findingAddress"
@@ -39,7 +40,11 @@
     </div>
   </div>
 
-  <wes-form-field class="d-block mb-3" *ngIf="addressList.length > 0">
+  <wes-form-field
+    id="addressLookupResultList"
+    class="d-block mb-3"
+    *ngIf="addressList.length > 0"
+  >
     <wes-label labelTestId="lblAddressList">{{
       pageContent.addressDetails.selectYourAddress.inputLabel
     }}</wes-label>
@@ -47,6 +52,7 @@
     <select
       wesNativeControl
       formControlName="selectedAddressId"
+      [errorStateMatcher]="errorStateMatcher"
       (change)="onSelectedAddress($event)"
       data-test="ddAddressList"
     >

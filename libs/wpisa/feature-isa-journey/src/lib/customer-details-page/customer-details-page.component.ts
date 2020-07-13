@@ -14,7 +14,7 @@ import {
   Validators,
   AbstractControl,
 } from '@angular/forms';
-import { tap, switchMapTo, take } from 'rxjs/operators';
+import { tap, switchMapTo, take, startWith } from 'rxjs/operators';
 import { Observable, Subscription, BehaviorSubject } from 'rxjs';
 
 import {
@@ -133,6 +133,7 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.form.statusChanges
         .pipe(
+          startWith(false),
           tap((_) =>
             this.form.valid ? this.submitAttemptSubject$.next(false) : ''
           ),
@@ -225,8 +226,8 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.submitAttemptSubject$.next(true);
     this.form.markAllAsTouched();
+    this.submitAttemptSubject$.next(true);
 
     console.log(this.form);
 
@@ -243,7 +244,7 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
         )
         .subscribe();
     } else {
-      this.showOverallError = true;
+      //   this.showOverallError = true;
     }
   }
 
