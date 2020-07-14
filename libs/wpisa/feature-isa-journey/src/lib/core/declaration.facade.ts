@@ -57,16 +57,13 @@ export class DeclarationFacade {
   private endPoints: EndPoints;
   private pageContent: Declaration;
   private pageContentSubject$ = new BehaviorSubject<Declaration>(null);
-  private personalDetailsViewModelDataSubject$ = new BehaviorSubject<
-    PersonalDetailsViewModel
-  >(null);
-  private customerPersonalDetailsFormValue: CustomerDetailsFormValue;
+
   private paymentUrlSubject$ = new BehaviorSubject<string>(null);
 
   paymentUrl$ = this.paymentUrlSubject$.asObservable();
   pageContent$ = this.pageContentSubject$.asObservable();
   selectedInvestmentOption$: Observable<InvestmentOptionPaymentTypeStrings>;
-  personalDetailsViewModelData$ = this.personalDetailsViewModelDataSubject$.asObservable();
+  personalDetailsViewModelData$: Observable<PersonalDetailsViewModel>;
   directDebitViewModelData$: Observable<DirectDebitViewModel>;
   investmentCardViewModelData$: Observable<InvestmentCardViewModel>;
   lumpSumAmount$: Observable<number>;
@@ -85,15 +82,15 @@ export class DeclarationFacade {
 
     this.endPoints = this.configService.content.endPoints;
 
-    this.customerPersonalDetailsFormValue = this.formManager.getControl(
-      'customerPersonalDetails'
-    ).value;
-
-    this.personalDetailsViewModelDataSubject$.next(
-      this.mapPersonalDetailsFormValuesToViewModel(
-        this.customerPersonalDetailsFormValue
-      )
-    );
+    this.personalDetailsViewModelData$ = this.formManager
+      .valueChanges('customerPersonalDetails')
+      .pipe(
+        map((customerPersonalDetailsFormValue) =>
+          this.mapPersonalDetailsFormValuesToViewModel(
+            customerPersonalDetailsFormValue
+          )
+        )
+      );
 
     this.selectedInvestmentOption$ = this.formManager.valueChanges(
       'investmentOptions',

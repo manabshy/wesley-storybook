@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, take, filter, tap, switchMap } from 'rxjs/operators';
+import { map, take, filter, tap, switchMap, finalize } from 'rxjs/operators';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 import {
@@ -128,19 +128,13 @@ export class CustomerDetailsFacade {
       .pipe(take(1))
       .subscribe();
 
-    this.isaApiService
-      .findCustomer(customerDTO)
-      .pipe(
-        tap((resp) =>
-          this.currentTaxPeriodISALimitsSubject$.next(
-            resp.data.currentTaxPeriod
-          )
-        ),
-        tap((_) => this.submitSubject$.next(true)),
-        tap((_) => this.loadingService.hide()),
-        take(1)
-      )
-      .subscribe();
+    return this.isaApiService.findCustomer(customerDTO).pipe(
+      tap((resp) =>
+        this.currentTaxPeriodISALimitsSubject$.next(resp.data.currentTaxPeriod)
+      ),
+      tap((_) => this.submitSubject$.next(true)),
+      finalize(() => this.loadingService.hide())
+    );
   }
 
   mapCustomerFormToSearchCustomerDTO(
