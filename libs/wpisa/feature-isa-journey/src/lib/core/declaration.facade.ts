@@ -28,6 +28,7 @@ import {
   PaymentType,
   DirectDebitType,
   OnlineDirectDebitDetails,
+  EndPoints,
 } from '@wesleyan-frontend/wpisa/data-access';
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
@@ -51,6 +52,7 @@ import { KnowledgeCheckFacade } from './knowledge-check.facade';
   providedIn: 'root',
 })
 export class DeclarationFacade {
+  private endPoints: EndPoints;
   private pageContent: Declaration;
   private pageContentSubject$ = new BehaviorSubject<Declaration>(null);
   private personalDetailsViewModelDataSubject$ = new BehaviorSubject<
@@ -61,8 +63,8 @@ export class DeclarationFacade {
 
   paymentUrl$ = this.paymentUrlSubject$.asObservable();
   pageContent$ = this.pageContentSubject$.asObservable();
-  personalDetailsViewModelData$ = this.personalDetailsViewModelDataSubject$.asObservable();
   selectedInvestmentOption$: Observable<InvestmentOptionPaymentTypeStrings>;
+  personalDetailsViewModelData$ = this.personalDetailsViewModelDataSubject$.asObservable();
   directDebitViewModelData$: Observable<DirectDebitViewModel>;
   investmentCardViewModelData$: Observable<InvestmentCardViewModel>;
   lumpSumAmount$: Observable<number>;
@@ -78,6 +80,8 @@ export class DeclarationFacade {
   ) {
     this.pageContent = this.configService.content.declaration;
     this.pageContentSubject$.next(this.pageContent);
+
+    this.endPoints = this.configService.content.endPoints;
 
     this.customerPersonalDetailsFormValue = this.formManager.getControl(
       'customerPersonalDetails'
@@ -267,14 +271,15 @@ export class DeclarationFacade {
 
         return this.isaApiService.submitTransaction(dto).pipe(
           tap((_) => this.loadingService.hide()),
+          tap((_) => window.open(this.endPoints.confirmationPage, '_self')),
           catchError((err) => {
-            window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+            window.open(this.endPoints.confirmationErrorPage, '_self');
             return throwError(err);
           })
         );
       }),
       catchError((err) => {
-        window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+        window.open(this.endPoints.confirmationErrorPage, '_self');
         return throwError(err);
       })
     );
@@ -296,13 +301,13 @@ export class DeclarationFacade {
             this.paymentUrlSubject$.next(data.paymentUrl);
           }),
           catchError((err) => {
-            window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+            window.open(this.endPoints.confirmationErrorPage, '_self');
             return throwError(err);
           })
         );
       }),
       catchError((err) => {
-        window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+        window.open(this.endPoints.confirmationErrorPage, '_self');
         return throwError(err);
       }),
       finalize(() => this.loadingService.hide())
@@ -326,14 +331,13 @@ export class DeclarationFacade {
           }),
           tap((_) => this.loadingService.hide()),
           catchError((err) => {
-            window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+            window.open(this.endPoints.confirmationErrorPage, '_self');
             return throwError(err);
           })
         );
       }),
       catchError((err) => {
-        console.log('isa both', err);
-        window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+        window.open(this.endPoints.confirmationErrorPage, '_self');
         return throwError(err);
       }),
       finalize(() => this.loadingService.hide())
