@@ -62,12 +62,12 @@ export class MonthlyPaymentsInvestmentPageComponent
 
     this.formsManager.upsert('monthlyPayment', this.form);
 
-    // if (this.appStateFacade.state.forms.monthlyPayment) {
-    //   this.formsManager.patchValue(
-    //     'monthlyPayment',
-    //     this.appStateFacade.state.forms.monthlyPayment
-    //   );
-    // }
+    if (this.appStateFacade.state.forms.monthlyPayment) {
+      this.formsManager.patchValue(
+        'monthlyPayment',
+        this.appStateFacade.state.forms.monthlyPayment
+      );
+    }
   }
 
   ngOnInit(): void {

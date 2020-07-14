@@ -65,12 +65,12 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
 
     this.formsManager.upsert('lumpSumPayment', this.form);
 
-    // if (this.appStateFacade.state.forms.lumpSumPayment) {
-    //   this.formsManager.patchValue(
-    //     'lumpSumPayment',
-    //     this.appStateFacade.state.forms.lumpSumPayment
-    //   );
-    // }
+    if (this.appStateFacade.state.forms.lumpSumPayment) {
+      this.formsManager.patchValue(
+        'lumpSumPayment',
+        this.appStateFacade.state.forms.lumpSumPayment
+      );
+    }
   }
 
   ngOnInit(): void {}

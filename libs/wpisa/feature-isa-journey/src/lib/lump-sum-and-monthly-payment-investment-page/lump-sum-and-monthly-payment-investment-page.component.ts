@@ -98,12 +98,12 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
 
     this.formsManager.upsert('lumpSumAndMonthly', this.form);
 
-    // if (this.appStateFacade.state.forms.lumpSumAndMonthly) {
-    //   this.formsManager.patchValue(
-    //     'lumpSumAndMonthly',
-    //     this.appStateFacade.state.forms.lumpSumAndMonthly
-    //   );
-    // }
+    if (this.appStateFacade.state.forms.lumpSumAndMonthly) {
+      this.formsManager.patchValue(
+        'lumpSumAndMonthly',
+        this.appStateFacade.state.forms.lumpSumAndMonthly
+      );
+    }
   }
 
   ngOnInit() {

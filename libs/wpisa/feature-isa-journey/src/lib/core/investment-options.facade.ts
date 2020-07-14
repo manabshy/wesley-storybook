@@ -139,26 +139,14 @@ export class InvestmentOptionsFacade {
   }
 
   submitLumpSumAndMonthlyForm() {
-    this.loadingService.show();
-
-    return this.appStateFacade
-      .saveFormState('lumpSumAndMonthly')
-      .pipe(finalize(() => this.loadingService.hide()));
+    return this.appStateFacade.saveFormState('lumpSumAndMonthly');
   }
 
   submitLumpSumForm() {
-    this.loadingService.show();
-
-    return this.appStateFacade
-      .saveFormState('lumpSumPayment')
-      .pipe(finalize(() => this.loadingService.hide()));
+    return this.appStateFacade.saveFormState('lumpSumPayment');
   }
 
   submitMonthlyForm() {
-    this.loadingService.show();
-
-    return this.appStateFacade
-      .saveFormState('monthlyPayment')
-      .pipe(finalize(() => this.loadingService.hide()));
+    return this.appStateFacade.saveFormState('monthlyPayment');
   }
 }
