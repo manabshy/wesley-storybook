@@ -343,18 +343,8 @@ export class DeclarationFacade {
   getMonthlyTransactionDTO(
     transactionId: string
   ): Omit<SubmitTransactionDTO, 'lumpPaymentDetails' | 'lumpAmount'> {
-    const mappedCustomerDTO = this.customerDetailsFacade.mapCustomerFormToSearchCustomerDTO(
-      this.formManager.getControl('customerPersonalDetails').value
-    );
-
     const dto = {
-      currentAddress: mappedCustomerDTO.currentAddress,
-      customerDetails: mappedCustomerDTO.customerDetails,
-      nationalityDetails: mappedCustomerDTO.nationalityDetails,
-      marketingPreferences: mappedCustomerDTO.marketingPreferences,
-      transactionId: transactionId,
-      appTestAttemptId: this.knowledgeCheckFacade.knowledgeCheckAttemptId,
-      taxPeriodCode: '',
+      ...this.getCommonSubmitTransactionDTO(transactionId),
       paymentType: PaymentType.Regular,
       regularAmount: this.formManager.getControl('monthlyPayment', 'amount')
         .value,
@@ -362,15 +352,8 @@ export class DeclarationFacade {
       onlineDirectDebitDetails: this.mapDirectDebit(
         this.formManager.getControl('monthlyPayment', 'directDebit').value
       ),
-      customerPermissionGranted: true,
     };
 
-    this.customerDetailsFacade.currentTaxPeriodISALimits$
-      .pipe(
-        tap((value) => (dto.taxPeriodCode = value.taxPeriodCode)),
-        take(1)
-      )
-      .subscribe();
     return dto;
   }
 
@@ -380,47 +363,20 @@ export class DeclarationFacade {
     SubmitTransactionDTO,
     'directDebitType' | 'regularAmount' | 'onlineDirectDebitDetails'
   > {
-    const mappedCustomerDTO = this.customerDetailsFacade.mapCustomerFormToSearchCustomerDTO(
-      this.formManager.getControl('customerPersonalDetails').value
-    );
-
     const dto = {
-      currentAddress: mappedCustomerDTO.currentAddress,
-      customerDetails: mappedCustomerDTO.customerDetails,
-      nationalityDetails: mappedCustomerDTO.nationalityDetails,
-      marketingPreferences: mappedCustomerDTO.marketingPreferences,
-      transactionId: transactionId,
-      appTestAttemptId: this.knowledgeCheckFacade.knowledgeCheckAttemptId,
-      taxPeriodCode: '',
+      ...this.getCommonSubmitTransactionDTO(transactionId),
       paymentType: PaymentType.LumpSum,
       lumpAmount: this.formManager.getControl('lumpSumPayment', 'amount').value,
-      customerPermissionGranted: true,
     };
 
-    this.customerDetailsFacade.currentTaxPeriodISALimits$
-      .pipe(
-        tap((value) => (dto.taxPeriodCode = value.taxPeriodCode)),
-        take(1)
-      )
-      .subscribe();
     return dto;
   }
 
   getLumpSumAndMonthlyTransactionDTO(
     transactionId: string
   ): SubmitTransactionDTO {
-    const mappedCustomerDTO = this.customerDetailsFacade.mapCustomerFormToSearchCustomerDTO(
-      this.formManager.getControl('customerPersonalDetails').value
-    );
-
     const dto = {
-      currentAddress: mappedCustomerDTO.currentAddress,
-      customerDetails: mappedCustomerDTO.customerDetails,
-      nationalityDetails: mappedCustomerDTO.nationalityDetails,
-      marketingPreferences: mappedCustomerDTO.marketingPreferences,
-      transactionId: transactionId,
-      appTestAttemptId: this.knowledgeCheckFacade.knowledgeCheckAttemptId,
-      taxPeriodCode: '',
+      ...this.getCommonSubmitTransactionDTO(transactionId),
       paymentType: PaymentType.Both,
       lumpAmount: this.formManager.getControl(
         'lumpSumAndMonthly',
@@ -434,6 +390,36 @@ export class DeclarationFacade {
       onlineDirectDebitDetails: this.mapDirectDebit(
         this.formManager.getControl('lumpSumAndMonthly', 'directDebit').value
       ),
+    };
+
+    return dto;
+  }
+
+  getCommonSubmitTransactionDTO(
+    transactionId: string
+  ): Pick<
+    SubmitTransactionDTO,
+    | 'appTestAttemptId'
+    | 'transactionId'
+    | 'taxPeriodCode'
+    | 'customerPermissionGranted'
+    | 'currentAddress'
+    | 'customerDetails'
+    | 'nationalityDetails'
+    | 'marketingPreferences'
+  > {
+    const mappedCustomerDTO = this.customerDetailsFacade.mapCustomerFormToSearchCustomerDTO(
+      this.formManager.getControl('customerPersonalDetails').value
+    );
+
+    const dto = {
+      currentAddress: mappedCustomerDTO.currentAddress,
+      customerDetails: mappedCustomerDTO.customerDetails,
+      nationalityDetails: mappedCustomerDTO.nationalityDetails,
+      marketingPreferences: mappedCustomerDTO.marketingPreferences,
+      transactionId: transactionId,
+      appTestAttemptId: this.knowledgeCheckFacade.knowledgeCheckAttemptId,
+      taxPeriodCode: '',
       customerPermissionGranted: true,
     };
 
