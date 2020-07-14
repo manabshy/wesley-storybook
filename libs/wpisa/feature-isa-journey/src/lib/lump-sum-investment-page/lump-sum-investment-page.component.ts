@@ -13,6 +13,7 @@ import { isaRoutesNames } from '../isa-journey.routes.names';
 import { AppStateFacade } from '../core/app-state-facade';
 import { AppForms } from '../core/app-forms.interface';
 import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
+import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
 @Component({
   selector: 'wes-lump-sum-investment-page',
@@ -37,6 +38,7 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
   });
 
   constructor(
+    private loadingService: OverlayProgressSpinnerService,
     private investmentOptionsFacade: InvestmentOptionsFacade,
     private appStateFacade: AppStateFacade,
     private router: Router,
@@ -84,10 +86,12 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
     this.submitAttempt = true;
     this.form.markAllAsTouched();
     if (this.formsManager.isValid('lumpSumPayment')) {
+      this.loadingService.show();
       //Need the timeout, sometimes the input values don't update
       setTimeout(() => {
         this.subscriptions$.add(
           this.investmentOptionsFacade.submitLumpSumForm().subscribe(() => {
+            this.loadingService.hide();
             this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
           })
         );

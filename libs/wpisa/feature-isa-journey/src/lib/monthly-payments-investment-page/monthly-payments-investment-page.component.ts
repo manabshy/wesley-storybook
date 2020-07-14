@@ -14,6 +14,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 import { AppStateFacade } from '../core/app-state-facade';
 import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
+import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
 @Component({
   selector: 'wes-monthly-payments-investment-page',
@@ -43,6 +44,7 @@ export class MonthlyPaymentsInvestmentPageComponent
   directDebitControl = this.form.get('directDebit');
 
   constructor(
+    private loadingService: OverlayProgressSpinnerService,
     private investmentOptionsFacade: InvestmentOptionsFacade,
     private appStateFacade: AppStateFacade,
     private router: Router,
@@ -89,10 +91,12 @@ export class MonthlyPaymentsInvestmentPageComponent
     this.form.markAllAsTouched();
 
     if (this.form.valid) {
+      this.loadingService.show();
       //Need the timeout, sometimes the input values don't update
       setTimeout(() => {
         this.subscriptions$.add(
           this.investmentOptionsFacade.submitMonthlyForm().subscribe(() => {
+            this.loadingService.hide();
             this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
           })
         );

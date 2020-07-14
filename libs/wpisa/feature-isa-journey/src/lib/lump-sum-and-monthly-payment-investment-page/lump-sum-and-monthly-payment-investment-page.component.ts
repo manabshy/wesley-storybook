@@ -38,6 +38,7 @@ import { Subscription, merge } from 'rxjs';
 import { AppStateFacade } from '../core/app-state-facade';
 import { AppForms } from '../core/app-forms.interface';
 import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
+import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
 @Component({
   selector: 'wes-lump-sum-and-monthly-payment-investment-page',
@@ -79,6 +80,7 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
   directDebitControl = this.form.get('directDebit');
 
   constructor(
+    private loadingService: OverlayProgressSpinnerService,
     private investmentOptionsFacade: InvestmentOptionsFacade,
     private appStateFacade: AppStateFacade,
     private router: Router,
@@ -150,12 +152,14 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
     this.form.markAllAsTouched();
 
     if (this.form.valid) {
+      this.loadingService.show();
       //Need the timeout, sometimes the input values don't update
       setTimeout(() => {
         this.subscriptions$.add(
           this.investmentOptionsFacade
             .submitLumpSumAndMonthlyForm()
             .subscribe(() => {
+              this.loadingService.hide();
               this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
             })
         );
