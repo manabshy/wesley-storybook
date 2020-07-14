@@ -37,13 +37,12 @@ export const isaAgeValidator: ValidatorFn = (
   const month: number = control.get('month').value;
   const year: number = control.get('year').value;
 
-  const today = new Date(Date.now());
-  const dob = new Date(year, month, day);
-
   if (!isValid(parseISO(`${year}-${month}-${day}`))) {
     return { invalidDate: true };
   }
 
+  const today = new Date(Date.now());
+  const dob = new Date(year, month - 1 /*month starts at 0*/, day);
   const age = differenceInYears(today, dob);
 
   if (age < 18 || 74 < age) {

@@ -12,6 +12,15 @@ const validValues = [
     age: 19,
   },
   {
+    dob: { day: 14, month: '07', year: 2002 },
+    today: {
+      day: 14,
+      month: '07',
+      year: 2020,
+    },
+    age: 18, //today
+  },
+  {
     dob: { day: 12, month: 12, year: 2001 },
     today: {
       day: 3,
