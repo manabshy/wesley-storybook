@@ -113,9 +113,7 @@ export class DirectDebitFormComponent
     private fb: FormBuilder,
     private formsManager: NgFormsManager<AppForms>
   ) {
-    this.formsManager.upsert('directDebit', this.form, {
-      withInitialValue: true,
-    });
+    this.formsManager.upsert('directDebit', this.form);
   }
 
   ngOnInit(): void {

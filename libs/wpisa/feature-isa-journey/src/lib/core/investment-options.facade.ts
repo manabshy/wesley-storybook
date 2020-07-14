@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { formatCurrency } from '@angular/common';
 import { Observable } from 'rxjs';
-import { map, filter, shareReplay, tap, take } from 'rxjs/operators';
+import { map, filter, shareReplay, tap, take, finalize } from 'rxjs/operators';
 import { compose, assocPath, replace, over, lensPath, reduce } from 'ramda';
 import { format } from 'date-fns';
 import {
@@ -14,6 +14,7 @@ import {
 import { CustomerDetailsFacade } from './customer-details.facade';
 import { formatCurrencyGBP } from './util-functions';
 import { AppStateFacade } from './app-state-facade';
+import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +37,7 @@ export class InvestmentOptionsFacade {
 
   constructor(
     private configService: ConfigService,
+    private loadingService: OverlayProgressSpinnerService,
     private customerDetailsFacade: CustomerDetailsFacade,
     private appStateFacade: AppStateFacade
   ) {
@@ -137,23 +139,26 @@ export class InvestmentOptionsFacade {
   }
 
   submitLumpSumAndMonthlyForm() {
-    this.appStateFacade
+    this.loadingService.show();
+
+    return this.appStateFacade
       .saveFormState('lumpSumAndMonthly')
-      .pipe(take(1))
-      .subscribe();
+      .pipe(finalize(() => this.loadingService.hide()));
   }
 
   submitLumpSumForm() {
-    this.appStateFacade
+    this.loadingService.show();
+
+    return this.appStateFacade
       .saveFormState('lumpSumPayment')
-      .pipe(take(1))
-      .subscribe();
+      .pipe(finalize(() => this.loadingService.hide()));
   }
 
   submitMonthlyForm() {
-    this.appStateFacade
+    this.loadingService.show();
+
+    return this.appStateFacade
       .saveFormState('monthlyPayment')
-      .pipe(take(1))
-      .subscribe();
+      .pipe(finalize(() => this.loadingService.hide()));
   }
 }

@@ -6,6 +6,7 @@ import {
   BehaviorSubject,
   combineLatest,
   throwError,
+  merge,
 } from 'rxjs';
 import {
   map,
@@ -16,6 +17,7 @@ import {
   catchError,
   concatMap,
   finalize,
+  mergeMap,
 } from 'rxjs/operators';
 import { format } from 'date-fns';
 
@@ -113,31 +115,59 @@ export class DeclarationFacade {
       map(this.mapDirectDebitFormValuesToViewModel)
     );
 
-    this.lumpSumAmount$ = this.selectedInvestmentOption$.pipe(
-      filter(
-        (investmentOption) =>
-          investmentOption === InvestmentOptionPaymentType.LUMP_SUM ||
-          investmentOption === InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
-      ),
-      map((investmentOption) =>
-        investmentOption === InvestmentOptionPaymentType.LUMP_SUM
-          ? this.formManager.getControl('lumpSumPayment', 'amount').value
-          : this.formManager.getControl('lumpSumAndMonthly', 'totalAmount')
-              .controls.lumpSumAmount.value
+    this.lumpSumAmount$ = combineLatest([
+      this.formManager
+        .valueChanges('lumpSumPayment', 'amount')
+        .pipe(startWith(0)),
+      this.formManager
+        .valueChanges('lumpSumAndMonthly', 'totalAmount.lumpSumAmount')
+        .pipe(startWith(0)),
+    ]).pipe(
+      mergeMap(() =>
+        this.selectedInvestmentOption$.pipe(
+          filter(
+            (investmentOption) =>
+              investmentOption === InvestmentOptionPaymentType.LUMP_SUM ||
+              investmentOption ===
+                InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
+          ),
+          map((investmentOption) =>
+            investmentOption === InvestmentOptionPaymentType.LUMP_SUM
+              ? this.formManager.getControl('lumpSumPayment', 'amount').value
+              : this.formManager.getControl(
+                  'lumpSumAndMonthly',
+                  'totalAmount.lumpSumAmount'
+                ).value
+          )
+        )
       )
     );
 
-    this.monthlyAmount$ = this.selectedInvestmentOption$.pipe(
-      filter(
-        (investmentOption) =>
-          investmentOption === InvestmentOptionPaymentType.MONTHLY ||
-          investmentOption === InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
-      ),
-      map((investmentOption) =>
-        investmentOption === InvestmentOptionPaymentType.MONTHLY
-          ? this.formManager.getControl('monthlyPayment', 'amount').value
-          : this.formManager.getControl('lumpSumAndMonthly', 'totalAmount')
-              .controls.monthlyAmount.value
+    this.monthlyAmount$ = combineLatest([
+      this.formManager
+        .valueChanges('monthlyPayment', 'amount')
+        .pipe(startWith(0)),
+      this.formManager
+        .valueChanges('lumpSumAndMonthly', 'totalAmount.monthlyAmount')
+        .pipe(startWith(0)),
+    ]).pipe(
+      mergeMap(() =>
+        this.selectedInvestmentOption$.pipe(
+          filter(
+            (investmentOption) =>
+              investmentOption === InvestmentOptionPaymentType.MONTHLY ||
+              investmentOption ===
+                InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
+          ),
+          map((investmentOption) =>
+            investmentOption === InvestmentOptionPaymentType.MONTHLY
+              ? this.formManager.getControl('monthlyPayment', 'amount').value
+              : this.formManager.getControl(
+                  'lumpSumAndMonthly',
+                  'totalAmount.monthlyAmount'
+                ).value
+          )
+        )
       )
     );
 

@@ -1,4 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { Title } from '@angular/platform-browser';
@@ -21,10 +27,17 @@ import {
   ValidationErrors,
   FormControl,
 } from '@angular/forms';
-import { take, tap, filter } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import {
+  take,
+  tap,
+  filter,
+  distinctUntilChanged,
+  debounceTime,
+} from 'rxjs/operators';
+import { Subscription, merge } from 'rxjs';
 import { AppStateFacade } from '../core/app-state-facade';
 import { AppForms } from '../core/app-forms.interface';
+import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
 
 @Component({
   selector: 'wes-lump-sum-and-monthly-payment-investment-page',
@@ -38,6 +51,7 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
   submitAttempt = false;
   investmentOptionLink = `/${isaRoutesNames.INVESTMENT_OPTIONS}`;
   subscriptions$ = new Subscription();
+  errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
 
   form = this.fb.group({
     totalAmount: this.fb.group({
@@ -80,16 +94,14 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
       })
     );
 
-    this.formsManager.upsert('lumpSumAndMonthly', this.form, {
-      withInitialValue: true,
-    });
+    this.formsManager.upsert('lumpSumAndMonthly', this.form);
 
-    if (this.appStateFacade.state.forms.lumpSumAndMonthly) {
-      this.formsManager.patchValue(
-        'lumpSumAndMonthly',
-        this.appStateFacade.state.forms.lumpSumAndMonthly
-      );
-    }
+    // if (this.appStateFacade.state.forms.lumpSumAndMonthly) {
+    //   this.formsManager.patchValue(
+    //     'lumpSumAndMonthly',
+    //     this.appStateFacade.state.forms.lumpSumAndMonthly
+    //   );
+    // }
   }
 
   ngOnInit() {
@@ -138,8 +150,16 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
     this.form.markAllAsTouched();
 
     if (this.form.valid) {
-      this.investmentOptionsFacade.submitLumpSumAndMonthlyForm();
-      this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
+      //Need the timeout, sometimes the input values don't update
+      setTimeout(() => {
+        this.subscriptions$.add(
+          this.investmentOptionsFacade
+            .submitLumpSumAndMonthlyForm()
+            .subscribe(() => {
+              this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
+            })
+        );
+      }, 350);
     }
   }
 

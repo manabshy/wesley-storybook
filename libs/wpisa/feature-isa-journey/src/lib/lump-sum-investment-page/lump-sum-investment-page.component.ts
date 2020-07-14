@@ -12,6 +12,7 @@ import { InvestmentOptionsFacade } from '../core/investment-options.facade';
 import { isaRoutesNames } from '../isa-journey.routes.names';
 import { AppStateFacade } from '../core/app-state-facade';
 import { AppForms } from '../core/app-forms.interface';
+import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
 
 @Component({
   selector: 'wes-lump-sum-investment-page',
@@ -22,11 +23,17 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
   pageContent: LumpSumPayment;
   submitAttempt = false;
   investmentOptionLink = `/${isaRoutesNames.INVESTMENT_OPTIONS}`;
-
+  errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
   subscriptions$ = new Subscription();
 
   form: FormGroup = this.fb.group({
-    amount: [null, [Validators.required]],
+    amount: [
+      null,
+      {
+        validators: [Validators.required],
+        updateOn: 'blur',
+      },
+    ],
   });
 
   constructor(
@@ -54,16 +61,14 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
         ]);
       });
 
-    this.formsManager.upsert('lumpSumPayment', this.form, {
-      withInitialValue: true,
-    });
+    this.formsManager.upsert('lumpSumPayment', this.form);
 
-    if (this.appStateFacade.state.forms.lumpSumPayment) {
-      this.formsManager.patchValue(
-        'lumpSumPayment',
-        this.appStateFacade.state.forms.lumpSumPayment
-      );
-    }
+    // if (this.appStateFacade.state.forms.lumpSumPayment) {
+    //   this.formsManager.patchValue(
+    //     'lumpSumPayment',
+    //     this.appStateFacade.state.forms.lumpSumPayment
+    //   );
+    // }
   }
 
   ngOnInit(): void {}
@@ -79,8 +84,14 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
     this.submitAttempt = true;
     this.form.markAllAsTouched();
     if (this.formsManager.isValid('lumpSumPayment')) {
-      this.investmentOptionsFacade.submitLumpSumForm();
-      this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
+      //Need the timeout, sometimes the input values don't update
+      setTimeout(() => {
+        this.subscriptions$.add(
+          this.investmentOptionsFacade.submitLumpSumForm().subscribe(() => {
+            this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
+          })
+        );
+      }, 350);
     }
   }
 

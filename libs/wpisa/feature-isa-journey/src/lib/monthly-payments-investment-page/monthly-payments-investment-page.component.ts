@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 import { Validators, FormBuilder } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 import { AppStateFacade } from '../core/app-state-facade';
+import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
 
 @Component({
   selector: 'wes-monthly-payments-investment-page',
@@ -25,6 +26,7 @@ export class MonthlyPaymentsInvestmentPageComponent
   directDebitContent: DirectDebitDetails;
   submitAttempt = false;
   investmentOptionLink = `/${isaRoutesNames.INVESTMENT_OPTIONS}`;
+  errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
 
   subscriptions$ = new Subscription();
   form = this.fb.group({
@@ -37,8 +39,8 @@ export class MonthlyPaymentsInvestmentPageComponent
     ],
     directDebit: [null, Validators.required],
   });
-  amountControl = this.form.controls.amount;
-  directDebitControl = this.form.controls.directDebit;
+  amountControl = this.form.get('amount');
+  directDebitControl = this.form.get('directDebit');
 
   constructor(
     private investmentOptionsFacade: InvestmentOptionsFacade,
@@ -56,16 +58,14 @@ export class MonthlyPaymentsInvestmentPageComponent
       })
     );
 
-    this.formsManager.upsert('monthlyPayment', this.form, {
-      withInitialValue: true,
-    });
+    this.formsManager.upsert('monthlyPayment', this.form);
 
-    if (this.appStateFacade.state.forms.monthlyPayment) {
-      this.formsManager.patchValue(
-        'monthlyPayment',
-        this.appStateFacade.state.forms.monthlyPayment
-      );
-    }
+    // if (this.appStateFacade.state.forms.monthlyPayment) {
+    //   this.formsManager.patchValue(
+    //     'monthlyPayment',
+    //     this.appStateFacade.state.forms.monthlyPayment
+    //   );
+    // }
   }
 
   ngOnInit(): void {
@@ -87,9 +87,16 @@ export class MonthlyPaymentsInvestmentPageComponent
   onSubmit() {
     this.submitAttempt = true;
     this.form.markAllAsTouched();
+
     if (this.form.valid) {
-      this.investmentOptionsFacade.submitMonthlyForm();
-      this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
+      //Need the timeout, sometimes the input values don't update
+      setTimeout(() => {
+        this.subscriptions$.add(
+          this.investmentOptionsFacade.submitMonthlyForm().subscribe(() => {
+            this.router.navigate([`/${isaRoutesNames.DECLARATION}`]);
+          })
+        );
+      }, 300);
     }
   }
 

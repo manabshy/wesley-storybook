@@ -7,7 +7,12 @@
 <h1>{{ pageContent.heading }}</h1>
 <div [innerHtml]="pageContent.summary"></div>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  wesInvalidControlScroll
+  novalidate
+>
   <div class="form-group" formGroupName="totalAmount">
     <wes-form-field>
       <wes-label labelTestId="lblLumpSumAmount">{{
@@ -17,6 +22,7 @@
         wesInput
         type="text"
         formControlName="lumpSumAmount"
+        [errorStateMatcher]="errorStateMatcher"
         data-test="txtLumpSumAmount"
       />
       <span wesPrefix>£&nbsp;</span>
@@ -38,6 +44,7 @@
         wesInput
         type="text"
         formControlName="monthlyAmount"
+        [errorStateMatcher]="errorStateMatcher"
         data-test="txtMonthlyAmount"
       />
       <span wesPrefix>£&nbsp;</span>

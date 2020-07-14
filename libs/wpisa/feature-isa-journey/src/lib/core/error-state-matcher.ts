@@ -14,7 +14,7 @@ export class OnSubmitOrHasValueErrorStateMatcher implements ErrorStateMatcher {
     return !!(
       control &&
       control.invalid &&
-      (control.value?.length > 0 || this._submitted)
+      (control.value?.length > 0 || this._submitted || form?.submitted)
     );
   }
 }
