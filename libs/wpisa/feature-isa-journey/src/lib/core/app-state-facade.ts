@@ -8,12 +8,7 @@ import {
 } from '@wesleyan-frontend/wpisa/data-access';
 import { mergeDeepRight, reduce, omit, find, propEq } from 'ramda';
 import { NgFormsManager } from '@ngneat/forms-manager';
-
-interface AppState {
-  attemptId: number;
-  currentTaxPeriod: CurrentTaxPeriodISALimits;
-  forms: Partial<AppForms>;
-}
+import { AppState } from './app-state.interface';
 
 @Injectable({
   providedIn: 'root',

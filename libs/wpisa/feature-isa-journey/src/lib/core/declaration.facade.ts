@@ -49,6 +49,8 @@ import {
 } from './investment-option-form-value.interface';
 import { isaRoutesNames } from '../isa-journey.routes.names';
 import { KnowledgeCheckFacade } from './knowledge-check.facade';
+import { AppStateFacade } from './app-state-facade';
+import { AppState } from './app-state.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -57,7 +59,7 @@ export class DeclarationFacade {
   private endPoints: EndPoints;
   private pageContent: Declaration;
   private pageContentSubject$ = new BehaviorSubject<Declaration>(null);
-
+  private appState: AppState;
   private paymentUrlSubject$ = new BehaviorSubject<string>(null);
 
   paymentUrl$ = this.paymentUrlSubject$.asObservable();
@@ -72,6 +74,7 @@ export class DeclarationFacade {
   constructor(
     private isaApiService: ISAApiService,
     private configService: ConfigService,
+    private appStateFacade: AppStateFacade,
     private customerDetailsFacade: CustomerDetailsFacade,
     private knowledgeCheckFacade: KnowledgeCheckFacade,
     private formManager: NgFormsManager<AppForms>,
@@ -81,90 +84,119 @@ export class DeclarationFacade {
     this.pageContentSubject$.next(this.pageContent);
 
     this.endPoints = this.configService.content.endPoints;
+    this.appState = this.appStateFacade.state;
 
     this.personalDetailsViewModelData$ = this.formManager
       .valueChanges('customerPersonalDetails')
       .pipe(
-        map((customerPersonalDetailsFormValue) =>
-          this.mapPersonalDetailsFormValuesToViewModel(
+        startWith(this.appState.forms.customerPersonalDetails),
+        map((customerPersonalDetailsFormValue) => {
+          console.log(customerPersonalDetailsFormValue);
+          return this.mapPersonalDetailsFormValuesToViewModel(
             customerPersonalDetailsFormValue
-          )
-        )
+          );
+        })
       );
 
-    this.selectedInvestmentOption$ = this.formManager.valueChanges(
-      'investmentOptions',
-      'investmentOption'
-    );
+    this.selectedInvestmentOption$ = this.formManager
+      .valueChanges('investmentOptions', 'investmentOption')
+      .pipe(startWith(this.appState.forms.investmentOptions.investmentOption));
 
-    this.directDebitViewModelData$ = this.selectedInvestmentOption$.pipe(
+    this.directDebitViewModelData$ = combineLatest([
+      this.formManager
+        .valueChanges('monthlyPayment', 'directDebit')
+        .pipe(startWith(this.appState.forms?.monthlyPayment?.directDebit)),
+      this.formManager
+        .valueChanges('lumpSumAndMonthly', 'directDebit')
+        .pipe(startWith(this.appState.forms?.lumpSumAndMonthly?.directDebit)),
+      this.selectedInvestmentOption$,
+    ]).pipe(
       filter(
-        (investmentOption) =>
+        ([monthlyPaymentDD, lumpSumAndMonthlyDD, investmentOption]) =>
           investmentOption === InvestmentOptionPaymentType.MONTHLY ||
           investmentOption === InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
       ),
-      map((investmentOption) =>
-        investmentOption === InvestmentOptionPaymentType.MONTHLY
-          ? this.formManager.getControl('monthlyPayment', 'directDebit').value
-          : this.formManager.getControl('lumpSumAndMonthly', 'directDebit')
-              .value
-      ),
-      map(this.mapDirectDebitFormValuesToViewModel)
+      map(([monthlyPaymentDD, lumpSumAndMonthlyDD, investmentOption]) => ({
+        dd:
+          investmentOption === InvestmentOptionPaymentType.MONTHLY
+            ? monthlyPaymentDD
+            : lumpSumAndMonthlyDD,
+        investmentOption,
+      })),
+      map((data) =>
+        this.mapDirectDebitFormValuesToViewModel(data.dd, data.investmentOption)
+      )
     );
 
     this.lumpSumAmount$ = combineLatest([
       this.formManager
         .valueChanges('lumpSumPayment', 'amount')
-        .pipe(startWith(0)),
+        .pipe(startWith(this.appState.forms?.lumpSumPayment?.amount)),
       this.formManager
         .valueChanges('lumpSumAndMonthly', 'totalAmount.lumpSumAmount')
-        .pipe(startWith(0)),
-    ]).pipe(
-      mergeMap(() =>
-        this.selectedInvestmentOption$.pipe(
-          filter(
-            (investmentOption) =>
-              investmentOption === InvestmentOptionPaymentType.LUMP_SUM ||
-              investmentOption ===
-                InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
-          ),
-          map((investmentOption) =>
-            investmentOption === InvestmentOptionPaymentType.LUMP_SUM
-              ? this.formManager.getControl('lumpSumPayment', 'amount').value
-              : this.formManager.getControl(
-                  'lumpSumAndMonthly',
-                  'totalAmount.lumpSumAmount'
-                ).value
+        .pipe(
+          startWith(
+            this.appState.forms?.lumpSumAndMonthly?.totalAmount.lumpSumAmount
           )
-        )
+        ),
+      this.selectedInvestmentOption$.pipe(
+        startWith(this.appState.forms.investmentOptions.investmentOption)
+      ),
+    ]).pipe(
+      filter(
+        ([
+          lumpSumPaymentAmount,
+          lumpSumAndMonthlyLumpSumAmount,
+          investmentOption,
+        ]) =>
+          investmentOption === InvestmentOptionPaymentType.LUMP_SUM ||
+          investmentOption === InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
+      ),
+      map(
+        ([
+          lumpSumPaymentAmount,
+          lumpSumAndMonthlyLumpSumAmount,
+          investmentOption,
+        ]) =>
+          investmentOption === InvestmentOptionPaymentType.LUMP_SUM
+            ? lumpSumPaymentAmount
+            : lumpSumAndMonthlyLumpSumAmount
       )
     );
 
     this.monthlyAmount$ = combineLatest([
       this.formManager
         .valueChanges('monthlyPayment', 'amount')
-        .pipe(startWith(0)),
+        .pipe(startWith(this.appState.forms?.monthlyPayment?.amount)),
       this.formManager
         .valueChanges('lumpSumAndMonthly', 'totalAmount.monthlyAmount')
-        .pipe(startWith(0)),
-    ]).pipe(
-      mergeMap(() =>
-        this.selectedInvestmentOption$.pipe(
-          filter(
-            (investmentOption) =>
-              investmentOption === InvestmentOptionPaymentType.MONTHLY ||
-              investmentOption ===
-                InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
-          ),
-          map((investmentOption) =>
-            investmentOption === InvestmentOptionPaymentType.MONTHLY
-              ? this.formManager.getControl('monthlyPayment', 'amount').value
-              : this.formManager.getControl(
-                  'lumpSumAndMonthly',
-                  'totalAmount.monthlyAmount'
-                ).value
+        .pipe(
+          startWith(
+            this.appState.forms?.lumpSumAndMonthly?.totalAmount.monthlyAmount
           )
-        )
+        ),
+      this.selectedInvestmentOption$.pipe(
+        startWith(this.appState.forms.investmentOptions.investmentOption)
+      ),
+    ]).pipe(
+      filter(
+        ([
+          monthlyPaymentAmount,
+          lumpSumAndMonthlyMonthlyAmount,
+          investmentOption,
+        ]) =>
+          investmentOption === InvestmentOptionPaymentType.MONTHLY ||
+          investmentOption === InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
+      ),
+      map(
+        ([
+          monthlyPaymentAmount,
+          lumpSumAndMonthlyMonthlyAmount,
+          investmentOption,
+        ]) =>
+          investmentOption === InvestmentOptionPaymentType.MONTHLY
+            ? monthlyPaymentAmount
+            : lumpSumAndMonthlyMonthlyAmount
       )
     );
 
@@ -172,39 +204,59 @@ export class DeclarationFacade {
       this.lumpSumAmount$.pipe(startWith(0)),
       this.monthlyAmount$.pipe(startWith(0)),
       this.customerDetailsFacade.currentTaxPeriodISALimits$,
+      this.selectedInvestmentOption$,
     ]).pipe(
-      map(([lumpSumAmount, monthlyAmount, isaLimits]) => ({
-        showLumpSum: lumpSumAmount ? true : false,
-        showMonthly: monthlyAmount ? true : false,
-        lumpSumPayment: {
-          label: 'Lump-sum amount',
-          value: `${formatCurrencyGBP(lumpSumAmount)}`,
-        },
-        monthlyPayment: {
-          label: 'Monthly payments',
-          value: `${formatCurrencyGBP(monthlyAmount)}`,
-        },
-        total: {
-          label: this.formatTaxYear(
-            this.pageContent.totalInvestmentText,
-            isaLimits
-          ),
-          value: `${formatCurrencyGBP(
-            this.calculateTotalInvestment(
-              lumpSumAmount,
-              monthlyAmount,
-              isaLimits.numberOfMonthlyPayments
-            )
-          )}`,
-        },
-      }))
+      map(
+        ([
+          lumpSumAmount,
+          monthlyAmount,
+          isaLimits,
+          selectedInvestmentOption,
+        ]) => ({
+          showLumpSum:
+            selectedInvestmentOption === InvestmentOptionPaymentType.MONTHLY
+              ? false
+              : true,
+          showMonthly:
+            selectedInvestmentOption === InvestmentOptionPaymentType.LUMP_SUM
+              ? false
+              : true,
+          lumpSumPayment: {
+            label: 'Lump-sum amount',
+            value: `${formatCurrencyGBP(lumpSumAmount)}`,
+          },
+          monthlyPayment: {
+            label: 'Monthly payments',
+            value: `${formatCurrencyGBP(monthlyAmount)}`,
+          },
+          total: {
+            label: this.formatTaxYear(
+              this.pageContent.totalInvestmentText,
+              isaLimits
+            ),
+            value: `${formatCurrencyGBP(
+              this.calculateTotalInvestment(
+                lumpSumAmount,
+                monthlyAmount,
+                isaLimits.numberOfMonthlyPayments,
+                selectedInvestmentOption
+              )
+            )}`,
+          },
+        })
+      )
     );
   }
 
   mapDirectDebitFormValuesToViewModel(
-    formValue: DirectDebitFormValue
+    formValue: DirectDebitFormValue,
+    selectedInvestmentOption: InvestmentOptionPaymentTypeStrings
   ): DirectDebitViewModel {
     return {
+      showDD:
+        selectedInvestmentOption === InvestmentOptionPaymentType.LUMP_SUM
+          ? false
+          : true,
       accountNumber: {
         label: 'Account number',
         value: formValue.accountNumber,
@@ -374,15 +426,20 @@ export class DeclarationFacade {
   getMonthlyTransactionDTO(
     transactionId: string
   ): Omit<SubmitTransactionDTO, 'lumpPaymentDetails' | 'lumpAmount'> {
+    const onlineDirectDebitDetails = this.mapDirectDebit(
+      this.formManager.getControl('monthlyPayment', 'directDebit')?.value ||
+        this.appState.forms.monthlyPayment.directDebit
+    );
+    const regularAmount =
+      this.formManager.getControl('monthlyPayment', 'amount')?.value ||
+      this.appState.forms.monthlyPayment.amount;
+
     const dto = {
       ...this.getCommonSubmitTransactionDTO(transactionId),
       paymentType: PaymentType.Regular,
-      regularAmount: this.formManager.getControl('monthlyPayment', 'amount')
-        .value,
+      regularAmount,
       directDebitType: DirectDebitType.ONLINE,
-      onlineDirectDebitDetails: this.mapDirectDebit(
-        this.formManager.getControl('monthlyPayment', 'directDebit').value
-      ),
+      onlineDirectDebitDetails,
     };
 
     return dto;
@@ -394,10 +451,14 @@ export class DeclarationFacade {
     SubmitTransactionDTO,
     'directDebitType' | 'regularAmount' | 'onlineDirectDebitDetails'
   > {
+    const lumpAmount =
+      this.formManager.getControl('lumpSumPayment', 'amount')?.value ||
+      this.appState.forms.lumpSumPayment.amount;
+
     const dto = {
       ...this.getCommonSubmitTransactionDTO(transactionId),
       paymentType: PaymentType.LumpSum,
-      lumpAmount: this.formManager.getControl('lumpSumPayment', 'amount').value,
+      lumpAmount,
     };
 
     return dto;
@@ -406,21 +467,32 @@ export class DeclarationFacade {
   getLumpSumAndMonthlyTransactionDTO(
     transactionId: string
   ): SubmitTransactionDTO {
+    const lumpAmount =
+      this.formManager.getControl(
+        'lumpSumAndMonthly',
+        'totalAmount.lumpSumAmount'
+      )?.value ||
+      this.appState.forms.lumpSumAndMonthly.totalAmount.lumpSumAmount;
+
+    const regularAmount =
+      this.formManager.getControl(
+        'lumpSumAndMonthly',
+        'totalAmount.monthlyAmount'
+      )?.value ||
+      this.appState.forms.lumpSumAndMonthly.totalAmount.monthlyAmount;
+
+    const onlineDirectDebitDetails = this.mapDirectDebit(
+      this.formManager.getControl('lumpSumAndMonthly', 'directDebit')?.value ||
+        this.appState.forms.lumpSumAndMonthly.directDebit
+    );
+
     const dto = {
       ...this.getCommonSubmitTransactionDTO(transactionId),
       paymentType: PaymentType.Both,
-      lumpAmount: this.formManager.getControl(
-        'lumpSumAndMonthly',
-        'totalAmount.lumpSumAmount'
-      ).value,
-      regularAmount: this.formManager.getControl(
-        'lumpSumAndMonthly',
-        'totalAmount.monthlyAmount'
-      ).value,
+      lumpAmount,
+      regularAmount,
       directDebitType: DirectDebitType.ONLINE,
-      onlineDirectDebitDetails: this.mapDirectDebit(
-        this.formManager.getControl('lumpSumAndMonthly', 'directDebit').value
-      ),
+      onlineDirectDebitDetails,
     };
 
     return dto;
@@ -440,7 +512,8 @@ export class DeclarationFacade {
     | 'marketingPreferences'
   > {
     const mappedCustomerDTO = this.customerDetailsFacade.mapCustomerFormToSearchCustomerDTO(
-      this.formManager.getControl('customerPersonalDetails').value
+      this.formManager.getControl('customerPersonalDetails')?.value ||
+        this.appState.forms.customerPersonalDetails
     );
 
     const dto = {
@@ -477,12 +550,29 @@ export class DeclarationFacade {
   calculateTotalInvestment(
     lumpSumAmount: number = 0,
     monthlyAmount: number,
-    numberOfMonthlyPayments: number
+    numberOfMonthlyPayments: number,
+    selectedInvestmentOption: InvestmentOptionPaymentTypeStrings
   ): number {
-    return (
-      parseFloat('' + lumpSumAmount) +
-      parseFloat('' + monthlyAmount) * parseInt('' + numberOfMonthlyPayments)
-    );
+    switch (selectedInvestmentOption) {
+      case InvestmentOptionPaymentType.LUMP_SUM:
+        return parseFloat('' + lumpSumAmount);
+        break;
+
+      case InvestmentOptionPaymentType.MONTHLY:
+        return (
+          parseFloat('' + monthlyAmount) *
+          parseInt('' + numberOfMonthlyPayments)
+        );
+        break;
+
+      default:
+        return (
+          parseFloat('' + lumpSumAmount) +
+          parseFloat('' + monthlyAmount) *
+            parseInt('' + numberOfMonthlyPayments)
+        );
+        break;
+    }
   }
 
   transformAddress(address: ManualAddressFormValue, delimiter = ', '): string {
