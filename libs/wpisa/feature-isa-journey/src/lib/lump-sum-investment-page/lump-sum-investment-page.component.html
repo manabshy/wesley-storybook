@@ -6,10 +6,10 @@
 >
 
 <h1>{{ pageContent.heading }}</h1>
-<div [innerHtml]="pageContent.summary"></div>
+<div class="mb-6 mb-md-7" [innerHtml]="pageContent.summary"></div>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <wes-form-field>
+  <wes-form-field id="lumpSumAmount">
     <wes-label labelTestId="lblAmount">{{
       pageContent.lumpSumAmount.inputLabel
     }}</wes-label>
@@ -20,7 +20,7 @@
       [errorStateMatcher]="errorStateMatcher"
       data-test="txtAmount"
     />
-    <span wesPrefix>£&nbsp;</span>
+    <span wesPrefix><strong>£</strong>&nbsp;</span>
     <wes-hint>{{ pageContent.lumpSumHelpText }}</wes-hint>
     <wes-error *ngIf="isFieldInvalid('amount')">
       <wes-form-field-error>

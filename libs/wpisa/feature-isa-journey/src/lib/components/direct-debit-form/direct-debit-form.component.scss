@@ -1,3 +1,33 @@
 .sort-code-box {
   width: 60px;
 }
+
+#accountNumber,
+#accountName,
+#bankName {
+  display: block;
+}
+
+#accountName,
+#bankName {
+  //TODO Replace with mixin
+  @media (min-width: 980px) {
+    .wes-form-field-wrapper {
+      width: 75%;
+    }
+  }
+}
+
+#accountNumber {
+  //TODO Replace with mixin
+  @media (min-width: 768px) {
+    .wes-form-field-wrapper {
+      width: 75%;
+    }
+  }
+  @media (min-width: 980px) {
+    .wes-form-field-wrapper {
+      width: 50%;
+    }
+  }
+}

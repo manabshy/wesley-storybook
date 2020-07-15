@@ -5,21 +5,17 @@
   >{{ pageContent.backButtonLabel }}</a
 >
 <h1>{{ pageContent.heading }}</h1>
-<div [innerHtml]="pageContent.summary"></div>
+<div class="mb-6 mb-md-7 mb-lg-8" [innerHtml]="pageContent.summary"></div>
 
-<!-- <pre
-  >{{ selectedInvestmentOption$ | async | json }}
-  >{{ investmentCardViewModelData$ | async | json }}
-  >{{ directDebitContent$ | async | json }}
-  >{{ personalDetailsContent$ | async | json }}
-</pre> -->
 <ng-container *ngIf="investmentCardViewModelData$ | async as investment">
-  <div class="wes-investment-card">
+  <div
+    class="wes-investment-card wes-bg-solid-grey-50 mb-3 mb-md-4 p-3 px-lg-4"
+  >
     <div class="wes-card-title">
-      <div>{{ pageContent.yourInvestmentLabel }}</div>
+      <h2 class="wes-h4">{{ pageContent.yourInvestmentLabel }}</h2>
       <div>
         <a
-          class="wes-link"
+          class="wes-link wes-text-s"
           [routerLink]="yourInvestmentLink"
           data-test="lnkBackToYourInvestment"
           >{{ pageContent.editLabel }}</a
@@ -28,31 +24,40 @@
     </div>
     <div class="wes-card-body">
       <div *ngIf="investment.showLumpSum">
-        <span>{{ investment.lumpSumPayment.label }}</span
-        ><span>{{ investment.lumpSumPayment.value }}</span>
+        <p>{{ investment.lumpSumPayment.label }}</p>
+        <p class="wes-h2">
+          <strong>{{ investment.lumpSumPayment.value }}</strong>
+        </p>
       </div>
       <div *ngIf="investment.showMonthly">
-        <span>{{ investment.monthlyPayment.label }}</span
-        ><span
-          >{{ investment.monthlyPayment.value }}
-          {{ pageContent.perMonthLabel }}</span
-        >
+        <p>{{ investment.monthlyPayment.label }}</p>
+        <span>
+          <span class="wes-h2"
+            ><strong>{{ investment.monthlyPayment.value }}</strong></span
+          >
+          {{ pageContent.perMonthLabel }}
+        </span>
       </div>
-      <div>
-        <span>{{ investment.total.label }}</span
-        ><span>{{ investment.total.value }}</span>
+      <div class="investment-total w-100">
+        <img src="assets/icons/svg/icon-calculator.svg" />
+        <p>
+          {{ investment.total.label }}
+          <strong>{{ investment.total.value }}</strong>
+        </p>
       </div>
     </div>
   </div>
 </ng-container>
 
 <ng-container *ngIf="directDebitContent$ | async as dd">
-  <div class="wes-investment-card">
+  <div
+    class="wes-investment-card wes-bg-solid-grey-50 mb-3 mb-md-4 p-3 px-lg-4"
+  >
     <div class="wes-card-title">
-      <div>{{ pageContent.directDebitLabel }}</div>
+      <h2 class="wes-h4">{{ pageContent.directDebitLabel }}</h2>
       <div>
         <a
-          class="wes-link"
+          class="wes-link wes-text-s"
           [routerLink]="yourInvestmentLink"
           data-test="lnkBackToDD"
           >{{ pageContent.editLabel }}</a
@@ -73,12 +78,14 @@
 </ng-container>
 
 <ng-container *ngIf="personalDetailsContent$ | async as personalDetails">
-  <div class="wes-investment-card">
+  <div
+    class="wes-investment-card wes-bg-solid-grey-50 mb-3 mb-md-4 p-3 px-lg-4"
+  >
     <div class="wes-card-title">
-      <div>{{ pageContent.yourDetailsLabel }}</div>
+      <h2 class="wes-h4">{{ pageContent.yourDetailsLabel }}</h2>
       <div>
         <a
-          class="wes-link"
+          class="wes-link wes-text-s"
           [routerLink]="yourDetailsLink"
           data-test="lnkBackToPersonalDetails"
           >{{ pageContent.editLabel }}</a

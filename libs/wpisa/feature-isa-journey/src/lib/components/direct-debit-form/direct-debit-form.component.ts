@@ -6,6 +6,7 @@ import {
   forwardRef,
   OnChanges,
   SimpleChanges,
+  ViewEncapsulation,
 } from '@angular/core';
 import {
   FormGroup,
@@ -35,6 +36,7 @@ import { OnSubmitOrHasValueErrorStateMatcher } from '../../core/error-state-matc
   selector: 'wes-direct-debit-form',
   templateUrl: './direct-debit-form.component.html',
   styleUrls: ['./direct-debit-form.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   providers: [
     {
       provide: NG_VALIDATORS,

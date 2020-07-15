@@ -6,10 +6,10 @@
 >
 
 <h1>{{ pageContent.heading }}</h1>
-<div [innerHtml]="pageContent.summary"></div>
+<div class="mb-6 mb-md-7" [innerHtml]="pageContent.summary"></div>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
-  <wes-form-field>
+  <wes-form-field id="monthlyAmount" class="mb-4 mb-md-5">
     <wes-label labelTestId="lblAmount">{{
       pageContent.monthlyAmount.inputLabel
     }}</wes-label>

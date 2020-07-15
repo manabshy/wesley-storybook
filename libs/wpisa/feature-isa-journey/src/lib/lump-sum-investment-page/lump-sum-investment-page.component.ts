@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
@@ -19,6 +19,7 @@ import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-prog
   selector: 'wes-lump-sum-investment-page',
   templateUrl: './lump-sum-investment-page.component.html',
   styleUrls: ['./lump-sum-investment-page.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
   pageContent: LumpSumPayment;

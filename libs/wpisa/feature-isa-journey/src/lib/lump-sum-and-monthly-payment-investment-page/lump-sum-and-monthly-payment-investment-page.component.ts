@@ -4,6 +4,7 @@ import {
   OnDestroy,
   ElementRef,
   ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
@@ -44,6 +45,7 @@ import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-prog
   selector: 'wes-lump-sum-and-monthly-payment-investment-page',
   templateUrl: './lump-sum-and-monthly-payment-investment-page.component.html',
   styleUrls: ['./lump-sum-and-monthly-payment-investment-page.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class LumpSumAndMonthlyPaymentInvestmentPageComponent
   implements OnInit, OnDestroy {

@@ -15,7 +15,7 @@ export class TimeoutService {
 
   initInactivityTimeout() {
     // sets an idle timeout of 5 seconds, for testing purposes.
-    this.idle.setIdle(9 * 60);
+    this.idle.setIdle(900);
     // sets a timeout period of 5 seconds. after 10 seconds of inactivity, the user will be considered timed out.
     this.idle.setTimeout(60);
     // sets the default interrupts, in this case, things like clicks, scrolls, touches to the document

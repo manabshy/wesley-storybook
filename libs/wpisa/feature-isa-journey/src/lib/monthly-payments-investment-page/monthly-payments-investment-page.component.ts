@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import {
   MonthlyPayment,
   ConfigService,
@@ -20,6 +20,7 @@ import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-prog
   selector: 'wes-monthly-payments-investment-page',
   templateUrl: './monthly-payments-investment-page.component.html',
   styleUrls: ['./monthly-payments-investment-page.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class MonthlyPaymentsInvestmentPageComponent
   implements OnInit, OnDestroy {

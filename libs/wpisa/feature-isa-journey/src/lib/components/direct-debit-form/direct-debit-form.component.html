@@ -1,28 +1,27 @@
 <ng-container *ngIf="content">
-  <form [formGroup]="form">
-    <div>{{ content.bankNameTooltip }}</div>
-    <div class="row">
-      <wes-form-field class="col-12 col-lg-10">
-        <wes-label labelTestId="lblBankName">{{
-          content.bankName.inputLabel
-        }}</wes-label>
-        <input
-          wesInput
-          type="text"
-          formControlName="bankName"
-          [errorStateMatcher]="errorStateMatcher"
-          spellcheck="false"
-          data-test="txtBankName"
-        />
-        <wes-error *ngIf="isFieldInvalid('bankName')">
-          <wes-form-field-error>
-            {{ content.bankName.inputError }}
-          </wes-form-field-error>
-        </wes-error>
-      </wes-form-field>
-    </div>
+  <form [formGroup]="form" class="mb-5 mb-md-6">
+    <div class="mb-3">{{ content.bankNameTooltip }}</div>
 
-    <wes-form-field>
+    <wes-form-field id="bankName" class="mb-4">
+      <wes-label labelTestId="lblBankName">{{
+        content.bankName.inputLabel
+      }}</wes-label>
+      <input
+        wesInput
+        type="text"
+        formControlName="bankName"
+        [errorStateMatcher]="errorStateMatcher"
+        spellcheck="false"
+        data-test="txtBankName"
+      />
+      <wes-error *ngIf="isFieldInvalid('bankName')">
+        <wes-form-field-error>
+          {{ content.bankName.inputError }}
+        </wes-form-field-error>
+      </wes-error>
+    </wes-form-field>
+
+    <wes-form-field id="accountName" class="mb-4">
       <wes-label labelTestId="lblAccountHolderFullName">{{
         content.accountName.inputLabel
       }}</wes-label>
@@ -41,7 +40,7 @@
       </wes-error>
     </wes-form-field>
 
-    <wes-form-field>
+    <wes-form-field id="accountNumber" class="mb-4">
       <wes-label labelTestId="lblAccountNumber">{{
         content.accountNumber.inputLabel
       }}</wes-label>
@@ -122,9 +121,18 @@
     <ng-content></ng-content>
   </form>
 
-  <div class="direct-debit-guarantee">
-    <h3>{{ content.heading }}</h3>
-    <div [innerHtml]="content.summary"></div>
+  <div class="direct-debit-guarantee wes-bg-solid-grey-50 p-3">
+    <h2 class="wes-h6">{{ content.heading }}</h2>
+    <div class="row">
+      <div class="col-8">
+        <div [innerHtml]="content.summary"></div>
+      </div>
+      <div class="col-4">
+        <img alt="Direct debit guarantee logo" />
+      </div>
+    </div>
+
+    <hr class="my-3" />
     <div [innerHtml]="content.bodyCopy"></div>
   </div>
 </ng-container>

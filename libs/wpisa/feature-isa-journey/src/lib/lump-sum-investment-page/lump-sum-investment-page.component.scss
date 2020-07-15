@@ -1,0 +1,9 @@
+#lumpSumAmount {
+  display: block;
+  //@TODO replace with mixin
+  @media (min-width: 768px) {
+    .wes-form-field-wrapper {
+      width: 50%;
+    }
+  }
+}
