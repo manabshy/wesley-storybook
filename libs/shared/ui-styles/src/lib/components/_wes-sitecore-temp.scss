@@ -14,11 +14,27 @@
 
   @include media-breakpoint-up(lg) {
     flex-direction: row;
+
     .wes-2-pages-page-container {
       &:first-child {
         border-bottom: none;
         border-right: 1px solid $global-colour-grey-100;
       }
     }
+  }
+}
+.card-group{
+  .card{
+    border: 0px;
+  }
+}
+.wesleyan-card {
+  .card-text {
+    background-color: $global-colour-white;
+  }
+  .card-image{
+    img{
+    max-width: 100%;
+    } 
   }
 }
