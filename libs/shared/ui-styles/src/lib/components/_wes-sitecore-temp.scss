@@ -23,7 +23,11 @@
     }
   }
 }
-
+.card-group{
+  .card{
+    border: 0px;
+  }
+}
 .wesleyan-card {
   .card-text {
     background-color: $global-colour-white;
@@ -32,8 +36,5 @@
     img{
     max-width: 100%;
     } 
-  }
-  .card-text{
-    border: 0px;
   }
 }
