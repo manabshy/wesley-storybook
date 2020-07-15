@@ -457,7 +457,7 @@ export class DeclarationFacade {
 
     const dto = {
       ...this.getCommonSubmitTransactionDTO(transactionId),
-      paymentType: PaymentType.LumpSum,
+      paymentType: PaymentType.Lump,
       lumpAmount,
     };
 

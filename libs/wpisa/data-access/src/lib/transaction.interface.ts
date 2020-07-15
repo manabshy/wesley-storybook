@@ -54,7 +54,7 @@ export interface OnlineDirectDebitDetails {
 }
 
 export const enum PaymentType {
-  LumpSum = 'LumpSum',
+  Lump = 'Lump',
   Regular = 'Regular',
   Both = 'Both',
 }
