@@ -732,6 +732,41 @@
           "style": "scss"
         }
       }
+    },
+    "wpisa-feature-inactivity-timeout": {
+      "projectType": "library",
+      "root": "libs/wpisa/feature-inactivity-timeout",
+      "sourceRoot": "libs/wpisa/feature-inactivity-timeout/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/wpisa/feature-inactivity-timeout/tsconfig.lib.json",
+              "libs/wpisa/feature-inactivity-timeout/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/wpisa/feature-inactivity-timeout/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/wpisa/feature-inactivity-timeout/jest.config.js",
+            "tsConfig": "libs/wpisa/feature-inactivity-timeout/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/wpisa/feature-inactivity-timeout/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

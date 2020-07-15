@@ -86,6 +86,9 @@
     },
     "shared-ui-form-select": {
       "tags": []
+    },
+    "wpisa-feature-inactivity-timeout": {
+      "tags": []
     }
   }
 }

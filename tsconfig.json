@@ -61,6 +61,9 @@
       ],
       "@wesleyan-frontend/shared/ui-form-select": [
         "libs/shared/ui-form-select/src/index.ts"
+      ],
+      "@wesleyan-frontend/wpisa/feature-inactivity-timeout": [
+        "libs/wpisa/feature-inactivity-timeout/src/index.ts"
       ]
     }
   },

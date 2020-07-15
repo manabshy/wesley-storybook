@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { filter, tap, map, mergeMap, startWith } from 'rxjs/operators';
 
 import { ConfigService } from '@wesleyan-frontend/wpisa/data-access';
+import { TimeoutService } from '@wesleyan-frontend/wpisa/feature-inactivity-timeout';
 
 @Component({
   selector: 'wes-shell',
@@ -25,9 +26,11 @@ export class ShellComponent {
   constructor(
     private configService: ConfigService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private timeoutService: TimeoutService
   ) {
     this.isDevEnv = isDevMode();
+    this.timeoutService.initInactivityTimeout();
 
     this.progressBarContent = this.configService.content.progressBar;
     this.currentStepIndex$ = this.router.events.pipe(
