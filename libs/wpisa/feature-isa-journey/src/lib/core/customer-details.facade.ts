@@ -1,5 +1,13 @@
 import { Injectable } from '@angular/core';
-import { map, take, filter, tap, switchMap, finalize } from 'rxjs/operators';
+import {
+  map,
+  take,
+  filter,
+  tap,
+  switchMap,
+  finalize,
+  concatMapTo,
+} from 'rxjs/operators';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 import {
@@ -119,22 +127,25 @@ export class CustomerDetailsFacade {
     const customerDTO = this.mapCustomerFormToSearchCustomerDTO(value);
     this.loadingService.show();
 
-    this.appStateFacade
+    return this.appStateFacade
       .saveFormState([
         'customerPersonalDetails',
         'addressLookup',
         'manualAddress',
       ])
-      .pipe(take(1))
-      .subscribe();
-
-    return this.isaApiService.findCustomer(customerDTO).pipe(
-      tap((resp) =>
-        this.currentTaxPeriodISALimitsSubject$.next(resp.data.currentTaxPeriod)
-      ),
-      tap((_) => this.submitSubject$.next(true)),
-      finalize(() => this.loadingService.hide())
-    );
+      .pipe(
+        concatMapTo(
+          this.isaApiService.findCustomer(customerDTO).pipe(
+            tap((resp) =>
+              this.currentTaxPeriodISALimitsSubject$.next(
+                resp.data.currentTaxPeriod
+              )
+            ),
+            tap((_) => this.submitSubject$.next(true)),
+            finalize(() => this.loadingService.hide())
+          )
+        )
+      );
   }
 
   mapCustomerFormToSearchCustomerDTO(

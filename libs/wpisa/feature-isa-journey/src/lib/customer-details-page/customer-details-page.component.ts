@@ -185,9 +185,13 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
 
   onSelectedAddress(address: AddressDetails) {
     this.updateManualAddressFormValues(address);
+    if (this.form.controls.manualAddress.invalid) {
+      //Missing required fields
+      this.isManualAddressVisible = true;
+    }
   }
 
-  onShowManualAddress(event) {
+  onShowManualAddress() {
     this.isManualAddressVisible = true;
     this.form.controls.addressLookup.clearValidators();
     this.resetAddressLookup();
