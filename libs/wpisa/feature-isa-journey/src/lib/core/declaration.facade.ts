@@ -6,6 +6,7 @@ import {
   BehaviorSubject,
   combineLatest,
   throwError,
+  merge,
 } from 'rxjs';
 import {
   map,
@@ -16,6 +17,7 @@ import {
   catchError,
   concatMap,
   finalize,
+  mergeMap,
 } from 'rxjs/operators';
 import { format } from 'date-fns';
 
@@ -28,6 +30,7 @@ import {
   PaymentType,
   DirectDebitType,
   OnlineDirectDebitDetails,
+  EndPoints,
 } from '@wesleyan-frontend/wpisa/data-access';
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
@@ -51,18 +54,16 @@ import { KnowledgeCheckFacade } from './knowledge-check.facade';
   providedIn: 'root',
 })
 export class DeclarationFacade {
+  private endPoints: EndPoints;
   private pageContent: Declaration;
   private pageContentSubject$ = new BehaviorSubject<Declaration>(null);
-  private personalDetailsViewModelDataSubject$ = new BehaviorSubject<
-    PersonalDetailsViewModel
-  >(null);
-  private customerPersonalDetailsFormValue: CustomerDetailsFormValue;
+
   private paymentUrlSubject$ = new BehaviorSubject<string>(null);
 
   paymentUrl$ = this.paymentUrlSubject$.asObservable();
   pageContent$ = this.pageContentSubject$.asObservable();
-  personalDetailsViewModelData$ = this.personalDetailsViewModelDataSubject$.asObservable();
   selectedInvestmentOption$: Observable<InvestmentOptionPaymentTypeStrings>;
+  personalDetailsViewModelData$: Observable<PersonalDetailsViewModel>;
   directDebitViewModelData$: Observable<DirectDebitViewModel>;
   investmentCardViewModelData$: Observable<InvestmentCardViewModel>;
   lumpSumAmount$: Observable<number>;
@@ -79,15 +80,17 @@ export class DeclarationFacade {
     this.pageContent = this.configService.content.declaration;
     this.pageContentSubject$.next(this.pageContent);
 
-    this.customerPersonalDetailsFormValue = this.formManager.getControl(
-      'customerPersonalDetails'
-    ).value;
+    this.endPoints = this.configService.content.endPoints;
 
-    this.personalDetailsViewModelDataSubject$.next(
-      this.mapPersonalDetailsFormValuesToViewModel(
-        this.customerPersonalDetailsFormValue
-      )
-    );
+    this.personalDetailsViewModelData$ = this.formManager
+      .valueChanges('customerPersonalDetails')
+      .pipe(
+        map((customerPersonalDetailsFormValue) =>
+          this.mapPersonalDetailsFormValuesToViewModel(
+            customerPersonalDetailsFormValue
+          )
+        )
+      );
 
     this.selectedInvestmentOption$ = this.formManager.valueChanges(
       'investmentOptions',
@@ -109,31 +112,59 @@ export class DeclarationFacade {
       map(this.mapDirectDebitFormValuesToViewModel)
     );
 
-    this.lumpSumAmount$ = this.selectedInvestmentOption$.pipe(
-      filter(
-        (investmentOption) =>
-          investmentOption === InvestmentOptionPaymentType.LUMP_SUM ||
-          investmentOption === InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
-      ),
-      map((investmentOption) =>
-        investmentOption === InvestmentOptionPaymentType.LUMP_SUM
-          ? this.formManager.getControl('lumpSumPayment', 'amount').value
-          : this.formManager.getControl('lumpSumAndMonthly', 'totalAmount')
-              .controls.lumpSumAmount.value
+    this.lumpSumAmount$ = combineLatest([
+      this.formManager
+        .valueChanges('lumpSumPayment', 'amount')
+        .pipe(startWith(0)),
+      this.formManager
+        .valueChanges('lumpSumAndMonthly', 'totalAmount.lumpSumAmount')
+        .pipe(startWith(0)),
+    ]).pipe(
+      mergeMap(() =>
+        this.selectedInvestmentOption$.pipe(
+          filter(
+            (investmentOption) =>
+              investmentOption === InvestmentOptionPaymentType.LUMP_SUM ||
+              investmentOption ===
+                InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
+          ),
+          map((investmentOption) =>
+            investmentOption === InvestmentOptionPaymentType.LUMP_SUM
+              ? this.formManager.getControl('lumpSumPayment', 'amount').value
+              : this.formManager.getControl(
+                  'lumpSumAndMonthly',
+                  'totalAmount.lumpSumAmount'
+                ).value
+          )
+        )
       )
     );
 
-    this.monthlyAmount$ = this.selectedInvestmentOption$.pipe(
-      filter(
-        (investmentOption) =>
-          investmentOption === InvestmentOptionPaymentType.MONTHLY ||
-          investmentOption === InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
-      ),
-      map((investmentOption) =>
-        investmentOption === InvestmentOptionPaymentType.MONTHLY
-          ? this.formManager.getControl('monthlyPayment', 'amount').value
-          : this.formManager.getControl('lumpSumAndMonthly', 'totalAmount')
-              .controls.monthlyAmount.value
+    this.monthlyAmount$ = combineLatest([
+      this.formManager
+        .valueChanges('monthlyPayment', 'amount')
+        .pipe(startWith(0)),
+      this.formManager
+        .valueChanges('lumpSumAndMonthly', 'totalAmount.monthlyAmount')
+        .pipe(startWith(0)),
+    ]).pipe(
+      mergeMap(() =>
+        this.selectedInvestmentOption$.pipe(
+          filter(
+            (investmentOption) =>
+              investmentOption === InvestmentOptionPaymentType.MONTHLY ||
+              investmentOption ===
+                InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
+          ),
+          map((investmentOption) =>
+            investmentOption === InvestmentOptionPaymentType.MONTHLY
+              ? this.formManager.getControl('monthlyPayment', 'amount').value
+              : this.formManager.getControl(
+                  'lumpSumAndMonthly',
+                  'totalAmount.monthlyAmount'
+                ).value
+          )
+        )
       )
     );
 
@@ -267,14 +298,15 @@ export class DeclarationFacade {
 
         return this.isaApiService.submitTransaction(dto).pipe(
           tap((_) => this.loadingService.hide()),
+          tap((_) => window.open(this.endPoints.confirmationPage, '_self')),
           catchError((err) => {
-            window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+            window.open(this.endPoints.confirmationErrorPage, '_self');
             return throwError(err);
           })
         );
       }),
       catchError((err) => {
-        window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+        window.open(this.endPoints.confirmationErrorPage, '_self');
         return throwError(err);
       })
     );
@@ -296,13 +328,13 @@ export class DeclarationFacade {
             this.paymentUrlSubject$.next(data.paymentUrl);
           }),
           catchError((err) => {
-            window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+            window.open(this.endPoints.confirmationErrorPage, '_self');
             return throwError(err);
           })
         );
       }),
       catchError((err) => {
-        window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+        window.open(this.endPoints.confirmationErrorPage, '_self');
         return throwError(err);
       }),
       finalize(() => this.loadingService.hide())
@@ -326,14 +358,13 @@ export class DeclarationFacade {
           }),
           tap((_) => this.loadingService.hide()),
           catchError((err) => {
-            window.open(`${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+            window.open(this.endPoints.confirmationErrorPage, '_self');
             return throwError(err);
           })
         );
       }),
       catchError((err) => {
-        console.log('isa both', err);
-        window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+        window.open(this.endPoints.confirmationErrorPage, '_self');
         return throwError(err);
       }),
       finalize(() => this.loadingService.hide())
@@ -343,18 +374,8 @@ export class DeclarationFacade {
   getMonthlyTransactionDTO(
     transactionId: string
   ): Omit<SubmitTransactionDTO, 'lumpPaymentDetails' | 'lumpAmount'> {
-    const mappedCustomerDTO = this.customerDetailsFacade.mapCustomerFormToSearchCustomerDTO(
-      this.formManager.getControl('customerPersonalDetails').value
-    );
-
     const dto = {
-      currentAddress: mappedCustomerDTO.currentAddress,
-      customerDetails: mappedCustomerDTO.customerDetails,
-      nationalityDetails: mappedCustomerDTO.nationalityDetails,
-      marketingPreferences: mappedCustomerDTO.marketingPreferences,
-      transactionId: transactionId,
-      appTestAttemptId: this.knowledgeCheckFacade.knowledgeCheckAttemptId,
-      taxPeriodCode: '',
+      ...this.getCommonSubmitTransactionDTO(transactionId),
       paymentType: PaymentType.Regular,
       regularAmount: this.formManager.getControl('monthlyPayment', 'amount')
         .value,
@@ -362,15 +383,8 @@ export class DeclarationFacade {
       onlineDirectDebitDetails: this.mapDirectDebit(
         this.formManager.getControl('monthlyPayment', 'directDebit').value
       ),
-      customerPermissionGranted: true,
     };
 
-    this.customerDetailsFacade.currentTaxPeriodISALimits$
-      .pipe(
-        tap((value) => (dto.taxPeriodCode = value.taxPeriodCode)),
-        take(1)
-      )
-      .subscribe();
     return dto;
   }
 
@@ -380,47 +394,20 @@ export class DeclarationFacade {
     SubmitTransactionDTO,
     'directDebitType' | 'regularAmount' | 'onlineDirectDebitDetails'
   > {
-    const mappedCustomerDTO = this.customerDetailsFacade.mapCustomerFormToSearchCustomerDTO(
-      this.formManager.getControl('customerPersonalDetails').value
-    );
-
     const dto = {
-      currentAddress: mappedCustomerDTO.currentAddress,
-      customerDetails: mappedCustomerDTO.customerDetails,
-      nationalityDetails: mappedCustomerDTO.nationalityDetails,
-      marketingPreferences: mappedCustomerDTO.marketingPreferences,
-      transactionId: transactionId,
-      appTestAttemptId: this.knowledgeCheckFacade.knowledgeCheckAttemptId,
-      taxPeriodCode: '',
+      ...this.getCommonSubmitTransactionDTO(transactionId),
       paymentType: PaymentType.LumpSum,
       lumpAmount: this.formManager.getControl('lumpSumPayment', 'amount').value,
-      customerPermissionGranted: true,
     };
 
-    this.customerDetailsFacade.currentTaxPeriodISALimits$
-      .pipe(
-        tap((value) => (dto.taxPeriodCode = value.taxPeriodCode)),
-        take(1)
-      )
-      .subscribe();
     return dto;
   }
 
   getLumpSumAndMonthlyTransactionDTO(
     transactionId: string
   ): SubmitTransactionDTO {
-    const mappedCustomerDTO = this.customerDetailsFacade.mapCustomerFormToSearchCustomerDTO(
-      this.formManager.getControl('customerPersonalDetails').value
-    );
-
     const dto = {
-      currentAddress: mappedCustomerDTO.currentAddress,
-      customerDetails: mappedCustomerDTO.customerDetails,
-      nationalityDetails: mappedCustomerDTO.nationalityDetails,
-      marketingPreferences: mappedCustomerDTO.marketingPreferences,
-      transactionId: transactionId,
-      appTestAttemptId: this.knowledgeCheckFacade.knowledgeCheckAttemptId,
-      taxPeriodCode: '',
+      ...this.getCommonSubmitTransactionDTO(transactionId),
       paymentType: PaymentType.Both,
       lumpAmount: this.formManager.getControl(
         'lumpSumAndMonthly',
@@ -434,6 +421,36 @@ export class DeclarationFacade {
       onlineDirectDebitDetails: this.mapDirectDebit(
         this.formManager.getControl('lumpSumAndMonthly', 'directDebit').value
       ),
+    };
+
+    return dto;
+  }
+
+  getCommonSubmitTransactionDTO(
+    transactionId: string
+  ): Pick<
+    SubmitTransactionDTO,
+    | 'appTestAttemptId'
+    | 'transactionId'
+    | 'taxPeriodCode'
+    | 'customerPermissionGranted'
+    | 'currentAddress'
+    | 'customerDetails'
+    | 'nationalityDetails'
+    | 'marketingPreferences'
+  > {
+    const mappedCustomerDTO = this.customerDetailsFacade.mapCustomerFormToSearchCustomerDTO(
+      this.formManager.getControl('customerPersonalDetails').value
+    );
+
+    const dto = {
+      currentAddress: mappedCustomerDTO.currentAddress,
+      customerDetails: mappedCustomerDTO.customerDetails,
+      nationalityDetails: mappedCustomerDTO.nationalityDetails,
+      marketingPreferences: mappedCustomerDTO.marketingPreferences,
+      transactionId: transactionId,
+      appTestAttemptId: this.knowledgeCheckFacade.knowledgeCheckAttemptId,
+      taxPeriodCode: '',
       customerPermissionGranted: true,
     };
 

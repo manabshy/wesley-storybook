@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   NG_FORMS_MANAGER_CONFIG,
   NgFormsManagerConfig,
@@ -11,9 +10,7 @@ import {
 import { SharedUiProgressSpinnerModule } from '@wesleyan-frontend/shared/ui-progress-spinner';
 import { SharedUiFormRadioModule } from '@wesleyan-frontend/shared/ui-form-radio';
 import { SharedUiFormCheckboxModule } from '@wesleyan-frontend/shared/ui-form-checkbox';
-import { SharedUiFormFieldModule } from '@wesleyan-frontend/shared/ui-form-field';
 import { SharedUiFormInputModule } from '@wesleyan-frontend/shared/ui-form-input';
-import { SharedUiFormSelectModule } from '@wesleyan-frontend/shared/ui-form-select';
 
 import { KnowledgeCheckPageComponent } from './knowledge-check-page/knowledge-check-page.component';
 import { CustomerDetailsPageComponent } from './customer-details-page/customer-details-page.component';
@@ -42,16 +39,13 @@ import { SafeUrlPipe } from './safe-url.pipe';
 @NgModule({
   imports: [
     CommonModule,
-    // BrowserAnimationsModule,
     ReactiveFormsModule,
     CdkStepperModule,
     ISAJourneyRoutingModule,
     SharedUiProgressSpinnerModule,
     SharedUiFormRadioModule,
     SharedUiFormCheckboxModule,
-    SharedUiFormFieldModule,
     SharedUiFormInputModule,
-    // SharedUiFormSelectModule,
   ],
   declarations: [
     FormFieldErrorComponent,
@@ -81,7 +75,7 @@ import { SafeUrlPipe } from './safe-url.pipe';
     {
       provide: NG_FORMS_MANAGER_CONFIG,
       useValue: new NgFormsManagerConfig({
-        debounceTime: 200, // defaults to 300
+        debounceTime: 100, // defaults to 300,
       }),
     },
   ],

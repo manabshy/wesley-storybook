@@ -1,5 +1,6 @@
 export interface Config {
   pageTitle: string;
+  endPoints: EndPoints;
   progressBar: {
     steps: string[];
   };
@@ -206,4 +207,9 @@ export interface IFramePayment {
   summary: string;
   infoCopy: string;
   backButtonLabel: string;
+}
+
+export interface EndPoints {
+  confirmationErrorPage: string;
+  confirmationPage: string;
 }

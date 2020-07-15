@@ -89,14 +89,7 @@ export class DeclarationPageComponent implements OnInit, OnDestroy {
               (investmentOption) =>
                 investmentOption === InvestmentOptionPaymentType.MONTHLY
             ),
-            switchMapTo(
-              this.declarationFacade.submitMonthlyISA().pipe(
-                tap(console.log),
-                tap((_) =>
-                  window.open(`/${isaRoutesNames.CONFIRMATION}`, '_self')
-                )
-              )
-            )
+            switchMapTo(this.declarationFacade.submitMonthlyISA())
           )
           .subscribe()
       );

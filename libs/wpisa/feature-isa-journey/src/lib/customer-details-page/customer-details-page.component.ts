@@ -117,9 +117,7 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
 
     this.controls = this.form.controls;
 
-    this.formsManager.upsert('customerPersonalDetails', this.form, {
-      withInitialValue: true,
-    });
+    this.formsManager.upsert('customerPersonalDetails', this.form);
 
     if (this.appStateFacade.state?.forms?.customerPersonalDetails) {
       this.formsManager.patchValue(
@@ -229,22 +227,17 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     this.form.markAllAsTouched();
     this.submitAttemptSubject$.next(true);
 
-    console.log(this.form);
-
     if (this.form.valid) {
-      this.customerDetailsFacade.submit(this.form.value);
-
-      this.customerDetailsFacade.submitSuccessful$
-        .pipe(
-          tap(console.log),
-          tap((_) =>
-            this.router.navigate([`/${isaRoutesNames.INVESTMENT_OPTIONS}`])
-          ),
-          take(1)
-        )
-        .subscribe();
-    } else {
-      //   this.showOverallError = true;
+      this.subscriptions.add(
+        this.customerDetailsFacade
+          .submit(this.form.value)
+          .pipe(
+            tap(() =>
+              this.router.navigate([`/${isaRoutesNames.INVESTMENT_OPTIONS}`])
+            )
+          )
+          .subscribe()
+      );
     }
   }
 
