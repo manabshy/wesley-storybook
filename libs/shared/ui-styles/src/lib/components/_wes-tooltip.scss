@@ -1,0 +1,84 @@
+$tooltip-border-colour: $global-colour-gold-500;
+$tooltip-background-colour: $global-colour-gold-50;
+
+@mixin common-tooltip-styles {
+  margin: 0;
+  padding: 16px;
+  border: 1px solid $tooltip-border-colour;
+  background-color: $tooltip-background-colour;
+  border-radius: 4px;
+}
+@mixin common-tooltip-arrow-styles {
+  &:after,
+  &:before {
+    border: solid transparent;
+    content: ' ';
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &:after {
+    border-color: rgba(255, 248, 231, 0);
+    border-width: 9px;
+    margin-left: -9px;
+  }
+  &:before {
+    border-color: rgba(254, 215, 112, 0);
+    border-width: 10px;
+    margin-left: -10px;
+  }
+}
+
+.wes-tooltip {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  overflow: visible;
+  @include common-tooltip-styles;
+
+  &-content {
+    display: flex;
+    align-items: flex-start;
+  }
+  .wes-icon {
+    margin-right: 12px;
+    margin-top: 4px;
+  }
+
+  //Tooltip location directions
+  &-top-right {
+    @include common-tooltip-arrow-styles;
+
+    &:after,
+    &:before {
+      top: 100%;
+      left: 24px;
+    }
+
+    &:after {
+      border-top-color: $tooltip-background-colour;
+    }
+    &:before {
+      border-top-color: $tooltip-border-colour;
+    }
+  }
+
+  &-bottom-right {
+    @include common-tooltip-arrow-styles;
+
+    &:after,
+    &:before {
+      bottom: 100%;
+      left: 24px;
+    }
+
+    &:after {
+      border-bottom-color: $tooltip-background-colour;
+    }
+    &:before {
+      border-bottom-color: $tooltip-border-colour;
+    }
+  }
+}
