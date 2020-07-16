@@ -18,6 +18,7 @@ export class OverlayProgressSpinnerService {
   constructor(private overlay: Overlay, private liveAnnouncer: LiveAnnouncer) {
     this.spinnerTopRef = this.overlay.create({
       hasBackdrop: true,
+      backdropClass: 'wes-loading-overlay-light-backdrop',
       positionStrategy: this.overlay
         .position()
         .global()

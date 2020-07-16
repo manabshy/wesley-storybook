@@ -1,15 +1,12 @@
 <h6 mat-dialog-title>
-  Your WIPSA will timeout in {{ data.countDown | async }}
+  {{ content.heading }}
 </h6>
-<div mat-dialog-content>
-  <p>
-    As you’ve been inactive for a while, your application will soon reset (we do
-    that to keep your information secure). To cancel the time-out and continue,
-    just click below.
-  </p>
+<div class="mb-3" mat-dialog-content>
+  <p class="wes-h2">{{ data.countDown | async }} seconds</p>
+  <div [innerHTML]="content.summary"></div>
 </div>
 <div mat-dialog-actions>
   <button class="wes-button wes-button-primary" mat-dialog-close>
-    Continue application
+    {{ content.continueButtonLabel }}
   </button>
 </div>

@@ -20,6 +20,7 @@ export interface Config {
   };
   declaration: Declaration;
   payment: IFramePayment;
+  inactivityModal: InactivityModal;
 }
 
 export interface KnowledgeCheck {
@@ -212,4 +213,10 @@ export interface IFramePayment {
 export interface EndPoints {
   confirmationErrorPage: string;
   confirmationPage: string;
+}
+
+export interface InactivityModal {
+  heading: string;
+  summary: string;
+  continueButtonLabel: string;
 }

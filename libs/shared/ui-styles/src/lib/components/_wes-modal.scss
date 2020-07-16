@@ -1,0 +1,33 @@
+.cdk-overlay-dark-backdrop {
+  background-color: rgba(64, 71, 79, 0.9);
+}
+
+.wes-modal {
+  .mat-dialog-container {
+    background-color: $global-colour-white;
+    border-radius: 0;
+    padding-top: 40px;
+    padding-top: 32px;
+  }
+
+  .mat-dialog-actions {
+    min-height: 56px;
+    margin-bottom: 0;
+  }
+}
+
+.wes-inactivity-modal {
+  max-width: 90vw !important;
+  @include media-breakpoint-up(md) {
+    max-width: 80vw !important;
+    .mat-dialog-container {
+      padding: 72px 64px 64px 64px;
+    }
+  }
+  @include media-breakpoint-up(xl) {
+    max-width: 50vw !important;
+    .mat-dialog-container {
+      padding: 72px 100px 64px 100px;
+    }
+  }
+}
