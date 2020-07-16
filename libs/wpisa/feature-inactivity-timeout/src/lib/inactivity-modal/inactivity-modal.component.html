@@ -2,11 +2,11 @@
   {{ content.heading }}
 </h6>
 <div class="mb-3" mat-dialog-content>
-  <p class="wes-h2">{{ data.countDown | async }} seconds</p>
+  <p class="wes-h2">{{ countDownWithAlert$ | async }} seconds</p>
   <div [innerHTML]="content.summary"></div>
 </div>
 <div mat-dialog-actions>
-  <button class="wes-button wes-button-primary" mat-dialog-close>
+  <button type="button" class="wes-button wes-button-primary" mat-dialog-close>
     {{ content.continueButtonLabel }}
   </button>
 </div>
