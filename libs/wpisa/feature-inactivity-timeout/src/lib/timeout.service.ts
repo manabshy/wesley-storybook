@@ -4,7 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
 
 import { InactivityModalComponent } from './inactivity-modal/inactivity-modal.component';
-import { startWith } from 'rxjs/operators';
+import { startWith, finalize } from 'rxjs/operators';
+import { SessionStorageService } from '@wesleyan-frontend/wpisa/data-access';
+import { pipe } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,11 +14,15 @@ import { startWith } from 'rxjs/operators';
 export class TimeoutService {
   timedOut = false;
 
-  constructor(private idle: Idle, private dialog: MatDialog) {}
+  constructor(
+    private idle: Idle,
+    private dialog: MatDialog,
+    private sessionService: SessionStorageService
+  ) {}
 
   initInactivityTimeout() {
     // Sets the idle timeout of 9 minutes
-    this.idle.setIdle(9 * 60);
+    this.idle.setIdle(9 * 1);
     // Sets a timeout period of 60 seconds
     this.idle.setTimeout(60);
     // Sets the default interrupts, in this case, things like
@@ -29,11 +35,19 @@ export class TimeoutService {
 
     this.idle.onTimeout.subscribe(() => {
       this.timedOut = true;
-      window.open(`/savings-and-investments/with-profits-isa`, '_self');
+      this.sessionService
+        .clear()
+        .pipe(
+          finalize(() =>
+            window.open(`/savings-and-investments/with-profits-isa`, '_self')
+          )
+        )
+        .subscribe();
     });
 
     this.idle.onIdleStart.subscribe(() => {
       this.dialog.open(InactivityModalComponent, {
+        panelClass: ['wes-modal', 'wes-inactivity-modal'],
         data: {
           countDown: this.idle.onTimeoutWarning.pipe(startWith(60)),
         },

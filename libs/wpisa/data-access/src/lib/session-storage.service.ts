@@ -143,4 +143,9 @@ export class SessionStorageService {
   getState() {
     return this.appState;
   }
+
+  //Clear backend session and app state
+  clear() {
+    return this.http.get<{ state: string }>(`/api/isawebapiwrapper/cleardata`);
+  }
 }
