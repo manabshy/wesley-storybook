@@ -131,10 +131,22 @@
   </div>
 </ng-container>
 
-<h4>{{ pageContent.isaLabel }}</h4>
-<div [innerHtml]="pageContent.isaRules"></div>
+<h2 class="wes-h4">{{ pageContent.isaLabel }}</h2>
+
+<div class="wes-alert wes-alert-warning mb-4 mb-5">
+  <div class="wes-alert-content-wrapper">
+    <img
+      class="wes-alert-icon wes-icon"
+      src="/assets/icons/svg/icon-important.svg"
+    />
+    <div class="wes-alert-content" [innerHtml]="pageContent.isaRules"></div>
+  </div>
+</div>
+
 <div [innerHtml]="pageContent.adviceContent"></div>
+
 <hr class="my-5" />
+
 <form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
   <wes-checkbox
     formControlName="authorise"

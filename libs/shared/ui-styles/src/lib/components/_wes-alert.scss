@@ -1,0 +1,35 @@
+$alert-warning-border-colour: $global-colour-gold-500;
+$alert-warning-background-colour: $global-colour-gold-50;
+.wes-alert {
+  padding: 24px; //32px 24px md
+
+  @include media-breakpoint-up(md) {
+    padding: 32px 24px;
+  }
+  @include media-breakpoint-up(lg) {
+    padding: 32px;
+  }
+
+  &-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+    }
+  }
+
+  &-icon {
+    margin-bottom: 16px;
+    margin-right: 24px;
+    @include media-breakpoint-up(lg) {
+      margin-right: 32px;
+    }
+  }
+
+  &-warning {
+    background-color: $alert-warning-background-colour;
+    box-shadow: 2px 2px 0 0 $alert-warning-border-colour;
+  }
+}
