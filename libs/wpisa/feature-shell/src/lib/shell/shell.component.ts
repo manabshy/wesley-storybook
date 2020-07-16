@@ -34,7 +34,7 @@ export class ShellComponent {
       startWith(this.activatedRoute),
       tap(() => {
         //Google Analytics Page Tracking
-        if (ga) {
+        if (typeof ga === 'function') {
           ga('set', 'page', window.location.pathname + window.location.hash);
           ga('send', 'pageview');
         }
