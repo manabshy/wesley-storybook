@@ -6,7 +6,7 @@
 >
 <h1>{{ pageContent.knowledgeCheck.step1.heading }}</h1>
 
-<wes-knowledge-check-q1-form (submit)="submitQuestion1()">
+<wes-knowledge-check-q1-form (formSubmitted)="submitQuestion1($event)">
   <button
     class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
     type="submit"

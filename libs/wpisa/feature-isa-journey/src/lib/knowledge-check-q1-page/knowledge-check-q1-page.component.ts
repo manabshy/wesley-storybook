@@ -8,13 +8,14 @@ import { ConfigService, Config } from '@wesleyan-frontend/wpisa/data-access';
 import { KnowledgeCheckFacade } from '../core/knowledge-check.facade';
 import { CustomStepperComponent } from '../components/custom-stepper/custom-stepper.component';
 import { isaRoutesNames } from '../isa-journey.routes.names';
+import { KnowledgeCheckFormAnswer } from '../core/models/knowledge-check-form-answer.interface';
 
 @Component({
   selector: 'wes-knowledge-check-q1-page',
   templateUrl: './knowledge-check-q1-page.component.html',
   styleUrls: ['./knowledge-check-q1-page.component.scss'],
 })
-export class KnowledgeCheckQ1PageComponent implements OnInit {
+export class KnowledgeCheckQ1PageComponent {
   pageContent: Config;
   introLink = `/${isaRoutesNames.KNOWLEDGE_CHECK}`;
   q1Valid$ = this.formsManager.validityChanges('knowledgeCheckQ1');
@@ -32,26 +33,13 @@ export class KnowledgeCheckQ1PageComponent implements OnInit {
     this.titleService.setTitle(this.pageContent.knowledgeCheck.step1.metaTitle);
   }
 
-  ngOnInit(): void {}
-
-  submitQuestion1() {
-    const q1Value = this.formsManager.getControl<string>(
-      'knowledgeCheckQ1',
-      'question1'
-    ).value;
-
-    this.formsManager
-      .initialValueChanged('knowledgeCheckQ1')
+  submitQuestion1(answer: KnowledgeCheckFormAnswer) {
+    this.knowledgeCheckFacade
+      .submitQuestion1(
+        answer.label,
+        this.pageContent.knowledgeCheck.step1.summary
+      )
       .pipe(
-        switchMap(() =>
-          this.knowledgeCheckFacade.submitQuestion1(q1Value).pipe(
-            tap((_) =>
-              this.formsManager.setInitialValue('knowledgeCheckQ1', {
-                question1: q1Value,
-              })
-            )
-          )
-        ),
         //Show Question2
         finalize(() =>
           this.router.navigate([`/${isaRoutesNames.KNOWLEDGE_CHECK_Q2}`])

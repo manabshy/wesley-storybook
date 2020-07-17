@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { tap, catchError, take } from 'rxjs/operators';
+import { tap, catchError, take, concatMapTo } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 import {
@@ -28,47 +28,54 @@ export class KnowledgeCheckFacade {
     this.knowledgeCheckAttemptId = this.appState.state.attemptId;
   }
 
-  submitQuestion1(answer: string) {
+  submitQuestion1(answerLabel: string, questionText: string) {
     this.loadingService.show();
 
-    this.appState.saveFormState('knowledgeCheckQ1').pipe(take(1)).subscribe();
+    return this.appState.saveFormState('knowledgeCheckQ1').pipe(
+      concatMapTo(
+        this.isaApiService
+          .submitInitialAnswer({
+            questionIndex: 1,
+            questionText,
+            answerText: answerLabel,
+          })
+          .pipe(
+            tap((_) => this.loadingService.hide()),
+            tap(
+              (response) =>
+                (this.knowledgeCheckAttemptId = response.data.attemptId)
+            ),
+            catchError((err) => {
+              window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
 
-    return this.isaApiService
-      .submitInitialAnswer({
-        questionIndex: 1,
-        answer,
-      })
-      .pipe(
-        tap((_) => this.loadingService.hide()),
-        tap(
-          (response) => (this.knowledgeCheckAttemptId = response.data.attemptId)
-        ),
-        catchError((err) => {
-          window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
-
-          return throwError(err);
-        })
-      );
+              return throwError(err);
+            })
+          )
+      )
+    );
   }
 
-  submitQuestion2(answer: string) {
+  submitQuestion2(answerLabel: string, questionText: string) {
     this.loadingService.show();
 
-    this.appState.saveFormState('knowledgeCheckQ2').pipe(take(1)).subscribe();
+    return this.appState.saveFormState('knowledgeCheckQ2').pipe(
+      concatMapTo(
+        this.isaApiService
+          .submitSubsequentAnswer({
+            questionIndex: 2,
+            questionText,
+            answerText: answerLabel,
+            attemptId: this.knowledgeCheckAttemptId,
+          })
+          .pipe(
+            tap((_) => this.loadingService.hide()),
+            catchError((err) => {
+              window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
 
-    return this.isaApiService
-      .submitSubsequentAnswer({
-        questionIndex: 2,
-        answer,
-        attemptId: this.knowledgeCheckAttemptId,
-      })
-      .pipe(
-        tap((_) => this.loadingService.hide()),
-        catchError((err) => {
-          window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
-
-          return throwError(err);
-        })
-      );
+              return throwError(err);
+            })
+          )
+      )
+    );
   }
 }

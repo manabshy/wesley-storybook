@@ -89,7 +89,7 @@ export class DeclarationFacade {
     this.personalDetailsViewModelData$ = this.formManager
       .valueChanges('customerPersonalDetails')
       .pipe(
-        startWith(this.appState.forms.customerPersonalDetails),
+        startWith(this.appState.forms?.customerPersonalDetails),
         map((customerPersonalDetailsFormValue) => {
           console.log(customerPersonalDetailsFormValue);
           return this.mapPersonalDetailsFormValuesToViewModel(
@@ -370,9 +370,7 @@ export class DeclarationFacade {
     return this.isaApiService.getTransactionId().pipe(
       map((result) => result.data.transactionId),
       concatMap((transactionId) => {
-        const dto = this.getLumpSumTransactionDTO(
-          transactionId + Math.random().toString(36).substring(2) //TODO REMOVE RANDOM
-        );
+        const dto = this.getLumpSumTransactionDTO(transactionId);
 
         return this.isaApiService.getPaymentUrl(dto).pipe(
           tap(() => this.loadingService.reset()),
@@ -399,9 +397,7 @@ export class DeclarationFacade {
     return this.isaApiService.getTransactionId().pipe(
       map((result) => result.data.transactionId),
       concatMap((transactionId) => {
-        const dto = this.getLumpSumAndMonthlyTransactionDTO(
-          transactionId + Math.random().toString(36).substring(2) //TODO REMOVE RANDOM
-        );
+        const dto = this.getLumpSumAndMonthlyTransactionDTO(transactionId);
 
         return this.isaApiService.getPaymentUrl(dto).pipe(
           tap(() => this.loadingService.reset()),

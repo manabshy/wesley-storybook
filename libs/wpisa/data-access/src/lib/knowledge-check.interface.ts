@@ -1,7 +1,8 @@
 export interface KnowledgeCheckAnswerDTO {
   attemptId: number;
   questionIndex: number;
-  answer: string;
+  questionText: string;
+  answerText: string;
 }
 
 export interface KnowledgeCheckResponse {
