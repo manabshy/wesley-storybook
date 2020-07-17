@@ -17,7 +17,9 @@ export class ConfigService {
         .getElementById('isa-config')
         .getAttribute('data-model');
     } catch (error) {
-      throw Error('Initial config data missing from index.html');
+      throw Error(
+        'Initial Sitecore config data missing from index.html <div id="isa-config" data-model="*MISSING*">'
+      );
     }
 
     if (configAttrData) {

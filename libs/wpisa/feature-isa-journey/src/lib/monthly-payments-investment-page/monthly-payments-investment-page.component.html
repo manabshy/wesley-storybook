@@ -23,7 +23,7 @@
       [errorStateMatcher]="errorStateMatcher"
       data-test="txtAmount"
     />
-    <span wesPrefix>£&nbsp;</span>
+    <span wesPrefix><strong>£</strong>&nbsp;</span>
     <wes-hint>{{ pageContent.monthlyHelpText }}</wes-hint>
     <wes-error *ngIf="isFieldInvalid('amount')">
       <wes-form-field-error

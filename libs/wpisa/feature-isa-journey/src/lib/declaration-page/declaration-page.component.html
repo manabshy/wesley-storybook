@@ -22,14 +22,14 @@
         >
       </div>
     </div>
-    <div class="wes-card-body">
-      <div *ngIf="investment.showLumpSum">
+    <div class="wes-card-body d-md-flex flex-md-wrap">
+      <div *ngIf="investment.showLumpSum" class="flex-grow-lg-1 pr-md-6">
         <p>{{ investment.lumpSumPayment.label }}</p>
         <p class="wes-h2" data-test="pLumpSumAmount">
           <strong>{{ investment.lumpSumPayment.value }}</strong>
         </p>
       </div>
-      <div *ngIf="investment.showMonthly" class="mb-3">
+      <div *ngIf="investment.showMonthly" class="mb-3 flex-grow-lg-1">
         <p>{{ investment.monthlyPayment.label }}</p>
         <span>
           <span class="wes-h2" data-test="pMonthlyAmount"

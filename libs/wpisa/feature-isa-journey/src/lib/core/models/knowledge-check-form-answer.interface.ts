@@ -1,4 +1,4 @@
 export interface KnowledgeCheckFormAnswer {
-  value: string;
+  value: 'Yes' | 'No';
   label: string;
 }
