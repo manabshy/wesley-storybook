@@ -31,7 +31,17 @@ export class KnowledgeCheckFacade {
   submitQuestion1(answerLabel: string, questionText: string) {
     this.loadingService.show();
 
-    return this.appState.saveFormState('knowledgeCheckQ1').pipe(
+    const q1Value = this.formManager.getControl('knowledgeCheckQ1', 'question1')
+      .value;
+
+    const kcAnswers = {
+      forms: {
+        knowledgeCheckQ1: { question1: q1Value },
+        knowledgeCheckQ2: { question2: null }, //Reset question 2
+      },
+    };
+
+    return this.appState.save(kcAnswers).pipe(
       concatMapTo(
         this.isaApiService
           .submitInitialAnswer({
