@@ -3,6 +3,7 @@ export interface KnowledgeCheckAnswerDTO {
   questionIndex: number;
   questionText: string;
   answerText: string;
+  answerValue: 'Yes' | 'No';
 }
 
 export interface KnowledgeCheckResponse {

@@ -41,6 +41,7 @@ export class KnowledgeCheckQ2PageComponent {
         takeWhile((hasChanged) => hasChanged === true),
         switchMap(() =>
           this.knowledgeCheckFacade.submitQuestion2(
+            answer.value,
             answer.label,
             this.pageContent.knowledgeCheck.step2.summary
           )

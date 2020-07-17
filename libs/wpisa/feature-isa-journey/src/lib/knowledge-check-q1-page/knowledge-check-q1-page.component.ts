@@ -36,6 +36,7 @@ export class KnowledgeCheckQ1PageComponent {
   submitQuestion1(answer: KnowledgeCheckFormAnswer) {
     this.knowledgeCheckFacade
       .submitQuestion1(
+        answer.value,
         answer.label,
         this.pageContent.knowledgeCheck.step1.summary
       )

@@ -5,6 +5,7 @@ import { throwError } from 'rxjs';
 import {
   ISAApiService,
   SessionStorageService,
+  KnowledgeCheckAnswerDTO,
 } from '@wesleyan-frontend/wpisa/data-access';
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
@@ -28,15 +29,16 @@ export class KnowledgeCheckFacade {
     this.knowledgeCheckAttemptId = this.appState.state.attemptId;
   }
 
-  submitQuestion1(answerLabel: string, questionText: string) {
+  submitQuestion1(
+    answerValue: 'Yes' | 'No',
+    answerLabel: string,
+    questionText: string
+  ) {
     this.loadingService.show();
-
-    const q1Value = this.formManager.getControl('knowledgeCheckQ1', 'question1')
-      .value;
 
     const kcAnswers = {
       forms: {
-        knowledgeCheckQ1: { question1: q1Value },
+        knowledgeCheckQ1: { question1: answerValue },
         knowledgeCheckQ2: { question2: null }, //Reset question 2
       },
     };
@@ -48,6 +50,7 @@ export class KnowledgeCheckFacade {
             questionIndex: 1,
             questionText,
             answerText: answerLabel,
+            answerValue,
           })
           .pipe(
             tap((_) => this.loadingService.hide()),
@@ -65,17 +68,22 @@ export class KnowledgeCheckFacade {
     );
   }
 
-  submitQuestion2(answerLabel: string, questionText: string) {
+  submitQuestion2(
+    answerValue: 'Yes' | 'No',
+    answerLabel: string,
+    questionText: string
+  ) {
     this.loadingService.show();
 
     return this.appState.saveFormState('knowledgeCheckQ2').pipe(
       concatMapTo(
         this.isaApiService
           .submitSubsequentAnswer({
+            attemptId: this.knowledgeCheckAttemptId,
             questionIndex: 2,
             questionText,
             answerText: answerLabel,
-            attemptId: this.knowledgeCheckAttemptId,
+            answerValue,
           })
           .pipe(
             tap((_) => this.loadingService.hide()),
