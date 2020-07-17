@@ -23,7 +23,7 @@ const NO = 'No';
   templateUrl: './knowledge-check-q2-form.component.html',
   styleUrls: ['./knowledge-check-q2-form.component.scss'],
 })
-export class KnowledgeCheckQ2FormComponent implements OnInit, OnDestroy {
+export class KnowledgeCheckQ2FormComponent implements OnDestroy {
   @Output() formSubmitted = new EventEmitter<KnowledgeCheckFormAnswer>();
 
   form: FormGroup = this.builder.group({

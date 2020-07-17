@@ -52,6 +52,7 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
   pageContent: MonthlyAndLumpSumPayment;
   directDebitContent: DirectDebitDetails;
   submitAttempt = false;
+  showOverallError = false;
   investmentOptionLink = `/${isaRoutesNames.INVESTMENT_OPTIONS}`;
   subscriptions$ = new Subscription();
   errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
@@ -166,6 +167,8 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
             })
         );
       }, 350);
+    } else {
+      this.showOverallError = true;
     }
   }
 

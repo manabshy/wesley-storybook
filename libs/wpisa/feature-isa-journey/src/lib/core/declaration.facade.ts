@@ -506,6 +506,7 @@ export class DeclarationFacade {
     | 'customerDetails'
     | 'nationalityDetails'
     | 'marketingPreferences'
+    | 'declarationsText'
   > {
     const mappedCustomerDTO = this.customerDetailsFacade.mapCustomerFormToSearchCustomerDTO(
       this.formManager.getControl('customerPersonalDetails')?.value ||
@@ -521,6 +522,15 @@ export class DeclarationFacade {
       appTestAttemptId: this.knowledgeCheckFacade.knowledgeCheckAttemptId,
       taxPeriodCode: '',
       customerPermissionGranted: true,
+      declarationsText: (
+        this.pageContent.isaRules +
+        this.pageContent.adviceContent +
+        this.pageContent.authoriseCheckbox.inputLabel +
+        this.pageContent.authoriseContent +
+        this.pageContent.declarationCheckbox.inputLabel +
+        this.pageContent.content +
+        this.pageContent.confirmContent
+      ).replace(/<[^>]*>/g, ''),
     };
 
     this.customerDetailsFacade.currentTaxPeriodISALimits$

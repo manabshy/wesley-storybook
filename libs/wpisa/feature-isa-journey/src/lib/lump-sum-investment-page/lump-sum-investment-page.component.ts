@@ -24,6 +24,7 @@ import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-prog
 export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
   pageContent: LumpSumPayment;
   submitAttempt = false;
+  showOverallError = false;
   investmentOptionLink = `/${isaRoutesNames.INVESTMENT_OPTIONS}`;
   errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
   subscriptions$ = new Subscription();
@@ -97,6 +98,8 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
           })
         );
       }, 350);
+    } else {
+      this.showOverallError = true;
     }
   }
 

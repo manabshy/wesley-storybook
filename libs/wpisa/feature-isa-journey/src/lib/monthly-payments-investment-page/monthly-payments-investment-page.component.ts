@@ -27,6 +27,7 @@ export class MonthlyPaymentsInvestmentPageComponent
   pageContent: MonthlyPayment;
   directDebitContent: DirectDebitDetails;
   submitAttempt = false;
+  showOverallError = false;
   investmentOptionLink = `/${isaRoutesNames.INVESTMENT_OPTIONS}`;
   errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
 
@@ -102,6 +103,8 @@ export class MonthlyPaymentsInvestmentPageComponent
           })
         );
       }, 300);
+    } else {
+      this.showOverallError = true;
     }
   }
 

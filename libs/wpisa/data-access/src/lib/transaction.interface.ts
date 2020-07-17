@@ -17,6 +17,7 @@ export interface SubmitTransactionDTO extends SearchCustomerDTO {
   directDebitType: DirectDebitTypeStrings;
   onlineDirectDebitDetails: OnlineDirectDebitDetails;
   customerPermissionGranted: boolean;
+  declarationsText: string;
 }
 
 export interface LumpPaymentDetails {
