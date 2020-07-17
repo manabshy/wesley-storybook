@@ -19,7 +19,9 @@
     svg path#docCardArrow {
       transition: d cubic-bezier(0.37, 0, 0.63, 1) 0.3s;
 
-      //d: path('M2,5 C2,2 8,2 8,5'); need path of arrow down
+      //   d: path(
+      //     'M13.5,9.5 L13.5,17.5 L16.5,17.5 L12,22.5 L7.5,17.5 L10.5,17.5 L10.5,9.5 L13.5,9.5 Z'
+      //   ); //path of arrow down
     }
   }
 
