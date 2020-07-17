@@ -49,7 +49,7 @@ export interface OnlineDirectDebitDetails {
   sortCode: string;
   accountNumber: string;
   bankName?: string;
-  customerConfimedDD: boolean;
+  customerConfirmedDD: boolean;
   accountValidated: boolean;
   bankValidationResponse?: string;
 }

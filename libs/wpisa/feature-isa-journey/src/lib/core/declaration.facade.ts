@@ -548,7 +548,7 @@ export class DeclarationFacade {
       sortCode: `${value.sortCode.c1}-${value.sortCode.c2}-${value.sortCode.c3}`,
       accountNumber: value.accountNumber,
       bankName: value.bankName,
-      customerConfimedDD: true,
+      customerConfirmedDD: true,
       accountValidated: false,
     };
   }
