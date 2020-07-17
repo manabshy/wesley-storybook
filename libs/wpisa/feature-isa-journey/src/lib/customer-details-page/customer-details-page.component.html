@@ -1,10 +1,8 @@
 <h1>{{ pageContent.heading }}</h1>
 <div class="mb-6 mb-md-7" [innerHtml]="pageContent.summary"></div>
 
-<div *ngIf="showOverallError">
-  <span>{{ overallErrorContent.heading }}</span>
-  <span>{{ overallErrorContent.summary }}</span>
-</div>
+<wes-error-summary class="mb-5 mb-md-7" *ngIf="showOverallError">
+</wes-error-summary>
 <form
   id="customerDetailsForm"
   [formGroup]="form"
