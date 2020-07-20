@@ -1,19 +1,20 @@
 import { DomSanitizer, SafeUrl, Title } from '@angular/platform-browser';
-import { Component, OnInit } from '@angular/core';
-import { IFramePayment } from '@wesleyan-frontend/wpisa/data-access';
-import { Subscription } from 'rxjs';
-import { DeclarationFacade } from '../core/services/declaration.facade';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgFormsManager } from '@ngneat/forms-manager';
-import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
+import { IFramePayment } from '@wesleyan-frontend/wpisa/data-access';
+
 import { PaymentFacade } from '../core/services/payment.facade';
 
 @Component({
   selector: 'wes-payment-page',
   templateUrl: './payment-page.component.html',
   styleUrls: ['./payment-page.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class PaymentPageComponent implements OnInit {
+export class PaymentPageComponent {
   iframeUrl: SafeUrl;
   pageContent: IFramePayment;
   paymentUrl$ = this.paymentFacade.paymentUrl$;
@@ -21,10 +22,7 @@ export class PaymentPageComponent implements OnInit {
 
   constructor(
     private paymentFacade: PaymentFacade,
-    private router: Router,
-    private formsManager: NgFormsManager,
-    private titleService: Title,
-    private sanitizer: DomSanitizer
+    private titleService: Title
   ) {
     this.subscriptions$.add(
       this.paymentFacade.pageContent$.subscribe((content) => {
@@ -35,5 +33,14 @@ export class PaymentPageComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  onLoad(): void {
+    const iframe: HTMLIFrameElement = <HTMLIFrameElement>(
+      document.getElementById('paymentFrame')
+    );
+    const insideDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+    insideDoc.body.innerHTML =
+      insideDoc.body.innerHTML +
+      `<style>.btn.btn--positive {background-color: #FEBD11;}</style>`;
+  }
 }

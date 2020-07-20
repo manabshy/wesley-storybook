@@ -1,4 +1,11 @@
-iframe {
-  //   height: 100%;
+iframe#paymentFrame {
+  height: 100%;
+  display: block;
   //   position: absolute;
+  overflow: hidden;
+
+  //Chrome fix
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
