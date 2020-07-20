@@ -9,10 +9,10 @@ import {
 } from '@wesleyan-frontend/wpisa/data-access';
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
-import { isaRoutesNames } from '../isa-journey.routes.names';
+import { isaRoutesNames } from '../../isa-journey.routes.names';
 import { AppStateFacade } from './app-state-facade';
 import { NgFormsManager, NgFormsManagerConfig } from '@ngneat/forms-manager';
-import { AppForms } from './app-forms.interface';
+import { AppForms } from '../models/app-forms.interface';
 
 @Injectable({
   providedIn: 'root',

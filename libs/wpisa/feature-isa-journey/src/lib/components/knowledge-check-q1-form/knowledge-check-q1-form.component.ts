@@ -12,8 +12,8 @@ import {
   ConfigService,
   KnowledgeCheckStep,
 } from '@wesleyan-frontend/wpisa/data-access';
-import { AppForms } from '../../core/app-forms.interface';
-import { AppStateFacade } from '../../core/app-state-facade';
+import { AppForms } from '../../core/models/app-forms.interface';
+import { AppStateFacade } from '../../core/services/app-state-facade';
 import { KnowledgeCheckFormAnswer } from '../../core/models/knowledge-check-form-answer.interface';
 
 const YES = 'Yes';

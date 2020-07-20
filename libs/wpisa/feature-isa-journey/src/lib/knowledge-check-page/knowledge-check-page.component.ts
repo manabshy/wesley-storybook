@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { NgFormsManager } from '@ngneat/forms-manager';
 
 import { ConfigService, Config } from '@wesleyan-frontend/wpisa/data-access';
-import { KnowledgeCheckFacade } from '../core/knowledge-check.facade';
+import { KnowledgeCheckFacade } from '../core/services/knowledge-check.facade';
 import { isaRoutesNames } from '../isa-journey.routes.names';
 
 @Component({

@@ -29,7 +29,7 @@ import {
 } from '@wesleyan-frontend/wpisa/data-access';
 
 import { DirectDebitFormValue } from './direct-debit-form-value.interface';
-import { AppForms } from '../../core/app-forms.interface';
+import { AppForms } from '../../core/models/app-forms.interface';
 import { OnSubmitOrHasValueErrorStateMatcher } from '../../core/error-state-matcher';
 
 @Component({

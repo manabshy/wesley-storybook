@@ -1,5 +1,5 @@
-import { AddressLookupFormValue } from '../components/address-lookup-form/address-lookup-form-value.interface';
-import { ManualAddressFormValue } from '../components/manual-address-form/manual-address-form-value.interface';
+import { AddressLookupFormValue } from '../../components/address-lookup-form/address-lookup-form-value.interface';
+import { ManualAddressFormValue } from '../../components/manual-address-form/manual-address-form-value.interface';
 
 export interface CustomerDetailsFormValue {
   title: string;

@@ -35,10 +35,10 @@ import {
 } from '@wesleyan-frontend/shared/data-access-api';
 
 import { isaRoutesNames } from '../isa-journey.routes.names';
-import { CustomerDetailsFacade } from '../core/customer-details.facade';
-import { GenericDropdownItem } from '../core/generic-dropdown-item.interface';
-import { AppForms } from '../core/app-forms.interface';
-import { AppStateFacade } from '../core/app-state-facade';
+import { CustomerDetailsFacade } from '../core/services/customer-details.facade';
+import { GenericDropdownItem } from '../core/models/generic-dropdown-item.interface';
+import { AppForms } from '../core/models/app-forms.interface';
+import { AppStateFacade } from '../core/services/app-state-facade';
 import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
 
 @Component({

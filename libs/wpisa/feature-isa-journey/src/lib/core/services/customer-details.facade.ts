@@ -26,9 +26,9 @@ import {
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 import { AddressDetails } from '@wesleyan-frontend/shared/data-access-api';
 
-import { GenericDropdownItem } from './generic-dropdown-item.interface';
-import { CustomerDetailsFormValue } from './customer-details-form-value.interface';
-import { ManualAddressFormValue } from '../components/manual-address-form/manual-address-form-value.interface';
+import { GenericDropdownItem } from '../models/generic-dropdown-item.interface';
+import { CustomerDetailsFormValue } from '../models/customer-details-form-value.interface';
+import { ManualAddressFormValue } from '../../components/manual-address-form/manual-address-form-value.interface';
 import { AppStateFacade } from './app-state-facade';
 
 @Injectable({

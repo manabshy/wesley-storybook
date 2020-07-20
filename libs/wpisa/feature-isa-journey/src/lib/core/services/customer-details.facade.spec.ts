@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 
 import { CustomerDetailsFacade } from './customer-details.facade';
-import { SearchCustomerDTO } from 'libs/wpisa/data-access/src/lib/customer-details.interface';
+import { SearchCustomerDTO } from '@wesleyan-frontend/wpisa/data-access';
 
 describe('CustomerDetailsFacade', () => {
   let service: CustomerDetailsFacade;

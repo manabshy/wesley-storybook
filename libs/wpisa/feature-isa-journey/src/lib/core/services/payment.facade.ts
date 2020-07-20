@@ -35,19 +35,19 @@ import {
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
 import { CustomerDetailsFacade } from './customer-details.facade';
-import { AppForms } from './app-forms.interface';
-import { CustomerDetailsFormValue } from './customer-details-form-value.interface';
-import { PersonalDetailsViewModel } from './personal-details-view-model.interface';
-import { ManualAddressFormValue } from '../components/manual-address-form/manual-address-form-value.interface';
-import { DirectDebitViewModel } from './direct-debit-view-model.interface';
-import { DirectDebitFormValue } from '../components/direct-debit-form/direct-debit-form-value.interface';
-import { InvestmentCardViewModel } from './investment-card-view-model.interface';
-import { formatCurrencyGBP } from './util-functions';
+import { AppForms } from '../models/app-forms.interface';
+import { CustomerDetailsFormValue } from '../models/customer-details-form-value.interface';
+import { PersonalDetailsViewModel } from '../models/personal-details-view-model.interface';
+import { ManualAddressFormValue } from '../../components/manual-address-form/manual-address-form-value.interface';
+import { DirectDebitViewModel } from '../models/direct-debit-view-model.interface';
+import { DirectDebitFormValue } from '../../components/direct-debit-form/direct-debit-form-value.interface';
+import { InvestmentCardViewModel } from '../models/investment-card-view-model.interface';
+import { formatCurrencyGBP } from '../util-functions';
 import {
   InvestmentOptionPaymentTypeStrings,
   InvestmentOptionPaymentType,
-} from './investment-option-form-value.interface';
-import { isaRoutesNames } from '../isa-journey.routes.names';
+} from '../models/investment-option-form-value.interface';
+import { isaRoutesNames } from '../../isa-journey.routes.names';
 import { KnowledgeCheckFacade } from './knowledge-check.facade';
 import { DeclarationFacade } from './declaration.facade';
 

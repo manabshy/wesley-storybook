@@ -4,7 +4,7 @@ import {
   ConfigService,
   DirectDebitDetails,
 } from '@wesleyan-frontend/wpisa/data-access';
-import { InvestmentOptionsFacade } from '../core/investment-options.facade';
+import { InvestmentOptionsFacade } from '../core/services/investment-options.facade';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { Title } from '@angular/platform-browser';
@@ -12,7 +12,7 @@ import { isaRoutesNames } from '../isa-journey.routes.names';
 import { Subscription } from 'rxjs';
 import { Validators, FormBuilder } from '@angular/forms';
 import { tap } from 'rxjs/operators';
-import { AppStateFacade } from '../core/app-state-facade';
+import { AppStateFacade } from '../core/services/app-state-facade';
 import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 

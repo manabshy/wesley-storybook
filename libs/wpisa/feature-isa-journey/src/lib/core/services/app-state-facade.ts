@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { AppForms } from './app-forms.interface';
+import { AppForms } from '../models/app-forms.interface';
 import {
   SessionStorageService,
   CurrentTaxPeriodISALimits,
 } from '@wesleyan-frontend/wpisa/data-access';
 import { mergeDeepRight, reduce, omit, find, propEq } from 'ramda';
 import { NgFormsManager } from '@ngneat/forms-manager';
-import { AppState } from './app-state.interface';
+import { AppState } from '../models/app-state.interface';
 
 @Injectable({
   providedIn: 'root',

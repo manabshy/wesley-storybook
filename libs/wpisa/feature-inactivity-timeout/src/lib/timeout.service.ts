@@ -22,7 +22,7 @@ export class TimeoutService {
 
   initInactivityTimeout() {
     // Sets the idle timeout of 9 minutes
-    this.idle.setIdle(1 * 60);
+    this.idle.setIdle(9 * 60);
     // Sets a timeout period of 60 seconds
     this.idle.setTimeout(60);
     // Sets the default interrupts, in this case, things like
