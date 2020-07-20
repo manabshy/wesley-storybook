@@ -18,7 +18,6 @@ import {
   ValidationErrors,
   NG_VALIDATORS,
   Validator,
-  FormControl,
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { NgFormsManager } from '@ngneat/forms-manager';
@@ -28,9 +27,9 @@ import {
   DirectDebitDetails,
 } from '@wesleyan-frontend/wpisa/data-access';
 
+import { OnSubmitOrHasValueErrorStateMatcher } from '../../core/error-state-matcher';
 import { DirectDebitFormValue } from './direct-debit-form-value.interface';
 import { AppForms } from '../../core/models/app-forms.interface';
-import { OnSubmitOrHasValueErrorStateMatcher } from '../../core/error-state-matcher';
 
 @Component({
   selector: 'wes-direct-debit-form',
@@ -130,6 +129,15 @@ export class DirectDebitFormComponent
     return (
       this.form.get(fieldName).invalid &&
       (this.form.get(fieldName).dirty || this.submitAttempt)
+    );
+  }
+
+  showSortCodeError() {
+    return (
+      (this.form.get('sortCode.c1').dirty &&
+        this.form.get('sortCode.c2').dirty &&
+        this.form.get('sortCode.c3').dirty) ||
+      this.submitAttempt
     );
   }
 

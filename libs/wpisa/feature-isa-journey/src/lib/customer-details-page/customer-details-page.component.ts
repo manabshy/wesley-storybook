@@ -1,13 +1,7 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  OnDestroy,
-  ViewEncapsulation,
-} from '@angular/core';
-import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { NgFormsManager } from '@ngneat/forms-manager';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import {
   FormGroup,
   FormBuilder,
@@ -20,8 +14,6 @@ import { Observable, Subscription, BehaviorSubject } from 'rxjs';
 import {
   ConfigService,
   YourDetails,
-  ISAApiService,
-  SessionStorageService,
 } from '@wesleyan-frontend/wpisa/data-access';
 import {
   nationalInsuranceNumberValidator,
@@ -29,17 +21,14 @@ import {
   mobilePhoneUKValidator,
   emailValidator,
 } from '@wesleyan-frontend/shared/util-validators';
-import {
-  AddressLookupService,
-  AddressDetails,
-} from '@wesleyan-frontend/shared/data-access-api';
+import { AddressDetails } from '@wesleyan-frontend/shared/data-access-api';
 
-import { isaRoutesNames } from '../isa-journey.routes.names';
-import { CustomerDetailsFacade } from '../core/services/customer-details.facade';
 import { GenericDropdownItem } from '../core/models/generic-dropdown-item.interface';
-import { AppForms } from '../core/models/app-forms.interface';
-import { AppStateFacade } from '../core/services/app-state-facade';
 import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
+import { CustomerDetailsFacade } from '../core/services/customer-details.facade';
+import { AppStateFacade } from '../core/services/app-state-facade';
+import { isaRoutesNames } from '../isa-journey.routes.names';
+import { AppForms } from '../core/models/app-forms.interface';
 
 @Component({
   selector: 'wes-customer-details-page',

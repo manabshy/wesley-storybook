@@ -116,7 +116,7 @@
             />
           </wes-form-field>
         </div>
-        <wes-error *ngIf="isFieldInvalid('sortCode')">
+        <wes-error *ngIf="isFieldInvalid('sortCode') && showSortCodeError()">
           <wes-form-field-error>
             {{ content.sortCode.inputError }}
           </wes-form-field-error>
