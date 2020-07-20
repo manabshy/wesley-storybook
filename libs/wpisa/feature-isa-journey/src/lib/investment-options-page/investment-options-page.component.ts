@@ -9,12 +9,12 @@ import {
   CurrentTaxPeriodISALimits,
 } from '@wesleyan-frontend/wpisa/data-access';
 
-import { InvestmentOptionsFacade } from '../core/investment-options.facade';
+import { InvestmentOptionsFacade } from '../core/services/investment-options.facade';
 import { isaRoutesNames } from '../isa-journey.routes.names';
 import { Observable, Subscription } from 'rxjs';
-import { InvestmentOptionPaymentType } from '../core/investment-option-form-value.interface';
-import { AppStateFacade } from '../core/app-state-facade';
-import { AppForms } from '../core/app-forms.interface';
+import { InvestmentOptionPaymentType } from '../core/models/investment-option-form-value.interface';
+import { AppStateFacade } from '../core/services/app-state-facade';
+import { AppForms } from '../core/models/app-forms.interface';
 
 @Component({
   selector: 'wes-investment-options-page',

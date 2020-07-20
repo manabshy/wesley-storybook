@@ -35,22 +35,22 @@ import {
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
 import { CustomerDetailsFacade } from './customer-details.facade';
-import { AppForms } from './app-forms.interface';
-import { CustomerDetailsFormValue } from './customer-details-form-value.interface';
-import { PersonalDetailsViewModel } from './personal-details-view-model.interface';
-import { ManualAddressFormValue } from '../components/manual-address-form/manual-address-form-value.interface';
-import { DirectDebitViewModel } from './direct-debit-view-model.interface';
-import { DirectDebitFormValue } from '../components/direct-debit-form/direct-debit-form-value.interface';
-import { InvestmentCardViewModel } from './investment-card-view-model.interface';
-import { formatCurrencyGBP } from './util-functions';
+import { AppForms } from '../models/app-forms.interface';
+import { CustomerDetailsFormValue } from '../models/customer-details-form-value.interface';
+import { PersonalDetailsViewModel } from '../models/personal-details-view-model.interface';
+import { ManualAddressFormValue } from '../../components/manual-address-form/manual-address-form-value.interface';
+import { DirectDebitViewModel } from '../models/direct-debit-view-model.interface';
+import { DirectDebitFormValue } from '../../components/direct-debit-form/direct-debit-form-value.interface';
+import { InvestmentCardViewModel } from '../models/investment-card-view-model.interface';
+import { formatCurrencyGBP } from '../util-functions';
 import {
   InvestmentOptionPaymentTypeStrings,
   InvestmentOptionPaymentType,
-} from './investment-option-form-value.interface';
-import { isaRoutesNames } from '../isa-journey.routes.names';
+} from '../models/investment-option-form-value.interface';
+import { isaRoutesNames } from '../../isa-journey.routes.names';
 import { KnowledgeCheckFacade } from './knowledge-check.facade';
 import { AppStateFacade } from './app-state-facade';
-import { AppState } from './app-state.interface';
+import { AppState } from '../models/app-state.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -89,7 +89,7 @@ export class DeclarationFacade {
     this.personalDetailsViewModelData$ = this.formManager
       .valueChanges('customerPersonalDetails')
       .pipe(
-        startWith(this.appState.forms.customerPersonalDetails),
+        startWith(this.appState.forms?.customerPersonalDetails),
         map((customerPersonalDetailsFormValue) => {
           console.log(customerPersonalDetailsFormValue);
           return this.mapPersonalDetailsFormValuesToViewModel(
@@ -370,9 +370,7 @@ export class DeclarationFacade {
     return this.isaApiService.getTransactionId().pipe(
       map((result) => result.data.transactionId),
       concatMap((transactionId) => {
-        const dto = this.getLumpSumTransactionDTO(
-          transactionId + Math.random().toString(36).substring(2) //TODO REMOVE RANDOM
-        );
+        const dto = this.getLumpSumTransactionDTO(transactionId);
 
         return this.isaApiService.getPaymentUrl(dto).pipe(
           tap(() => this.loadingService.reset()),
@@ -399,9 +397,7 @@ export class DeclarationFacade {
     return this.isaApiService.getTransactionId().pipe(
       map((result) => result.data.transactionId),
       concatMap((transactionId) => {
-        const dto = this.getLumpSumAndMonthlyTransactionDTO(
-          transactionId + Math.random().toString(36).substring(2) //TODO REMOVE RANDOM
-        );
+        const dto = this.getLumpSumAndMonthlyTransactionDTO(transactionId);
 
         return this.isaApiService.getPaymentUrl(dto).pipe(
           tap(() => this.loadingService.reset()),
@@ -510,6 +506,7 @@ export class DeclarationFacade {
     | 'customerDetails'
     | 'nationalityDetails'
     | 'marketingPreferences'
+    | 'declarationsText'
   > {
     const mappedCustomerDTO = this.customerDetailsFacade.mapCustomerFormToSearchCustomerDTO(
       this.formManager.getControl('customerPersonalDetails')?.value ||
@@ -525,6 +522,15 @@ export class DeclarationFacade {
       appTestAttemptId: this.knowledgeCheckFacade.knowledgeCheckAttemptId,
       taxPeriodCode: '',
       customerPermissionGranted: true,
+      declarationsText: (
+        this.pageContent.isaRules +
+        this.pageContent.adviceContent +
+        this.pageContent.authoriseCheckbox.inputLabel +
+        this.pageContent.authoriseContent +
+        this.pageContent.declarationCheckbox.inputLabel +
+        this.pageContent.content +
+        this.pageContent.confirmContent
+      ).replace(/<[^>]*>/g, ''),
     };
 
     this.customerDetailsFacade.currentTaxPeriodISALimits$
@@ -542,7 +548,7 @@ export class DeclarationFacade {
       sortCode: `${value.sortCode.c1}-${value.sortCode.c2}-${value.sortCode.c3}`,
       accountNumber: value.accountNumber,
       bankName: value.bankName,
-      customerConfimedDD: true,
+      customerConfirmedDD: true,
       accountValidated: false,
     };
   }

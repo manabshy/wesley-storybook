@@ -1,12 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
-import { take, tap, finalize, takeWhile, switchMap } from 'rxjs/operators';
+import { take, tap, takeWhile, switchMap } from 'rxjs/operators';
 import { NgFormsManager } from '@ngneat/forms-manager';
+import { Title } from '@angular/platform-browser';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ConfigService, Config } from '@wesleyan-frontend/wpisa/data-access';
 
-import { KnowledgeCheckFacade } from '../core/knowledge-check.facade';
+import { KnowledgeCheckFormAnswer } from '../core/models/knowledge-check-form-answer.interface';
+import { KnowledgeCheckFacade } from '../core/services/knowledge-check.facade';
 import { isaRoutesNames } from '../isa-journey.routes.names';
 
 @Component({
@@ -14,7 +15,7 @@ import { isaRoutesNames } from '../isa-journey.routes.names';
   templateUrl: './knowledge-check-q2-page.component.html',
   styleUrls: ['./knowledge-check-q2-page.component.scss'],
 })
-export class KnowledgeCheckQ2PageComponent implements OnInit {
+export class KnowledgeCheckQ2PageComponent {
   pageContent: Config;
   question1Link = `/${isaRoutesNames.KNOWLEDGE_CHECK_Q1}`;
   q2Valid$ = this.formsManager.validityChanges('knowledgeCheckQ2');
@@ -32,31 +33,20 @@ export class KnowledgeCheckQ2PageComponent implements OnInit {
     this.titleService.setTitle(this.pageContent.knowledgeCheck.step2.metaTitle);
   }
 
-  ngOnInit(): void {}
-
-  submitQuestion2() {
-    const q2Value = this.formsManager.getControl<string>(
-      'knowledgeCheckQ2',
-      'question2'
-    ).value;
-
+  submitQuestion2(answer: KnowledgeCheckFormAnswer) {
     this.formsManager
       .initialValueChanged('knowledgeCheckQ2')
       .pipe(
         // We use takeWhile because it completes an observable when a condition fails
         takeWhile((hasChanged) => hasChanged === true),
         switchMap(() =>
-          this.knowledgeCheckFacade.submitQuestion2(q2Value).pipe(
-            tap((_) =>
-              this.formsManager.setInitialValue('knowledgeCheckQ2', {
-                question2: q2Value,
-              })
-            )
+          this.knowledgeCheckFacade.submitQuestion2(
+            answer.value,
+            answer.label,
+            this.pageContent.knowledgeCheck.step2.summary
           )
         ),
-        finalize(() =>
-          this.router.navigate([`/${isaRoutesNames.YOUR_DETAILS}`])
-        ),
+        tap(() => this.router.navigate([`/${isaRoutesNames.YOUR_DETAILS}`])),
         take(1)
       )
       .subscribe();

@@ -18,7 +18,7 @@ import {
 
 import { totalAnnualAllowanceValidator } from '@wesleyan-frontend/shared/util-validators';
 
-import { InvestmentOptionsFacade } from '../core/investment-options.facade';
+import { InvestmentOptionsFacade } from '../core/services/investment-options.facade';
 import { isaRoutesNames } from '../isa-journey.routes.names';
 import {
   FormBuilder,
@@ -36,8 +36,8 @@ import {
   debounceTime,
 } from 'rxjs/operators';
 import { Subscription, merge } from 'rxjs';
-import { AppStateFacade } from '../core/app-state-facade';
-import { AppForms } from '../core/app-forms.interface';
+import { AppStateFacade } from '../core/services/app-state-facade';
+import { AppForms } from '../core/models/app-forms.interface';
 import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
@@ -52,6 +52,7 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
   pageContent: MonthlyAndLumpSumPayment;
   directDebitContent: DirectDebitDetails;
   submitAttempt = false;
+  showOverallError = false;
   investmentOptionLink = `/${isaRoutesNames.INVESTMENT_OPTIONS}`;
   subscriptions$ = new Subscription();
   errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
@@ -166,6 +167,8 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
             })
         );
       }, 350);
+    } else {
+      this.showOverallError = true;
     }
   }
 

@@ -35,6 +35,7 @@ import { KnowledgeCheckQ2PageComponent } from './knowledge-check-q2-page/knowled
 import { ButtonLoaderDirective } from './button-loader.directive';
 import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
 import { SafeUrlPipe } from './safe-url.pipe';
+import { ErrorSummaryComponent } from './components/error-summary/error-summary.component';
 
 @NgModule({
   imports: [
@@ -70,6 +71,7 @@ import { SafeUrlPipe } from './safe-url.pipe';
     DirectDebitFormComponent,
     ButtonLoaderDirective,
     SafeUrlPipe,
+    ErrorSummaryComponent,
   ],
   providers: [
     {

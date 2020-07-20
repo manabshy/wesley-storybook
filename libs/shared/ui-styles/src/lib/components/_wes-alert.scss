@@ -1,0 +1,16 @@
+.wes-alert {
+  border-radius: 4px;
+  padding: 16px;
+
+  &-danger {
+    background-color: #ffffff;
+    border: 1px solid #d72d41;
+  }
+
+  &-title {
+    font-weight: 600;
+    .wes-alert-danger & {
+      color: #d72d41;
+    }
+  }
+}

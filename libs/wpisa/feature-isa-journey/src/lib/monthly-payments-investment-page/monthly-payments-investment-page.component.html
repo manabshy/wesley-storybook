@@ -8,6 +8,9 @@
 <h1>{{ pageContent.heading }}</h1>
 <div class="mb-6 mb-md-7" [innerHtml]="pageContent.summary"></div>
 
+<wes-error-summary class="mb-5 mb-md-7" *ngIf="showOverallError">
+</wes-error-summary>
+
 <form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
   <wes-form-field id="monthlyAmount" class="mb-4 mb-md-5">
     <wes-label labelTestId="lblAmount">{{
@@ -20,7 +23,7 @@
       [errorStateMatcher]="errorStateMatcher"
       data-test="txtAmount"
     />
-    <span wesPrefix>£&nbsp;</span>
+    <span wesPrefix><strong>£</strong>&nbsp;</span>
     <wes-hint>{{ pageContent.monthlyHelpText }}</wes-hint>
     <wes-error *ngIf="isFieldInvalid('amount')">
       <wes-form-field-error

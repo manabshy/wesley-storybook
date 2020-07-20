@@ -5,10 +5,10 @@ import {
   ConfigService,
 } from '@wesleyan-frontend/wpisa/data-access';
 import { NgFormsManager } from '@ngneat/forms-manager';
-import { InvestmentOptionsFacade } from '../../core/investment-options.facade';
-import { InvestmentOptionPaymentType } from '../../core/investment-option-form-value.interface';
-import { AppForms } from '../../core/app-forms.interface';
-import { AppStateFacade } from '../../core/app-state-facade';
+import { InvestmentOptionsFacade } from '../../core/services/investment-options.facade';
+import { InvestmentOptionPaymentType } from '../../core/models/investment-option-form-value.interface';
+import { AppForms } from '../../core/models/app-forms.interface';
+import { AppStateFacade } from '../../core/services/app-state-facade';
 
 @Component({
   selector: 'wes-investment-options-form',

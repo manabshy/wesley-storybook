@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
-import { take, tap, finalize, takeWhile, switchMap } from 'rxjs/operators';
 import { NgFormsManager } from '@ngneat/forms-manager';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { take, tap } from 'rxjs/operators';
 
 import { ConfigService, Config } from '@wesleyan-frontend/wpisa/data-access';
-import { KnowledgeCheckFacade } from '../core/knowledge-check.facade';
-import { CustomStepperComponent } from '../components/custom-stepper/custom-stepper.component';
+
+import { KnowledgeCheckFormAnswer } from '../core/models/knowledge-check-form-answer.interface';
+import { KnowledgeCheckFacade } from '../core/services/knowledge-check.facade';
 import { isaRoutesNames } from '../isa-journey.routes.names';
 
 @Component({
@@ -14,7 +15,7 @@ import { isaRoutesNames } from '../isa-journey.routes.names';
   templateUrl: './knowledge-check-q1-page.component.html',
   styleUrls: ['./knowledge-check-q1-page.component.scss'],
 })
-export class KnowledgeCheckQ1PageComponent implements OnInit {
+export class KnowledgeCheckQ1PageComponent {
   pageContent: Config;
   introLink = `/${isaRoutesNames.KNOWLEDGE_CHECK}`;
   q1Valid$ = this.formsManager.validityChanges('knowledgeCheckQ1');
@@ -32,28 +33,16 @@ export class KnowledgeCheckQ1PageComponent implements OnInit {
     this.titleService.setTitle(this.pageContent.knowledgeCheck.step1.metaTitle);
   }
 
-  ngOnInit(): void {}
-
-  submitQuestion1() {
-    const q1Value = this.formsManager.getControl<string>(
-      'knowledgeCheckQ1',
-      'question1'
-    ).value;
-
-    this.formsManager
-      .initialValueChanged('knowledgeCheckQ1')
+  submitQuestion1(answer: KnowledgeCheckFormAnswer) {
+    this.knowledgeCheckFacade
+      .submitQuestion1(
+        answer.value,
+        answer.label,
+        this.pageContent.knowledgeCheck.step1.summary
+      )
       .pipe(
-        switchMap(() =>
-          this.knowledgeCheckFacade.submitQuestion1(q1Value).pipe(
-            tap((_) =>
-              this.formsManager.setInitialValue('knowledgeCheckQ1', {
-                question1: q1Value,
-              })
-            )
-          )
-        ),
         //Show Question2
-        finalize(() =>
+        tap(() =>
           this.router.navigate([`/${isaRoutesNames.KNOWLEDGE_CHECK_Q2}`])
         ),
         take(1)

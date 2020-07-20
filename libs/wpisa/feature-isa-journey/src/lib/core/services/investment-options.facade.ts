@@ -12,7 +12,7 @@ import {
 } from '@wesleyan-frontend/wpisa/data-access';
 
 import { CustomerDetailsFacade } from './customer-details.facade';
-import { formatCurrencyGBP } from './util-functions';
+import { formatCurrencyGBP } from '../util-functions';
 import { AppStateFacade } from './app-state-facade';
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 

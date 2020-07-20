@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="submit()">
   <label
     id="question2Label"
     class="mb-6 mb-md-7 mb-lg-8"
@@ -13,19 +13,19 @@
   >
     <wes-radio-button
       class="mb-4"
-      value="Yes"
+      [value]="questionMap.Yes.value"
       labelTestId="lblAnswerYes"
       inputTestId="rbAnswerYes"
     >
-      <span [innerHtml]="content.questions[0]"></span>
+      <span [innerHtml]="questionMap.Yes.label"></span>
     </wes-radio-button>
     <wes-radio-button
       class="mb-4"
-      value="No"
+      [value]="questionMap.No.value"
       labelTestId="lblAnswerNo"
       inputTestId="rbAnswerNo"
     >
-      <span [innerHtml]="content.questions[1]"></span>
+      <span [innerHtml]="questionMap.No.label"></span>
     </wes-radio-button>
   </wes-radio-group>
   <ng-content></ng-content>

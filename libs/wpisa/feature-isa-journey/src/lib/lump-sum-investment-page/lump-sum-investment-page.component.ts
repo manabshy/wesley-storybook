@@ -8,10 +8,10 @@ import { take } from 'rxjs/operators';
 
 import { LumpSumPayment } from '@wesleyan-frontend/wpisa/data-access';
 
-import { InvestmentOptionsFacade } from '../core/investment-options.facade';
+import { InvestmentOptionsFacade } from '../core/services/investment-options.facade';
 import { isaRoutesNames } from '../isa-journey.routes.names';
-import { AppStateFacade } from '../core/app-state-facade';
-import { AppForms } from '../core/app-forms.interface';
+import { AppStateFacade } from '../core/services/app-state-facade';
+import { AppForms } from '../core/models/app-forms.interface';
 import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
@@ -24,6 +24,7 @@ import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-prog
 export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
   pageContent: LumpSumPayment;
   submitAttempt = false;
+  showOverallError = false;
   investmentOptionLink = `/${isaRoutesNames.INVESTMENT_OPTIONS}`;
   errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
   subscriptions$ = new Subscription();
@@ -97,6 +98,8 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
           })
         );
       }, 350);
+    } else {
+      this.showOverallError = true;
     }
   }
 

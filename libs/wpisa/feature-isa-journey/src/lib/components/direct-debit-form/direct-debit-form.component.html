@@ -1,6 +1,11 @@
 <ng-container *ngIf="content">
   <form [formGroup]="form" class="mb-5 mb-md-6">
-    <div class="mb-3">{{ content.bankNameTooltip }}</div>
+    <div class="mb-3 wes-tooltip wes-tooltip-top-right">
+      <div class="wes-tooltip-content">
+        <img src="/assets/icons/svg/icon-info.svg" class="wes-icon" />
+        <p class="wes-text-shortform">{{ content.bankNameTooltip }}</p>
+      </div>
+    </div>
 
     <wes-form-field id="bankName" class="mb-4">
       <wes-label labelTestId="lblBankName">{{
@@ -111,7 +116,7 @@
             />
           </wes-form-field>
         </div>
-        <wes-error *ngIf="isFieldInvalid('sortCode')">
+        <wes-error *ngIf="isFieldInvalid('sortCode') && showSortCodeError()">
           <wes-form-field-error>
             {{ content.sortCode.inputError }}
           </wes-form-field-error>
@@ -124,15 +129,19 @@
   <div class="direct-debit-guarantee wes-bg-solid-grey-50 p-3">
     <h2 class="wes-h6">{{ content.heading }}</h2>
     <div class="row">
-      <div class="col-8">
-        <div [innerHtml]="content.summary"></div>
+      <div class="col-7 pr-0 col-md-10 col-xl-8">
+        <div class="wes-text-shortform" [innerHtml]="content.summary"></div>
       </div>
-      <div class="col-4">
-        <img alt="Direct debit guarantee logo" />
+      <div class="col-5 col-md-2 offset-xl-2 text-right pt-1 pt-md-0">
+        <img
+          class="mt-md-n3"
+          src="/assets/images/direct-debit-logo.png"
+          alt="Direct debit guarantee logo"
+        />
       </div>
     </div>
 
     <hr class="my-3" />
-    <div [innerHtml]="content.bodyCopy"></div>
+    <div class="wes-text-shortform" [innerHtml]="content.bodyCopy"></div>
   </div>
 </ng-container>

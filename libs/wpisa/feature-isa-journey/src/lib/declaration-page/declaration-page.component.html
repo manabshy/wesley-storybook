@@ -22,25 +22,25 @@
         >
       </div>
     </div>
-    <div class="wes-card-body">
-      <div *ngIf="investment.showLumpSum">
+    <div class="wes-card-body d-md-flex flex-md-wrap">
+      <div *ngIf="investment.showLumpSum" class="flex-grow-lg-1 pr-md-6">
         <p>{{ investment.lumpSumPayment.label }}</p>
-        <p class="wes-h2">
+        <p class="wes-h2" data-test="pLumpSumAmount">
           <strong>{{ investment.lumpSumPayment.value }}</strong>
         </p>
       </div>
-      <div *ngIf="investment.showMonthly">
+      <div *ngIf="investment.showMonthly" class="mb-3 flex-grow-lg-1">
         <p>{{ investment.monthlyPayment.label }}</p>
         <span>
-          <span class="wes-h2"
+          <span class="wes-h2" data-test="pMonthlyAmount"
             ><strong>{{ investment.monthlyPayment.value }}</strong></span
           >
           {{ pageContent.perMonthLabel }}
         </span>
       </div>
       <div class="investment-total w-100">
-        <img src="assets/icons/svg/icon-calculator.svg" />
-        <p>
+        <img src="/assets/icons/svg/icon-calculator.svg" />
+        <p data-test="pTotalAmount">
           {{ investment.total.label }}
           <strong>{{ investment.total.value }}</strong>
         </p>
@@ -65,14 +65,17 @@
       </div>
     </div>
     <div class="wes-card-body">
-      <div>
-        <span>{{ dd.accountNumber.label }}</span
-        ><span>{{ dd.accountNumber.value }}</span>
-      </div>
-      <div>
-        <span>{{ dd.sortCode.label }}</span
-        ><span>{{ dd.sortCode.value }}</span>
-      </div>
+      <dl class="row">
+        <dt class="col-sm-4">{{ dd.accountNumber.label }}</dt>
+        <dd class="col-sm-8">
+          {{ dd.accountNumber.value }}
+        </dd>
+
+        <dt class="col-sm-4">{{ dd.sortCode.label }}</dt>
+        <dd class="col-sm-8">
+          {{ dd.sortCode.value }}
+        </dd>
+      </dl>
     </div>
   </div>
 </ng-container>
@@ -93,42 +96,60 @@
       </div>
     </div>
     <div class="wes-card-body">
-      <div>
-        <span>{{ personalDetails.name.label }}</span
-        ><span>{{ personalDetails.name.value }}</span>
-      </div>
-      <div>
-        <span>{{ personalDetails.dob.label }}</span
-        ><span>{{ personalDetails.dob.value }}</span>
-      </div>
-      <div>
-        <span>{{ personalDetails.profession.label }}</span
-        ><span>{{ personalDetails.profession.value }}</span>
-      </div>
-      <div>
-        <span>{{ personalDetails.nationality.label }}</span
-        ><span>{{ personalDetails.nationality.value }}</span>
-      </div>
-      <div>
-        <span>{{ personalDetails.emailAddress.label }}</span
-        ><span>{{ personalDetails.emailAddress.value }}</span>
-      </div>
-      <div>
-        <span>{{ personalDetails.phoneNumber.label }}</span
-        ><span>{{ personalDetails.phoneNumber.value }}</span>
-      </div>
-      <div>
-        <span>{{ personalDetails.homeAddress.label }}</span
-        ><span>{{ personalDetails.homeAddress.value }}</span>
-      </div>
+      <dl class="row">
+        <dt class="col-sm-4">{{ personalDetails.name.label }}</dt>
+        <dd class="col-sm-8">
+          {{ personalDetails.name.value }}
+        </dd>
+
+        <dt class="col-sm-4">{{ personalDetails.dob.label }}</dt>
+        <dd class="col-sm-8">
+          {{ personalDetails.dob.value }}
+        </dd>
+        <dt class="col-sm-4">{{ personalDetails.profession.label }}</dt>
+        <dd class="col-sm-8">
+          {{ personalDetails.profession.value }}
+        </dd>
+        <dt class="col-sm-4">{{ personalDetails.nationality.label }}</dt>
+        <dd class="col-sm-8">
+          {{ personalDetails.nationality.value }}
+        </dd>
+        <dt class="col-sm-4">{{ personalDetails.emailAddress.label }}</dt>
+        <dd class="col-sm-8">
+          {{ personalDetails.emailAddress.value }}
+        </dd>
+        <dt class="col-sm-4">{{ personalDetails.phoneNumber.label }}</dt>
+        <dd class="col-sm-8">
+          {{ personalDetails.phoneNumber.value }}
+        </dd>
+        <dt class="col-sm-4">{{ personalDetails.homeAddress.label }}</dt>
+        <dd class="col-sm-8">
+          {{ personalDetails.homeAddress.value }}
+        </dd>
+      </dl>
     </div>
   </div>
 </ng-container>
 
-<h4>{{ pageContent.isaLabel }}</h4>
-<div [innerHtml]="pageContent.isaRules"></div>
+<h2 class="wes-h4">{{ pageContent.isaLabel }}</h2>
+
+<div class="wes-notification wes-notification-warning mb-4 mb-5">
+  <div class="wes-notification-content-wrapper">
+    <img
+      class="wes-notification-icon wes-icon"
+      src="/assets/icons/svg/icon-important.svg"
+    />
+    <div
+      class="wes-notification-content"
+      [innerHtml]="pageContent.isaRules"
+    ></div>
+  </div>
+</div>
+
 <div [innerHtml]="pageContent.adviceContent"></div>
+
 <hr class="my-5" />
+
 <form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
   <wes-checkbox
     formControlName="authorise"

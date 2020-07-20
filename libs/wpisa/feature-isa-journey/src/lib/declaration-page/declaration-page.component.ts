@@ -9,10 +9,10 @@ import { Subscription, Observable } from 'rxjs';
 import { Declaration } from '@wesleyan-frontend/wpisa/data-access';
 
 import { isaRoutesNames } from '../isa-journey.routes.names';
-import { DeclarationFacade } from '../core/declaration.facade';
-import { PersonalDetailsViewModel } from '../core/personal-details-view-model.interface';
-import { DirectDebitViewModel } from '../core/direct-debit-view-model.interface';
-import { InvestmentOptionPaymentType } from '../core/investment-option-form-value.interface';
+import { DeclarationFacade } from '../core/services/declaration.facade';
+import { PersonalDetailsViewModel } from '../core/models/personal-details-view-model.interface';
+import { DirectDebitViewModel } from '../core/models/direct-debit-view-model.interface';
+import { InvestmentOptionPaymentType } from '../core/models/investment-option-form-value.interface';
 
 @Component({
   selector: 'wes-declaration-page',

@@ -1,0 +1,16 @@
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="🟢-5.-Investment-Options" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5-3_1_Combined-Validation_768" transform="translate(-110.000000, -904.000000)">
+            <g id="Form---Lump-Sum" transform="translate(94.000000, 724.000000)">
+                <g id="Tool-Tip" transform="translate(0.000000, 152.000000)">
+                    <g id="Icon" transform="translate(16.000000, 28.000000)">
+                        <g id="Error-icon" fill="#FEBD11">
+                            <circle id="Oval" cx="8" cy="8" r="8"></circle>
+                        </g>
+                        <path d="M7.98245614,5 C8.56140351,5 9,4.55752212 9,3.99115044 C9,3.42477876 8.57894737,3 7.98245614,3 C7.40350877,3 7,3.44247788 7,3.99115044 C7,4.55752212 7.40350877,5 7.98245614,5 Z M9,12 L9,6 L7,6 L7,12 L9,12 Z" id="i" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -2,11 +2,11 @@ import { DomSanitizer, SafeUrl, Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { IFramePayment } from '@wesleyan-frontend/wpisa/data-access';
 import { Subscription } from 'rxjs';
-import { DeclarationFacade } from '../core/declaration.facade';
+import { DeclarationFacade } from '../core/services/declaration.facade';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { tap } from 'rxjs/operators';
-import { PaymentFacade } from '../core/payment.facade';
+import { PaymentFacade } from '../core/services/payment.facade';
 
 @Component({
   selector: 'wes-payment-page',

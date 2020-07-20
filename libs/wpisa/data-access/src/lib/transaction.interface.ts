@@ -17,6 +17,7 @@ export interface SubmitTransactionDTO extends SearchCustomerDTO {
   directDebitType: DirectDebitTypeStrings;
   onlineDirectDebitDetails: OnlineDirectDebitDetails;
   customerPermissionGranted: boolean;
+  declarationsText: string;
 }
 
 export interface LumpPaymentDetails {
@@ -48,7 +49,7 @@ export interface OnlineDirectDebitDetails {
   sortCode: string;
   accountNumber: string;
   bankName?: string;
-  customerConfimedDD: boolean;
+  customerConfirmedDD: boolean;
   accountValidated: boolean;
   bankValidationResponse?: string;
 }
