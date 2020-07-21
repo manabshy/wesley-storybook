@@ -23,7 +23,7 @@ $wes-form-field-default-infix-width: 180px !default;
   // By default, <input> has a padding, border, outline and a default width.
   border: none;
   outline: none;
-  padding: 0;
+  padding: 14px 0;
   margin: 0;
   width: 100%;
 
@@ -147,7 +147,7 @@ textarea.wes-input-element {
   margin: -2px 0;
 }
 
-// Remove the native select down arrow and replace it with material design arrow
+// Remove the native select down arrow and replace it with design arrow
 select.wes-input-element {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -155,9 +155,7 @@ select.wes-input-element {
   background-color: transparent;
   display: inline-flex;
   box-sizing: border-box;
-  padding-top: 1em;
-  top: -1em;
-  margin-bottom: -1em;
+  padding-top: 14px;
 
   &::-ms-expand {
     display: none;
@@ -224,7 +222,7 @@ select.wes-input-element {
 }
 .wes-form-field-flex {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   box-sizing: border-box;
   width: 100%;
 }
@@ -245,7 +243,7 @@ select.wes-input-element {
   border: 1px solid #b3b5b9;
   border-radius: 4px;
   background-color: #ffffff;
-  padding: 14px 16px;
+  padding: 0 16px;
 
   &:hover {
     border-color: #40474f;
@@ -263,7 +261,7 @@ select.wes-input-element {
 // The underline is outside of it so it can cover all of the elements under this flex container.
 .wes-form-field-flex {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   box-sizing: border-box;
   width: 100%;
 }

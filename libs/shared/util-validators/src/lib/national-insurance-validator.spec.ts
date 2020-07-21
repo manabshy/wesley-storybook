@@ -11,7 +11,13 @@ const validValues = [
   'Ja814574b',
   'Ja-81-45-74-b',
 ];
-const invalidValues = ['12 23 34 B', 'JA81457B', 'JA 81 45 7B', 'JA-81-45-7B'];
+const invalidValues = [
+  '12 23 34 B',
+  'JA81457B',
+  'JA 81 45 7B',
+  'JA-81-45-7B',
+  'SN-81-45-74-c1',
+];
 
 describe('nationalInsuranceValidator', () => {
   validValues.forEach((value) =>

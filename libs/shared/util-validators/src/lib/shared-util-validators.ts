@@ -9,7 +9,7 @@ import { differenceInYears, isValid, parseISO } from 'date-fns';
 export const nationalInsuranceNumberValidator: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {
-  const testRegexp: RegExp = /[A-CEGHJ-PR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}s?[0-9]{2}s?[0-9]{2}s?[0-9]{2}s?[A-DFMP ]/;
+  const testRegexp: RegExp = /[A-CEGHJ-PR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}s?[0-9]{2}s?[0-9]{2}s?[0-9]{2}s?[A-D]{1}$/;
   const cleanValue = removeWhitespaceHyphens(control.value).toUpperCase();
 
   if (isEmptyInputValue(control.value)) {
@@ -73,7 +73,7 @@ export const mobilePhoneUKValidator: ValidatorFn = (
 export const emailValidator: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {
-  const testRegexp: RegExp = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+  const testRegexp: RegExp = /^[\w._%+-]+@[\w.-]+\.[a-z]{2,4}$/;
 
   if (isEmptyInputValue(control.value)) {
     return null; // don't validate empty values to allow optional controls

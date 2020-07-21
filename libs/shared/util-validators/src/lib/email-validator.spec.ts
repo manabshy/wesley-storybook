@@ -6,6 +6,8 @@ const validValues = [
   'test@test.as.df',
   'test_s@sd.co.uk',
   'f.g@test.com',
+  'A.g@test.com',
+  'Atest.Test@test.com',
 ];
 const invalidValues = [
   'test@test',
