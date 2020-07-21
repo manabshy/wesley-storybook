@@ -6,10 +6,6 @@ $formFieldBorderBottom: 32px;
 }
 
 #customerDetailsForm {
-  .wes-form-field {
-    display: block;
-  }
-
   .dob-box-1,
   .dob-box-2 {
     display: inline-block;
@@ -33,6 +29,7 @@ $formFieldBorderBottom: 32px;
 #manualPostcodeFormField,
 #flatNumberFormField,
 #houseNumberFormField {
+  display: block;
   @media (min-width: 768px) {
     .wes-form-field-wrapper {
       width: 37.25%;
@@ -56,6 +53,7 @@ $formFieldBorderBottom: 32px;
 #regionFormField,
 #countyFormField,
 #addressLookupResultList {
+  display: block;
   margin-bottom: $formFieldBorderBottom;
 
   //@TODO replace with mixin

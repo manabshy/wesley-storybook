@@ -23,6 +23,7 @@ body.nav-is-open {
     background-color: $color-white;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     @include media-breakpoint-up(md) {
       height: 69px;
