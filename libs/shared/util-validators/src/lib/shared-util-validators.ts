@@ -59,7 +59,10 @@ export const mobilePhoneUKValidator: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {
   const testRegexp: RegExp = /^(07[\d]{9})$/;
-  const cleanValue = removeWhitespaceHyphens(control.value);
+  const cleanValue = removeWhitespaceHyphens(control.value).replace(
+    /\(|\)/g, //remove ( and )
+    ''
+  );
 
   if (isEmptyInputValue(control.value)) {
     return null; // don't validate empty values to allow optional controls
