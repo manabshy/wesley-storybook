@@ -1,18 +1,14 @@
+import { tap, catchError, concatMapTo, concatMap } from 'rxjs/operators';
+import { NgFormsManager } from '@ngneat/forms-manager';
 import { Injectable } from '@angular/core';
-import { tap, catchError, take, concatMapTo } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
-import {
-  ISAApiService,
-  SessionStorageService,
-  KnowledgeCheckAnswerDTO,
-} from '@wesleyan-frontend/wpisa/data-access';
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
+import { ISAApiService } from '@wesleyan-frontend/wpisa/data-access';
 
 import { isaRoutesNames } from '../../isa-journey.routes.names';
-import { AppStateFacade } from './app-state-facade';
-import { NgFormsManager, NgFormsManagerConfig } from '@ngneat/forms-manager';
 import { AppForms } from '../models/app-forms.interface';
+import { AppStateFacade } from './app-state-facade';
 
 @Injectable({
   providedIn: 'root',
@@ -23,8 +19,7 @@ export class KnowledgeCheckFacade {
   constructor(
     private isaApiService: ISAApiService,
     private appState: AppStateFacade,
-    private loadingService: OverlayProgressSpinnerService,
-    private formManager: NgFormsManager<AppForms>
+    private loadingService: OverlayProgressSpinnerService
   ) {
     this.knowledgeCheckAttemptId = this.appState.state.attemptId;
   }
@@ -53,10 +48,14 @@ export class KnowledgeCheckFacade {
             answerValue,
           })
           .pipe(
-            tap((_) => this.loadingService.hide()),
             tap(
               (response) =>
                 (this.knowledgeCheckAttemptId = response.data.attemptId)
+            ),
+            concatMap((response) =>
+              this.appState
+                .save({ attemptId: response.data.attemptId })
+                .pipe(tap((_) => this.loadingService.hide()))
             ),
             catchError((err) => {
               window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
