@@ -87,7 +87,7 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
   onSubmit() {
     this.submitAttempt = true;
     this.form.markAllAsTouched();
-    if (this.formsManager.isValid('lumpSumPayment')) {
+    if (this.form.valid) {
       this.loadingService.show();
       //Need the timeout, sometimes the input values don't update
       setTimeout(() => {
