@@ -1,15 +1,18 @@
 .wes-hotspot-card {
   display: flex;
-  align-items: center;
   position: relative;
-  background-color: $global-colour-white;
- 
+  padding-top: 8px;
+
   .wes-icon {
     display: block;
     width: 32px;
     height: 32px;
     flex-shrink: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
+
   &-text-container {
     display: flex;
     flex-direction: column;
@@ -19,5 +22,5 @@
   &-label {
     font-weight: 600;
   }
- 
 }
+

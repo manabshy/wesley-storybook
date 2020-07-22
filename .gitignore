@@ -37,3 +37,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+/.vs/slnx.sqlite
+/.vs/slnx.sqlite-journal
+/.vs/Wesleyan-Frontend/v15/.suo

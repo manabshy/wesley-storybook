@@ -1,0 +1,10 @@
+.col-6 {
+  @include media-breakpoint-down(sm) {
+    flex: 0 0 100%;
+    max-width: 100%;
+
+    .sub-title-description{
+      padding-bottom : 8px;
+    }
+  }
+}
