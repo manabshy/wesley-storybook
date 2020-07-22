@@ -40,35 +40,38 @@
     </div>
   </div>
 
-  <wes-form-field
-    id="addressLookupResultList"
-    class="d-block mb-3"
-    *ngIf="addressList.length > 0"
-  >
-    <wes-label labelTestId="lblAddressList">{{
-      pageContent.addressDetails.selectYourAddress.inputLabel
-    }}</wes-label>
-
-    <select
-      wesNativeControl
-      formControlName="selectedAddressId"
-      [errorStateMatcher]="errorStateMatcher"
-      (change)="onSelectedAddress($event)"
-      data-test="ddAddressList"
+  <ng-container *ngIf="addressList$ | async as addressList">
+    <wes-form-field
+      id="addressLookupResultList"
+      class="d-block mb-3"
+      *ngIf="addressList.length > 0"
     >
-      <option *ngFor="let address of addressList" [value]="address.moniker">{{
-        address.singleLine
-      }}</option>
-    </select>
+      <wes-label labelTestId="lblAddressList">{{
+        pageContent.addressDetails.selectYourAddress.inputLabel
+      }}</wes-label>
 
-    <wes-error *ngIf="isFieldInvalid('selectedAddressId')">
-      <wes-form-field-error>
-        {{ pageContent.addressDetails.selectYourAddress.inputError }}
-      </wes-form-field-error>
-    </wes-error>
-  </wes-form-field>
+      <select
+        wesNativeControl
+        formControlName="selectedAddressId"
+        [errorStateMatcher]="errorStateMatcher"
+        (change)="onSelectedAddress($event)"
+        data-test="ddAddressList"
+      >
+        <option *ngFor="let address of addressList" [value]="address.moniker">{{
+          address.singleLine
+        }}</option>
+      </select>
+
+      <wes-error *ngIf="isFieldInvalid('selectedAddressId')">
+        <wes-form-field-error>
+          {{ pageContent.addressDetails.selectYourAddress.inputError }}
+        </wes-form-field-error>
+      </wes-error>
+    </wes-form-field>
+  </ng-container>
+
   <p class="wes-text-s">
-    <ng-container *ngIf="addressList.length > 0"
+    <ng-container *ngIf="(addressList$ | async).length > 0"
       >{{ pageContent.addressDetails.cantSeeAddressLabel }}&nbsp;</ng-container
     >
 

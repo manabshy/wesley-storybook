@@ -25,16 +25,15 @@ import {
   ConfigService,
   YourDetails,
 } from '@wesleyan-frontend/wpisa/data-access';
-
 import {
-  AddressLookupService,
   PostcodeLookupAddress,
   AddressDetails,
 } from '@wesleyan-frontend/shared/data-access-api';
 
+import { OnSubmitOrHasValueErrorStateMatcher } from '../../core/error-state-matcher';
+import { AddressLookupFacade } from '../../core/services/address-lookup.facade';
 import { AddressLookupFormValue } from './address-lookup-form-value.interface';
 import { AppForms } from '../../core/models/app-forms.interface';
-import { OnSubmitOrHasValueErrorStateMatcher } from '../../core/error-state-matcher';
 
 @Component({
   selector: 'wes-address-lookup-form',
@@ -74,7 +73,8 @@ export class AddressLookupFormComponent
   pageContent: YourDetails;
 
   controls: { [key: string]: AbstractControl } = {};
-  addressList: PostcodeLookupAddress[] = [];
+  addressList$: Observable<PostcodeLookupAddress[]> = this.addressLookupFacade
+    .addressList$;
 
   private subscription = new Subscription();
   onChange: any = (_: AddressLookupFormValue) => {};
@@ -84,7 +84,7 @@ export class AddressLookupFormComponent
     private configService: ConfigService,
     private formsManager: NgFormsManager<AppForms>,
     private fb: FormBuilder,
-    private addressLookupService: AddressLookupService
+    private addressLookupFacade: AddressLookupFacade
   ) {
     this.pageContent = this.configService.content.yourDetails;
 
@@ -113,14 +113,12 @@ export class AddressLookupFormComponent
       this._submitAttempt = false;
       this.errorStateMatcher.submitted = false;
 
-      this.addressLookupService
+      this.addressLookupFacade
         .findByPostcode(postcode)
         .pipe(
           tap((resp) => {
             if (resp === null) {
               this.setPostcodeInvalidOrServiceFailure();
-            } else {
-              this.addressList = resp.addresses;
             }
           }),
           catchError((err) => {
@@ -136,7 +134,7 @@ export class AddressLookupFormComponent
   }
 
   onSelectedAddress(e) {
-    this.addressLookupService
+    this.addressLookupFacade
       .getAddressDetails(e.target.value)
       .pipe(
         tap((address) => this.selectedAddress.emit(address)),
@@ -153,7 +151,7 @@ export class AddressLookupFormComponent
   }
 
   resetAddressList() {
-    this.addressList = [];
+    this.addressLookupFacade.reset();
     this.form.controls.selectedAddressId.reset('');
   }
 
