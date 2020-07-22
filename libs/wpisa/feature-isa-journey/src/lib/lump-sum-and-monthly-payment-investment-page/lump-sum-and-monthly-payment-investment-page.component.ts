@@ -1,45 +1,24 @@
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-  ElementRef,
-  ViewChild,
-  ViewEncapsulation,
-} from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { Title } from '@angular/platform-browser';
+import { tap, filter } from 'rxjs/operators';
+import { Subscription, merge } from 'rxjs';
+import { Router } from '@angular/router';
 
 import {
   MonthlyAndLumpSumPayment,
-  ConfigService,
   DirectDebitDetails,
 } from '@wesleyan-frontend/wpisa/data-access';
-
 import { totalAnnualAllowanceValidator } from '@wesleyan-frontend/shared/util-validators';
+import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
 import { InvestmentOptionsFacade } from '../core/services/investment-options.facade';
-import { isaRoutesNames } from '../isa-journey.routes.names';
-import {
-  FormBuilder,
-  Validators,
-  ValidatorFn,
-  FormGroup,
-  ValidationErrors,
-  FormControl,
-} from '@angular/forms';
-import {
-  take,
-  tap,
-  filter,
-  distinctUntilChanged,
-  debounceTime,
-} from 'rxjs/operators';
-import { Subscription, merge } from 'rxjs';
+import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
 import { AppStateFacade } from '../core/services/app-state-facade';
 import { AppForms } from '../core/models/app-forms.interface';
-import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
-import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
+import { isaRoutesNames } from '../isa-journey.routes.names';
+import { currencyNumeric } from '../core/patterns';
 
 @Component({
   selector: 'wes-lump-sum-and-monthly-payment-investment-page',
@@ -62,14 +41,20 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
       lumpSumAmount: [
         null,
         {
-          validators: [Validators.required],
+          validators: [
+            Validators.required,
+            Validators.pattern(currencyNumeric),
+          ],
           updateOn: 'blur',
         },
       ],
       monthlyAmount: [
         null,
         {
-          validators: [Validators.required],
+          validators: [
+            Validators.required,
+            Validators.pattern(currencyNumeric),
+          ],
           updateOn: 'blur',
         },
       ],

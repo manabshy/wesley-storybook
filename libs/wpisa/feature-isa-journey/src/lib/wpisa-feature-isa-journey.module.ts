@@ -36,6 +36,7 @@ import { ButtonLoaderDirective } from './button-loader.directive';
 import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
 import { SafeUrlPipe } from './safe-url.pipe';
 import { ErrorSummaryComponent } from './components/error-summary/error-summary.component';
+import { OnlyFloatDirective } from './only-float.directive';
 
 @NgModule({
   imports: [
@@ -58,6 +59,7 @@ import { ErrorSummaryComponent } from './components/error-summary/error-summary.
     KnowledgeCheckQ1FormComponent,
     KnowledgeCheckQ2FormComponent,
     OnlyNumberDirective,
+    OnlyFloatDirective,
     InvalidControlScrollDirective,
     ManualAddressFormComponent,
     AddressLookupFormComponent,

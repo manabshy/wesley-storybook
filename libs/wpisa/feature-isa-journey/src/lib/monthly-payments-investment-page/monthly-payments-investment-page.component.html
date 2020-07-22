@@ -18,6 +18,8 @@
     }}</wes-label>
     <input
       wesInput
+      wesFloatOnly
+      inputmode="numeric"
       type="text"
       formControlName="amount"
       [errorStateMatcher]="errorStateMatcher"
@@ -27,7 +29,11 @@
     <wes-hint>{{ pageContent.monthlyHelpText }}</wes-hint>
     <wes-error *ngIf="isFieldInvalid('amount')">
       <wes-form-field-error
-        *ngIf="amountControl.errors.min || amountControl.errors.required"
+        *ngIf="
+          amountControl.errors.min ||
+          amountControl.errors.required ||
+          amountControl.errors.pattern
+        "
       >
         {{ pageContent.monthlyAmount.inputMinError }}
       </wes-form-field-error>

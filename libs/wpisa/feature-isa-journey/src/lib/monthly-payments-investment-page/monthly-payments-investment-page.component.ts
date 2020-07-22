@@ -1,20 +1,22 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
-import {
-  MonthlyPayment,
-  ConfigService,
-  DirectDebitDetails,
-} from '@wesleyan-frontend/wpisa/data-access';
-import { InvestmentOptionsFacade } from '../core/services/investment-options.facade';
-import { Router } from '@angular/router';
+import { Validators, FormBuilder } from '@angular/forms';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { Title } from '@angular/platform-browser';
-import { isaRoutesNames } from '../isa-journey.routes.names';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Validators, FormBuilder } from '@angular/forms';
 import { tap } from 'rxjs/operators';
-import { AppStateFacade } from '../core/services/app-state-facade';
-import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
+
+import {
+  MonthlyPayment,
+  DirectDebitDetails,
+} from '@wesleyan-frontend/wpisa/data-access';
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
+
+import { InvestmentOptionsFacade } from '../core/services/investment-options.facade';
+import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
+import { AppStateFacade } from '../core/services/app-state-facade';
+import { isaRoutesNames } from '../isa-journey.routes.names';
+import { currencyNumeric } from '../core/patterns';
 
 @Component({
   selector: 'wes-monthly-payments-investment-page',
@@ -81,6 +83,7 @@ export class MonthlyPaymentsInvestmentPageComponent
               Validators.required,
               Validators.min(limits.minNewMonthlyAmount),
               Validators.max(limits.maxMonthlyAmount),
+              Validators.pattern(currencyNumeric),
             ])
           )
         )

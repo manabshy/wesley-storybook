@@ -1,19 +1,20 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
 import { NgFormsManager } from '@ngneat/forms-manager';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
+import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 import { LumpSumPayment } from '@wesleyan-frontend/wpisa/data-access';
 
 import { InvestmentOptionsFacade } from '../core/services/investment-options.facade';
-import { isaRoutesNames } from '../isa-journey.routes.names';
+import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
 import { AppStateFacade } from '../core/services/app-state-facade';
 import { AppForms } from '../core/models/app-forms.interface';
-import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
-import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
+import { isaRoutesNames } from '../isa-journey.routes.names';
+import { currencyNumeric } from '../core/patterns';
 
 @Component({
   selector: 'wes-lump-sum-investment-page',
@@ -60,6 +61,7 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
       .subscribe((limits) => {
         this.form.controls.amount.setValidators([
           Validators.required,
+          Validators.pattern(currencyNumeric),
           Validators.min(limits.minNewLumpSumAmount),
           Validators.max(limits.maxLumpSumAmount),
         ]);
