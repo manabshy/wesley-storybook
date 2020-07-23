@@ -25,10 +25,8 @@ export class TimeoutService {
     this.idle.setIdle(9 * 60);
     // Sets a timeout period of 60 seconds
     this.idle.setTimeout(60);
-    // Sets the default interrupts, in this case, things like
-    // clicks, scrolls, touches to the document
-    this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
 
+    // this.idle.timeout();
     this.idle.onIdleEnd.subscribe(() => {
       this.reset();
     });
@@ -46,6 +44,9 @@ export class TimeoutService {
     });
 
     this.idle.onIdleStart.subscribe(() => {
+      //We don't want to interrupt the in modal countdown
+      this.idle.clearInterrupts();
+
       this.dialog.open(InactivityModalComponent, {
         panelClass: ['wes-modal', 'wes-inactivity-modal'],
         data: {
@@ -58,6 +59,9 @@ export class TimeoutService {
   }
 
   reset() {
+    // Sets the default interrupts, in this case, things like
+    // clicks, scrolls, touches to the document
+    this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
     this.idle.watch();
     this.timedOut = false;
   }
