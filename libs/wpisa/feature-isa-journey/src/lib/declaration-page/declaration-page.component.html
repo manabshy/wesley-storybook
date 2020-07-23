@@ -51,6 +51,7 @@
 
 <ng-container *ngIf="directDebitContent$ | async as dd">
   <div
+    *ngIf="dd.showDD"
     class="wes-investment-card wes-bg-solid-grey-50 mb-3 mb-md-4 p-3 px-lg-4"
   >
     <div class="wes-card-title">
