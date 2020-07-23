@@ -4,7 +4,10 @@ import { Observable } from 'rxjs';
 import { filter, tap, map, mergeMap, startWith } from 'rxjs/operators';
 
 import { ConfigService } from '@wesleyan-frontend/wpisa/data-access';
-import { TimeoutService } from '@wesleyan-frontend/wpisa/feature-inactivity-timeout';
+import {
+  InactivityTimeoutService,
+  TotalSessionTimeoutService,
+} from '@wesleyan-frontend/wpisa/feature-inactivity-timeout';
 
 // declare ga as a function to set and sent the events
 declare let ga: Function;
@@ -23,10 +26,12 @@ export class ShellComponent {
     private configService: ConfigService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private timeoutService: TimeoutService
+    private timeoutService: InactivityTimeoutService,
+    private totalSessionTimeoutService: TotalSessionTimeoutService
   ) {
     this.isDevEnv = isDevMode();
     this.timeoutService.initInactivityTimeout();
+    this.totalSessionTimeoutService.initInactivityTimeout();
 
     this.progressBarContent = this.configService.content.progressBar;
     this.currentStepIndex$ = this.router.events.pipe(
