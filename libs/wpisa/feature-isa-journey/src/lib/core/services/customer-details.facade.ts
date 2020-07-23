@@ -101,6 +101,7 @@ export class CustomerDetailsFacade {
       ),
       map((lookup) => this.mapMembersToSelectList(lookup))
     );
+
     this.nationalityList$ = this.genericLookups$.pipe(
       map((lookups) =>
         lookups.find(
@@ -109,6 +110,7 @@ export class CustomerDetailsFacade {
       ),
       map((lookup) => this.mapMembersToSelectList(lookup))
     );
+
     this.marketSegmentList$ = this.genericLookups$.pipe(
       map((lookups) =>
         lookups.find(

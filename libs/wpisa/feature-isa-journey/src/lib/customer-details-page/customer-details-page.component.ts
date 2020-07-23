@@ -132,40 +132,6 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
         )
         .subscribe()
     );
-
-    //TODO REMOVE TESTING
-    // this.form.patchValue({
-    //   title: '10',
-    //   firstName: 'Alex',
-    //   lastName: 'Cote',
-    //   dob: {
-    //     day: '01',
-    //     month: '02',
-    //     year: '1980',
-    //   },
-    //   profession: 'DENTISTS',
-    //   nationalInsuranceNumber: 'SN 234 234 A',
-    //   nationality: '119',
-    //   addressLookup: {
-    //     postcode: null,
-    //     selectedAddressId: null,
-    //   },
-    //   manualAddress: {
-    //     flatNumber: null,
-    //     houseNumber: '9',
-    //     houseName: null,
-    //     street: 'Middle Street',
-    //     town: 'Rowley',
-    //     region: 'West Midlands',
-    //     county: null,
-    //     postcode: 'B62 9HY',
-    //   },
-    //   personalEmail: 'alex.cotelin@wesleyan.co.uk',
-    //   personalMobileNumber: '07553 770 986',
-    //   marketingEmail: true,
-    //   marketingPost: null,
-    //   marketingPhone: null,
-    // });
   }
 
   onFindPostcode(postcode: string) {

@@ -19,6 +19,28 @@
       margin-bottom: 112px;
     }
   }
+  &__image {
+    position: absolute;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
+    width: 125%;
+    background-position-y: -16px;
+
+    @include media-breakpoint-up(md) {
+      height: 400px;
+      background-position-y: -50px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: 50%;
+      height: 100%;
+      background-position: left center;
+      background-size: cover;
+      margin-left: 50%;
+    }
+  }
 
   &__shapes {
     position: absolute;
