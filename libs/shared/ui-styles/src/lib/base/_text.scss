@@ -60,6 +60,7 @@
   }
 
   &-mega {
+    font-weight: 400;
     @include rem(
       (
         font-size: 38px,
