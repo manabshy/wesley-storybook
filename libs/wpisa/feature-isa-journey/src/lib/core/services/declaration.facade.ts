@@ -91,7 +91,6 @@ export class DeclarationFacade {
       .pipe(
         startWith(this.appState.forms?.customerPersonalDetails),
         map((customerPersonalDetailsFormValue) => {
-          console.log(customerPersonalDetailsFormValue);
           return this.mapPersonalDetailsFormValuesToViewModel(
             customerPersonalDetailsFormValue
           );
@@ -111,21 +110,16 @@ export class DeclarationFacade {
         .pipe(startWith(this.appState.forms?.lumpSumAndMonthly?.directDebit)),
       this.selectedInvestmentOption$,
     ]).pipe(
-      filter(
-        ([monthlyPaymentDD, lumpSumAndMonthlyDD, investmentOption]) =>
-          investmentOption === InvestmentOptionPaymentType.MONTHLY ||
-          investmentOption === InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
-      ),
-      map(([monthlyPaymentDD, lumpSumAndMonthlyDD, investmentOption]) => ({
-        dd:
+      map(([monthlyPaymentDD, lumpSumAndMonthlyDD, investmentOption]) => {
+        const dd =
           investmentOption === InvestmentOptionPaymentType.MONTHLY
             ? monthlyPaymentDD
-            : lumpSumAndMonthlyDD,
-        investmentOption,
-      })),
-      map((data) =>
-        this.mapDirectDebitFormValuesToViewModel(data.dd, data.investmentOption)
-      )
+            : lumpSumAndMonthlyDD;
+
+        return investmentOption === InvestmentOptionPaymentType.LUMP_SUM
+          ? null
+          : this.mapDirectDebitFormValuesToViewModel(dd, investmentOption);
+      })
     );
 
     this.lumpSumAmount$ = combineLatest([
