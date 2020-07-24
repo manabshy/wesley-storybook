@@ -23,7 +23,7 @@ export class TotalSessionTimeoutService {
     startTimestamp: Date;
     expiryTimestamp: Date;
   };
-  private sessionIdleInSeconds = 1 * 60;
+  private sessionIdleInSeconds = 39 * 60;
   private sessionTimeoutInSeconds = 60;
   private remainingSessionTimeInSeconds = 0;
 
