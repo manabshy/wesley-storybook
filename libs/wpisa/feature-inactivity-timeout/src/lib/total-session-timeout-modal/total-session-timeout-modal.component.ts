@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import {
   ConfigService,
-  InactivityModal,
+  SessionTimeoutModal,
 } from '@wesleyan-frontend/wpisa/data-access';
 
 import { TotalSessionTimeoutModalData } from './total-session-timeout-modal-data.interface';
@@ -17,7 +17,7 @@ import { tap, finalize, every, filter } from 'rxjs/operators';
   styleUrls: ['./total-session-timeout-modal.component.scss'],
 })
 export class TotalSessionTimeoutModalComponent {
-  content: InactivityModal;
+  content: SessionTimeoutModal;
   countDownWithAlert$: Observable<number> = this.data.countDown.pipe(
     tap((seconds) =>
       seconds % 10 === 0
@@ -31,6 +31,6 @@ export class TotalSessionTimeoutModalComponent {
     private configService: ConfigService,
     private liveAnnouncer: LiveAnnouncer
   ) {
-    this.content = this.configService.content.inactivityModal;
+    this.content = this.configService.content.sessionTimeoutModal;
   }
 }

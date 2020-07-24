@@ -21,6 +21,7 @@ export interface Config {
   declaration: Declaration;
   payment: IFramePayment;
   inactivityModal: InactivityModal;
+  sessionTimeoutModal: SessionTimeoutModal;
 }
 
 export interface KnowledgeCheck {
@@ -216,6 +217,11 @@ export interface EndPoints {
 }
 
 export interface InactivityModal {
+  heading: string;
+  summary: string;
+  continueButtonLabel: string;
+}
+export interface SessionTimeoutModal {
   heading: string;
   summary: string;
   continueButtonLabel: string;
