@@ -214,6 +214,8 @@ export interface IFramePayment {
 export interface EndPoints {
   confirmationErrorPage: string;
   confirmationPage: string;
+  knowledgecheckFailurePage: string;
+  bookmarkRedirectPage: string;
 }
 
 export interface InactivityModal {

@@ -31,7 +31,7 @@ export class ShellComponent {
   ) {
     this.isDevEnv = isDevMode();
     this.timeoutService.initInactivityTimeout();
-    this.totalSessionTimeoutService.initInactivityTimeout();
+    this.totalSessionTimeoutService.initSessionTimeout();
 
     this.progressBarContent = this.configService.content.progressBar;
     this.currentStepIndex$ = this.router.events.pipe(
