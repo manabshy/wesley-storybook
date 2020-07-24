@@ -58,7 +58,6 @@ export class DeclarationPageComponent implements OnInit, OnDestroy {
       this.declarationFacade.pageContent$.subscribe((content) => {
         this.pageContent = content;
         this.titleService.setTitle(content.metaTitle);
-        console.log(this.pageContent);
       })
     );
 
@@ -102,10 +101,13 @@ export class DeclarationPageComponent implements OnInit, OnDestroy {
                 investmentOption === InvestmentOptionPaymentType.LUMP_SUM
             ),
             switchMapTo(
-              this.declarationFacade.submitLumpSumISA().pipe(
-                tap(console.log),
-                tap((_) => this.router.navigate([`${isaRoutesNames.PAYMENT}`]))
-              )
+              this.declarationFacade
+                .submitLumpSumISA()
+                .pipe(
+                  tap((_) =>
+                    this.router.navigate([`${isaRoutesNames.PAYMENT}`])
+                  )
+                )
             )
           )
           .subscribe()
@@ -120,10 +122,13 @@ export class DeclarationPageComponent implements OnInit, OnDestroy {
                 InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
             ),
             switchMapTo(
-              this.declarationFacade.submitLumpSumAndMonthlyISA().pipe(
-                tap(console.log),
-                tap((_) => this.router.navigate([`${isaRoutesNames.PAYMENT}`]))
-              )
+              this.declarationFacade
+                .submitLumpSumAndMonthlyISA()
+                .pipe(
+                  tap((_) =>
+                    this.router.navigate([`${isaRoutesNames.PAYMENT}`])
+                  )
+                )
             )
           )
           .subscribe()
