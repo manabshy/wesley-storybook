@@ -223,6 +223,8 @@ export interface InactivityModal {
   heading: string;
   summary: string;
   continueButtonLabel: string;
+  idleTimeInSeconds: number;
+  timeoutTimeInSeconds: number;
 }
 export interface SessionTimeoutModal {
   heading: string;

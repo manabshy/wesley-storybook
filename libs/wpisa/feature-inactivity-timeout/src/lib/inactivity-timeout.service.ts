@@ -3,7 +3,10 @@ import { startWith, finalize, take } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { Injectable } from '@angular/core';
 
-import { SessionStorageService } from '@wesleyan-frontend/wpisa/data-access';
+import {
+  SessionStorageService,
+  ConfigService,
+} from '@wesleyan-frontend/wpisa/data-access';
 
 import { InactivityModalComponent } from './inactivity-modal/inactivity-modal.component';
 
@@ -12,29 +15,33 @@ import { InactivityModalComponent } from './inactivity-modal/inactivity-modal.co
 })
 export class InactivityTimeoutService {
   timedOut = false;
+  private redirectUrl = '/';
+  private idleTimeInSeconds = 9 * 60;
+  private timeoutInSeconds = 60;
 
   constructor(
     private idle: Idle,
     private dialog: MatDialog,
-    private sessionService: SessionStorageService
-  ) {}
+    private sessionService: SessionStorageService,
+    private configService: ConfigService
+  ) {
+    this.redirectUrl = this.configService.content.endPoints.bookmarkRedirectPage;
+    this.idleTimeInSeconds = this.configService.content.inactivityModal.idleTimeInSeconds;
+    this.timeoutInSeconds = this.configService.content.inactivityModal.timeoutTimeInSeconds;
+  }
 
   initInactivityTimeout() {
     // Sets the idle timeout of 9 minutes
-    this.idle.setIdle(9 * 60);
+    this.idle.setIdle(this.idleTimeInSeconds);
     this.idle.setIdleName('inactivityTimeout');
     // Sets a timeout period of 60 seconds
-    this.idle.setTimeout(60);
+    this.idle.setTimeout(this.timeoutInSeconds);
 
     this.idle.onTimeout.subscribe(() => {
       this.timedOut = true;
       this.sessionService
         .clear()
-        .pipe(
-          finalize(() =>
-            window.open(`/savings-and-investments/with-profits-isa`, '_self')
-          )
-        )
+        .pipe(finalize(() => window.open(this.redirectUrl, '_self')))
         .subscribe();
     });
 
@@ -45,7 +52,9 @@ export class InactivityTimeoutService {
       const dialogRef = this.dialog.open(InactivityModalComponent, {
         panelClass: ['wes-modal', 'wes-inactivity-modal'],
         data: {
-          countDown: this.idle.onTimeoutWarning.pipe(startWith(60)),
+          countDown: this.idle.onTimeoutWarning.pipe(
+            startWith(this.timeoutInSeconds)
+          ),
         },
       });
 
