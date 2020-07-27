@@ -272,6 +272,7 @@ export class CustomerDetailsFacade {
     this.currentTaxPeriodISALimits$
       .pipe(
         filter((data) => !!data),
+        tap((v) => console.warn('@TODO, this fires with every page reload')),
         switchMap((currentTaxPeriod) =>
           this.appStateFacade.save({ currentTaxPeriod })
         )
