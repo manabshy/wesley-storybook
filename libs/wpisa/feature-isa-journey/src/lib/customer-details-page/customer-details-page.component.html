@@ -25,7 +25,7 @@
       class="form-control"
       data-test="ddTitle"
     >
-      <option value="" selected></option>
+      <option value="" selected>{{ emptyOptionLabel }}</option>
       <option
         *ngFor="let title of titleList$ | async"
         value="{{ title.value }}"
@@ -163,7 +163,7 @@
       [errorStateMatcher]="errorStateMatcher"
       data-test="ddProfession"
     >
-      <option value="" selected></option>
+      <option value="" selected>{{ emptyOptionLabel }}</option>
       <option
         *ngFor="let marketSegment of marketSegmentList$ | async"
         value="{{ marketSegment.value }}"
@@ -208,7 +208,7 @@
       [errorStateMatcher]="errorStateMatcher"
       data-test="ddNationality"
     >
-      <option value="" selected></option>
+      <option value="" selected>{{ emptyOptionLabel }}</option>
       <option
         *ngFor="let nationality of nationalityList$ | async"
         value="{{ nationality.value }}"

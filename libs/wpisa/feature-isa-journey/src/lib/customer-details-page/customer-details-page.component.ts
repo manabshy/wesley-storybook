@@ -38,7 +38,7 @@ import { AppForms } from '../core/models/app-forms.interface';
 })
 export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
   form: FormGroup = this.fb.group({
-    title: [null, Validators.required],
+    title: ['', Validators.required],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     dob: this.fb.group(
@@ -49,12 +49,12 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
       },
       { validators: isaAgeValidator }
     ),
-    profession: [null, Validators.required],
+    profession: ['', Validators.required],
     nationalInsuranceNumber: [
       '',
       [Validators.required, nationalInsuranceNumberValidator],
     ],
-    nationality: [null, [Validators.required]],
+    nationality: ['', [Validators.required]],
     addressLookup: ['', Validators.required],
     manualAddress: ['', Validators.required],
     personalEmail: [
@@ -73,6 +73,7 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
     marketingPhone: [null],
   });
 
+  emptyOptionLabel = 'Please select';
   pageContent: YourDetails;
   overallErrorContent;
 
