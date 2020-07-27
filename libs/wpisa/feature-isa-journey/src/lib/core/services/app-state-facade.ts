@@ -53,7 +53,7 @@ export class AppStateFacade {
   ): Partial<AppForms> {
     return reduce(
       (acc: Partial<AppForms>, formKey: keyof AppForms) => {
-        const formValue = this.formManager.getControl(formKey).value;
+        const formValue = this.formManager.getControl(formKey)?.value;
         const valuesToOmit = omitValues
           ? find(propEq('formName', formKey))(omitValues)
           : undefined;

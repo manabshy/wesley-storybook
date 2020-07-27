@@ -2,19 +2,17 @@ import { Injectable } from '@angular/core';
 import {
   map,
   take,
-  filter,
   tap,
-  switchMap,
   finalize,
   concatMapTo,
+  concatMap,
 } from 'rxjs/operators';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 import {
   ISAApiService,
   GenericLookupResponse,
   GenericLookup,
-  CurrentTaxPeriod,
   PersonalDetailsDTO,
   CurrentAddressDTO,
   SearchCustomerDTO,
@@ -120,8 +118,6 @@ export class CustomerDetailsFacade {
       map((lookup) => this.mapMembersToSelectList(lookup))
     );
 
-    this.saveCurrentTaxPeriodToAppState();
-
     this.rehydrateCurrentTaxPeriodFromAppState();
   }
 
@@ -142,6 +138,11 @@ export class CustomerDetailsFacade {
               this.currentTaxPeriodISALimitsSubject$.next(
                 resp.data.currentTaxPeriod
               )
+            ),
+            concatMap((resp) =>
+              this.appStateFacade.save({
+                currentTaxPeriod: resp.data.currentTaxPeriod,
+              })
             ),
             tap((_) => this.submitSubject$.next(true)),
             finalize(() => this.loadingService.hide())
@@ -266,18 +267,6 @@ export class CustomerDetailsFacade {
         this.appStateFacade.state.currentTaxPeriod
       );
     }
-  }
-
-  private saveCurrentTaxPeriodToAppState() {
-    this.currentTaxPeriodISALimits$
-      .pipe(
-        filter((data) => !!data),
-        tap((v) => console.warn('@TODO, this fires with every page reload')),
-        switchMap((currentTaxPeriod) =>
-          this.appStateFacade.save({ currentTaxPeriod })
-        )
-      )
-      .subscribe();
   }
 
   private mapMembersToSelectList(
