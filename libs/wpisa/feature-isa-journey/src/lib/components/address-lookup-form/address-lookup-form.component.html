@@ -57,6 +57,8 @@
         (change)="onSelectedAddress($event)"
         data-test="ddAddressList"
       >
+        <option value="" selected>Please select</option>
+
         <option *ngFor="let address of addressList" [value]="address.moniker">{{
           address.singleLine
         }}</option>

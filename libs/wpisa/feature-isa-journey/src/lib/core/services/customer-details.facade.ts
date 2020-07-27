@@ -7,7 +7,7 @@ import {
   concatMapTo,
   concatMap,
 } from 'rxjs/operators';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 
 import {
   ISAApiService,
@@ -20,6 +20,7 @@ import {
   NationalityDTO,
   CurrentTaxPeriodISALimits,
   CategoryCode,
+  ConfigService,
 } from '@wesleyan-frontend/wpisa/data-access';
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 import { AddressDetails } from '@wesleyan-frontend/shared/data-access-api';
@@ -86,18 +87,19 @@ export class CustomerDetailsFacade {
   constructor(
     private isaApiService: ISAApiService,
     private appStateFacade: AppStateFacade,
-    private loadingService: OverlayProgressSpinnerService
+    private loadingService: OverlayProgressSpinnerService,
+    private configService: ConfigService
   ) {
     this.genericLookupsResponse$ = this.isaApiService.getGenericListAndProductData();
     this.genericLookups$ = this.genericLookupsResponse$.pipe(
       map((data) => data.data.genericLookups)
     );
 
-    this.titleList$ = this.genericLookups$.pipe(
-      map((lookups) =>
-        lookups.find(({ categoryCode }) => categoryCode === CategoryCode.TITLE)
-      ),
-      map((lookup) => this.mapMembersToSelectList(lookup))
+    this.titleList$ = of(
+      this.configService.content.titleList.map(({ value, label }) => ({
+        value,
+        description: label,
+      }))
     );
 
     this.nationalityList$ = this.genericLookups$.pipe(

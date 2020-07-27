@@ -22,6 +22,7 @@ export interface Config {
   payment: IFramePayment;
   inactivityModal: InactivityModal;
   sessionTimeoutModal: SessionTimeoutModal;
+  titleList: [{ value: string; label: string }];
 }
 
 export interface KnowledgeCheck {
