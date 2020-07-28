@@ -89,6 +89,9 @@
     },
     "wpisa-feature-inactivity-timeout": {
       "tags": []
+    },
+    "shared-util-app-monitoring": {
+      "tags": []
     }
   }
 }

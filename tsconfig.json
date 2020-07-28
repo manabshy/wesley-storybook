@@ -64,6 +64,9 @@
       ],
       "@wesleyan-frontend/wpisa/feature-inactivity-timeout": [
         "libs/wpisa/feature-inactivity-timeout/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/util-app-monitoring": [
+        "libs/shared/util-app-monitoring/src/index.ts"
       ]
     }
   },

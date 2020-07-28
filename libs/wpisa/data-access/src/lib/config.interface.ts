@@ -23,6 +23,9 @@ export interface Config {
   inactivityModal: InactivityModal;
   sessionTimeoutModal: SessionTimeoutModal;
   titleList: [{ value: string; label: string }];
+  envConfig: {
+    applicationInsightsKey: string;
+  };
 }
 
 export interface KnowledgeCheck {

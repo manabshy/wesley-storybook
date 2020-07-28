@@ -120,15 +120,11 @@ export class SessionStorageService {
     const data = {
       state: typeof state === 'string' ? state : JSON.stringify(state),
     };
-    console.log('Saving state', data);
-    // return of({}); //TODO Remove
+
     return this.http.post<{}>(`/api/isawebapiwrapper/appstate`, data);
   }
 
   private get() {
-    // return of({ state: '{}' }); //TODO Remove
-    // return of({ state: mockFormsStateString }); //TODO Remove
-
     return this.http.get<{ state: string }>(`/api/isawebapiwrapper/appstate`);
   }
 

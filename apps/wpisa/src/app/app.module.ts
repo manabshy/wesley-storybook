@@ -10,6 +10,20 @@ import { WpisaFeatureShellModule } from '@wesleyan-frontend/wpisa/feature-shell'
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ApplicationInsightsMonitoringService } from '@wesleyan-frontend/shared/util-app-monitoring';
+
+export function initializeApp(
+  configService: ConfigService,
+  appInsightsService: ApplicationInsightsMonitoringService
+) {
+  const promise = configService.loadConfig().then(() => {
+    appInsightsService.init(
+      configService.content.envConfig.applicationInsightsKey,
+      'wpisa'
+    );
+  });
+  return () => promise;
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,10 +38,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     {
       provide: APP_INITIALIZER,
       multi: true,
-      deps: [ConfigService],
-      useFactory: (configService: ConfigService) => {
-        return () => configService.loadConfig();
-      },
+      deps: [ConfigService, ApplicationInsightsMonitoringService],
+      useFactory: initializeApp,
     },
     {
       provide: APP_INITIALIZER,
