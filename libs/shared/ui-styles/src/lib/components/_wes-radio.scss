@@ -33,15 +33,23 @@ $wes-radio-inner-circle-checked-colour: $global-colour-gold-900;
   .wes-radio-card & {
     border: 1px solid $wes-radio-card-border-default-colour;
     border-radius: 4px;
-    padding: 40px 24px;
+    padding: 24px;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.05);
     margin-bottom: 0;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      align-items: center;
+      padding: 40px 24px;
+    }
+    @include media-breakpoint-up(lg) {
+      padding: 40px 32px;
+    }
 
     &:hover {
       border: 1px solid $wes-radio-card-border-hover-colour;
-    }
-    @include media-breakpoint-up(md) {
-      padding: 40px 32px;
     }
   }
 }
@@ -113,6 +121,18 @@ $wes-radio-inner-circle-checked-colour: $global-colour-gold-900;
   line-height: inherit;
   padding-left: 32px;
   padding-right: 0;
+
+  .wes-radio-card & {
+    padding-left: 0;
+    padding-top: 16px;
+    @include media-breakpoint-up(md) {
+      padding-top: 0;
+      padding-left: 24px;
+    }
+    @include media-breakpoint-up(lg) {
+      padding-left: 32px;
+    }
+  }
 }
 
 .wes-radio-disabled,
