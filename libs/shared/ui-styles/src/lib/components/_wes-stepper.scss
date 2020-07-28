@@ -28,6 +28,8 @@ $wes-stepper-label-default-colour: $global-colour-grey-900;
     margin-bottom: 16px;
     @include media-breakpoint-up(md) {
       margin-bottom: 12px;
+      line-height: 20px;
+      font-size: 13px;
     }
   }
 
@@ -58,13 +60,13 @@ $wes-stepper-label-default-colour: $global-colour-grey-900;
     letter-spacing: 0;
     line-height: 20px;
 
-    font-weight: bold;
+    font-weight: 600;
     @include media-breakpoint-up(lg) {
       font-weight: normal;
     }
 
     &--active {
-      font-weight: bold;
+      font-weight: 600;
     }
   }
 
