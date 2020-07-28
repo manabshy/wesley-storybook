@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { tap, switchMapTo, take, startWith } from 'rxjs/operators';
 import { Observable, Subscription, BehaviorSubject } from 'rxjs';
+import { hasPath, pathOr } from 'ramda';
 
 import {
   ConfigService,
@@ -115,6 +116,8 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
         this.appStateFacade.state.forms.customerPersonalDetails
       );
     }
+
+    this.checkManualFormShouldBeVisible();
   }
 
   ngOnInit(): void {
@@ -198,6 +201,22 @@ export class CustomerDetailsPageComponent implements OnInit, OnDestroy {
           )
           .subscribe()
       );
+    }
+  }
+
+  private checkManualFormShouldBeVisible() {
+    if (
+      !pathOr(
+        false,
+        ['forms', 'customerPersonalDetails', 'addressLookup', 'postcode'],
+        this.appStateFacade.state
+      ) &&
+      hasPath(
+        ['forms', 'customerPersonalDetails', 'manualAddress', 'postcode'],
+        this.appStateFacade.state
+      )
+    ) {
+      this.isManualAddressVisible = true;
     }
   }
 

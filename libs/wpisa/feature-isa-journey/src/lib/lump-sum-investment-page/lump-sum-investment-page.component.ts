@@ -91,7 +91,7 @@ export class LumpSumInvestmentPageComponent implements OnInit, OnDestroy {
     this.form.markAllAsTouched();
     if (this.form.valid) {
       this.loadingService.show();
-      //Need the timeout, sometimes the input values don't update
+      //Need the timeout, sometimes the input values doesn't update
       setTimeout(() => {
         this.subscriptions$.add(
           this.investmentOptionsFacade.submitLumpSumForm().subscribe(() => {

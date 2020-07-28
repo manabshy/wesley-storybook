@@ -72,7 +72,6 @@ export class ManualAddressFormComponent
       postcode: ['', [Validators.required]],
     },
     {
-      updateOn: 'blur',
       validators: [this.atLeastOneOf('houseNumber', 'houseName')],
     }
   );
