@@ -32,7 +32,15 @@
           >
             <ul class="c-list c-list--vertical">
               <li class="footer-nav__item text-semi-bold item0 odd first">
-                Contact us
+                <a
+                  href="https://www.wesleyan.co.uk/customer-services"
+                  rel="noopener noreferrer"
+                  disablewebediting="False"
+                  title="Contact Us"
+                  class="c-footer-nav__link"
+                  target="_blank"
+                  >Contact Us</a
+                >
               </li>
               <li class="footer-nav__item text-semi-bold item1 even">
                 <a
@@ -44,13 +52,26 @@
                   >Cookies</a
                 >
               </li>
-              <li class="footer-nav__item text-semi-bold item2 odd last">
+              <li class="footer-nav__item text-semi-bold item2 odd">
                 <a
+                  href="https://www.wesleyan.co.uk/privacy"
+                  rel="noopener noreferrer"
                   disablewebediting="False"
                   title="Privacy Policy"
-                  href="https://my.wesleyan.co.uk/legal/privacy-policy"
                   class="c-footer-nav__link"
+                  target="_blank"
                   >Privacy Policy</a
+                >
+              </li>
+              <li class="footer-nav__item text-semi-bold item3 even last">
+                <a
+                  href="https://www.wesleyan.co.uk/wesleyan-modern-slavery-act"
+                  rel="noopener noreferrer"
+                  disablewebediting="False"
+                  title="Modern Slavery"
+                  class="c-footer-nav__link"
+                  target="_blank"
+                  >Modern Slavery</a
                 >
               </li>
             </ul>
@@ -100,6 +121,7 @@
             <ul class="c-list c-list--horizontal">
               <li class="item0 odd first">
                 <a href="https://www.facebook.com/wesleyanAS/" target="_blank">
+                  <span class="sr-only">Facebook</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -121,6 +143,7 @@
                   href="https://www.linkedin.com/company/66071/"
                   target="_blank"
                 >
+                  <span class="sr-only">LinkedIn</span>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
                     <g fill="none" fill-rule="nonzero">
                       <path
@@ -137,6 +160,7 @@
               </li>
               <li class="item2 odd">
                 <a href="https://twitter.com/Wesleyan" target="_blank">
+                  <span class="sr-only">Twitter</span>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
                     <g fill="none" fill-rule="nonzero">
                       <path
@@ -156,6 +180,7 @@
                   href="https://www.youtube.com/user/wesleyanassurance"
                   target="_blank"
                 >
+                  <span class="sr-only">Youtube</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -238,7 +263,12 @@
       </script>
     </div>
   </div>
-  <div class="component plain-html"></div>
+  <div class="component plain-html">
+    <div class="component-content">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    </div>
+  </div>
 </footer> -->
 
 <footer class="c-footer mt-5">
@@ -267,37 +297,27 @@
         <div class="container">
           <div class="row">
             <div class="col">
-              <p>
-                <small
-                  >Advice is provided by Wesleyan Financial Services Ltd.
-                  'WESLEYAN' is a trading name of the Wesleyan Group of
-                  companies.</small
-                >
+              <p class="wes-text-xs">
+                Advice is provided by Wesleyan Financial Services Ltd.
+                'WESLEYAN' is a trading name of the Wesleyan Group of companies.
               </p>
-              <p>
-                <small
-                  >Wesleyan Assurance Society is authorised by the Prudential
-                  Regulation Authority and regulated by the Financial Conduct
-                  Authority and the Prudential Regulation Authority.
-                  Incorporated in England and Wales by Private Act of Parliament
-                  (No. ZC145). Registered Office: Colmore Circus, Birmingham B4
-                  6AR. Telephone: <a href="tel:03453512352">0345 351 2352</a>.
-                  Fax: 0121 200 2971. Telephone calls may be recorded for
-                  monitoring and training purposes.</small
+              <p class="wes-text-xs mt-3">
+                Wesleyan Assurance Society is authorised by the Prudential
+                Regulation Authority and regulated by the Financial Conduct
+                Authority and the Prudential Regulation Authority. Incorporated
+                in England and Wales by Private Act of Parliament (No. ZC145).
+                Registered Office: Colmore Circus, Birmingham B4 6AR. Telephone:
+                <a href="tel:03453512352">0345 351 2352</a>. Fax: 0121 200 2971.
+                Telephone calls may be recorded for monitoring and training
+                purposes.Click for
+                <a
+                  rel="noopener noreferrer"
+                  href="https://www.wesleyan.co.uk/legal-disclaimer/"
+                  class="c-link"
+                  target="_blank"
+                  >more information</a
                 >
-              </p>
-              <p>
-                <small
-                  >Click for
-                  <a
-                    rel="noopener noreferrer"
-                    href="https://www.wesleyan.co.uk/legal-disclaimer/"
-                    class="c-link"
-                    target="_blank"
-                    >more information</a
-                  >
-                  about the Wesleyan group of companies.</small
-                >
+                about the Wesleyan group of companies.
               </p>
             </div>
           </div>
@@ -308,11 +328,9 @@
   <div class="component plain-html">
     <div class="component-content">
       <div class="container">
-        <p>
-          <small
-            >© <span id="year">2020</span> Wesleyan Assurance Society. All
-            rights reserved, for UK use only.</small
-          >
+        <p class="wes-text-xs">
+          © <span id="year">2020</span> Wesleyan Assurance Society. All rights
+          reserved, for UK use only.
         </p>
       </div>
       <script>
