@@ -18,6 +18,11 @@ $wes-radio-inner-circle-checked-colour: $global-colour-gold-900;
 
   .wes-radio-card & {
     display: block;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.05);
+
+    &.wes-radio-checked {
+      box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+    }
   }
 }
 
@@ -26,15 +31,13 @@ $wes-radio-inner-circle-checked-colour: $global-colour-gold-900;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  //   white-space: nowrap;
   vertical-align: middle;
   width: 100%;
 
   .wes-radio-card & {
-    border: 1px solid $wes-radio-card-border-default-colour;
     border-radius: 4px;
     padding: 24px;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 0 0 1px $wes-radio-card-border-default-colour;
     margin-bottom: 0;
     flex-direction: column;
     align-items: flex-start;
@@ -49,7 +52,7 @@ $wes-radio-inner-circle-checked-colour: $global-colour-gold-900;
     }
 
     &:hover {
-      border: 1px solid $wes-radio-card-border-hover-colour;
+      box-shadow: inset 0 0 0 1px $wes-radio-card-border-hover-colour;
     }
   }
 }
@@ -57,8 +60,7 @@ $wes-radio-inner-circle-checked-colour: $global-colour-gold-900;
 //Prevent border size causing jumping on hover by
 //increasing specificity
 .wes-radio-card .wes-radio-checked .wes-radio-label {
-  border: 2px solid $wes-radio-card-border-checked-colour;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 0 2px $wes-radio-card-border-checked-colour;
 }
 .wes-radio-card .cdk-keyboard-focused .wes-radio-label {
   @extend %focus-state;
