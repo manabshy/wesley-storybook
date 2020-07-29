@@ -288,10 +288,7 @@ select.wes-input-element {
   pointer-events: none; // We shouldn't catch mouse events (let them through).
   font-weight: 600;
 
-  // Put ellipsis text overflow.
   width: 100%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   overflow: hidden;
 }
 
