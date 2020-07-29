@@ -111,13 +111,11 @@ export class CustomerDetailsFacade {
       map((lookup) => this.mapMembersToSelectList(lookup))
     );
 
-    this.marketSegmentList$ = this.genericLookups$.pipe(
-      map((lookups) =>
-        lookups.find(
-          ({ categoryCode }) => categoryCode === CategoryCode.MARKET_SEGMENT
-        )
-      ),
-      map((lookup) => this.mapMembersToSelectList(lookup))
+    this.marketSegmentList$ = of(
+      this.configService.content.marketSegmentList.map(({ value, label }) => ({
+        value,
+        description: label,
+      }))
     );
 
     this.rehydrateCurrentTaxPeriodFromAppState();
