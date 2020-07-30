@@ -2,7 +2,11 @@
   <form [formGroup]="form" class="mb-5 mb-md-6">
     <div class="mb-3 wes-tooltip wes-tooltip-top-right d-block">
       <div class="wes-tooltip-content">
-        <img src="/assets/icons/svg/icon-info.svg" alt="tooltip icon" class="wes-icon" />
+        <img
+          src="/assets/icons/svg/icon-info.svg"
+          alt="tooltip icon"
+          class="wes-icon"
+        />
         <p class="wes-text-shortform">{{ content.bankNameTooltip }}</p>
       </div>
     </div>
@@ -75,8 +79,9 @@
         >
         <div class="boxes">
           <wes-form-field class="sort-code-box">
-
-            <span id="sortCode1" class="cdk-visually-hidden">Sort code text box 1</span>
+            <span id="sortCode1" class="cdk-visually-hidden"
+              >Sort code text box 1</span
+            >
 
             <input
               wesInput
@@ -93,7 +98,9 @@
           </wes-form-field>
 
           <wes-form-field class="sort-code-box mx-2">
-            <span id="sortCode2" class="cdk-visually-hidden">Sort code text box 2</span>
+            <span id="sortCode2" class="cdk-visually-hidden"
+              >Sort code text box 2</span
+            >
             <input
               wesInput
               type="text"
@@ -109,7 +116,9 @@
           </wes-form-field>
 
           <wes-form-field class="sort-code-box">
-            <span id="sortCode3" class="cdk-visually-hidden">Sort code text box 3</span>
+            <span id="sortCode3" class="cdk-visually-hidden"
+              >Sort code text box 3</span
+            >
             <input
               wesInput
               type="text"
@@ -150,6 +159,9 @@
     </div>
 
     <hr class="my-3" />
-    <div class="wes-text-shortform" [innerHtml]="content.bodyCopy"></div>
+    <div
+      class="wes-text-shortform direct-debit-copy"
+      [innerHtml]="content.bodyCopy"
+    ></div>
   </div>
 </ng-container>
