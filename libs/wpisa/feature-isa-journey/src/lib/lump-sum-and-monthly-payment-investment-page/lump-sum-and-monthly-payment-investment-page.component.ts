@@ -127,8 +127,14 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
     this.subscriptions$.add(
       this.totalAmountControl.statusChanges
         .pipe(
-          filter((status) => status === 'INVALID'),
-          filter((_) => this.hasTotalAnnualAllowanceError()),
+          tap(() =>
+            this.monthlyControl.updateValueAndValidity({ emitEvent: false })
+          ),
+          filter(
+            (status) =>
+              status === 'INVALID' && this.hasTotalAnnualAllowanceError()
+          ),
+
           tap((_) => this.setMonthlyFieldInvalid())
         )
         .subscribe()

@@ -154,7 +154,12 @@
 
 <hr class="my-5" />
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  wesInvalidControlScroll
+  class="declaration-form"
+>
   <wes-checkbox
     formControlName="authorise"
     class="d-block mb-1"
