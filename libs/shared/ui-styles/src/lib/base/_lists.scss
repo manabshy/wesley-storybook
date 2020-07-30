@@ -16,6 +16,11 @@ ul {
 
   &-bullets {
     @include rem(padding, 0 0 0 30px);
+
+    li:not(:last-child) {
+      margin-bottom: rem(16px);
+    }
+
     li:before {
       display: inline-block;
 

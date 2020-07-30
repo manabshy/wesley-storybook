@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -18,6 +18,7 @@ import { InvestmentOptionPaymentType } from '../core/models/investment-option-fo
   selector: 'wes-declaration-page',
   templateUrl: './declaration-page.component.html',
   styleUrls: ['./declaration-page.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class DeclarationPageComponent implements OnInit, OnDestroy {
   pageContent: Declaration;

@@ -39,7 +39,10 @@
         </span>
       </div>
       <div class="investment-total w-100">
-        <img src="/assets/icons/svg/icon-calculator.svg" alt="calculator icon" />
+        <img
+          src="/assets/icons/svg/icon-calculator.svg"
+          alt="calculator icon"
+        />
         <p data-test="pTotalAmount">
           {{ investment.total.label }}
           <strong>{{ investment.total.value }}</strong>
@@ -162,12 +165,14 @@
       pageContent.authoriseCheckbox.inputLabel
     }}</strong></wes-checkbox
   >
-  <wes-form-field-error *ngIf="isFieldInvalid('authorise')">{{
-    pageContent.authoriseCheckbox.inputError
-  }}</wes-form-field-error>
+  <wes-form-field-error
+    *ngIf="isFieldInvalid('authorise')"
+    class="d-block mb-1"
+    >{{ pageContent.authoriseCheckbox.inputError }}</wes-form-field-error
+  >
 
   <div
-    class="t-and-c-list mb-6"
+    class="t-and-c-list mt-1 mb-6"
     [innerHtml]="pageContent.authoriseContent"
   ></div>
 
@@ -181,12 +186,15 @@
       pageContent.declarationCheckbox.inputLabel
     }}</strong></wes-checkbox
   >
-  <wes-form-field-error *ngIf="isFieldInvalid('declaration')">
+  <wes-form-field-error
+    *ngIf="isFieldInvalid('declaration')"
+    class="d-block mb-1"
+  >
     <span>
       {{ pageContent.declarationCheckbox.inputError }}
     </span>
   </wes-form-field-error>
-  <div class="t-and-c-list mb-5" [innerHtml]="pageContent.content"></div>
+  <div class="t-and-c-list mt-1 mb-5" [innerHtml]="pageContent.content"></div>
 
   <div [innerHtml]="pageContent.confirmContent"></div>
   <button

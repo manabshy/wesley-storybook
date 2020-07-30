@@ -1,8 +1,18 @@
 .t-and-c-list {
-  //   margin-left: 30px;
+  ul {
+    padding-left: 20px;
+
+    //TODO replace with mixin
+    @media (min-width: 768px) {
+      padding-left: 62px;
+    }
+  }
 }
 dt {
   font-weight: 600;
+}
+dd {
+  margin-bottom: 20px;
 }
 .wes-investment-card {
   .wes-card-title {
@@ -14,4 +24,7 @@ dt {
   .wes-card-body {
     padding-top: 24px;
   }
+}
+.wes-form-field-error-message {
+  margin-left: 44px;
 }
