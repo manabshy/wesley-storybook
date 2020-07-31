@@ -8,6 +8,9 @@ const validValues = [
   'f.g@test.com',
   'A.g@test.com',
   'Atest.Test@test.com',
+  'test@TEST.com',
+  'TEST@TEST.com',
+  'TEST@TEST.COM',
 ];
 const invalidValues = [
   'test@test',

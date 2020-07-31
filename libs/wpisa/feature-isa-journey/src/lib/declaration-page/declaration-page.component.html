@@ -194,10 +194,7 @@
   <wes-form-field-error
     *ngIf="isFieldInvalid('declaration')"
     class="d-block mb-1"
-  >
-    <span>
-      {{ pageContent.declarationCheckbox.inputError }}
-    </span>
+    >{{ pageContent.declarationCheckbox.inputError }}
   </wes-form-field-error>
   <div class="t-and-c-list mt-1 mb-5" [innerHtml]="pageContent.content"></div>
 

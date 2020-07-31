@@ -76,7 +76,7 @@ export const mobilePhoneUKValidator: ValidatorFn = (
 export const emailValidator: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {
-  const testRegexp: RegExp = /^[\w._%+-]+@[\w.-]+\.[a-z]{2,4}$/;
+  const testRegexp: RegExp = /^[\w._%+-]+@[\w.-]+\.[\w]{2,4}$/;
 
   if (isEmptyInputValue(control.value)) {
     return null; // don't validate empty values to allow optional controls
