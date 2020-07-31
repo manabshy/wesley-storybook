@@ -221,6 +221,7 @@ export interface EndPoints {
   confirmationPage: string;
   knowledgecheckFailurePage: string;
   bookmarkRedirectPage: string;
+  formUnavailablePage: string;
 }
 
 export interface InactivityModal {

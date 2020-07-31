@@ -1,3 +1,4 @@
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,8 +9,9 @@ import { WpisaFeatureInactivityTimeoutModule } from '@wesleyan-frontend/wpisa/fe
 
 import { SharedUiSiteHeaderModule } from '@wesleyan-frontend/shared/ui-site-header';
 import { SharedUiSiteFooterModule } from '@wesleyan-frontend/shared/ui-site-footer';
-import { IsaErrorHandlerService } from './isa-error-handler.service';
+import { HttpErrorInterceptor } from '@wesleyan-frontend/wpisa/data-access';
 
+import { IsaErrorHandlerService } from './isa-error-handler.service';
 import { ShellComponent } from './shell/shell.component';
 
 @NgModule({
@@ -23,6 +25,13 @@ import { ShellComponent } from './shell/shell.component';
     WpisaFeatureInactivityTimeoutModule,
   ],
   declarations: [ShellComponent],
-  providers: [{ provide: ErrorHandler, useClass: IsaErrorHandlerService }],
+  providers: [
+    { provide: ErrorHandler, useClass: IsaErrorHandlerService },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true,
+    },
+  ],
 })
 export class WpisaFeatureShellModule {}
