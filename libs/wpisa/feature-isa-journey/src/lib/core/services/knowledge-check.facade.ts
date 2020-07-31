@@ -1,5 +1,5 @@
 import { tap, catchError, concatMapTo, concatMap } from 'rxjs/operators';
-import { NgFormsManager } from '@ngneat/forms-manager';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 
@@ -7,7 +7,6 @@ import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-prog
 import { ISAApiService } from '@wesleyan-frontend/wpisa/data-access';
 
 import { isaRoutesNames } from '../../isa-journey.routes.names';
-import { AppForms } from '../models/app-forms.interface';
 import { AppStateFacade } from './app-state-facade';
 
 @Injectable({
@@ -58,7 +57,7 @@ export class KnowledgeCheckFacade {
                 .pipe(tap((_) => this.loadingService.hide()))
             ),
             catchError((err) => {
-              window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+              this.handleHttpError(err);
 
               return throwError(err);
             })
@@ -87,12 +86,18 @@ export class KnowledgeCheckFacade {
           .pipe(
             tap((_) => this.loadingService.hide()),
             catchError((err) => {
-              window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+              this.handleHttpError(err);
 
               return throwError(err);
             })
           )
       )
     );
+  }
+
+  private handleHttpError(err: HttpErrorResponse) {
+    if (err.status === 400) {
+      window.open(`/${isaRoutesNames.KNOWLEDGE_CHECK_ERROR}`, '_self');
+    }
   }
 }

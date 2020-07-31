@@ -1,13 +1,7 @@
-import { Injectable, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { NgFormsManager } from '@ngneat/forms-manager';
-import {
-  Observable,
-  of,
-  BehaviorSubject,
-  combineLatest,
-  throwError,
-  merge,
-} from 'rxjs';
+import { Injectable, OnInit } from '@angular/core';
+import { Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
 import {
   map,
   filter,
@@ -17,7 +11,6 @@ import {
   catchError,
   concatMap,
   finalize,
-  mergeMap,
 } from 'rxjs/operators';
 import { format } from 'date-fns';
 
@@ -346,13 +339,15 @@ export class DeclarationFacade {
           tap((_) => this.loadingService.hide()),
           tap((_) => window.open(this.endPoints.confirmationPage, '_self')),
           catchError((err) => {
-            window.open(this.endPoints.confirmationErrorPage, '_self');
+            this.handleHttpError(err);
+
             return throwError(err);
           })
         );
       }),
       catchError((err) => {
-        window.open(this.endPoints.confirmationErrorPage, '_self');
+        this.handleHttpError(err);
+
         return throwError(err);
       })
     );
@@ -372,13 +367,15 @@ export class DeclarationFacade {
             this.paymentUrlSubject$.next(data.paymentUrl);
           }),
           catchError((err) => {
-            window.open(this.endPoints.confirmationErrorPage, '_self');
+            this.handleHttpError(err);
+
             return throwError(err);
           })
         );
       }),
       catchError((err) => {
-        window.open(this.endPoints.confirmationErrorPage, '_self');
+        this.handleHttpError(err);
+
         return throwError(err);
       }),
       finalize(() => this.loadingService.hide())
@@ -400,17 +397,25 @@ export class DeclarationFacade {
           }),
           tap((_) => this.loadingService.hide()),
           catchError((err) => {
-            window.open(this.endPoints.confirmationErrorPage, '_self');
+            this.handleHttpError(err);
+
             return throwError(err);
           })
         );
       }),
       catchError((err) => {
-        window.open(this.endPoints.confirmationErrorPage, '_self');
+        this.handleHttpError(err);
+
         return throwError(err);
       }),
       finalize(() => this.loadingService.hide())
     );
+  }
+
+  private handleHttpError(err: HttpErrorResponse) {
+    if (err.status === 400) {
+      window.open(this.endPoints.confirmationErrorPage, '_self');
+    }
   }
 
   getMonthlyTransactionDTO(
