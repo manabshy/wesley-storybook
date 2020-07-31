@@ -3,23 +3,19 @@ import {
   ElementRef,
   Input,
   Renderer2,
-  ViewContainerRef,
-  ComponentFactoryResolver,
-  ComponentRef,
   HostBinding,
+  AfterViewInit,
 } from '@angular/core';
-import { ProgressSpinnerComponent } from 'libs/shared/ui-progress-spinner/src/lib/progress-spinner/progress-spinner.component';
 
 @Directive({
   selector: '[wesButtonLoader]',
 })
-export class ButtonLoaderDirective {
-  spinner: ProgressSpinnerComponent;
-  spinnerRef: ComponentRef<ProgressSpinnerComponent>;
+export class ButtonLoaderDirective implements AfterViewInit {
+  spinnerElement: HTMLSpanElement;
+  textPlaceholder: HTMLSpanElement;
   savedText: string;
   isLoading = false;
 
-  //   @Input() loadText?: string;
   @Input() set wesButtonLoader(value: boolean) {
     this.isLoading = value;
     this.toggle(value);
@@ -30,12 +26,14 @@ export class ButtonLoaderDirective {
   }
 
   constructor(
-    private element: ElementRef,
-    private renderer: Renderer2,
-    private viewContainerRef: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver
+    private element: ElementRef<HTMLElement>,
+    private renderer: Renderer2
   ) {
     this.toggle(this.wesButtonLoader);
+  }
+
+  ngAfterViewInit() {
+    this.moveButtonTextInWrapper();
   }
 
   toggle(condition: boolean) {
@@ -43,6 +41,10 @@ export class ButtonLoaderDirective {
   }
 
   show() {
+    this.spinnerElement = this.renderer.createElement('span');
+    this.renderer.addClass(this.spinnerElement, 'wes-spinner');
+    this.renderer.addClass(this.spinnerElement, 'wes-spinner--button');
+
     // Set the button to maintain the same dimensions, even once we put the spinner inside.
     this.element.nativeElement.style.width = `${
       (this.element.nativeElement as HTMLElement).offsetWidth
@@ -51,39 +53,31 @@ export class ButtonLoaderDirective {
       (this.element.nativeElement as HTMLElement).offsetHeight
     }px`;
 
-    // Create the spinner
-    const factory = this.componentFactoryResolver.resolveComponentFactory(
-      ProgressSpinnerComponent
-    );
-    const componentRef = this.viewContainerRef.createComponent(factory);
-    this.spinnerRef = componentRef;
-    this.spinner = componentRef.instance;
-    this.spinner.spinnerLocation = 'button';
-
-    // if (this.loadText) {
-    //   this.savedText = this.element.nativeElement.innerHTML;
-    //   this.element.nativeElement.innerHTML = this.loadText;
-    // }
-    this.renderer.appendChild(
-      this.element.nativeElement,
-      this.spinnerRef.location.nativeElement
-    );
-
-    // this.element.nativeElement.appendChild(this.img);
-    // this.matButton.disabled = true;
+    if (this.spinnerElement) {
+      this.renderer.appendChild(
+        this.element.nativeElement,
+        this.spinnerElement
+      );
+    }
   }
 
   hide() {
-    // this.img.remove();
-    // this.matButton.disabled = false;
-    if (this.spinnerRef) {
+    if (this.spinnerElement) {
       this.renderer.removeChild(
         this.element.nativeElement,
-        this.spinnerRef.location.nativeElement
+        this.spinnerElement
       );
     }
-    // if (this.savedText) {
-    //   this.element.nativeElement.innerHTML = this.savedText;
-    // }
+  }
+
+  private moveButtonTextInWrapper() {
+    this.textPlaceholder = this.renderer.createElement('span');
+    this.renderer.addClass(this.textPlaceholder, 'wes-button-text');
+    this.renderer.appendChild(
+      this.textPlaceholder,
+      this.renderer.createText(this.element.nativeElement.innerText)
+    );
+    this.element.nativeElement.innerText = '';
+    this.renderer.appendChild(this.element.nativeElement, this.textPlaceholder);
   }
 }
