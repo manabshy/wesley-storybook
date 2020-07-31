@@ -198,3 +198,27 @@
     }
   }
 }
+
+//Needs refactoring when we have more of the design system
+.wes-link.wes-icon.wes-icon-chevron-left {
+  position: relative;
+  margin-left: 22px;
+  &:before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 9' class='c-icon c-icon-chevron' xmlns='http://www.w3.org/2000/svg' focusable='false'%3E%3Ctitle%3E Chevron %3C/title%3E%3Cg fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round' stroke='%23FEBD11' stroke-width='2'%3E%3Cpath d='M15 1L8 8M1 1l7 7-7-7z'/%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(90deg);
+    transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.2s;
+
+    padding: 0;
+    margin: 0;
+    bottom: calc(50% - 12px);
+
+    width: 18px;
+    height: 18px;
+    left: -30px;
+  }
+}
