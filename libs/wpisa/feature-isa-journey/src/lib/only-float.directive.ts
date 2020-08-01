@@ -1,22 +1,48 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
-import { NgControl } from '@angular/forms';
 
 /**
  * Applies to the input elements where we want a text input type
  * but only allow float numbers to be typed like 100.23
+ *
+ * https://stackblitz.com/edit/limit-two-digit-decimal-place?file=src%2Fapp%2Ftwo-digit-decima-number.directive.ts
  */
 @Directive({
   selector: '[wesFloatOnly]',
 })
 export class OnlyFloatDirective {
-  constructor(private _el: ElementRef) {}
+  // Allow decimal numbers and negative values
+  private regex: RegExp = new RegExp(/^\d*\.?\d{0,2}$/g);
+  // Allow key codes for special events. Reflect :
+  // Backspace, tab, end, home
+  private specialKeys: Array<string> = [
+    'Backspace',
+    'Tab',
+    'End',
+    'Home',
+    '-',
+    'ArrowLeft',
+    'ArrowRight',
+    'Del',
+    'Delete',
+  ];
 
-  @HostListener('input', ['$event']) onInputChange(event) {
-    const initialValue = this._el.nativeElement.value;
+  constructor(private el: ElementRef) {}
 
-    this._el.nativeElement.value = initialValue.replace(/[^0-9.]*/g, '');
-    if (initialValue !== this._el.nativeElement.value) {
-      event.stopPropagation();
+  @HostListener('keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent) {
+    // Allow Backspace, tab, end, and home keys
+    if (this.specialKeys.indexOf(event.key) !== -1) {
+      return;
+    }
+    let current: string = this.el.nativeElement.value;
+    const position = this.el.nativeElement.selectionStart;
+    const next: string = [
+      current.slice(0, position),
+      event.key == 'Decimal' ? '.' : event.key,
+      current.slice(position),
+    ].join('');
+    if (next && !String(next).match(this.regex)) {
+      event.preventDefault();
     }
   }
 }
