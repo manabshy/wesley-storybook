@@ -62,7 +62,6 @@ export class TotalSessionTimeoutService {
       this.idle.setTimeout(this.sessionTimeoutInSeconds);
     }
 
-    // this.idle.timeout();
     this.idle.onIdleEnd.subscribe(() => {
       this.reset();
     });
@@ -84,7 +83,6 @@ export class TotalSessionTimeoutService {
           : this.sessionTimeoutInSeconds;
 
       this.dialog.open(TotalSessionTimeoutModalComponent, {
-        disableClose: true,
         panelClass: ['wes-modal', 'wes-inactivity-modal'],
         data: {
           countDown: this.idle.onTimeoutWarning.pipe(
