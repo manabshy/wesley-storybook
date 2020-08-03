@@ -35,8 +35,19 @@
       <span wesPrefix><strong>£</strong>&nbsp;</span>
       <wes-hint>{{ pageContent.lumpSumHelpText }}</wes-hint>
       <wes-error *ngIf="isFieldInvalid('totalAmount.lumpSumAmount')">
-        <wes-form-field-error>
+        <wes-form-field-error
+          *ngIf="
+            lumpSumControl.errors.min ||
+            lumpSumControl.errors.max ||
+            lumpSumControl.errors.required
+          "
+        >
           {{ pageContent.lumpSumAmount.inputError }}
+        </wes-form-field-error>
+        <wes-form-field-error
+          *ngIf="lumpSumControl.errors.totalAnnualAllowance"
+        >
+          {{ pageContent.monthlyAmount.inputOtherError }}
         </wes-form-field-error>
       </wes-error>
     </wes-form-field>

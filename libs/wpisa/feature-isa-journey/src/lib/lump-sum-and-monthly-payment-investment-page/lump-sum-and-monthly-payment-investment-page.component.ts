@@ -2,8 +2,15 @@ import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { Title } from '@angular/platform-browser';
-import { tap, filter } from 'rxjs/operators';
-import { Subscription, merge } from 'rxjs';
+import {
+  tap,
+  filter,
+  withLatestFrom,
+  pairwise,
+  startWith,
+  map,
+} from 'rxjs/operators';
+import { Subscription, merge, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 import {
@@ -66,6 +73,21 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
   monthlyControl = this.form.get('totalAmount.monthlyAmount');
   totalAmountControl = this.form.get('totalAmount');
   directDebitControl = this.form.get('directDebit');
+  latestAmountChangeControlName$: Observable<
+    'lumpSumAmount' | 'monthlyAmount'
+  > = this.totalAmountControl.valueChanges.pipe(
+    startWith(this.totalAmountControl.value),
+    pairwise(),
+
+    map(([prev, curr]) => {
+      if (prev.lumpSumAmount !== curr.lumpSumAmount) {
+        return 'lumpSumAmount';
+      }
+      if (prev.monthlyAmount !== curr.monthlyAmount) {
+        return 'monthlyAmount';
+      }
+    })
+  );
 
   constructor(
     private loadingService: OverlayProgressSpinnerService,
@@ -125,17 +147,25 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
     );
 
     this.subscriptions$.add(
-      this.totalAmountControl.statusChanges
+      this.latestAmountChangeControlName$
         .pipe(
-          tap(() =>
-            this.monthlyControl.updateValueAndValidity({ emitEvent: false })
+          withLatestFrom(
+            this.totalAmountControl.statusChanges.pipe(
+              startWith(this.totalAmountControl.status)
+            )
           ),
+          tap(() => {
+            this.monthlyControl.updateValueAndValidity({ emitEvent: false });
+            this.lumpSumControl.updateValueAndValidity({ emitEvent: false });
+          }),
           filter(
-            (status) =>
-              status === 'INVALID' && this.hasTotalAnnualAllowanceError()
+            ([_, totalAmountControlStatus]) =>
+              totalAmountControlStatus === 'INVALID' &&
+              this.hasTotalAnnualAllowanceError()
           ),
-
-          tap((_) => this.setMonthlyFieldInvalid())
+          tap(([latestAmountChangeControlName, _]) =>
+            this.setFieldInvalid(latestAmountChangeControlName)
+          )
         )
         .subscribe()
     );
@@ -170,10 +200,14 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
     );
   }
 
-  private setMonthlyFieldInvalid(): void {
-    return this.monthlyControl.setErrors(this.totalAmountControl.errors, {
-      emitEvent: false,
-    });
+  private setFieldInvalid(
+    fieldControlName: 'lumpSumAmount' | 'monthlyAmount'
+  ): void {
+    this.form
+      .get(`totalAmount.${fieldControlName}`)
+      .setErrors(this.totalAmountControl.errors, {
+        emitEvent: false,
+      });
   }
 
   private hasTotalAnnualAllowanceError(): boolean {
