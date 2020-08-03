@@ -54,7 +54,7 @@ export class InvestmentOptionsFacade {
           '{tax-year}',
           format(new Date(tax.startDateTime), 'yyyy') +
             '/' +
-            format(new Date(tax.endDateTime), 'yy')
+            format(new Date(tax.endDateTime), 'yyyy')
         ),
         replace(
           '{total-annual-allowance}',
