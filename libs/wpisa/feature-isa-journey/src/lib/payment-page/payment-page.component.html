@@ -3,12 +3,16 @@
 
 <div class="mb-7 wes-tooltip d-block">
   <div class="wes-tooltip-content">
-    <img src="/assets/icons/svg/icon-info.svg" class="wes-icon" alt="information icon" />
+    <img
+      src="/assets/icons/svg/icon-info.svg"
+      class="wes-icon"
+      alt="information icon"
+    />
     <p class="wes-text-shortform">{{ pageContent.infoCopy }}</p>
   </div>
 </div>
 
-<div class="h-100 position-relative">
+<div class="position-relative">
   <iframe
     id="paymentFrame"
     [src]="paymentUrl$ | async | safeUrl"
