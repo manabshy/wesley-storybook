@@ -31,7 +31,6 @@ export class InvestmentOptionsFacade {
     map((tax) => {
       return this.replaceTaxPlaceholders(this.pageContent, tax);
     }),
-    tap((v) => console.log('pageContent$', v)),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 

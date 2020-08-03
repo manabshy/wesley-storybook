@@ -47,17 +47,14 @@ export class OverlayProgressSpinnerService {
       });
   }
   show() {
-    // console.log('show');
     this.spin$.next(1);
     this.liveAnnouncer.announce('Loading, please wait');
   }
   hide() {
-    // console.log('hide');
     this.spin$.next(-1);
     this.liveAnnouncer.clear();
   }
   reset() {
-    // console.log('reset');
     this.spin$.next(0);
   }
 }

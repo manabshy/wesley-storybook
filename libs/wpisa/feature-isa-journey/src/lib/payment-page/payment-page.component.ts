@@ -28,7 +28,6 @@ export class PaymentPageComponent {
       this.paymentFacade.pageContent$.subscribe((content) => {
         this.pageContent = content;
         this.titleService.setTitle(content.metaTitle);
-        console.log(this.pageContent);
       })
     );
   }

@@ -28,7 +28,6 @@ export class KnowledgeCheckQ1PageComponent {
     private titleService: Title
   ) {
     this.pageContent = this.configService.content;
-    console.log(this.pageContent);
 
     this.titleService.setTitle(this.pageContent.knowledgeCheck.step1.metaTitle);
   }
