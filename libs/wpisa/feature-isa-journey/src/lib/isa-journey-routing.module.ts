@@ -12,6 +12,7 @@ import { DeclarationPageComponent } from './declaration-page/declaration-page.co
 import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { KnowledgeCheckQ1PageComponent } from './knowledge-check-q1-page/knowledge-check-q1-page.component';
 import { KnowledgeCheckQ2PageComponent } from './knowledge-check-q2-page/knowledge-check-q2-page.component';
+import { FormDataGuard } from './core/form-data.guard';
 
 export const routes: Route[] = [
   {
@@ -38,36 +39,43 @@ export const routes: Route[] = [
     path: isaRoutesNames.YOUR_DETAILS,
     component: CustomerDetailsPageComponent,
     data: { step: 1 },
+    canActivate: [FormDataGuard],
   },
   {
     path: isaRoutesNames.INVESTMENT_OPTIONS,
     component: InvestmentOptionsPageComponent,
     data: { step: 2 },
+    canActivate: [FormDataGuard],
   },
   {
     path: isaRoutesNames.LUMP_SUM_INVESTMENT,
     component: LumpSumInvestmentPageComponent,
     data: { step: 2 },
+    canActivate: [FormDataGuard],
   },
   {
     path: isaRoutesNames.MONTHLY_PAYMENTS_INVESTMENT,
     component: MonthlyPaymentsInvestmentPageComponent,
     data: { step: 2 },
+    canActivate: [FormDataGuard],
   },
   {
     path: isaRoutesNames.LUMP_SUM_AND_MONTHLY_PAYMENT_INVESTMENT,
     component: LumpSumAndMonthlyPaymentInvestmentPageComponent,
     data: { step: 2 },
+    canActivate: [FormDataGuard],
   },
   {
     path: isaRoutesNames.DECLARATION,
     component: DeclarationPageComponent,
     data: { step: 3 },
+    canActivate: [FormDataGuard],
   },
   {
     path: isaRoutesNames.PAYMENT,
     component: PaymentPageComponent,
     data: { step: 3 },
+    canActivate: [FormDataGuard],
   },
 ];
 
