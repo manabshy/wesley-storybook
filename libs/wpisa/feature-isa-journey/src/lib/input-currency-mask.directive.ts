@@ -48,17 +48,21 @@ export class InputCurrencyMaskDirective implements AfterViewInit {
     this.mask = this.renderer.createElement('span');
     this.renderer.addClass(this.mask, 'wes-input-element');
     this.renderer.addClass(this.mask, 'wes-input-currency-mask');
+    this.renderer.addClass(this.mask, 'd-none');
     this.renderer.setStyle(this.mask, 'position', 'absolute');
+    this.renderer.setStyle(this.mask, 'color', 'initial');
   }
 
   private show() {
-    const value: string = this.el.nativeElement.value;
-    const formatted = this.formatCurrencyGBP(parseFloat(value));
+    const value: number = parseFloat(this.el.nativeElement.value);
+    const formatted = this.formatCurrencyGBP(value);
     this.mask.innerText = formatted;
 
-    this.renderer.addClass(this.mask, 'd-inline-block');
-    this.renderer.removeClass(this.mask, 'd-none');
-    this.renderer.setStyle(this.el.nativeElement, 'color', 'transparent');
+    if (value) {
+      this.renderer.addClass(this.mask, 'd-inline-block');
+      this.renderer.removeClass(this.mask, 'd-none');
+      this.renderer.setStyle(this.el.nativeElement, 'color', 'transparent');
+    }
   }
 
   private hide() {
@@ -70,7 +74,6 @@ export class InputCurrencyMaskDirective implements AfterViewInit {
   private formatCurrencyGBP(value: number) {
     //Show 100.50 not 100.5 and 100 not 100.00
     const fraction = value % 1 === 0 ? '1.0-2' : '1.2-2';
-    console.log(value, fraction);
     return formatCurrency(value, 'en-gb', '', 'GBP', fraction);
   }
 }
