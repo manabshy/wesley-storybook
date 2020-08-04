@@ -1,7 +1,4 @@
 <svg viewBox="0 0 16 9" class="c-icon c-icon-thumb" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false">
-  <title>
-    Thumb
-  </title>
   <defs>
     <circle id="a" cx="19" cy="19" r="7"/>
     <filter x="-14.3%" y="-14.3%" width="128.6%" height="128.6%" filterUnits="objectBoundingBox" id="b">
