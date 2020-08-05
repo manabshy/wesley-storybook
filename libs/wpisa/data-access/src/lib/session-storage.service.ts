@@ -112,7 +112,7 @@ const mockFormsStateString = JSON.stringify({
   providedIn: 'root',
 })
 export class SessionStorageService {
-  private appState: string;
+  private appState = '{}';
 
   constructor(private http: HttpClient) {}
 
