@@ -26,8 +26,10 @@ export class InactivityTimeoutService {
     private configService: ConfigService
   ) {
     this.redirectUrl = this.configService.content.endPoints.bookmarkRedirectPage;
-    this.idleTimeInSeconds = this.configService.content.inactivityModal.idleTimeInSeconds;
-    this.timeoutInSeconds = this.configService.content.inactivityModal.timeoutTimeInSeconds;
+    this.idleTimeInSeconds =
+      this.configService.content.inactivityModal.idleTimeInSeconds || 9 * 60;
+    this.timeoutInSeconds =
+      this.configService.content.inactivityModal.timeoutTimeInSeconds || 60;
   }
 
   initInactivityTimeout() {

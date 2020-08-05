@@ -4,6 +4,7 @@ import {
   HostListener,
   Renderer2,
   AfterViewInit,
+  RendererStyleFlags2,
 } from '@angular/core';
 import { formatCurrency } from '@angular/common';
 
@@ -50,7 +51,6 @@ export class InputCurrencyMaskDirective implements AfterViewInit {
     this.renderer.addClass(this.mask, 'wes-input-currency-mask');
     this.renderer.addClass(this.mask, 'd-none');
     this.renderer.setStyle(this.mask, 'position', 'absolute');
-    this.renderer.setStyle(this.mask, 'color', 'initial');
   }
 
   private show() {
@@ -58,17 +58,25 @@ export class InputCurrencyMaskDirective implements AfterViewInit {
     const formatted = this.formatCurrencyGBP(value);
     this.mask.innerText = formatted;
 
+    // tslint:disable-next-line: no-bitwise
+    const flags = RendererStyleFlags2.DashCase | RendererStyleFlags2.Important;
+
     if (value) {
       this.renderer.addClass(this.mask, 'd-inline-block');
       this.renderer.removeClass(this.mask, 'd-none');
-      this.renderer.setStyle(this.el.nativeElement, 'color', 'transparent');
+      this.renderer.setStyle(
+        this.el.nativeElement,
+        'color',
+        'transparent',
+        flags
+      );
     }
   }
 
   private hide() {
     this.renderer.addClass(this.mask, 'd-none');
     this.renderer.removeClass(this.mask, 'd-inline-block');
-    this.renderer.setStyle(this.el.nativeElement, 'color', 'initial');
+    this.renderer.removeStyle(this.el.nativeElement, 'color');
   }
 
   private formatCurrencyGBP(value: number) {

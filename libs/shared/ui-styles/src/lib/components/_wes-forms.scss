@@ -7,6 +7,8 @@ $wes-form-field-hint-min-space: 1em !default;
 // field.
 $wes-form-field-default-infix-width: 180px !default;
 
+$wes-form-field-text-colour: $global-colour-grey-900;
+
 .wes-form-field-error-message {
   color: $global-colour-red-700;
 }
@@ -19,8 +21,7 @@ $wes-form-field-default-infix-width: 180px !default;
   // The Material input should match whatever background it is above.
   background: transparent;
 
-  // If background matches current background then so should the color for proper contrast
-  color: currentColor;
+  color: $wes-form-field-text-colour;
 
   // By default, <input> has a padding, border, outline and a default width.
   border: none;
@@ -352,4 +353,8 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
+  color: $wes-form-field-text-colour;
+}
+input:-internal-autofill-selected {
+  color: $wes-form-field-text-colour !important;
 }

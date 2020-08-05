@@ -32,6 +32,7 @@
         formControlName="lumpSumAmount"
         [errorStateMatcher]="errorStateMatcher"
         data-test="txtLumpSumAmount"
+        autocomplete="off"
       />
       <span wesPrefix><strong>£</strong>&nbsp;</span>
       <wes-hint>{{ pageContent.lumpSumHelpText }}</wes-hint>
@@ -78,6 +79,7 @@
         formControlName="monthlyAmount"
         [errorStateMatcher]="errorStateMatcher"
         data-test="txtMonthlyAmount"
+        autocomplete="off"
       />
       <span wesPrefix><strong>£</strong>&nbsp;</span>
       <wes-hint>{{ pageContent.monthlyHelpText }}</wes-hint>
