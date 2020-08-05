@@ -614,7 +614,7 @@ export class DeclarationFacade {
       '{tax-year}',
       format(new Date(isaLimits.startDateTime), 'yyyy') +
         '/' +
-        format(new Date(isaLimits.endDateTime), 'yy')
+        format(new Date(isaLimits.endDateTime), 'yyyy')
     );
   }
 }
