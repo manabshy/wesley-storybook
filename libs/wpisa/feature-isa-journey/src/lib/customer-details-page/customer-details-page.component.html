@@ -290,8 +290,10 @@
     <input
       wesInput
       type="text"
-      formControlName="personalMobileNumber"
       autocomplete="tel"
+      inputmode="numeric"
+      pattern="[0-9]*"
+      formControlName="personalMobileNumber"
       data-test="textPersonalMobileNumber"
     />
     <wes-error
