@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgFormsManager } from '@ngneat/forms-manager';
-import { tap, filter, switchMapTo } from 'rxjs/operators';
+import { tap, filter, switchMap } from 'rxjs/operators';
 import { Subscription, Observable } from 'rxjs';
 
 import { Declaration } from '@wesleyan-frontend/wpisa/data-access';
@@ -89,7 +89,7 @@ export class DeclarationPageComponent implements OnInit, OnDestroy {
               (investmentOption) =>
                 investmentOption === InvestmentOptionPaymentType.MONTHLY
             ),
-            switchMapTo(this.declarationFacade.submitMonthlyISA())
+            switchMap(() => this.declarationFacade.submitMonthlyISA())
           )
           .subscribe()
       );
@@ -101,7 +101,7 @@ export class DeclarationPageComponent implements OnInit, OnDestroy {
               (investmentOption) =>
                 investmentOption === InvestmentOptionPaymentType.LUMP_SUM
             ),
-            switchMapTo(
+            switchMap(() =>
               this.declarationFacade
                 .submitLumpSumISA()
                 .pipe(
@@ -122,7 +122,7 @@ export class DeclarationPageComponent implements OnInit, OnDestroy {
                 investmentOption ===
                 InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
             ),
-            switchMapTo(
+            switchMap(() =>
               this.declarationFacade
                 .submitLumpSumAndMonthlyISA()
                 .pipe(
