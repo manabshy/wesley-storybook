@@ -74,6 +74,12 @@
   a {
     color: $color-white;
     font-weight: normal;
+    @include rem(
+      (
+        font-size: 14px,
+        line-height: 22px,
+      )
+    );
   }
 }
 .c-cookie-message__close {
