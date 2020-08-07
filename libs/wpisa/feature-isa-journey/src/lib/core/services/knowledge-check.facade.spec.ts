@@ -24,7 +24,11 @@ describe('KnowledgeCheckService', () => {
         ISAApiService,
         {
           provide: AppStateFacade,
-          useValue: { save: jest.fn(), state: {} },
+          useValue: {
+            save: jest.fn(),
+            saveFormState: jest.fn(),
+            state: {},
+          },
         },
       ],
     });
@@ -56,17 +60,20 @@ describe('KnowledgeCheckService', () => {
 
     it('should submit question 1 index as 1, question text, answer value, answer label', () => {
       jest.spyOn(appStateFacade, 'save').mockReturnValue(of({}));
+      jest
+        .spyOn(isaApiService, 'submitInitialAnswer')
+        .mockReturnValue(of({ data: { attemptId: 123 } }));
 
       knowledgeCheckFacade
         .submitQuestion1('Yes', 'Yes I agree...', 'blah')
-        .subscribe((res) => {
-          expect(isaApiService.submitInitialAnswer).toHaveBeenCalledWith({
-            questionIndex: 1,
-            questionText: 'blah',
-            answerText: 'Yes I agree...',
-            answerValue: 'Yes',
-          });
-        });
+        .subscribe((res) => {});
+
+      expect(isaApiService.submitInitialAnswer).toHaveBeenCalledWith({
+        questionIndex: 1,
+        questionText: 'blah',
+        answerText: 'Yes I agree...',
+        answerValue: 'Yes',
+      });
     });
 
     it('should save attemptId if question submitted successful', () => {
@@ -93,6 +100,48 @@ describe('KnowledgeCheckService', () => {
       knowledgeCheckFacade
         .submitQuestion1('Yes', 'Yes I agree...', 'blah')
         .subscribe((res) => {});
+      expect(window.open).toHaveBeenCalledWith(
+        '/savings-and-investments/with-profits-isa/check-cannot-proceed',
+        '_self'
+      );
+    });
+  });
+
+  describe('submitQuestion2', () => {
+    it('should submit question 2 index as 2, question text, answer value, answer label', () => {
+      knowledgeCheckFacade.knowledgeCheckAttemptId = 1234;
+
+      jest.spyOn(appStateFacade, 'saveFormState').mockReturnValue(of({}));
+      jest
+        .spyOn(isaApiService, 'submitSubsequentAnswer')
+        .mockReturnValue(of({ data: { attemptId: 1 } }));
+
+      knowledgeCheckFacade
+        .submitQuestion2('Yes', 'Yes I agree...', 'blah')
+        .subscribe((res) => {});
+
+      expect(isaApiService.submitSubsequentAnswer).toHaveBeenCalledWith({
+        attemptId: 1234,
+        questionIndex: 2,
+        questionText: 'blah',
+        answerText: 'Yes I agree...',
+        answerValue: 'Yes',
+      });
+    });
+
+    it('should redirect to knowledge check failure page if answer no', () => {
+      jest.spyOn(appStateFacade, 'saveFormState').mockReturnValue(of({}));
+      jest
+        .spyOn(isaApiService, 'submitSubsequentAnswer')
+        .mockImplementation(() =>
+          throwError(new HttpErrorResponse({ status: 400 }))
+        );
+      spyOn(window, 'open').and.callFake(() => jest.fn());
+
+      knowledgeCheckFacade
+        .submitQuestion2('Yes', 'Yes I agree...', 'blah')
+        .subscribe((res) => {});
+
       expect(window.open).toHaveBeenCalledWith(
         '/savings-and-investments/with-profits-isa/check-cannot-proceed',
         '_self'
