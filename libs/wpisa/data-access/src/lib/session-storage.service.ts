@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { isEmpty } from 'ramda';
+import { tap } from 'rxjs/operators';
 
 const mockFormsStateString = JSON.stringify({
   attemptId: 618,
@@ -112,7 +113,13 @@ const mockFormsStateString = JSON.stringify({
   providedIn: 'root',
 })
 export class SessionStorageService {
-  private appState = '{}';
+  private appState$$ = new BehaviorSubject<string>('{}');
+  //We need this for the route guard
+  //https://github.com/angular/angular/issues/14615
+  private loaded$$ = new BehaviorSubject<boolean>(false);
+
+  appState$ = this.appState$$.pipe();
+  loaded$ = this.loaded$$.pipe();
 
   constructor(private http: HttpClient) {}
 
@@ -121,7 +128,9 @@ export class SessionStorageService {
       state: typeof state === 'string' ? state : JSON.stringify(state),
     };
 
-    return this.http.post<{}>(`/api/isawebapiwrapper/appstate`, data);
+    return this.http
+      .post<{}>(`/api/isawebapiwrapper/appstate`, data)
+      .pipe(tap((_) => this.appState$$.next(data.state)));
   }
 
   private get() {
@@ -132,12 +141,9 @@ export class SessionStorageService {
     return this.get()
       .toPromise()
       .then((data) => {
-        this.appState = isEmpty(data.state) ? '{}' : data.state;
+        this.appState$$.next(isEmpty(data.state) ? '{}' : data.state);
+        this.loaded$$.next(true);
       });
-  }
-
-  getState() {
-    return this.appState;
   }
 
   //Clear backend session and app state

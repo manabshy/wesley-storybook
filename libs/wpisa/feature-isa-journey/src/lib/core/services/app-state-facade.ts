@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { AppForms } from '../models/app-forms.interface';
-import {
-  SessionStorageService,
-  CurrentTaxPeriodISALimits,
-} from '@wesleyan-frontend/wpisa/data-access';
 import { mergeDeepRight, reduce, omit, find, propEq } from 'ramda';
 import { NgFormsManager } from '@ngneat/forms-manager';
+import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+
+import { SessionStorageService } from '@wesleyan-frontend/wpisa/data-access';
+
+import { AppForms } from '../models/app-forms.interface';
 import { AppState } from '../models/app-state.interface';
 
 @Injectable({
@@ -15,12 +14,15 @@ import { AppState } from '../models/app-state.interface';
 })
 export class AppStateFacade {
   private appState: AppState;
+  state$ = this.sessionStorageService.appState$.pipe(
+    map((state) => JSON.parse(state))
+  );
 
   constructor(
     private sessionStorageService: SessionStorageService,
     private formManager: NgFormsManager<AppForms>
   ) {
-    this.appState = JSON.parse(this.sessionStorageService.getState());
+    this.state$.subscribe((s) => (this.appState = s));
   }
 
   save(state: Partial<AppState>): Observable<{}> {

@@ -84,7 +84,7 @@ describe('CustomerDetailsFacade', () => {
   });
 
   describe('mapCustomerFormToSearchCustomerDTO', () => {
-    fit('should map customer form values to SearchCustomerDTO', () => {
+    it('should map customer form values to SearchCustomerDTO', () => {
       const result = service.mapCustomerFormToSearchCustomerDTO(
         mockCustomerDetailsFormSubmit
       );

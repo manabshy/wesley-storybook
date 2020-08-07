@@ -5,19 +5,21 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 import { isEmpty } from 'ramda';
 
-import { ConfigService } from '@wesleyan-frontend/wpisa/data-access';
-
-import { AppStateFacade } from './services/app-state-facade';
+import {
+  ConfigService,
+  SessionStorageService,
+} from '@wesleyan-frontend/wpisa/data-access';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormDataGuard implements CanActivate {
   constructor(
-    private appStateFacade: AppStateFacade,
+    private sessionStorageService: SessionStorageService,
     private configService: ConfigService
   ) {}
   canActivate(
@@ -28,19 +30,26 @@ export class FormDataGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const appState = this.appStateFacade.state;
-
-    if (
-      isEmpty(appState) ||
-      isEmpty(appState.attemptId) ||
-      isEmpty(appState.forms)
-    ) {
-      window.open(
-        this.configService.content.endPoints.bookmarkRedirectPage,
-        '_self'
-      );
-    }
-
-    return true;
+    return combineLatest([
+      this.sessionStorageService.loaded$,
+      this.sessionStorageService.appState$.pipe(
+        map((data) => JSON.parse(data))
+      ),
+    ]).pipe(
+      filter(([sessionDataLoaded, appState]) => sessionDataLoaded),
+      map(([loaded, appState]) => {
+        if (
+          isEmpty(appState) ||
+          isEmpty(appState.attemptId) ||
+          isEmpty(appState.forms)
+        ) {
+          window.open(
+            this.configService.content.endPoints.bookmarkRedirectPage,
+            '_self'
+          );
+        }
+        return true;
+      })
+    );
   }
 }
