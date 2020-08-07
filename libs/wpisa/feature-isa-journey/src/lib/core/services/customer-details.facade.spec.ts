@@ -122,40 +122,4 @@ describe('CustomerDetailsFacade', () => {
       expect(result).toEqual(expected);
     });
   });
-
-  //   describe('mapCustomerDetails', () => {
-  //     it('should map customer form values to customer details search DTO', () => {
-  //       const result = service.mapCustomerDetails(mockCustomerDetailsFormSubmit);
-
-  //       expect(result).toEqual(expected.customerDetails);
-  //     });
-  //   });
-
-  //   describe('mapCustomerAddress', () => {
-  //     it('should map customer form values to CurrentAddressDTO', () => {
-  //       const result = service.mapCustomerAddress(mockCustomerDetailsFormSubmit);
-
-  //       expect(result).toEqual(expected.currentAddress);
-  //     });
-  //   });
-
-  //   describe('mapCustomerMarketingPreferences', () => {
-  //     it('should map customer form values to MarketingPreferencesDTO', () => {
-  //       const result = service.mapCustomerMarketingPreferences(
-  //         mockCustomerDetailsFormSubmit
-  //       );
-
-  //       expect(result).toEqual(expected.marketingPreferences);
-  //     });
-  //   });
-
-  //   describe('mapCustomerNationality', () => {
-  //     it('should map customer form values to NationalityDTO', () => {
-  //       const result = service.mapCustomerNationality(
-  //         mockCustomerDetailsFormSubmit
-  //       );
-
-  //       expect(result).toEqual(expected.nationalityDetails);
-  //     });
-  //   });
 });

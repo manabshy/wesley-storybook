@@ -51,39 +51,6 @@ export class CustomerDetailsFacade {
     CurrentTaxPeriodISALimits
   > = this.currentTaxPeriodISALimitsSubject$.asObservable();
 
-  mockFormSubmit = {
-    title: '10',
-    firstName: 'Alex',
-    lastName: 'Cote',
-    dob: {
-      day: '01',
-      month: '01',
-      year: '1980',
-    },
-    profession: 'DENTISTS',
-    nationalInsuranceNumber: 'SN 234 234 A',
-    nationality: '119',
-    addressLookup: {
-      postcode: null,
-      selectedAddressId: null,
-    },
-    manualAddress: {
-      flatNumber: null,
-      houseNumber: '9',
-      houseName: null,
-      street: 'Middle Street',
-      town: 'Rowley',
-      region: 'West Midlands',
-      county: null,
-      postcode: 'B62 9HY',
-    },
-    personalEmail: 'alex.cotelin@wesleyan.co.uk',
-    personalMobileNumber: '07553 770 986',
-    marketingEmail: true,
-    marketingPost: null,
-    marketingPhone: null,
-  };
-
   constructor(
     private isaApiService: ISAApiService,
     private appStateFacade: AppStateFacade,
