@@ -2,7 +2,7 @@ import { SearchCustomerDTO } from './customer-details.interface';
 
 export interface GetTransactionIdResponse {
   data: {
-    transactionId: 'WPJ000706';
+    transactionId: string;
   };
 }
 

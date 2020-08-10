@@ -1,6 +1,6 @@
 import { DirectDebitFormValue } from '../../components/direct-debit-form/direct-debit-form-value.interface';
 
 export interface MonthlyPaymentFormValue {
-  amount: number;
+  amount: string;
   directDebit: DirectDebitFormValue;
 }

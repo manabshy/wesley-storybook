@@ -1,3 +1,3 @@
 export interface LumpSumPaymentFormValue {
-  amount: number;
+  amount: string;
 }

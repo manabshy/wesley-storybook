@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeclarationFacade getLumpSumAndMonthlyTransactionDTO should map to lumpSumAndMonthly transaction dto 1`] = `
+Object {
+  "appTestAttemptId": 1835,
+  "currentAddress": Object {
+    "county": null,
+    "district": null,
+    "flat": null,
+    "houseName": null,
+    "houseNumber": "2",
+    "postcode": "SW1 3TS",
+    "street": "Baker Street",
+    "town": "Lodon",
+  },
+  "customerDetails": Object {
+    "dateOfBirth": "1990-12-12",
+    "emailAddress": "alex.cotelin@wesleyan.co.uk",
+    "forename": "James",
+    "marketSegmentCode": "GENMEDPRAC",
+    "mobilePhoneNumber": "07111222333",
+    "niNumber": "SN234234A",
+    "surname": "Bond",
+    "title": "Mr",
+  },
+  "customerPermissionGranted": true,
+  "declarationsText": "HMRC'S ISA rules require you to make a declaration when applying for a new ISA, to confirm that you are eligible to subscribe. Please read and confirm the declaration below to proceed.The answers you provided at the start of this application indicate you have sufficient understanding of the With Profits ISA.
+As you have not received any advice or a recommendation from us during this application, you will need to make your own choice as to the suitability of this ISA for your circumstances.I authorise Wesleyan Assurance Society:
+To hold my cash subscriptions, any other proceeds in respect of my ISA investments and any other cash
+To make on my behalf any claims to relief from tax is respect of ISA investments.
+I declare that:
+    All subscriptions made, and to be made, belong to me
+    I am 18 years of age or over
+    I have not subscribed/made payments, and will not subscribe/make payments that exceed the overall subscription limit across any combination of permitted ISAs in the same tax year
+    I have not subscribed/made payments and will not subscribe/make payments to another stocks and shares ISA in the same tax year that I subscribe to this one
+    I am resident in the United Kingdom for tax purposes or, if not so resident, either perform duties which, by virtue of Section 28 of the Income Tax (Earnings &amp; Pensions) Act 2003 (Crown employees serving overseas), are treated as being performed in the United Kingdom or I am married to, or in civil partnership with, a person who performs such duties. I will inform Wesleyan Assurance Society if I cease to be so resident or to perform such duties, or to be married to, or in a civil partnership with, a person who performs such duties.
+    I have checked my application for accuracy and completeness, including any statements not entered by me and it is correct to the best of my knowledge and belief.
+    I understand that the With Profits ISA is governed by a standard set of terms and conditions and that Wesleyan Assurance Society will administer the plan in line with these.
+By clicking Confirm, I acknowledge I have read and understood the declarations and agree to them. I wish to enter into a contract with Wesleyan Assurance Society for a With Profits ISA on the basis set out in this application.",
+  "directDebitType": "ONLINE",
+  "lumpAmount": "2345",
+  "marketingPreferences": Object {
+    "permitForEmail": null,
+    "permitForPost": null,
+    "permitForTelephone": true,
+  },
+  "nationalityDetails": Object {
+    "primaryNationality": "British",
+  },
+  "onlineDirectDebitDetails": Object {
+    "accountHolderFullName": "JB",
+    "accountNumber": "111222",
+    "accountValidated": false,
+    "bankName": "BANK",
+    "customerConfirmedDD": true,
+    "sortCode": "12-12-33",
+  },
+  "paymentType": "Both",
+  "regularAmount": "345",
+  "taxPeriodCode": "2020-2021",
+  "transactionId": "WIP77221",
+}
+`;

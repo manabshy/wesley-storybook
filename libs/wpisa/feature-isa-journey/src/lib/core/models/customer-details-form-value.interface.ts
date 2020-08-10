@@ -13,9 +13,9 @@ export interface CustomerDetailsFormValue {
   manualAddress: ManualAddressFormValue;
   personalEmail: string;
   personalMobileNumber: string;
-  marketingEmail: boolean;
-  marketingPost: null;
-  marketingPhone: null;
+  marketingEmail: null | boolean;
+  marketingPost: null | boolean;
+  marketingPhone: null | boolean;
 }
 
 export interface Dob {

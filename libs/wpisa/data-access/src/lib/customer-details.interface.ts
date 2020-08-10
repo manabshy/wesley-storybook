@@ -30,9 +30,9 @@ export interface PersonalDetailsDTO {
 }
 
 export interface MarketingPreferencesDTO {
-  permitForPost: boolean;
-  permitForTelephone: boolean;
-  permitForEmail: boolean;
+  permitForPost: null | boolean;
+  permitForTelephone: null | boolean;
+  permitForEmail: null | boolean;
 }
 
 export interface NationalityDTO {
@@ -56,8 +56,8 @@ export interface CustomerSearchResponse {
 export interface CurrentTaxPeriodISALimits {
   taxPeriodCode: string;
   taxPeriodDescription: string;
-  startDateTime: Date;
-  endDateTime: Date;
+  startDateTime: string;
+  endDateTime: string;
   lumpSumAccepted: boolean;
   monthlyPaymentsAccepted: boolean;
   newISAsAccepted: boolean;

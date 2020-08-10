@@ -1,6 +1,6 @@
 export interface DirectDebitFormValue {
   accountHolderFullName: string;
-  sortCode: { c1: number; c2: number; c3: number };
+  sortCode: { c1: string; c2: string; c3: string };
   accountNumber: string;
   bankName: string;
 }

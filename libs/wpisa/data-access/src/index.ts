@@ -12,3 +12,4 @@ export * from './lib/transaction.interface';
 
 export * from './lib/mockConfig';
 export * from './lib/mockGenericLookup';
+export * from './lib/mockAppState';
