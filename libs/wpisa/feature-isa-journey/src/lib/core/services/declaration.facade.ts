@@ -11,6 +11,7 @@ import {
   catchError,
   concatMap,
   finalize,
+  shareReplay,
 } from 'rxjs/operators';
 import { format } from 'date-fns';
 
@@ -92,7 +93,10 @@ export class DeclarationFacade {
 
     this.selectedInvestmentOption$ = this.formManager
       .valueChanges('investmentOptions', 'investmentOption')
-      .pipe(startWith(this.appState.forms.investmentOptions.investmentOption));
+      .pipe(
+        startWith(this.appState.forms.investmentOptions.investmentOption),
+        shareReplay(1)
+      );
 
     this.directDebitViewModelData$ = combineLatest([
       this.formManager
