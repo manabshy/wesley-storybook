@@ -2,8 +2,10 @@
 
 $grid-gutter-widths: (
   xs: 40px,
+  sm: 40px,
   md: 20px,
   lg: 28px,
+  xl: 28px,
 ) !default;
 
 @each $grid-breakpoint, $grid-gutter-width in $grid-gutter-widths {

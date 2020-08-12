@@ -131,12 +131,6 @@
     text-align: center;
     box-shadow: 0px 1px 0px 0px $global-colour-grey-100;
 
-    //Force the bottom line to stretch full width
-    margin-left: -50%;
-    padding-left: 50%;
-    margin-right: -50%;
-    padding-right: 50%;
-
     .nav-item {
       &:not(:last-child) {
         padding-right: 32px;
@@ -158,6 +152,7 @@
       );
 
       .wes-icon {
+        transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.2s 0.3s;
         display: block;
         @include rem(
           (
@@ -182,12 +177,34 @@
     }
   }
 
+  //Can't use overflow hidden as it hides the shadow when sticky
+  @each $grid-breakpoint, $container-max-width in $container-max-widths {
+    @include media-breakpoint-up($grid-breakpoint) {
+      $gutter-width: map-get($grid-gutter-widths, $grid-breakpoint);
+      $half-gutter-width: $gutter-width / 2;
+      $total-container-width: $container-max-width - $gutter-width;
+      color: 100vw;
+
+      $padding-offset: calc((100vw - #{$total-container-width}) / 2);
+      $negative-margin-offset: calc(
+        (100vw - #{$total-container-width}) / 2 * -1
+      );
+
+      //Force the bottom line to stretch full width
+      margin-left: $negative-margin-offset;
+      padding-left: $padding-offset;
+      margin-right: $negative-margin-offset;
+      padding-right: $padding-offset;
+    }
+  }
+
   .wes-sticky.js-is-sticky & {
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.11);
 
     @include media-breakpoint-up(md) {
       .wes-icon {
-        display: none;
+        height: 0 !important;
+        margin-bottom: 0;
       }
     }
   }
