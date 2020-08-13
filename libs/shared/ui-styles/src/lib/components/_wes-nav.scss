@@ -81,8 +81,8 @@
   padding: 0;
   display: flex;
   font-weight: 600;
-
   flex-direction: column;
+
   @include media-breakpoint-down(sm) {
     .wes-icon {
       margin-right: 8px;
@@ -207,6 +207,16 @@
         margin-bottom: 0;
       }
     }
+  }
+}
+
+.wes-nav-tabs-wrapper {
+  overflow: hidden;
+  padding-bottom: 1px;
+  &.js-is-sticky {
+    //Bottom shadow is cut by overflow:hidden, we need to add padding bottom
+    // to make it visible
+    padding-bottom: 8px;
   }
 }
 
