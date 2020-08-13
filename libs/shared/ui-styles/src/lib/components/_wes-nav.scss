@@ -183,7 +183,6 @@
       $gutter-width: map-get($grid-gutter-widths, $grid-breakpoint);
       $half-gutter-width: $gutter-width / 2;
       $total-container-width: $container-max-width - $gutter-width;
-      color: 100vw;
 
       $padding-offset: calc((100vw - #{$total-container-width}) / 2);
       $negative-margin-offset: calc(
@@ -199,9 +198,8 @@
   }
 
   .wes-sticky.js-is-sticky & {
-    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.11);
-
     @include media-breakpoint-up(md) {
+      box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.11);
       .wes-icon {
         height: 0 !important;
         margin-bottom: 0;
@@ -216,7 +214,17 @@
   &.js-is-sticky {
     //Bottom shadow is cut by overflow:hidden, we need to add padding bottom
     // to make it visible
-    padding-bottom: 8px;
+    @include media-breakpoint-up(md) {
+      padding-bottom: 8px;
+
+      //IE11 fix
+      left: 0;
+      right: 0;
+    }
+    //Temp fix until dropdown is implemented
+    @include media-breakpoint-down(sm) {
+      position: relative !important;
+    }
   }
 }
 
