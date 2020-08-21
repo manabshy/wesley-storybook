@@ -7,7 +7,7 @@ import {
   concatMapTo,
   concatMap,
 } from 'rxjs/operators';
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Observable, BehaviorSubject, of, timer } from 'rxjs';
 
 import {
   ISAApiService,
@@ -29,6 +29,8 @@ import { GenericDropdownItem } from '../models/generic-dropdown-item.interface';
 import { CustomerDetailsFormValue } from '../models/customer-details-form-value.interface';
 import { ManualAddressFormValue } from '../../components/manual-address-form/manual-address-form-value.interface';
 import { AppStateFacade } from './app-state-facade';
+import { NgFormsManager } from '@ngneat/forms-manager';
+import { AppForms } from '../models/app-forms.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -55,7 +57,8 @@ export class CustomerDetailsFacade {
     private isaApiService: ISAApiService,
     private appStateFacade: AppStateFacade,
     private loadingService: OverlayProgressSpinnerService,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private formManager: NgFormsManager<AppForms>
   ) {
     this.genericLookupsResponse$ = this.isaApiService.getGenericListAndProductData();
     this.genericLookups$ = this.genericLookupsResponse$.pipe(
@@ -93,11 +96,13 @@ export class CustomerDetailsFacade {
     this.loadingService.show();
 
     return this.appStateFacade
-      .saveFormState([
-        'customerPersonalDetails',
-        'addressLookup',
-        'manualAddress',
-      ])
+      .save({
+        forms: {
+          customerPersonalDetails: value,
+          addressLookup: this.formManager.getControl('addressLookup').value,
+          manualAddress: this.formManager.getControl('manualAddress').value,
+        },
+      })
       .pipe(
         concatMapTo(
           this.isaApiService.findCustomer(customerDTO).pipe(
