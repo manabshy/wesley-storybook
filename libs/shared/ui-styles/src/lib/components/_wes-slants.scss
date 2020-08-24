@@ -3,10 +3,6 @@
   background-size: 102% 100%;
   height: calc(100vw / (1366 / 57));
   width: 100%;
-
-  @media (min-width: 1600px) {
-    height: 80px;
-  }
 }
 
 .wes-slant {
