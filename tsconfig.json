@@ -67,6 +67,9 @@
       ],
       "@wesleyan-frontend/shared/util-app-monitoring": [
         "libs/shared/util-app-monitoring/src/index.ts"
+      ],
+      "@wesleyan-frontend/dashboard-help-and-support/data-access": [
+        "libs/dashboard-help-and-support/data-access/src/index.ts"
       ]
     }
   },

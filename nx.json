@@ -92,6 +92,12 @@
     },
     "shared-util-app-monitoring": {
       "tags": []
+    },
+    "dashboard-help-and-support": {
+      "tags": []
+    },
+    "dashboard-help-and-support-data-access": {
+      "tags": []
     }
   }
 }

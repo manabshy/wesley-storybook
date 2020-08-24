@@ -802,6 +802,140 @@
           "style": "scss"
         }
       }
+    },
+    "dashboard-help-and-support": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/dashboard-help-and-support",
+      "sourceRoot": "apps/dashboard-help-and-support/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/dashboard-help-and-support",
+            "index": "apps/dashboard-help-and-support/src/index.html",
+            "main": "apps/dashboard-help-and-support/src/main.ts",
+            "polyfills": "apps/dashboard-help-and-support/src/polyfills.ts",
+            "tsConfig": "apps/dashboard-help-and-support/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/dashboard-help-and-support/src/favicon.ico",
+              "apps/dashboard-help-and-support/src/assets"
+            ],
+            "styles": ["apps/dashboard-help-and-support/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/dashboard-help-and-support/src/environments/environment.ts",
+                  "with": "apps/dashboard-help-and-support/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "dashboard-help-and-support:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "dashboard-help-and-support:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "dashboard-help-and-support:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/dashboard-help-and-support/tsconfig.app.json",
+              "apps/dashboard-help-and-support/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/dashboard-help-and-support/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/dashboard-help-and-support/jest.config.js",
+            "tsConfig": "apps/dashboard-help-and-support/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/dashboard-help-and-support/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "dashboard-help-and-support-data-access": {
+      "projectType": "library",
+      "root": "libs/dashboard-help-and-support/data-access",
+      "sourceRoot": "libs/dashboard-help-and-support/data-access/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/dashboard-help-and-support/data-access/tsconfig.lib.json",
+              "libs/dashboard-help-and-support/data-access/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/dashboard-help-and-support/data-access/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/dashboard-help-and-support/data-access/jest.config.js",
+            "tsConfig": "libs/dashboard-help-and-support/data-access/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/dashboard-help-and-support/data-access/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
