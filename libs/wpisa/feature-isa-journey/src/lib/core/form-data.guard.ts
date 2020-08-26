@@ -4,6 +4,7 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   UrlTree,
+  Router,
 } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
@@ -13,6 +14,8 @@ import {
   ConfigService,
   SessionStorageService,
 } from '@wesleyan-frontend/wpisa/data-access';
+import { isaRoutesNames } from '../isa-journey.routes.names';
+import { AppState } from './models/app-state.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +23,8 @@ import {
 export class FormDataGuard implements CanActivate {
   constructor(
     private sessionStorageService: SessionStorageService,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private router: Router
   ) {}
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -33,7 +37,7 @@ export class FormDataGuard implements CanActivate {
     return combineLatest([
       this.sessionStorageService.loaded$,
       this.sessionStorageService.appState$.pipe(
-        map((data) => JSON.parse(data))
+        map<string, AppState>((data) => JSON.parse(data))
       ),
     ]).pipe(
       filter(([sessionDataLoaded, appState]) => sessionDataLoaded),
@@ -48,6 +52,11 @@ export class FormDataGuard implements CanActivate {
             '_self'
           );
         }
+
+        if (!appState.forms.knowledgeCheckQ2.question2) {
+          this.router.navigate([`/${isaRoutesNames.KNOWLEDGE_CHECK_Q1}`]);
+        }
+
         return true;
       })
     );
