@@ -936,6 +936,41 @@
           "style": "scss"
         }
       }
+    },
+    "dashboard-help-and-support-feature-page": {
+      "projectType": "library",
+      "root": "libs/dashboard-help-and-support/feature-page",
+      "sourceRoot": "libs/dashboard-help-and-support/feature-page/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/dashboard-help-and-support/feature-page/tsconfig.lib.json",
+              "libs/dashboard-help-and-support/feature-page/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/dashboard-help-and-support/feature-page/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/dashboard-help-and-support/feature-page/jest.config.js",
+            "tsConfig": "libs/dashboard-help-and-support/feature-page/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/dashboard-help-and-support/feature-page/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

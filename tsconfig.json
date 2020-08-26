@@ -70,6 +70,9 @@
       ],
       "@wesleyan-frontend/dashboard-help-and-support/data-access": [
         "libs/dashboard-help-and-support/data-access/src/index.ts"
+      ],
+      "@wesleyan-frontend/dashboard-help-and-support/feature-page": [
+        "libs/dashboard-help-and-support/feature-page/src/index.ts"
       ]
     }
   },
