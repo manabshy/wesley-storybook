@@ -57,6 +57,13 @@ export class FormDataGuard implements CanActivate {
           this.router.navigate([`/${isaRoutesNames.KNOWLEDGE_CHECK_Q1}`]);
         }
 
+        if (appState.forms.knowledgeCheckQ2.question2 === 'No') {
+          window.open(
+            this.configService.content.endPoints.knowledgecheckFailurePage,
+            '_self'
+          );
+        }
+
         return true;
       })
     );
