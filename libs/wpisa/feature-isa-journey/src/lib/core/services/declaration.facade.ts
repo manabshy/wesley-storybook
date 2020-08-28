@@ -510,6 +510,7 @@ export class DeclarationFacade {
     | 'nationalityDetails'
     | 'marketingPreferences'
     | 'declarationsText'
+    | 'knowledgeCheckForm'
   > {
     const mappedCustomerDTO = this.customerDetailsFacade.mapCustomerFormToSearchCustomerDTO(
       this.formManager.getControl('customerPersonalDetails')?.value ||
@@ -534,6 +535,7 @@ export class DeclarationFacade {
         this.pageContent.content +
         this.pageContent.confirmContent
       ).replace(/<[^>]*>/g, ''),
+      knowledgeCheckForm: this.getKnowledgeCheckAnswersDTO(),
     };
 
     this.customerDetailsFacade.currentTaxPeriodISALimits$
@@ -543,6 +545,13 @@ export class DeclarationFacade {
       )
       .subscribe();
     return dto;
+  }
+
+  getKnowledgeCheckAnswersDTO() {
+    return {
+      knowledgeCheckQ1: this.appState.forms.knowledgeCheckQ1,
+      knowledgeCheckQ2: this.appState.forms.knowledgeCheckQ2,
+    };
   }
 
   mapDirectDebit(value: DirectDebitFormValue): OnlineDirectDebitDetails {

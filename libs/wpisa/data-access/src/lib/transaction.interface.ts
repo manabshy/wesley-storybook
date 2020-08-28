@@ -18,6 +18,10 @@ export interface SubmitTransactionDTO extends SearchCustomerDTO {
   onlineDirectDebitDetails: OnlineDirectDebitDetails;
   customerPermissionGranted: boolean;
   declarationsText: string;
+  knowledgeCheckForm: {
+    knowledgeCheckQ1: { question1: string };
+    knowledgeCheckQ2: { question2: string };
+  };
 }
 
 export interface LumpPaymentDetails {
