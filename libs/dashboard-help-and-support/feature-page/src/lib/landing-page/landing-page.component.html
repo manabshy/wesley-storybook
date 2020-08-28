@@ -1,1 +1,130 @@
-<p>landing-page works!</p>
+<div class="c-help-support">
+    <div class="c-help-support-search">
+        <div class="c-help-support-search__bg "></div>
+        <div>
+            <form class="c-help-support-search__form">
+                <label class="text-hide" for="search">{{ config.searchProps.id }}</label>
+                <input id="search" class="c-help-support-search__input " type="text" placeholder="{{ config.searchProps.placeholder }}" autocomplete="off" attr.data-gtm-id="{{ config.searchProps.dataGtmId }}" attr.data-gtm-class="{{ config.searchProps.dataGtmClass }}" value="">
+                <span class="c-help-support-search__icon">
+                    <span class="SVGInline c-icon c-icon-magnify">
+                        <svg class="SVGInline c-icon c-icon-magnify" xmlns="http://www.w3.org/2000/svg" width="21" height="21">
+                            <g fill="none" fill-rule="evenodd" stroke="#40474F" stroke-width="2" transform="translate(-14 -15)">
+                            <circle cx="22.5" cy="23.5" r="7.5"></circle>
+                            <path stroke-linecap="round" d="M28.5 29.5l5.025 5.025"></path>
+                            </g>
+                        </svg>
+                    </span>
+                </span>
+            </form>
+        </div>
+    </div>
+
+
+  <div class="c-help-and-support-tabs">
+      <div class="c-help-and-support-tabs__cover">
+          <ul class="c-help-and-support-tabs__list"  *ngFor="let tabs of config.data.sections">
+                <li class="c-help-and-support-tabs__list-item">
+                    <a class="c-help-and-support-tabs__link c-help-and-support-tabs__link--active" aria-current="page" attr.data-gtm-id="{{ tabs.dataGtmId }}" attr.data-gtm-class="{{ tabs.dataGtmClass }}" href="{{ tabs.href }}"><span class="c-help-and-support-tabs__text">{{ tabs.title }}</span></a>
+                </li>
+           <!--
+                <li class="c-help-and-support-tabs__list-item">
+                    <a class="c-help-and-support-tabs__link" data-gtm-id="policies_cta" data-gtm-class="button_secondary" href="#/policies"><span class="c-help-and-support-tabs__text">Policies</span></a>
+                </li>
+                <li class="c-help-and-support-tabs__list-item">
+                    <a class="c-help-and-support-tabs__link" data-gtm-id="my_profile_cta" data-gtm-class="button_secondary" href="#/myprofile"><span class="c-help-and-support-tabs__text">My profile</span></a>
+                </li>
+                <li class="c-help-and-support-tabs__list-item">
+                    <a class="c-help-and-support-tabs__link" data-gtm-id="glossary_cta" data-gtm-class="button_secondary" href="#/glossary"><span class="c-help-and-support-tabs__text">Glossary</span></a>
+                </li>
+            -->
+            </ul>
+        </div>
+    </div>
+<section class="c-help-support__section module" *ngFor="let section of config.data.sections" id="{{ transform(section.title) }}">
+   
+    <article id="{{ transform(article.title) }}" class="c-help-support__article" *ngFor="let article of section.articles">
+        <h3 class="c-help-support__article-title pr-md-5"><a href="#{{ transform(article.title) }}">{{ article.title }}</a></h3>
+        <div class="c-help-support__article-content" [innerHTML]="article.content "></div>
+    </article>
+    <!--
+    <article id="how_do_i_request_change_or_cancel_an_appointment_with_my_financial_consultant" class="c-help-support__article">
+        <h3 class="c-help-support__article-title pr-md-5"><a href="#/#how_do_i_request_change_or_cancel_an_appointment_with_my_financial_consultant">How do I request, change or cancel an appointment with my Financial Consultant?</a></h3>
+        <div class="c-help-support__article-content">
+            <p>Whether you’re requesting, changing or cancelling an appointment, this can all be done using our <a href="/request-callback">call back form</a>. Simply fill out the form and we’ll get back in touch at a time that suits you. We will aim to call you back within 2 working days.</p>
+            <p>Alternatively, you can contact us directly on <strong><a class="c-no-link" href="tel:08009806357">0800 980 6357</a></strong> or via email at <a href="mailto:appointments@wesleyan.co.uk">appointments@wesleyan.co.uk</a>.</p>
+        </div>
+    </article>
+    <article id="do_i_have_to_pay_for_financial_advice" class="c-help-support__article">
+        <h3 class="c-help-support__article-title pr-md-5"><a href="#/#do_i_have_to_pay_for_financial_advice">Do I have to pay for financial advice?</a></h3>
+        <div class="c-help-support__article-content"><p>You will only pay for the advice you receive if you invest in a Wesleyan Saving, Investment, Pension or Annuity product. This is called the Initial Advice Charge and is a percentage of your investment. Your Wesleyan Financial Services Consultant also provides an Ongoing Advice Service. If you opt in to this service, the charge for ongoing advice will be taken as a percentage of your fund value. If you opt-out of this service, you may be charged an hourly rate each time you wish to receive advice.</p>
+        </div>
+    </article>
+    <article id="how_do_i_make_a_complaint" class="c-help-support__article">
+        <h3 class="c-help-support__article-title pr-md-5"><a href="#/#how_do_i_make_a_complaint">How do I make a complaint?</a></h3>
+        <div class="c-help-support__article-content"><p>It is our utmost priority to make sure you are satisfied with our products and services, but if you wish to make a complaint, you can contact us in the following ways:</p>
+            <ul class="c-list">
+                <li class="c-list-bullets">Speak to our Customer Relationship Centre on <strong><a class="c-no-link" href="tel:08000921990">0800&nbsp;092&nbsp;1990</a></strong>. Our lines are open from 8.30am to 6.30pm, Monday to Friday, and from 9am to 2pm on Saturdays. </li>
+                <li class="c-list-bullets">Email the Complaints Team at <a href="mailto:complaints@wesleyan.co.uk">complaints@wesleyan.co.uk</a></li>
+                <li class="c-list-bullets">Send your letter by post:<br>
+                Complaints Team<br>
+                Risk and Regulatory<br>
+                Wesleyan Assurance Society<br>
+                Colmore Circus<br>
+                Birmingham<br>
+                B4 6AR</li>
+                <li class="c-list-bullets">Speak to your Wesleyan Financial Services Consultant</li>
+            </ul>
+        </div>
+    </article>
+    <article id="how_are_my_projections_made_when_im_using_the_calculator" class="c-help-support__article">
+        <h3 class="c-help-support__article-title pr-md-5"><a href="#/#how_are_my_projections_made_when_im_using_the_calculator">How are my projections made when I’m using the calculator?</a></h3><div class="c-help-support__article-content"><p>We estimate your projections using financial models to forecast a scale of potential values. They are based on your selected investment term and the fees and fund charges that may occur.</p>
+        </div>
+    </article>
+    <article id="how_accurate_are_my_calculated_projections" class="c-help-support__article">
+        <h3 class="c-help-support__article-title pr-md-5"><a href="#/#how_accurate_are_my_calculated_projections">How accurate are my calculated projections?</a></h3><div class="c-help-support__article-content"><p>Your calculated projections are forecasts only and not a reliable measure of what actual future performance might be. A projection from a Financial Consultant may differ from those shown on the calculator.</p></div>
+    </article>
+    <article id="what_are_classed_as_assets_in_my_financial_summary" class="c-help-support__article"><h3 class="c-help-support__article-title pr-md-5"><a href="#/#what_are_classed_as_assets_in_my_financial_summary">What are classed as ‘assets’ in my financial summary?</a></h3><div class="c-help-support__article-content"><p>Assets are anything you own of monetary value. In the financial summary, assets are grouped into up to four categories, as detailed below.</p>
+        <p>Please note that the assets shown in your financial summary are as per the last discussion with your Wesleyan Financial Consultant.</p>
+        <ul class="c-list">
+        <li class="c-list-bullets"><strong>Savings:</strong> This could include savings and investments such as stocks and shares, endowments or unit trusts.</li>
+        <li class="c-list-bullets"><strong>Cash accounts:</strong> Money you hold in a current/deposit account or a cash ISA.</li>
+        <li class="c-list-bullets"><strong>Protection:</strong> Protection products you own with an investment value, such as income protection, whole of life or standalone critical illness policies.</li>
+        <li class="c-list-bullets"><strong>Property:</strong> Property you own, including both your main residence and any investment properties.</li>
+        </ul></div>
+    </article>
+    <article id="what_is_classed_as_monthly_income_in_my_financial_summary" class="c-help-support__article"><h3 class="c-help-support__article-title pr-md-5"><a href="#/#what_is_classed_as_monthly_income_in_my_financial_summary">What is classed as ‘monthly income’ in my financial summary?</a></h3><div class="c-help-support__article-content"><p>Monthly income is the money you receive each month. In the financial summary, income is broken down into a number of categories, as detailed below.</p>
+        <p>Please note that income shown in your financial summary is as per the last discussion with your Financial Consultant.</p>
+        <ul class="c-list">
+        <li class="c-list-bullets"><strong>Earnings:</strong> This may include your monthly salary, regular dividends or bonuses.</li>
+        <li class="c-list-bullets"><strong>Benefit Income:</strong> This might include benefits such as sick pay, critical illness cover or maintenance payments.</li>
+        <li class="c-list-bullets"><strong>Pension Income:</strong> This could include money you receive from annuities and drawdowns.</li>
+        <li class="c-list-bullets"><strong>Rental income:</strong> Rental earnings from any properties you own.</li>
+        <li class="c-list-bullets"><strong>Investment income:</strong> Regular income from any investment products you own. </li>
+        <li class="c-list-bullets"><strong>Other income:</strong> Any other types of regular income.</li>
+        </ul></div>
+    </article>
+    <article id="what_are_classed_as_monthly_outgoings_in_my_financial_summary" class="c-help-support__article"><h3 class="c-help-support__article-title pr-md-5"><a href="#/#what_are_classed_as_monthly_outgoings_in_my_financial_summary">What are classed as ‘monthly outgoings’ in my financial summary?</a></h3><div class="c-help-support__article-content"><p>Monthly outgoings are the regular costs you incur each month. In the financial summary, expenses are broken down into a number of categories, as detailed below.</p>
+        <p>Please note that expenses shown in your financial summary are as per the last discussion with your Wesleyan Financial Consultant.</p>
+        <ul class="c-list">
+        <li class="c-list-bullets"><strong>Children:</strong> This may include child maintenance payments or the costs of childcare and education.</li>
+        <li class="c-list-bullets"><strong>Financial Products:</strong> This might include ISA contributions, insurance premiums, pension contributions or any other regular payment to a financial product.</li>
+        <li class="c-list-bullets"><strong>General Living Costs:</strong> Essential living costs (such as food or fuel) and non-essential living costs (like hobbies and memberships).</li>
+        <li class="c-list-bullets"><strong>Property Costs:</strong> This may include monthly mortgage payments and/or rent.</li>
+        <li class="c-list-bullets"><strong>Debts:</strong> The regular repayments you make towards your debts.</li>
+        <li class="c-list-bullets"><strong>Professional Expenses:</strong> Fixed professional expenses, or expenses you claim against your locum income.</li>
+        <li class="c-list-bullets"><strong>Utilities:</strong> Monthly energy and household bills.</li>
+        <li class="c-list-bullets"><strong>Other:</strong> Any other monthly expenses.</li>
+        </ul></div>
+    </article>
+    <article id="what_are_classed_as_liabilities_in_my_financial_summary" class="c-help-support__article"><h3 class="c-help-support__article-title pr-md-5"><a href="#/#what_are_classed_as_liabilities_in_my_financial_summary">What are classed as ‘liabilities’ in my financial summary?</a></h3><div class="c-help-support__article-content"><p>Liabilities are things for which you are financially responsible. In the financial summary, liabilities are grouped into up to four categories, as detailed below.</p>
+        <p>Please note that the liabilities shown in your financial summary are as per the last discussion with your Financial Consultant.</p>
+        <ul class="c-list">
+        <li class="c-list-bullets"><strong>Mortgage:</strong> Mortgages you have on your main residence and any investment properties.</li>
+        <li class="c-list-bullets"><strong>Personal Loan:</strong> Personal loans and/or Hire Purchase agreements you have in place.</li>
+        <li class="c-list-bullets"><strong>Credit/Store Card:</strong> Money you owe on store cards, credit cards or similar lines of credit.</li>
+        <li class="c-list-bullets"><strong>Overdraft:</strong> Bank accounts you hold with a negative balance.</li>
+        </ul></div>
+    </article>
+     -->
+</section>
+</div>
