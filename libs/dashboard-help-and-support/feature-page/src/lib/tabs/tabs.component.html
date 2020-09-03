@@ -1,0 +1,10 @@
+<mat-tab-group  animationDuration="0ms" >
+  <mat-tab [label]="tab.title" *ngFor="let tab of config.data.sections" class="c-help-and-support-tabs__list ">
+    <section class="c-help-support__section module">
+      <article id="{{ transform(article.title) }}" class="c-help-support__article" *ngFor="let article of tab.articles">
+        <h3 class="c-help-support__article-title pr-md-5"><a href="#{{ transform(article.title) }}">{{ article.title }}</a></h3>
+        <div class="c-help-support__article-content" [innerHTML]="article.content "></div>
+      </article>
+    </section>
+  </mat-tab>
+</mat-tab-group>

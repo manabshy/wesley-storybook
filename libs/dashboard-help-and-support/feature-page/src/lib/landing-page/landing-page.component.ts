@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigService, Config, Article, Title } from '@wesleyan-frontend/dashboard-help-and-support/data-access';
+import { ConfigService, Config } from '@wesleyan-frontend/dashboard-help-and-support/data-access';
 @Component({
   selector: 'wes-landing-page',
   templateUrl: './landing-page.component.html',
