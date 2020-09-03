@@ -827,7 +827,10 @@
               "apps/dashboard-help-and-support/src/favicon.ico",
               "apps/dashboard-help-and-support/src/assets"
             ],
-            "styles": ["apps/dashboard-help-and-support/src/styles.scss"],
+             "styles": ["libs/shared/ui-styles/src/index.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/ui-styles/src/lib"]
+            },
             "scripts": []
           },
           "configurations": {
