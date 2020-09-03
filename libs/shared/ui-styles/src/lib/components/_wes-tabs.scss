@@ -157,7 +157,10 @@ $tab-heading-active-color: #40474f;
     position: relative;
     background: white;
     padding: rem(48px) rem(24px) rem(24px) rem(24px);
-
+    @include media-breakpoint-down(sm) {
+      //We don't want this on mobile, it is set in js
+      margin-bottom: 0 !important;
+    }
     @include media-breakpoint-up(md) {
       width: 59%;
       max-width: 600px;
@@ -171,7 +174,10 @@ $tab-heading-active-color: #40474f;
     position: relative;
     background: white;
     padding: 0 rem(24px) rem(24px) rem(24px);
-
+    @include media-breakpoint-down(sm) {
+      //We don't want this on mobile, it is set in js
+      bottom: 0 !important;
+    }
     @include media-breakpoint-up(md) {
       width: 59%;
       max-width: 600px;
