@@ -376,3 +376,38 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
     display: flex;
 }
 }
+
+.mat-tab-label-content{
+  position: relative;
+    display: inline-block;
+    margin: 0;
+    font-size: .875rem;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.mat-tab-label-content:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #febd11;
+  -webkit-transition: background-color .4s ease-in-out;
+  transition: background-color .4s ease-in-out;
+  top:20px;
+}
+.mat-tab-label-active{
+  .mat-tab-label-content:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    display: block;
+    width: 0% !important;
+    height: 2px;
+    -webkit-transition: background-color .4s ease-in-out;
+    transition: background-color .4s ease-in-out;
+  }
+}
