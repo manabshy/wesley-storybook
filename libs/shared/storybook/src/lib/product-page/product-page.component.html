@@ -10,8 +10,15 @@
           >
             <div class="component-content">
               <div class="tabs-inner">
-                <ul class="tabs-heading">
-                  <li tabindex="0" class="active">
+                <ul class="tabs-heading" role="tablist">
+                  <li
+                    tabindex="0"
+                    class="active"
+                    id="wes-tab-label-x-y"
+                    aria-controls="wes-tab-content-x-y"
+                    aria-selected="true"
+                    role="tab"
+                  >
                     <div>
                       <div class="component content">
                         <div class="component-content">
@@ -49,7 +56,12 @@
                   </li>
                 </ul>
                 <div class="tabs-container">
-                  <div class="tab active">
+                  <div
+                    class="tab active"
+                    id="wes-tab-content-x-y"
+                    aria-labelledby="wes-tab-label-x-y"
+                    role="tabpanel"
+                  >
                     <div class="component content">
                       <div class="component-content">
                         <div class="field-content">

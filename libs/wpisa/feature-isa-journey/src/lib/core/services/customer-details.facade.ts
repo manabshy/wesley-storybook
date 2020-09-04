@@ -99,8 +99,8 @@ export class CustomerDetailsFacade {
       .save({
         forms: {
           customerPersonalDetails: value,
-          addressLookup: this.formManager.getControl('addressLookup').value,
-          manualAddress: this.formManager.getControl('manualAddress').value,
+          addressLookup: this.formManager.getControl('addressLookup')?.value,
+          manualAddress: this.formManager.getControl('manualAddress')?.value,
         },
       })
       .pipe(
