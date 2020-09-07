@@ -210,13 +210,13 @@
 
 .wes-nav-tabs-wrapper {
   overflow: hidden;
-  padding-bottom: 1px;
-  &.js-is-sticky {
+  @include media-breakpoint-up(md) {
     //Bottom shadow is cut by overflow:hidden, we need to add padding bottom
     // to make it visible
+    padding-bottom: 1px;
+  }
+  &.js-is-sticky {
     @include media-breakpoint-up(md) {
-      padding-bottom: 8px;
-
       //IE11 fix
       left: 0;
       right: 0;
@@ -226,6 +226,7 @@
 
 .wes-sticky.js-is-sticky {
   z-index: $zindex-sticky;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.11);
 }
 
 .wes-dropdown-nav {
@@ -264,14 +265,19 @@
         )
       );
     }
+
+    .wes-sticky.js-is-sticky & {
+      border-bottom: none;
+    }
   }
   &.active {
     .dropdown-select:after {
       transform: rotate(-180deg);
     }
-  }
-
-  .wes-sticky.js-is-sticky & {
-    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.11);
+    .wes-sticky.js-is-sticky & {
+      .dropdown-select {
+        border-bottom: 1px solid $global-colour-grey-100;
+      }
+    }
   }
 }
