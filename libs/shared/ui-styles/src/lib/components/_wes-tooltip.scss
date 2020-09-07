@@ -45,6 +45,7 @@ $tooltip-background-colour: $global-colour-gold-50;
   .wes-icon {
     margin-right: 12px;
     margin-top: 4px;
+    flex-shrink: 0;
   }
 
   //Tooltip location directions
