@@ -73,6 +73,12 @@
       ],
       "@wesleyan-frontend/dashboard-help-and-support/feature-page": [
         "libs/dashboard-help-and-support/feature-page/src/index.ts"
+      ],
+      "@wesleyan-frontend/just-invest-calculator/data-access": [
+        "libs/just-invest-calculator/data-access/src/index.ts"
+      ],
+      "@wesleyan-frontend/just-invest-calculator/feature-page": [
+        "libs/just-invest-calculator/feature-page/src/index.ts"
       ]
     }
   },

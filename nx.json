@@ -101,6 +101,19 @@
     },
     "dashboard-help-and-support-feature-page": {
       "tags": []
+    },
+    "just-invest-calculator": {
+      "tags": []
+    },
+    "just-invest-calculator-e2e": {
+      "tags": [],
+      "implicitDependencies": ["just-invest-calculator"]
+    },
+    "just-invest-calculator-data-access": {
+      "tags": []
+    },
+    "just-invest-calculator-feature-page": {
+      "tags": []
     }
   }
 }
