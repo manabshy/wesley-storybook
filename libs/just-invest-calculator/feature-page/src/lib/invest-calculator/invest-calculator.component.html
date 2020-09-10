@@ -5,7 +5,7 @@
 				<h1 class="c-heading--calculator text-uppercase"> {{config.pageHeading}}</h1>
 			</div>
 		</div>
-
+	
 			<div class="module">
 				<div class="c-goal__header d-flex align-items-center pl-2 c-goal__header--lg">
 					<span class="SVGInline c-icon c-icon-save-yellow">
@@ -231,9 +231,10 @@
 					</div>
 				</div>
 				<div class="c-calculator__footer c-calculator__footer border-top mt-4 pt-4 justify-content-end">
-					<button target="_self" class="c-button c-button__standard font-weight-bold mt-2" disabled="" attr.data-gtm-id="{{config.calculator.footer.buttons[3].dataGtmId}}">{{config.calculator.footer.buttons[3].label}}</button>
+				<button target="_self" (click)="onSumbit()" class="c-button c-button__standard font-weight-bold mt-2" attr.data-gtm-id="{{config.calculator.footer.buttons[3].dataGtmId}}">{{config.calculator.footer.buttons[3].label}}</button>
 				</div>
 			</div>
 		</div>
+
 	</div>
 </div>
