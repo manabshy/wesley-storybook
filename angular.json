@@ -995,7 +995,10 @@
               "apps/just-invest-calculator/src/favicon.ico",
               "apps/just-invest-calculator/src/assets"
             ],
-            "styles": ["apps/just-invest-calculator/src/styles.css"],
+            "styles": ["libs/shared/ui-styles/src/index.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/ui-styles/src/lib"]
+            },
             "scripts": []
           },
           "configurations": {
