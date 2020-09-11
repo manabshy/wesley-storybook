@@ -4,15 +4,12 @@ import { AppComponent } from './app.component';
 import { ConfigService } from '@wesleyan-frontend/just-invest-calculator/data-access'
 import {JustInvestCalculatorFeaturePageModule } from '@wesleyan-frontend/just-invest-calculator/feature-page'
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     JustInvestCalculatorFeaturePageModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
+    HttpClientModule
   ],
   providers: [
     {

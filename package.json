@@ -49,7 +49,9 @@
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
     "date-fns": "^2.14.0",
+    "echarts": "^4.9.0",
     "jquery": "^3.5.1",
+    "ngx-echarts": "^5.1.2",
     "ramda": "^0.27.0",
     "rxjs": "~6.5.4",
     "zone.js": "^0.10.2"
