@@ -52,8 +52,7 @@
       );
     }
 
-    &:hover,
-    &:focus {
+    &:hover {
       box-shadow: 0px 1px 0px 0px $global-colour-grey-900;
 
       &:before {
@@ -71,6 +70,12 @@
         height: 2px;
         bottom: -2px;
       }
+    }
+  }
+
+  .js-is-sticky & {
+    @include media-breakpoint-down(sm) {
+      position: relative;
     }
   }
 }
@@ -108,8 +113,7 @@
         bottom: -1px;
       }
 
-      &:hover,
-      &:focus {
+      &:hover {
         box-shadow: 0px 1px 0px 0px $global-colour-grey-900;
       }
       &.active,
@@ -169,7 +173,6 @@
       transition: box-shadow cubic-bezier(0.37, 0, 0.63, 1) 0.2s;
 
       &:hover,
-      &:focus,
       &.active,
       &--active {
         box-shadow: 0px -2px 0px 0px $global-colour-gold-900 inset;
@@ -216,17 +219,14 @@
     padding-bottom: 1px;
   }
   &.js-is-sticky {
-    @include media-breakpoint-up(md) {
-      //IE11 fix
-      left: 0;
-      right: 0;
-    }
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.11);
+    left: 0;
+    right: 0;
   }
 }
 
 .wes-sticky.js-is-sticky {
   z-index: $zindex-sticky;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.11);
 }
 
 .wes-dropdown-nav {

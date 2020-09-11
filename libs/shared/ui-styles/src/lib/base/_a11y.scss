@@ -1,0 +1,7 @@
+:focus {
+  outline: none;
+}
+
+.using-keyboard :focus {
+  outline: 2px solid #40474f;
+}
