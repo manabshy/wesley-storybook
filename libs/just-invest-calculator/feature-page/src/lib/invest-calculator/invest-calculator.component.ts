@@ -22,86 +22,73 @@ export class InvestCalculatorComponent implements OnInit {
   graphData: { terms: number[]; series: number[][] };
   gold = '#FEBD11';
   charcoal = '#575757';
-  //   options = {
-  //     grid: { left: 20, right: 75 },
-  //     xAxis: {
-  //       axisLine: {
-  //         lineStyle: {
-  //           color: '#1e263080',
-  //         },
-  //       },
-  //       name: 'Years',
-  //       type: 'category',
-  //       nameLocation: 'center',
-  //       nameGap: 35,
-  //       boundaryGap: false,
-  //       data: this.convertXaxisValues(props.xAxisValues),
-  //     },
-  //     yAxis: {
-  //       min: 'dataMin',
-  //       axisLine: {
-  //         lineStyle: {
-  //           color: '#1e263080',
-  //         },
-  //       },
-  //       type: 'value',
-  //       name: 'Projection',
-  //       position: 'right',
-  //       nameLocation: 'center',
-  //       nameRotate: -90,
-  //       nameGap: 60,
-  //       axisLabel: {
-  //         // Function to add Letters. i.e. 1000 > 1K
-  //         formatter: (a, b) => {
-  //           if (a < 1000000) {
-  //             if (b == 0) {
-  //               return `0`;
-  //             }
-  //             const value = `${a / 1000}k`;
-  //             return value;
-  //           } else {
-  //             let c = `${a}`.length;
-  //             const d = 10 ** b;
-  //             const value = `${(((a * d) / 10 ** (c -= c % 3) + 0.5) | 0) / d}${
-  //               ' kMGTPE'[c / 3]
-  //             }`;
-  //             return value;
-  //           }
-  //         },
-  //       },
-  //     },
-  //     color: this.colors(),
-  //     backgroundColor: '#FFFFFF',
-  //     textStyle: {
-  //       fontFamily: 'Open Sans',
-  //     },
-  //     tooltip: {
-  //       trigger: 'item',
-  //       position: 'top',
-  //       padding: [10, 20, 10, 20],
-  //       formatter: (value) => {
-  //         const year = value.name;
-  //         const number = value.value.toLocaleString();
-  //         return `<div class="text-center"><span style="color: #555263; font-size: 12px;">YEAR ${year}</span><br /><strong style="font-size: 20px;">£${number}</strong></div>`;
-  //       },
-  //       extraCssText:
-  //         'box-shadow: 0 0 8px 0 rgba(0,0,0,0.15); background-color: #FFFFFF; color: #000; border-radius: 2px;',
-  //     },
-  //     series: props.data.map((dataSet) => {
-  //       const newArray = [];
-  //       dataSet.forEach((value) => newArray.push(Math.round(value)));
-
-  //       return {
-  //         type: 'line',
-  //         data: newArray,
-  //         lineStyle: {
-  //           normal: {
-  //             width: 4,
-  //           },
-  //         },
-  //       };
-  //     }),
-  //   };
+  options = {
+    grid: { left: 20, right: 75 },
+    xAxis: {
+      axisLine: {
+        lineStyle: {
+          color: '#1e263080',
+        },
+      },
+      name: 'Years',
+      type: 'category',
+      nameLocation: 'center',
+      nameGap: 35,
+      boundaryGap: false,
+      data: [],
+    },
+    yAxis: {
+      min: 'dataMin',
+      axisLine: {
+        lineStyle: {
+          color: '#1e263080',
+        },
+      },
+      type: 'value',
+      name: 'Projection',
+      position: 'right',
+      nameLocation: 'center',
+      nameRotate: -90,
+      nameGap: 60,
+      axisLabel: {
+        // Function to add Letters. i.e. 1000 > 1K
+        formatter: (a, b) => {
+          if (a < 1000000) {
+            if (b === 0) {
+              return `0`;
+            }
+            const value = `${a / 1000}k`;
+            return value;
+          } else {
+            let c = `${a}`.length;
+            const d = 10 ** b;
+            const value = `${(((a * d) / 10 ** (c -= c % 3) + 0.5) | 0) / d}${
+              ' kMGTPE'[c / 3]
+            }`;
+            return value;
+          }
+        },
+      },
+    },
+    color: [this.gold, this.charcoal, this.gold],
+    backgroundColor: '#FFFFFF',
+    textStyle: {
+      fontFamily: 'Open Sans',
+    },
+    tooltip: {
+      trigger: 'item',
+      position: 'top',
+      padding: [10, 20, 10, 20],
+      formatter: (value) => {
+        const year = value.name;
+        const number = value.value.toLocaleString();
+        return `<div class="text-center"><span style="color: #555263; font-size: 12px;">YEAR ${year}</span><br /><strong style="font-size: 20px;">£${number}</strong></div>`;
+      },
+      extraCssText:
+        'box-shadow: 0 0 8px 0 rgba(0,0,0,0.15); background-color: #FFFFFF; color: #000; border-radius: 2px;',
+    },
+    series: [],
+  };
   constructor(
     private configService: ConfigService,
     private formBuilder: FormBuilder,
@@ -121,6 +108,7 @@ export class InvestCalculatorComponent implements OnInit {
       term: this.config.calculator.budget.initialValues.initialTermYears,
     });
   }
+
   onInvestPerMonthChange(event: any) {
     this.inputPerMonth = event.target.value;
   }
@@ -151,7 +139,32 @@ export class InvestCalculatorComponent implements OnInit {
         this.calculatorResults = res;
         this.graphData = this.formatLineChartData(res.results);
         console.log(this.graphData);
+        this.options.series = this.getSeries(this.graphData.series);
+        this.options.xAxis.data = this.convertXaxisValues(this.graphData.terms);
+        this.options = { ...this.options };
+        console.log(this.options);
       });
+  }
+
+  private selectGraphLine(graphLine: 'high' | 'medium' | 'low') {
+    this.options = { ...this.options, color: this.getColors(graphLine) };
+    console.log(this.options.color);
+  }
+  private getSeries(series) {
+    return series.map((dataSet) => {
+      const newArray = [];
+      dataSet.forEach((value) => newArray.push(Math.round(value)));
+
+      return {
+        type: 'line',
+        data: newArray,
+        lineStyle: {
+          normal: {
+            width: 4,
+          },
+        },
+      };
+    });
   }
   convertXaxisValues = (values) => {
     let year = 1;
@@ -161,14 +174,14 @@ export class InvestCalculatorComponent implements OnInit {
     return newXAxisValues;
   };
 
-  colors = (label) => {
+  getColors(label) {
     if (label.toLowerCase() === 'high') {
-      return [this.charcoal, this.gold, this.gold];
+      return [this.gold, this.gold, this.charcoal];
     } else if (label.toLowerCase() === 'medium') {
       return [this.gold, this.charcoal, this.gold];
     }
-    return [this.gold, this.gold, this.charcoal];
-  };
+    return [this.charcoal, this.gold, this.gold];
+  }
   formatLineChartData = (array) => {
     const values = array.map((newArray) =>
       newArray.terms.map((item) => item.value)
