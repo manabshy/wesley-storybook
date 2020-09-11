@@ -72,6 +72,12 @@
       }
     }
   }
+
+  .js-is-sticky & {
+    @include media-breakpoint-down(sm) {
+      position: relative;
+    }
+  }
 }
 
 .nav.wes-nav-tabs {
@@ -214,12 +220,8 @@
   }
   &.js-is-sticky {
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.11);
-
-    @include media-breakpoint-up(md) {
-      //IE11 fix
-      left: 0;
-      right: 0;
-    }
+    left: 0;
+    right: 0;
   }
 }
 
