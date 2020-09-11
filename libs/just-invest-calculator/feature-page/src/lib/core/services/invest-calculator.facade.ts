@@ -13,16 +13,16 @@ export class BudgetCalculatorFacade {
   ) {}
    
   submitBudgetCalculator(
-    dalanceAmount: number,
-    dontributionAmount: number,
+    balanceAmount: number,
+    contributionAmount: number,
     frequency: string,
     riskCode: string,
     term: number
   ) {
            return this.budgetCalculatorApiService
           .submitBudgetCalculator({
-            dalanceAmount,
-            dontributionAmount,
+            balanceAmount,
+            contributionAmount,
             frequency,
             riskCode,
             term

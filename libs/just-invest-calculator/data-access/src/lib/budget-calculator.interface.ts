@@ -1,6 +1,6 @@
 export interface BudgetCalculatorDTO {
-    dalanceAmount: number;
-    dontributionAmount: number;
+    balanceAmount: number;
+    contributionAmount: number;
     frequency: string;
     riskCode: string;
     term: number;
