@@ -639,10 +639,14 @@
                 data-gtm-vis-total-visible-time-10182176_62="100"
                 data-gtm-vis-has-fired-10182176_62="1"
               >
-                <small>Monthly investment</small>
+                <small>
+                  {{ config.calculator.budget.results.params[0].text }}
+                </small>
                 <div class="d-flex align-items-center mt-2">
                   <div>
-                    <p class="number number--rg m-0 mr-1">£2,700</p>
+                    <p class="number number--rg m-0 mr-1">
+                      £{{ this.contributionAmount }}
+                    </p>
                     <small></small>
                   </div>
                 </div>
@@ -656,10 +660,14 @@
                 data-gtm-vis-total-visible-time-10182176_62="100"
                 data-gtm-vis-has-fired-10182176_62="1"
               >
-                <small>Lump sum investment</small>
+                <small>
+                  {{ config.calculator.budget.results.params[1].text }}
+                </small>
                 <div class="d-flex align-items-center mt-2">
                   <div>
-                    <p class="number number--rg m-0 mr-1">£0</p>
+                    <p class="number number--rg m-0 mr-1">
+                      £{{ balanceAmount }}
+                    </p>
                     <small></small>
                   </div>
                 </div>
@@ -673,11 +681,15 @@
                 data-gtm-vis-total-visible-time-10182176_62="100"
                 data-gtm-vis-has-fired-10182176_62="1"
               >
-                <small>Investment term</small>
+                <small>
+                  {{ config.calculator.budget.results.params[2].text }}
+                </small>
                 <div class="d-flex align-items-center mt-2">
                   <div>
                     <span class="number number--rg m-1">8</span>
-                    <small>years</small>
+                    <small>
+                      {{ config.calculator.budget.results.params[2].label }}
+                    </small>
                   </div>
                 </div>
               </div>
@@ -690,7 +702,9 @@
                 data-gtm-vis-total-visible-time-10182176_62="100"
                 data-gtm-vis-has-fired-10182176_62="1"
               >
-                <small>Total contribution</small>
+                <small>
+                  {{ config.calculator.budget.results.params[3].text }}
+                </small>
                 <div
                   class="d-flex align-items-center mt-2 number__group__value"
                 >
@@ -765,12 +779,13 @@
                       </span>
                     </span>
                     <span class="c-tooltip-parameter__content">
-                      <span class="c-tooltip-parameter__text"
-                        >This is how much you will have contributed by the end
-                        of your investment term, assuming your monthly payments
-                        and proposed lump sum payments are met for the duration
-                        of the term.</span
-                      >
+                      <span
+                        class="c-tooltip-parameter__text"
+                        [innerHTML]="
+                          config.calculator.budget.results.params[3].tooltip
+                            .content
+                        "
+                      ></span>
                       <span
                         class="c-tooltip-parameter__close"
                         role="button"
@@ -941,64 +956,31 @@
         <div class="row px-sm-2">
           <div class="col-md-7 mt-md-5 mt-3">
             <small
-              ><p>
-                The figures shown are forecasts only and are not a reliable
-                measure of actual future performance. Actual future returns will
-                depend on the performance of the investments and fund chosen. A
-                projection from a Financial Consultant may differ from those
-                shown above.
-              </p>
-              <p>
-                The calculations do not include any specific product or advice
-                fees.
-              </p>
-              <p>
-                <strong
-                  >Please remember that the value of investments can go down as
-                  well as up and you may get back less than you invest.</strong
-                >
-              </p></small
-            >
+              [innerHTML]="
+                config.calculator.disclaimers.defaultDisclaimers.leftDisclaimers
+              "
+            ></small>
           </div>
           <div class="col-md-4 offset-md-1 mt-md-5 mt-3">
             <small
-              ><p>
-                <strong class="d-block mb-1"
-                  >How are these projections calculated?</strong
-                >
-                We use financial models to forecast a scale of 1,000 potential
-                values for your investment in different market conditions. This
-                takes into account your regular and lump sum values, investment
-                term, an initial charge and ongoing charges.
-              </p>
-              <ul class="c-list" style="font-size: 9pt;">
-                <li class="c-list-bullets" style="position: relative;">
-                  The <strong>high projection</strong> is based on the top 5% of
-                  these 1,000 values, estimating the potential value of your
-                  investment if markets perform better than expected.
-                </li>
-                <li class="c-list-bullets" style="position: relative;">
-                  The <strong>medium</strong> projection is based on the middle
-                  point of the scale, estimating the future value of your
-                  investment in medium market conditions.
-                </li>
-                <li class="c-list-bullets" style="position: relative;">
-                  The <strong>low projection</strong> is based on the bottom 5%
-                  of values, estimating the possible value of your investment if
-                  markets perform worse than expected.
-                </li>
-              </ul></small
-            >
+              [innerHTML]="
+                config.calculator.disclaimers.defaultDisclaimers
+                  .rightDisclaimers
+              "
+            ></small>
           </div>
         </div>
         <div class="c-calculator__footer border-top mt-3 pt-4">
-          <a label="Edit calculation" class="c-link" href="/calculator"
-            >Edit calculation</a
+          <a
+            label="Edit calculation"
+            class="c-link"
+            href="{{ config.calculator.footer.buttons[0].url }}"
+            >{{ config.calculator.footer.buttons[0].label }}</a
           ><a
-            href="/request-callback"
+            href="{{ config.calculator.footer.buttons[1].url }}"
             target="_self"
             class="c-button c-button c-button__standard font-weight-bold mt-2"
-            >Request a call back</a
+            >{{ config.calculator.footer.buttons[1].label }}</a
           >
         </div>
       </div>

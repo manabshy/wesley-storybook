@@ -16,6 +16,9 @@ export class InvestCalculatorComponent implements OnInit {
   inputPerMonth = 0;
   inputLumpsum = 0;
   inputTerm = 0;
+  balanceAmount = 0;
+  contributionAmount = 0;
+  term = 0;
   calculatorResults: BudgetCalculatorResponse;
   calculatorForm: FormGroup;
   calculatorChartOptions: any;
@@ -30,7 +33,8 @@ export class InvestCalculatorComponent implements OnInit {
           color: '#1e263080',
         },
       },
-      name: 'Years',
+      name: this.configService.content.calculator.budget.results.graphs
+        .xAxisLabel,
       type: 'category',
       nameLocation: 'center',
       nameGap: 35,
@@ -45,7 +49,8 @@ export class InvestCalculatorComponent implements OnInit {
         },
       },
       type: 'value',
-      name: 'Projection',
+      name: this.configService.content.calculator.budget.results.graphs
+        .yAxisLabel,
       position: 'right',
       nameLocation: 'center',
       nameRotate: -90,
@@ -127,6 +132,11 @@ export class InvestCalculatorComponent implements OnInit {
       'Your calculator data has been submitted',
       this.calculatorForm.value
     );
+    this.balanceAmount = this.calculatorForm.get('balanceAmount').value;
+    this.contributionAmount = this.calculatorForm.get(
+      'contributionAmount'
+    ).value;
+    this.term = this.calculatorForm.get('term').value;
     this.budgetCalculatorFacade
       .submitBudgetCalculator(
         this.calculatorForm.get('balanceAmount').value,
@@ -146,11 +156,11 @@ export class InvestCalculatorComponent implements OnInit {
       });
   }
 
-  private selectGraphLine(graphLine: 'high' | 'medium' | 'low') {
+  selectGraphLine(graphLine: 'high' | 'medium' | 'low') {
     this.options = { ...this.options, color: this.getColors(graphLine) };
     console.log(this.options.color);
   }
-  private getSeries(series) {
+  getSeries(series) {
     return series.map((dataSet) => {
       const newArray = [];
       dataSet.forEach((value) => newArray.push(Math.round(value)));
