@@ -6,6 +6,7 @@ import {
 } from '@wesleyan-frontend/just-invest-calculator/data-access';
 import { BudgetCalculatorFacade } from '../core/services/invest-calculator.facade';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { empty } from 'rxjs';
 @Component({
   selector: 'wes-invest-calculator',
   templateUrl: './invest-calculator.component.html',
@@ -19,6 +20,11 @@ export class InvestCalculatorComponent implements OnInit {
   balanceAmount = 0;
   contributionAmount = 0;
   term = 0;
+  prefix = '';
+  totalContribution = 0;
+  high = 0;
+  medium = 0;
+  low = 0;
   calculatorResults: BudgetCalculatorResponse;
   calculatorForm: FormGroup;
   calculatorChartOptions: any;
@@ -101,6 +107,7 @@ export class InvestCalculatorComponent implements OnInit {
   ) {
     this.config = this.configService.content;
     this.inputTerm = this.config.calculator.budget.sliders[2].value;
+    this.prefix = this.config.calculator.budget.sliders[0].prefix;
     this.calculatorForm = this.formBuilder.group({
       balanceAmount: [
         this.config.calculator.budget.initialValues.balanceAmount,
@@ -122,6 +129,9 @@ export class InvestCalculatorComponent implements OnInit {
   }
   onTermChange(event: any) {
     this.inputTerm = event.target.value;
+  }
+  getTotalContribution() {
+    return this.contributionAmount * 12 * this.term + this.balanceAmount;
   }
   ngOnInit(): void {}
 
@@ -153,6 +163,10 @@ export class InvestCalculatorComponent implements OnInit {
         this.options.xAxis.data = this.convertXaxisValues(this.graphData.terms);
         this.options = { ...this.options };
         console.log(this.options);
+        this.totalContribution = this.getTotalContribution();
+        this.low = Math.max.apply(Math, this.options.series[0].data);
+        this.medium = Math.max.apply(Math, this.options.series[1].data);
+        this.high = Math.max.apply(Math, this.options.series[2].data);
       });
   }
 

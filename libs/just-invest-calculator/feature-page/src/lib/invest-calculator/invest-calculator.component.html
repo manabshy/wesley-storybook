@@ -88,7 +88,10 @@
                       </p>
                       <p class="pr-4 mb-0 c-slider__label--max">
                         {{ config.calculator.budget.sliders[0].prefix
-                        }}{{ config.calculator.budget.sliders[0].inputMax }}
+                        }}{{
+                          config.calculator.budget.sliders[0].inputMax
+                            | number: '1.0-3'
+                        }}
                       </p>
                     </div>
                   </div>
@@ -120,7 +123,7 @@
                               config.calculator.budget.sliders[0].dataGtmClass
                             }}"
                             type="text"
-                            value="{{ inputPerMonth }}"
+                            value="{{ inputPerMonth | number: '1.0-3' }}"
                           />
                         </div>
                       </label>
@@ -305,7 +308,7 @@
                               config.calculator.budget.sliders[1].dataGtmClass
                             }}"
                             type="text"
-                            value="{{ inputLumpsum }}"
+                            value="{{ inputLumpsum | number: '1.0-3' }}"
                           />
                         </div>
                       </label>
@@ -626,15 +629,17 @@
 
       <div class="module__inner-container">
         <div class="px-sm-2">
-          <div class="pb-4">
-            This is your projected investment value over time. Hover or tap on
-            the graph below for details.
-          </div>
+          <div
+            class="pb-4"
+            [innerHTML]="config.calculator.budget.results.truncate.description"
+          ></div>
           <ul class="c-list c-list__params c-list--grey-box row">
             <li class="col-sm-6 col-md">
               <div
                 class="number__group py-4 position-relative d-flex flex-column align-items-center justify-content-center"
-                data-gtm-class="budget_module"
+                attr.data-gtm-class="{{
+                  config.calculator.budget.results.dataGtmClass
+                }}"
                 data-gtm-vis-first-on-screen-10182176_62="49478"
                 data-gtm-vis-total-visible-time-10182176_62="100"
                 data-gtm-vis-has-fired-10182176_62="1"
@@ -645,7 +650,7 @@
                 <div class="d-flex align-items-center mt-2">
                   <div>
                     <p class="number number--rg m-0 mr-1">
-                      £{{ this.contributionAmount }}
+                      {{ prefix }}{{ contributionAmount | number: '1.0-3' }}
                     </p>
                     <small></small>
                   </div>
@@ -655,7 +660,9 @@
             <li class="col-sm-6 col-md">
               <div
                 class="number__group py-4 position-relative d-flex flex-column align-items-center justify-content-center"
-                data-gtm-class="budget_module"
+                attr.data-gtm-class="{{
+                  config.calculator.budget.results.dataGtmClass
+                }}"
                 data-gtm-vis-first-on-screen-10182176_62="49484"
                 data-gtm-vis-total-visible-time-10182176_62="100"
                 data-gtm-vis-has-fired-10182176_62="1"
@@ -666,7 +673,7 @@
                 <div class="d-flex align-items-center mt-2">
                   <div>
                     <p class="number number--rg m-0 mr-1">
-                      £{{ balanceAmount }}
+                      {{ prefix }}{{ balanceAmount | number: '1.0-3' }}
                     </p>
                     <small></small>
                   </div>
@@ -676,7 +683,9 @@
             <li class="col-sm-6 col-md">
               <div
                 class="number__group py-4 position-relative d-flex flex-column align-items-center justify-content-center"
-                data-gtm-class="budget_module"
+                attr.data-gtm-class="{{
+                  config.calculator.budget.results.dataGtmClass
+                }}"
                 data-gtm-vis-first-on-screen-10182176_62="49495"
                 data-gtm-vis-total-visible-time-10182176_62="100"
                 data-gtm-vis-has-fired-10182176_62="1"
@@ -686,7 +695,7 @@
                 </small>
                 <div class="d-flex align-items-center mt-2">
                   <div>
-                    <span class="number number--rg m-1">8</span>
+                    <span class="number number--rg m-1">{{ term }}</span>
                     <small>
                       {{ config.calculator.budget.results.params[2].label }}
                     </small>
@@ -697,7 +706,9 @@
             <li class="col-sm-6 col-md">
               <div
                 class="number__group py-4 position-relative d-flex flex-column align-items-center justify-content-center"
-                data-gtm-class="budget_module"
+                attr.data-gtm-class="{{
+                  config.calculator.budget.results.dataGtmClass
+                }}"
                 data-gtm-vis-first-on-screen-10182176_62="49501"
                 data-gtm-vis-total-visible-time-10182176_62="100"
                 data-gtm-vis-has-fired-10182176_62="1"
@@ -709,7 +720,9 @@
                   class="d-flex align-items-center mt-2 number__group__value"
                 >
                   <div>
-                    <p class="number number--rg m-0 mr-1">£259,200</p>
+                    <p class="number number--rg m-0 mr-1">
+                      {{ prefix }}{{ totalContribution | number: '1.0-3' }}
+                    </p>
                     <small></small>
                   </div>
                   <span class="c-tooltip-parameter ml-2">
@@ -846,17 +859,21 @@
             </div>
             <div class="col-md-4 pt-1 pt-md-5">
               <p class="text-sm pb-2 mb-0">
-                <strong>Projected value by market performance</strong>
+                <strong>
+                  {{ config.calculator.budget.results.graphs.summary.title }}
+                </strong>
               </p>
               <p
-                data-gtm-id="budget_results_box"
+                attr.data-gtm-id=" {{
+                  config.calculator.budget.results.graphs.dataGtmId
+                }}"
                 data-gtm-vis-first-on-screen-10182176_63="49428"
                 data-gtm-vis-total-visible-time-10182176_63="100"
                 data-gtm-vis-has-fired-10182176_63="1"
-              >
-                Switch between the options below to explore the range of
-                projected values.
-              </p>
+                [innerHTML]="
+                  config.calculator.budget.results.graphs.summary.sentence
+                "
+              ></p>
               <ul class="row mt-1" role="tablist">
                 <li
                   class="col-sm-4 col-md-12"
@@ -868,24 +885,22 @@
                 >
                   <div
                     class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
-                    data-gtm-class="budget_projection"
+                    attr.data-gtm-class="{{
+                      config.calculator.budget.results.graphs.dataGtmClass
+                    }}"
                     data-gtm-vis-first-on-screen-10182176_61="49319"
                     data-gtm-vis-total-visible-time-10182176_61="100"
                     data-gtm-vis-has-fired-10182176_61="1"
+                    (click)="selectGraphLine('high')"
                   >
-                    <button
-                      class="wes-button wes-button-primary"
-                      (click)="selectGraphLine('high')"
+                    <span
+                      class="text-capitalize d-sm-block"
+                      style="font-size: 12px;"
+                      >High</span
                     >
-                      <span
-                        class="text-capitalize d-sm-block"
-                        style="font-size: 12px;"
-                        >High</span
-                      >
-                      <h3 class="m-0 ml-2" style="font-size: 24px;">
-                        £449,783
-                      </h3>
-                    </button>
+                    <h3 class="m-0 ml-2" style="font-size: 24px;">
+                      {{ prefix }}{{ high | number: '1.0-3' }}
+                    </h3>
                   </div>
                 </li>
                 <li
@@ -898,24 +913,22 @@
                 >
                   <div
                     class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
-                    data-gtm-class="budget_projection"
+                    attr.data-gtm-class="{{
+                      config.calculator.budget.results.graphs.dataGtmClass
+                    }}"
                     data-gtm-vis-first-on-screen-10182176_61="49328"
                     data-gtm-vis-total-visible-time-10182176_61="100"
                     data-gtm-vis-has-fired-10182176_61="1"
+                    (click)="selectGraphLine('medium')"
                   >
-                    <button
-                      class="wes-button wes-button-primary"
-                      (click)="selectGraphLine('medium')"
+                    <span
+                      class="text-capitalize d-sm-block"
+                      style="font-size: 12px;"
+                      >Medium</span
                     >
-                      <span
-                        class="text-capitalize d-sm-block"
-                        style="font-size: 12px;"
-                        >Medium</span
-                      >
-                      <h3 class="m-0 ml-2" style="font-size: 24px;">
-                        £287,627
-                      </h3>
-                    </button>
+                    <h3 class="m-0 ml-2" style="font-size: 24px;">
+                      {{ prefix }}{{ medium | number: '1.0-3' }}
+                    </h3>
                   </div>
                 </li>
                 <li
@@ -929,24 +942,27 @@
                 >
                   <div
                     class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
-                    data-gtm-class="budget_projection"
+                    attr.data-gtm-class="{{
+                      config.calculator.budget.results.graphs.dataGtmClass
+                    }}"
                     data-gtm-vis-first-on-screen-10182176_61="49333"
                     data-gtm-vis-total-visible-time-10182176_61="100"
                     data-gtm-vis-has-fired-10182176_61="1"
+                    (click)="selectGraphLine('low')"
                   >
-                    <button
+                    <!--  <button
                       class="wes-button wes-button-primary"
-                      (click)="selectGraphLine('low')"
+
+                    >-->
+                    <span
+                      class="text-capitalize d-sm-block"
+                      style="font-size: 12px;"
+                      >Low</span
                     >
-                      <span
-                        class="text-capitalize d-sm-block"
-                        style="font-size: 12px;"
-                        >Low</span
-                      >
-                      <h3 class="m-0 ml-2" style="font-size: 24px;">
-                        £187,143
-                      </h3>
-                    </button>
+                    <h3 class="m-0 ml-2" style="font-size: 24px;">
+                      {{ prefix }}{{ low | number: '1.0-3' }}
+                    </h3>
+                    <!--</button>-->
                   </div>
                 </li>
               </ul>
