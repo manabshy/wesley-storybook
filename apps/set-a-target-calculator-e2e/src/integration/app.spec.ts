@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('set-a-target-calculator-set-a-target-calculator', () => {
+describe('set-a-target-calculator', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
@@ -8,8 +8,6 @@ describe('set-a-target-calculator-set-a-target-calculator', () => {
     cy.login('my-email@something.com', 'myPassword');
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains(
-      'Welcome to set-a-target-calculator-set-a-target-calculator!'
-    );
+    getGreeting().contains('Welcome to set-a-target-calculator!');
   });
 });
