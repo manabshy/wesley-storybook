@@ -114,6 +114,19 @@
     },
     "just-invest-calculator-feature-page": {
       "tags": []
+    },
+    "set-a-target-calculator": {
+      "tags": []
+    },
+    "set-a-target-calculator-e2e": {
+      "tags": [],
+      "implicitDependencies": ["set-a-target-calculator"]
+    },
+    "set-a-target-calculator-data-access": {
+      "tags": []
+    },
+    "set-a-target-calculator-feature-page": {
+      "tags": []
     }
   }
 }

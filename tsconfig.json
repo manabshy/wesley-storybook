@@ -79,6 +79,12 @@
       ],
       "@wesleyan-frontend/just-invest-calculator/feature-page": [
         "libs/just-invest-calculator/feature-page/src/index.ts"
+      ],
+      "@wesleyan-frontend/set-a-target-calculator/data-access": [
+        "libs/set-a-target-calculator/data-access/src/index.ts"
+      ],
+      "@wesleyan-frontend/set-a-target-calculator/feature-page": [
+        "libs/set-a-target-calculator/feature-page/src/index.ts"
       ]
     }
   },
