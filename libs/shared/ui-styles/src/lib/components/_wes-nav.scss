@@ -137,8 +137,13 @@
 
     .nav-item {
       &:not(:last-child) {
-        padding-right: 32px;
+        padding-right: 16px;
       }
+    }
+    .nav-item {
+      flex-basis: 0;
+      flex-shrink: 1;
+      flex-grow: 1;
     }
     .nav-link {
       display: flex;
@@ -179,7 +184,16 @@
       }
     }
   }
-
+  @include media-breakpoint-up(lg) {
+    .nav-item {
+      &:not(:last-child) {
+        padding-right: 32px;
+      }
+    }
+    .nav-item {
+      flex-basis: auto;
+    }
+  }
   //Can't use overflow hidden as it hides the shadow when sticky
   @each $grid-breakpoint, $container-max-width in $container-max-widths {
     @include media-breakpoint-up($grid-breakpoint) {
@@ -231,6 +245,7 @@
 
 .wes-dropdown-nav {
   .dropdown-select {
+    display: flex;
     font-weight: 600;
     font-size: 1rem;
     position: relative;
@@ -265,14 +280,11 @@
         )
       );
     }
-
+    .wes-icon {
+      margin-right: 12px;
+    }
     .wes-sticky.js-is-sticky & {
       border-bottom: none;
-      display: flex;
-
-      .wes-icon {
-        margin-right: 12px;
-      }
     }
   }
   &.active {
