@@ -1181,7 +1181,10 @@
               "apps/set-a-target-calculator/src/favicon.ico",
               "apps/set-a-target-calculator/src/assets"
             ],
-            "styles": ["apps/set-a-target-calculator/src/styles.css"],
+            "styles": ["libs/shared/ui-styles/src/index.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/ui-styles/src/lib"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -1218,7 +1221,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "set-a-target-calculator:build"
+            "browserTarget": "set-a-target-calculator:build",
+            "proxyConfig": "apps/set-a-target-calculator/proxy.conf.json"
           },
           "configurations": {
             "production": {
