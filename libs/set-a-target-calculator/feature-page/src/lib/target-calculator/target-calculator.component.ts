@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {
   ConfigService,
   Config,
-  TargetRegularCalculatorDTO,
+  TargetCalculatorDTO,
   TargetRegularCalculatorResponse,
+  TargetOneOffCalculatorResponse,
 } from '@wesleyan-frontend/set-a-target-calculator/data-access';
 import { TargetRegularCalculatorFacade } from '../core/services/target-regular-calculator.facade';
+import { TargetOneOffCalculatorFacade } from '../core/services/target-one-off-calculator.facade';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'wes-target-calculator',
@@ -23,13 +25,16 @@ export class TargetCalculatorComponent implements OnInit {
   frequency = '';
   riskCode = '0';
   term = 5;
-  calculatorResults: TargetRegularCalculatorResponse;
+  contributions = 0;
+  regularCalculatorResults: TargetRegularCalculatorResponse;
+  oneOffCalculatorResults: TargetOneOffCalculatorResponse;
   calculatorForm: FormGroup;
 
   constructor(
     private configService: ConfigService,
     private formBuilder: FormBuilder,
-    private targetRegularCalculatorFacade: TargetRegularCalculatorFacade
+    private targetRegularCalculatorFacade: TargetRegularCalculatorFacade,
+    private targetOneOffCalculatorFacade: TargetOneOffCalculatorFacade
   ) {
     this.config = this.configService.content;
     this.inputTerm = this.config.calculator.target.sliders[1].value;
@@ -66,18 +71,42 @@ export class TargetCalculatorComponent implements OnInit {
     this.term = this.calculatorForm.get('term').value;
     this.frequency = this.calculatorForm.get('frequency').value;
 
-    this.targetRegularCalculatorFacade
-      .submitTargetRegularCalculator(
-        this.balanceAmount,
-        this.contributionAmount,
-        this.targetAmount,
-        this.frequency,
-        this.riskCode,
-        this.term
-      )
-      .subscribe((res) => {
-        this.calculatorResults = res;
-        console.log('Your calculator data response', res);
-      });
+    if (this.frequency === 'MONTHLY') {
+      this.targetRegularCalculatorFacade
+        .submitTargetRegularCalculator(
+          this.balanceAmount,
+          this.contributionAmount,
+          this.targetAmount,
+          this.frequency,
+          this.riskCode,
+          this.term
+        )
+        .subscribe((res) => {
+          this.regularCalculatorResults = res;
+          this.contributionAmount = res.contributions.amount;
+          console.log('Your regular calculator data response', res);
+        });
+    }
+
+    if (this.frequency === 'ANNUALLY') {
+      this.targetOneOffCalculatorFacade
+        .submitTargetOneOffCalculator(
+          this.balanceAmount,
+          this.contributionAmount,
+          this.targetAmount,
+          this.frequency,
+          this.riskCode,
+          this.term
+        )
+        .subscribe((res) => {
+          this.oneOffCalculatorResults = res;
+          this.contributionAmount = res.contribution;
+          console.log('Your one off calculator data response', res);
+        });
+    }
+  }
+
+  yearFormatter(value: string) {
+    return value.replace('#termYears#', this.term.toString());
   }
 }

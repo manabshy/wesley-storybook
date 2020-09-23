@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { TargetRegularCalculatorResponse } from './target-regular-calculator.interface';
+import { TargetOneOffCalculatorResponse } from './target-one-off-calculator.interface';
 import { TargetCalculatorDTO } from './target-shared-calculator.interface';
-
 @Injectable({
   providedIn: 'root',
 })
-export class TargetRegularCalculatorApiService {
+export class TargetOneOffCalculatorApiService {
   constructor(private http: HttpClient) {}
 
-  submitTargetRegularCalculator(
+  submitTargetOneOffCalculator(
     calculator: TargetCalculatorDTO
-  ): Observable<TargetRegularCalculatorResponse> {
-    return this.http.post<TargetRegularCalculatorResponse>(
-      `/api/webapiwrapper/targetregular`,
+  ): Observable<TargetOneOffCalculatorResponse> {
+    return this.http.post<TargetOneOffCalculatorResponse>(
+      `/api/webapiwrapper/targetoneoff`,
       calculator
     );
   }

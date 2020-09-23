@@ -221,7 +221,10 @@
                       </p>
                       <p class="pr-4 mb-0 c-slider__label--max">
                         {{ prefix
-                        }}{{ config.calculator.target.sliders[0].sliderMax }}
+                        }}{{
+                          config.calculator.target.sliders[0].sliderMax
+                            | number: '1.0-0'
+                        }}
                       </p>
                     </div>
                   </div>
@@ -250,7 +253,7 @@
                               config.calculator.target.sliders[0].dataGtmClass
                             }}"
                             type="text"
-                            value="{{ inputTarget }}"
+                            value="{{ inputTarget | number: '1.0-0' }}"
                           /></div
                       ></label>
                     </div>
@@ -786,6 +789,80 @@
                     config.calculator.target.results.standaloneInitialLabel
                   "
                 ></h3>
+              </div>
+
+              <div class="target-results" style="">
+                <div
+                  class="target-results__box--gold"
+                  attr.data-gtm-id="{{
+                    config.calculator.target.results.labels.dataGtmId
+                  }}"
+                >
+                  <div class="row pt-sm-3">
+                    <div
+                      class="col-sm-6 col-md-12 border-sm-right border-white border-md-right-0 d-flex flex-column justify-content-center"
+                      attr.data-gtm-id=" {{
+                        config.calculator.target.results.labels.gtm.target
+                          .dataGtmId
+                      }}"
+                    >
+                      <strong
+                        ><span class="d-block copy--shortform">
+                          {{
+                            config.calculator.target.results.labels.target
+                          }} </span
+                        ><span class="number number--md text-semi-bold"
+                          >{{ prefix
+                          }}{{ targetAmount | number: '1.0-0' }}</span
+                        ></strong
+                      ><span
+                        class="d-block copy copy--longform text-semi-bold"
+                        >{{
+                          yearFormatter(
+                            config.calculator.target.results.labels.term
+                          )
+                        }}</span
+                      >
+                    </div>
+                    <div class="col-sm-6 col-md-12">
+                      <strong
+                        ><span
+                          class="d-block copy--shortform mt-4 mt-sm-0 mt-md-4"
+                          *ngIf="frequency === 'MONTHLY'"
+                          >{{
+                            config.calculator.target.results.labels
+                              .monthlyContributionLabel
+                          }}</span
+                        >
+                        <span
+                          class="d-block copy--shortform mt-4 mt-sm-0 mt-md-4"
+                          *ngIf="frequency === 'ANNUALLY'"
+                          >{{
+                            config.calculator.target.results.labels
+                              .lumpSumContributionLabel
+                          }}</span
+                        > </strong
+                      ><span
+                        class="number number--xl"
+                        attr.data-gtm-id="{{
+                          config.calculator.target.results.labels.gtm.projection
+                            .dataGtmId
+                        }}"
+                        attr.data-gtm-class="{{
+                          config.calculator.target.results.labels.gtm.projection
+                            .dataGtmClass
+                        }}"
+                        >{{ prefix
+                        }}{{ contributionAmount | number: '1.0-0' }}</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <small
+                  class="d-block mt-4 mb-2"
+                  [innerHTML]="config.calculator.disclaimers.defaultDisclaimers"
+                ></small
+                ><small class="d-block mt-4 mb-2"></small>
               </div>
             </div>
           </div>
