@@ -860,7 +860,9 @@
                 </div>
                 <small
                   class="d-block mt-4 mb-2"
-                  [innerHTML]="config.calculator.disclaimers.defaultDisclaimers"
+                  [innerHTML]="
+                    config.calculator.disclaimers.defaultDisclaimers[0]
+                  "
                 ></small
                 ><small class="d-block mt-4 mb-2"></small>
               </div>
