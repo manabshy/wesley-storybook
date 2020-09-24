@@ -5,7 +5,12 @@ import {
   BudgetCalculatorResponse,
 } from '@wesleyan-frontend/just-invest-calculator/data-access';
 import { BudgetCalculatorFacade } from '../core/services/invest-calculator.facade';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 @Component({
   selector: 'wes-invest-calculator',
   templateUrl: './invest-calculator.component.html',
@@ -26,6 +31,10 @@ export class InvestCalculatorComponent implements OnInit {
   low = 0;
   calculatorResults: BudgetCalculatorResponse;
   calculatorForm: FormGroup;
+  contributionAmountControl;
+  balanceAmountControl;
+  termControl;
+
   calculatorChartOptions: any;
   graphData: { terms: number[]; series: number[][] };
   gold = '#FEBD11';
@@ -133,6 +142,12 @@ export class InvestCalculatorComponent implements OnInit {
       frequency: this.config.calculator.budget.initialValues.frequency,
       riskCode: [null, [Validators.required]],
     });
+
+    this.contributionAmountControl = this.calculatorForm.get(
+      'contributionAmount'
+    );
+    this.balanceAmountControl = this.calculatorForm.get('balanceAmount');
+    this.termControl = this.calculatorForm.get('term');
   }
 
   getTotalContribution() {

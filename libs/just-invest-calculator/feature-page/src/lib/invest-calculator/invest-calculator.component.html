@@ -60,7 +60,7 @@
                     step="{{ config.calculator.budget.sliders[0].sliderStep }}"
                     min="{{ config.calculator.budget.sliders[0].inputMin }}"
                     max="{{ config.calculator.budget.sliders[0].inputMax }}"
-                    [value]="calculatorForm.controls.contributionAmount.value"
+                    [value]="contributionAmountControl.value"
                     style="background-size: 0px 100%;"
                   />
                   <label for="contributionAmount" class="screenreader-hidden">{{
@@ -110,11 +110,24 @@
                           config.calculator.budget.sliders[0].dataGtmClass
                         }}"
                         type="text"
-                        [value]="
-                          calculatorForm.controls.contributionAmount.value
-                        "
+                        [value]="contributionAmountControl.value"
+                        [ngClass]="{
+                          'input-validation-error':
+                            contributionAmountControl.invalid
+                        }"
                       />
                     </div>
+                    <span
+                      *ngIf="contributionAmountControl.invalid"
+                      class="field-validation-error mt-2 mb-0"
+                    >
+                      <span *ngIf="contributionAmountControl.errors.min">{{
+                        config.calculator.budget.sliders[0].minErrorMessage
+                      }}</span>
+                      <span *ngIf="contributionAmountControl.errors.max">{{
+                        config.calculator.budget.sliders[0].maxErrorMessage
+                      }}</span>
+                    </span>
                   </label>
                 </div>
               </div>
@@ -238,7 +251,7 @@
                     step="{{ config.calculator.budget.sliders[1].sliderStep }}"
                     min="{{ config.calculator.budget.sliders[1].inputMin }}"
                     max="{{ config.calculator.budget.sliders[1].inputMax }}"
-                    [value]="calculatorForm.controls.balanceAmount.value"
+                    [value]="balanceAmountControl.value"
                     style="background-size: 0px 100%;"
                   />
                   <label for="balanceAmount" class="screenreader-hidden">{{
@@ -285,9 +298,23 @@
                           config.calculator.budget.sliders[1].dataGtmClass
                         }}"
                         type="text"
-                        [value]="calculatorForm.controls.balanceAmount.value"
+                        [value]="balanceAmountControl.value"
+                        [ngClass]="{
+                          'input-validation-error': balanceAmountControl.invalid
+                        }"
                       />
                     </div>
+                    <span
+                      *ngIf="balanceAmountControl.invalid"
+                      class="field-validation-error mt-2 mb-0"
+                    >
+                      <span *ngIf="balanceAmountControl.errors.min">{{
+                        config.calculator.budget.sliders[1].minErrorMessage
+                      }}</span>
+                      <span *ngIf="balanceAmountControl.errors.max">{{
+                        config.calculator.budget.sliders[1].maxErrorMessage
+                      }}</span>
+                    </span>
                   </label>
                 </div>
               </div>
@@ -311,7 +338,7 @@
                     step="1"
                     min="{{ config.calculator.budget.sliders[2].inputMin }}"
                     max="{{ config.calculator.budget.sliders[2].inputMax }}"
-                    [value]="calculatorForm.controls.term.value"
+                    [value]="termControl.value"
                     style="background-size: 0px 100%;"
                   />
                   <label for="term" class="screenreader-hidden">{{
@@ -351,7 +378,10 @@
                             }}"
                             pattern="[0-9]*"
                             type="text"
-                            [value]="calculatorForm.controls.term.value"
+                            [value]="termControl.value"
+                            [ngClass]="{
+                              'input-validation-error': termControl.invalid
+                            }"
                           />
                         </div>
                         <span
@@ -362,6 +392,17 @@
                         >
                       </div>
                     </div>
+                    <span
+                      *ngIf="termControl.invalid"
+                      class="field-validation-error mt-2 mb-0"
+                    >
+                      <span *ngIf="termControl.errors.min">{{
+                        config.calculator.budget.sliders[2].minErrorMessage
+                      }}</span>
+                      <span *ngIf="termControl.errors.max">{{
+                        config.calculator.budget.sliders[2].maxErrorMessage
+                      }}</span>
+                    </span>
                   </label>
                 </div>
               </div>
