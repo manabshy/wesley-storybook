@@ -783,6 +783,7 @@
               <div
                 class="target-results__placeholder"
                 style="min-height: 226px; height: 30px;"
+                *ngIf="contributionAmount == 0"
               >
                 <h3
                   [innerHTML]="
@@ -791,7 +792,7 @@
                 ></h3>
               </div>
 
-              <div class="target-results" style="">
+              <div class="target-results" *ngIf="contributionAmount > 0">
                 <div
                   class="target-results__box--gold"
                   attr.data-gtm-id="{{
