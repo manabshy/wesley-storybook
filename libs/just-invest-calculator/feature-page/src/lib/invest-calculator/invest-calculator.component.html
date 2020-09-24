@@ -580,6 +580,7 @@
           target="_self"
           class="c-button c-button__standard font-weight-bold mt-2"
           attr.data-gtm-id="{{ config.calculator.footer.buttons[3].dataGtmId }}"
+          [disabled]="!calculatorForm.valid"
         >
           {{ config.calculator.footer.buttons[3].label }}
         </button>

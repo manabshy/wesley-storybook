@@ -108,15 +108,30 @@ export class InvestCalculatorComponent implements OnInit {
     this.inputTerm = this.config.calculator.budget.sliders[2].value;
     this.prefix = this.config.calculator.budget.sliders[0].prefix;
     this.calculatorForm = this.formBuilder.group({
+      contributionAmount: [
+        this.config.calculator.budget.initialValues.contributionAmount,
+        [
+          Validators.required,
+          Validators.min(this.config.calculator.budget.sliders[0].inputMin),
+          Validators.max(this.config.calculator.budget.sliders[0].inputMax),
+        ],
+      ],
       balanceAmount: [
         this.config.calculator.budget.initialValues.balanceAmount,
-        [Validators.required],
+        [
+          Validators.min(this.config.calculator.budget.sliders[1].inputMin),
+          Validators.max(this.config.calculator.budget.sliders[1].inputMax),
+        ],
       ],
-      contributionAmount: this.config.calculator.budget.initialValues
-        .contributionAmount,
+      term: [
+        this.config.calculator.budget.initialValues.initialTermYears,
+        [
+          Validators.min(this.config.calculator.budget.sliders[2].inputMin),
+          Validators.max(this.config.calculator.budget.sliders[2].inputMax),
+        ],
+      ],
       frequency: this.config.calculator.budget.initialValues.frequency,
-      riskCode: '0',
-      term: this.config.calculator.budget.initialValues.initialTermYears,
+      riskCode: [null, [Validators.required]],
     });
   }
 
