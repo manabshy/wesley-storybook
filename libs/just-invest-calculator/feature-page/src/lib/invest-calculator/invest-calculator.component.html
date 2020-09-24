@@ -1,141 +1,377 @@
-<div class="component container col-xs-12">
-  <div class="component-content">
-    <div class="row">
-      <div class="col-md-8 col-sm-9">
-        <h1 class="c-heading--calculator text-uppercase">
-          {{ config.pageHeading }}
-        </h1>
-      </div>
-    </div>
+<div class="row">
+  <div class="col-md-8 col-sm-9">
+    <h1 class="c-heading--calculator text-uppercase">
+      {{ config.pageHeading }}
+    </h1>
+  </div>
+</div>
 
-    <div class="module">
-      <div
-        class="c-goal__header d-flex align-items-center pl-2 c-goal__header--lg"
+<div class="module">
+  <div class="c-goal__header d-flex align-items-center pl-2 c-goal__header--lg">
+    <span class="SVGInline c-icon c-icon-save-yellow">
+      <svg
+        class="SVGInline c-icon c-icon-save-yellow"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 80 80"
       >
-        <span class="SVGInline c-icon c-icon-save-yellow">
-          <svg
-            class="SVGInline c-icon c-icon-save-yellow"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 80 80"
-          >
-            <g data-name="Artwork - expanded">
-              <path
-                d="M56.8 55c-.3 0-.5-.2-.5-.5 0-.2.1-.3.2-.4 4.9-3.7 5.9-10.7 2.2-15.6S48 32.6 43.1 36.3 37.2 47 40.9 51.9c.5.7 1.2 1.4 1.9 2 .2.2.2.5.1.7-.2.2-.5.2-.7.1-5.2-4.2-6-11.9-1.8-17.1s11.9-6 17.1-1.8 6 11.9 1.8 17.1c-.6.8-1.3 1.4-2.1 2-.1.1-.2.1-.4.1zM30.6 38.7c-4.5 0-8.1-3.6-8.1-8.1s3.6-8.1 8.1-8.1 8.1 3.6 8.1 8.1-3.7 8.1-8.1 8.1zm0-15.2c-3.9 0-7.1 3.2-7.1 7.1s3.2 7.1 7.1 7.1 7.1-3.2 7.1-7.1c0-3.9-3.2-7.1-7.1-7.1zm-14 18.7c-2.5 0-4.6-2.1-4.6-4.6 0-2.5 2.1-4.6 4.6-4.6s4.6 2.1 4.6 4.6c0 2.5-2.1 4.6-4.6 4.6zm0-8.2c-2 0-3.6 1.6-3.6 3.6s1.6 3.6 3.6 3.6 3.6-1.6 3.6-3.6-1.6-3.6-3.6-3.6z"
-                fill="#1e2630"
-              ></path>
-              <path
-                d="M67.3 55h-35c-.3 0-.5-.2-.5-.5s.2-.5.5-.5h35c.3 0 .5.2.5.5s-.2.5-.5.5z"
-                fill="#1e2630"
-              ></path>
-              <path
-                d="M47.9 49.6c-.3 0-.5-.2-.5-.5v-6.4c0-1.9 1.5-3.4 3.4-3.4.9 0 1.8.4 2.4 1 .2.2.2.5 0 .7s-.5.2-.7 0c-.9-.9-2.5-.9-3.4 0-.5.5-.7 1.1-.7 1.7v6.4c0 .2-.2.5-.5.5z"
-                fill="#febd11"
-              ></path>
-              <path
-                d="M53.1 49.6h-7c-.3 0-.5-.2-.5-.5s.2-.5.5-.5h7c.3 0 .5.2.5.5s-.2.5-.5.5zm-2.3-4.7h-4.1c-.3 0-.5-.2-.5-.5s.2-.5.5-.5h4.1c.3 0 .5.2.5.5s-.2.5-.5.5z"
-                fill="#febd11"
-              ></path>
-            </g>
-          </svg>
-        </span>
-        <h3 class="c-goal__header__text mb-0">
-          {{ config.calculator.budget.header.title }}
-        </h3>
-      </div>
-      <form [formGroup]="calculatorForm" (ngSubmit)="onSubmit()">
-        <div class="module__inner-container">
-          <div class="row px-sm-2">
-            <div class="col-md-8 offset-md-2">
-              <div class="c-slider pb-4 mb-2">
-                <p
-                  class="copy copy--shortform text-semi-bold mb-2 position-relative"
+        <g data-name="Artwork - expanded">
+          <path
+            d="M56.8 55c-.3 0-.5-.2-.5-.5 0-.2.1-.3.2-.4 4.9-3.7 5.9-10.7 2.2-15.6S48 32.6 43.1 36.3 37.2 47 40.9 51.9c.5.7 1.2 1.4 1.9 2 .2.2.2.5.1.7-.2.2-.5.2-.7.1-5.2-4.2-6-11.9-1.8-17.1s11.9-6 17.1-1.8 6 11.9 1.8 17.1c-.6.8-1.3 1.4-2.1 2-.1.1-.2.1-.4.1zM30.6 38.7c-4.5 0-8.1-3.6-8.1-8.1s3.6-8.1 8.1-8.1 8.1 3.6 8.1 8.1-3.7 8.1-8.1 8.1zm0-15.2c-3.9 0-7.1 3.2-7.1 7.1s3.2 7.1 7.1 7.1 7.1-3.2 7.1-7.1c0-3.9-3.2-7.1-7.1-7.1zm-14 18.7c-2.5 0-4.6-2.1-4.6-4.6 0-2.5 2.1-4.6 4.6-4.6s4.6 2.1 4.6 4.6c0 2.5-2.1 4.6-4.6 4.6zm0-8.2c-2 0-3.6 1.6-3.6 3.6s1.6 3.6 3.6 3.6 3.6-1.6 3.6-3.6-1.6-3.6-3.6-3.6z"
+            fill="#1e2630"
+          ></path>
+          <path
+            d="M67.3 55h-35c-.3 0-.5-.2-.5-.5s.2-.5.5-.5h35c.3 0 .5.2.5.5s-.2.5-.5.5z"
+            fill="#1e2630"
+          ></path>
+          <path
+            d="M47.9 49.6c-.3 0-.5-.2-.5-.5v-6.4c0-1.9 1.5-3.4 3.4-3.4.9 0 1.8.4 2.4 1 .2.2.2.5 0 .7s-.5.2-.7 0c-.9-.9-2.5-.9-3.4 0-.5.5-.7 1.1-.7 1.7v6.4c0 .2-.2.5-.5.5z"
+            fill="#febd11"
+          ></path>
+          <path
+            d="M53.1 49.6h-7c-.3 0-.5-.2-.5-.5s.2-.5.5-.5h7c.3 0 .5.2.5.5s-.2.5-.5.5zm-2.3-4.7h-4.1c-.3 0-.5-.2-.5-.5s.2-.5.5-.5h4.1c.3 0 .5.2.5.5s-.2.5-.5.5z"
+            fill="#febd11"
+          ></path>
+        </g>
+      </svg>
+    </span>
+    <h3 class="c-goal__header__text mb-0">
+      {{ config.calculator.budget.header.title }}
+    </h3>
+  </div>
+  <form [formGroup]="calculatorForm" (ngSubmit)="onSubmit()">
+    <div class="module__inner-container">
+      <div class="row px-sm-2">
+        <div class="col-md-8 offset-md-2">
+          <div class="c-slider pb-4 mb-2">
+            <p
+              class="copy copy--shortform text-semi-bold mb-2 position-relative"
+            >
+              {{ config.calculator.budget.sliders[0].label }}
+            </p>
+            <div class="d-flex flex-column flex-sm-row pt-1">
+              <div class="d-flex flex-column order-2 order-sm-1 w-sm-66">
+                <div class="wrap pr-4">
+                  <input
+                    id="contributionAmount"
+                    name="contributionAmount"
+                    class=""
+                    type="range"
+                    formControlName="contributionAmount"
+                    step="{{ config.calculator.budget.sliders[0].sliderStep }}"
+                    min="{{ config.calculator.budget.sliders[0].inputMin }}"
+                    max="{{ config.calculator.budget.sliders[0].inputMax }}"
+                    [value]="calculatorForm.controls.contributionAmount.value"
+                    style="background-size: 0px 100%;"
+                  />
+                  <label for="contributionAmount" class="screenreader-hidden">{{
+                    config.calculator.budget.sliders[0].name
+                  }}</label>
+                </div>
+                <div
+                  class="c-slider__labels d-flex flex-row justify-content-between mt-2"
                 >
-                  {{ config.calculator.budget.sliders[0].label }}
-                </p>
-                <div class="d-flex flex-column flex-sm-row pt-1">
-                  <div class="d-flex flex-column order-2 order-sm-1 w-sm-66">
-                    <div class="wrap pr-4">
-                      <input
-                        id="contributionAmount"
-                        formControlName="contributionAmount"
-                        name="contributionAmount"
-                        (change)="onInvestPerMonthChange($event)"
-                        class=""
-                        type="range"
-                        step="{{
-                          config.calculator.budget.sliders[0].sliderStep
-                        }}"
-                        min="{{ config.calculator.budget.sliders[0].inputMin }}"
-                        max="{{ config.calculator.budget.sliders[0].inputMax }}"
-                        value="{{
-                          config.calculator.budget.initialValues
-                            .contributionAmount
-                        }}"
-                        style="background-size: 0px 100%;"
-                      />
-                      <label
-                        for="contributionAmount"
-                        class="screenreader-hidden"
-                        >{{ config.calculator.budget.sliders[0].name }}</label
+                  <p class="mb-0 c-slider__label--min">
+                    {{ config.calculator.budget.sliders[0].prefix
+                    }}{{ config.calculator.budget.sliders[0].inputMin }}
+                  </p>
+                  <p class="pr-4 mb-0 c-slider__label--max">
+                    {{ config.calculator.budget.sliders[0].prefix
+                    }}{{
+                      config.calculator.budget.sliders[0].inputMax
+                        | number: '1.0-3'
+                    }}
+                  </p>
+                </div>
+              </div>
+              <div class="mb-sm-0 pl-sm-2 w-sm-33 order-1 order-sm-2">
+                <div class="input-group flex-nowrap has-prefix">
+                  <label class="w-100">
+                    <div class="input-group-prepend">
+                      <span
+                        class="input-group-text c-slider__text-input__prefix number--rg"
+                        >{{ config.calculator.budget.sliders[0].prefix }}</span
                       >
+                      <input
+                        class="c-slider__text-input number--rg input-text-firefox"
+                        name="contributionAmount"
+                        formControlName="contributionAmount"
+                        inputmode="numeric"
+                        min="{{
+                          config.calculator.budget.sliders[0].sliderMin
+                        }}"
+                        max="{{
+                          config.calculator.budget.sliders[0].sliderMax
+                        }}"
+                        pattern="[0-9]*"
+                        attr.data-gtm-id="{{
+                          config.calculator.budget.sliders[0].dataGtmId
+                        }}"
+                        attr.data-gtm-class="{{
+                          config.calculator.budget.sliders[0].dataGtmClass
+                        }}"
+                        type="text"
+                        [value]="
+                          calculatorForm.controls.contributionAmount.value
+                        "
+                      />
                     </div>
-                    <div
-                      class="c-slider__labels d-flex flex-row justify-content-between mt-2"
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="c-slider pb-4 mb-2">
+            <p
+              class="copy copy--shortform text-semi-bold mb-2 position-relative"
+            >
+              {{ config.calculator.budget.sliders[1].label }}
+              <span class="c-tooltip-info ml-2">
+                <span role="button" tabindex="0" class="c-tooltip-info__icon">
+                  <span class="SVGInline c-icon c-icon-tooltip">
+                    <svg
+                      class="SVGInline c-icon c-icon-tooltip"
+                      width="20px"
+                      height="20px"
+                      viewBox="0 0 20 20"
+                      version="1.1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
                     >
-                      <p class="mb-0 c-slider__label--min">
-                        {{ config.calculator.budget.sliders[0].prefix
-                        }}{{ config.calculator.budget.sliders[0].inputMin }}
-                      </p>
-                      <p class="pr-4 mb-0 c-slider__label--max">
-                        {{ config.calculator.budget.sliders[0].prefix
-                        }}{{
-                          config.calculator.budget.sliders[0].inputMax
-                            | number: '1.0-3'
-                        }}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="mb-sm-0 pl-sm-2 w-sm-33 order-1 order-sm-2">
-                    <div class="input-group flex-nowrap has-prefix">
-                      <label class="w-100">
-                        <div class="input-group-prepend">
-                          <span
-                            class="input-group-text c-slider__text-input__prefix number--rg"
-                            >{{
-                              config.calculator.budget.sliders[0].prefix
-                            }}</span
+                      <g
+                        id="Savings-Objective---Objective-description-placement-(UC113)"
+                        stroke="none"
+                        stroke-width="1"
+                        fill="none"
+                        fill-rule="evenodd"
+                      >
+                        <g
+                          id="Budget_Objective_Remodeller_1366"
+                          transform="translate(-652.000000, -655.000000)"
+                        >
+                          <g
+                            id="03-Content"
+                            transform="translate(51.000000, 248.000000)"
                           >
+                            <g
+                              id="02-Form"
+                              transform="translate(321.000000, 134.000000)"
+                            >
+                              <g id="Sliders---overhang">
+                                <g
+                                  id="Slider-03"
+                                  transform="translate(0.000000, 270.000000)"
+                                >
+                                  <g
+                                    id="Tool-Tip_Icon"
+                                    transform="translate(280.000000, 3.000000)"
+                                  >
+                                    <circle
+                                      id="Oval"
+                                      fill="#FEBD11"
+                                      cx="10"
+                                      cy="10"
+                                      r="10"
+                                    ></circle>
+                                    <path
+                                      d="M8.95792943,11.5939724 L8.95792943,11.1157025 C8.95792943,10.7020616 9.04625767,10.3422856 9.22291681,10.0363637 C9.39957594,9.7304418 9.72272804,9.40513535 10.1923828,9.0604346 C10.6448025,8.73727765 10.9431797,8.47444727 11.0875231,8.27193559 C11.2318665,8.0694239 11.3040372,7.84321742 11.3040372,7.59330938 C11.3040372,7.31324002 11.2006285,7.09995964 10.993808,6.95346182 C10.7869876,6.806964 10.498305,6.73371619 10.1277517,6.73371619 C9.48143784,6.73371619 8.74465105,6.94484223 7.91736926,7.36710065 L7.21289062,5.95168028 C8.17374396,5.41308536 9.19275026,5.14379194 10.2699401,5.14379194 C11.1575445,5.14379194 11.8630933,5.35707233 12.3866075,5.78363951 C12.9101218,6.21020668 13.171875,6.77895438 13.171875,7.48989967 C13.171875,7.9638632 13.0641576,8.3731892 12.8487197,8.71788995 C12.6332817,9.06259069 12.2239557,9.45037322 11.6207294,9.88124915 C11.2070885,10.1871711 10.9453353,10.4198406 10.8354619,10.5792647 C10.7255886,10.7386888 10.6706527,10.9476605 10.6706527,11.206186 L10.6706527,11.5939724 L8.95792943,11.5939724 Z M8.75111002,13.8043549 C8.75111002,13.4424191 8.84805565,13.168817 9.04194982,12.9835404 C9.23584399,12.7982637 9.51806349,12.7056268 9.8886168,12.7056268 C10.2462438,12.7056268 10.5230775,12.8004181 10.719126,12.9900035 C10.9151746,13.1795889 11.0131974,13.4510367 11.0131974,13.8043549 C11.0131974,14.1447469 10.9140974,14.4129632 10.7158945,14.6090117 C10.5176915,14.8050603 10.2419351,14.9030831 9.8886168,14.9030831 C9.52668101,14.9030831 9.24661586,14.8072146 9.04841293,14.6154748 C8.85021,14.423735 8.75111002,14.1533644 8.75111002,13.8043549 Z"
+                                      id="?"
+                                      fill="#FFFFFF"
+                                    ></path>
+                                  </g>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                  </span>
+                </span>
+                <span class="c-tooltip-info__content">
+                  <span
+                    class="c-tooltip-info__text"
+                    [innerHTML]="
+                      config.calculator.budget.sliders[1].tooltip.content
+                    "
+                  ></span>
+                  <span
+                    class="c-tooltip-info__close"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <span class="SVGInline c-icon c-icon-close">
+                      <svg
+                        class="SVGInline c-icon c-icon-close"
+                        style="width: 12; height: 12;"
+                        width="12"
+                        height="12"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <title>
+                          Icon-close
+                        </title>
+                        <g
+                          stroke="#FEBD11"
+                          stroke-width="2"
+                          fill="none"
+                          fill-rule="evenodd"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M11 1L1 11M1 1l10 10L1 1z"></path>
+                        </g>
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </p>
+            <div class="d-flex flex-column flex-sm-row pt-1">
+              <div class="d-flex flex-column order-2 order-sm-1 w-sm-66">
+                <div class="wrap pr-4">
+                  <input
+                    id="balanceAmount"
+                    name="balanceAmount"
+                    formControlName="balanceAmount"
+                    class=""
+                    type="range"
+                    step="{{ config.calculator.budget.sliders[1].sliderStep }}"
+                    min="{{ config.calculator.budget.sliders[1].inputMin }}"
+                    max="{{ config.calculator.budget.sliders[1].inputMax }}"
+                    [value]="calculatorForm.controls.balanceAmount.value"
+                    style="background-size: 0px 100%;"
+                  />
+                  <label for="balanceAmount" class="screenreader-hidden">{{
+                    config.calculator.budget.sliders[1].name
+                  }}</label>
+                </div>
+                <div
+                  class="c-slider__labels d-flex flex-row justify-content-between mt-2"
+                >
+                  <p class="mb-0 c-slider__label--min">
+                    {{ config.calculator.budget.sliders[1].prefix
+                    }}{{ config.calculator.budget.sliders[1].inputMin }}
+                  </p>
+                  <p class="pr-4 mb-0 c-slider__label--max">
+                    {{ config.calculator.budget.sliders[1].prefix
+                    }}{{ config.calculator.budget.sliders[1].inputMax }}
+                  </p>
+                </div>
+              </div>
+              <div class="mb-sm-0 pl-sm-2 w-sm-33 order-1 order-sm-2">
+                <div class="input-group flex-nowrap has-prefix">
+                  <label class="w-100">
+                    <div class="input-group-prepend">
+                      <span
+                        class="input-group-text c-slider__text-input__prefix number--rg"
+                        >{{ config.calculator.budget.sliders[1].prefix }}</span
+                      >
+                      <input
+                        inputmode="numeric"
+                        class="c-slider__text-input number--rg input-text-firefox"
+                        name="{{ config.calculator.budget.sliders[1].name }}"
+                        formControlName="balanceAmount"
+                        min="{{
+                          config.calculator.budget.sliders[1].sliderMin
+                        }}"
+                        max="{{
+                          config.calculator.budget.sliders[1].sliderMax
+                        }}"
+                        pattern="[0-9]*"
+                        attr.data-gtm-id="{{
+                          config.calculator.budget.sliders[1].dataGtmId
+                        }}"
+                        attr.data-gtm-class="{{
+                          config.calculator.budget.sliders[1].dataGtmClass
+                        }}"
+                        type="text"
+                        [value]="calculatorForm.controls.balanceAmount.value"
+                      />
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="c-slider pb-4 mb-2">
+            <p
+              class="copy copy--shortform text-semi-bold mb-2 position-relative"
+            >
+              {{ config.calculator.budget.sliders[2].label }}
+            </p>
+            <div class="d-flex flex-column flex-sm-row pt-1">
+              <div class="d-flex flex-column order-2 order-sm-1 w-sm-66">
+                <div class="wrap pr-4">
+                  <input
+                    id="term"
+                    class=""
+                    formControlName="term"
+                    name="term"
+                    type="range"
+                    step="1"
+                    min="{{ config.calculator.budget.sliders[2].inputMin }}"
+                    max="{{ config.calculator.budget.sliders[2].inputMax }}"
+                    [value]="calculatorForm.controls.term.value"
+                    style="background-size: 0px 100%;"
+                  />
+                  <label for="term" class="screenreader-hidden">{{
+                    config.calculator.budget.sliders[2].name
+                  }}</label>
+                </div>
+                <div
+                  class="c-slider__labels d-flex flex-row justify-content-between mt-2"
+                >
+                  <p class="mb-0 c-slider__label--min">
+                    {{ config.calculator.budget.sliders[2].inputMin }}
+                  </p>
+                  <p class="pr-4 mb-0 c-slider__label--max">
+                    {{ config.calculator.budget.sliders[2].inputMax }}
+                  </p>
+                </div>
+              </div>
+              <div class="mb-sm-0 pl-sm-2 w-sm-33 order-1 order-sm-2">
+                <div class="input-group flex-nowrap has-suffix ml-sm-4">
+                  <label class="w-100">
+                    <div class="input-group-append">
+                      <div class="d-flex">
+                        <div class="position-relative d-flex">
                           <input
                             inputmode="numeric"
                             class="c-slider__text-input number--rg input-text-firefox"
-                            name="contributionAmount"
+                            id="{{ config.calculator.budget.sliders[2].name }}"
+                            formControlName="term"
                             min="{{
-                              config.calculator.budget.sliders[0].sliderMin
+                              config.calculator.budget.sliders[2].sliderMin
                             }}"
                             max="{{
-                              config.calculator.budget.sliders[0].sliderMax
+                              config.calculator.budget.sliders[2].sliderMax
+                            }}"
+                            size="{{
+                              config.calculator.budget.sliders[2].size
                             }}"
                             pattern="[0-9]*"
-                            attr.data-gtm-id="{{
-                              config.calculator.budget.sliders[0].dataGtmId
-                            }}"
-                            attr.data-gtm-class="{{
-                              config.calculator.budget.sliders[0].dataGtmClass
-                            }}"
                             type="text"
-                            value="{{ inputPerMonth | number: '1.0-3' }}"
+                            [value]="calculatorForm.controls.term.value"
                           />
                         </div>
-                      </label>
+                        <span
+                          class="input-group-text c-slider__text-input c-slider__text-input__suffix pl-2 false"
+                          >{{
+                            config.calculator.budget.sliders[2].suffix
+                          }}</span
+                        >
+                      </div>
                     </div>
-                  </div>
+                  </label>
                 </div>
               </div>
-              <div class="c-slider pb-4 mb-2">
-                <p
-                  class="copy copy--shortform text-semi-bold mb-2 position-relative"
-                >
-                  {{ config.calculator.budget.sliders[1].label }}
+            </div>
+          </div>
+          <div class="c-risk-investment">
+            <div class="row">
+              <div class="col-12">
+                <p class="c-risk-investment__label">
+                  {{ config.calculator.budget.riskInvestment.title }}
                   <span class="c-tooltip-info ml-2">
                     <span
                       role="button"
@@ -206,7 +442,8 @@
                       <span
                         class="c-tooltip-info__text"
                         [innerHTML]="
-                          config.calculator.budget.sliders[1].tooltip.content
+                          config.calculator.budget.riskInvestment.tooltip
+                            .content
                         "
                       ></span>
                       <span
@@ -241,871 +478,579 @@
                     </span>
                   </span>
                 </p>
-                <div class="d-flex flex-column flex-sm-row pt-1">
-                  <div class="d-flex flex-column order-2 order-sm-1 w-sm-66">
-                    <div class="wrap pr-4">
+                <div class="c-risk-investment__buttons">
+                  <div class="c-radio-button c-radio-button--riskInvestment">
+                    <label for="1" class="c-radio-button__label">
                       <input
-                        formControlName="balanceAmount"
-                        id="balanceAmount"
-                        name="balanceAmount"
-                        (change)="onLumpSumChange($event)"
-                        class=""
-                        type="range"
-                        step="{{
-                          config.calculator.budget.sliders[1].sliderStep
-                        }}"
-                        min="{{ config.calculator.budget.sliders[1].inputMin }}"
-                        max="{{ config.calculator.budget.sliders[1].inputMax }}"
+                        id="1"
+                        type="radio"
+                        formControlName="riskCode"
+                        name="riskCode"
+                        class="c-radio-button__input"
                         value="{{
-                          config.calculator.budget.initialValues.balanceAmount
+                          config.calculator.budget.riskInvestment.values[0]
+                            .value
                         }}"
-                        style="background-size: 0px 100%;"
                       />
-                      <label for="balanceAmount" class="screenreader-hidden">{{
-                        config.calculator.budget.sliders[1].name
-                      }}</label>
-                    </div>
-                    <div
-                      class="c-slider__labels d-flex flex-row justify-content-between mt-2"
-                    >
-                      <p class="mb-0 c-slider__label--min">
-                        {{ config.calculator.budget.sliders[1].prefix
-                        }}{{ config.calculator.budget.sliders[1].inputMin }}
-                      </p>
-                      <p class="pr-4 mb-0 c-slider__label--max">
-                        {{ config.calculator.budget.sliders[1].prefix
-                        }}{{ config.calculator.budget.sliders[1].inputMax }}
-                      </p>
-                    </div>
+                      <div class="c-radio-button__alt number--rg">1</div>
+                    </label>
                   </div>
-                  <div class="mb-sm-0 pl-sm-2 w-sm-33 order-1 order-sm-2">
-                    <div class="input-group flex-nowrap has-prefix">
-                      <label class="w-100">
-                        <div class="input-group-prepend">
-                          <span
-                            class="input-group-text c-slider__text-input__prefix number--rg"
-                            >{{
-                              config.calculator.budget.sliders[1].prefix
-                            }}</span
-                          >
-                          <input
-                            inputmode="numeric"
-                            class="c-slider__text-input number--rg input-text-firefox"
-                            name="{{
-                              config.calculator.budget.sliders[1].name
-                            }}"
-                            min="{{
-                              config.calculator.budget.sliders[1].sliderMin
-                            }}"
-                            max="{{
-                              config.calculator.budget.sliders[1].sliderMax
-                            }}"
-                            pattern="[0-9]*"
-                            attr.data-gtm-id="{{
-                              config.calculator.budget.sliders[1].dataGtmId
-                            }}"
-                            attr.data-gtm-class="{{
-                              config.calculator.budget.sliders[1].dataGtmClass
-                            }}"
-                            type="text"
-                            value="{{ inputLumpsum | number: '1.0-3' }}"
-                          />
-                        </div>
-                      </label>
-                    </div>
+                  <div class="c-radio-button c-radio-button--riskInvestment">
+                    <label for="2" class="c-radio-button__label">
+                      <input
+                        id="2"
+                        type="radio"
+                        formControlName="riskCode"
+                        name="riskCode"
+                        class="c-radio-button__input"
+                        value="{{
+                          config.calculator.budget.riskInvestment.values[1]
+                            .value
+                        }}"
+                      />
+                      <div class="c-radio-button__alt number--rg">2</div>
+                    </label>
+                  </div>
+                  <div class="c-radio-button c-radio-button--riskInvestment">
+                    <label for="3" class="c-radio-button__label">
+                      <input
+                        id="3"
+                        type="radio"
+                        formControlName="riskCode"
+                        name="riskCode"
+                        class="c-radio-button__input"
+                        value="{{
+                          config.calculator.budget.riskInvestment.values[2]
+                            .value
+                        }}"
+                      />
+                      <div class="c-radio-button__alt number--rg">3</div>
+                    </label>
+                  </div>
+                  <div class="c-radio-button c-radio-button--riskInvestment">
+                    <label for="4" class="c-radio-button__label">
+                      <input
+                        id="4"
+                        type="radio"
+                        formControlName="riskCode"
+                        name="riskCode"
+                        class="c-radio-button__input"
+                        value="{{
+                          config.calculator.budget.riskInvestment.values[3]
+                            .value
+                        }}"
+                      />
+                      <div class="c-radio-button__alt number--rg">4</div>
+                    </label>
+                  </div>
+                  <div class="c-radio-button c-radio-button--riskInvestment">
+                    <label for="5" class="c-radio-button__label">
+                      <input
+                        id="5"
+                        type="radio"
+                        formControlName="riskCode"
+                        name="riskCode"
+                        class="c-radio-button__input"
+                        value="{{
+                          config.calculator.budget.riskInvestment.values[4]
+                            .value
+                        }}"
+                      />
+                      <div class="c-radio-button__alt number--rg">5</div>
+                    </label>
                   </div>
                 </div>
               </div>
-              <div class="c-slider pb-4 mb-2">
-                <p
-                  class="copy copy--shortform text-semi-bold mb-2 position-relative"
-                >
-                  {{ config.calculator.budget.sliders[2].label }}
-                </p>
-                <div class="d-flex flex-column flex-sm-row pt-1">
-                  <div class="d-flex flex-column order-2 order-sm-1 w-sm-66">
-                    <div class="wrap pr-4">
-                      <input
-                        id="term"
-                        formControlName="term"
-                        name="term"
-                        class=""
-                        type="range"
-                        (change)="onTermChange($event)"
-                        step="1"
-                        min="{{ config.calculator.budget.sliders[2].inputMin }}"
-                        max="{{ config.calculator.budget.sliders[2].inputMax }}"
-                        value="{{
-                          config.calculator.budget.initialValues
-                            .initialTermYears
-                        }}"
-                        style="background-size: 0px 100%;"
-                      />
-                      <label for="term" class="screenreader-hidden">{{
-                        config.calculator.budget.sliders[2].name
-                      }}</label>
-                    </div>
-                    <div
-                      class="c-slider__labels d-flex flex-row justify-content-between mt-2"
-                    >
-                      <p class="mb-0 c-slider__label--min">
-                        {{ config.calculator.budget.sliders[2].inputMin }}
-                      </p>
-                      <p class="pr-4 mb-0 c-slider__label--max">
-                        {{ config.calculator.budget.sliders[2].inputMax }}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="mb-sm-0 pl-sm-2 w-sm-33 order-1 order-sm-2">
-                    <div class="input-group flex-nowrap has-suffix ml-sm-4">
-                      <label class="w-100">
-                        <div class="input-group-append">
-                          <div class="d-flex">
-                            <div class="position-relative d-flex">
-                              <input
-                                inputmode="numeric"
-                                class="c-slider__text-input number--rg input-text-firefox"
-                                id="{{
-                                  config.calculator.budget.sliders[2].name
-                                }}"
-                                min="{{
-                                  config.calculator.budget.sliders[2].sliderMin
-                                }}"
-                                max="{{
-                                  config.calculator.budget.sliders[2].sliderMax
-                                }}"
-                                size="{{
-                                  config.calculator.budget.sliders[2].size
-                                }}"
-                                pattern="[0-9]*"
-                                type="text"
-                                value="{{ inputTerm }}"
-                              />
-                            </div>
-                            <span
-                              class="input-group-text c-slider__text-input c-slider__text-input__suffix pl-2 false"
-                              >{{
-                                config.calculator.budget.sliders[2].suffix
-                              }}</span
-                            >
-                          </div>
-                        </div>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="c-risk-investment">
-                <div class="row">
-                  <div class="col-12">
-                    <p class="c-risk-investment__label">
-                      {{ config.calculator.budget.riskInvestment.title }}
-                      <span class="c-tooltip-info ml-2">
-                        <span
-                          role="button"
-                          tabindex="0"
-                          class="c-tooltip-info__icon"
-                        >
-                          <span class="SVGInline c-icon c-icon-tooltip">
-                            <svg
-                              class="SVGInline c-icon c-icon-tooltip"
-                              width="20px"
-                              height="20px"
-                              viewBox="0 0 20 20"
-                              version="1.1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                            >
-                              <g
-                                id="Savings-Objective---Objective-description-placement-(UC113)"
-                                stroke="none"
-                                stroke-width="1"
-                                fill="none"
-                                fill-rule="evenodd"
-                              >
-                                <g
-                                  id="Budget_Objective_Remodeller_1366"
-                                  transform="translate(-652.000000, -655.000000)"
-                                >
-                                  <g
-                                    id="03-Content"
-                                    transform="translate(51.000000, 248.000000)"
-                                  >
-                                    <g
-                                      id="02-Form"
-                                      transform="translate(321.000000, 134.000000)"
-                                    >
-                                      <g id="Sliders---overhang">
-                                        <g
-                                          id="Slider-03"
-                                          transform="translate(0.000000, 270.000000)"
-                                        >
-                                          <g
-                                            id="Tool-Tip_Icon"
-                                            transform="translate(280.000000, 3.000000)"
-                                          >
-                                            <circle
-                                              id="Oval"
-                                              fill="#FEBD11"
-                                              cx="10"
-                                              cy="10"
-                                              r="10"
-                                            ></circle>
-                                            <path
-                                              d="M8.95792943,11.5939724 L8.95792943,11.1157025 C8.95792943,10.7020616 9.04625767,10.3422856 9.22291681,10.0363637 C9.39957594,9.7304418 9.72272804,9.40513535 10.1923828,9.0604346 C10.6448025,8.73727765 10.9431797,8.47444727 11.0875231,8.27193559 C11.2318665,8.0694239 11.3040372,7.84321742 11.3040372,7.59330938 C11.3040372,7.31324002 11.2006285,7.09995964 10.993808,6.95346182 C10.7869876,6.806964 10.498305,6.73371619 10.1277517,6.73371619 C9.48143784,6.73371619 8.74465105,6.94484223 7.91736926,7.36710065 L7.21289062,5.95168028 C8.17374396,5.41308536 9.19275026,5.14379194 10.2699401,5.14379194 C11.1575445,5.14379194 11.8630933,5.35707233 12.3866075,5.78363951 C12.9101218,6.21020668 13.171875,6.77895438 13.171875,7.48989967 C13.171875,7.9638632 13.0641576,8.3731892 12.8487197,8.71788995 C12.6332817,9.06259069 12.2239557,9.45037322 11.6207294,9.88124915 C11.2070885,10.1871711 10.9453353,10.4198406 10.8354619,10.5792647 C10.7255886,10.7386888 10.6706527,10.9476605 10.6706527,11.206186 L10.6706527,11.5939724 L8.95792943,11.5939724 Z M8.75111002,13.8043549 C8.75111002,13.4424191 8.84805565,13.168817 9.04194982,12.9835404 C9.23584399,12.7982637 9.51806349,12.7056268 9.8886168,12.7056268 C10.2462438,12.7056268 10.5230775,12.8004181 10.719126,12.9900035 C10.9151746,13.1795889 11.0131974,13.4510367 11.0131974,13.8043549 C11.0131974,14.1447469 10.9140974,14.4129632 10.7158945,14.6090117 C10.5176915,14.8050603 10.2419351,14.9030831 9.8886168,14.9030831 C9.52668101,14.9030831 9.24661586,14.8072146 9.04841293,14.6154748 C8.85021,14.423735 8.75111002,14.1533644 8.75111002,13.8043549 Z"
-                                              id="?"
-                                              fill="#FFFFFF"
-                                            ></path>
-                                          </g>
-                                        </g>
-                                      </g>
-                                    </g>
-                                  </g>
-                                </g>
-                              </g>
-                            </svg>
-                          </span>
-                        </span>
-                        <span class="c-tooltip-info__content">
-                          <span
-                            class="c-tooltip-info__text"
-                            [innerHTML]="
-                              config.calculator.budget.riskInvestment.tooltip
-                                .content
-                            "
-                          ></span>
-                          <span
-                            class="c-tooltip-info__close"
-                            role="button"
-                            tabindex="0"
-                          >
-                            <span class="SVGInline c-icon c-icon-close">
-                              <svg
-                                class="SVGInline c-icon c-icon-close"
-                                style="width: 12; height: 12;"
-                                width="12"
-                                height="12"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <title>
-                                  Icon-close
-                                </title>
-                                <g
-                                  stroke="#FEBD11"
-                                  stroke-width="2"
-                                  fill="none"
-                                  fill-rule="evenodd"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                >
-                                  <path d="M11 1L1 11M1 1l10 10L1 1z"></path>
-                                </g>
-                              </svg>
-                            </span>
-                          </span>
-                        </span>
-                      </span>
-                    </p>
-                    <div class="c-risk-investment__buttons">
-                      <div
-                        class="c-radio-button c-radio-button--riskInvestment"
-                      >
-                        <label for="1" class="c-radio-button__label">
-                          <input
-                            id="1"
-                            type="radio"
-                            formControlName="riskCode"
-                            name="riskCode"
-                            class="c-radio-button__input"
-                            value="{{
-                              config.calculator.budget.riskInvestment.values[0]
-                                .value
-                            }}"
-                          />
-                          <div class="c-radio-button__alt number--rg">1</div>
-                        </label>
-                      </div>
-                      <div
-                        class="c-radio-button c-radio-button--riskInvestment"
-                      >
-                        <label for="2" class="c-radio-button__label">
-                          <input
-                            id="2"
-                            type="radio"
-                            formControlName="riskCode"
-                            name="riskCode"
-                            class="c-radio-button__input"
-                            value="{{
-                              config.calculator.budget.riskInvestment.values[1]
-                                .value
-                            }}"
-                          />
-                          <div class="c-radio-button__alt number--rg">2</div>
-                        </label>
-                      </div>
-                      <div
-                        class="c-radio-button c-radio-button--riskInvestment"
-                      >
-                        <label for="3" class="c-radio-button__label">
-                          <input
-                            id="3"
-                            type="radio"
-                            formControlName="riskCode"
-                            name="riskCode"
-                            class="c-radio-button__input"
-                            value="{{
-                              config.calculator.budget.riskInvestment.values[2]
-                                .value
-                            }}"
-                          />
-                          <div class="c-radio-button__alt number--rg">3</div>
-                        </label>
-                      </div>
-                      <div
-                        class="c-radio-button c-radio-button--riskInvestment"
-                      >
-                        <label for="4" class="c-radio-button__label">
-                          <input
-                            id="4"
-                            type="radio"
-                            formControlName="riskCode"
-                            name="riskCode"
-                            class="c-radio-button__input"
-                            value="{{
-                              config.calculator.budget.riskInvestment.values[3]
-                                .value
-                            }}"
-                          />
-                          <div class="c-radio-button__alt number--rg">4</div>
-                        </label>
-                      </div>
-                      <div
-                        class="c-radio-button c-radio-button--riskInvestment"
-                      >
-                        <label for="5" class="c-radio-button__label">
-                          <input
-                            id="5"
-                            type="radio"
-                            formControlName="riskCode"
-                            name="riskCode"
-                            class="c-radio-button__input"
-                            value="{{
-                              config.calculator.budget.riskInvestment.values[4]
-                                .value
-                            }}"
-                          />
-                          <div class="c-radio-button__alt number--rg">5</div>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="c-risk-investment__scale">
-                    <span>{{
-                      config.calculator.budget.riskInvestment.values[0].label
-                    }}</span>
-                    <span>{{
-                      config.calculator.budget.riskInvestment.values[4].label
-                    }}</span>
-                  </div>
-                </div>
+              <div class="c-risk-investment__scale">
+                <span>{{
+                  config.calculator.budget.riskInvestment.values[0].label
+                }}</span>
+                <span>{{
+                  config.calculator.budget.riskInvestment.values[4].label
+                }}</span>
               </div>
             </div>
           </div>
-          <div
-            class="c-calculator__footer c-calculator__footer border-top mt-4 pt-4 justify-content-end"
-          >
-            <button
-              target="_self"
-              class="c-button c-button__standard font-weight-bold mt-2"
-              attr.data-gtm-id="{{
-                config.calculator.footer.buttons[3].dataGtmId
-              }}"
-            >
-              {{ config.calculator.footer.buttons[3].label }}
-            </button>
-          </div>
         </div>
-      </form>
+      </div>
+      <div
+        class="c-calculator__footer c-calculator__footer border-top mt-4 pt-4 justify-content-end"
+      >
+        <button
+          target="_self"
+          class="c-button c-button__standard font-weight-bold mt-2"
+          attr.data-gtm-id="{{ config.calculator.footer.buttons[3].dataGtmId }}"
+        >
+          {{ config.calculator.footer.buttons[3].label }}
+        </button>
+      </div>
+    </div>
+  </form>
 
-      <div class="module__inner-container">
-        <div class="px-sm-2">
+  <div class="module__inner-container">
+    <div class="px-sm-2">
+      <div
+        class="pb-4"
+        [innerHTML]="config.calculator.budget.results.truncate.description"
+      ></div>
+      <ul class="c-list c-list__params c-list--grey-box row">
+        <li class="col-sm-6 col-md">
           <div
-            class="pb-4"
-            [innerHTML]="config.calculator.budget.results.truncate.description"
-          ></div>
-          <ul class="c-list c-list__params c-list--grey-box row">
-            <li class="col-sm-6 col-md">
-              <div
-                class="number__group py-4 position-relative d-flex flex-column align-items-center justify-content-center"
-                attr.data-gtm-class="{{
-                  config.calculator.budget.results.dataGtmClass
-                }}"
-                data-gtm-vis-first-on-screen-10182176_62="49478"
-                data-gtm-vis-total-visible-time-10182176_62="100"
-                data-gtm-vis-has-fired-10182176_62="1"
-              >
-                <small>
-                  {{ config.calculator.budget.results.params[0].text }}
-                </small>
-                <div class="d-flex align-items-center mt-2">
-                  <div>
-                    <p class="number number--rg m-0 mr-1">
-                      {{ prefix }}{{ contributionAmount | number: '1.0-3' }}
-                    </p>
-                    <small></small>
-                  </div>
-                </div>
+            class="number__group py-4 position-relative d-flex flex-column align-items-center justify-content-center"
+            attr.data-gtm-class="{{
+              config.calculator.budget.results.dataGtmClass
+            }}"
+            data-gtm-vis-first-on-screen-10182176_62="49478"
+            data-gtm-vis-total-visible-time-10182176_62="100"
+            data-gtm-vis-has-fired-10182176_62="1"
+          >
+            <small>
+              {{ config.calculator.budget.results.params[0].text }}
+            </small>
+            <div class="d-flex align-items-center mt-2">
+              <div>
+                <p class="number number--rg m-0 mr-1">
+                  {{ prefix }}{{ contributionAmount | number: '1.0-3' }}
+                </p>
+                <small></small>
               </div>
-            </li>
-            <li class="col-sm-6 col-md">
-              <div
-                class="number__group py-4 position-relative d-flex flex-column align-items-center justify-content-center"
-                attr.data-gtm-class="{{
-                  config.calculator.budget.results.dataGtmClass
-                }}"
-                data-gtm-vis-first-on-screen-10182176_62="49484"
-                data-gtm-vis-total-visible-time-10182176_62="100"
-                data-gtm-vis-has-fired-10182176_62="1"
-              >
-                <small>
-                  {{ config.calculator.budget.results.params[1].text }}
-                </small>
-                <div class="d-flex align-items-center mt-2">
-                  <div>
-                    <p class="number number--rg m-0 mr-1">
-                      {{ prefix }}{{ balanceAmount | number: '1.0-3' }}
-                    </p>
-                    <small></small>
-                  </div>
-                </div>
+            </div>
+          </div>
+        </li>
+        <li class="col-sm-6 col-md">
+          <div
+            class="number__group py-4 position-relative d-flex flex-column align-items-center justify-content-center"
+            attr.data-gtm-class="{{
+              config.calculator.budget.results.dataGtmClass
+            }}"
+            data-gtm-vis-first-on-screen-10182176_62="49484"
+            data-gtm-vis-total-visible-time-10182176_62="100"
+            data-gtm-vis-has-fired-10182176_62="1"
+          >
+            <small>
+              {{ config.calculator.budget.results.params[1].text }}
+            </small>
+            <div class="d-flex align-items-center mt-2">
+              <div>
+                <p class="number number--rg m-0 mr-1">
+                  {{ prefix }}{{ balanceAmount | number: '1.0-3' }}
+                </p>
+                <small></small>
               </div>
-            </li>
-            <li class="col-sm-6 col-md">
-              <div
-                class="number__group py-4 position-relative d-flex flex-column align-items-center justify-content-center"
-                attr.data-gtm-class="{{
-                  config.calculator.budget.results.dataGtmClass
-                }}"
-                data-gtm-vis-first-on-screen-10182176_62="49495"
-                data-gtm-vis-total-visible-time-10182176_62="100"
-                data-gtm-vis-has-fired-10182176_62="1"
-              >
+            </div>
+          </div>
+        </li>
+        <li class="col-sm-6 col-md">
+          <div
+            class="number__group py-4 position-relative d-flex flex-column align-items-center justify-content-center"
+            attr.data-gtm-class="{{
+              config.calculator.budget.results.dataGtmClass
+            }}"
+            data-gtm-vis-first-on-screen-10182176_62="49495"
+            data-gtm-vis-total-visible-time-10182176_62="100"
+            data-gtm-vis-has-fired-10182176_62="1"
+          >
+            <small>
+              {{ config.calculator.budget.results.params[2].text }}
+            </small>
+            <div class="d-flex align-items-center mt-2">
+              <div>
+                <span class="number number--rg m-1">{{ term }}</span>
                 <small>
-                  {{ config.calculator.budget.results.params[2].text }}
+                  {{ config.calculator.budget.results.params[2].label }}
                 </small>
-                <div class="d-flex align-items-center mt-2">
-                  <div>
-                    <span class="number number--rg m-1">{{ term }}</span>
-                    <small>
-                      {{ config.calculator.budget.results.params[2].label }}
-                    </small>
-                  </div>
-                </div>
               </div>
-            </li>
-            <li class="col-sm-6 col-md">
-              <div
-                class="number__group py-4 position-relative d-flex flex-column align-items-center justify-content-center"
-                attr.data-gtm-class="{{
-                  config.calculator.budget.results.dataGtmClass
-                }}"
-                data-gtm-vis-first-on-screen-10182176_62="49501"
-                data-gtm-vis-total-visible-time-10182176_62="100"
-                data-gtm-vis-has-fired-10182176_62="1"
-              >
-                <small>
-                  {{ config.calculator.budget.results.params[3].text }}
-                </small>
-                <div
-                  class="d-flex align-items-center mt-2 number__group__value"
+            </div>
+          </div>
+        </li>
+        <li class="col-sm-6 col-md">
+          <div
+            class="number__group py-4 position-relative d-flex flex-column align-items-center justify-content-center"
+            attr.data-gtm-class="{{
+              config.calculator.budget.results.dataGtmClass
+            }}"
+            data-gtm-vis-first-on-screen-10182176_62="49501"
+            data-gtm-vis-total-visible-time-10182176_62="100"
+            data-gtm-vis-has-fired-10182176_62="1"
+          >
+            <small>
+              {{ config.calculator.budget.results.params[3].text }}
+            </small>
+            <div class="d-flex align-items-center mt-2 number__group__value">
+              <div>
+                <p class="number number--rg m-0 mr-1">
+                  {{ prefix }}{{ totalContribution | number: '1.0-3' }}
+                </p>
+                <small></small>
+              </div>
+              <span class="c-tooltip-parameter ml-2">
+                <span
+                  role="button"
+                  tabindex="0"
+                  class="c-tooltip-parameter__icon"
                 >
-                  <div>
-                    <p class="number number--rg m-0 mr-1">
-                      {{ prefix }}{{ totalContribution | number: '1.0-3' }}
-                    </p>
-                    <small></small>
-                  </div>
-                  <span class="c-tooltip-parameter ml-2">
-                    <span
-                      role="button"
-                      tabindex="0"
-                      class="c-tooltip-parameter__icon"
+                  <span class="SVGInline c-icon c-icon-tooltip">
+                    <svg
+                      class="SVGInline c-icon c-icon-tooltip"
+                      width="20px"
+                      height="20px"
+                      viewBox="0 0 20 20"
+                      version="1.1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
                     >
-                      <span class="SVGInline c-icon c-icon-tooltip">
-                        <svg
-                          class="SVGInline c-icon c-icon-tooltip"
-                          width="20px"
-                          height="20px"
-                          viewBox="0 0 20 20"
-                          version="1.1"
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                      <g
+                        id="Savings-Objective---Objective-description-placement-(UC113)"
+                        stroke="none"
+                        stroke-width="1"
+                        fill="none"
+                        fill-rule="evenodd"
+                      >
+                        <g
+                          id="Budget_Objective_Remodeller_1366"
+                          transform="translate(-652.000000, -655.000000)"
                         >
                           <g
-                            id="Savings-Objective---Objective-description-placement-(UC113)"
-                            stroke="none"
-                            stroke-width="1"
-                            fill="none"
-                            fill-rule="evenodd"
+                            id="03-Content"
+                            transform="translate(51.000000, 248.000000)"
                           >
                             <g
-                              id="Budget_Objective_Remodeller_1366"
-                              transform="translate(-652.000000, -655.000000)"
+                              id="02-Form"
+                              transform="translate(321.000000, 134.000000)"
                             >
-                              <g
-                                id="03-Content"
-                                transform="translate(51.000000, 248.000000)"
-                              >
+                              <g id="Sliders---overhang">
                                 <g
-                                  id="02-Form"
-                                  transform="translate(321.000000, 134.000000)"
+                                  id="Slider-03"
+                                  transform="translate(0.000000, 270.000000)"
                                 >
-                                  <g id="Sliders---overhang">
-                                    <g
-                                      id="Slider-03"
-                                      transform="translate(0.000000, 270.000000)"
-                                    >
-                                      <g
-                                        id="Tool-Tip_Icon"
-                                        transform="translate(280.000000, 3.000000)"
-                                      >
-                                        <circle
-                                          id="Oval"
-                                          fill="#FEBD11"
-                                          cx="10"
-                                          cy="10"
-                                          r="10"
-                                        ></circle>
-                                        <path
-                                          d="M8.95792943,11.5939724 L8.95792943,11.1157025 C8.95792943,10.7020616 9.04625767,10.3422856 9.22291681,10.0363637 C9.39957594,9.7304418 9.72272804,9.40513535 10.1923828,9.0604346 C10.6448025,8.73727765 10.9431797,8.47444727 11.0875231,8.27193559 C11.2318665,8.0694239 11.3040372,7.84321742 11.3040372,7.59330938 C11.3040372,7.31324002 11.2006285,7.09995964 10.993808,6.95346182 C10.7869876,6.806964 10.498305,6.73371619 10.1277517,6.73371619 C9.48143784,6.73371619 8.74465105,6.94484223 7.91736926,7.36710065 L7.21289062,5.95168028 C8.17374396,5.41308536 9.19275026,5.14379194 10.2699401,5.14379194 C11.1575445,5.14379194 11.8630933,5.35707233 12.3866075,5.78363951 C12.9101218,6.21020668 13.171875,6.77895438 13.171875,7.48989967 C13.171875,7.9638632 13.0641576,8.3731892 12.8487197,8.71788995 C12.6332817,9.06259069 12.2239557,9.45037322 11.6207294,9.88124915 C11.2070885,10.1871711 10.9453353,10.4198406 10.8354619,10.5792647 C10.7255886,10.7386888 10.6706527,10.9476605 10.6706527,11.206186 L10.6706527,11.5939724 L8.95792943,11.5939724 Z M8.75111002,13.8043549 C8.75111002,13.4424191 8.84805565,13.168817 9.04194982,12.9835404 C9.23584399,12.7982637 9.51806349,12.7056268 9.8886168,12.7056268 C10.2462438,12.7056268 10.5230775,12.8004181 10.719126,12.9900035 C10.9151746,13.1795889 11.0131974,13.4510367 11.0131974,13.8043549 C11.0131974,14.1447469 10.9140974,14.4129632 10.7158945,14.6090117 C10.5176915,14.8050603 10.2419351,14.9030831 9.8886168,14.9030831 C9.52668101,14.9030831 9.24661586,14.8072146 9.04841293,14.6154748 C8.85021,14.423735 8.75111002,14.1533644 8.75111002,13.8043549 Z"
-                                          id="?"
-                                          fill="#FFFFFF"
-                                        ></path>
-                                      </g>
-                                    </g>
+                                  <g
+                                    id="Tool-Tip_Icon"
+                                    transform="translate(280.000000, 3.000000)"
+                                  >
+                                    <circle
+                                      id="Oval"
+                                      fill="#FEBD11"
+                                      cx="10"
+                                      cy="10"
+                                      r="10"
+                                    ></circle>
+                                    <path
+                                      d="M8.95792943,11.5939724 L8.95792943,11.1157025 C8.95792943,10.7020616 9.04625767,10.3422856 9.22291681,10.0363637 C9.39957594,9.7304418 9.72272804,9.40513535 10.1923828,9.0604346 C10.6448025,8.73727765 10.9431797,8.47444727 11.0875231,8.27193559 C11.2318665,8.0694239 11.3040372,7.84321742 11.3040372,7.59330938 C11.3040372,7.31324002 11.2006285,7.09995964 10.993808,6.95346182 C10.7869876,6.806964 10.498305,6.73371619 10.1277517,6.73371619 C9.48143784,6.73371619 8.74465105,6.94484223 7.91736926,7.36710065 L7.21289062,5.95168028 C8.17374396,5.41308536 9.19275026,5.14379194 10.2699401,5.14379194 C11.1575445,5.14379194 11.8630933,5.35707233 12.3866075,5.78363951 C12.9101218,6.21020668 13.171875,6.77895438 13.171875,7.48989967 C13.171875,7.9638632 13.0641576,8.3731892 12.8487197,8.71788995 C12.6332817,9.06259069 12.2239557,9.45037322 11.6207294,9.88124915 C11.2070885,10.1871711 10.9453353,10.4198406 10.8354619,10.5792647 C10.7255886,10.7386888 10.6706527,10.9476605 10.6706527,11.206186 L10.6706527,11.5939724 L8.95792943,11.5939724 Z M8.75111002,13.8043549 C8.75111002,13.4424191 8.84805565,13.168817 9.04194982,12.9835404 C9.23584399,12.7982637 9.51806349,12.7056268 9.8886168,12.7056268 C10.2462438,12.7056268 10.5230775,12.8004181 10.719126,12.9900035 C10.9151746,13.1795889 11.0131974,13.4510367 11.0131974,13.8043549 C11.0131974,14.1447469 10.9140974,14.4129632 10.7158945,14.6090117 C10.5176915,14.8050603 10.2419351,14.9030831 9.8886168,14.9030831 C9.52668101,14.9030831 9.24661586,14.8072146 9.04841293,14.6154748 C8.85021,14.423735 8.75111002,14.1533644 8.75111002,13.8043549 Z"
+                                      id="?"
+                                      fill="#FFFFFF"
+                                    ></path>
                                   </g>
                                 </g>
                               </g>
                             </g>
                           </g>
-                        </svg>
-                      </span>
-                    </span>
-                    <span class="c-tooltip-parameter__content">
-                      <span
-                        class="c-tooltip-parameter__text"
-                        [innerHTML]="
-                          config.calculator.budget.results.params[3].tooltip
-                            .content
-                        "
-                      ></span>
-                      <span
-                        class="c-tooltip-parameter__close"
-                        role="button"
-                        tabindex="0"
+                        </g>
+                      </g>
+                    </svg>
+                  </span>
+                </span>
+                <span class="c-tooltip-parameter__content">
+                  <span
+                    class="c-tooltip-parameter__text"
+                    [innerHTML]="
+                      config.calculator.budget.results.params[3].tooltip.content
+                    "
+                  ></span>
+                  <span
+                    class="c-tooltip-parameter__close"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <span class="SVGInline c-icon c-icon-close">
+                      <svg
+                        class="SVGInline c-icon c-icon-close"
+                        style="width: 12; height: 12;"
+                        width="12"
+                        height="12"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <span class="SVGInline c-icon c-icon-close">
-                          <svg
-                            class="SVGInline c-icon c-icon-close"
-                            style="width: 12; height: 12;"
-                            width="12"
-                            height="12"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <title>
-                              Icon-close
-                            </title>
-                            <g
-                              stroke="#FEBD11"
-                              stroke-width="2"
-                              fill="none"
-                              fill-rule="evenodd"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            >
-                              <path d="M11 1L1 11M1 1l10 10L1 1z"></path>
-                            </g>
-                          </svg>
-                        </span>
-                      </span>
+                        <title>
+                          Icon-close
+                        </title>
+                        <g
+                          stroke="#FEBD11"
+                          stroke-width="2"
+                          fill="none"
+                          fill-rule="evenodd"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M11 1L1 11M1 1l10 10L1 1z"></path>
+                        </g>
+                      </svg>
                     </span>
                   </span>
-                </div>
+                </span>
+              </span>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="row" data-tabs="true">
+        <div class="col-md-8">
+          <div
+            class="react-tabs__tab-panel"
+            role="tabpanel"
+            id="react-tabs-7"
+            aria-labelledby="react-tabs-6"
+          ></div>
+          <div
+            class="react-tabs__tab-panel"
+            role="tabpanel"
+            id="react-tabs-9"
+            aria-labelledby="react-tabs-8"
+          ></div>
+          <div
+            class="react-tabs__tab-panel react-tabs__tab-panel--selected"
+            role="tabpanel"
+            id="react-tabs-11"
+            aria-labelledby="react-tabs-10"
+          >
+            <div echarts [options]="options" class="demo-chart"></div>
+          </div>
+        </div>
+        <div class="col-md-4 pt-1 pt-md-5">
+          <p class="text-sm pb-2 mb-0">
+            <strong>
+              {{ config.calculator.budget.results.graphs.summary.title }}
+            </strong>
+          </p>
+          <p
+            attr.data-gtm-id=" {{
+              config.calculator.budget.results.graphs.dataGtmId
+            }}"
+            data-gtm-vis-first-on-screen-10182176_63="49428"
+            data-gtm-vis-total-visible-time-10182176_63="100"
+            data-gtm-vis-has-fired-10182176_63="1"
+            [innerHTML]="
+              config.calculator.budget.results.graphs.summary.sentence
+            "
+          ></p>
+          <ul class="row mt-1" role="tablist">
+            <li
+              class="col-sm-4 col-md-12"
+              role="tab"
+              id="react-tabs-6"
+              aria-selected="false"
+              aria-disabled="false"
+              aria-controls="react-tabs-7"
+            >
+              <div
+                class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
+                attr.data-gtm-class="{{
+                  config.calculator.budget.results.graphs.dataGtmClass
+                }}"
+                data-gtm-vis-first-on-screen-10182176_61="49319"
+                data-gtm-vis-total-visible-time-10182176_61="100"
+                data-gtm-vis-has-fired-10182176_61="1"
+                (click)="selectGraphLine('high')"
+              >
+                <span
+                  class="text-capitalize d-sm-block"
+                  style="font-size: 12px;"
+                  >High</span
+                >
+                <h3 class="m-0 ml-2" style="font-size: 24px;">
+                  {{ prefix }}{{ high | number: '1.0-3' }}
+                </h3>
               </div>
             </li>
-          </ul>
-          <div class="row" data-tabs="true">
-            <div class="col-md-8">
+            <li
+              class="col-sm-4 col-md-12"
+              role="tab"
+              id="react-tabs-8"
+              aria-selected="false"
+              aria-disabled="false"
+              aria-controls="react-tabs-9"
+            >
               <div
-                class="react-tabs__tab-panel"
-                role="tabpanel"
-                id="react-tabs-7"
-                aria-labelledby="react-tabs-6"
-              ></div>
-              <div
-                class="react-tabs__tab-panel"
-                role="tabpanel"
-                id="react-tabs-9"
-                aria-labelledby="react-tabs-8"
-              ></div>
-              <div
-                class="react-tabs__tab-panel react-tabs__tab-panel--selected"
-                role="tabpanel"
-                id="react-tabs-11"
-                aria-labelledby="react-tabs-10"
-              >
-                <div echarts [options]="options" class="demo-chart"></div>
-              </div>
-            </div>
-            <div class="col-md-4 pt-1 pt-md-5">
-              <p class="text-sm pb-2 mb-0">
-                <strong>
-                  {{ config.calculator.budget.results.graphs.summary.title }}
-                </strong>
-              </p>
-              <p
-                attr.data-gtm-id=" {{
-                  config.calculator.budget.results.graphs.dataGtmId
+                class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
+                attr.data-gtm-class="{{
+                  config.calculator.budget.results.graphs.dataGtmClass
                 }}"
-                data-gtm-vis-first-on-screen-10182176_63="49428"
-                data-gtm-vis-total-visible-time-10182176_63="100"
-                data-gtm-vis-has-fired-10182176_63="1"
-                [innerHTML]="
-                  config.calculator.budget.results.graphs.summary.sentence
-                "
-              ></p>
-              <ul class="row mt-1" role="tablist">
-                <li
-                  class="col-sm-4 col-md-12"
-                  role="tab"
-                  id="react-tabs-6"
-                  aria-selected="false"
-                  aria-disabled="false"
-                  aria-controls="react-tabs-7"
+                data-gtm-vis-first-on-screen-10182176_61="49328"
+                data-gtm-vis-total-visible-time-10182176_61="100"
+                data-gtm-vis-has-fired-10182176_61="1"
+                (click)="selectGraphLine('medium')"
+              >
+                <span
+                  class="text-capitalize d-sm-block"
+                  style="font-size: 12px;"
+                  >Medium</span
                 >
-                  <div
-                    class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
-                    attr.data-gtm-class="{{
-                      config.calculator.budget.results.graphs.dataGtmClass
-                    }}"
-                    data-gtm-vis-first-on-screen-10182176_61="49319"
-                    data-gtm-vis-total-visible-time-10182176_61="100"
-                    data-gtm-vis-has-fired-10182176_61="1"
-                    (click)="selectGraphLine('high')"
-                  >
-                    <span
-                      class="text-capitalize d-sm-block"
-                      style="font-size: 12px;"
-                      >High</span
-                    >
-                    <h3 class="m-0 ml-2" style="font-size: 24px;">
-                      {{ prefix }}{{ high | number: '1.0-3' }}
-                    </h3>
-                  </div>
-                </li>
-                <li
-                  class="col-sm-4 col-md-12"
-                  role="tab"
-                  id="react-tabs-8"
-                  aria-selected="false"
-                  aria-disabled="false"
-                  aria-controls="react-tabs-9"
-                >
-                  <div
-                    class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
-                    attr.data-gtm-class="{{
-                      config.calculator.budget.results.graphs.dataGtmClass
-                    }}"
-                    data-gtm-vis-first-on-screen-10182176_61="49328"
-                    data-gtm-vis-total-visible-time-10182176_61="100"
-                    data-gtm-vis-has-fired-10182176_61="1"
-                    (click)="selectGraphLine('medium')"
-                  >
-                    <span
-                      class="text-capitalize d-sm-block"
-                      style="font-size: 12px;"
-                      >Medium</span
-                    >
-                    <h3 class="m-0 ml-2" style="font-size: 24px;">
-                      {{ prefix }}{{ medium | number: '1.0-3' }}
-                    </h3>
-                  </div>
-                </li>
-                <li
-                  class="col-sm-4 col-md-12 react-tabs__tab--selected"
-                  role="tab"
-                  id="react-tabs-10"
-                  aria-selected="true"
-                  aria-disabled="false"
-                  aria-controls="react-tabs-11"
-                  tabindex="0"
-                >
-                  <div
-                    class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
-                    attr.data-gtm-class="{{
-                      config.calculator.budget.results.graphs.dataGtmClass
-                    }}"
-                    data-gtm-vis-first-on-screen-10182176_61="49333"
-                    data-gtm-vis-total-visible-time-10182176_61="100"
-                    data-gtm-vis-has-fired-10182176_61="1"
-                    (click)="selectGraphLine('low')"
-                  >
-                    <!--  <button
+                <h3 class="m-0 ml-2" style="font-size: 24px;">
+                  {{ prefix }}{{ medium | number: '1.0-3' }}
+                </h3>
+              </div>
+            </li>
+            <li
+              class="col-sm-4 col-md-12 react-tabs__tab--selected"
+              role="tab"
+              id="react-tabs-10"
+              aria-selected="true"
+              aria-disabled="false"
+              aria-controls="react-tabs-11"
+              tabindex="0"
+            >
+              <div
+                class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
+                attr.data-gtm-class="{{
+                  config.calculator.budget.results.graphs.dataGtmClass
+                }}"
+                data-gtm-vis-first-on-screen-10182176_61="49333"
+                data-gtm-vis-total-visible-time-10182176_61="100"
+                data-gtm-vis-has-fired-10182176_61="1"
+                (click)="selectGraphLine('low')"
+              >
+                <!--  <button
                       class="wes-button wes-button-primary"
 
                     >-->
-                    <span
-                      class="text-capitalize d-sm-block"
-                      style="font-size: 12px;"
-                      >Low</span
-                    >
-                    <h3 class="m-0 ml-2" style="font-size: 24px;">
-                      {{ prefix }}{{ low | number: '1.0-3' }}
-                    </h3>
-                    <!--</button>-->
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
+                <span
+                  class="text-capitalize d-sm-block"
+                  style="font-size: 12px;"
+                  >Low</span
+                >
+                <h3 class="m-0 ml-2" style="font-size: 24px;">
+                  {{ prefix }}{{ low | number: '1.0-3' }}
+                </h3>
+                <!--</button>-->
+              </div>
+            </li>
+          </ul>
         </div>
-        <!--
+      </div>
+    </div>
+    <!--
     show this on error
 
     -->
+    <div class="px-sm-2">
+      <div class="bg--grey">
         <div class="px-sm-2">
-          <div class="bg--grey">
-            <div class="px-sm-2">
-              <div class="mt-md-5 mt-3">
-                <div class="c-icon--padding">
-                  <svg
-                    width="49px"
-                    height="48px"
-                    viewBox="0 0 49 48"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlnsXlink="http://www.w3.org/1999/xlink"
+          <div class="mt-md-5 mt-3">
+            <div class="c-icon--padding">
+              <svg
+                width="49px"
+                height="48px"
+                viewBox="0 0 49 48"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+              >
+                <g
+                  id="Asset-Artboard-Page"
+                  stroke="none"
+                  stroke-width="1"
+                  fill="none"
+                  fill-rule="evenodd"
+                >
+                  <g
+                    id="01-Icon-data-unavailable"
+                    transform="translate(0.800000, 0.000000)"
                   >
+                    <rect fill="none" x="0" y="0" width="48" height="48"></rect>
+                    <polyline
+                      id="Rectangle"
+                      stroke="#1E2630"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      transform="translate(14.000000, 21.000000) scale(-1, 1) translate(-14.000000, -21.000000) "
+                      points="26.5 1.5 26.5 40.5 1.5 40.5"
+                    ></polyline>
                     <g
-                      id="Asset-Artboard-Page"
-                      stroke="none"
-                      stroke-width="1"
-                      fill="none"
-                      fill-rule="evenodd"
+                      id="Foundations/Icons/Functional/Alert-Small/System"
+                      transform="translate(28.000000, 28.000000)"
                     >
-                      <g
-                        id="01-Icon-data-unavailable"
-                        transform="translate(0.800000, 0.000000)"
-                      >
-                        <rect
-                          fill="none"
-                          x="0"
-                          y="0"
-                          width="48"
-                          height="48"
-                        ></rect>
-                        <polyline
-                          id="Rectangle"
-                          stroke="#1E2630"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          transform="translate(14.000000, 21.000000) scale(-1, 1) translate(-14.000000, -21.000000) "
-                          points="26.5 1.5 26.5 40.5 1.5 40.5"
-                        ></polyline>
-                        <g
-                          id="Foundations/Icons/Functional/Alert-Small/System"
-                          transform="translate(28.000000, 28.000000)"
-                        >
-                          <g
-                            id="Alert"
-                            transform="translate(0.000000, 1.000000)"
-                          >
-                            <path
-                              d="M10.8849182,1.68134462 L19.2285545,17.5342536 C19.4857792,18.0229804 19.2981096,18.6276936 18.8093827,18.8849182 C18.665772,18.9605028 18.5059233,19 18.3436363,19 L1.65636371,19 C1.10407896,19 0.656363713,18.5522847 0.656363713,18 C0.656363713,17.837713 0.6958609,17.6778643 0.771445491,17.5342536 L9.11508178,1.68134462 C9.37230643,1.19261778 9.97701959,1.00494818 10.4657464,1.26217283 C10.6446248,1.35631936 10.7907717,1.50246622 10.8849182,1.68134462 Z"
-                              id="Triangle"
-                              fill="#FEBD11"
-                            ></path>
-                            <polygon
-                              id="!"
-                              fill="#FFFFFF"
-                              points="11 13.5 9 13.5 9 7 11 7"
-                            ></polygon>
-                            <path
-                              d="M9,16 C9,15.6705866 9.08571343,15.4215695 9.25714286,15.2529412 C9.42857229,15.0843129 9.6780936,15 10.0057143,15 C10.3219063,15 10.5666658,15.0862736 10.74,15.2588235 C10.9133342,15.4313734 11,15.6784298 11,16 C11,16.3098055 10.9123818,16.5539207 10.7371429,16.7323529 C10.5619039,16.9107852 10.3180968,17 10.0057143,17 C9.68571269,17 9.43809611,16.912746 9.26285714,16.7382353 C9.08761817,16.5637246 9,16.3176486 9,16 Z"
-                              id="Path"
-                              fill="#FFFFFF"
-                            ></path>
-                          </g>
-                        </g>
-                        <polyline
-                          id="Path-3"
-                          stroke="#1E2630"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          points="7.5 24.5 21.5 10.5 31.5 20.5 43.5 8.5"
-                        ></polyline>
+                      <g id="Alert" transform="translate(0.000000, 1.000000)">
+                        <path
+                          d="M10.8849182,1.68134462 L19.2285545,17.5342536 C19.4857792,18.0229804 19.2981096,18.6276936 18.8093827,18.8849182 C18.665772,18.9605028 18.5059233,19 18.3436363,19 L1.65636371,19 C1.10407896,19 0.656363713,18.5522847 0.656363713,18 C0.656363713,17.837713 0.6958609,17.6778643 0.771445491,17.5342536 L9.11508178,1.68134462 C9.37230643,1.19261778 9.97701959,1.00494818 10.4657464,1.26217283 C10.6446248,1.35631936 10.7907717,1.50246622 10.8849182,1.68134462 Z"
+                          id="Triangle"
+                          fill="#FEBD11"
+                        ></path>
+                        <polygon
+                          id="!"
+                          fill="#FFFFFF"
+                          points="11 13.5 9 13.5 9 7 11 7"
+                        ></polygon>
+                        <path
+                          d="M9,16 C9,15.6705866 9.08571343,15.4215695 9.25714286,15.2529412 C9.42857229,15.0843129 9.6780936,15 10.0057143,15 C10.3219063,15 10.5666658,15.0862736 10.74,15.2588235 C10.9133342,15.4313734 11,15.6784298 11,16 C11,16.3098055 10.9123818,16.5539207 10.7371429,16.7323529 C10.5619039,16.9107852 10.3180968,17 10.0057143,17 C9.68571269,17 9.43809611,16.912746 9.26285714,16.7382353 C9.08761817,16.5637246 9,16.3176486 9,16 Z"
+                          id="Path"
+                          fill="#FFFFFF"
+                        ></path>
                       </g>
                     </g>
-                  </svg>
-                </div>
+                    <polyline
+                      id="Path-3"
+                      stroke="#1E2630"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      points="7.5 24.5 21.5 10.5 31.5 20.5 43.5 8.5"
+                    ></polyline>
+                  </g>
+                </g>
+              </svg>
+            </div>
 
-                <div
-                  class="number__group py-4 position-relative d-flex flex-column align-items-center justify-content-center"
-                >
-                  <strong
-                    ><span
-                      class="d-block copy--shortform mt-4 mt-sm-0 py-4--spacing"
-                      >{{
-                        config.serviceUnavailableContent.serviceUnavailableTitle
-                      }}</span
-                    ></strong
-                  >
-                  <div
-                    class="py-4--align"
-                    [innerHTML]="
-                      config.serviceUnavailableContent.serviceUnavailableSummary
-                    "
-                  ></div>
-                </div>
-              </div>
+            <div
+              class="number__group py-4 position-relative d-flex flex-column align-items-center justify-content-center"
+            >
+              <strong
+                ><span
+                  class="d-block copy--shortform mt-4 mt-sm-0 py-4--spacing"
+                  >{{
+                    config.serviceUnavailableContent.serviceUnavailableTitle
+                  }}</span
+                ></strong
+              >
+              <div
+                class="py-4--align"
+                [innerHTML]="
+                  config.serviceUnavailableContent.serviceUnavailableSummary
+                "
+              ></div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!--
+    <!--
     end show error
 -->
-        <div class="row px-sm-2">
-          <div class="col-md-7 mt-md-5 mt-3">
-            <small
-              [innerHTML]="
-                config.calculator.disclaimers.defaultDisclaimers.leftDisclaimers
-              "
-            ></small>
-          </div>
-          <div class="col-md-4 offset-md-1 mt-md-5 mt-3">
-            <small
-              [innerHTML]="
-                config.calculator.disclaimers.defaultDisclaimers
-                  .rightDisclaimers
-              "
-            ></small>
-          </div>
-        </div>
-        <div class="c-calculator__footer border-top mt-3 pt-4">
-          <a
-            label="Edit calculation"
-            class="c-link"
-            href="{{ config.calculator.footer.buttons[0].url }}"
-            >{{ config.calculator.footer.buttons[0].label }}</a
-          ><a
-            href="{{ config.calculator.footer.buttons[1].url }}"
-            target="_self"
-            class="c-button c-button c-button__standard font-weight-bold mt-2"
-            >{{ config.calculator.footer.buttons[1].label }}</a
-          >
-        </div>
+    <div class="row px-sm-2">
+      <div class="col-md-7 mt-md-5 mt-3">
+        <small
+          [innerHTML]="
+            config.calculator.disclaimers.defaultDisclaimers.leftDisclaimers
+          "
+        ></small>
       </div>
+      <div class="col-md-4 offset-md-1 mt-md-5 mt-3">
+        <small
+          [innerHTML]="
+            config.calculator.disclaimers.defaultDisclaimers.rightDisclaimers
+          "
+        ></small>
+      </div>
+    </div>
+    <div class="c-calculator__footer border-top mt-3 pt-4">
+      <a
+        label="Edit calculation"
+        class="c-link"
+        href="{{ config.calculator.footer.buttons[0].url }}"
+        >{{ config.calculator.footer.buttons[0].label }}</a
+      ><a
+        href="{{ config.calculator.footer.buttons[1].url }}"
+        target="_self"
+        class="c-button c-button c-button__standard font-weight-bold mt-2"
+        >{{ config.calculator.footer.buttons[1].label }}</a
+      >
     </div>
   </div>
 </div>

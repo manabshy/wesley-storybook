@@ -120,15 +120,6 @@ export class InvestCalculatorComponent implements OnInit {
     });
   }
 
-  onInvestPerMonthChange(event: any) {
-    this.inputPerMonth = event.target.value;
-  }
-  onLumpSumChange(event: any) {
-    this.inputLumpsum = event.target.value;
-  }
-  onTermChange(event: any) {
-    this.inputTerm = event.target.value;
-  }
   getTotalContribution() {
     return this.contributionAmount * 12 * this.term + this.balanceAmount;
   }
