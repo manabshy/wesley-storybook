@@ -791,6 +791,107 @@
                   "
                 ></h3>
               </div>
+              <div class="target-results">
+                <div class="target-results__placeholder">
+                  <div
+                    class="d-flex flex-column h-100 align-items-center justify-content-start text-center p-4"
+                  >
+                    <div class="c-icon__container">
+                      <svg
+                        width="49px"
+                        height="48px"
+                        viewBox="0 0 49 48"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlnsXlink="http://www.w3.org/1999/xlink"
+                      >
+                        <g
+                          id="Asset-Artboard-Page"
+                          stroke="none"
+                          stroke-width="1"
+                          fill="none"
+                          fill-rule="evenodd"
+                        >
+                          <g
+                            id="01-Icon-data-unavailable"
+                            transform="translate(0.800000, 0.000000)"
+                          >
+                            <rect
+                              fill="none"
+                              x="0"
+                              y="0"
+                              width="48"
+                              height="48"
+                            ></rect>
+                            <polyline
+                              id="Rectangle"
+                              stroke="#1E2630"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              transform="translate(14.000000, 21.000000) scale(-1, 1) translate(-14.000000, -21.000000) "
+                              points="26.5 1.5 26.5 40.5 1.5 40.5"
+                            ></polyline>
+                            <g
+                              id="Foundations/Icons/Functional/Alert-Small/System"
+                              transform="translate(28.000000, 28.000000)"
+                            >
+                              <g
+                                id="Alert"
+                                transform="translate(0.000000, 1.000000)"
+                              >
+                                <path
+                                  d="M10.8849182,1.68134462 L19.2285545,17.5342536 C19.4857792,18.0229804 19.2981096,18.6276936 18.8093827,18.8849182 C18.665772,18.9605028 18.5059233,19 18.3436363,19 L1.65636371,19 C1.10407896,19 0.656363713,18.5522847 0.656363713,18 C0.656363713,17.837713 0.6958609,17.6778643 0.771445491,17.5342536 L9.11508178,1.68134462 C9.37230643,1.19261778 9.97701959,1.00494818 10.4657464,1.26217283 C10.6446248,1.35631936 10.7907717,1.50246622 10.8849182,1.68134462 Z"
+                                  id="Triangle"
+                                  fill="#FEBD11"
+                                ></path>
+                                <polygon
+                                  id="!"
+                                  fill="#FFFFFF"
+                                  points="11 13.5 9 13.5 9 7 11 7"
+                                ></polygon>
+                                <path
+                                  d="M9,16 C9,15.6705866 9.08571343,15.4215695 9.25714286,15.2529412 C9.42857229,15.0843129 9.6780936,15 10.0057143,15 C10.3219063,15 10.5666658,15.0862736 10.74,15.2588235 C10.9133342,15.4313734 11,15.6784298 11,16 C11,16.3098055 10.9123818,16.5539207 10.7371429,16.7323529 C10.5619039,16.9107852 10.3180968,17 10.0057143,17 C9.68571269,17 9.43809611,16.912746 9.26285714,16.7382353 C9.08761817,16.5637246 9,16.3176486 9,16 Z"
+                                  id="Path"
+                                  fill="#FFFFFF"
+                                ></path>
+                              </g>
+                            </g>
+                            <polyline
+                              id="Path-3"
+                              stroke="#1E2630"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              points="7.5 24.5 21.5 10.5 31.5 20.5 43.5 8.5"
+                            ></polyline>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                    <strong
+                      ><span
+                        class="d-block copy--shortform mt-4 mt-sm-0 mt-md-4 py-4--spacing"
+                        >{{
+                          config.serviceUnavailableContent
+                            .serviceUnavailableTitle
+                        }}</span
+                      ></strong
+                    >
+                    <div
+                      [innerHTML]="
+                        config.serviceUnavailableContent
+                          .serviceUnavailableSummary
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <small
+                  class="d-block mt-4 mb-2"
+                  [innerHTML]="
+                    config.calculator.disclaimers.defaultDisclaimers[0]
+                  "
+                ></small
+                ><small class="d-block mt-4 mb-2"></small>
+              </div>
 
               <div class="target-results" *ngIf="contributionAmount > 0">
                 <div
