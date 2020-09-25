@@ -1,0 +1,10 @@
+<ul class="row mt-1">
+  <li
+    class="col-sm-4 col-md-12"
+    *ngFor="let tab of tabs"
+    (click)="selectTab(tab)"
+    [class.react-tabs__tab--selected]="tab.active"
+  >
+    <ng-container *ngTemplateOutlet="tab.content"></ng-container>
+  </li>
+</ul>

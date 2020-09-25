@@ -1,4 +1,4 @@
-import { NgModule, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   ConfigService,
   Config,
@@ -12,12 +12,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { ViewportScroller } from '@angular/common';
+
 @Component({
   selector: 'wes-invest-calculator',
   templateUrl: './invest-calculator.component.html',
   styleUrls: ['./invest-calculator.component.scss'],
 })
-export class InvestCalculatorComponent implements OnInit {
+export class InvestCalculatorComponent {
   config: Config;
   showEditCalculations = true;
   showResults = false;
@@ -158,10 +159,10 @@ export class InvestCalculatorComponent implements OnInit {
 
   getTotalContribution() {
     return (
-      this.contributionAmount * 12 * this.term + parseInt(this.balanceAmount)
+      this.contributionAmount * 12 * this.term +
+      parseInt(this.balanceAmount.toString())
     );
   }
-  ngOnInit(): void {}
 
   onSubmit() {
     this.showResults = true;

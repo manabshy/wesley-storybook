@@ -871,30 +871,17 @@
             attr.data-gtm-id=" {{
               config.calculator.budget.results.graphs.dataGtmId
             }}"
-            data-gtm-vis-first-on-screen-10182176_63="49428"
-            data-gtm-vis-total-visible-time-10182176_63="100"
-            data-gtm-vis-has-fired-10182176_63="1"
             [innerHTML]="
               config.calculator.budget.results.graphs.summary.sentence
             "
           ></p>
-          <ul class="row mt-1" role="tablist">
-            <li
-              class="col-sm-4 col-md-12"
-              role="tab"
-              id="react-tabs-6"
-              aria-selected="false"
-              aria-disabled="false"
-              aria-controls="react-tabs-7"
-            >
-              <div
+          <wes-tabs>
+            <wes-tab>
+              <button
                 class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
                 attr.data-gtm-class="{{
                   config.calculator.budget.results.graphs.dataGtmClass
                 }}"
-                data-gtm-vis-first-on-screen-10182176_61="49319"
-                data-gtm-vis-total-visible-time-10182176_61="100"
-                data-gtm-vis-has-fired-10182176_61="1"
                 (click)="selectGraphLine('high')"
               >
                 <span
@@ -905,24 +892,14 @@
                 <h3 class="m-0 ml-2" style="font-size: 24px;">
                   {{ prefix }}{{ high | number: '1.0-3' }}
                 </h3>
-              </div>
-            </li>
-            <li
-              class="col-sm-4 col-md-12"
-              role="tab"
-              id="react-tabs-8"
-              aria-selected="false"
-              aria-disabled="false"
-              aria-controls="react-tabs-9"
-            >
-              <div
+              </button>
+            </wes-tab>
+            <wes-tab>
+              <button
                 class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
                 attr.data-gtm-class="{{
                   config.calculator.budget.results.graphs.dataGtmClass
                 }}"
-                data-gtm-vis-first-on-screen-10182176_61="49328"
-                data-gtm-vis-total-visible-time-10182176_61="100"
-                data-gtm-vis-has-fired-10182176_61="1"
                 (click)="selectGraphLine('medium')"
               >
                 <span
@@ -933,31 +910,18 @@
                 <h3 class="m-0 ml-2" style="font-size: 24px;">
                   {{ prefix }}{{ medium | number: '1.0-3' }}
                 </h3>
-              </div>
-            </li>
-            <li
-              class="col-sm-4 col-md-12 react-tabs__tab--selected"
-              role="tab"
-              id="react-tabs-10"
-              aria-selected="true"
-              aria-disabled="false"
-              aria-controls="react-tabs-11"
-              tabindex="0"
-            >
-              <div
+              </button>
+            </wes-tab>
+            <wes-tab>
+              <button
+                #tabButton
+                wesReactTabButton
                 class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
                 attr.data-gtm-class="{{
                   config.calculator.budget.results.graphs.dataGtmClass
                 }}"
-                data-gtm-vis-first-on-screen-10182176_61="49333"
-                data-gtm-vis-total-visible-time-10182176_61="100"
-                data-gtm-vis-has-fired-10182176_61="1"
                 (click)="selectGraphLine('low')"
               >
-                <!--  <button
-                      class="wes-button wes-button-primary"
-
-                    >-->
                 <span
                   class="text-capitalize d-sm-block"
                   style="font-size: 12px;"
@@ -966,8 +930,69 @@
                 <h3 class="m-0 ml-2" style="font-size: 24px;">
                   {{ prefix }}{{ low | number: '1.0-3' }}
                 </h3>
-                <!--</button>-->
-              </div>
+              </button>
+            </wes-tab>
+          </wes-tabs>
+          <ul class="row mt-1">
+            <li class="col-sm-4 col-md-12">
+              <button
+                #tabButton
+                wesReactTabButton
+                class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
+                attr.data-gtm-class="{{
+                  config.calculator.budget.results.graphs.dataGtmClass
+                }}"
+                (click)="selectGraphLine('high')"
+              >
+                <span
+                  class="text-capitalize d-sm-block"
+                  style="font-size: 12px;"
+                  >High</span
+                >
+                <h3 class="m-0 ml-2" style="font-size: 24px;">
+                  {{ prefix }}{{ high | number: '1.0-3' }}
+                </h3>
+              </button>
+            </li>
+            <li class="col-sm-4 col-md-12">
+              <button
+                #tabButton
+                wesReactTabButton
+                class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
+                attr.data-gtm-class="{{
+                  config.calculator.budget.results.graphs.dataGtmClass
+                }}"
+                (click)="selectGraphLine('medium')"
+              >
+                <span
+                  class="text-capitalize d-sm-block"
+                  style="font-size: 12px;"
+                  >Medium</span
+                >
+                <h3 class="m-0 ml-2" style="font-size: 24px;">
+                  {{ prefix }}{{ medium | number: '1.0-3' }}
+                </h3>
+              </button>
+            </li>
+            <li class="col-sm-4 col-md-12 react-tabs__tab--selected">
+              <button
+                #tabButton
+                wesReactTabButton
+                class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
+                attr.data-gtm-class="{{
+                  config.calculator.budget.results.graphs.dataGtmClass
+                }}"
+                (click)="selectGraphLine('low')"
+              >
+                <span
+                  class="text-capitalize d-sm-block"
+                  style="font-size: 12px;"
+                  >Low</span
+                >
+                <h3 class="m-0 ml-2" style="font-size: 24px;">
+                  {{ prefix }}{{ low | number: '1.0-3' }}
+                </h3>
+              </button>
             </li>
           </ul>
         </div>

@@ -4,6 +4,8 @@ import { InvestCalculatorComponent } from './invest-calculator/invest-calculator
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { TabsComponent } from './components/tabs/tabs.component';
+import { TabComponent } from './components/tabs/tab.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -13,7 +15,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
       echarts,
     }),
   ],
-  declarations: [InvestCalculatorComponent],
+  declarations: [InvestCalculatorComponent, TabsComponent, TabComponent],
   exports: [InvestCalculatorComponent],
 })
 export class JustInvestCalculatorFeaturePageModule {}
