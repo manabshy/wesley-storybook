@@ -11,6 +11,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ViewportScroller } from '@angular/common';
 @Component({
   selector: 'wes-invest-calculator',
   templateUrl: './invest-calculator.component.html',
@@ -18,6 +19,10 @@ import {
 })
 export class InvestCalculatorComponent implements OnInit {
   config: Config;
+  showEditCalculations = true;
+  showResults = false;
+  showError = false;
+
   inputPerMonth = 0;
   inputLumpsum = 0;
   inputTerm = 0;
@@ -111,11 +116,12 @@ export class InvestCalculatorComponent implements OnInit {
   constructor(
     private configService: ConfigService,
     private formBuilder: FormBuilder,
-    private budgetCalculatorFacade: BudgetCalculatorFacade
+    private budgetCalculatorFacade: BudgetCalculatorFacade,
+    private viewPortScroller: ViewportScroller
   ) {
     this.config = this.configService.content;
-    this.inputTerm = this.config.calculator.budget.sliders[2].value;
-    this.prefix = this.config.calculator.budget.sliders[0].prefix;
+    // this.inputTerm = this.config.calculator.budget.sliders[2].value;
+    // this.prefix = this.config.calculator.budget.sliders[0].prefix;
     this.calculatorForm = this.formBuilder.group({
       contributionAmount: [
         this.config.calculator.budget.initialValues.contributionAmount,
@@ -151,11 +157,17 @@ export class InvestCalculatorComponent implements OnInit {
   }
 
   getTotalContribution() {
-    return this.contributionAmount * 12 * this.term + this.balanceAmount;
+    return (
+      this.contributionAmount * 12 * this.term + parseInt(this.balanceAmount)
+    );
   }
   ngOnInit(): void {}
 
   onSubmit() {
+    this.showResults = true;
+    this.showEditCalculations = false;
+    this.viewPortScroller.scrollToPosition([0, 0]);
+
     // Process data here
     //this.calculatorForm.reset();
     console.log(
@@ -175,25 +187,39 @@ export class InvestCalculatorComponent implements OnInit {
         this.calculatorForm.get('riskCode').value,
         this.calculatorForm.get('term').value
       )
-      .subscribe((res) => {
-        this.calculatorResults = res;
-        this.graphData = this.formatLineChartData(res.results);
-        console.log(this.graphData);
-        this.options.series = this.getSeries(this.graphData.series);
-        this.options.xAxis.data = this.convertXaxisValues(this.graphData.terms);
-        this.options = { ...this.options };
-        console.log(this.options);
-        this.totalContribution = this.getTotalContribution();
-        this.low = Math.max.apply(Math, this.options.series[0].data);
-        this.medium = Math.max.apply(Math, this.options.series[1].data);
-        this.high = Math.max.apply(Math, this.options.series[2].data);
-      });
+      .subscribe(
+        (res) => {
+          this.calculatorResults = res;
+          this.graphData = this.formatLineChartData(res.results);
+          console.log(this.graphData);
+          this.options.series = this.getSeries(this.graphData.series);
+          this.options.xAxis.data = this.convertXaxisValues(
+            this.graphData.terms
+          );
+          this.options = { ...this.options };
+          console.log(this.options);
+          this.totalContribution = this.getTotalContribution();
+          this.low = Math.max.apply(Math, this.options.series[0].data);
+          this.medium = Math.max.apply(Math, this.options.series[1].data);
+          this.high = Math.max.apply(Math, this.options.series[2].data);
+        },
+        (error) => {
+          this.showError = true;
+        }
+      );
+  }
+
+  isSubmitButtonActive() {
+    return (
+      this.calculatorForm.valid && this.contributionAmountControl.value > 0
+    );
   }
 
   selectGraphLine(graphLine: 'high' | 'medium' | 'low') {
     this.options = { ...this.options, color: this.getColors(graphLine) };
     console.log(this.options.color);
   }
+
   getSeries(series) {
     return series.map((dataSet) => {
       const newArray = [];
@@ -210,6 +236,7 @@ export class InvestCalculatorComponent implements OnInit {
       };
     });
   }
+
   convertXaxisValues = (values) => {
     let year = 1;
     const newXAxisValues = [];
@@ -226,6 +253,7 @@ export class InvestCalculatorComponent implements OnInit {
     }
     return [this.charcoal, this.gold, this.gold];
   }
+
   formatLineChartData = (array) => {
     const values = array.map((newArray) =>
       newArray.terms.map((item) => item.value)
@@ -238,4 +266,11 @@ export class InvestCalculatorComponent implements OnInit {
       series: seriesData,
     };
   };
+
+  onEditCalculationClick() {
+    this.showEditCalculations = true;
+    this.showResults = false;
+    this.showError = false;
+    this.viewPortScroller.scrollToPosition([0, 0]);
+  }
 }

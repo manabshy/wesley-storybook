@@ -38,7 +38,12 @@
       {{ config.calculator.budget.header.title }}
     </h3>
   </div>
-  <form [formGroup]="calculatorForm" (ngSubmit)="onSubmit()">
+
+  <form
+    *ngIf="showEditCalculations"
+    [formGroup]="calculatorForm"
+    (ngSubmit)="onSubmit()"
+  >
     <div class="module__inner-container">
       <div class="row px-sm-2">
         <div class="col-md-8 offset-md-2">
@@ -621,7 +626,7 @@
           target="_self"
           class="c-button c-button__standard font-weight-bold mt-2"
           attr.data-gtm-id="{{ config.calculator.footer.buttons[3].dataGtmId }}"
-          [disabled]="!calculatorForm.valid"
+          [disabled]="!isSubmitButtonActive()"
         >
           {{ config.calculator.footer.buttons[3].label }}
         </button>
@@ -629,7 +634,7 @@
     </div>
   </form>
 
-  <div class="module__inner-container">
+  <div *ngIf="showResults" class="module__inner-container">
     <div class="px-sm-2">
       <div
         class="pb-4"
@@ -833,7 +838,7 @@
           </div>
         </li>
       </ul>
-      <div class="row" data-tabs="true">
+      <div *ngIf="!showError" class="row" data-tabs="true">
         <div class="col-md-8">
           <div
             class="react-tabs__tab-panel"
@@ -968,11 +973,8 @@
         </div>
       </div>
     </div>
-    <!--
-    show this on error
 
-    -->
-    <div class="px-sm-2">
+    <div *ngIf="showError" class="px-sm-2">
       <div class="bg--grey">
         <div class="px-sm-2">
           <div class="mt-md-5 mt-3">
@@ -1062,9 +1064,6 @@
       </div>
     </div>
 
-    <!--
-    end show error
--->
     <div class="row px-sm-2">
       <div class="col-md-7 mt-md-5 mt-3">
         <small
@@ -1082,12 +1081,10 @@
       </div>
     </div>
     <div class="c-calculator__footer border-top mt-3 pt-4">
+      <button class="c-link" (click)="onEditCalculationClick()">
+        {{ config.calculator.footer.buttons[0].label }}
+      </button>
       <a
-        label="Edit calculation"
-        class="c-link"
-        href="{{ config.calculator.footer.buttons[0].url }}"
-        >{{ config.calculator.footer.buttons[0].label }}</a
-      ><a
         href="{{ config.calculator.footer.buttons[1].url }}"
         target="_self"
         class="c-button c-button c-button__standard font-weight-bold mt-2"
