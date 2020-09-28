@@ -933,68 +933,6 @@
               </button>
             </wes-tab>
           </wes-tabs>
-          <ul class="row mt-1">
-            <li class="col-sm-4 col-md-12">
-              <button
-                #tabButton
-                wesReactTabButton
-                class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
-                attr.data-gtm-class="{{
-                  config.calculator.budget.results.graphs.dataGtmClass
-                }}"
-                (click)="selectGraphLine('high')"
-              >
-                <span
-                  class="text-capitalize d-sm-block"
-                  style="font-size: 12px;"
-                  >High</span
-                >
-                <h3 class="m-0 ml-2" style="font-size: 24px;">
-                  {{ prefix }}{{ high | number: '1.0-3' }}
-                </h3>
-              </button>
-            </li>
-            <li class="col-sm-4 col-md-12">
-              <button
-                #tabButton
-                wesReactTabButton
-                class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
-                attr.data-gtm-class="{{
-                  config.calculator.budget.results.graphs.dataGtmClass
-                }}"
-                (click)="selectGraphLine('medium')"
-              >
-                <span
-                  class="text-capitalize d-sm-block"
-                  style="font-size: 12px;"
-                  >Medium</span
-                >
-                <h3 class="m-0 ml-2" style="font-size: 24px;">
-                  {{ prefix }}{{ medium | number: '1.0-3' }}
-                </h3>
-              </button>
-            </li>
-            <li class="col-sm-4 col-md-12 react-tabs__tab--selected">
-              <button
-                #tabButton
-                wesReactTabButton
-                class="c-button c-button__standard mb-2 d-md-flex justify-content-center align-items-center w-100 text-center"
-                attr.data-gtm-class="{{
-                  config.calculator.budget.results.graphs.dataGtmClass
-                }}"
-                (click)="selectGraphLine('low')"
-              >
-                <span
-                  class="text-capitalize d-sm-block"
-                  style="font-size: 12px;"
-                  >Low</span
-                >
-                <h3 class="m-0 ml-2" style="font-size: 24px;">
-                  {{ prefix }}{{ low | number: '1.0-3' }}
-                </h3>
-              </button>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
