@@ -977,7 +977,11 @@
     },
     "just-invest-calculator": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "apps/just-invest-calculator",
       "sourceRoot": "apps/just-invest-calculator/src",
       "prefix": "wesleyan-frontend",
@@ -995,7 +999,7 @@
               "apps/just-invest-calculator/src/favicon.ico",
               "apps/just-invest-calculator/src/assets"
             ],
-            "styles": ["libs/shared/ui-styles/src/index.scss"],
+            "styles": ["libs/shared/ui-styles/src/legacy.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["libs/shared/ui-styles/src/lib"]
             },

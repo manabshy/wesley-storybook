@@ -11,4 +11,4 @@
  * Use font-face mixin to
  * load in Bliss Bold font
  */
-// @include font-face('Bliss Bold', '#{$fontPath}/Bliss2-Bold', bold);
+@include font-face('Bliss Bold', '#{$fontPath}/Bliss2-Bold', bold);

@@ -16,7 +16,6 @@ import { ViewportScroller } from '@angular/common';
 @Component({
   selector: 'wes-invest-calculator',
   templateUrl: './invest-calculator.component.html',
-  styleUrls: ['./invest-calculator.component.scss'],
 })
 export class InvestCalculatorComponent {
   config: Config;

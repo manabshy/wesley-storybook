@@ -1,0 +1,13 @@
+.c-icon {
+  svg {
+    // SVGInline duplicates classes as we had to turn off the class suffix when converting to inline SVG markup
+    // Add overrides to zero out any conflicting styles (e.g doubled up margins etc)
+    margin: 0 !important;
+    pointer-events: none;
+  }
+}
+
+.c-icon--padding {
+  padding-top: 50px;
+  text-align: center;
+}

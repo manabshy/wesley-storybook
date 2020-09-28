@@ -266,6 +266,9 @@ body {
 			border-bottom: 1px solid #dee2e6;
 			border-top: none;
 		}
+		.table {
+			margin-bottom: 0px;
+		}
 
 		#MyAccountMiniFooter,
 		#divManagePreferences {
@@ -327,7 +330,7 @@ body {
 
 		.div-gold-outline-with-arrow:after,
 		.div-gold-outline-with-arrow:before {
-			right: 95%;
+			right: 96%;
 			top: 70%;
 			border: solid transparent;
 			content: " ";
@@ -353,16 +356,21 @@ body {
 
 		.userIdChangeBox {
 			display: -webkit-inline-box;
+			display: -ms-inline-flexbox;
 			padding-top: 15px;
 		}
 
 		.input-validation-error + .c-icon-error {
-			margin: initial;
+			margin: 0;
 			top: 20px;
 			right: 20px;
 			left: auto;
 			transform: translateX(50%);
 			-webkit-transform: translateX(50%);
+
+			@media all and (-ms-high-contrast: none) {
+				top: 14px;
+			}
 		}
 
 		@include media-breakpoint-down(md) {
@@ -462,6 +470,9 @@ body {
 	}
 
 	.input-validation-error + .c-icon-error + .c-icon-password {
+		margin-right: 20px;
+	}
+	.input-validation-error + .c-icon-error + .password-hidden + .c-icon-password {
 		margin-right: 20px;
 	}
 }

@@ -10,34 +10,30 @@
 // @import './lib/abstract/grid';
 
 @import './lib/abstract/index';
+
 /*------------------------------------*\
     Legacy - here only for the header/footer
 \*------------------------------------*/
-// @import './lib/legacy-scss/abstracts/mixins';
-// @import './lib/legacy-scss/abstracts/variables';
-@import './lib/legacy-scss/base/animation';
-@import './lib/legacy-scss/base/text';
-@import './lib/legacy-scss/base/global-classes';
-@import './lib/legacy-scss/base/links';
-// @import './lib/legacy-scss/base/lists';
-@import './lib/legacy-scss/base/text';
-@import './lib/legacy-scss/base/utilities';
-@import './lib/legacy-scss/base/icon';
-@import './lib/legacy-scss/base/numbers';
+@import './base/animation.legacy';
+@import './base/text.legacy';
+@import './base/global-classes.legacy';
+@import './base/links.legacy';
+@import './base/utilities.legacy';
+@import './base/icon.legacy';
+@import './base/numbers.legacy';
 
-@import './lib/legacy-scss/components/buttons';
-// @import './lib/legacy-scss/components/footer';
-@import './lib/legacy-scss/components/header';
-@import './lib/legacy-scss/components/headline';
-@import './lib/legacy-scss/components/icons';
-
-@import './lib/legacy-scss/components/messaging';
-@import './lib/legacy-scss/components/navigation';
-@import './lib/legacy-scss/components/page-header';
-@import './lib/legacy-scss/components/triangle';
+@import './components/buttons.legacy';
+@import './components/header.legacy';
+@import './components/headline.legacy';
+@import './components/icons.legacy';
+@import './components/messaging.legacy';
+@import './components/navigation.legacy';
+@import './components/page-header.legacy';
+@import './components/triangle.legacy';
 /*------------------------------------*\
     Legacy - here only for the header END
 \*------------------------------------*/
+
 @import '~@angular/cdk/a11y-prebuilt.css';
 @import '~@angular/cdk/overlay-prebuilt.css';
 @import './lib/global';

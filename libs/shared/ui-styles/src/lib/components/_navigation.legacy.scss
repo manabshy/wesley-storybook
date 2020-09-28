@@ -1,0 +1,38 @@
+/**
+ * Navigation
+ */
+
+.c-navigation {
+  &--footer-nav {
+    li {
+      @include rem(margin, 0 0 22px);
+    }
+  }
+  &--social-media {
+    @include media-breakpoint-only(xs) {
+      margin-top: 2rem;
+    }
+
+    ul {
+      white-space: nowrap;
+    }
+
+    li {
+      display: inline-block;
+      @include rem(margin, 0 10px 10px 0);
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    a {
+      display: block;
+      width: 36px;
+      height: 36px;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
