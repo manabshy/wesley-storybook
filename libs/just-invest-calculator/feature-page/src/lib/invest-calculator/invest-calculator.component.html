@@ -127,6 +127,33 @@
                             contributionAmountControl.invalid
                         }"
                       />
+                      <span
+                        *ngIf="contributionAmountControl.invalid"
+                        class="SVGInline c-icon c-icon-error"
+                        ><svg
+                          class="SVGInline c-icon c-icon-error"
+                          viewBox="0 0 26 26"
+                          xmlns="http://www.w3.org/2000/svg"
+                          focusable="false"
+                        >
+                          <g fill="none" fill-rule="evenodd">
+                            <circle
+                              fill="#D0021B"
+                              cx="13"
+                              cy="13"
+                              r="13"
+                            ></circle>
+                            <text
+                              font-family="OpenSans-Bold, Open Sans"
+                              font-size="17"
+                              font-weight="bold"
+                              fill="#FFF"
+                            >
+                              <tspan x="10.568" y="19">!</tspan>
+                            </text>
+                          </g>
+                        </svg></span
+                      >
                     </div>
                     <span
                       *ngIf="contributionAmountControl.invalid"
@@ -320,6 +347,33 @@
                           'input-validation-error': balanceAmountControl.invalid
                         }"
                       />
+                      <span
+                        *ngIf="balanceAmountControl.invalid"
+                        class="SVGInline c-icon c-icon-error"
+                        ><svg
+                          class="SVGInline c-icon c-icon-error"
+                          viewBox="0 0 26 26"
+                          xmlns="http://www.w3.org/2000/svg"
+                          focusable="false"
+                        >
+                          <g fill="none" fill-rule="evenodd">
+                            <circle
+                              fill="#D0021B"
+                              cx="13"
+                              cy="13"
+                              r="13"
+                            ></circle>
+                            <text
+                              font-family="OpenSans-Bold, Open Sans"
+                              font-size="17"
+                              font-weight="bold"
+                              fill="#FFF"
+                            >
+                              <tspan x="10.568" y="19">!</tspan>
+                            </text>
+                          </g>
+                        </svg></span
+                      >
                     </div>
                     <span
                       *ngIf="balanceAmountControl.invalid"
@@ -406,9 +460,36 @@
                               'input-validation-error': termControl.invalid
                             }"
                           />
+                          <span
+                            *ngIf="termControl.invalid"
+                            class="SVGInline c-icon c-icon-error"
+                            ><svg
+                              class="SVGInline c-icon c-icon-error"
+                              viewBox="0 0 26 26"
+                              xmlns="http://www.w3.org/2000/svg"
+                              focusable="false"
+                            >
+                              <g fill="none" fill-rule="evenodd">
+                                <circle
+                                  fill="#D0021B"
+                                  cx="13"
+                                  cy="13"
+                                  r="13"
+                                ></circle>
+                                <text
+                                  font-family="OpenSans-Bold, Open Sans"
+                                  font-size="17"
+                                  font-weight="bold"
+                                  fill="#FFF"
+                                >
+                                  <tspan x="10.568" y="19">!</tspan>
+                                </text>
+                              </g>
+                            </svg></span
+                          >
                         </div>
                         <span
-                          class="input-group-text c-slider__text-input c-slider__text-input__suffix pl-2 false"
+                          class="input-group-text c-slider__text-input c-slider__text-input__suffix pl-4 false"
                           >{{
                             config.calculator.budget.sliders[2].suffix
                           }}</span
