@@ -66,7 +66,13 @@
                     min="{{ config.calculator.budget.sliders[0].inputMin }}"
                     max="{{ config.calculator.budget.sliders[0].inputMax }}"
                     [value]="contributionAmountControl.value"
-                    style="background-size: 0px 100%;"
+                    [style.background-size]="
+                      handleBackgroundColour(
+                        contributionAmountControl.value,
+                        config.calculator.budget.sliders[0].inputMin,
+                        config.calculator.budget.sliders[0].inputMax
+                      )
+                    "
                   />
                   <label for="contributionAmount" class="screenreader-hidden">{{
                     config.calculator.budget.sliders[0].name
@@ -257,7 +263,13 @@
                     min="{{ config.calculator.budget.sliders[1].inputMin }}"
                     max="{{ config.calculator.budget.sliders[1].inputMax }}"
                     [value]="balanceAmountControl.value"
-                    style="background-size: 0px 100%;"
+                    [style.background-size]="
+                      handleBackgroundColour(
+                        balanceAmountControl.value,
+                        config.calculator.budget.sliders[1].inputMin,
+                        config.calculator.budget.sliders[1].inputMax
+                      )
+                    "
                   />
                   <label for="balanceAmount" class="screenreader-hidden">{{
                     config.calculator.budget.sliders[1].name
@@ -344,7 +356,13 @@
                     min="{{ config.calculator.budget.sliders[2].inputMin }}"
                     max="{{ config.calculator.budget.sliders[2].inputMax }}"
                     [value]="termControl.value"
-                    style="background-size: 0px 100%;"
+                    [style.background-size]="
+                      handleBackgroundColour(
+                        termControl.value,
+                        config.calculator.budget.sliders[2].inputMin,
+                        config.calculator.budget.sliders[2].inputMax
+                      )
+                    "
                   />
                   <label for="term" class="screenreader-hidden">{{
                     config.calculator.budget.sliders[2].name
@@ -647,9 +665,6 @@
             attr.data-gtm-class="{{
               config.calculator.budget.results.dataGtmClass
             }}"
-            data-gtm-vis-first-on-screen-10182176_62="49478"
-            data-gtm-vis-total-visible-time-10182176_62="100"
-            data-gtm-vis-has-fired-10182176_62="1"
           >
             <small>
               {{ config.calculator.budget.results.params[0].text }}
@@ -670,9 +685,6 @@
             attr.data-gtm-class="{{
               config.calculator.budget.results.dataGtmClass
             }}"
-            data-gtm-vis-first-on-screen-10182176_62="49484"
-            data-gtm-vis-total-visible-time-10182176_62="100"
-            data-gtm-vis-has-fired-10182176_62="1"
           >
             <small>
               {{ config.calculator.budget.results.params[1].text }}

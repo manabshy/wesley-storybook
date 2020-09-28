@@ -273,4 +273,18 @@ export class InvestCalculatorComponent {
     this.showError = false;
     this.viewPortScroller.scrollToPosition([0, 0]);
   }
+
+  handleBackgroundColour(value, min: number, max: number) {
+    let backgroundSize: string;
+
+    if (value <= min || value === '') {
+      backgroundSize = '0 100%';
+    } else if (value <= max) {
+      backgroundSize = `${((value - min) * 100) / (max - min)}% 80%`;
+    } else {
+      backgroundSize = '100% 100%';
+    }
+
+    return backgroundSize;
+  }
 }
