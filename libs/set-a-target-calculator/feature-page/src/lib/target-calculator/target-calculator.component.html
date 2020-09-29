@@ -869,7 +869,7 @@
               <div
                 class="target-results__placeholder"
                 style="min-height: 226px; height: 30px;"
-                *ngIf="contributionAmount == 0"
+                *ngIf="!showResults"
               >
                 <h3
                   [innerHTML]="
@@ -877,12 +877,9 @@
                   "
                 ></h3>
               </div>
-              <!--
-                  Show this section on error
-              -->
 
-              <div class="target-results">
-                <div class="target-results__placeholder">
+              <div class="target-results" *ngIf="showResults">
+                <div *ngIf="showError" class="target-results__placeholder">
                   <div
                     class="d-flex flex-column h-100 align-items-center justify-content-start text-center p-4"
                   >
@@ -974,92 +971,84 @@
                     ></div>
                   </div>
                 </div>
-                <small
-                  class="d-block mt-4 mb-2"
-                  [innerHTML]="
-                    config.calculator.disclaimers.defaultDisclaimers[0]
-                  "
-                ></small
-                ><small class="d-block mt-4 mb-2"></small>
-              </div>
-
-              <!--
-                  End error section
-              -->
-              <div class="target-results" *ngIf="contributionAmount > 0">
-                <div
-                  class="target-results__box--gold"
-                  attr.data-gtm-id="{{
-                    config.calculator.target.results.labels.dataGtmId
-                  }}"
-                >
-                  <div class="row pt-sm-3">
-                    <div
-                      class="col-sm-6 col-md-12 border-sm-right border-white border-md-right-0 d-flex flex-column justify-content-center"
-                      attr.data-gtm-id=" {{
-                        config.calculator.target.results.labels.gtm.target
-                          .dataGtmId
-                      }}"
-                    >
-                      <strong
-                        ><span class="d-block copy--shortform">
-                          {{
-                            config.calculator.target.results.labels.target
-                          }} </span
-                        ><span class="number number--md text-semi-bold"
-                          >{{ prefix
-                          }}{{ targetAmount | number: '1.0-0' }}</span
-                        ></strong
-                      ><span
-                        class="d-block copy copy--longform text-semi-bold"
-                        >{{
-                          yearFormatter(
-                            config.calculator.target.results.labels.term
-                          )
-                        }}</span
+                <ng-container *ngIf="!showError">
+                  <div
+                    class="target-results__box--gold"
+                    [attr.data-gtm-id]="
+                      config.calculator.target.results.labels.dataGtmId
+                    "
+                  >
+                    <div class="row pt-sm-3">
+                      <div
+                        class="col-sm-6 col-md-12 border-sm-right border-white border-md-right-0 d-flex flex-column justify-content-center"
+                        [attr.data-gtm-id]="
+                          config.calculator.target.results.labels.gtm.target
+                            .dataGtmId
+                        "
                       >
-                    </div>
-                    <div class="col-sm-6 col-md-12">
-                      <strong
+                        <strong
+                          ><span class="d-block copy--shortform">
+                            {{
+                              config.calculator.target.results.labels.target
+                            }} </span
+                          ><span class="number number--md text-semi-bold"
+                            >{{ prefix
+                            }}{{
+                              targetAmountControl.value | number: '1.0-0'
+                            }}</span
+                          ></strong
                         ><span
-                          class="d-block copy--shortform mt-4 mt-sm-0 mt-md-4"
-                          *ngIf="frequency === 'MONTHLY'"
+                          class="d-block copy copy--longform text-semi-bold"
                           >{{
-                            config.calculator.target.results.labels
-                              .monthlyContributionLabel
+                            yearFormatter(
+                              config.calculator.target.results.labels.term,
+                              termControl.value
+                            )
                           }}</span
                         >
-                        <span
-                          class="d-block copy--shortform mt-4 mt-sm-0 mt-md-4"
-                          *ngIf="frequency === 'ANNUALLY'"
-                          >{{
-                            config.calculator.target.results.labels
-                              .lumpSumContributionLabel
-                          }}</span
-                        > </strong
-                      ><span
-                        class="number number--xl"
-                        attr.data-gtm-id="{{
-                          config.calculator.target.results.labels.gtm.projection
-                            .dataGtmId
-                        }}"
-                        attr.data-gtm-class="{{
-                          config.calculator.target.results.labels.gtm.projection
-                            .dataGtmClass
-                        }}"
-                        >{{ prefix
-                        }}{{ contributionAmount | number: '1.0-0' }}</span
-                      >
+                      </div>
+                      <div class="col-sm-6 col-md-12">
+                        <strong
+                          ><span
+                            class="d-block copy--shortform mt-4 mt-sm-0 mt-md-4"
+                            *ngIf="frequencyControl.value === 'MONTHLY'"
+                            >{{
+                              config.calculator.target.results.labels
+                                .monthlyContributionLabel
+                            }}</span
+                          >
+                          <span
+                            class="d-block copy--shortform mt-4 mt-sm-0 mt-md-4"
+                            *ngIf="frequencyControl.value === 'ANNUALLY'"
+                            >{{
+                              config.calculator.target.results.labels
+                                .lumpSumContributionLabel
+                            }}</span
+                          > </strong
+                        ><span
+                          class="number number--xl"
+                          [attr.data-gtm-id]="
+                            config.calculator.target.results.labels.gtm
+                              .projection.dataGtmId
+                          "
+                          [attr.data-gtm-class]="
+                            config.calculator.target.results.labels.gtm
+                              .projection.dataGtmClass
+                          "
+                          >{{ prefix
+                          }}{{ contributionAmount | number: '1.0-0' }}</span
+                        >
+                      </div>
                     </div>
                   </div>
-                </div>
-                <small
-                  class="d-block mt-4 mb-2"
-                  [innerHTML]="
-                    config.calculator.disclaimers.defaultDisclaimers[0]
-                  "
-                ></small
-                ><small class="d-block mt-4 mb-2"></small>
+                  <small
+                    class="d-block mt-4 mb-2"
+                    [innerHTML]="
+                      config.calculator.disclaimers.defaultDisclaimers[0]
+                    "
+                  ></small
+                  ><small class="d-block mt-4 mb-2"></small>
+                </ng-container>
               </div>
             </div>
           </div>
@@ -1069,7 +1058,7 @@
             <button
               target="_self"
               class="c-button c-button__standard font-weight-bold mt-2"
-              [attr.data-gtm-id]="config.calculator.footer.buttons[2].dataGtmId"
+              [attr.data-gtm-i]="config.calculator.footer.buttons[2].dataGtmId"
               [disabled]="calculatorForm.invalid"
             >
               {{ config.calculator.footer.buttons[2].label }}

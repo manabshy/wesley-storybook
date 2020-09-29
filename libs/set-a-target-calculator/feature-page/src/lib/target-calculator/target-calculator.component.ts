@@ -22,16 +22,9 @@ import {
 })
 export class TargetCalculatorComponent implements OnInit {
   config: Config;
-  inputTarget = 0;
-  inputTerm = 0;
-  prefix = '';
-  balanceAmount = 0;
   contributionAmount = 0;
-  targetAmount = 0;
-  frequency = '';
-  riskCode = '0';
-  term = 5;
-  contributions = 0;
+  term = 0;
+  prefix = '';
   regularCalculatorResults: TargetRegularCalculatorResponse;
   oneOffCalculatorResults: TargetOneOffCalculatorResponse;
   calculatorForm: FormGroup;
@@ -39,6 +32,8 @@ export class TargetCalculatorComponent implements OnInit {
   termControl: AbstractControl;
   riskCodeControl: AbstractControl;
   frequencyControl: AbstractControl;
+  showError = false;
+  showResults = false;
 
   constructor(
     private configService: ConfigService,
@@ -47,7 +42,6 @@ export class TargetCalculatorComponent implements OnInit {
     private targetOneOffCalculatorFacade: TargetOneOffCalculatorFacade
   ) {
     this.config = this.configService.content;
-    this.inputTerm = this.config.calculator.target.sliders[1].value;
     this.prefix = this.config.calculator.target.sliders[0].prefix;
     this.calculatorForm = this.formBuilder.group({
       targetAmount: [
@@ -76,65 +70,51 @@ export class TargetCalculatorComponent implements OnInit {
     this.frequencyControl = this.calculatorForm.get('frequency');
   }
 
-  onTargetChange(event: any) {
-    this.inputTarget = event.target.value;
-  }
-  onTermChange(event: any) {
-    this.inputTerm = event.target.value;
-  }
-
   ngOnInit(): void {}
 
   onSubmit() {
-    // Process data here
-    // this.calculatorForm.reset();
-    console.log(
-      'Your calculator data has been submitted',
-      this.calculatorForm.value
-    );
+    this.showResults = true;
 
-    this.riskCode = this.calculatorForm.get('riskCode').value;
-    this.targetAmount = this.calculatorForm.get('targetAmount').value;
-    this.term = this.calculatorForm.get('term').value;
-    this.frequency = this.calculatorForm.get('frequency').value;
+    const riskCode = this.calculatorForm.get('riskCode').value;
+    const targetAmount = this.calculatorForm.get('targetAmount').value;
+    const term = this.calculatorForm.get('term').value;
+    const frequency = this.calculatorForm.get('frequency').value;
 
-    if (this.frequency === 'MONTHLY') {
+    if (frequency === 'MONTHLY') {
       this.targetRegularCalculatorFacade
         .submitTargetRegularCalculator(
-          this.balanceAmount,
-          this.contributionAmount,
-          this.targetAmount,
-          this.frequency,
-          this.riskCode,
-          this.term
+          0,
+          0,
+          targetAmount,
+          frequency,
+          riskCode,
+          term
         )
         .subscribe((res) => {
           this.regularCalculatorResults = res;
           this.contributionAmount = res.contributions.amount;
-          console.log('Your regular calculator data response', res);
         });
     }
 
-    if (this.frequency === 'ANNUALLY') {
+    if (frequency === 'ANNUALLY') {
       this.targetOneOffCalculatorFacade
         .submitTargetOneOffCalculator(
-          this.balanceAmount,
-          this.contributionAmount,
-          this.targetAmount,
-          this.frequency,
-          this.riskCode,
-          this.term
+          0,
+          0,
+          targetAmount,
+          frequency,
+          riskCode,
+          term
         )
         .subscribe((res) => {
           this.oneOffCalculatorResults = res;
           this.contributionAmount = res.contribution;
-          console.log('Your one off calculator data response', res);
         });
     }
   }
 
-  yearFormatter(value: string) {
-    return value.replace('#termYears#', this.term.toString());
+  yearFormatter(value: string, year) {
+    return value.replace('#termYears#', year.toString());
   }
 
   handleBackgroundColour(value, min: number, max: number) {
