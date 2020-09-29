@@ -35,6 +35,7 @@ export class TargetCalculatorComponent implements OnInit {
   frequencyControl: AbstractControl;
   showError = false;
   showResults = false;
+  loading = false;
 
   constructor(
     private configService: ConfigService,
@@ -86,6 +87,7 @@ export class TargetCalculatorComponent implements OnInit {
   onSubmit() {
     this.showResults = true;
     this.showError = false;
+    this.loading = true;
 
     const riskCode = this.calculatorForm.get('riskCode').value;
     const targetAmount = this.calculatorForm.get('targetAmount').value;
@@ -109,6 +111,9 @@ export class TargetCalculatorComponent implements OnInit {
           },
           (error) => {
             this.showError = true;
+          },
+          () => {
+            this.loading = false;
           }
         );
     }
@@ -130,6 +135,9 @@ export class TargetCalculatorComponent implements OnInit {
           },
           (error) => {
             this.showError = true;
+          },
+          () => {
+            this.loading = false;
           }
         );
     }

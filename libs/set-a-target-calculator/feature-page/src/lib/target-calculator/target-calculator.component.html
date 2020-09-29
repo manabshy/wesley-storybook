@@ -12,7 +12,7 @@
       <div
         class="c-goal__header d-flex align-items-center pl-2 c-goal__header--lg"
       >
-        <span class="SVGInline c-icon c-icon-target-yellow"></span>
+        <span class="SVGInline c-icon c-icon-target-yellow">
           <svg
             class="SVGInline c-icon c-icon-target-yellow"
             viewBox="0 0 80 80"
@@ -1068,7 +1068,9 @@
                             }}
                           </span>
                         </strong>
+
                         <span
+                          *ngIf="!loading; else loadingContainer"
                           class="number number--xl"
                           [attr.data-gtm-id]="
                             config.calculator.target.results.labels.gtm
@@ -1081,6 +1083,11 @@
                         >
                           {{ prefix }}{{ contributionAmount | number: '1.0-0' }}
                         </span>
+                        <ng-template #loadingContainer>
+                          <span class="number number--xl">
+                            Loading ...
+                          </span>
+                        </ng-template>
                       </div>
                     </div>
                   </div>
