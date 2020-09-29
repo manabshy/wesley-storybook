@@ -15,7 +15,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { tap } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 @Component({
   selector: 'wes-target-calculator',
   templateUrl: './target-calculator.component.html',
@@ -104,6 +104,7 @@ export class TargetCalculatorComponent implements OnInit {
           riskCode,
           term
         )
+        .pipe(take(1))
         .subscribe(
           (res) => {
             this.regularCalculatorResults = res;
@@ -128,6 +129,7 @@ export class TargetCalculatorComponent implements OnInit {
           riskCode,
           term
         )
+        .pipe(take(1))
         .subscribe(
           (res) => {
             this.oneOffCalculatorResults = res;

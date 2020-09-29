@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ViewportScroller } from '@angular/common';
+import { take } from 'rxjs/operators';
+
 import {
   ConfigService,
   Config,
   BudgetCalculatorResponse,
 } from '@wesleyan-frontend/just-invest-calculator/data-access';
+
 import { BudgetCalculatorFacade } from '../core/services/invest-calculator.facade';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'wes-invest-calculator',
@@ -120,8 +118,7 @@ export class InvestCalculatorComponent {
     private viewPortScroller: ViewportScroller
   ) {
     this.config = this.configService.content;
-    // this.inputTerm = this.config.calculator.budget.sliders[2].value;
-    // this.prefix = this.config.calculator.budget.sliders[0].prefix;
+    this.prefix = this.config.calculator.budget.sliders[0].prefix;
     this.calculatorForm = this.formBuilder.group({
       contributionAmount: [
         this.config.calculator.budget.initialValues.contributionAmount,
@@ -182,6 +179,7 @@ export class InvestCalculatorComponent {
         this.calculatorForm.get('riskCode').value,
         this.calculatorForm.get('term').value
       )
+      .pipe(take(1))
       .subscribe(
         (res) => {
           this.calculatorResults = res;
