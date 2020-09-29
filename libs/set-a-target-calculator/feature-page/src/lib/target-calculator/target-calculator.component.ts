@@ -15,6 +15,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { tap } from 'rxjs/operators';
 @Component({
   selector: 'wes-target-calculator',
   templateUrl: './target-calculator.component.html',
@@ -70,10 +71,21 @@ export class TargetCalculatorComponent implements OnInit {
     this.frequencyControl = this.calculatorForm.get('frequency');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.frequencyControl.valueChanges
+      .pipe(
+        tap((v) => {
+          if (this.showResults) {
+            this.resetResults();
+          }
+        })
+      )
+      .subscribe();
+  }
 
   onSubmit() {
     this.showResults = true;
+    this.showError = false;
 
     const riskCode = this.calculatorForm.get('riskCode').value;
     const targetAmount = this.calculatorForm.get('targetAmount').value;
@@ -90,10 +102,15 @@ export class TargetCalculatorComponent implements OnInit {
           riskCode,
           term
         )
-        .subscribe((res) => {
-          this.regularCalculatorResults = res;
-          this.contributionAmount = res.contributions.amount;
-        });
+        .subscribe(
+          (res) => {
+            this.regularCalculatorResults = res;
+            this.contributionAmount = res.contributions.amount;
+          },
+          (error) => {
+            this.showError = true;
+          }
+        );
     }
 
     if (frequency === 'ANNUALLY') {
@@ -106,10 +123,15 @@ export class TargetCalculatorComponent implements OnInit {
           riskCode,
           term
         )
-        .subscribe((res) => {
-          this.oneOffCalculatorResults = res;
-          this.contributionAmount = res.contribution;
-        });
+        .subscribe(
+          (res) => {
+            this.oneOffCalculatorResults = res;
+            this.contributionAmount = res.contribution;
+          },
+          (error) => {
+            this.showError = true;
+          }
+        );
     }
   }
 
@@ -129,5 +151,10 @@ export class TargetCalculatorComponent implements OnInit {
     }
 
     return backgroundSize;
+  }
+
+  resetResults() {
+    this.showResults = false;
+    this.contributionAmount = 0;
   }
 }

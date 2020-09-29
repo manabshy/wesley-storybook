@@ -168,17 +168,12 @@ export class InvestCalculatorComponent {
     this.showEditCalculations = false;
     this.viewPortScroller.scrollToPosition([0, 0]);
 
-    // Process data here
-    //this.calculatorForm.reset();
-    console.log(
-      'Your calculator data has been submitted',
-      this.calculatorForm.value
-    );
     this.balanceAmount = this.calculatorForm.get('balanceAmount').value;
     this.contributionAmount = this.calculatorForm.get(
       'contributionAmount'
     ).value;
     this.term = this.calculatorForm.get('term').value;
+
     this.budgetCalculatorFacade
       .submitBudgetCalculator(
         this.calculatorForm.get('balanceAmount').value,
@@ -191,13 +186,12 @@ export class InvestCalculatorComponent {
         (res) => {
           this.calculatorResults = res;
           this.graphData = this.formatLineChartData(res.results);
-          console.log(this.graphData);
+
           this.options.series = this.getSeries(this.graphData.series);
           this.options.xAxis.data = this.convertXaxisValues(
             this.graphData.terms
           );
           this.options = { ...this.options };
-          console.log(this.options);
           this.totalContribution = this.getTotalContribution();
           this.low = Math.max.apply(Math, this.options.series[0].data);
           this.medium = Math.max.apply(Math, this.options.series[1].data);
