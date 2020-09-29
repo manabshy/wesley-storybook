@@ -9,6 +9,7 @@
     "build": "ng build",
     "storybook": "ng run shared-storybook:storybook",
     "supply:isa": "ng build --prod --baseHref=/savings-and-investments/with-profits-isa/apply/ --deployUrl=/assets/Wesleyan/isa/",
+    "supply:just-invest-calculator": "ng build just-invest-calculator --prod --baseHref=/calculators/just-invest --deployUrl=/assets/Wesleyan/just-invest-calculator",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",

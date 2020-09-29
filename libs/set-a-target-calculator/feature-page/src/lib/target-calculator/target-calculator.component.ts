@@ -8,7 +8,13 @@ import {
 } from '@wesleyan-frontend/set-a-target-calculator/data-access';
 import { TargetRegularCalculatorFacade } from '../core/services/target-regular-calculator.facade';
 import { TargetOneOffCalculatorFacade } from '../core/services/target-one-off-calculator.facade';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 @Component({
   selector: 'wes-target-calculator',
   templateUrl: './target-calculator.component.html',
@@ -29,6 +35,10 @@ export class TargetCalculatorComponent implements OnInit {
   regularCalculatorResults: TargetRegularCalculatorResponse;
   oneOffCalculatorResults: TargetOneOffCalculatorResponse;
   calculatorForm: FormGroup;
+  targetAmountControl: AbstractControl;
+  termControl: AbstractControl;
+  riskCodeControl: AbstractControl;
+  frequencyControl: AbstractControl;
 
   constructor(
     private configService: ConfigService,
@@ -40,13 +50,30 @@ export class TargetCalculatorComponent implements OnInit {
     this.inputTerm = this.config.calculator.target.sliders[1].value;
     this.prefix = this.config.calculator.target.sliders[0].prefix;
     this.calculatorForm = this.formBuilder.group({
-      balanceAmount: 0,
-      contributionAmount: 0,
-      targetAmount: [this.config.calculator.target.sliders[0].defaultValue],
-      frequency: '',
-      riskCode: '0',
-      term: this.config.calculator.target.sliders[1].value,
+      targetAmount: [
+        this.config.calculator.target.sliders[0].defaultValue,
+        [
+          Validators.required,
+          Validators.min(this.config.calculator.target.sliders[0].sliderMin),
+          Validators.min(this.config.calculator.target.sliders[0].sliderMax),
+        ],
+      ],
+      term: [
+        this.config.calculator.target.sliders[1].defaultValue,
+        [
+          Validators.min(this.config.calculator.target.sliders[1].sliderMin),
+          Validators.min(this.config.calculator.target.sliders[1].sliderMax),
+        ],
+      ],
+
+      riskCode: ['0', [Validators.required]],
+      frequency: ['', [Validators.required]],
     });
+
+    this.targetAmountControl = this.calculatorForm.get('targetAmount');
+    this.termControl = this.calculatorForm.get('term');
+    this.riskCodeControl = this.calculatorForm.get('riskCode');
+    this.frequencyControl = this.calculatorForm.get('frequency');
   }
 
   onTargetChange(event: any) {
@@ -108,5 +135,19 @@ export class TargetCalculatorComponent implements OnInit {
 
   yearFormatter(value: string) {
     return value.replace('#termYears#', this.term.toString());
+  }
+
+  handleBackgroundColour(value, min: number, max: number) {
+    let backgroundSize: string;
+
+    if (value <= min || value === '') {
+      backgroundSize = '0 100%';
+    } else if (value <= max) {
+      backgroundSize = `${((value - min) * 100) / (max - min)}% 80%`;
+    } else {
+      backgroundSize = '100% 100%';
+    }
+
+    return backgroundSize;
   }
 }

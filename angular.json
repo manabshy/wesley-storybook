@@ -1014,7 +1014,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "none",
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
@@ -1167,7 +1167,11 @@
     },
     "set-a-target-calculator": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "apps/set-a-target-calculator",
       "sourceRoot": "apps/set-a-target-calculator/src",
       "prefix": "wesleyan-frontend",
@@ -1185,7 +1189,7 @@
               "apps/set-a-target-calculator/src/favicon.ico",
               "apps/set-a-target-calculator/src/assets"
             ],
-            "styles": ["libs/shared/ui-styles/src/index.scss"],
+            "styles": ["libs/shared/ui-styles/src/legacy.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["libs/shared/ui-styles/src/lib"]
             },
@@ -1200,7 +1204,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "none",
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,

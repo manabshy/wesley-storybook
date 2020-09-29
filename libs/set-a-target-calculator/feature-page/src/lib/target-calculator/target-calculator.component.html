@@ -193,20 +193,13 @@
                     <div class="wrap pr-4">
                       <input
                         id="targetAmount"
-                        formControlName="targetAmount"
-                        class=""
                         type="range"
-                        (change)="onTargetChange($event)"
-                        step="{{
-                          config.calculator.target.sliders[0].sliderStep
-                        }}"
                         name="targetAmount"
-                        min="{{ config.calculator.target.sliders[0].inputMin }}"
-                        max="{{ config.calculator.target.sliders[0].inputMax }}"
-                        value="{{
-                          config.calculator.target.sliders[0].defaultValue
-                        }}"
-                        style="background-size: 0px 100%;"
+                        formControlName="targetAmount"
+                        [step]="config.calculator.target.sliders[0].sliderStep"
+                        [min]="config.calculator.target.sliders[0].inputMin"
+                        [max]="config.calculator.target.sliders[0].inputMax"
+                        [value]="targetAmountControl.value"
                       />
                       <label for="targetAmount" class="screenreader-hidden">
                         {{ config.calculator.target.sliders[0].name }}</label
@@ -239,21 +232,22 @@
                             inputmode="numeric"
                             class="c-slider__text-input number--rg input-text-firefox"
                             name="targetAmount"
-                            min="{{
-                              config.calculator.target.sliders[0].sliderMin
-                            }}"
-                            max="{{
-                              config.calculator.target.sliders[0].sliderMax
-                            }}"
-                            pattern="[0-9]*"
-                            attr.data-gtm-id="{{
-                              config.calculator.target.sliders[0].dataGtmId
-                            }}"
-                            attr.data-gtm-class="{{
-                              config.calculator.target.sliders[0].dataGtmClass
-                            }}"
                             type="text"
-                            value="{{ inputTarget | number: '1.0-0' }}"
+                            formControlName="targetAmount"
+                            [min]="
+                              config.calculator.target.sliders[0].sliderMin
+                            "
+                            [max]="
+                              config.calculator.target.sliders[0].sliderMax
+                            "
+                            pattern="[0-9]*"
+                            [attr.data-gtm-id]="
+                              config.calculator.target.sliders[0].dataGtmId
+                            "
+                            [attr.data-gtm-class]="
+                              config.calculator.target.sliders[0].dataGtmClass
+                            "
+                            [value]="targetAmountControl.value"
                           /></div
                       ></label>
                     </div>
@@ -366,18 +360,13 @@
                     <div class="wrap pr-4">
                       <input
                         id="term"
-                        formControlName="term"
-                        class=""
                         type="range"
-                        step="{{
-                          config.calculator.target.sliders[1].sliderStep
-                        }}"
-                        (change)="onTermChange($event)"
                         name="term"
-                        min="{{ config.calculator.target.sliders[1].inputMin }}"
-                        max="{{ config.calculator.target.sliders[1].inputMax }}"
-                        value="{{ config.calculator.target.sliders[1].value }}"
-                        style="background-size: 0px 100%;"
+                        formControlName="term"
+                        [step]="config.calculator.target.sliders[1].sliderStep"
+                        [min]="config.calculator.target.sliders[1].inputMin"
+                        [max]="config.calculator.target.sliders[1].inputMax"
+                        [value]="termControl.value"
                       /><label for="term" class="screenreader-hidden">{{
                         config.calculator.target.sliders[1].name
                       }}</label>
@@ -403,23 +392,24 @@
                                 inputmode="numeric"
                                 class="c-slider__text-input number--rg input-text-firefox"
                                 name="term"
-                                min="{{
-                                  config.calculator.target.sliders[1].sliderMin
-                                }}"
-                                max="{{
-                                  config.calculator.target.sliders[1].sliderMax
-                                }}"
+                                type="text"
                                 size="2"
                                 pattern="[0-9]*"
-                                attr.data-gtm-id="{{
+                                formControlName="term"
+                                [min]="
+                                  config.calculator.target.sliders[1].sliderMin
+                                "
+                                [max]="
+                                  config.calculator.target.sliders[1].sliderMax
+                                "
+                                [attr.data-gtm-id]="
                                   config.calculator.target.sliders[1].dataGtmId
-                                }}"
-                                attr.data-gtm-class="{{
+                                "
+                                [attr.data-gtm-class]="
                                   config.calculator.target.sliders[1]
                                     .dataGtmClass
-                                }}"
-                                type="text"
-                                value="{{ inputTerm }}"
+                                "
+                                [value]="termControl.value"
                               />
                             </div>
                             <span
@@ -549,10 +539,10 @@
                             formControlName="riskCode"
                             name="riskCode"
                             class="c-radio-button__input"
-                            value="{{
+                            [value]="
                               config.calculator.target.riskInvestment.values[0]
                                 .value
-                            }}"
+                            "
                           />
                           <div class="c-radio-button__alt number--rg">
                             1
@@ -569,10 +559,10 @@
                             formControlName="riskCode"
                             name="riskCode"
                             class="c-radio-button__input"
-                            value="{{
+                            [value]="
                               config.calculator.target.riskInvestment.values[1]
                                 .value
-                            }}"
+                            "
                           />
                           <div class="c-radio-button__alt number--rg">
                             2
@@ -589,10 +579,10 @@
                             formControlName="riskCode"
                             name="riskCode"
                             class="c-radio-button__input"
-                            value="{{
+                            [value]="
                               config.calculator.target.riskInvestment.values[2]
                                 .value
-                            }}"
+                            "
                           />
                           <div class="c-radio-button__alt number--rg">
                             3
@@ -609,10 +599,10 @@
                             type="radio"
                             name="riskCode"
                             class="c-radio-button__input"
-                            value="{{
+                            [value]="
                               config.calculator.target.riskInvestment.values[3]
                                 .value
-                            }}"
+                            "
                           />
                           <div class="c-radio-button__alt number--rg">
                             4
@@ -629,10 +619,10 @@
                             formControlName="riskCode"
                             name="riskCode"
                             class="c-radio-button__input"
-                            value="{{
+                            [value]="
                               config.calculator.target.riskInvestment.values[4]
                                 .value
-                            }}"
+                            "
                           />
                           <div class="c-radio-button__alt number--rg">
                             5
@@ -755,7 +745,7 @@
                     type="radio"
                     name="frequency"
                     class="c-radio-button__input"
-                    value="{{ config.calculator.target.inputs[0].value }}"
+                    [value]="config.calculator.target.inputs[0].value"
                   />
                   <div class="c-radio-button__alt">
                     {{ config.calculator.target.inputs[0].label }}
@@ -770,7 +760,7 @@
                     type="radio"
                     name="frequency"
                     class="c-radio-button__input"
-                    value="{{ config.calculator.target.inputs[1].value }}"
+                    [value]="config.calculator.target.inputs[1].value"
                   />
                   <div class="c-radio-button__alt">
                     {{ config.calculator.target.inputs[1].label }}
@@ -983,9 +973,8 @@
             <button
               target="_self"
               class="c-button c-button__standard font-weight-bold mt-2"
-              attr.data-gtm-id="{{
-                config.calculator.footer.buttons[2].dataGtmId
-              }}"
+              [attr.data-gtm-id]="config.calculator.footer.buttons[2].dataGtmId"
+              [disabled]="calculatorForm.invalid"
             >
               {{ config.calculator.footer.buttons[2].label }}
             </button>
