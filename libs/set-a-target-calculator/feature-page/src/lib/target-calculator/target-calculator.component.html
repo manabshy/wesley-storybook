@@ -200,6 +200,13 @@
                         [min]="config.calculator.target.sliders[0].inputMin"
                         [max]="config.calculator.target.sliders[0].inputMax"
                         [value]="targetAmountControl.value"
+                        [style.background-size]="
+                          handleBackgroundColour(
+                            targetAmountControl.value,
+                            config.calculator.target.sliders[0].inputMin,
+                            config.calculator.target.sliders[0].inputMax
+                          )
+                        "
                       />
                       <label for="targetAmount" class="screenreader-hidden">
                         {{ config.calculator.target.sliders[0].name }}</label
@@ -367,6 +374,13 @@
                         [min]="config.calculator.target.sliders[1].inputMin"
                         [max]="config.calculator.target.sliders[1].inputMax"
                         [value]="termControl.value"
+                        [style.background-size]="
+                          handleBackgroundColour(
+                            termControl.value,
+                            config.calculator.target.sliders[1].inputMin,
+                            config.calculator.target.sliders[1].inputMax
+                          )
+                        "
                       /><label for="term" class="screenreader-hidden">{{
                         config.calculator.target.sliders[1].name
                       }}</label>

@@ -55,18 +55,18 @@ export class TargetCalculatorComponent implements OnInit {
         [
           Validators.required,
           Validators.min(this.config.calculator.target.sliders[0].sliderMin),
-          Validators.min(this.config.calculator.target.sliders[0].sliderMax),
+          Validators.max(this.config.calculator.target.sliders[0].sliderMax),
         ],
       ],
       term: [
-        this.config.calculator.target.sliders[1].defaultValue,
+        this.config.calculator.target.sliders[1].value,
         [
           Validators.min(this.config.calculator.target.sliders[1].sliderMin),
-          Validators.min(this.config.calculator.target.sliders[1].sliderMax),
+          Validators.max(this.config.calculator.target.sliders[1].sliderMax),
         ],
       ],
 
-      riskCode: ['0', [Validators.required]],
+      riskCode: ['', [Validators.required]],
       frequency: ['', [Validators.required]],
     });
 
