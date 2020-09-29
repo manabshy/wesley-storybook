@@ -12,8 +12,8 @@
       <div
         class="c-goal__header d-flex align-items-center pl-2 c-goal__header--lg"
       >
-        <span class="SVGInline c-icon c-icon-target-yellow"
-          ><svg
+        <span class="SVGInline c-icon c-icon-target-yellow"></span>
+          <svg
             class="SVGInline c-icon c-icon-target-yellow"
             viewBox="0 0 80 80"
             version="1.1"
@@ -209,8 +209,8 @@
                         "
                       />
                       <label for="targetAmount" class="screenreader-hidden">
-                        {{ config.calculator.target.sliders[0].name }}</label
-                      >
+                        {{ config.calculator.target.sliders[0].name }}
+                      </label>
                     </div>
                     <div
                       class="c-slider__labels d-flex flex-row justify-content-between mt-2"
@@ -230,12 +230,14 @@
                   </div>
                   <div class="mb-sm-0 pl-sm-2 w-sm-33 order-1 order-sm-2">
                     <div class="input-group flex-nowrap has-prefix">
-                      <label class="w-100"
-                        ><div class="input-group-prepend">
+                      <label class="w-100">
+                        <div class="input-group-prepend">
                           <span
                             class="input-group-text c-slider__text-input__prefix number--rg"
-                            >£</span
-                          ><input
+                          >
+                            £
+                          </span>
+                          <input
                             inputmode="numeric"
                             class="c-slider__text-input number--rg input-text-firefox"
                             name="targetAmount"
@@ -263,7 +265,8 @@
                           <span
                             *ngIf="targetAmountControl.invalid"
                             class="SVGInline c-icon c-icon-error"
-                            ><svg
+                          >
+                            <svg
                               class="SVGInline c-icon c-icon-error"
                               viewBox="0 0 26 26"
                               xmlns="http://www.w3.org/2000/svg"
@@ -285,19 +288,25 @@
                                   <tspan x="10.568" y="19">!</tspan>
                                 </text>
                               </g>
-                            </svg></span
-                          >
+                            </svg>
+                          </span>
                         </div>
                         <span
                           *ngIf="targetAmountControl.invalid"
                           class="field-validation-error mt-2 mb-0"
                         >
-                          <span *ngIf="targetAmountControl.errors.min">{{
-                            config.calculator.target.sliders[0].minErrorMessage
-                          }}</span>
-                          <span *ngIf="targetAmountControl.errors.max">{{
-                            config.calculator.target.sliders[0].maxErrorMessage
-                          }}</span>
+                          <span *ngIf="targetAmountControl.errors.min">
+                            {{
+                              config.calculator.target.sliders[0]
+                                .minErrorMessage
+                            }}
+                          </span>
+                          <span *ngIf="targetAmountControl.errors.max">
+                            {{
+                              config.calculator.target.sliders[0]
+                                .maxErrorMessage
+                            }}
+                          </span>
                         </span>
                       </label>
                     </div>
@@ -308,14 +317,15 @@
                 <p
                   class="copy copy--shortform text-semi-bold mb-2 position-relative"
                 >
-                  {{ config.calculator.target.sliders[1].label
-                  }}<span class="c-tooltip-info ml-2"
-                    ><span
+                  {{ config.calculator.target.sliders[1].label }}
+                  <span class="c-tooltip-info ml-2">
+                    <span
                       role="button"
                       tabindex="0"
                       class="c-tooltip-info__icon"
-                      ><span class="SVGInline c-icon c-icon-tooltip"
-                        ><svg
+                    >
+                      <span class="SVGInline c-icon c-icon-tooltip">
+                        <svg
                           class="SVGInline c-icon c-icon-tooltip"
                           width="20px"
                           height="20px"
@@ -370,20 +380,24 @@
                                 </g>
                               </g>
                             </g>
-                          </g></svg></span></span
-                    ><span class="c-tooltip-info__content"
-                      ><span
+                          </g>
+                        </svg>
+                      </span>
+                    </span>
+                    <span class="c-tooltip-info__content">
+                      <span
                         class="c-tooltip-info__text"
                         [innerHTML]="
                           config.calculator.target.sliders[1].tooltip.content
                         "
-                      ></span
-                      ><span
+                      ></span>
+                      <span
                         class="c-tooltip-info__close"
                         role="button"
                         tabindex="0"
-                        ><span class="SVGInline c-icon c-icon-close"
-                          ><svg
+                      >
+                        <span class="SVGInline c-icon c-icon-close">
+                          <svg
                             class="SVGInline c-icon c-icon-close"
                             style="width: 12; height: 12;"
                             width="12"
@@ -402,8 +416,12 @@
                               stroke-linejoin="round"
                             >
                               <path d="M11 1L1 11M1 1l10 10L1 1z"></path>
-                            </g></svg></span></span></span
-                  ></span>
+                            </g>
+                          </svg>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
                 </p>
                 <div class="d-flex flex-column flex-sm-row pt-1">
                   <div class="d-flex flex-column order-2 order-sm-1 w-sm-66">
@@ -424,9 +442,10 @@
                             config.calculator.target.sliders[1].inputMax
                           )
                         "
-                      /><label for="term" class="screenreader-hidden">{{
-                        config.calculator.target.sliders[1].name
-                      }}</label>
+                      />
+                      <label for="term" class="screenreader-hidden">
+                        {{ config.calculator.target.sliders[1].name }}
+                      </label>
                     </div>
                     <div
                       class="c-slider__labels d-flex flex-row justify-content-between mt-2"
@@ -441,8 +460,8 @@
                   </div>
                   <div class="mb-sm-0 pl-sm-2 w-sm-33 order-1 order-sm-2">
                     <div class="input-group flex-nowrap has-suffix ml-sm-4">
-                      <label class="w-100"
-                        ><div class="input-group-append">
+                      <label class="w-100">
+                        <div class="input-group-append">
                           <div class="d-flex">
                             <div class="position-relative d-flex">
                               <input
@@ -474,7 +493,8 @@
                               <span
                                 *ngIf="termControl.invalid"
                                 class="SVGInline c-icon c-icon-error"
-                                ><svg
+                              >
+                                <svg
                                   class="SVGInline c-icon c-icon-error"
                                   viewBox="0 0 26 26"
                                   xmlns="http://www.w3.org/2000/svg"
@@ -496,15 +516,14 @@
                                       <tspan x="10.568" y="19">!</tspan>
                                     </text>
                                   </g>
-                                </svg></span
-                              >
+                                </svg>
+                              </span>
                             </div>
                             <span
                               class="input-group-text c-slider__text-input c-slider__text-input__suffix pl-4 false"
-                              >{{
-                                config.calculator.target.sliders[1].suffix
-                              }}</span
                             >
+                              {{ config.calculator.target.sliders[1].suffix }}
+                            </span>
                           </div>
                         </div>
                         <span
@@ -526,13 +545,14 @@
                   <div class="col-12">
                     <p class="c-risk-investment__label">
                       {{ config.calculator.target.riskInvestment.title }}
-                      <span class="c-tooltip-info ml-2"
-                        ><span
+                      <span class="c-tooltip-info ml-2">
+                        <span
                           role="button"
                           tabindex="0"
                           class="c-tooltip-info__icon"
-                          ><span class="SVGInline c-icon c-icon-tooltip"
-                            ><svg
+                        >
+                          <span class="SVGInline c-icon c-icon-tooltip">
+                            <svg
                               class="SVGInline c-icon c-icon-tooltip"
                               width="20px"
                               height="20px"
@@ -587,22 +607,25 @@
                                     </g>
                                   </g>
                                 </g>
-                              </g></svg></span></span
-                        ><span class="c-tooltip-info__content"
-                          ><span
+                              </g>
+                            </svg>
+                          </span>
+                        </span>
+                        <span class="c-tooltip-info__content">
+                          <span
                             class="c-tooltip-info__text"
                             [innerHTML]="
                               config.calculator.target.riskInvestment.tooltip
                                 .content
                             "
-                          >
-                          </span
-                          ><span
+                          ></span>
+                          <span
                             class="c-tooltip-info__close"
                             role="button"
                             tabindex="0"
-                            ><span class="SVGInline c-icon c-icon-close"
-                              ><svg
+                          >
+                            <span class="SVGInline c-icon c-icon-close">
+                              <svg
                                 class="SVGInline c-icon c-icon-close"
                                 style="width: 12; height: 12;"
                                 width="12"
@@ -621,15 +644,19 @@
                                   stroke-linejoin="round"
                                 >
                                   <path d="M11 1L1 11M1 1l10 10L1 1z"></path>
-                                </g></svg></span></span></span
-                      ></span>
+                                </g>
+                              </svg>
+                            </span>
+                          </span>
+                        </span>
+                      </span>
                     </p>
                     <div class="c-risk-investment__buttons">
                       <div
                         class="c-radio-button c-radio-button--riskInvestment"
                       >
-                        <label for="1" class="c-radio-button__label"
-                          ><input
+                        <label for="1" class="c-radio-button__label">
+                          <input
                             id="1"
                             type="radio"
                             formControlName="riskCode"
@@ -642,14 +669,14 @@
                           />
                           <div class="c-radio-button__alt number--rg">
                             1
-                          </div></label
-                        >
+                          </div>
+                        </label>
                       </div>
                       <div
                         class="c-radio-button c-radio-button--riskInvestment"
                       >
-                        <label for="2" class="c-radio-button__label"
-                          ><input
+                        <label for="2" class="c-radio-button__label">
+                          <input
                             id="2"
                             type="radio"
                             formControlName="riskCode"
@@ -662,14 +689,14 @@
                           />
                           <div class="c-radio-button__alt number--rg">
                             2
-                          </div></label
-                        >
+                          </div>
+                        </label>
                       </div>
                       <div
                         class="c-radio-button c-radio-button--riskInvestment"
                       >
-                        <label for="3" class="c-radio-button__label"
-                          ><input
+                        <label for="3" class="c-radio-button__label">
+                          <input
                             id="3"
                             type="radio"
                             formControlName="riskCode"
@@ -682,14 +709,14 @@
                           />
                           <div class="c-radio-button__alt number--rg">
                             3
-                          </div></label
-                        >
+                          </div>
+                        </label>
                       </div>
                       <div
                         class="c-radio-button c-radio-button--riskInvestment"
                       >
-                        <label for="4" class="c-radio-button__label"
-                          ><input
+                        <label for="4" class="c-radio-button__label">
+                          <input
                             id="4"
                             formControlName="riskCode"
                             type="radio"
@@ -702,14 +729,14 @@
                           />
                           <div class="c-radio-button__alt number--rg">
                             4
-                          </div></label
-                        >
+                          </div>
+                        </label>
                       </div>
                       <div
                         class="c-radio-button c-radio-button--riskInvestment"
                       >
-                        <label for="5" class="c-radio-button__label"
-                          ><input
+                        <label for="5" class="c-radio-button__label">
+                          <input
                             id="5"
                             type="radio"
                             formControlName="riskCode"
@@ -722,18 +749,22 @@
                           />
                           <div class="c-radio-button__alt number--rg">
                             5
-                          </div></label
-                        >
+                          </div>
+                        </label>
                       </div>
                     </div>
                   </div>
                   <div class="c-risk-investment__scale">
-                    <span>{{
-                      config.calculator.target.riskInvestment.values[0].label
-                    }}</span
-                    ><span>{{
-                      config.calculator.target.riskInvestment.values[4].label
-                    }}</span>
+                    <span>
+                      {{
+                        config.calculator.target.riskInvestment.values[0].label
+                      }}
+                    </span>
+                    <span>
+                      {{
+                        config.calculator.target.riskInvestment.values[4].label
+                      }}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -741,10 +772,10 @@
                 class="d-block copy copy--shortform text-semi-bold mt-3 mb-3 clearfix position-relative"
               >
                 {{ config.calculator.target.inputs[0].title }}
-                <span class="c-tooltip-info ml-2"
-                  ><span role="button" tabindex="0" class="c-tooltip-info__icon"
-                    ><span class="SVGInline c-icon c-icon-tooltip"
-                      ><svg
+                <span class="c-tooltip-info ml-2">
+                  <span role="button" tabindex="0" class="c-tooltip-info__icon">
+                    <span class="SVGInline c-icon c-icon-tooltip">
+                      <svg
                         class="SVGInline c-icon c-icon-tooltip"
                         width="20px"
                         height="20px"
@@ -799,20 +830,24 @@
                               </g>
                             </g>
                           </g>
-                        </g></svg></span></span
-                  ><span class="c-tooltip-info__content"
-                    ><span
+                        </g>
+                      </svg>
+                    </span>
+                  </span>
+                  <span class="c-tooltip-info__content">
+                    <span
                       class="c-tooltip-info__text"
                       [innerHTML]="
                         config.calculator.target.inputs[0].tooltip.content
                       "
-                    ></span
-                    ><span
+                    ></span>
+                    <span
                       class="c-tooltip-info__close"
                       role="button"
                       tabindex="0"
-                      ><span class="SVGInline c-icon c-icon-close"
-                        ><svg
+                    >
+                      <span class="SVGInline c-icon c-icon-close">
+                        <svg
                           class="SVGInline c-icon c-icon-close"
                           style="width: 12; height: 12;"
                           width="12"
@@ -831,11 +866,16 @@
                             stroke-linejoin="round"
                           >
                             <path d="M11 1L1 11M1 1l10 10L1 1z"></path>
-                          </g></svg></span></span></span></span
-              ></span>
+                          </g>
+                        </svg>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </span>
               <div class="c-radio-button">
-                <label for="lump" class="c-radio-button__label"
-                  ><input
+                <label for="lump" class="c-radio-button__label">
+                  <input
                     id="lump"
                     formControlName="frequency"
                     type="radio"
@@ -845,12 +885,12 @@
                   />
                   <div class="c-radio-button__alt">
                     {{ config.calculator.target.inputs[0].label }}
-                  </div></label
-                >
+                  </div>
+                </label>
               </div>
               <div class="c-radio-button">
-                <label for="monthly" class="c-radio-button__label"
-                  ><input
+                <label for="monthly" class="c-radio-button__label">
+                  <input
                     id="monthly"
                     formControlName="frequency"
                     type="radio"
@@ -860,8 +900,8 @@
                   />
                   <div class="c-radio-button__alt">
                     {{ config.calculator.target.inputs[1].label }}
-                  </div></label
-                >
+                  </div>
+                </label>
               </div>
             </div>
 
@@ -954,15 +994,16 @@
                         </g>
                       </svg>
                     </div>
-                    <strong
-                      ><span
+                    <strong>
+                      <span
                         class="d-block copy--shortform mt-4 mt-sm-0 mt-md-4 py-4--spacing"
-                        >{{
+                      >
+                        {{
                           config.serviceUnavailableContent
                             .serviceUnavailableTitle
-                        }}</span
-                      ></strong
-                    >
+                        }}
+                      </span>
+                    </strong>
                     <div
                       [innerHTML]="
                         config.serviceUnavailableContent
@@ -986,46 +1027,48 @@
                             .dataGtmId
                         "
                       >
-                        <strong
-                          ><span class="d-block copy--shortform">
-                            {{
-                              config.calculator.target.results.labels.target
-                            }} </span
-                          ><span class="number number--md text-semi-bold"
-                            >{{ prefix
-                            }}{{
-                              targetAmountControl.value | number: '1.0-0'
-                            }}</span
-                          ></strong
-                        ><span
+                        <strong>
+                          <span class="d-block copy--shortform">
+                            {{ config.calculator.target.results.labels.target }}
+                          </span>
+                          <span class="number number--md text-semi-bold">
+                            {{ prefix
+                            }}{{ targetAmountControl.value | number: '1.0-0' }}
+                          </span>
+                        </strong>
+                        <span
                           class="d-block copy copy--longform text-semi-bold"
-                          >{{
+                        >
+                          {{
                             yearFormatter(
                               config.calculator.target.results.labels.term,
                               termControl.value
                             )
-                          }}</span
-                        >
+                          }}
+                        </span>
                       </div>
                       <div class="col-sm-6 col-md-12">
-                        <strong
-                          ><span
+                        <strong>
+                          <span
                             class="d-block copy--shortform mt-4 mt-sm-0 mt-md-4"
                             *ngIf="frequencyControl.value === 'MONTHLY'"
-                            >{{
+                          >
+                            {{
                               config.calculator.target.results.labels
                                 .monthlyContributionLabel
-                            }}</span
-                          >
+                            }}
+                          </span>
                           <span
                             class="d-block copy--shortform mt-4 mt-sm-0 mt-md-4"
                             *ngIf="frequencyControl.value === 'ANNUALLY'"
-                            >{{
+                          >
+                            {{
                               config.calculator.target.results.labels
                                 .lumpSumContributionLabel
-                            }}</span
-                          > </strong
-                        ><span
+                            }}
+                          </span>
+                        </strong>
+                        <span
                           class="number number--xl"
                           [attr.data-gtm-id]="
                             config.calculator.target.results.labels.gtm
@@ -1035,9 +1078,9 @@
                             config.calculator.target.results.labels.gtm
                               .projection.dataGtmClass
                           "
-                          >{{ prefix
-                          }}{{ contributionAmount | number: '1.0-0' }}</span
                         >
+                          {{ prefix }}{{ contributionAmount | number: '1.0-0' }}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -1046,8 +1089,8 @@
                     [innerHTML]="
                       config.calculator.disclaimers.defaultDisclaimers[0]
                     "
-                  ></small
-                  ><small class="d-block mt-4 mb-2"></small>
+                  ></small>
+                  <small class="d-block mt-4 mb-2"></small>
                 </ng-container>
               </div>
             </div>

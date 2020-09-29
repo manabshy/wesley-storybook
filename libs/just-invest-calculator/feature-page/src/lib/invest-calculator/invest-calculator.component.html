@@ -74,9 +74,9 @@
                       )
                     "
                   />
-                  <label for="contributionAmount" class="screenreader-hidden">{{
-                    config.calculator.budget.sliders[0].name
-                  }}</label>
+                  <label for="contributionAmount" class="screenreader-hidden">
+                    {{ config.calculator.budget.sliders[0].name }}
+                  </label>
                 </div>
                 <div
                   class="c-slider__labels d-flex flex-row justify-content-between mt-2"
@@ -100,8 +100,9 @@
                     <div class="input-group-prepend">
                       <span
                         class="input-group-text c-slider__text-input__prefix number--rg"
-                        >{{ config.calculator.budget.sliders[0].prefix }}</span
                       >
+                        {{ config.calculator.budget.sliders[0].prefix }}
+                      </span>
                       <input
                         class="c-slider__text-input number--rg input-text-firefox"
                         name="contributionAmount"
@@ -130,7 +131,8 @@
                       <span
                         *ngIf="contributionAmountControl.invalid"
                         class="SVGInline c-icon c-icon-error"
-                        ><svg
+                      >
+                        <svg
                           class="SVGInline c-icon c-icon-error"
                           viewBox="0 0 26 26"
                           xmlns="http://www.w3.org/2000/svg"
@@ -152,19 +154,23 @@
                               <tspan x="10.568" y="19">!</tspan>
                             </text>
                           </g>
-                        </svg></span
-                      >
+                        </svg>
+                      </span>
                     </div>
                     <span
                       *ngIf="contributionAmountControl.invalid"
                       class="field-validation-error mt-2 mb-0"
                     >
-                      <span *ngIf="contributionAmountControl.errors.min">{{
-                        config.calculator.budget.sliders[0].minErrorMessage
-                      }}</span>
-                      <span *ngIf="contributionAmountControl.errors.max">{{
-                        config.calculator.budget.sliders[0].maxErrorMessage
-                      }}</span>
+                      <span *ngIf="contributionAmountControl.errors.min">
+                        {{
+                          config.calculator.budget.sliders[0].minErrorMessage
+                        }}
+                      </span>
+                      <span *ngIf="contributionAmountControl.errors.max">
+                        {{
+                          config.calculator.budget.sliders[0].maxErrorMessage
+                        }}
+                      </span>
                     </span>
                   </label>
                 </div>
@@ -298,9 +304,9 @@
                       )
                     "
                   />
-                  <label for="balanceAmount" class="screenreader-hidden">{{
-                    config.calculator.budget.sliders[1].name
-                  }}</label>
+                  <label for="balanceAmount" class="screenreader-hidden">
+                    {{ config.calculator.budget.sliders[1].name }}
+                  </label>
                 </div>
                 <div
                   class="c-slider__labels d-flex flex-row justify-content-between mt-2"
@@ -321,8 +327,9 @@
                     <div class="input-group-prepend">
                       <span
                         class="input-group-text c-slider__text-input__prefix number--rg"
-                        >{{ config.calculator.budget.sliders[1].prefix }}</span
                       >
+                        {{ config.calculator.budget.sliders[1].prefix }}
+                      </span>
                       <input
                         inputmode="numeric"
                         class="c-slider__text-input number--rg input-text-firefox"
@@ -350,7 +357,8 @@
                       <span
                         *ngIf="balanceAmountControl.invalid"
                         class="SVGInline c-icon c-icon-error"
-                        ><svg
+                      >
+                        <svg
                           class="SVGInline c-icon c-icon-error"
                           viewBox="0 0 26 26"
                           xmlns="http://www.w3.org/2000/svg"
@@ -372,19 +380,23 @@
                               <tspan x="10.568" y="19">!</tspan>
                             </text>
                           </g>
-                        </svg></span
-                      >
+                        </svg>
+                      </span>
                     </div>
                     <span
                       *ngIf="balanceAmountControl.invalid"
                       class="field-validation-error mt-2 mb-0"
                     >
-                      <span *ngIf="balanceAmountControl.errors.min">{{
-                        config.calculator.budget.sliders[1].minErrorMessage
-                      }}</span>
-                      <span *ngIf="balanceAmountControl.errors.max">{{
-                        config.calculator.budget.sliders[1].maxErrorMessage
-                      }}</span>
+                      <span *ngIf="balanceAmountControl.errors.min">
+                        {{
+                          config.calculator.budget.sliders[1].minErrorMessage
+                        }}
+                      </span>
+                      <span *ngIf="balanceAmountControl.errors.max">
+                        {{
+                          config.calculator.budget.sliders[1].maxErrorMessage
+                        }}
+                      </span>
                     </span>
                   </label>
                 </div>
@@ -418,9 +430,9 @@
                       )
                     "
                   />
-                  <label for="term" class="screenreader-hidden">{{
-                    config.calculator.budget.sliders[2].name
-                  }}</label>
+                  <label for="term" class="screenreader-hidden">
+                    {{ config.calculator.budget.sliders[2].name }}
+                  </label>
                 </div>
                 <div
                   class="c-slider__labels d-flex flex-row justify-content-between mt-2"
@@ -463,7 +475,8 @@
                           <span
                             *ngIf="termControl.invalid"
                             class="SVGInline c-icon c-icon-error"
-                            ><svg
+                          >
+                            <svg
                               class="SVGInline c-icon c-icon-error"
                               viewBox="0 0 26 26"
                               xmlns="http://www.w3.org/2000/svg"
@@ -485,27 +498,30 @@
                                   <tspan x="10.568" y="19">!</tspan>
                                 </text>
                               </g>
-                            </svg></span
-                          >
+                            </svg>
+                          </span>
                         </div>
                         <span
                           class="input-group-text c-slider__text-input c-slider__text-input__suffix pl-4 false"
-                          >{{
-                            config.calculator.budget.sliders[2].suffix
-                          }}</span
                         >
+                          {{ config.calculator.budget.sliders[2].suffix }}
+                        </span>
                       </div>
                     </div>
                     <span
                       *ngIf="termControl.invalid"
                       class="field-validation-error mt-2 mb-0"
                     >
-                      <span *ngIf="termControl.errors.min">{{
-                        config.calculator.budget.sliders[2].minErrorMessage
-                      }}</span>
-                      <span *ngIf="termControl.errors.max">{{
-                        config.calculator.budget.sliders[2].maxErrorMessage
-                      }}</span>
+                      <span *ngIf="termControl.errors.min">
+                        {{
+                          config.calculator.budget.sliders[2].minErrorMessage
+                        }}
+                      </span>
+                      <span *ngIf="termControl.errors.max">
+                        {{
+                          config.calculator.budget.sliders[2].maxErrorMessage
+                        }}
+                      </span>
                     </span>
                   </label>
                 </div>
@@ -707,12 +723,12 @@
                 </div>
               </div>
               <div class="c-risk-investment__scale">
-                <span>{{
-                  config.calculator.budget.riskInvestment.values[0].label
-                }}</span>
-                <span>{{
-                  config.calculator.budget.riskInvestment.values[4].label
-                }}</span>
+                <span>
+                  {{ config.calculator.budget.riskInvestment.values[0].label }}
+                </span>
+                <span>
+                  {{ config.calculator.budget.riskInvestment.values[4].label }}
+                </span>
               </div>
             </div>
           </div>
@@ -980,8 +996,9 @@
                 <span
                   class="text-capitalize d-sm-block"
                   style="font-size: 12px;"
-                  >High</span
                 >
+                  High
+                </span>
                 <h3 class="m-0 ml-2" style="font-size: 24px;">
                   {{ prefix }}{{ high | number: '1.0-3' }}
                 </h3>
@@ -998,8 +1015,9 @@
                 <span
                   class="text-capitalize d-sm-block"
                   style="font-size: 12px;"
-                  >Medium</span
                 >
+                  Medium
+                </span>
                 <h3 class="m-0 ml-2" style="font-size: 24px;">
                   {{ prefix }}{{ medium | number: '1.0-3' }}
                 </h3>
@@ -1018,8 +1036,9 @@
                 <span
                   class="text-capitalize d-sm-block"
                   style="font-size: 12px;"
-                  >Low</span
                 >
+                  Low
+                </span>
                 <h3 class="m-0 ml-2" style="font-size: 24px;">
                   {{ prefix }}{{ low | number: '1.0-3' }}
                 </h3>
@@ -1100,14 +1119,13 @@
             <div
               class="number__group py-4 position-relative d-flex flex-column align-items-center justify-content-center"
             >
-              <strong
-                ><span
+              <strong>
+                <span
                   class="d-block copy--shortform mt-4 mt-sm-0 py-4--spacing"
-                  >{{
-                    config.serviceUnavailableContent.serviceUnavailableTitle
-                  }}</span
-                ></strong
-              >
+                >
+                  {{ config.serviceUnavailableContent.serviceUnavailableTitle }}
+                </span>
+              </strong>
               <div
                 class="py-4--align"
                 [innerHTML]="
@@ -1144,8 +1162,9 @@
         href="{{ config.calculator.footer.buttons[1].url }}"
         target="_self"
         class="c-button c-button c-button__standard font-weight-bold mt-2"
-        >{{ config.calculator.footer.buttons[1].label }}</a
       >
+        {{ config.calculator.footer.buttons[1].label }}
+      </a>
     </div>
   </div>
 </div>
