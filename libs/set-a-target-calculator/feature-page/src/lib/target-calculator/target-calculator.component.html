@@ -255,8 +255,51 @@
                               config.calculator.target.sliders[0].dataGtmClass
                             "
                             [value]="targetAmountControl.value"
-                          /></div
-                      ></label>
+                            [ngClass]="{
+                              'input-validation-error':
+                                targetAmountControl.invalid
+                            }"
+                          />
+                          <span
+                            *ngIf="targetAmountControl.invalid"
+                            class="SVGInline c-icon c-icon-error"
+                            ><svg
+                              class="SVGInline c-icon c-icon-error"
+                              viewBox="0 0 26 26"
+                              xmlns="http://www.w3.org/2000/svg"
+                              focusable="false"
+                            >
+                              <g fill="none" fill-rule="evenodd">
+                                <circle
+                                  fill="#D0021B"
+                                  cx="13"
+                                  cy="13"
+                                  r="13"
+                                ></circle>
+                                <text
+                                  font-family="OpenSans-Bold, Open Sans"
+                                  font-size="17"
+                                  font-weight="bold"
+                                  fill="#FFF"
+                                >
+                                  <tspan x="10.568" y="19">!</tspan>
+                                </text>
+                              </g>
+                            </svg></span
+                          >
+                        </div>
+                        <span
+                          *ngIf="targetAmountControl.invalid"
+                          class="field-validation-error mt-2 mb-0"
+                        >
+                          <span *ngIf="targetAmountControl.errors.min">{{
+                            config.calculator.target.sliders[0].minErrorMessage
+                          }}</span>
+                          <span *ngIf="targetAmountControl.errors.max">{{
+                            config.calculator.target.sliders[0].maxErrorMessage
+                          }}</span>
+                        </span>
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -424,17 +467,56 @@
                                     .dataGtmClass
                                 "
                                 [value]="termControl.value"
+                                [ngClass]="{
+                                  'input-validation-error': termControl.invalid
+                                }"
                               />
+                              <span
+                                *ngIf="termControl.invalid"
+                                class="SVGInline c-icon c-icon-error"
+                                ><svg
+                                  class="SVGInline c-icon c-icon-error"
+                                  viewBox="0 0 26 26"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  focusable="false"
+                                >
+                                  <g fill="none" fill-rule="evenodd">
+                                    <circle
+                                      fill="#D0021B"
+                                      cx="13"
+                                      cy="13"
+                                      r="13"
+                                    ></circle>
+                                    <text
+                                      font-family="OpenSans-Bold, Open Sans"
+                                      font-size="17"
+                                      font-weight="bold"
+                                      fill="#FFF"
+                                    >
+                                      <tspan x="10.568" y="19">!</tspan>
+                                    </text>
+                                  </g>
+                                </svg></span
+                              >
                             </div>
                             <span
-                              class="input-group-text c-slider__text-input c-slider__text-input__suffix pl-2 false"
+                              class="input-group-text c-slider__text-input c-slider__text-input__suffix pl-4 false"
                               >{{
                                 config.calculator.target.sliders[1].suffix
                               }}</span
                             >
                           </div>
-                        </div></label
-                      >
+                        </div>
+                        <span
+                          *ngIf="termControl.invalid"
+                          class="field-validation-error mt-2 mb-0"
+                        >
+                          {{
+                            config.calculator.target.sliders[1]
+                              .validationMessage
+                          }}
+                        </span>
+                      </label>
                     </div>
                   </div>
                 </div>
