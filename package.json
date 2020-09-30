@@ -53,6 +53,7 @@
     "core-js": "^2.5.4",
     "date-fns": "^2.14.0",
     "echarts": "^4.9.0",
+    "fuse.js": "^6.4.1",
     "jquery": "^3.5.1",
     "ngx-echarts": "^5.1.2",
     "ramda": "^0.27.0",

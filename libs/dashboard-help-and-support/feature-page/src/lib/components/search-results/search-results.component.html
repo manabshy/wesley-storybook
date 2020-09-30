@@ -1,0 +1,88 @@
+{{ searchTerm }}
+<div class="c-help-support-search__results-panel">
+  <ng-container
+    *ngIf="hasResults; then resultsPanel; else noResultsPanel"
+  ></ng-container>
+
+  <ng-template #resultsPanel>
+    <div *ngFor="let section of results">
+      <ng-container *ngIf="section.articles.length > 0">
+        <h4 class="c-help-support-search__results-header">
+          {{ section.title }}
+        </h4>
+        <div class="c-help-support-search__results">
+          <ng-container *ngFor="let article of section.articles">
+            <ng-container
+              *ngIf="
+                section.title === 'Glossary';
+                then glossaryTemplate;
+                else otherTemplate
+              "
+            ></ng-container>
+
+            <ng-template #glossaryTemplate>
+              <div
+                class="c-help-support-search__result c-help-support-search__result--glossary"
+              >
+                <h3 class="c-help-support-search__result-title">
+                  <!-- <Highlighter
+                                searchWords={splitSearchTerms}
+                                textToHighlight={props.title}
+                                highlightTag="strong"
+                              /> -->
+                  {{ article.item.title }}
+                </h3>
+                <div class="c-help-support-search__result-snippet">
+                  <!-- <Highlighter
+                                searchWords={splitSearchTerms}
+                                textToHighlight={props.content}
+                                highlightTag="strong"
+                              /> -->
+                  {{ article.item.content }}
+                </div>
+              </div>
+            </ng-template>
+            <ng-template #otherTemplate>
+              <a
+                href="#"
+                class="c-help-support-search__result c-help-support-search__result--link"
+              >
+                <h3
+                  class="c-help-support-search__result-title"
+                  [innerHTML]="article.item.title | highlight: searchTerm"
+                >
+                  <!-- <Highlighter
+                  searchWords={splitSearchTerms}
+                  textToHighlight={props.title}
+                  highlightTag="strong"
+                /> -->
+                </h3>
+                <div
+                  class="c-help-support-search__result-snippet"
+                  [innerHTML]="
+                    removeTags(article.item.content) | highlight: searchTerm
+                  "
+                >
+                  <!-- <Highlighter
+                  searchWords={splitSearchTerms}
+                  textToHighlight={truncatedContent}
+                  highlightTag="strong"
+                /> -->
+                </div>
+              </a>
+            </ng-template>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+  </ng-template>
+  <ng-template #noResultsPanel>
+    <div className="c-help-support-search__no-results">
+      <h3>{{ config?.searchProps.noResultsText.heading }}</h3>
+      <p>{{ config?.searchProps.noResultsText.strapline }}</p>
+      <div className="c-help-support-search__contact-details">
+        @TODO CONTACT DETAILS HERE
+      </div>
+    </div>
+  </ng-template>
+</div>
