@@ -338,6 +338,24 @@
         }
       }
     },
+    "shared-ui-legacy-styles": {
+      "root": "libs/shared/ui-legacy-styles",
+      "sourceRoot": "libs/shared/ui-legacy-styles/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/ui-legacy-styles/tsconfig.lib.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/ui-legacy-styles/**"
+            ]
+          }
+        }
+      }
+    },
     "shared-data-access-api": {
       "projectType": "library",
       "root": "libs/shared/data-access-api",
@@ -827,9 +845,9 @@
               "apps/dashboard-help-and-support/src/favicon.ico",
               "apps/dashboard-help-and-support/src/assets"
             ],
-            "styles": ["libs/shared/ui-styles/src/legacy.scss"],
+            "styles": ["libs/shared/ui-legacy-styles/src/index.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/ui-styles/src/lib"]
+              "includePaths": ["libs/shared/ui-legacy-styles/src/lib"]
             },
             "scripts": []
           },
@@ -999,9 +1017,9 @@
               "apps/just-invest-calculator/src/favicon.ico",
               "apps/just-invest-calculator/src/assets"
             ],
-            "styles": ["libs/shared/ui-styles/src/legacy.scss"],
+            "styles": ["libs/shared/ui-legacy-styles/src/index.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/ui-styles/src/lib"]
+              "includePaths": ["libs/shared/ui-legacy-styles/src/lib"]
             },
             "scripts": []
           },
@@ -1189,9 +1207,9 @@
               "apps/set-a-target-calculator/src/favicon.ico",
               "apps/set-a-target-calculator/src/assets"
             ],
-            "styles": ["libs/shared/ui-styles/src/legacy.scss"],
+            "styles": ["libs/shared/ui-legacy-styles/src/index.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/ui-styles/src/lib"]
+              "includePaths": ["libs/shared/ui-legacy-styles/src/lib"]
             },
             "scripts": []
           },
