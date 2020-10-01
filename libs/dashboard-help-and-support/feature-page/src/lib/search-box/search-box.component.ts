@@ -5,13 +5,17 @@ import {
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
+import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { fromEvent, merge, Observable } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
+  filter,
   map,
   mapTo,
   shareReplay,
+  tap,
   withLatestFrom,
 } from 'rxjs/operators';
 import { flatten } from 'lodash';
@@ -47,23 +51,35 @@ export class SearchBoxComponent implements AfterViewInit {
 
   backgroundClick$: Observable<false>;
   searchInput$: Observable<string>;
+  searchQueryParam$: Observable<string>;
+  searchTerm$: Observable<string>;
   searchResults$: Observable<SearchResults>;
   hasResults$: Observable<boolean>;
   showPanelBasedOnSearch$: Observable<boolean>;
   showPanel$: Observable<boolean>;
+
+  constructor(private location: Location, private route: ActivatedRoute) {}
 
   ngAfterViewInit() {
     this.backgroundClick$ = fromEvent(
       this.background.nativeElement,
       'click'
     ).pipe(mapTo(false));
+
     this.searchInput$ = fromEvent(this.userInput.nativeElement, 'keyup').pipe(
       map((e) => this.userInput.nativeElement.value),
       debounceTime(300),
       distinctUntilChanged()
     );
 
-    this.searchResults$ = this.searchInput$.pipe(
+    this.searchQueryParam$ = this.route.queryParamMap.pipe(
+      map((params) => params.get('search')),
+      filter((value) => !!value)
+    );
+
+    this.searchTerm$ = merge(this.searchInput$, this.searchQueryParam$);
+
+    this.searchResults$ = this.searchTerm$.pipe(
       map((searchTerm) => this.fetchResults(searchTerm)),
       shareReplay(1)
     );
@@ -76,8 +92,9 @@ export class SearchBoxComponent implements AfterViewInit {
         return flattenedArticles.length !== 0;
       })
     );
+
     this.showPanelBasedOnSearch$ = this.searchResults$.pipe(
-      withLatestFrom(this.searchInput$),
+      withLatestFrom(this.searchTerm$),
       map(([_, searchTerm]) => searchTerm.length > 2)
     );
 

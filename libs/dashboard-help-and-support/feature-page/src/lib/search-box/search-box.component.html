@@ -40,7 +40,7 @@
       </span>
 
       <wes-search-results
-        [searchTerm]="searchInput$ | async"
+        [searchTerm]="searchTerm$ | async"
         [results]="searchResults$ | async"
         [hasResults]="hasResults$ | async"
         [showPanel]="showPanel$ | async"

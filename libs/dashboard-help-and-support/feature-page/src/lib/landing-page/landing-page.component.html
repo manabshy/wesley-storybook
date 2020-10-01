@@ -1,21 +1,4 @@
 <div class="c-help-support">
-    <wes-search-box [config] = "config"></wes-search-box>
-    <wes-tabs [config] = "config" class="c-help-and-support-tabs"></wes-tabs>
-    <!--
-    <div class="c-help-and-support-tabs">
-      <div class="c-help-and-support-tabs__cover">
-          <ul class="c-help-and-support-tabs__list"  *ngFor="let tabs of config.data.sections">
-                <li class="c-help-and-support-tabs__list-item">
-                    <a class="c-help-and-support-tabs__link c-help-and-support-tabs__link--active" aria-current="page" attr.data-gtm-id="{{ tabs.dataGtmId }}" attr.data-gtm-class="{{ tabs.dataGtmClass }}" href="{{ tabs.href }}"><span class="c-help-and-support-tabs__text">{{ tabs.title }}</span></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <section class="c-help-support__section module" *ngFor="let section of config.data.sections" id="{{ transform(section.title) }}">
-        <article id="{{ transform(article.title) }}" class="c-help-support__article" *ngFor="let article of section.articles">
-            <h3 class="c-help-support__article-title pr-md-5"><a href="#{{ transform(article.title) }}">{{ article.title }}</a></h3>
-            <div class="c-help-support__article-content" [innerHTML]="article.content "></div>
-        </article>
-    </section>
-    -->
+  <wes-search-box [config]="config"></wes-search-box>
+  <wes-tabs [config]="config" class="c-help-and-support-tabs"></wes-tabs>
 </div>
