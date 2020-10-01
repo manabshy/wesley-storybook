@@ -5,12 +5,14 @@ import {
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
-import { fromEvent, Observable } from 'rxjs';
+import { fromEvent, merge, Observable } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
   map,
+  mapTo,
   shareReplay,
+  withLatestFrom,
 } from 'rxjs/operators';
 import { flatten } from 'lodash';
 import Fuse from 'fuse.js';
@@ -27,6 +29,7 @@ import { SearchResults } from '../shared/search-result.interface';
 export class SearchBoxComponent implements AfterViewInit {
   @Input() config: Config;
   @ViewChild('searchInput') userInput: ElementRef;
+  @ViewChild('background') background: ElementRef;
 
   fuseOptions = {
     threshold: 0.3,
@@ -42,11 +45,18 @@ export class SearchBoxComponent implements AfterViewInit {
     ],
   };
 
+  backgroundClick$: Observable<false>;
   searchInput$: Observable<string>;
   searchResults$: Observable<SearchResults>;
   hasResults$: Observable<boolean>;
+  showPanelBasedOnSearch$: Observable<boolean>;
+  showPanel$: Observable<boolean>;
 
   ngAfterViewInit() {
+    this.backgroundClick$ = fromEvent(
+      this.background.nativeElement,
+      'click'
+    ).pipe(mapTo(false));
     this.searchInput$ = fromEvent(this.userInput.nativeElement, 'keyup').pipe(
       map((e) => this.userInput.nativeElement.value),
       debounceTime(300),
@@ -66,6 +76,15 @@ export class SearchBoxComponent implements AfterViewInit {
         return flattenedArticles.length !== 0;
       })
     );
+    this.showPanelBasedOnSearch$ = this.searchResults$.pipe(
+      withLatestFrom(this.searchInput$),
+      map(([_, searchTerm]) => searchTerm.length > 2)
+    );
+
+    this.showPanel$ = merge(
+      this.showPanelBasedOnSearch$,
+      this.backgroundClick$
+    ).pipe(shareReplay(1));
   }
 
   fetchResults(searchTerm: string) {

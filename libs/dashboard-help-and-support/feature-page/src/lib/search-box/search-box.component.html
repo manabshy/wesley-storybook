@@ -1,5 +1,9 @@
 <div class="c-help-support-search">
-  <div class="c-help-support-search__bg"></div>
+  <div
+    #background
+    class="c-help-support-search__bg"
+    [class.c-help-support-search__bg--active]="showPanel$ | async"
+  ></div>
   <div>
     <form class="c-help-support-search__form">
       <label class="text-hide" for="search">{{ config.searchProps.id }}</label>
@@ -39,6 +43,7 @@
         [searchTerm]="searchInput$ | async"
         [results]="searchResults$ | async"
         [hasResults]="hasResults$ | async"
+        [showPanel]="showPanel$ | async"
         [config]="config"
       ></wes-search-results>
     </form>

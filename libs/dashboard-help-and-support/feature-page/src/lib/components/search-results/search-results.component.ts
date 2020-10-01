@@ -20,13 +20,8 @@ export class SearchResultsComponent {
   @Input() searchTerm = '';
   @Input() hasResults = false;
   @Input() config: Config;
-  @Input() set results(value: SearchResults) {
-    this._results = value;
-    this.showPanel = this.searchTerm?.length > 2;
-  }
-
-  _results: SearchResults;
-  showPanel = false;
+  @Input() showPanel = false;
+  @Input() results: SearchResults;
 
   removeTags(text: string) {
     return text.replace(/(<([^>]+)>)/gi, '').replace(/&nbsp;/g, '');

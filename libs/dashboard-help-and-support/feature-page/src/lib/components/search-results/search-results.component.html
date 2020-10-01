@@ -4,7 +4,7 @@
   ></ng-container>
 
   <ng-template #resultsPanel>
-    <div *ngFor="let section of _results">
+    <div *ngFor="let section of results">
       <ng-container *ngIf="section.articles.length > 0">
         <h4 class="c-help-support-search__results-header">
           {{ section.title }}
