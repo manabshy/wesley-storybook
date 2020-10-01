@@ -1,49 +1,45 @@
 import {
   Component,
-  OnInit,
   Input,
   ViewChild,
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
-import { camelCase, snakeCase, flatten } from 'lodash';
-import Fuse from 'fuse.js';
-
-import {
-  ConfigService,
-  Config,
-  Article,
-  Title,
-} from '@wesleyan-frontend/dashboard-help-and-support/data-access';
 import { fromEvent, Observable } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
-  filter,
   map,
-  mapTo,
   shareReplay,
-  tap,
 } from 'rxjs/operators';
+import { flatten } from 'lodash';
+import Fuse from 'fuse.js';
+
+import { Config } from '@wesleyan-frontend/dashboard-help-and-support/data-access';
+
 import { SearchResults } from '../shared/search-result.interface';
+
 @Component({
   selector: 'wes-search-box',
   templateUrl: './search-box.component.html',
   styleUrls: ['./search-box.component.scss'],
 })
-export class SearchBoxComponent implements OnInit, AfterViewInit {
+export class SearchBoxComponent implements AfterViewInit {
   @Input() config: Config;
   @ViewChild('searchInput') userInput: ElementRef;
 
   fuseOptions = {
-    threshold: 0,
+    threshold: 0.3,
     location: 0,
     distance: 1000,
-    tokenize: true,
-    matchAllTokens: true,
-    maxPatternLength: 32,
+    isCaseSensitive: false,
+    ignoreLocation: false,
     minMatchCharLength: 3,
-    keys: ['title', 'content'],
+    findAllMatches: false,
+    keys: [
+      { name: 'content', weight: 1 },
+      { name: 'title', weight: 2 },
+    ],
   };
   showPanel = false;
   hasResults = false;
@@ -52,9 +48,6 @@ export class SearchBoxComponent implements OnInit, AfterViewInit {
   searchInput$: Observable<string>;
   searchResults$: Observable<SearchResults>;
   hasResults$: Observable<boolean>;
-  constructor() {}
-
-  ngOnInit(): void {}
 
   ngAfterViewInit() {
     this.searchInput$ = fromEvent(this.userInput.nativeElement, 'keyup').pipe(
@@ -64,9 +57,6 @@ export class SearchBoxComponent implements OnInit, AfterViewInit {
     );
 
     this.searchResults$ = this.searchInput$.pipe(
-      filter(
-        (searchTerm) => searchTerm.length >= this.fuseOptions.minMatchCharLength
-      ),
       map((searchTerm) => this.fetchResults(searchTerm)),
       shareReplay(1)
     );
@@ -79,8 +69,6 @@ export class SearchBoxComponent implements OnInit, AfterViewInit {
         return flattenedArticles.length !== 0;
       })
     );
-
-    this.searchResults$.subscribe(console.log);
   }
 
   fetchResults(searchTerm: string) {
@@ -89,7 +77,7 @@ export class SearchBoxComponent implements OnInit, AfterViewInit {
       return {
         title: section.title,
         href: section.href,
-        articles: fuse.search(searchTerm.toLowerCase()),
+        articles: fuse.search(searchTerm),
       };
     });
   }
