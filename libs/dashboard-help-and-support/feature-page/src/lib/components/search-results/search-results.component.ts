@@ -16,15 +16,18 @@ import { SearchResults } from '../../shared/search-result.interface';
   styleUrls: ['./search-results.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent {
   @Input() searchTerm = '';
-  @Input() results: SearchResults;
   @Input() hasResults = false;
   @Input() config: Config;
+  @Input() set results(value: SearchResults) {
+    this._results = value;
+    this.showPanel = this.searchTerm?.length > 2;
+  }
 
-  constructor() {}
+  _results: SearchResults;
+  showPanel = false;
 
-  ngOnInit(): void {}
   removeTags(text: string) {
     return text.replace(/(<([^>]+)>)/gi, '').replace(/&nbsp;/g, '');
   }

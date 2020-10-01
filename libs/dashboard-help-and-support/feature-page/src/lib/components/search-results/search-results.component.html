@@ -1,10 +1,10 @@
-<div class="c-help-support-search__results-panel">
+<div *ngIf="showPanel" class="c-help-support-search__results-panel">
   <ng-container
     *ngIf="hasResults; then resultsPanel; else noResultsPanel"
   ></ng-container>
 
   <ng-template #resultsPanel>
-    <div *ngFor="let section of results">
+    <div *ngFor="let section of _results">
       <ng-container *ngIf="section.articles.length > 0">
         <h4 class="c-help-support-search__results-header">
           {{ section.title }}

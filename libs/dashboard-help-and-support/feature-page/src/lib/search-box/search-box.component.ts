@@ -41,9 +41,6 @@ export class SearchBoxComponent implements AfterViewInit {
       { name: 'title', weight: 2 },
     ],
   };
-  showPanel = false;
-  hasResults = false;
-  filteredSuggestions;
 
   searchInput$: Observable<string>;
   searchResults$: Observable<SearchResults>;
