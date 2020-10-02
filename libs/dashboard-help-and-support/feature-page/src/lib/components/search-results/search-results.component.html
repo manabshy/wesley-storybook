@@ -35,7 +35,12 @@
             </ng-template>
             <ng-template #otherTemplate>
               <a
-                href="#"
+                [routerLink]="[]"
+                [queryParams]="{
+                  section: section.href.substring(1),
+                  article: transform(article.item.title)
+                }"
+                (click)="onArticleClicked()"
                 class="c-help-support-search__result c-help-support-search__result--link"
               >
                 <h3

@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { fromEvent, merge, Observable } from 'rxjs';
+import { fromEvent, merge, Observable, Subject } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -56,9 +56,13 @@ export class SearchBoxComponent implements AfterViewInit {
   searchResults$: Observable<SearchResults>;
   hasResults$: Observable<boolean>;
   showPanelBasedOnSearch$: Observable<boolean>;
+  hidePanelOnArticleSelect$$: Subject<boolean> = new Subject();
+  hidePanelOnArticleSelect$: Observable<
+    boolean
+  > = this.hidePanelOnArticleSelect$$.asObservable();
   showPanel$: Observable<boolean>;
 
-  constructor(private location: Location, private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngAfterViewInit() {
     this.backgroundClick$ = fromEvent(
@@ -100,7 +104,8 @@ export class SearchBoxComponent implements AfterViewInit {
 
     this.showPanel$ = merge(
       this.showPanelBasedOnSearch$,
-      this.backgroundClick$
+      this.backgroundClick$,
+      this.hidePanelOnArticleSelect$
     ).pipe(shareReplay(1));
   }
 
@@ -113,5 +118,9 @@ export class SearchBoxComponent implements AfterViewInit {
         articles: fuse.search(searchTerm),
       };
     });
+  }
+
+  onResultSelected() {
+    this.hidePanelOnArticleSelect$$.next(false);
   }
 }

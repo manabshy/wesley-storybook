@@ -1,4 +1,9 @@
-<mat-tab-group animationDuration="0ms">
+<mat-tab-group
+  animationDuration="0ms"
+  [selectedIndex]="activeTabIndex$ | async"
+  (selectedIndexChange)="onTabIndexChanged($event)"
+  (selectedTabChange)="onTabChanged($event)"
+>
   <mat-tab
     [label]="tab.title"
     *ngFor="let tab of config.data.sections"
@@ -12,7 +17,15 @@
           *ngIf="tab.dataGtmId != 'glossary_cta'"
         >
           <h3 class="c-help-support__article-title pr-md-5">
-            <a href="#{{ transform(article.title) }}">{{ article.title }}</a>
+            <a
+              [routerLink]="[]"
+              [queryParams]="{
+                section: tab.href.substring(1),
+                article: transform(article.title)
+              }"
+            >
+              {{ article.title }}
+            </a>
           </h3>
           <div
             class="c-help-support__article-content"
@@ -25,11 +38,20 @@
         >
           <h3 class="c-help-support__glossary-letter">A</h3>
           <div class="c-help-support__glossary-collection">
-            <article id="assets" class="c-help-support__glossary-entry">
+            <article
+              [id]="transform(article.title)"
+              class="c-help-support__glossary-entry"
+            >
               <h3
                 class="c-help-support__article-title c-help-support__article-title--glossary pr-md-5"
               >
-                <a href="#{{ transform(article.title) }}">
+                <a
+                  [routerLink]="[]"
+                  [queryParams]="{
+                    section: tab.href.substring(1),
+                    article: transform(article.title)
+                  }"
+                >
                   {{ article.title }}
                 </a>
               </h3>

@@ -14,10 +14,10 @@ import { HighlightPipe } from './shared/highlight.pipe';
   imports: [
     CommonModule,
     RouterModule.forRoot([], {
-      useHash: true,
+      useHash: false,
       initialNavigation: 'enabled',
-      scrollPositionRestoration: 'enabled',
-      anchorScrolling: 'enabled',
+      //   scrollPositionRestoration: 'enabled',
+      //   anchorScrolling: 'enabled',
       // preloadingStrategy: PreloadAllModules,
     }),
 

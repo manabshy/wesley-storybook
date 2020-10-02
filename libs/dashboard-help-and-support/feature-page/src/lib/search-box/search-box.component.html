@@ -45,6 +45,7 @@
         [hasResults]="hasResults$ | async"
         [showPanel]="showPanel$ | async"
         [config]="config"
+        (resultSelected)="onResultSelected()"
       ></wes-search-results>
     </form>
   </div>
