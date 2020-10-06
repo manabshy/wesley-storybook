@@ -1,41 +1,38 @@
+.mat-tab-header {
+  margin: 3.75rem 0 1.375rem;
+}
 .mat-tab-label {
   opacity: 1 !important;
-  font-size: 0.875rem;
-  min-width: 0;
+  min-width: 0 !important;
   margin-right: 1em;
-  padding: 0.5em 1em;
+  padding: 0 !important;
+
+  &.cdk-keyboard-focused {
+    outline: #40474f auto 1px !important;
+  }
 }
 .mat-tab-label-content {
   position: relative;
   font-size: 0.875rem;
   font-weight: 700;
+  line-height: 1.25rem;
+  padding: 0.5em 1em;
   color: #40474f;
 
-  &:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: #febd11;
-    -webkit-transition: background-color 0.4s ease-in-out;
-    transition: background-color 0.4s ease-in-out;
+  .mat-tab-label-active & {
+    background: #575757;
+    color: #fff;
   }
+}
+
+.c-help-and-support-tabs__text {
   &:hover {
     &:after {
       background-color: #40474f;
     }
   }
-
   .mat-tab-label-active & {
     font-weight: 400;
-    background: #575757;
-    color: #fff;
-    line-height: 1.25rem;
-    padding: 0.5em 1em;
-
     &:after {
       height: 0;
     }

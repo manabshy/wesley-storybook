@@ -7,10 +7,12 @@
   (selectedTabChange)="onTabChanged($event)"
 >
   <mat-tab
-    [label]="tab.title"
     *ngFor="let tab of config.data.sections"
     class="c-help-and-support-tabs__list"
   >
+    <ng-template mat-tab-label>
+      <span class="c-help-and-support-tabs__text">{{ tab.title }}</span>
+    </ng-template>
     <section class="c-help-support__section module">
       <ng-container *ngFor="let article of tab.articles">
         <article
