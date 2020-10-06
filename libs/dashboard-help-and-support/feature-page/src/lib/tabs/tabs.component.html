@@ -1,5 +1,7 @@
 <mat-tab-group
   animationDuration="0ms"
+  mat-align-tabs="center"
+  disableRipple="true"
   [selectedIndex]="activeTabIndex$ | async"
   (selectedIndexChange)="onTabIndexChanged($event)"
   (selectedTabChange)="onTabChanged($event)"
@@ -14,13 +16,12 @@
         <article
           id="{{ transform(article.title) }}"
           class="c-help-support__article"
-          *ngIf="tab.dataGtmId != 'glossary_cta'"
         >
           <h3 class="c-help-support__article-title pr-md-5">
             <a
               [routerLink]="[]"
               [queryParams]="{
-                section: tab.href.substring(1),
+                section: tab.href,
                 article: transform(article.title)
               }"
             >
@@ -34,7 +35,7 @@
         </article>
       </ng-container>
       <wes-glossary-section
-        *ngIf="tab.href === '/glossary'"
+        *ngIf="tab.href === 'glossary'"
         [section]="tab"
       ></wes-glossary-section>
     </section>

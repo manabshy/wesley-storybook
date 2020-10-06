@@ -33,9 +33,7 @@ export class TabsComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
-    this.tabsTitle = this.config.data.sections.map((section) =>
-      section.href.substring(1)
-    );
+    this.tabsTitle = this.config.data.sections.map((section) => section.href);
   }
 
   ngAfterViewInit() {
@@ -90,7 +88,6 @@ export class TabsComponent implements OnInit, AfterViewInit, OnDestroy {
             });
           }
         }),
-
         take(1)
       )
       .subscribe();
