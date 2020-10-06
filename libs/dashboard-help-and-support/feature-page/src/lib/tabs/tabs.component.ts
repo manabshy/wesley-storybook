@@ -1,20 +1,19 @@
-import { DOCUMENT } from '@angular/common';
 import {
   Component,
   OnInit,
   Input,
   ViewEncapsulation,
-  Inject,
-  Optional,
   AfterViewInit,
+  OnDestroy,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { filter, map, pairwise, take, tap } from 'rxjs/operators';
+
 import {
   Config,
   Article,
 } from '@wesleyan-frontend/dashboard-help-and-support/data-access';
-import { Observable } from 'rxjs';
-import { map, take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'wes-tabs',
@@ -22,22 +21,23 @@ import { map, take, tap } from 'rxjs/operators';
   styleUrls: ['./tabs.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class TabsComponent implements OnInit, AfterViewInit {
+export class TabsComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() config: Config;
+
+  subscriptions$ = new Subscription();
   articles: Article[];
   activeTabFromUrl$: Observable<string>;
   activeTabIndex$: Observable<number>;
-  tabs = {
-    general: 0,
-    policies: 1,
-    myprofile: 2,
-    glossary: 3,
-    list: ['general', 'policies', 'myprofile', 'glossary'],
-  };
+  removeArticleFromUrlWhenSwitchingTabs: Observable<any>;
+  tabsTitle = ['general', 'policies', 'myprofile', 'glossary'];
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
+    this.tabsTitle = this.config.data.sections.map((section) =>
+      section.href.substring(1)
+    );
+
     const groupsDict = this.config.data.sections.reduce((acc, cur) => {
       cur.articles.forEach(({ title }) => {
         acc[title] = acc[title] || { title };
@@ -53,13 +53,35 @@ export class TabsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.activeTabIndex$ = this.route.queryParamMap.pipe(
       map((params) => params.get('section')),
-      map((section) => (section ? this.tabs[section] : null))
+      map((section) => (section ? this.tabsTitle.indexOf(section) : null))
+    );
+
+    this.removeArticleFromUrlWhenSwitchingTabs = this.route.queryParamMap.pipe(
+      pairwise(),
+      filter(
+        ([previousValue, currentValue]) =>
+          previousValue.get('section') &&
+          currentValue.get('section') !== previousValue.get('section')
+      ),
+      filter(([previousValue, currentValue]) => !!currentValue.get('article')),
+      tap(([previousValue, currentValue]) => {
+        const urlTree = this.router.createUrlTree([], {
+          queryParams: { article: null },
+          queryParamsHandling: 'merge',
+        });
+
+        this.router.navigateByUrl(urlTree);
+      })
+    );
+
+    this.subscriptions$.add(
+      this.removeArticleFromUrlWhenSwitchingTabs.subscribe()
     );
   }
 
   onTabIndexChanged(index: number) {
     const urlTree = this.router.createUrlTree([], {
-      queryParams: { section: this.tabs.list[index] },
+      queryParams: { section: this.tabsTitle[index] },
       queryParamsHandling: 'merge',
     });
 
@@ -80,6 +102,7 @@ export class TabsComponent implements OnInit, AfterViewInit {
             });
           }
         }),
+
         take(1)
       )
       .subscribe();
@@ -87,5 +110,9 @@ export class TabsComponent implements OnInit, AfterViewInit {
 
   transform(value: string): string {
     return value.split(' ').join('_').replace('?', '').toLowerCase();
+  }
+
+  ngOnDestroy() {
+    this.subscriptions$.unsubscribe();
   }
 }
