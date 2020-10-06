@@ -11,11 +11,14 @@
     class="c-help-and-support-tabs__list"
   >
     <ng-template mat-tab-label>
-      <span class="c-help-and-support-tabs__text">{{ tab.title }}</span>
+      <span class="c-help-and-support-tabs__text" (click)="tabClicked()">
+        {{ tab.title }}
+      </span>
     </ng-template>
     <section class="c-help-support__section module">
       <ng-container *ngFor="let article of tab.articles">
         <article
+          *ngIf="tab.href !== 'glossary'"
           id="{{ transform(article.title) }}"
           class="c-help-support__article"
         >
