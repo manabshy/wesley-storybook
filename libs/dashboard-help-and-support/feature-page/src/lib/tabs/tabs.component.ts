@@ -15,6 +15,8 @@ import {
   Article,
 } from '@wesleyan-frontend/dashboard-help-and-support/data-access';
 
+import { transformToUrlFormat } from '../shared/utils';
+
 @Component({
   selector: 'wes-tabs',
   templateUrl: './tabs.component.html',
@@ -94,7 +96,7 @@ export class TabsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   transform(value: string): string {
-    return value.split(' ').join('_').replace('?', '').toLowerCase();
+    return transformToUrlFormat(value);
   }
 
   ngOnDestroy() {

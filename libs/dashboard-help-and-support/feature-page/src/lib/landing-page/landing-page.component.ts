@@ -8,13 +8,9 @@ import {
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss'],
 })
-export class LandingPageComponent implements OnInit {
+export class LandingPageComponent {
   config: Config;
   constructor(private configService: ConfigService) {
     this.config = this.configService.content;
-  }
-  ngOnInit(): void {}
-  transform(value: string): string {
-    return value ? value.split(' ').join('_').replace('?', '') : value;
   }
 }

@@ -11,6 +11,7 @@ import { truncate } from 'lodash';
 import { Config } from '@wesleyan-frontend/dashboard-help-and-support/data-access';
 
 import { SearchResults } from '../../shared/search-result.interface';
+import { transformToUrlFormat } from '../../shared/utils';
 
 @Component({
   selector: 'wes-search-results',
@@ -41,6 +42,6 @@ export class SearchResultsComponent {
   }
 
   transform(value: string): string {
-    return value.split(' ').join('_').replace('?', '').toLowerCase();
+    return transformToUrlFormat(value);
   }
 }

@@ -7,6 +7,7 @@ import {
 import { sortBy } from 'lodash';
 
 import { Section } from '@wesleyan-frontend/dashboard-help-and-support/data-access';
+import { transformToUrlFormat } from '../../shared/utils';
 
 @Component({
   selector: 'wes-glossary-section',
@@ -26,6 +27,6 @@ export class GlossarySectionComponent implements OnInit {
   }
 
   transform(value: string): string {
-    return value.split(' ').join('_').replace('?', '').toLowerCase();
+    return transformToUrlFormat(value);
   }
 }
