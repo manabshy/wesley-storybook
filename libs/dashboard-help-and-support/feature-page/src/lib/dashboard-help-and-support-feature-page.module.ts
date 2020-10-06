@@ -9,6 +9,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { MaterialModule } from './material-module';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { HighlightPipe } from './shared/highlight.pipe';
+import { GlossarySectionComponent } from './components/glossary-section/glossary-section.component';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { HighlightPipe } from './shared/highlight.pipe';
     TabsComponent,
     SearchResultsComponent,
     HighlightPipe,
+    GlossarySectionComponent,
   ],
   exports: [LandingPageComponent],
 })

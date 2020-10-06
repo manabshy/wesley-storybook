@@ -32,37 +32,11 @@
             [innerHTML]="article.content"
           ></div>
         </article>
-        <div
-          class="c-help-support__article c-help-support__article--glossary"
-          *ngIf="tab.dataGtmId == 'glossary_cta'"
-        >
-          <h3 class="c-help-support__glossary-letter">A</h3>
-          <div class="c-help-support__glossary-collection">
-            <article
-              [id]="transform(article.title)"
-              class="c-help-support__glossary-entry"
-            >
-              <h3
-                class="c-help-support__article-title c-help-support__article-title--glossary pr-md-5"
-              >
-                <a
-                  [routerLink]="[]"
-                  [queryParams]="{
-                    section: tab.href.substring(1),
-                    article: transform(article.title)
-                  }"
-                >
-                  {{ article.title }}
-                </a>
-              </h3>
-              <div
-                class="c-help-support__article-content c-help-support__article-content--glossary"
-                [innerHTML]="article.content"
-              ></div>
-            </article>
-          </div>
-        </div>
       </ng-container>
+      <wes-glossary-section
+        *ngIf="tab.href === '/glossary'"
+        [section]="tab"
+      ></wes-glossary-section>
     </section>
   </mat-tab>
 </mat-tab-group>

@@ -25,7 +25,6 @@ export class TabsComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() config: Config;
 
   subscriptions$ = new Subscription();
-  articles: Article[];
   activeTabFromUrl$: Observable<string>;
   activeTabIndex$: Observable<number>;
   removeArticleFromUrlWhenSwitchingTabs: Observable<any>;
@@ -37,17 +36,6 @@ export class TabsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.tabsTitle = this.config.data.sections.map((section) =>
       section.href.substring(1)
     );
-
-    const groupsDict = this.config.data.sections.reduce((acc, cur) => {
-      cur.articles.forEach(({ title }) => {
-        acc[title] = acc[title] || { title };
-        acc[title].items = acc[title].items || [];
-        acc[title].items.push({ id: cur.dataGtmId, title: cur.title });
-      });
-      return acc;
-    }, {});
-
-    this.articles = Object.keys(groupsDict).map((x) => groupsDict[x]);
   }
 
   ngAfterViewInit() {
