@@ -1,0 +1,128 @@
+////
+/// Wesleyan Who Do We Help Component
+////
+
+.wes-who-do-we-help {
+  display: inline-block;
+  width: 100%;
+
+  &__title {
+    @extend .wes-h2;
+
+    margin-bottom: 0;
+    color: $global-colour-charcoal;
+  }
+
+  &__list {
+    @include rem(
+      (
+        margin-top: 24px,
+      )
+    );
+
+    margin-bottom: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__item {
+    display: flex;
+
+    @include media-breakpoint-down(sm) {
+      &:nth-child(1) ~ & {
+        @include rem(
+          (
+            margin-top: 24px,
+          )
+        );
+      }
+    }
+
+    @include media-breakpoint-only(md) {
+      flex-basis: 50%;
+
+      @include rem(
+        (
+          padding-right: 8px,
+        )
+      );
+
+      &:nth-child(2) ~ & {
+        @include rem(
+          (
+            margin-top: 24px,
+          )
+        );
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      flex-basis: 33.3%;
+
+      &:nth-child(3) ~ & {
+        @include rem(
+          (
+            margin-top: 24px,
+          )
+        );
+      }
+    }
+  }
+
+  &__item-svg {
+    @include rem(
+      (
+        padding-right: 24px,
+      )
+    );
+  }
+
+  &__item-text {
+    @extend .wes-text-m;
+
+    color: $global-colour-grey-900;
+  }
+
+  &__message {
+    @extend .wes-text-m;
+    @extend .wes-text-semi-bold;
+
+    @include rem(
+      (
+        margin-top: 40px,
+        padding-left: 12px,
+      )
+    );
+
+    color: $global-colour-grey-900;
+    border-left: 2px solid $global-colour-gold-900;
+
+    @include media-breakpoint-up(md) {
+      @include rem(
+        (
+          margin-top: 48px,
+        )
+      );
+    }
+  }
+
+  &__footnote {
+    @extend .wes-text-shortform;
+    @extend .wes-text-italic;
+
+    @include rem(
+      (
+        margin-top: 16px,
+      )
+    );
+
+    color: $global-colour-grey-900;
+  }
+}

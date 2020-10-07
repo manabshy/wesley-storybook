@@ -62,7 +62,7 @@ export const style3 = () => ({
               <td>Take your possessions overseas when you travel, safe in the knowledge that they are automatically covered for loss, damage or theft.</td>
               <td class="tick">
                 <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g  stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
                         <g id="1_ISA-Product-Page_1366" transform="translate(-193.000000, -830.000000)" stroke="#FEBD11" stroke-width="2">
                             <g id="Key-Features" transform="translate(0.000000, 584.000000)">
                                 <g id="List_Col1" transform="translate(193.000000, 244.000000)">
@@ -83,7 +83,7 @@ export const style3 = () => ({
               <td>Treating yourself to something new? It’ll be covered automatically for up to 60 days before you need to tell us (subject to a maximum value, dependent on insurer).</td>
               <td class="tick">
                 <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g  stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
                         <g id="1_ISA-Product-Page_1366" transform="translate(-193.000000, -830.000000)" stroke="#FEBD11" stroke-width="2">
                             <g id="Key-Features" transform="translate(0.000000, 584.000000)">
                                 <g id="List_Col1" transform="translate(193.000000, 244.000000)">
