@@ -982,6 +982,76 @@
           }
         }
       }
+    },
+    "find-my-fc-feature-shell": {
+      "projectType": "library",
+      "root": "libs/find-my-fc/feature-shell",
+      "sourceRoot": "libs/find-my-fc/feature-shell/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/find-my-fc/feature-shell/tsconfig.lib.json",
+              "libs/find-my-fc/feature-shell/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/find-my-fc/feature-shell/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/find-my-fc/feature-shell/jest.config.js",
+            "tsConfig": "libs/find-my-fc/feature-shell/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/find-my-fc/feature-shell/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "find-my-fc-feature-find-my-fc-journey": {
+      "projectType": "library",
+      "root": "libs/find-my-fc/feature-find-my-fc-journey",
+      "sourceRoot": "libs/find-my-fc/feature-find-my-fc-journey/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/find-my-fc/feature-find-my-fc-journey/tsconfig.lib.json",
+              "libs/find-my-fc/feature-find-my-fc-journey/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/find-my-fc/feature-find-my-fc-journey/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/find-my-fc/feature-find-my-fc-journey/jest.config.js",
+            "tsConfig": "libs/find-my-fc/feature-find-my-fc-journey/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/find-my-fc/feature-find-my-fc-journey/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

@@ -3,8 +3,5 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'wesleyan-frontend-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = 'find-my-fc';
-}
+export class AppComponent {}

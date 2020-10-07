@@ -102,6 +102,12 @@
     },
     "find-my-fc-data-access": {
       "tags": []
+    },
+    "find-my-fc-feature-shell": {
+      "tags": []
+    },
+    "find-my-fc-feature-find-my-fc-journey": {
+      "tags": []
     }
   }
 }

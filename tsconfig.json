@@ -70,6 +70,12 @@
       ],
       "@wesleyan-frontend/find-my-fc/data-access": [
         "libs/find-my-fc/data-access/src/index.ts"
+      ],
+      "@wesleyan-frontend/find-my-fc/feature-shell": [
+        "libs/find-my-fc/feature-shell/src/index.ts"
+      ],
+      "@wesleyan-frontend/find-my-fc/feature-find-my-fc-journey": [
+        "libs/find-my-fc/feature-find-my-fc-journey/src/index.ts"
       ]
     }
   },

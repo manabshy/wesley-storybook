@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { ApplicationInsightsMonitoringService } from '@wesleyan-frontend/shared/util-app-monitoring';
 import { ConfigService } from '@wesleyan-frontend/find-my-fc/data-access';
+import { FindMyFcFeatureShellModule } from '@wesleyan-frontend/find-my-fc/feature-shell';
 
 import { AppComponent } from './app.component';
 
@@ -29,6 +30,7 @@ export function initializeApp(
     BrowserAnimationsModule,
     RouterModule,
     HttpClientModule,
+    FindMyFcFeatureShellModule,
   ],
   providers: [
     {
