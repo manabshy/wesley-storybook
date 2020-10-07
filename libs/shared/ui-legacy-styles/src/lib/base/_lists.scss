@@ -1,0 +1,218 @@
+/*------------------------------------*\
+    #LISTS
+\*------------------------------------*/
+
+// Remove browser styling
+// from CMS content
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.c-list {
+  list-style: none;
+
+  @include rem(padding, 0 0 0 28px);
+  @extend %c-body;
+
+  .c-list-bullets {
+    &:before {
+      display: inline-block;
+
+      content: '•';
+
+      color: $color-brand-gold;
+
+      @include rem(
+        (
+          width: 28px,
+          margin: 0 0 0 -28px,
+          padding: 0 0 0 12px,
+        )
+      );
+    }
+  }
+
+  &__params {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+
+    @include media-breakpoint-up(md) {
+      flex-wrap: nowrap;
+    }
+
+    li {
+      .number__group {
+        height: rem(96px);
+        justify-content: center;
+
+        &:before,
+        &:after {
+          content: '';
+          position: absolute;
+        }
+
+        &:before {
+          @include media-breakpoint-down(sm) {
+            border-top: 1px solid $color-grey-20;
+            width: 100%;
+            top: 0;
+          }
+        }
+
+        &:after {
+          border-right: 1px solid $color-grey-20;
+          height: 80%;
+          right: -10px;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+        }
+
+        &__value {
+          @include rem(margin-right, -28px);
+
+          .number {
+            @include media-breakpoint-only(xs) {
+              display: inline-block;
+            }
+          }
+        }
+      }
+
+      @include media-breakpoint-down(xs) {
+        .number__group {
+          &:after {
+            display: none;
+          }
+        }
+
+        &:first-child {
+          .number__group {
+            &:before {
+              display: none;
+            }
+          }
+        }
+
+        small {
+          font-size: rem(14px);
+        }
+      }
+
+      @include media-breakpoint-only(sm) {
+        .number__group {
+          min-height: 116px;
+        }
+        &.col-sm-6 {
+          // 2 col
+          &:nth-child(-n + 2) {
+            // First two items - no top border
+            .number__group {
+              &:before {
+                display: none;
+              }
+            }
+          }
+
+          &:nth-child(2n) {
+            // Every second item (end of row) - no right border
+            .number__group {
+              &:after {
+                display: none;
+              }
+            }
+          }
+        }
+
+        &.col-sm-4 {
+          // 3 col
+          &:nth-child(-n + 3) {
+            // First 3 items - no top border
+            .number__group {
+              &:before {
+                display: none;
+              }
+            }
+          }
+
+          &:nth-child(3n) {
+            // Every third item (end of row) - no right border
+            .number__group {
+              &:after {
+                display: none;
+              }
+            }
+            &:nth-last-child(3) {
+              // end of row and also 3rd from last (therefore a gap below) - bottom border
+              .number__group {
+                &:before {
+                  display: block;
+                  top: auto;
+                  bottom: 0;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      @include media-breakpoint-up(md) {
+        &:last-child {
+          .number__group {
+            &:after {
+              display: none;
+            }
+          }
+        }
+      }
+
+      @include media-breakpoint-up(lg) {
+        small {
+          font-size: rem(14px);
+        }
+      }
+    }
+  }
+
+  /**
+   * List with SVG icons
+   */
+  &--has-icons {
+    li {
+      display: flex;
+
+      align-items: center;
+    }
+
+    .c-icon {
+      min-width: 100px;
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &--horizontal,
+  &--vertical {
+    padding: 0;
+    margin: 0;
+  }
+  &--horizontal {
+    li {
+      display: inline-block;
+    }
+  }
+  &--vertical {
+    li {
+      display: block;
+    }
+  }
+
+  &--grey-box {
+    background-color: $color-grey;
+  }
+}

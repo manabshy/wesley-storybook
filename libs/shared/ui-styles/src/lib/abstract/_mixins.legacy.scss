@@ -1,0 +1,133 @@
+/*------------------------------------*\
+    #MIXINS
+\*------------------------------------*/
+
+/**
+ * Import fonts mixin
+ *
+ * Usage:
+ * @import('Font name', '/fonts/font-name');
+ *
+ * @param  {[type]} $font-family Name of the font family
+ * @param  {[type]} $file-path   Where the font lives
+ * @param  {[type]} $weight:     default value normal
+ * @param  {[type]} $style:      default value normal
+ */
+
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $weight;
+    font-style: $style;
+
+    src: url('#{$file-path}.eot');
+    src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+      url('#{$file-path}.woff2') format('woff2'),
+      url('#{$file-path}.woff') format('woff'),
+      url('#{$file-path}.ttf') format('truetype');
+  }
+}
+
+/**
+ * Rem Unit font sizes with relative fallback
+ * https://github.com/pierreburel/sass-rem
+ *
+ * Usage:
+ * @include rem(font-size, 24px); // Simple
+ * @include rem(padding, 5px 10px); // Multiple values
+ * @include rem(border-bottom, 1px solid black); // Multiple mixed values
+ * @include rem(box-shadow, 0 0 2px #ccc, inset 0 0 5px #eee); // Comma-separated values
+ * @include rem((
+ *   margin: 10px 5px,
+ *   text-shadow: (1px 1px #eee, -1px -1px #eee) // Parentheses needed because of comma
+ * )); // Multiple properties
+ *
+ * As we want to use the px fallback for IE, we have to use
+ * @include rem(), and set the variable $rem-fallback to true.
+ */
+
+$rem-baseline: 16px !default;
+$rem-fallback: true;
+$rem-px-only: false !default;
+
+@function rem-separator($list, $separator: false) {
+  // list-separator polyfill by Hugo Giraudel (https://sass-compatibility.github.io/#list_separator_function)
+  $test-list: ();
+  @if $separator == 'comma' or $separator == 'space' {
+    @return append($list, null, $separator);
+  }
+
+  @if function-exists('list-separator') == true {
+    @return list-separator($list);
+  }
+  @each $item in $list {
+    $test-list: append($test-list, $item, space);
+  }
+
+  @return if($test-list == $list, space, comma);
+}
+
+@mixin rem-baseline($zoom: 100%) {
+  font-size: $zoom / 16px * $rem-baseline;
+}
+
+@function rem-convert($to, $values...) {
+  $result: ();
+  $separator: rem-separator($values);
+
+  @each $value in $values {
+    @if type-of($value) == 'number' and unit($value) == 'rem' and $to == 'px' {
+      $result: append($result, $value / 1rem * $rem-baseline, $separator);
+    } @else if
+      type-of($value) ==
+      'number' and
+      unit($value) ==
+      'px' and
+      $to ==
+      'rem'
+    {
+      $result: append($result, $value / $rem-baseline * 1rem, $separator);
+    } @else if type-of($value) == 'list' {
+      $value-separator: rem-separator($value);
+      $value: rem-convert($to, $value...);
+      $value: rem-separator($value, $value-separator);
+      $result: append($result, $value, $separator);
+    } @else {
+      $result: append($result, $value, $separator);
+    }
+  }
+
+  @return if(length($result) == 1, nth($result, 1), $result);
+}
+
+@function rem($values...) {
+  @if $rem-px-only {
+    @return rem-convert(px, $values...);
+  } @else {
+    @return rem-convert(rem, $values...);
+  }
+}
+
+@mixin rem($properties, $values...) {
+  @if type-of($properties) == 'map' {
+    @each $property in map-keys($properties) {
+      @include rem($property, map-get($properties, $property));
+    }
+  } @else {
+    @each $property in $properties {
+      @if $rem-fallback or $rem-px-only {
+        #{$property}: rem-convert(px, $values...);
+      }
+      @if not $rem-px-only {
+        #{$property}: rem-convert(rem, $values...);
+      }
+    }
+  }
+}
+
+// ie 10 / ie 11
+@mixin target-metro {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}

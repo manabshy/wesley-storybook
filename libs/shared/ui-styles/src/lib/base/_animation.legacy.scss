@@ -1,0 +1,149 @@
+/*------------------------------------*\
+    #ANIMATION
+\*------------------------------------*/
+
+/**
+ * Calendar Icon animation
+ */
+.second-calendar-page {
+  transition: all 400ms cubic-bezier(0, 0, 0.58, 1);
+  transform: translate(0, 0) rotate(0);
+  transform-origin: 50% 50%;
+
+  transform-box: fill-box;
+}
+
+%calendar-hover {
+  .second-calendar-page {
+    transform: translate(3px, 15px) rotate(14deg);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale3d(0, 0, 0);
+  }
+  44.44% {
+    transform: scale3d(1.25, 1.25, 1.25);
+  }
+  66.67% {
+    transform: scale3d(1, 1, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+%bounceIn {
+  animation-name: bounceIn;
+  animation-duration: $anim-speed-quick;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes ripple {
+  5%,
+  100% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+}
+%ripple {
+  animation-name: ripple;
+  animation-duration: $anim-speed-quick;
+  animation-timing-function: none;
+}
+
+/**
+ * Tick animation
+ */
+@keyframes tickStroke01 {
+  44.44% {
+    transform: scale3d(0, 0, 0);
+  }
+  66.67% {
+    transform: scale3d(1, 1, 1);
+  }
+  0% {
+    transform: scale3d(0, 0, 0);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes tickStroke02 {
+  66.67% {
+    transform: scale3d(0, 0, 0);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+  0% {
+    transform: scale3d(0, 0, 0);
+  }
+}
+
+.tick-stroke-01,
+.tick-stroke-02,
+.tick-stroke {
+  animation-duration: $anim-speed-quick;
+  animation-timing-function: cubic-bezier(0, 0, 1, 1);
+
+  animation-fill-mode: forwards;
+}
+.tick-stroke-01,
+.tick-stroke-02 {
+  transform: scale(0, 0);
+  animation-timing-function: cubic-bezier(0, 0, 0.58, 1);
+
+  transform-box: fill-box;
+}
+
+/**
+ * Placeholders to trigger both
+ * parts of the animation
+ */
+%tickAnimation {
+  .tick-stroke-01 {
+    transform-origin: 0 0;
+    animation-name: tickStroke01;
+  }
+
+  .tick-stroke-02 {
+    transform-origin: 0 100%;
+    animation-name: tickStroke02;
+  }
+}
+
+/**
+ * Delay for input fields with borders
+ */
+%tickAnimationDelayed {
+  .tick-stroke-01,
+  .tick-stroke-02,
+  .tick-stroke {
+    animation-delay: $anim-speed-quick;
+  }
+  .tick-stroke-01 {
+    transform-origin: 0 0;
+    animation-name: tickStroke01;
+  }
+
+  .tick-stroke-02 {
+    transform-origin: 0 100%;
+    animation-name: tickStroke02;
+  }
+}
+
+/**
+ * Fade in
+ */
+@keyframes FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

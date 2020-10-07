@@ -50,6 +50,9 @@
     "shared-ui-styles": {
       "tags": []
     },
+    "shared-ui-legacy-styles": {
+      "tags": []
+    },
     "shared-data-access-api": {
       "tags": []
     },
@@ -91,6 +94,41 @@
       "tags": []
     },
     "shared-util-app-monitoring": {
+      "tags": []
+    },
+    "dashboard-help-and-support": {
+      "tags": []
+    },
+    "dashboard-help-and-support-data-access": {
+      "tags": []
+    },
+    "dashboard-help-and-support-feature-page": {
+      "tags": []
+    },
+    "just-invest-calculator": {
+      "tags": []
+    },
+    "just-invest-calculator-e2e": {
+      "tags": [],
+      "implicitDependencies": ["just-invest-calculator"]
+    },
+    "just-invest-calculator-data-access": {
+      "tags": []
+    },
+    "just-invest-calculator-feature-page": {
+      "tags": []
+    },
+    "set-a-target-calculator": {
+      "tags": []
+    },
+    "set-a-target-calculator-e2e": {
+      "tags": [],
+      "implicitDependencies": ["set-a-target-calculator"]
+    },
+    "set-a-target-calculator-data-access": {
+      "tags": []
+    },
+    "set-a-target-calculator-feature-page": {
       "tags": []
     }
   }

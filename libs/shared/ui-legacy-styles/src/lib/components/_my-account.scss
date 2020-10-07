@@ -1,0 +1,478 @@
+/**
+ * My Account
+ */
+
+body {
+	&.my-account {
+		svg {
+			pointer-events: none;
+			vertical-align: top;
+		}
+		// Fix made for IE
+		.c-link::after {
+			bottom: auto;
+		}
+
+		label.c-input--border.c-checkbox-button {
+			margin-bottom: 0;
+		}
+
+		h1 {
+			font-family: $font-secondary-strong;
+			font-size: 3.75rem;
+			font-weight: 500;
+			line-height: 4rem;
+			text-transform: uppercase;
+
+			@include media-breakpoint-down(sm) {
+				font-size: 40px;
+				line-height: 40px;
+			}
+		}
+
+		.field-title {
+			margin-top: 3.375rem;
+			margin-bottom: 1.625rem;
+		}
+
+		#contact-details-header,
+		.component-heading {
+			h2 {
+				margin: 60px 0 12px;
+
+				@include media-breakpoint-down(sm) {
+					margin: 52px 0 13px;
+				}
+
+				@include media-breakpoint-down(xs) {
+					margin: 12px 0 10px;
+				}
+			}
+
+			p {
+				margin: 0;
+			}
+		}
+
+		.component-section-heading h2 {
+			margin-top: 50px;
+
+			@include media-breakpoint-down(xs) {
+				margin-top: 60px;
+			}
+		}
+
+		#my-account__account-details {
+			margin-top: 56px;
+
+			h3 {
+				font-weight: 600;
+				margin-bottom: 9px;
+			}
+
+			h4 {
+				font-family: "Open Sans", sans-serif;
+				text-transform: none;
+				font-weight: normal;
+				color: rgba($color-slate, 1);
+			}
+
+			@include media-breakpoint-down(sm) {
+				margin-top: 52px;
+			}
+
+			@include media-breakpoint-down(xs) {
+				margin-top: 21px;
+			}
+		}
+		// Page Tabs
+		.c-my-account-dashboard__button {
+			margin-left: rem(17px);
+
+			@include media-breakpoint-up(md) {
+				margin: 0;
+			}
+		}
+
+		.c-my-account-dashboard__ctas {
+			@include media-breakpoint-down(sm) {
+				padding: 1.25rem rem(6px);
+			}
+
+			.c-my-account-dashboard__ctas-list {
+				margin-top: 1rem;
+				margin-bottom: 0.75rem;
+
+				> .c-my-account-dashboard__ctas-item:last-child > .c-my-account-dashboard__cta-inner {
+					padding-bottom: rem(4px);
+				}
+			}
+		}
+		// Personal Details
+		#personal-details {
+			input[type="text"]:disabled:hover {
+				cursor: pointer;
+			}
+			// blank value message
+			.c-blank-value__content {
+				position: relative;
+				display: block;
+				padding: rem(14px);
+				background: $color-white;
+				border: 1px solid $color-brand-gold;
+				border-radius: $border-radius;
+				z-index: 4;
+				transition: opacity 0.25s linear;
+				margin: 14px 0 20px 0;
+
+				.c-blank-value__text {
+					font-size: 14px;
+					color: $color-slate;
+					@include tooltipUpArrow();
+
+					&:before,
+					&:after {
+						right: 95%;
+					}
+				}
+			}
+		}
+
+		.my-account__close {
+			display: block;
+			top: 22px;
+			right: 24px;
+			width: 14px;
+			z-index: 99;
+
+			@include media-breakpoint-down(sm) {
+				top: 18px;
+				right: 20px;
+			}
+		}
+
+		.hide-element {
+			display: none;
+		}
+
+		.trash {
+			&__enabled,
+			&__disabled {
+				position: absolute;
+				top: 50%;
+				margin-top: -10px;
+				right: -6%;
+
+				@include media-breakpoint-down(sm) {
+					right: 0;
+				}
+
+				@include media-breakpoint-down(xs) {
+					right: -2px;
+				}
+			}
+
+			&__disabled {
+				opacity: 0.4;
+			}
+		}
+
+		#address-form__find-postcode {
+			padding-top: 1.3125rem;
+			padding-bottom: 1.3125rem;
+		}
+
+		.address-form__postcode {
+			text-transform: uppercase;
+		}
+
+		#address-form__address-group .c-form__group:first-child {
+			margin-top: 0;
+		}
+
+		.my-account__details {
+			.has-icon-outside {
+				input[type="text"] {
+					@include media-breakpoint-between(xs, sm) {
+						width: 90%;
+					}
+
+					@include media-breakpoint-down(sm) {
+						width: 93%;
+					}
+				}
+			}
+		}
+
+		.address-details__remove-message,
+		.phone-details__remove-message,
+		.email-details__remove-message {
+			border: 1px solid $color-brand-gold;
+			padding: 10px;
+			border-radius: 4px;
+		}
+
+		.my-account__address {
+			cursor: text;
+		}
+
+		.trash__normal {
+			cursor: pointer;
+		}
+		// Change password
+		.c-icon.c-icon-password {
+			position: absolute;
+			top: 35%;
+			right: 22px;
+			cursor: pointer;
+		}
+
+		#my-account__passwords-form .field-validation-valid > span {
+			display: none;
+		}
+		// Icon
+		.trash__enabled {
+			cursor: pointer;
+		}
+
+		.trash__undo {
+			cursor: default;
+		}
+		// Tooltip
+		.icon-tooltip-wrapper .c-tooltip-disabledAlt {
+			@include media-breakpoint-up(lg) {
+				left: 107%;
+				top: 0;
+			}
+		}
+
+		.c-tooltip-disabledAlt__content.icon-tooltip {
+			visibility: hidden;
+			opacity: 0;
+		}
+
+		.icon-tooltip-wrapper:hover .c-tooltip-disabledAlt__content.icon-tooltip,
+		.icon-tooltip-wrapper:focus .c-tooltip-disabledAlt__content.icon-tooltip {
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.c-footer {
+			margin-top: 0 !important;
+		}
+
+		.table td,
+		.table th {
+			border-bottom: 1px solid #dee2e6;
+			border-top: none;
+		}
+		.table {
+			margin-bottom: 0px;
+		}
+
+		#MyAccountMiniFooter,
+		#divManagePreferences {
+			padding-top: 25px;
+			margin-top: 40px;
+			border-top: 1px solid #dee2e6;
+		}
+
+		.phone-details__add-link {
+			font-size: rem(14px);
+		}
+
+		.email-details__add-link {
+			font-size: rem(14px);
+		}
+
+		.address-details__add-link {
+			font-size: rem(14px);
+		}
+
+		#my-account__phone-form-save,
+		#my-account__email-form-save {
+			width: 100%;
+		}
+
+		#my-account__email-top {
+			.component-content {
+				&.c-form__group.notification.warning-box.pb-sm-3 {
+					padding-bottom: 0;
+				}
+			}
+		}
+
+		#my-account__phone-details {
+			.component-content {
+				&.c-form__group.notification.warning-box.pb-sm-3 {
+					padding-bottom: 0;
+				}
+			}
+		}
+
+		.div-gold-outline {
+			border-style: solid;
+			border-width: 1px;
+			border-color: #febd11;
+			border-radius: 5px;
+
+			@include media-breakpoint-down(sm) {
+				padding: 10px 10px 10px 10px;
+			}
+		}
+
+		.div-gold-outline-with-arrow {
+			border-style: solid;
+			border-width: 1px;
+			border-color: #febd11;
+			border-radius: 5px;
+		}
+
+		.div-gold-outline-with-arrow:after,
+		.div-gold-outline-with-arrow:before {
+			right: 96%;
+			top: 70%;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+		}
+
+		.div-gold-outline-with-arrow:after {
+			border-color: rgba(0, 0, 0, 0);
+			border-right-color: #ffffff;
+			border-width: 10px;
+			margin-top: -6px;
+		}
+
+		.div-gold-outline-with-arrow:before {
+			border-color: rgba(254, 189, 17, 0);
+			border-right-color: #febd11;
+			border-width: 11px;
+			margin-top: -7px;
+		}
+
+		.userIdChangeBox {
+			display: -webkit-inline-box;
+			display: -ms-inline-flexbox;
+			padding-top: 15px;
+		}
+
+		.input-validation-error + .c-icon-error {
+			margin: 0;
+			top: 20px;
+			right: 20px;
+			left: auto;
+			transform: translateX(50%);
+			-webkit-transform: translateX(50%);
+
+			@media all and (-ms-high-contrast: none) {
+				top: 14px;
+			}
+		}
+
+		@include media-breakpoint-down(md) {
+			.div-gold-outline-with-arrow {
+				border-style: solid;
+				border-width: 1px;
+				border-color: #febd11;
+				border-radius: 5px;
+			}
+
+			.div-gold-outline-with-arrow:after,
+			.div-gold-outline-with-arrow:before {
+				top: 0;
+				left: 10%;
+				border: solid transparent;
+				content: " ";
+				height: 0;
+				width: 0;
+				position: absolute;
+				pointer-events: none;
+			}
+
+			.div-gold-outline-with-arrow:before {
+				border-color: rgba(254, 189, 17, 0);
+				border-bottom-color: #febd11;
+				border-width: 9px;
+				margin-left: -15px;
+			}
+
+			.div-gold-outline-with-arrow:after {
+				border-color: rgba(0, 0, 0, 0);
+				border-bottom-color: #ffffff;
+				border-width: 10px;
+				margin-left: -16px;
+			}
+
+			.preference {
+				margin-top: 10px;
+				width: 100%;
+			}
+
+			.preference .userIdChangeBox {
+				width: 100%;
+			}
+
+			.preference .userIdChangeBox #personalPreferredSpan {
+				width: 100%;
+			}
+		}
+
+		@include media-breakpoint-down(sm) {
+			.div-gold-outline-with-arrow:after,
+			.div-gold-outline-with-arrow:before {
+				left: 15%;
+			}
+
+			.preference .userIdChangeBox label {
+				display: inline;
+			}
+		}
+	}
+
+	.component-underline {
+		border-bottom: 1px solid;
+		border-color: #e1e1e1;
+	}
+
+	.notification {
+		box-sizing: border-box;
+		display: inline-table;
+		border: 1px solid #febd11;
+		border-radius: 4px;
+		background-color: rgba(254, 189, 17, 0.1);
+		position: relative;
+	}
+
+	.notification .notification-image {
+		float: left;
+		padding: 30px 0 0 20px;
+		position: absolute;
+	}
+
+	.notification .notification-text {
+		float: left;
+		color: #40474f;
+		font-family: "Open Sans";
+		font-size: 15px;
+		letter-spacing: 0;
+		line-height: 24px;
+		padding: 26px 20px 26px 20px;
+		padding-left: 75px;
+	}
+
+	.customer-address__address-form {
+		position: inherit;
+		top: 0;
+	}
+
+	.input-validation-error + .c-icon-error + .c-icon-password {
+		margin-right: 20px;
+	}
+	.input-validation-error + .c-icon-error + .password-hidden + .c-icon-password {
+		margin-right: 20px;
+	}
+}

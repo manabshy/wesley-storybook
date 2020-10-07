@@ -1,0 +1,180 @@
+/*------------------------------------*\
+    #LINKS
+\*------------------------------------*/
+
+/**
+ * Links
+ */
+
+a {
+  color: $color-slate;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+
+    color: $color-slate;
+  }
+}
+
+a[href^="tel"] {
+  text-decoration: inherit !important;
+  color: inherit !important;
+  cursor: default !important;
+  font-weight: 400 !important;
+  border-bottom: none !important;
+
+  &:hover,
+  &:focus {
+    text-decoration: inherit !important;
+    color: inherit !important;
+  }
+}
+
+.c-link {
+  font-weight: 700;
+  z-index: 0;
+  position: relative;
+
+  display: inline-block;
+
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  color: $color-slate;
+  cursor: pointer;
+
+  line-height: 1.3;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+
+    @include media-breakpoint-up(md) {
+      color: $color-slate;
+      &:after {
+        background-color: $color-slate;
+      }
+    }
+    .module--dark & {
+      @include media-breakpoint-up(md) {
+        color: $color-white;
+        &:after {
+          background-color: $color-white;
+        }
+      }
+    }
+  }
+
+  &:after {
+    position: absolute;
+    right: 0;
+    bottom: -2px;
+    left: 0;
+    display: block; // IE 11 fix
+    height: 2px;
+    content: "";
+    transition: background-color $anim-speed-quick $anim-ease-in-out;
+    background-color: $color-brand-gold;
+    z-index: -1;
+  }
+
+  &:after:disabled {
+    background: none;
+  }
+
+  &--dashboard {
+    @include rem(
+      (
+        font-size: 14px,
+        line-height: 19px,
+      )
+    );
+
+    &::after {
+      bottom: -1px;
+    }
+  }
+
+  &.is-white {
+    color: $color-white;
+    border-bottom: $color-white;
+    &:after {
+      background-color: $color-white;
+    }
+  }
+}
+
+.c-link-disabled {
+  color: gainsboro;
+  &::after {
+    background-color: gainsboro;
+  }
+  pointer-events: none;
+}
+
+.c-no-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: default;
+  font-weight: inherit;
+  border-bottom: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: none !important;
+    border-bottom: none !important;
+  }
+
+  &.is-white {
+    color: $color-white !important;
+    border-bottom: $color-white !important;
+
+    &:after {
+      background-color: $color-white !important;
+    }
+  }
+}
+
+.c-link--truncate-toggle {
+  @include rem(margin, 0 0 0 6px);
+}
+
+.a-link--my-account {
+  font-weight: 700;
+  z-index: 0;
+  position: relative;
+
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: inline;
+  border-bottom: 2px solid #febd11;
+
+  color: $color-slate;
+  cursor: pointer;
+
+  line-height: 1.3;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    border-bottom: 2px solid $color-slate;
+
+    @include media-breakpoint-up(md) {
+      color: $color-slate;
+      &:after {
+        background-color: $color-slate;
+      }
+    }
+    .module--dark & {
+      @include media-breakpoint-up(md) {
+        color: $color-white;
+        &:after {
+          background-color: $color-white;
+        }
+      }
+    }
+  }
+}
