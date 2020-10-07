@@ -9,6 +9,7 @@
     "build": "ng build",
     "storybook": "ng run shared-storybook:storybook",
     "supply:isa": "ng build --prod --baseHref=/savings-and-investments/with-profits-isa/apply/ --deployUrl=/assets/Wesleyan/isa/",
+    "supply:find-my-fc": "ng build --prod --baseHref=/find-my-fc/ --deployUrl=/assets/Wesleyan/find-my-fc/",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
