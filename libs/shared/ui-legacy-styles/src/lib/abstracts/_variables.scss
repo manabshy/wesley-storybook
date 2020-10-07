@@ -1,0 +1,152 @@
+/*------------------------------------*\
+    #VARIABLES
+\*------------------------------------*/
+
+/*------------------------------------*\
+    #COLORS
+\*------------------------------------*/
+
+/*
+ * Brand Colors
+ * Brand color variables use English names to define colors to make palettes easier to identify.
+ */
+$color-brand-gold: #febd11;
+$color-brand-charcoal: #1e2630;
+$color-brand-slate: #575757;
+$color-text: $color-brand-charcoal;
+
+/**
+ * Secondary colours
+ */
+$color-canary: #fedd36;
+$color-tangerine: #ff5404;
+$color-violet: #8f2da6;
+$color-admiral: #283876;
+$color-cobalt: #104de3;
+$color-cerulea: #4fbdee;
+$color-pine: #137441;
+$color-fern: #52ca5c;
+$color-olive: #a3d041;
+$color-slate: #40474f;
+$color-text: $color-slate;
+
+/*
+ * Neutral Colors
+ * 1) Neutral color variables use a numbered system to define variables for better maintainability.
+ *    "$color-gray-10" means "10% gray", which is a gray closer to white than to black. For more info
+ *    read https://medium.com/eightshapes-llc/color-in-design-systems-a1c80f65fa3#.brevrq67p
+ */
+
+$main-bg-grey: #efefef;
+
+$color-white: #fff;
+$color-grey: #f6f6f6;
+$color-grey-07: #ececed;
+$color-grey-20: #e1e1e1;
+$color-gray-02: #f7f9f9;
+$color-gray-15: #d9d9d9;
+$color-gray-35: #a5a5a5;
+$color-gray-50: #808080;
+$color-gray-63: #575757;
+$color-gray-73: #444;
+$color-gray-87: #222;
+$color-black: #000;
+$color-dim-20: rgba(0, 0, 0, 0.2);
+$color-dim-50: rgba(0, 0, 0, 0.5);
+$color-dim-70: rgba(0, 0, 0, 0.7);
+
+/**
+ * Utility Colors
+ * 1) Utility colors are colors used to provide feedback, such as alert messages,
+ *    form validation, etc.
+ */
+$color-utility-positive: #03804d;
+$color-utility-postitive-subtle: #d4f3e6;
+$color-utility-caution: #fcbc31;
+$color-utility-caution-subtle: lighten($color-utility-caution, 20%);
+$color-utility-negative: #d0021b;
+$color-utility-negative-subtle: lighten($color-utility-negative, 20%);
+
+/*------------------------------------*\
+    #TYPOGRAPHY
+\*------------------------------------*/
+$font: 'Open Sans', sans-serif;
+$font-secondary-strong: 'Bliss Bold', Arial, sans-serif;
+$base-font-multiplier: 1;
+$base-letter-spacing: 2px;
+$base-font-size: 0.9375rem;
+
+/*------------------------------------*\
+    #LAYOUT
+\*------------------------------------*/
+
+/**
+ * Spacing Defaults
+ */
+$space: 1em;
+
+/*------------------------------------*\
+    #BORDERS
+\*------------------------------------*/
+
+/**
+ * Border Width
+ */
+$border-med: 3px;
+$border-thick: 7px;
+
+/**
+ * Border Radius
+ */
+$border-radius: 4px;
+
+/*------------------------------------*\
+    #SHADOWS
+\*------------------------------------*/
+
+/**
+ * Box Shadow
+ */
+$box-shadow-light-black: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+$shadow-grey: 0 0 5px 2px rgba(225, 225, 225, 0.3);
+$box-shadow-inner-light-black: inset 0px -2px 5px 0px rgba(0, 0, 0, 0.05);
+$box-shadow-outer-light-black: 0 0 5px 2px rgba(0, 0, 0, 0.05);
+
+/*------------------------------------*\
+    #ANIMATION
+\*------------------------------------*/
+
+/**
+ * Animation Duration
+ */
+$anim-speed-super-quick: 0.2s;
+$anim-speed-quick: 0.4s;
+
+/**
+ * Animation Easing
+ */
+$anim-ease: ease;
+$anim-ease-in-out: ease-in-out;
+$anim-linear: linear;
+
+/*------------------------------------*\
+    #PATHS
+\*------------------------------------*/
+
+/**
+ * Fonts Path
+ */
+$fontPath: '/assets/Wesleyan/fonts';
+
+/*------------------------------------*\
+    #FORMS
+\*------------------------------------*/
+
+/**
+ * Radio/ Checkbox sizes
+ */
+$radio-button-size: 28px;
+$radio-button-half-size: $radio-button-size / 2;
+$checkbox-size: 20px;
+$checkbox-tick-size: 14px;
+$input-label-padding: 12px;

@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://my.wesleyanplatform.dev.local/",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

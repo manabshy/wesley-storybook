@@ -1,0 +1,42 @@
+/*------------------------------------*\
+    #ICONS
+\*------------------------------------*/
+
+.c-icon {
+  display: inline-block;
+
+  // svg {
+  //   width: 100%;
+  //   height: auto;
+  // }
+}
+
+/**
+ * SVG class names
+ */
+.fill-white {
+	fill: $color-white;
+}
+.fill-text {
+  fill: $color-text;
+}
+
+.fill-yellow {
+  fill: $color-brand-gold;
+}
+.fill-transparent {
+  fill: transparent;
+}
+
+.stroke-white,
+.stroke-white > path {
+  stroke: $color-white;
+}
+.stroke-charcoal,
+.stroke-charcoal > path {
+  stroke: $color-brand-charcoal;
+}
+.stroke-yellow,
+.stroke-yellow > path {
+  stroke: $color-brand-gold;
+}

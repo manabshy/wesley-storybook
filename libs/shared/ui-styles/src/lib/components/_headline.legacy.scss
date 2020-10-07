@@ -1,0 +1,19 @@
+/*------------------------------------*\
+    #HEADLINE
+\*------------------------------------*/
+
+.c-headline-block {
+  @include rem(margin-bottom, 70px);
+
+  @include media-breakpoint-only(xs) {
+    @include rem(margin-bottom, 45px);
+  }
+  .c-sell {
+    font-size: rem(20px);
+    line-height: rem(32px);
+    color: $color-gray-73;
+  }
+  hr {
+    border-top: 1px solid rgba($color-slate, 0.4);
+  }
+}

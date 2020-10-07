@@ -76,6 +76,24 @@
       ],
       "@wesleyan-frontend/find-my-fc/feature-find-my-fc-journey": [
         "libs/find-my-fc/feature-find-my-fc-journey/src/index.ts"
+      ],
+      "@wesleyan-frontend/dashboard-help-and-support/data-access": [
+        "libs/dashboard-help-and-support/data-access/src/index.ts"
+      ],
+      "@wesleyan-frontend/dashboard-help-and-support/feature-page": [
+        "libs/dashboard-help-and-support/feature-page/src/index.ts"
+      ],
+      "@wesleyan-frontend/just-invest-calculator/data-access": [
+        "libs/just-invest-calculator/data-access/src/index.ts"
+      ],
+      "@wesleyan-frontend/just-invest-calculator/feature-page": [
+        "libs/just-invest-calculator/feature-page/src/index.ts"
+      ],
+      "@wesleyan-frontend/set-a-target-calculator/data-access": [
+        "libs/set-a-target-calculator/data-access/src/index.ts"
+      ],
+      "@wesleyan-frontend/set-a-target-calculator/feature-page": [
+        "libs/set-a-target-calculator/feature-page/src/index.ts"
       ]
     }
   },

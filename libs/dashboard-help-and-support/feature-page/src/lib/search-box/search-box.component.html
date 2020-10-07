@@ -1,0 +1,52 @@
+<div class="c-help-support-search">
+  <div
+    #background
+    class="c-help-support-search__bg"
+    [class.c-help-support-search__bg--active]="showPanel$ | async"
+  ></div>
+  <div>
+    <form class="c-help-support-search__form">
+      <label class="text-hide" for="search">{{ config.searchProps.id }}</label>
+      <input
+        #searchInput
+        id="search"
+        class="c-help-support-search__input"
+        type="text"
+        autocomplete="off"
+        [placeholder]="config.searchProps.placeholder"
+        [attr.data-gtm-id]="config.searchProps.dataGtmId"
+        [attr.data-gtm-class]="config.searchProps.dataGtmClass"
+      />
+      <span class="c-help-support-search__icon">
+        <span class="SVGInline c-icon c-icon-magnify">
+          <svg
+            class="SVGInline c-icon c-icon-magnify"
+            xmlns="http://www.w3.org/2000/svg"
+            width="21"
+            height="21"
+          >
+            <g
+              fill="none"
+              fill-rule="evenodd"
+              stroke="#40474F"
+              stroke-width="2"
+              transform="translate(-14 -15)"
+            >
+              <circle cx="22.5" cy="23.5" r="7.5"></circle>
+              <path stroke-linecap="round" d="M28.5 29.5l5.025 5.025"></path>
+            </g>
+          </svg>
+        </span>
+      </span>
+
+      <wes-search-results
+        [searchTerm]="searchTerm$ | async"
+        [results]="searchResults$ | async"
+        [hasResults]="hasResults$ | async"
+        [showPanel]="showPanel$ | async"
+        [config]="config"
+        (resultSelected)="onResultSelected()"
+      ></wes-search-results>
+    </form>
+  </div>
+</div>
