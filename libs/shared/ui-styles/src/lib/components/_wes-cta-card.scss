@@ -1,0 +1,57 @@
+////
+/// Wesleyan CTA Card Component
+////
+
+.wes-cta-card {
+  display: inline-block;
+  border: 1px solid $global-colour-grey-100;
+  border-radius: 4px;
+  background-color: $global-colour-white;
+  box-shadow: 0 0 4px 0 rgba($global-colour-black, 0.05), 0px -12px 0px -8px $global-colour-gold-900;
+  padding: 32px 24px;
+  transform: translateY(4px);
+  margin-bottom: 4px;
+
+  @include media-breakpoint-up(md) {
+    padding: 48px 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: 56px 0;
+  }
+
+  &__body {
+    @include media-breakpoint-up(md) {
+      @include make-col-offset(1);
+      @include make-col(10);
+
+      display: flex;
+      flex-direction: row;
+    }
+
+    @include media-breakpoint-up(lg) {
+      @include make-col(8);
+    }
+  }
+
+  &__icon {
+    margin-bottom: 28px;
+    padding-left: 10px;
+
+    @include media-breakpoint-up(md) {
+      padding-left: 0;
+      margin-bottom: 0;
+      margin-right: 32px;
+    }
+  }
+
+  &__message {
+    @extend .wes-text-m;
+  }
+
+  &__action {
+    @extend .wes-text-m;
+
+    margin-top: 20px;
+  }
+}

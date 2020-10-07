@@ -41,7 +41,9 @@ $wes-form-field-text-colour: $global-colour-grey-900;
   // the text-align will be applied most of the time on the `wes-form-field` to also align the
   // placeholder, the alignment should be inherited here.
   text-align: inherit;
-
+  &:focus {
+    outline: none;
+  }
   // Undo the red box-shadow glow added by Firefox on invalid inputs.
   // See https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-ui-invalid
   &:-moz-ui-invalid {

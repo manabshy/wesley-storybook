@@ -60,4 +60,50 @@ ul {
       }
     }
   }
+
+  &-numbered {
+    $numbered-list-cell-spacing: 16px;
+    $numbered-list-cell-spacing-lg: 24px;
+    $numbered-list-border-spacing: 36px;
+    $numbered-list-number-padding: 8px;
+
+    @include rem(
+      (
+        border-spacing: 0 $numbered-list-border-spacing,
+        margin-top: -$numbered-list-border-spacing,
+        margin-bottom: -$numbered-list-border-spacing,
+      )
+    );
+
+    counter-reset: numbered-list;
+
+    li {
+      @extend .wes-text-m;
+
+      display: table-row;
+
+      &:before {
+        @include rem(
+          (
+            padding-right: $numbered-list-cell-spacing + $numbered-list-number-padding,
+            background-position: -$numbered-list-cell-spacing 0,
+          )
+        );
+
+        counter-increment: numbered-list;
+        content: counter(numbered-list);
+        display: table-cell;
+        background-image: linear-gradient(to left, $global-colour-gold-900 1px, transparent 1px, transparent);
+
+        @include media-breakpoint-up(lg) {
+          @include rem(
+            (
+              padding-right: $numbered-list-cell-spacing-lg + $numbered-list-number-padding,
+              background-position: -$numbered-list-cell-spacing-lg 0,
+            )
+          );
+        }
+      }
+    }
+  }
 }

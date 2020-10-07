@@ -59,6 +59,8 @@
     &:focus {
       outline: 2px solid $color-brand-gold;
       border: 2px solid $color-text;
+      //Reset, Chrome adds an offset on links
+      outline-offset: 0;
     }
 
     &:hover {
