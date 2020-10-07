@@ -67,6 +67,9 @@
       ],
       "@wesleyan-frontend/shared/util-app-monitoring": [
         "libs/shared/util-app-monitoring/src/index.ts"
+      ],
+      "@wesleyan-frontend/find-my-fc/data-access": [
+        "libs/find-my-fc/data-access/src/index.ts"
       ]
     }
   },

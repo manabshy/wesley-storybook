@@ -956,6 +956,32 @@
           }
         }
       }
+    },
+    "find-my-fc-data-access": {
+      "root": "libs/find-my-fc/data-access",
+      "sourceRoot": "libs/find-my-fc/data-access/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/find-my-fc/data-access/tsconfig.lib.json",
+              "libs/find-my-fc/data-access/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/find-my-fc/data-access/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/find-my-fc/data-access/jest.config.js",
+            "tsConfig": "libs/find-my-fc/data-access/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

@@ -99,6 +99,9 @@
     "find-my-fc-e2e": {
       "tags": [],
       "implicitDependencies": ["find-my-fc"]
+    },
+    "find-my-fc-data-access": {
+      "tags": []
     }
   }
 }
