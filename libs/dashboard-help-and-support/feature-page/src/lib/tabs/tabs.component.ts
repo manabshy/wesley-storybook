@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { map, take, tap } from 'rxjs/operators';
+import { map, pairwise, take, tap } from 'rxjs/operators';
 
 import { Config } from '@wesleyan-frontend/dashboard-help-and-support/data-access';
 
@@ -36,13 +36,19 @@ export class TabsComponent implements OnInit, AfterContentInit, OnDestroy {
 
   ngAfterContentInit() {
     this.activeTabIndex$ = this.route.queryParamMap.pipe(
-      map((params) => params.get('section')),
-      map(
-        (section) =>
-          section
-            ? this.tabsTitle.indexOf(section)
-            : 0.5 /*to force tab indexChange to fire on page load for index 0*/
-      )
+      pairwise(),
+      map(([prevParams, currentParams]) => {
+        const prevSection = prevParams.get('section');
+        const section = currentParams.get('section');
+
+        if (this.tabsTitle.indexOf(section) === 0 && !prevSection) {
+          //mat-tab indexChange doesn't fire on page load for index 0
+          //trigger the scroll
+          this.onTabChanged(0);
+        }
+
+        return this.tabsTitle.indexOf(section);
+      })
     );
   }
 
