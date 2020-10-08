@@ -36,9 +36,9 @@ export class SearchBoxComponent implements AfterViewInit {
   @ViewChild('background') background: ElementRef;
 
   fuseOptions = {
-    threshold: 0.3,
+    threshold: 0.2,
     location: 0,
-    distance: 1000,
+    distance: 2000,
     isCaseSensitive: false,
     ignoreLocation: false,
     minMatchCharLength: 3,
@@ -78,7 +78,8 @@ export class SearchBoxComponent implements AfterViewInit {
 
     this.searchQueryParam$ = this.route.queryParamMap.pipe(
       map((params) => params.get('search')),
-      filter((value) => !!value)
+      filter((value) => !!value),
+      tap((val) => (this.userInput.nativeElement.value = val))
     );
 
     this.searchTerm$ = merge(this.searchInput$, this.searchQueryParam$);

@@ -10,6 +10,7 @@ import { MaterialModule } from './material-module';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { HighlightPipe } from './shared/highlight.pipe';
 import { GlossarySectionComponent } from './components/glossary-section/glossary-section.component';
+import { TruncateTextPipe } from './shared/truncate-text.pipe';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { GlossarySectionComponent } from './components/glossary-section/glossary
     TabsComponent,
     SearchResultsComponent,
     HighlightPipe,
+    TruncateTextPipe,
     GlossarySectionComponent,
   ],
   exports: [LandingPageComponent],
