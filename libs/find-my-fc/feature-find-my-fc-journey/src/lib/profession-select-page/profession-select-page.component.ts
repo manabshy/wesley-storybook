@@ -11,19 +11,12 @@ const NEW_CUSTOMER = 'new';
 const EXISTING_CUSTOMER = 'existing';
 
 @Component({
-  selector: 'wes-customer-select-page',
-  templateUrl: './customer-select-page.component.html',
-  styleUrls: ['./customer-select-page.component.scss'],
+  selector: 'wes-profession-select-page',
+  templateUrl: './profession-select-page.component.html',
+  styleUrls: ['./profession-select-page.component.scss'],
 })
-export class CustomerSelectPageComponent implements OnInit {
+export class ProfessionSelectPageComponent implements OnInit {
   content;
-  questionMap = {
-    [NEW_CUSTOMER]: { value: NEW_CUSTOMER, label: 'I’m a new customer' },
-    [EXISTING_CUSTOMER]: {
-      value: EXISTING_CUSTOMER,
-      label: "I'm an existing Wesleyan customer",
-    },
-  };
 
   form: FormGroup = this.builder.group({
     type: [null, Validators.required],
@@ -39,14 +32,10 @@ export class CustomerSelectPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formsManager.upsert('customerSelect', this.form);
+    this.formsManager.upsert('professionSelect', this.form);
   }
 
   onSubmit() {
-    if (this.form.get('type').value === NEW_CUSTOMER) {
-      this.router.navigate([`/${routesNames.PROFESSION_SELECT}`]);
-    } else {
-      this.router.navigate([`/${routesNames.YOUR_DETAILS}`]);
-    }
+    this.router.navigate([`/${routesNames.POSTCODE}`]);
   }
 }

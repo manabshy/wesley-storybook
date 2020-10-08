@@ -11,6 +11,7 @@ import { SharedUiProgressSpinnerModule } from '@wesleyan-frontend/shared/ui-prog
 import { SharedUiFormRadioModule } from '@wesleyan-frontend/shared/ui-form-radio';
 import { SharedUiFormCheckboxModule } from '@wesleyan-frontend/shared/ui-form-checkbox';
 import { SharedUiFormInputModule } from '@wesleyan-frontend/shared/ui-form-input';
+import { SharedUiFormFieldErrorModule } from '@wesleyan-frontend/shared/ui-form-field-error';
 
 import { KnowledgeCheckPageComponent } from './knowledge-check-page/knowledge-check-page.component';
 import { CustomerDetailsPageComponent } from './customer-details-page/customer-details-page.component';
@@ -33,7 +34,6 @@ import { DirectDebitFormComponent } from './components/direct-debit-form/direct-
 import { KnowledgeCheckQ1PageComponent } from './knowledge-check-q1-page/knowledge-check-q1-page.component';
 import { KnowledgeCheckQ2PageComponent } from './knowledge-check-q2-page/knowledge-check-q2-page.component';
 import { ButtonLoaderDirective } from './button-loader.directive';
-import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
 import { SafeUrlPipe } from './safe-url.pipe';
 import { ErrorSummaryComponent } from './components/error-summary/error-summary.component';
 import { OnlyFloatDirective } from './only-float.directive';
@@ -49,9 +49,9 @@ import { InputCurrencyMaskDirective } from './input-currency-mask.directive';
     SharedUiFormRadioModule,
     SharedUiFormCheckboxModule,
     SharedUiFormInputModule,
+    SharedUiFormFieldErrorModule,
   ],
   declarations: [
-    FormFieldErrorComponent,
     KnowledgeCheckPageComponent,
     KnowledgeCheckQ1PageComponent,
     KnowledgeCheckQ2PageComponent,

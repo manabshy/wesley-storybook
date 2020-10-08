@@ -109,7 +109,9 @@
     "find-my-fc-feature-shell": {
       "tags": []
     },
-    "find-my-fc-feature-find-my-fc-journey": { "tags": [] },
+    "find-my-fc-feature-find-my-fc-journey": {
+      "tags": []
+    },
     "dashboard-help-and-support": {
       "tags": []
     },
@@ -143,6 +145,9 @@
       "tags": []
     },
     "set-a-target-calculator-feature-page": {
+      "tags": []
+    },
+    "shared-ui-form-field-error": {
       "tags": []
     }
   }

@@ -1,13 +1,15 @@
 <div class="text-center mb-4 mb-md-6 mb-lg-7">
-  <h1>Ready to book an appointment?</h1>
+  <h1>Where do you work?</h1>
   <p>
-    We just need to get a few details from you first, to match you with the
-    right Wesleyan Financial Services Consultant.
+    Select your area of work from the options below to be matched with a
+    Financial Consultant that specialises in your field. Don't worry if your
+    field isn’t listed below, you’ll still receive advice tailored to your
+    circumstances.
   </p>
 </div>
 
 <form
-  id="customerSelectForm"
+  id="professionSelectForm"
   [formGroup]="form"
   (ngSubmit)="onSubmit()"
   novalidate
@@ -20,19 +22,19 @@
     >
       <wes-radio-button
         class="mb-4"
-        [value]="questionMap.new.value"
+        [value]="'Hospital'"
         labelTestId="lblAnswerNew"
         inputTestId="rbAnswerNew"
       >
-        <span [innerHtml]="questionMap.new.label"></span>
+        <span [innerHtml]="'Hospital'"></span>
       </wes-radio-button>
       <wes-radio-button
         class="mb-4"
-        [value]="questionMap.existing.value"
+        [value]="'gp'"
         labelTestId="lblAnswerExisting"
         inputTestId="rbAnswerExisting"
       >
-        <span [innerHtml]="questionMap.existing.label"></span>
+        <span [innerHtml]="'GP'"></span>
       </wes-radio-button>
     </wes-radio-group>
   </div>

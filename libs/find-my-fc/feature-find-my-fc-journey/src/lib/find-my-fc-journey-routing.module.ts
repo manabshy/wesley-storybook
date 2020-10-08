@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { routesNames } from './find-my-fc-journey.routes.names';
 import { CustomerSelectPageComponent } from './customer-select-page/customer-select-page.component';
+import { ProfessionSelectPageComponent } from './profession-select-page/profession-select-page.component';
+import { PostcodePageComponent } from './postcode-page/postcode-page.component';
+import { YourDetailsPageComponent } from './your-details-page/your-details-page.component';
+import { CustomerReferencePageComponent } from './customer-reference-page/customer-reference-page.component';
 
 export const routes: Route[] = [
   {
@@ -13,6 +17,22 @@ export const routes: Route[] = [
   {
     path: routesNames.CUSTOMER_SELECT,
     component: CustomerSelectPageComponent,
+  },
+  {
+    path: routesNames.PROFESSION_SELECT,
+    component: ProfessionSelectPageComponent,
+  },
+  {
+    path: routesNames.POSTCODE,
+    component: PostcodePageComponent,
+  },
+  {
+    path: routesNames.YOUR_DETAILS,
+    component: YourDetailsPageComponent,
+  },
+  {
+    path: routesNames.CUSTOMER_REFERENCE,
+    component: CustomerReferencePageComponent,
   },
 ];
 
