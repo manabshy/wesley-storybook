@@ -1,0 +1,47 @@
+import { NgFormsManager } from '@ngneat/forms-manager';
+import { Injectable, OnInit } from '@angular/core';
+import { Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
+import {
+  map,
+  filter,
+  tap,
+  take,
+  startWith,
+  catchError,
+  concatMap,
+  finalize,
+  shareReplay,
+} from 'rxjs/operators';
+
+import { ConfigService } from '@wesleyan-frontend/find-my-fc/data-access';
+
+import { AppForms } from '../../shared/app-forms.interface';
+import { CustomerType } from '../../shared/customer-type.interface';
+import { SegmentType } from '../../shared/segment-type.interface';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ProfessionFacade {
+  content;
+  customerProfessionSegment$: Observable<SegmentType>;
+  workProfessionSectorList = ['educational', 'dental'];
+  homeProfessionSectorList = ['gppractice', 'hospital', 'legal', 'other'];
+
+  constructor(
+    private configService: ConfigService,
+    private formManager: NgFormsManager<AppForms>
+  ) {
+    this.content = this.configService.content;
+
+    this.customerProfessionSegment$ = this.formManager
+      .valueChanges('professionSelect')
+      .pipe(
+        map((value) =>
+          value.sector === SegmentType.SEGMENT_BY_WORK
+            ? SegmentType.SEGMENT_BY_WORK
+            : SegmentType.SEGMENT_BY_HOME
+        )
+      );
+  }
+}

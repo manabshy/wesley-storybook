@@ -3,7 +3,7 @@ export interface AppForms {
     type: string;
   };
   professionSelect: {
-    type: string;
+    sector: string;
   };
   postcode: {
     postcode: string;

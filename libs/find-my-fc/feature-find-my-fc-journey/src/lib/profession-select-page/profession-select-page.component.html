@@ -18,23 +18,23 @@
     <wes-radio-group
       class="wes-radio-card"
       aria-labelledby="typeLabel"
-      formControlName="type"
+      formControlName="sector"
     >
       <wes-radio-button
         class="mb-4"
-        [value]="'Hospital'"
+        [value]="'dental'"
         labelTestId="lblAnswerNew"
         inputTestId="rbAnswerNew"
       >
-        <span [innerHtml]="'Hospital'"></span>
+        <span [innerHtml]="'Dental'"></span>
       </wes-radio-button>
       <wes-radio-button
         class="mb-4"
-        [value]="'gp'"
+        [value]="'hospital'"
         labelTestId="lblAnswerExisting"
         inputTestId="rbAnswerExisting"
       >
-        <span [innerHtml]="'GP'"></span>
+        <span [innerHtml]="'Hospital'"></span>
       </wes-radio-button>
     </wes-radio-group>
   </div>

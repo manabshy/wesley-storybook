@@ -19,7 +19,7 @@ export class ProfessionSelectPageComponent implements OnInit {
   content;
 
   form: FormGroup = this.builder.group({
-    type: [null, Validators.required],
+    sector: [null, Validators.required],
   });
 
   constructor(

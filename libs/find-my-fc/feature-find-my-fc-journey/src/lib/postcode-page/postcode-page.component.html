@@ -1,12 +1,9 @@
 <div class="text-center mb-4 mb-md-6 mb-lg-7">
   <h1>
-    Lorem ipsum dolor
+    {{ (headingContent$ | async)?.title }}
   </h1>
   <p>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet blanditiis
-    tenetur explicabo, recusandae incidunt omnis magni eligendi soluta! Saepe
-    vitae totam sint delectus voluptates officiis reiciendis iusto dolore
-    voluptatum cum?
+    {{ (headingContent$ | async)?.description }}
   </p>
 </div>
 

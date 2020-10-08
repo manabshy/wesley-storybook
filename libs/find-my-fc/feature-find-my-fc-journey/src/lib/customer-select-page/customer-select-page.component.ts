@@ -6,9 +6,7 @@ import { NgFormsManager } from '@ngneat/forms-manager';
 import { ConfigService } from '@wesleyan-frontend/find-my-fc/data-access';
 import { routesNames } from '../find-my-fc-journey.routes.names';
 import { AppForms } from '../shared/app-forms.interface';
-
-const NEW_CUSTOMER = 'new';
-const EXISTING_CUSTOMER = 'existing';
+import { CustomerType } from '../shared/customer-type.interface';
 
 @Component({
   selector: 'wes-customer-select-page',
@@ -18,9 +16,12 @@ const EXISTING_CUSTOMER = 'existing';
 export class CustomerSelectPageComponent implements OnInit {
   content;
   questionMap = {
-    [NEW_CUSTOMER]: { value: NEW_CUSTOMER, label: 'I’m a new customer' },
-    [EXISTING_CUSTOMER]: {
-      value: EXISTING_CUSTOMER,
+    [CustomerType.NEW_CUSTOMER]: {
+      value: CustomerType.NEW_CUSTOMER,
+      label: 'I’m a new customer',
+    },
+    [CustomerType.EXISTING_CUSTOMER]: {
+      value: CustomerType.EXISTING_CUSTOMER,
       label: "I'm an existing Wesleyan customer",
     },
   };
@@ -43,7 +44,7 @@ export class CustomerSelectPageComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.form.get('type').value === NEW_CUSTOMER) {
+    if (this.form.get('type').value === CustomerType.NEW_CUSTOMER) {
       this.router.navigate([`/${routesNames.PROFESSION_SELECT}`]);
     } else {
       this.router.navigate([`/${routesNames.YOUR_DETAILS}`]);
