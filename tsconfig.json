@@ -85,6 +85,9 @@
       ],
       "@wesleyan-frontend/set-a-target-calculator/feature-page": [
         "libs/set-a-target-calculator/feature-page/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/ui-directives": [
+        "libs/shared/ui-directives/src/index.ts"
       ]
     }
   },
