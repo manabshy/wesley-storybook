@@ -97,6 +97,9 @@
       ],
       "@wesleyan-frontend/shared/ui-form-field-error": [
         "libs/shared/ui-form-field-error/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/ui-directives": [
+        "libs/shared/ui-directives/src/index.ts"
       ]
     }
   },

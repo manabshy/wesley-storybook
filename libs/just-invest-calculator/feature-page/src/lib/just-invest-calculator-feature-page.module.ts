@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InvestCalculatorComponent } from './invest-calculator/invest-calculator.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
+import * as echarts from 'echarts';
+
+import { SharedUiDirectivesModule } from '@wesleyan-frontend/shared/ui-directives';
+
+import { InvestCalculatorComponent } from './invest-calculator/invest-calculator.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { TabComponent } from './components/tabs/tab.component';
 @NgModule({
@@ -11,6 +14,7 @@ import { TabComponent } from './components/tabs/tab.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedUiDirectivesModule,
     NgxEchartsModule.forRoot({
       echarts,
     }),

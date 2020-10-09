@@ -29,7 +29,9 @@
                 ></h3>
                 <div
                   class="c-help-support-search__result-snippet"
-                  [innerHTML]="article.item.content | highlight: searchTerm"
+                  [innerHTML]="
+                    article.item.content | truncatetext | highlight: searchTerm
+                  "
                 ></div>
               </div>
             </ng-template>
@@ -50,7 +52,9 @@
                 <div
                   class="c-help-support-search__result-snippet"
                   [innerHTML]="
-                    removeTags(article.item.content) | highlight: searchTerm
+                    removeTags(article.item.content)
+                      | truncatetext
+                      | highlight: searchTerm
                   "
                 ></div>
               </a>
@@ -77,7 +81,7 @@
             </p>
             <p class="number number--rg mb-2">
               <a
-                class="c-no-link is-white"
+                class="c-no-link"
                 href="tel: {{ config.contactUsInfo.timeTables[1].phone }}"
               >
                 {{ config.contactUsInfo.timeTables[1].phone }}
@@ -107,7 +111,7 @@
             </p>
             <p class="number number--rg mb-2">
               <a
-                class="c-no-link is-white"
+                class="c-no-link"
                 href="tel: {{ config.contactUsInfo.timeTables[1].phone }}"
               >
                 {{ config.contactUsInfo.timeTables[1].phone }}

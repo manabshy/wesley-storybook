@@ -147,8 +147,7 @@
     "set-a-target-calculator-feature-page": {
       "tags": []
     },
-    "shared-ui-form-field-error": {
-      "tags": []
-    }
+    "shared-ui-form-field-error": { "tags": [] },
+    "shared-ui-directives": { "tags": [] }
   }
 }

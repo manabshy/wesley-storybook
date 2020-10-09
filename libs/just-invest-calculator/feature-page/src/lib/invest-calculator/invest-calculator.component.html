@@ -89,7 +89,7 @@
                     {{ config.calculator.budget.sliders[0].prefix
                     }}{{
                       config.calculator.budget.sliders[0].inputMax
-                        | number: '1.0-3'
+                        | number: '1.0-0'
                     }}
                   </p>
                 </div>
@@ -108,6 +108,9 @@
                         name="contributionAmount"
                         formControlName="contributionAmount"
                         inputmode="numeric"
+                        wesClearRestoreInputOnFocus
+                        wesNumbersOnly
+                        wesMatInputCommified
                         min="{{
                           config.calculator.budget.sliders[0].sliderMin
                         }}"
@@ -317,7 +320,10 @@
                   </p>
                   <p class="pr-4 mb-0 c-slider__label--max">
                     {{ config.calculator.budget.sliders[1].prefix
-                    }}{{ config.calculator.budget.sliders[1].inputMax }}
+                    }}{{
+                      config.calculator.budget.sliders[1].inputMax
+                        | number: '1.0-0'
+                    }}
                   </p>
                 </div>
               </div>
@@ -335,6 +341,9 @@
                         class="c-slider__text-input number--rg input-text-firefox"
                         name="{{ config.calculator.budget.sliders[1].name }}"
                         formControlName="balanceAmount"
+                        wesClearRestoreInputOnFocus
+                        wesNumbersOnly
+                        wesMatInputCommified
                         min="{{
                           config.calculator.budget.sliders[1].sliderMin
                         }}"
@@ -456,6 +465,8 @@
                             class="c-slider__text-input number--rg input-text-firefox"
                             id="{{ config.calculator.budget.sliders[2].name }}"
                             formControlName="term"
+                            wesClearRestoreInputOnFocus
+                            wesNumbersOnly
                             min="{{
                               config.calculator.budget.sliders[2].sliderMin
                             }}"
@@ -769,7 +780,7 @@
             <div class="d-flex align-items-center mt-2">
               <div>
                 <p class="number number--rg m-0 mr-1">
-                  {{ prefix }}{{ contributionAmount | number: '1.0-3' }}
+                  {{ prefix }}{{ contributionAmount | number: '1.0-0' }}
                 </p>
                 <small></small>
               </div>
@@ -789,7 +800,7 @@
             <div class="d-flex align-items-center mt-2">
               <div>
                 <p class="number number--rg m-0 mr-1">
-                  {{ prefix }}{{ balanceAmount | number: '1.0-3' }}
+                  {{ prefix }}{{ balanceAmount | number: '1.0-0' }}
                 </p>
                 <small></small>
               </div>
@@ -835,7 +846,7 @@
             <div class="d-flex align-items-center mt-2 number__group__value">
               <div>
                 <p class="number number--rg m-0 mr-1">
-                  {{ prefix }}{{ totalContribution | number: '1.0-3' }}
+                  {{ prefix }}{{ getTotalContribution() | number: '1.0-0' }}
                 </p>
                 <small></small>
               </div>
@@ -1000,7 +1011,7 @@
                   High
                 </span>
                 <h3 class="m-0 ml-2" style="font-size: 24px;">
-                  {{ prefix }}{{ high | number: '1.0-3' }}
+                  {{ prefix }}{{ high | number: '1.0-0' }}
                 </h3>
               </button>
             </wes-tab>
@@ -1019,7 +1030,7 @@
                   Medium
                 </span>
                 <h3 class="m-0 ml-2" style="font-size: 24px;">
-                  {{ prefix }}{{ medium | number: '1.0-3' }}
+                  {{ prefix }}{{ medium | number: '1.0-0' }}
                 </h3>
               </button>
             </wes-tab>
@@ -1040,7 +1051,7 @@
                   Low
                 </span>
                 <h3 class="m-0 ml-2" style="font-size: 24px;">
-                  {{ prefix }}{{ low | number: '1.0-3' }}
+                  {{ prefix }}{{ low | number: '1.0-0' }}
                 </h3>
               </button>
             </wes-tab>

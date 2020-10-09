@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ViewportScroller } from '@angular/common';
 import { take } from 'rxjs/operators';
@@ -14,6 +14,8 @@ import { BudgetCalculatorFacade } from '../core/services/invest-calculator.facad
 @Component({
   selector: 'wes-invest-calculator',
   templateUrl: './invest-calculator.component.html',
+  styleUrls: ['./invest-calculator.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class InvestCalculatorComponent {
   config: Config;
@@ -156,7 +158,7 @@ export class InvestCalculatorComponent {
   getTotalContribution() {
     return (
       this.contributionAmount * 12 * this.term +
-      parseInt(this.balanceAmount.toString())
+      parseInt(this.balanceAmount.toString(), 10)
     );
   }
 
@@ -209,7 +211,6 @@ export class InvestCalculatorComponent {
 
   selectGraphLine(graphLine: 'high' | 'medium' | 'low') {
     this.options = { ...this.options, color: this.getColors(graphLine) };
-    console.log(this.options.color);
   }
 
   getSeries(series) {

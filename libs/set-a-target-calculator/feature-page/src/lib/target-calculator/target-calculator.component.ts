@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {
   ConfigService,
   Config,
-  TargetCalculatorDTO,
   TargetRegularCalculatorResponse,
   TargetOneOffCalculatorResponse,
 } from '@wesleyan-frontend/set-a-target-calculator/data-access';
@@ -11,11 +10,11 @@ import { TargetOneOffCalculatorFacade } from '../core/services/target-one-off-ca
 import {
   AbstractControl,
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
 import { take, tap } from 'rxjs/operators';
+
 @Component({
   selector: 'wes-target-calculator',
   templateUrl: './target-calculator.component.html',

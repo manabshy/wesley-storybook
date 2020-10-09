@@ -12,13 +12,14 @@ import { SharedUiFormRadioModule } from '@wesleyan-frontend/shared/ui-form-radio
 import { SharedUiFormCheckboxModule } from '@wesleyan-frontend/shared/ui-form-checkbox';
 import { SharedUiFormInputModule } from '@wesleyan-frontend/shared/ui-form-input';
 import { SharedUiFormFieldErrorModule } from '@wesleyan-frontend/shared/ui-form-field-error';
+import { SharedUiDirectivesModule } from '@wesleyan-frontend/shared/ui-directives';
 
 import { KnowledgeCheckPageComponent } from './knowledge-check-page/knowledge-check-page.component';
 import { CustomerDetailsPageComponent } from './customer-details-page/customer-details-page.component';
 import { CustomStepperComponent } from './components/custom-stepper/custom-stepper.component';
 import { KnowledgeCheckQ1FormComponent } from './components/knowledge-check-q1-form/knowledge-check-q1-form.component';
 import { KnowledgeCheckQ2FormComponent } from './components/knowledge-check-q2-form/knowledge-check-q2-form.component';
-import { OnlyNumberDirective } from './only-numbers.directive';
+
 import { ManualAddressFormComponent } from './components/manual-address-form/manual-address-form.component';
 import { AddressLookupFormComponent } from './components/address-lookup-form/address-lookup-form.component';
 import { InvalidControlScrollDirective } from './invalid-control-scroll.directive';
@@ -36,7 +37,6 @@ import { KnowledgeCheckQ2PageComponent } from './knowledge-check-q2-page/knowled
 import { ButtonLoaderDirective } from './button-loader.directive';
 import { SafeUrlPipe } from './safe-url.pipe';
 import { ErrorSummaryComponent } from './components/error-summary/error-summary.component';
-import { OnlyFloatDirective } from './only-float.directive';
 import { InputCurrencyMaskDirective } from './input-currency-mask.directive';
 
 @NgModule({
@@ -50,6 +50,7 @@ import { InputCurrencyMaskDirective } from './input-currency-mask.directive';
     SharedUiFormCheckboxModule,
     SharedUiFormInputModule,
     SharedUiFormFieldErrorModule,
+    SharedUiDirectivesModule,
   ],
   declarations: [
     KnowledgeCheckPageComponent,
@@ -59,8 +60,6 @@ import { InputCurrencyMaskDirective } from './input-currency-mask.directive';
     CustomStepperComponent,
     KnowledgeCheckQ1FormComponent,
     KnowledgeCheckQ2FormComponent,
-    OnlyNumberDirective,
-    OnlyFloatDirective,
     InputCurrencyMaskDirective,
     InvalidControlScrollDirective,
     ManualAddressFormComponent,
