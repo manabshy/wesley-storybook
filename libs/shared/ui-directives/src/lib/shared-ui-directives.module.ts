@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ClearRestoreInputOnClickDirective } from './clear-restore-input-on-click.directive';
+import { ClearRestoreInputOnFocusDirective } from './clear-restore-input-on-focus.directive';
 import { OnlyNumberDirective } from './only-numbers.directive';
 import { OnlyFloatDirective } from './only-float.directive';
 import { MatInputCommifiedDirective } from './mat-input-commified.directive';
@@ -8,13 +8,13 @@ import { MatInputCommifiedDirective } from './mat-input-commified.directive';
 @NgModule({
   imports: [CommonModule],
   declarations: [
-    ClearRestoreInputOnClickDirective,
+    ClearRestoreInputOnFocusDirective,
     OnlyNumberDirective,
     OnlyFloatDirective,
     MatInputCommifiedDirective,
   ],
   exports: [
-    ClearRestoreInputOnClickDirective,
+    ClearRestoreInputOnFocusDirective,
     OnlyNumberDirective,
     OnlyFloatDirective,
     MatInputCommifiedDirective,

@@ -158,7 +158,7 @@ export class InvestCalculatorComponent {
   getTotalContribution() {
     return (
       this.contributionAmount * 12 * this.term +
-      parseInt(this.balanceAmount.toString())
+      parseInt(this.balanceAmount.toString(), 10)
     );
   }
 
@@ -211,7 +211,6 @@ export class InvestCalculatorComponent {
 
   selectGraphLine(graphLine: 'high' | 'medium' | 'low') {
     this.options = { ...this.options, color: this.getColors(graphLine) };
-    console.log(this.options.color);
   }
 
   getSeries(series) {

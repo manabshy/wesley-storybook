@@ -30,9 +30,7 @@ export class MatInputCommifiedDirective {
   // tslint:disable-next-line:variable-name
   private _value: string | null;
 
-  constructor(private elementRef: ElementRef<HTMLInputElement>) {
-    console.log('created directive');
-  }
+  constructor(private elementRef: ElementRef<HTMLInputElement>) {}
 
   get value(): string | null {
     return this._value;

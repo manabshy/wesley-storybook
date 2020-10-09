@@ -4,13 +4,13 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
  * Clear the input on click, restore initial value if no change
  */
 @Directive({
-  selector: '[wesClearRestoreInputOnClick]',
+  selector: '[wesClearRestoreInputOnFocus]',
 })
-export class ClearRestoreInputOnClickDirective {
+export class ClearRestoreInputOnFocusDirective {
   constructor(private _el: ElementRef) {}
   initialValue: string;
 
-  @HostListener('click', ['$event']) onInputClick(event) {
+  @HostListener('focus', ['$event']) onInputClick(event) {
     this.initialValue = this._el.nativeElement.value;
 
     //Clear the input
