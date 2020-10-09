@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ViewportScroller } from '@angular/common';
 import { take } from 'rxjs/operators';
@@ -14,6 +14,8 @@ import { BudgetCalculatorFacade } from '../core/services/invest-calculator.facad
 @Component({
   selector: 'wes-invest-calculator',
   templateUrl: './invest-calculator.component.html',
+  styleUrls: ['./invest-calculator.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class InvestCalculatorComponent {
   config: Config;

@@ -130,6 +130,9 @@
     },
     "set-a-target-calculator-feature-page": {
       "tags": []
+    },
+    "shared-ui-directives": {
+      "tags": []
     }
   }
 }
