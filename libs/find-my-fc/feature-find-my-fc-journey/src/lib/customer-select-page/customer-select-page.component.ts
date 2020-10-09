@@ -3,7 +3,11 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
 
-import { ConfigService } from '@wesleyan-frontend/find-my-fc/data-access';
+import {
+  ConfigService,
+  CustomerSelectorContent,
+} from '@wesleyan-frontend/find-my-fc/data-access';
+
 import { routesNames } from '../find-my-fc-journey.routes.names';
 import { AppForms } from '../shared/app-forms.interface';
 import { CustomerType } from '../shared/customer-type.interface';
@@ -14,7 +18,7 @@ import { CustomerType } from '../shared/customer-type.interface';
   styleUrls: ['./customer-select-page.component.scss'],
 })
 export class CustomerSelectPageComponent implements OnInit {
-  content;
+  content: CustomerSelectorContent;
   questionMap = {
     [CustomerType.NEW_CUSTOMER]: {
       value: CustomerType.NEW_CUSTOMER,
@@ -36,7 +40,14 @@ export class CustomerSelectPageComponent implements OnInit {
     private configService: ConfigService,
     private router: Router
   ) {
-    this.content = this.configService.content;
+    this.content = this.configService.content.customerSelector;
+    console.log(this.content);
+    this.questionMap[
+      CustomerType.NEW_CUSTOMER
+    ].label = this.content.newCustomerLabel;
+    this.questionMap[
+      CustomerType.EXISTING_CUSTOMER
+    ].label = this.content.existingCustomerLabel;
   }
 
   ngOnInit(): void {

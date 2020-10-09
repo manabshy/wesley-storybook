@@ -3,6 +3,7 @@ export interface Config {
   envConfig: {
     applicationInsightsKey: string;
   };
+  customerSelector: CustomerSelectorContent;
 }
 
 export interface FormInput {
@@ -11,10 +12,12 @@ export interface FormInput {
   inputOtherError?: string;
 }
 
-export interface EndPoints {
-  confirmationErrorPage: string;
-  confirmationPage: string;
-  knowledgecheckFailurePage: string;
-  bookmarkRedirectPage: string;
-  formUnavailablePage: string;
+export interface EndPoints {}
+
+export interface CustomerSelectorContent {
+  heading: string;
+  summary: string;
+  newCustomerLabel: string;
+  existingCustomerLabel: string;
+  nextButtonLabel: string;
 }

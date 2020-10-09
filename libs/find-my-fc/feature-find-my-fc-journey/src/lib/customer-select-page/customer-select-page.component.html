@@ -1,9 +1,6 @@
 <div class="text-center mb-4 mb-md-6 mb-lg-7">
-  <h1>Ready to book an appointment?</h1>
-  <p>
-    We just need to get a few details from you first, to match you with the
-    right Wesleyan Financial Services Consultant.
-  </p>
+  <h1>{{ content.heading }}</h1>
+  <div [innerHTML]="content.summary"></div>
 </div>
 
 <form
@@ -43,6 +40,6 @@
     data-test="btnContinue"
     [disabled]="form.invalid"
   >
-    Continue
+    {{ content.nextButtonLabel }}
   </button>
 </form>
