@@ -240,6 +240,8 @@
                         type="text"
                         formControlName="targetAmount"
                         wesClearRestoreInputOnClick
+                        wesNumbersOnly
+                        wesMatInputCommified
                         [min]="config.calculator.target.sliders[0].sliderMin"
                         [max]="config.calculator.target.sliders[0].sliderMax"
                         pattern="[0-9]*"
@@ -249,7 +251,7 @@
                         [attr.data-gtm-class]="
                           config.calculator.target.sliders[0].dataGtmClass
                         "
-                        [value]="targetAmountControl.value | number: '1.0-0'"
+                        [value]="targetAmountControl.value"
                         [ngClass]="{
                           'input-validation-error': targetAmountControl.invalid
                         }"

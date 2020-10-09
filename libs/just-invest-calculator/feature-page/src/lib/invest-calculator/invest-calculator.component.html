@@ -109,6 +109,8 @@
                         formControlName="contributionAmount"
                         inputmode="numeric"
                         wesClearRestoreInputOnClick
+                        wesNumbersOnly
+                        wesMatInputCommified
                         min="{{
                           config.calculator.budget.sliders[0].sliderMin
                         }}"
@@ -123,9 +125,7 @@
                           config.calculator.budget.sliders[0].dataGtmClass
                         }}"
                         type="text"
-                        [value]="
-                          contributionAmountControl.value | number: '1.0-0'
-                        "
+                        [value]="contributionAmountControl.value"
                         [ngClass]="{
                           'input-validation-error':
                             contributionAmountControl.invalid
@@ -342,6 +342,8 @@
                         name="{{ config.calculator.budget.sliders[1].name }}"
                         formControlName="balanceAmount"
                         wesClearRestoreInputOnClick
+                        wesNumbersOnly
+                        wesMatInputCommified
                         min="{{
                           config.calculator.budget.sliders[1].sliderMin
                         }}"
@@ -356,7 +358,7 @@
                           config.calculator.budget.sliders[1].dataGtmClass
                         }}"
                         type="text"
-                        [value]="balanceAmountControl.value | number: '1.0-0'"
+                        [value]="balanceAmountControl.value"
                         [ngClass]="{
                           'input-validation-error': balanceAmountControl.invalid
                         }"
@@ -464,6 +466,7 @@
                             id="{{ config.calculator.budget.sliders[2].name }}"
                             formControlName="term"
                             wesClearRestoreInputOnClick
+                            wesNumbersOnly
                             min="{{
                               config.calculator.budget.sliders[2].sliderMin
                             }}"
