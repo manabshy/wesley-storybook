@@ -1702,6 +1702,38 @@
           "style": "scss"
         }
       }
+    },
+    "shared-ui-icon": {
+      "projectType": "library",
+      "root": "libs/shared/ui-icon",
+      "sourceRoot": "libs/shared/ui-icon/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui-icon/tsconfig.lib.json",
+              "libs/shared/ui-icon/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-icon/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui-icon/jest.config.js",
+            "tsConfig": "libs/shared/ui-icon/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/ui-icon/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

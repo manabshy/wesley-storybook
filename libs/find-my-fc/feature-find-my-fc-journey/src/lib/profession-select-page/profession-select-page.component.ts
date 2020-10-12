@@ -19,12 +19,12 @@ import { AppForms } from '../shared/app-forms.interface';
 export class ProfessionSelectPageComponent implements OnInit {
   content: ProfessionSelectorContent;
   iconMap = {
-    Hospital: 'Hospital',
-    gppractice: 'GP Practice',
-    Dental: 'Dental',
-    Education: 'Education',
-    Legal: 'Legal',
-    Other: 'Other',
+    hospital: 'heart',
+    gppractice: 'stethoscope',
+    dental: 'tooth',
+    education: 'open-book',
+    legal: 'legal',
+    other: 'briefcase',
   };
   form: FormGroup = this.builder.group({
     sector: [null, Validators.required],
@@ -37,9 +37,6 @@ export class ProfessionSelectPageComponent implements OnInit {
     private router: Router
   ) {
     this.content = this.configService.content.professionSelector;
-    //   this.optionsMap = this.content.areaOfWork.reduce((prev, curr) => {
-    //       return {...prev, [curr.id]:{...curr, icon:}}
-    //   },{})
   }
 
   ngOnInit(): void {

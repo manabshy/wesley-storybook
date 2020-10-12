@@ -6,6 +6,7 @@ import { SharedUiFormRadioModule } from '@wesleyan-frontend/shared/ui-form-radio
 import { SharedUiFormInputModule } from '@wesleyan-frontend/shared/ui-form-input';
 import { SharedUiFormFieldErrorModule } from '@wesleyan-frontend/shared/ui-form-field-error';
 import { SharedUiDirectivesModule } from '@wesleyan-frontend/shared/ui-directives';
+import { SharedUiIconModule } from '@wesleyan-frontend/shared/ui-icon';
 
 import { FindMyFCJourneyRoutingModule } from './find-my-fc-journey-routing.module';
 import { CustomerSelectPageComponent } from './customer-select-page/customer-select-page.component';
@@ -23,6 +24,7 @@ import { CustomerReferencePageComponent } from './customer-reference-page/custom
     SharedUiFormInputModule,
     SharedUiFormFieldErrorModule,
     SharedUiDirectivesModule,
+    SharedUiIconModule,
   ],
   declarations: [
     CustomerSelectPageComponent,

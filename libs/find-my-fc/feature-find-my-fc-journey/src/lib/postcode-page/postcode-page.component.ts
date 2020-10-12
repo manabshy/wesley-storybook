@@ -3,7 +3,10 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
 
-import { ConfigService } from '@wesleyan-frontend/find-my-fc/data-access';
+import {
+  ConfigService,
+  NewCustomerPostcodeContent,
+} from '@wesleyan-frontend/find-my-fc/data-access';
 import { Observable } from 'rxjs';
 import { PostcodeFacade } from '../core/services/postcode.facade';
 import { routesNames } from '../find-my-fc-journey.routes.names';
@@ -15,16 +18,10 @@ import { AppForms } from '../shared/app-forms.interface';
   styleUrls: ['./postcode-page.component.scss'],
 })
 export class PostcodePageComponent implements OnInit {
-  content;
-  ukPostcodeValidatorPattern: RegExp = new RegExp(
-    '(GIRs0AA)|((([ABCDEFGHIJKLMNOPRSTUWYZ][0-9][0-9]?)|(([ABCDEFGHIJKLMNOPRSTUWYZ][ABCDEFGHKLMNOPQRSTUVWXY][0-9][0-9]?)|(([ABCDEFGHIJKLMNOPRSTUWYZ][0-9][ABCDEFGHJKSTUW])|([ABCDEFGHIJKLMNOPRSTUWYZ][ABCDEFGHKLMNOPQRSTUVWXY][0-9][ABEHMNPRVWXY]))))s?[0-9][ABDEFGHJLNPQRSTUWXYZ]{2})$',
-    'gi'
-  );
-  test =
-    '/(GIRs0AA)|((([ABCDEFGHIJKLMNOPRSTUWYZ][0-9][0-9]?)|(([ABCDEFGHIJKLMNOPRSTUWYZ][ABCDEFGHKLMNOPQRSTUVWXY][0-9][0-9]?)|(([ABCDEFGHIJKLMNOPRSTUWYZ][0-9][ABCDEFGHJKSTUW])|([ABCDEFGHIJKLMNOPRSTUWYZ][ABCDEFGHKLMNOPQRSTUVWXY][0-9][ABEHMNPRVWXY]))))s?[0-9][ABDEFGHJLNPQRSTUWXYZ]{2})$/gi';
+  content: NewCustomerPostcodeContent;
 
   form: FormGroup = this.builder.group({
-    postcode: [null, [Validators.required, Validators.pattern(this.test)]],
+    postcode: [null, [Validators.required]],
   });
   headingContent$: Observable<{ title: string; description: string }>;
 
@@ -35,7 +32,7 @@ export class PostcodePageComponent implements OnInit {
     private postcodeFacade: PostcodeFacade,
     private router: Router
   ) {
-    this.content = this.configService.content;
+    this.content = this.configService.content.newCustomerPostcode;
     this.headingContent$ = this.postcodeFacade.postcodePageContent$;
   }
 

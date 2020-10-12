@@ -22,6 +22,7 @@
         labelTestId="{{ 'lbl' + formatTestLabel(option.label) }}"
         inputTestId="{{ 'rb' + formatTestLabel(option.label) }}"
       >
+        <mat-icon [svgIcon]="iconMap[option.id]"></mat-icon>
         <span [innerHtml]="option.label"></span>
       </wes-radio-button>
     </wes-radio-group>

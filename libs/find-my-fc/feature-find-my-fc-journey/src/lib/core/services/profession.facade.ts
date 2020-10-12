@@ -25,7 +25,7 @@ import { SegmentType } from '../../shared/segment-type.interface';
 export class ProfessionFacade {
   content;
   customerProfessionSegment$: Observable<SegmentType>;
-  workProfessionSectorList = ['educational', 'dental'];
+  workProfessionSectorList = ['education', 'dental'];
   homeProfessionSectorList = ['gppractice', 'hospital', 'legal', 'other'];
 
   constructor(
@@ -38,7 +38,7 @@ export class ProfessionFacade {
       .valueChanges('professionSelect')
       .pipe(
         map((value) =>
-          value.sector === SegmentType.SEGMENT_BY_WORK
+          this.workProfessionSectorList.includes(value.sector)
             ? SegmentType.SEGMENT_BY_WORK
             : SegmentType.SEGMENT_BY_HOME
         )

@@ -13,7 +13,10 @@ import {
   shareReplay,
 } from 'rxjs/operators';
 
-import { ConfigService } from '@wesleyan-frontend/find-my-fc/data-access';
+import {
+  ConfigService,
+  NewCustomerPostcodeContent,
+} from '@wesleyan-frontend/find-my-fc/data-access';
 
 import { AppForms } from '../../shared/app-forms.interface';
 import { CustomerType } from '../../shared/customer-type.interface';
@@ -24,7 +27,7 @@ import { ProfessionFacade } from './profession.facade';
   providedIn: 'root',
 })
 export class PostcodeFacade {
-  content;
+  content: NewCustomerPostcodeContent;
   postcodePageContent$: Observable<{ title: string; description: string }>;
 
   constructor(
@@ -32,18 +35,18 @@ export class PostcodeFacade {
     private formManager: NgFormsManager<AppForms>,
     private professionFacade: ProfessionFacade
   ) {
-    this.content = this.configService.content;
+    this.content = this.configService.content.newCustomerPostcode;
 
     this.postcodePageContent$ = this.professionFacade.customerProfessionSegment$.pipe(
       map((type) => {
         const title =
           type === SegmentType.SEGMENT_BY_HOME
-            ? 'Home postcode'
-            : 'Work postcode';
+            ? this.content.homePostcodeHeading
+            : this.content.workPostcodeHeading;
         const description =
-          type === SegmentType.SEGMENT_BY_WORK
-            ? 'Work postcode'
-            : 'Home postcode';
+          type === SegmentType.SEGMENT_BY_HOME
+            ? this.content.homePostcode.inputLabel
+            : this.content.workPostcode.inputLabel;
 
         return {
           title,
