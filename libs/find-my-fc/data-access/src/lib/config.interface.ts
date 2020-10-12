@@ -4,6 +4,8 @@ export interface Config {
     applicationInsightsKey: string;
   };
   customerSelector: CustomerSelectorContent;
+  professionSelector: ProfessionSelectorContent;
+  newCustomerPostcode: NewCustomerPostcodeContent;
 }
 
 export interface FormInput {
@@ -20,4 +22,27 @@ export interface CustomerSelectorContent {
   newCustomerLabel: string;
   existingCustomerLabel: string;
   nextButtonLabel: string;
+}
+
+export interface ProfessionSelectorContent {
+  heading: string;
+  summary: string;
+  areaOfWork: { label: string; id: string }[];
+  nextButtonLabel: string;
+  backButtonLabel: string;
+}
+
+export interface NewCustomerPostcodeContent {
+  homePostcodeHeading: string;
+  homePostcode: {
+    inputLabel: string;
+    inputError: string;
+  };
+  workPostcodeHeading: string;
+  workPostcode: {
+    inputLabel: string;
+    inputError: string;
+  };
+  nextButtonLabel: string;
+  backButtonLabel: string;
 }

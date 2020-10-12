@@ -27,30 +27,25 @@
         autocomplete="email"
         data-test="txtPersonalEmail"
       />
-      <!-- <wes-error
-        *ngIf="
-          controls.personalEmail.invalid &&
-          (showOverallError ||
-            controls.personalEmail.dirty ||
-            controls.personalEmail.touched)
-        "
-      >
+      <wes-error *ngIf="emailControl.invalid">
         <wes-form-field-error>
-          {{ pageContent.contactDetails.personalEmail.inputError }}
+          error
         </wes-form-field-error>
-      </wes-error> -->
+      </wes-error>
     </wes-form-field>
 
     <wes-form-field id="postcodeFormField">
       <wes-label labelTestId="lblPostcode">Home Postcode</wes-label>
       <input
         wesInput
+        wesUppercase
         type="text"
         formControlName="postcode"
         autocomplete="postal-code"
         data-test="txtPostcode"
       />
-      <wes-error *ngIf="form.invalid">
+
+      <wes-error *ngIf="postcodeControl.invalid">
         <wes-form-field-error>
           Error
         </wes-form-field-error>
@@ -119,14 +114,14 @@
           />
         </wes-form-field>
       </div>
-      <!-- <wes-error *ngIf="isFieldInvalid('dob')">
-          <wes-form-field-error *ngIf="controls.dob.errors.invalidDate">
-            {{ pageContent.dob.inputError }}
-          </wes-form-field-error>
-          <wes-form-field-error *ngIf="controls.dob.errors.tooYoungOrTooOld">
-            {{ pageContent.dob.inputOtherError }}
-          </wes-form-field-error>
-        </wes-error> -->
+      <wes-error *ngIf="dateOfBirthControl.invalid">
+        <wes-form-field-error>
+          Error
+        </wes-form-field-error>
+      </wes-error>
+      {{ emailControl.errors | json }}
+      {{ postcodeControl.errors | json }}
+      {{ dateOfBirthControl.errors | json }}
     </div>
   </div>
 

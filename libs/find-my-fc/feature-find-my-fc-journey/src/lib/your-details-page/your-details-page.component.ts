@@ -4,7 +4,11 @@ import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
 
 import { ConfigService } from '@wesleyan-frontend/find-my-fc/data-access';
-import { emailValidator } from '@wesleyan-frontend/shared/util-validators';
+import {
+  dateValidator,
+  emailValidator,
+  fullUkPostcodeValidatorPattern,
+} from '@wesleyan-frontend/shared/util-validators';
 
 import { routesNames } from '../find-my-fc-journey.routes.names';
 import { AppForms } from '../shared/app-forms.interface';
@@ -17,22 +21,26 @@ import { AppForms } from '../shared/app-forms.interface';
 })
 export class YourDetailsPageComponent implements OnInit {
   content;
-  ukPostcodeValidatorPattern: RegExp = new RegExp(
-    '(GIRs0AA)|((([ABCDEFGHIJKLMNOPRSTUWYZ][0-9][0-9]?)|(([ABCDEFGHIJKLMNOPRSTUWYZ][ABCDEFGHKLMNOPQRSTUVWXY][0-9][0-9]?)|(([ABCDEFGHIJKLMNOPRSTUWYZ][0-9][ABCDEFGHJKSTUW])|([ABCDEFGHIJKLMNOPRSTUWYZ][ABCDEFGHKLMNOPQRSTUVWXY][0-9][ABEHMNPRVWXY]))))s?[0-9][ABDEFGHJLNPQRSTUWXYZ]{2})$',
-    'gi'
-  );
-  test =
-    '/(GIRs0AA)|((([ABCDEFGHIJKLMNOPRSTUWYZ][0-9][0-9]?)|(([ABCDEFGHIJKLMNOPRSTUWYZ][ABCDEFGHKLMNOPQRSTUVWXY][0-9][0-9]?)|(([ABCDEFGHIJKLMNOPRSTUWYZ][0-9][ABCDEFGHJKSTUW])|([ABCDEFGHIJKLMNOPRSTUWYZ][ABCDEFGHKLMNOPQRSTUVWXY][0-9][ABEHMNPRVWXY]))))s?[0-9][ABDEFGHJLNPQRSTUWXYZ]{2})$/gi';
 
   form: FormGroup = this.builder.group({
     email: [null, [Validators.required, emailValidator]],
-    postcode: [null, [Validators.required]],
-    dateOfBirth: this.builder.group({
-      day: ['', Validators.required],
-      month: ['', Validators.required],
-      year: ['', Validators.required],
-    }),
+    postcode: [
+      null,
+      [Validators.required, Validators.pattern(fullUkPostcodeValidatorPattern)],
+    ],
+    dateOfBirth: this.builder.group(
+      {
+        day: [null, Validators.required],
+        month: [null, Validators.required],
+        year: [null, Validators.required],
+      },
+      { validators: dateValidator }
+    ),
   });
+
+  emailControl = this.form.controls.email;
+  postcodeControl = this.form.controls.postcode;
+  dateOfBirthControl = this.form.controls.dateOfBirth;
 
   constructor(
     private builder: FormBuilder,

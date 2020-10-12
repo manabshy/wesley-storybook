@@ -1,11 +1,6 @@
 <div class="text-center mb-4 mb-md-6 mb-lg-7">
-  <h1>Where do you work?</h1>
-  <p>
-    Select your area of work from the options below to be matched with a
-    Financial Consultant that specialises in your field. Don't worry if your
-    field isn’t listed below, you’ll still receive advice tailored to your
-    circumstances.
-  </p>
+  <h1>{{ content.heading }}</h1>
+  <div [innerHTML]="content.summary"></div>
 </div>
 
 <form
@@ -21,20 +16,13 @@
       formControlName="sector"
     >
       <wes-radio-button
+        *ngFor="let option of content.areaOfWork"
         class="mb-4"
-        [value]="'dental'"
-        labelTestId="lblAnswerNew"
-        inputTestId="rbAnswerNew"
+        [value]="option.id"
+        labelTestId="{{ 'lbl' + formatTestLabel(option.label) }}"
+        inputTestId="{{ 'rb' + formatTestLabel(option.label) }}"
       >
-        <span [innerHtml]="'Dental'"></span>
-      </wes-radio-button>
-      <wes-radio-button
-        class="mb-4"
-        [value]="'hospital'"
-        labelTestId="lblAnswerExisting"
-        inputTestId="rbAnswerExisting"
-      >
-        <span [innerHtml]="'Hospital'"></span>
+        <span [innerHtml]="option.label"></span>
       </wes-radio-button>
     </wes-radio-group>
   </div>
@@ -45,6 +33,6 @@
     data-test="btnContinue"
     [disabled]="form.invalid"
   >
-    Continue
+    {{ content.nextButtonLabel }}
   </button>
 </form>

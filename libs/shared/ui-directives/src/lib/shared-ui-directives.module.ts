@@ -4,6 +4,7 @@ import { ClearRestoreInputOnFocusDirective } from './clear-restore-input-on-focu
 import { OnlyNumberDirective } from './only-numbers.directive';
 import { OnlyFloatDirective } from './only-float.directive';
 import { MatInputCommifiedDirective } from './mat-input-commified.directive';
+import { UppercaseDirective } from './uppercase.directive';
 
 @NgModule({
   imports: [CommonModule],
@@ -12,12 +13,14 @@ import { MatInputCommifiedDirective } from './mat-input-commified.directive';
     OnlyNumberDirective,
     OnlyFloatDirective,
     MatInputCommifiedDirective,
+    UppercaseDirective,
   ],
   exports: [
     ClearRestoreInputOnFocusDirective,
     OnlyNumberDirective,
     OnlyFloatDirective,
     MatInputCommifiedDirective,
+    UppercaseDirective,
   ],
 })
 export class SharedUiDirectivesModule {}

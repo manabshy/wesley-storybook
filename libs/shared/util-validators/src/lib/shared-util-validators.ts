@@ -134,3 +134,28 @@ const isEmptyInputValue = (value: any): boolean => {
   // we don't check for string here so it also works with arrays
   return value == null || value.length === 0;
 };
+
+/**
+ * Date validator
+ */
+export const dateValidator: ValidatorFn = (
+  control: FormGroup
+): ValidationErrors | null => {
+  const day: number = control.get('day').value;
+  const month: number = control.get('month').value;
+  const year: number = control.get('year').value;
+  console.log(control);
+  if (
+    isEmptyInputValue(day) ||
+    isEmptyInputValue(month) ||
+    isEmptyInputValue(year)
+  ) {
+    return null; // don't validate empty values to allow optional controls
+  }
+
+  if (!isValid(parseISO(`${year}-${month}-${day}`))) {
+    return { invalidDate: true };
+  }
+
+  return null;
+};

@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedUiFormRadioModule } from '@wesleyan-frontend/shared/ui-form-radio';
 import { SharedUiFormInputModule } from '@wesleyan-frontend/shared/ui-form-input';
 import { SharedUiFormFieldErrorModule } from '@wesleyan-frontend/shared/ui-form-field-error';
+import { SharedUiDirectivesModule } from '@wesleyan-frontend/shared/ui-directives';
 
 import { FindMyFCJourneyRoutingModule } from './find-my-fc-journey-routing.module';
 import { CustomerSelectPageComponent } from './customer-select-page/customer-select-page.component';
@@ -21,6 +22,7 @@ import { CustomerReferencePageComponent } from './customer-reference-page/custom
     SharedUiFormRadioModule,
     SharedUiFormInputModule,
     SharedUiFormFieldErrorModule,
+    SharedUiDirectivesModule,
   ],
   declarations: [
     CustomerSelectPageComponent,
