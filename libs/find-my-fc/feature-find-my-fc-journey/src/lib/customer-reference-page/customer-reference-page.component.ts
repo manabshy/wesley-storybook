@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
 
 import { ConfigService } from '@wesleyan-frontend/find-my-fc/data-access';
+import { customerReferencePattern } from '@wesleyan-frontend/shared/util-validators';
+
+import { CustomerReferenceFacade } from '../core/services/customer-reference.facade';
 import { routesNames } from '../find-my-fc-journey.routes.names';
 import { AppForms } from '../shared/app-forms.interface';
 
@@ -16,13 +19,17 @@ export class CustomerReferencePageComponent implements OnInit {
   content;
 
   form: FormGroup = this.builder.group({
-    ref: [null, [Validators.required]],
+    ref: [
+      null,
+      [Validators.required, Validators.pattern(customerReferencePattern)],
+    ],
   });
 
   constructor(
     private builder: FormBuilder,
     private formsManager: NgFormsManager<AppForms>,
     private configService: ConfigService,
+    private customerReferenceFacade: CustomerReferenceFacade,
     private router: Router
   ) {
     this.content = this.configService.content;
@@ -33,7 +40,8 @@ export class CustomerReferencePageComponent implements OnInit {
   }
 
   onSubmit() {
-    //Find fc
-    // this.router.navigate([`/${routesNames.POSTCODE}`]);
+    if (this.form.valid) {
+      this.customerReferenceFacade.findFC(this.form.value.ref);
+    }
   }
 }

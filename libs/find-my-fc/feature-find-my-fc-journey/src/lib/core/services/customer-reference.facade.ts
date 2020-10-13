@@ -26,43 +26,17 @@ import { ProfessionFacade } from './profession.facade';
 @Injectable({
   providedIn: 'root',
 })
-export class PostcodeFacade {
-  content: NewCustomerPostcodeContent;
-  postcodePageContent$: Observable<{ title: string; description: string }>;
-
+export class CustomerReferenceFacade {
   constructor(
     private configService: ConfigService,
     private formManager: NgFormsManager<AppForms>,
     private professionFacade: ProfessionFacade,
     private findFinancialConsultantService: FindFCApiService
-  ) {
-    this.content = this.configService.content.newCustomerPostcode;
+  ) {}
 
-    this.postcodePageContent$ = this.professionFacade.customerProfessionSegment$.pipe(
-      map((type) => {
-        const title =
-          type === SegmentType.SEGMENT_BY_HOME
-            ? this.content.homePostcodeHeading
-            : this.content.workPostcodeHeading;
-        const description =
-          type === SegmentType.SEGMENT_BY_HOME
-            ? this.content.homePostcode.inputLabel
-            : this.content.workPostcode.inputLabel;
-
-        return {
-          title,
-          description,
-        };
-      })
-    );
-  }
-
-  findFC(postcode: string) {
-    const profession = this.formManager.getControl('professionSelect', 'sector')
-      .value;
-
+  findFC(customerReference: string) {
     this.findFinancialConsultantService
-      .findByFCDetails(postcode, profession)
+      .findByCustomerID(customerReference)
       .subscribe();
   }
 }

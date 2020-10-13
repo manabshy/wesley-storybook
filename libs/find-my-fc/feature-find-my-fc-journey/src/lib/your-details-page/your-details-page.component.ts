@@ -9,6 +9,7 @@ import {
   emailValidator,
   fullUkPostcodeValidatorPattern,
 } from '@wesleyan-frontend/shared/util-validators';
+import { CustomerDetailsFacade } from '../core/services/customer-details.facade';
 
 import { routesNames } from '../find-my-fc-journey.routes.names';
 import { AppForms } from '../shared/app-forms.interface';
@@ -46,6 +47,7 @@ export class YourDetailsPageComponent implements OnInit {
     private builder: FormBuilder,
     private formsManager: NgFormsManager<AppForms>,
     private configService: ConfigService,
+    private customerDetailsFacade: CustomerDetailsFacade,
     private router: Router
   ) {
     this.content = this.configService.content;
@@ -56,7 +58,11 @@ export class YourDetailsPageComponent implements OnInit {
   }
 
   onSubmit() {
-    //Find fc
-    // this.router.navigate([`/${routesNames.POSTCODE}`]);
+    if (this.form.valid) {
+      const { email, postcode, dateOfBirth } = this.form.value;
+      const formattedDob = `${dateOfBirth.year}-${dateOfBirth.month}-${dateOfBirth.day}`;
+
+      this.customerDetailsFacade.findFC(formattedDob, email, postcode);
+    }
   }
 }

@@ -24,7 +24,7 @@
       />
       <wes-error *ngIf="form.invalid">
         <wes-form-field-error>
-          Error
+          {{ content.homePostcode.inputError }}
         </wes-form-field-error>
       </wes-error>
     </wes-form-field>
@@ -39,3 +39,10 @@
     {{ content.nextButtonLabel }}
   </button>
 </form>
+<a
+  class="wes-link wes-icon wes-icon-chevron-left wes-text-s wes-text-semi-bold mb-3 mb-md-4 d-inline-block"
+  [routerLink]="professionSelectorLink"
+  data-test="lnkBack"
+>
+  {{ content.backButtonLabel }}
+</a>

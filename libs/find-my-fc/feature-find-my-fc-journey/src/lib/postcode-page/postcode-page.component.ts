@@ -2,13 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
+import { Observable } from 'rxjs';
 
 import {
   ConfigService,
   NewCustomerPostcodeContent,
 } from '@wesleyan-frontend/find-my-fc/data-access';
-import { Observable } from 'rxjs';
+import { fullUkPostcodeValidatorPattern } from '@wesleyan-frontend/shared/util-validators';
+
 import { PostcodeFacade } from '../core/services/postcode.facade';
+import { ProfessionFacade } from '../core/services/profession.facade';
 import { routesNames } from '../find-my-fc-journey.routes.names';
 import { AppForms } from '../shared/app-forms.interface';
 
@@ -19,9 +22,12 @@ import { AppForms } from '../shared/app-forms.interface';
 })
 export class PostcodePageComponent implements OnInit {
   content: NewCustomerPostcodeContent;
-
+  professionSelectorLink = '';
   form: FormGroup = this.builder.group({
-    postcode: [null, [Validators.required]],
+    postcode: [
+      null,
+      [Validators.required, Validators.pattern(fullUkPostcodeValidatorPattern)],
+    ],
   });
   headingContent$: Observable<{ title: string; description: string }>;
 
@@ -30,18 +36,21 @@ export class PostcodePageComponent implements OnInit {
     private formsManager: NgFormsManager<AppForms>,
     private configService: ConfigService,
     private postcodeFacade: PostcodeFacade,
+    private professionFacade: ProfessionFacade,
     private router: Router
   ) {
     this.content = this.configService.content.newCustomerPostcode;
     this.headingContent$ = this.postcodeFacade.postcodePageContent$;
+    this.professionSelectorLink = `/${routesNames.PROFESSION_SELECT}`;
   }
 
   ngOnInit(): void {
-    this.formsManager.upsert('postcode', this.form);
+    this.formsManager.upsert('newCustomerPostcode', this.form);
   }
 
   onSubmit() {
-    //Find fc
-    // this.router.navigate([`/${routesNames.POSTCODE}`]);
+    if (this.form.valid) {
+      this.postcodeFacade.findFC(this.form.value.postcode);
+    }
   }
 }

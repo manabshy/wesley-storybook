@@ -5,7 +5,7 @@ export interface AppForms {
   professionSelect: {
     sector: string;
   };
-  postcode: {
+  newCustomerPostcode: {
     postcode: string;
   };
   yourDetails: {
