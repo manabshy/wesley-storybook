@@ -21,6 +21,12 @@ export class SharedUiIconModule {
         this.setIconPath(`${this.path}/icon-briefcase.svg`)
       )
       .addSvgIcon('legal', this.setIconPath(`${this.path}/icon-legal.svg`))
+      .addSvgIcon('heart', this.setIconPath(`${this.path}/icon-heart.svg`))
+      .addSvgIcon(
+        'open-book',
+        this.setIconPath(`${this.path}/icon-open-book.svg`)
+      )
+      .addSvgIcon('tooth', this.setIconPath(`${this.path}/icon-tooth.svg`))
       .addSvgIcon(
         'stethoscope',
         this.setIconPath(`${this.path}/icon-stethoscope.svg`)
