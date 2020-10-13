@@ -1,5 +1,5 @@
 export default {
-  title: 'Components|Who Do We Help',
+  title: 'Campaigns|Who Do We Help',
 };
 
 export const defaultWhoDoWeHelp = () => ({
