@@ -14,6 +14,8 @@ import { ProfessionSelectPageComponent } from './profession-select-page/professi
 import { PostcodePageComponent } from './postcode-page/postcode-page.component';
 import { YourDetailsPageComponent } from './your-details-page/your-details-page.component';
 import { CustomerReferencePageComponent } from './customer-reference-page/customer-reference-page.component';
+import { HeaderComponent } from './components/header/header.component';
+import { BodyComponent } from './components/body/body.component';
 
 @NgModule({
   imports: [
@@ -32,6 +34,8 @@ import { CustomerReferencePageComponent } from './customer-reference-page/custom
     PostcodePageComponent,
     YourDetailsPageComponent,
     CustomerReferencePageComponent,
+    HeaderComponent,
+    BodyComponent,
   ],
 })
 export class FindMyFcFeatureFindMyFcJourneyModule {}

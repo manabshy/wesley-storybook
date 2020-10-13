@@ -1,45 +1,49 @@
-<div class="text-center mb-4 mb-md-6 mb-lg-7">
+<wes-header>
   <h1>{{ content.heading }}</h1>
   <div [innerHTML]="content.summary"></div>
-</div>
+</wes-header>
 
-<form
-  id="customerSelectForm"
-  [formGroup]="form"
-  (ngSubmit)="onSubmit()"
-  novalidate
->
-  <div class="form-wrapper border py-4 px-3 py-md-5 py-lg-6">
-    <wes-radio-group
-      class="wes-radio-card"
-      aria-labelledby="typeLabel"
-      formControlName="type"
+<wes-body>
+  <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+    <form
+      class="wes-bg-solid-white"
+      id="customerSelectForm"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      novalidate
     >
-      <wes-radio-button
-        class="mb-4"
-        [value]="questionMap.new.value"
-        labelTestId="lblAnswerNew"
-        inputTestId="rbAnswerNew"
-      >
-        <span [innerHtml]="questionMap.new.label"></span>
-      </wes-radio-button>
-      <wes-radio-button
-        class="mb-4"
-        [value]="questionMap.existing.value"
-        labelTestId="lblAnswerExisting"
-        inputTestId="rbAnswerExisting"
-      >
-        <span [innerHtml]="questionMap.existing.label"></span>
-      </wes-radio-button>
-    </wes-radio-group>
-  </div>
+      <div class="form-wrapper border py-4 px-3 py-md-5 py-lg-6">
+        <wes-radio-group
+          class="wes-radio-card"
+          aria-labelledby="typeLabel"
+          formControlName="type"
+        >
+          <wes-radio-button
+            class="mb-4"
+            [value]="questionMap.new.value"
+            labelTestId="lblAnswerNew"
+            inputTestId="rbAnswerNew"
+          >
+            <span [innerHtml]="questionMap.new.label"></span>
+          </wes-radio-button>
+          <wes-radio-button
+            [value]="questionMap.existing.value"
+            labelTestId="lblAnswerExisting"
+            inputTestId="rbAnswerExisting"
+          >
+            <span [innerHtml]="questionMap.existing.label"></span>
+          </wes-radio-button>
+        </wes-radio-group>
+      </div>
 
-  <button
-    class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
-    type="submit"
-    data-test="btnContinue"
-    [disabled]="form.invalid"
-  >
-    {{ content.nextButtonLabel }}
-  </button>
-</form>
+      <button
+        class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6 mx-auto"
+        type="submit"
+        data-test="btnContinue"
+        [disabled]="form.invalid"
+      >
+        {{ content.nextButtonLabel }}
+      </button>
+    </form>
+  </div>
+</wes-body>

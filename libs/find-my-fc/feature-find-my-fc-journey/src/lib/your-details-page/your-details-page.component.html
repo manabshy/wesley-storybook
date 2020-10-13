@@ -1,4 +1,4 @@
-<div class="text-center mb-4 mb-md-6 mb-lg-7">
+<wes-header>
   <h1>Where do you work?</h1>
   <p>
     Select your area of work from the options below to be matched with a
@@ -7,130 +7,135 @@
     circumstances.
     <a class="wes-link" href="/#/reference">Customer reference</a>
   </p>
-</div>
+</wes-header>
 
-<form
-  id="yourDetailsForm"
-  [formGroup]="form"
-  (ngSubmit)="onSubmit()"
-  novalidate
->
-  <div class="form-wrapper border py-4 px-3 py-md-5 py-lg-6">
-    <wes-form-field id="emailFormField">
-      <wes-label labelTestId="lblPersonalEmail">
-        Email
-      </wes-label>
-      <input
-        wesInput
-        type="email"
-        formControlName="email"
-        autocomplete="email"
-        data-test="txtPersonalEmail"
-      />
-      <wes-error *ngIf="emailControl.invalid">
-        <wes-form-field-error>
-          error
-        </wes-form-field-error>
-      </wes-error>
-    </wes-form-field>
-
-    <wes-form-field id="postcodeFormField">
-      <wes-label labelTestId="lblPostcode">Home Postcode</wes-label>
-      <input
-        wesInput
-        wesUppercase
-        type="text"
-        formControlName="postcode"
-        autocomplete="postal-code"
-        data-test="txtPostcode"
-      />
-
-      <wes-error *ngIf="postcodeControl.invalid">
-        <wes-form-field-error>
-          Error
-        </wes-form-field-error>
-      </wes-error>
-    </wes-form-field>
-
-    <div id="dobFormField" formGroupName="dateOfBirth">
-      <label class="wes-form-field-label" data-test="lblDoB">
-        Date of birth
-      </label>
-      <div class="">
-        <wes-form-field class="dob-box dob-box-1">
-          <span id="dobDay" class="cdk-visually-hidden">Date of birth Day</span>
-          <input
-            wesInput
-            type="text"
-            formControlName="day"
-            inputmode="numeric"
-            pattern="[0-9]*"
-            name="bday-day"
-            placeholder="DD"
-            wesNumbersOnly
-            maxlength="2"
-            autocomplete="bday-day"
-            data-test="txtDoBDay"
-            aria-labelledby="dobDay"
-          />
-        </wes-form-field>
-        <wes-form-field class="dob-box dob-box-2 mx-2">
-          <span id="dobMonth" class="cdk-visually-hidden">
-            Date of birth Month
-          </span>
-          <input
-            wesInput
-            type="text"
-            formControlName="month"
-            inputmode="numeric"
-            pattern="[0-9]*"
-            name="bday-month"
-            placeholder="MM"
-            wesNumbersOnly
-            maxlength="2"
-            autocomplete="bday-month"
-            data-test="txtDoBMonth"
-            aria-labelledby="dobMonth"
-          />
-        </wes-form-field>
-        <wes-form-field class="dob-box dob-box-3">
-          <span id="dobYear" class="cdk-visually-hidden">
-            Date of birth Year
-          </span>
-
-          <input
-            wesInput
-            type="text"
-            formControlName="year"
-            inputmode="numeric"
-            pattern="[0-9]*"
-            name="bday-year"
-            placeholder="YYYY"
-            wesNumbersOnly
-            maxlength="4"
-            autocomplete="bday-year"
-            data-test="txtDoBYear"
-            aria-labelledby="dobYear"
-          />
-        </wes-form-field>
-      </div>
-      <wes-error *ngIf="dateOfBirthControl.invalid">
-        <wes-form-field-error>
-          Error
-        </wes-form-field-error>
-      </wes-error>
-      {{ emailControl.errors | json }}
-      {{ postcodeControl.errors | json }}
-      {{ dateOfBirthControl.errors | json }}
-    </div>
-  </div>
-
-  <button
-    class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
-    type="submit"
-    data-test="btnContinue"
-    [disabled]="form.invalid"
+<wes-body>
+  <form
+    id="yourDetailsForm"
+    class="wes-bg-solid-white"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    novalidate
   >
-    Continue
-  </button>
-</form>
+    <div class="form-wrapper border py-4 px-3 py-md-5 py-lg-6">
+      <wes-form-field id="emailFormField">
+        <wes-label labelTestId="lblPersonalEmail">
+          Email
+        </wes-label>
+        <input
+          wesInput
+          type="email"
+          formControlName="email"
+          autocomplete="email"
+          data-test="txtPersonalEmail"
+        />
+        <wes-error *ngIf="emailControl.invalid">
+          <wes-form-field-error>
+            error
+          </wes-form-field-error>
+        </wes-error>
+      </wes-form-field>
+
+      <wes-form-field id="postcodeFormField">
+        <wes-label labelTestId="lblPostcode">Home Postcode</wes-label>
+        <input
+          wesInput
+          wesUppercase
+          type="text"
+          formControlName="postcode"
+          autocomplete="postal-code"
+          data-test="txtPostcode"
+        />
+
+        <wes-error *ngIf="postcodeControl.invalid">
+          <wes-form-field-error>
+            Error
+          </wes-form-field-error>
+        </wes-error>
+      </wes-form-field>
+
+      <div id="dobFormField" formGroupName="dateOfBirth">
+        <label class="wes-form-field-label" data-test="lblDoB">
+          Date of birth
+        </label>
+        <div class="">
+          <wes-form-field class="dob-box dob-box-1">
+            <span id="dobDay" class="cdk-visually-hidden">
+              Date of birth Day
+            </span>
+            <input
+              wesInput
+              type="text"
+              formControlName="day"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              name="bday-day"
+              placeholder="DD"
+              wesNumbersOnly
+              maxlength="2"
+              autocomplete="bday-day"
+              data-test="txtDoBDay"
+              aria-labelledby="dobDay"
+            />
+          </wes-form-field>
+          <wes-form-field class="dob-box dob-box-2 mx-2">
+            <span id="dobMonth" class="cdk-visually-hidden">
+              Date of birth Month
+            </span>
+            <input
+              wesInput
+              type="text"
+              formControlName="month"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              name="bday-month"
+              placeholder="MM"
+              wesNumbersOnly
+              maxlength="2"
+              autocomplete="bday-month"
+              data-test="txtDoBMonth"
+              aria-labelledby="dobMonth"
+            />
+          </wes-form-field>
+          <wes-form-field class="dob-box dob-box-3">
+            <span id="dobYear" class="cdk-visually-hidden">
+              Date of birth Year
+            </span>
+
+            <input
+              wesInput
+              type="text"
+              formControlName="year"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              name="bday-year"
+              placeholder="YYYY"
+              wesNumbersOnly
+              maxlength="4"
+              autocomplete="bday-year"
+              data-test="txtDoBYear"
+              aria-labelledby="dobYear"
+            />
+          </wes-form-field>
+        </div>
+        <wes-error *ngIf="dateOfBirthControl.invalid">
+          <wes-form-field-error>
+            Error
+          </wes-form-field-error>
+        </wes-error>
+        {{ emailControl.errors | json }}
+        {{ postcodeControl.errors | json }}
+        {{ dateOfBirthControl.errors | json }}
+      </div>
+    </div>
+
+    <button
+      class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
+      type="submit"
+      data-test="btnContinue"
+      [disabled]="form.invalid"
+    >
+      Continue
+    </button>
+  </form>
+</wes-body>
