@@ -8,6 +8,8 @@ export interface Config {
   newCustomerPostcode: NewCustomerPostcodeContent;
   yourDetails: YourDetailsContent;
   customerReference: CustomerReferenceContent;
+  cannotMatchCustomer: CannotMatchCustomerContent;
+  exception: ExceptionContent;
 }
 
 export interface FormInput {
@@ -63,4 +65,18 @@ export interface CustomerReferenceContent {
   customerReferenceNumber: Input;
   nextButtonLabel: string;
   backButtonLabel: string;
+}
+
+export interface CannotMatchCustomerContent {
+  heading: string;
+  summary: string;
+  bodyCopy: string;
+  nextButtonLabel: string;
+}
+
+export interface ExceptionContent {
+  heading: string;
+  summary: string;
+  bodyCopy: string;
+  nextButtonLabel: string;
 }
