@@ -7,6 +7,7 @@ import { ProfessionSelectPageComponent } from './profession-select-page/professi
 import { PostcodePageComponent } from './postcode-page/postcode-page.component';
 import { YourDetailsPageComponent } from './your-details-page/your-details-page.component';
 import { CustomerReferencePageComponent } from './customer-reference-page/customer-reference-page.component';
+import { CannotFindCustomerPageComponent } from './cannot-find-customer-page/cannot-find-customer-page.component';
 
 export const routes: Route[] = [
   {
@@ -33,6 +34,10 @@ export const routes: Route[] = [
   {
     path: routesNames.CUSTOMER_REFERENCE,
     component: CustomerReferencePageComponent,
+  },
+  {
+    path: routesNames.CANNOT_FIND_CUSTOMER,
+    component: CannotFindCustomerPageComponent,
   },
 ];
 

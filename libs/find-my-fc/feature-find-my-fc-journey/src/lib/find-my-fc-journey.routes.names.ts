@@ -4,4 +4,5 @@ export const routesNames = {
   POSTCODE: 'postcode',
   YOUR_DETAILS: 'details',
   CUSTOMER_REFERENCE: 'reference',
+  CANNOT_FIND_CUSTOMER: 'customer-error',
 };

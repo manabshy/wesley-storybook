@@ -16,6 +16,7 @@ import { YourDetailsPageComponent } from './your-details-page/your-details-page.
 import { CustomerReferencePageComponent } from './customer-reference-page/customer-reference-page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
+import { CannotFindCustomerPageComponent } from './cannot-find-customer-page/cannot-find-customer-page.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { BodyComponent } from './components/body/body.component';
     PostcodePageComponent,
     YourDetailsPageComponent,
     CustomerReferencePageComponent,
+    CannotFindCustomerPageComponent,
     HeaderComponent,
     BodyComponent,
   ],
