@@ -1,5 +1,5 @@
 export default {
-  title: 'Components|CTA Card',
+  title: 'Campaigns|CTA Card',
 };
 
 export const defaultCtaCard = () => ({
