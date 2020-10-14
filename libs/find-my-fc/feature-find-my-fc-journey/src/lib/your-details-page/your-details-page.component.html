@@ -12,8 +12,11 @@
       (ngSubmit)="onSubmit()"
       novalidate
     >
-      <div class="form-wrapper border py-4 px-3 py-md-5 py-lg-6">
-        <wes-form-field id="emailFormField" class="col-lg-10 offset-lg-1">
+      <div class="form-wrapper border py-4 px-2 px-sm-3 py-md-5 py-lg-6">
+        <wes-form-field
+          id="emailFormField"
+          class="col-md-8 offset-md-2 col-lg-10 offset-lg-1"
+        >
           <wes-label labelTestId="lblPersonalEmail">
             {{ content.email.inputLabel }}
           </wes-label>
@@ -31,7 +34,10 @@
           </wes-error>
         </wes-form-field>
 
-        <wes-form-field id="postcodeFormField" class="col-lg-10 offset-lg-1">
+        <wes-form-field
+          id="postcodeFormField"
+          class="col-md-8 offset-md-2 col-lg-10 offset-lg-1"
+        >
           <wes-label labelTestId="lblPostcode">
             {{ content.homePostcode.inputLabel }}
           </wes-label>
@@ -54,12 +60,12 @@
         <div
           id="dobFormField"
           formGroupName="dateOfBirth"
-          class="col-lg-10 offset-lg-1"
+          class="col-md-8 offset-md-2 col-lg-10 offset-lg-1"
         >
           <label class="wes-form-field-label" data-test="lblDoB">
             {{ content.dateOfBirth.inputLabel }}
           </label>
-          <div class="">
+          <div class="d-flex d-block-sm">
             <wes-form-field class="dob-box dob-box-1">
               <span id="dobDay" class="cdk-visually-hidden">
                 Date of birth Day
@@ -79,7 +85,7 @@
                 aria-labelledby="dobDay"
               />
             </wes-form-field>
-            <wes-form-field class="dob-box dob-box-2 mx-2">
+            <wes-form-field class="dob-box dob-box-2 mx-1 mx-sm-2">
               <span id="dobMonth" class="cdk-visually-hidden">
                 Date of birth Month
               </span>
