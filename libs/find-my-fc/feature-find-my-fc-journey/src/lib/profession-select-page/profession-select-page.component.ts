@@ -18,6 +18,7 @@ import { AppForms } from '../shared/app-forms.interface';
 })
 export class ProfessionSelectPageComponent implements OnInit {
   content: ProfessionSelectorContent;
+  backLink = '';
   iconMap = {
     hospital: 'heart',
     gppractice: 'stethoscope',
@@ -37,6 +38,7 @@ export class ProfessionSelectPageComponent implements OnInit {
     private router: Router
   ) {
     this.content = this.configService.content.professionSelector;
+    this.backLink = `/${routesNames.CUSTOMER_SELECT}`;
   }
 
   ngOnInit(): void {

@@ -17,6 +17,7 @@ import { AppForms } from '../shared/app-forms.interface';
 })
 export class CustomerReferencePageComponent implements OnInit {
   content;
+  backLink = '';
 
   form: FormGroup = this.builder.group({
     ref: [
@@ -33,6 +34,7 @@ export class CustomerReferencePageComponent implements OnInit {
     private router: Router
   ) {
     this.content = this.configService.content;
+    this.backLink = `/${routesNames.YOUR_DETAILS}`;
   }
 
   ngOnInit(): void {

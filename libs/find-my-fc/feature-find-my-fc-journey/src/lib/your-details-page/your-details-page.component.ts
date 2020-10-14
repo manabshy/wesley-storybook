@@ -25,6 +25,7 @@ import { AppForms } from '../shared/app-forms.interface';
 })
 export class YourDetailsPageComponent implements OnInit {
   content: YourDetailsContent;
+  backLink = '';
 
   form: FormGroup = this.builder.group({
     email: [null, [Validators.required, emailValidator]],
@@ -54,6 +55,7 @@ export class YourDetailsPageComponent implements OnInit {
     private router: Router
   ) {
     this.content = this.configService.content.yourDetails;
+    this.backLink = `/${routesNames.CUSTOMER_SELECT}`;
   }
 
   ngOnInit(): void {

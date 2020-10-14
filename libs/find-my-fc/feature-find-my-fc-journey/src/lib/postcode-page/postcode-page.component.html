@@ -1,5 +1,5 @@
 <wes-header>
-  <h1>
+  <h1 class="wes-h2">
     {{ (headingContent$ | async)?.title }}
   </h1>
   <p>
@@ -17,7 +17,10 @@
       novalidate
     >
       <div class="form-wrapper border py-4 px-3 py-md-5 py-lg-6">
-        <wes-form-field id="postcodeFormField">
+        <wes-form-field
+          id="newCustomerPostcodeFormField"
+          class="col-md-8 offset-md-2 px-0"
+        >
           <span id="postcodeLabel" class="cdk-visually-hidden">
             Postcode
           </span>
@@ -39,20 +42,20 @@
       </div>
 
       <button
-        class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
+        class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6 mx-auto mb-3 mb-md-4 mb-lg-5"
         type="submit"
         data-test="btnContinue"
         [disabled]="form.invalid"
       >
         {{ content.nextButtonLabel }}
       </button>
+      <a
+        class="wes-link wes-icon wes-icon-chevron-left wes-text-s wes-text-semi-bold mb-3 mb-md-4 d-table w-md-auto mx-auto"
+        [routerLink]="backLink"
+        data-test="lnkBack"
+      >
+        {{ content.backButtonLabel }}
+      </a>
     </form>
-    <a
-      class="wes-link wes-icon wes-icon-chevron-left wes-text-s wes-text-semi-bold mb-3 mb-md-4 d-inline-block"
-      [routerLink]="professionSelectorLink"
-      data-test="lnkBack"
-    >
-      {{ content.backButtonLabel }}
-    </a>
   </div>
 </wes-body>

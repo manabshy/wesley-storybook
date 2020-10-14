@@ -22,7 +22,7 @@ import { AppForms } from '../shared/app-forms.interface';
 })
 export class PostcodePageComponent implements OnInit {
   content: NewCustomerPostcodeContent;
-  professionSelectorLink = '';
+  backLink = '';
   form: FormGroup = this.builder.group({
     postcode: [
       null,
@@ -41,7 +41,7 @@ export class PostcodePageComponent implements OnInit {
   ) {
     this.content = this.configService.content.newCustomerPostcode;
     this.headingContent$ = this.postcodeFacade.postcodePageContent$;
-    this.professionSelectorLink = `/${routesNames.PROFESSION_SELECT}`;
+    this.backLink = `/${routesNames.PROFESSION_SELECT}`;
   }
 
   ngOnInit(): void {
