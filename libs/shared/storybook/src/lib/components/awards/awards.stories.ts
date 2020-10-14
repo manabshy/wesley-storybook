@@ -1,5 +1,5 @@
 export default {
-  title: 'Components|Awards',
+  title: 'Campaigns|Awards',
 };
 
 export const defaultAwards = () => ({
