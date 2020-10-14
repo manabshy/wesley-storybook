@@ -13,9 +13,14 @@
       novalidate
     >
       <div class="form-wrapper border py-4 px-3 py-md-5 py-lg-6">
+        <label
+          id="professionSelectLabel"
+          class="cdk-visually-hidden"
+          [innerHTML]="content.summary"
+        ></label>
         <wes-radio-group
           class="wes-radio-card"
-          aria-labelledby="typeLabel"
+          aria-labelledby="professionSelectLabel"
           formControlName="sector"
         >
           <wes-radio-button

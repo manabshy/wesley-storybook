@@ -2,7 +2,7 @@
   <h1 class="wes-h2">
     {{ (headingContent$ | async)?.title }}
   </h1>
-  <p>
+  <p id="postcodeLabel">
     {{ (headingContent$ | async)?.description }}
   </p>
 </wes-header>
@@ -21,9 +21,6 @@
           id="newCustomerPostcodeFormField"
           class="col-md-8 offset-md-2 px-0"
         >
-          <span id="postcodeLabel" class="cdk-visually-hidden">
-            Postcode
-          </span>
           <input
             wesInput
             wesUppercase

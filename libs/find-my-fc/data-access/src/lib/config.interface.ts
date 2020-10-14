@@ -7,6 +7,7 @@ export interface Config {
   professionSelector: ProfessionSelectorContent;
   newCustomerPostcode: NewCustomerPostcodeContent;
   yourDetails: YourDetailsContent;
+  customerReference: CustomerReferenceContent;
 }
 
 export interface FormInput {
@@ -55,4 +56,11 @@ export interface YourDetailsContent {
 export interface Input {
   inputLabel: string;
   inputError: string;
+}
+
+export interface CustomerReferenceContent {
+  heading: string;
+  customerReferenceNumber: Input;
+  nextButtonLabel: string;
+  backButtonLabel: string;
 }

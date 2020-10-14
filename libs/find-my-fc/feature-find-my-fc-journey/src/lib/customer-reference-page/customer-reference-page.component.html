@@ -1,9 +1,9 @@
 <wes-header>
   <h1 class="wes-h2">
-    What's your customer reference number?
+    {{ content.heading }}
   </h1>
-  <p>
-    Please enter your customer reference number below.
+  <p id="customerReferenceLabel">
+    {{ content.customerReferenceNumber.inputLabel }}
   </p>
 </wes-header>
 
@@ -21,14 +21,11 @@
           id="customerReferenceFormField"
           class="col-md-8 offset-md-2 px-0"
         >
-          <span id="customerReferenceLabel" class="cdk-visually-hidden">
-            Customer reference
-          </span>
           <input
             wesInput
             type="text"
             formControlName="ref"
-            aria-labelledby="dobMonth"
+            aria-labelledby="customerReferenceLabel"
             data-test="txtCustomerReference"
           />
           <wes-error *ngIf="form.invalid">

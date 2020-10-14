@@ -3,7 +3,10 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
 
-import { ConfigService } from '@wesleyan-frontend/find-my-fc/data-access';
+import {
+  ConfigService,
+  CustomerReferenceContent,
+} from '@wesleyan-frontend/find-my-fc/data-access';
 import { customerReferencePattern } from '@wesleyan-frontend/shared/util-validators';
 
 import { CustomerReferenceFacade } from '../core/services/customer-reference.facade';
@@ -16,7 +19,7 @@ import { AppForms } from '../shared/app-forms.interface';
   styleUrls: ['./customer-reference-page.component.scss'],
 })
 export class CustomerReferencePageComponent implements OnInit {
-  content;
+  content: CustomerReferenceContent;
   backLink = '';
 
   form: FormGroup = this.builder.group({
@@ -33,7 +36,7 @@ export class CustomerReferencePageComponent implements OnInit {
     private customerReferenceFacade: CustomerReferenceFacade,
     private router: Router
   ) {
-    this.content = this.configService.content;
+    this.content = this.configService.content.customerReference;
     this.backLink = `/${routesNames.YOUR_DETAILS}`;
   }
 
