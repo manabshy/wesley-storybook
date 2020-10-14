@@ -13,7 +13,7 @@
       novalidate
     >
       <div class="form-wrapper border py-4 px-3 py-md-5 py-lg-6">
-        <wes-form-field id="emailFormField">
+        <wes-form-field id="emailFormField" class="col-lg-10 offset-lg-1">
           <wes-label labelTestId="lblPersonalEmail">
             {{ content.email.inputLabel }}
           </wes-label>
@@ -31,7 +31,7 @@
           </wes-error>
         </wes-form-field>
 
-        <wes-form-field id="postcodeFormField">
+        <wes-form-field id="postcodeFormField" class="col-lg-10 offset-lg-1">
           <wes-label labelTestId="lblPostcode">
             {{ content.homePostcode.inputLabel }}
           </wes-label>
@@ -51,7 +51,11 @@
           </wes-error>
         </wes-form-field>
 
-        <div id="dobFormField" formGroupName="dateOfBirth">
+        <div
+          id="dobFormField"
+          formGroupName="dateOfBirth"
+          class="col-lg-10 offset-lg-1"
+        >
           <label class="wes-form-field-label" data-test="lblDoB">
             {{ content.dateOfBirth.inputLabel }}
           </label>
