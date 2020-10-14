@@ -8,49 +8,51 @@
 </wes-header>
 
 <wes-body>
-  <form
-    id="postcodeForm"
-    class="wes-bg-solid-white"
-    [formGroup]="form"
-    (ngSubmit)="onSubmit()"
-    novalidate
-  >
-    <div class="form-wrapper border py-4 px-3 py-md-5 py-lg-6">
-      <wes-form-field id="postcodeFormField">
-        <span id="postcodeLabel" class="cdk-visually-hidden">
-          Postcode
-        </span>
-        <input
-          wesInput
-          wesUppercase
-          type="text"
-          formControlName="postcode"
-          autocomplete="postal-code"
-          aria-labelledby="postcodeLabel"
-          data-test="txtPostcode"
-        />
-        <wes-error *ngIf="form.invalid">
-          <wes-form-field-error>
-            {{ content.homePostcode.inputError }}
-          </wes-form-field-error>
-        </wes-error>
-      </wes-form-field>
-    </div>
-
-    <button
-      class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
-      type="submit"
-      data-test="btnContinue"
-      [disabled]="form.invalid"
+  <div class="col-md-10 offset-md-1 col-lg-6 offset-lg-3">
+    <form
+      id="postcodeForm"
+      class="wes-bg-solid-white"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      novalidate
     >
-      {{ content.nextButtonLabel }}
-    </button>
-  </form>
-  <a
-    class="wes-link wes-icon wes-icon-chevron-left wes-text-s wes-text-semi-bold mb-3 mb-md-4 d-inline-block"
-    [routerLink]="professionSelectorLink"
-    data-test="lnkBack"
-  >
-    {{ content.backButtonLabel }}
-  </a>
+      <div class="form-wrapper border py-4 px-3 py-md-5 py-lg-6">
+        <wes-form-field id="postcodeFormField">
+          <span id="postcodeLabel" class="cdk-visually-hidden">
+            Postcode
+          </span>
+          <input
+            wesInput
+            wesUppercase
+            type="text"
+            formControlName="postcode"
+            autocomplete="postal-code"
+            aria-labelledby="postcodeLabel"
+            data-test="txtPostcode"
+          />
+          <wes-error *ngIf="form.invalid">
+            <wes-form-field-error>
+              {{ content.homePostcode.inputError }}
+            </wes-form-field-error>
+          </wes-error>
+        </wes-form-field>
+      </div>
+
+      <button
+        class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
+        type="submit"
+        data-test="btnContinue"
+        [disabled]="form.invalid"
+      >
+        {{ content.nextButtonLabel }}
+      </button>
+    </form>
+    <a
+      class="wes-link wes-icon wes-icon-chevron-left wes-text-s wes-text-semi-bold mb-3 mb-md-4 d-inline-block"
+      [routerLink]="professionSelectorLink"
+      data-test="lnkBack"
+    >
+      {{ content.backButtonLabel }}
+    </a>
+  </div>
 </wes-body>
