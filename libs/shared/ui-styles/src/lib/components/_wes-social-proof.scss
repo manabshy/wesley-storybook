@@ -5,6 +5,7 @@
 .wes-social-proof {
     display: inline-block;
     width: 100%;
+    position: relative;
   
     &__header {
       padding-top: rem(48px);
@@ -29,10 +30,11 @@
         content: '';
         position: absolute;
         top: 0;
-        left: 0;
-        right: 0;
         height: rem(283px);
         z-index: -1;
+        width: 100vw;
+        transform: translateX(-50vw);
+        left: 50%;
 
         @include media-breakpoint-up(md) {
           height: rem(332px);

@@ -1,0 +1,136 @@
+////
+/// Wesleyan Next Steps Component
+////
+
+.wes-next-steps {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  margin-top: rem(64px);
+
+  @include rem(
+    (
+      padding: 56px 0 48px 0,
+    )
+  );
+
+  @include media-breakpoint-up(md) {
+    @include rem(
+      (
+        padding: 72px 0,
+      )
+    );
+  }
+  
+  @include media-breakpoint-up(lg) {
+    @include rem(
+      (
+        padding: 98px 0,
+      )
+    );
+  }
+
+  @include media-breakpoint-up(xl) {
+    margin-top: rem(80px);
+  }
+
+  &::before {
+    content: '';
+    background-color: $global-colour-grey-900;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    transform: translateX(-50vw);
+    left: 50%;
+    z-index: -1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTM2N3B4IiBoZWlnaHQ9IjU3cHgiIHZpZXdCb3g9IjAgMCAxMzY3IDU3IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPlNsYW50L0xhcmdlPC90aXRsZT4KICAgIDxnIGlkPSLwn5+gLU5IUy1QZW5zaW9uLUFkdmljZSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Ik5IUy1QZW5zaW9uX0NhbXBhaWduLVBnXzEzNjYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLCAtNTcxOC4wMDAwMDApIj4KICAgICAgICAgICAgPGcgaWQ9IlNsYW50L0xhcmdlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNTcxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxyZWN0IGlkPSJCYWNrZ3JvdW5kX0J0bSIgZmlsbD0iIzQwNDc0RiIgeD0iMCIgeT0iMCIgd2lkdGg9IjEzNjciIGhlaWdodD0iNTYiPjwvcmVjdD4KICAgICAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJCYWNrZ3JvdW5kX1RvcCIgZmlsbD0iI0ZGRkZGRiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjgzLjUwMDAwMCwgMjguMDAwMDAwKSBzY2FsZSgtMSwgLTEpIHRyYW5zbGF0ZSgtNjgzLjUwMDAwMCwgLTI4LjAwMDAwMCkgIiBwb2ludHM9IjEzNjcgMCAxMzY3IDU2IDAgNTYiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxnIGlkPSJTbGFudF9IYWxmIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgMC41MDAwMDApIiBmaWxsPSIjRkVCRDExIj4KICAgICAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aCIgcG9pbnRzPSIwIDAgNjgzLjUgMjggMCA1NiI+PC9wb2x5Z29uPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    bottom: calc(100% - 2px);
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50vw);
+    height: rem(64px);
+
+    @include media-breakpoint-up(xl) {
+      height: rem(80px);
+    }
+  }
+
+  &__body {
+    @include media-breakpoint-down(sm) {
+      @include make-row(40px);
+    }
+  }
+
+  &__content {
+    color: white;
+    padding-left: $grid-gutter-width;
+    padding-right: $grid-gutter-width;
+
+    @include media-breakpoint-up(md) {
+      @include make-col-offset(1);
+      @include make-col(10);
+
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @include media-breakpoint-up(lg) {
+      @include make-col(8);
+    }
+  }
+
+  &__title {
+    @extend .wes-h2;
+  }
+
+  &__message {
+    @extend .wes-text-m;
+
+    margin-top: rem(36px);
+
+    @include media-breakpoint-up(md) {
+      margin-top: rem(24px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-top: rem(40px);
+    }
+  }
+
+  &__cta {
+    margin-top: rem(40px);
+
+    @include media-breakpoint-only(xs) {
+      .wes-button {
+        width: 100%;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      margin-top: rem(40px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-top: rem(48px);
+    }
+  }
+
+  &__footnote {
+    @extend .wes-text-m;
+
+    margin-top: rem(32px);
+
+    @include media-breakpoint-up(md) {
+      margin-top: rem(40px);
+    }
+  }
+}
