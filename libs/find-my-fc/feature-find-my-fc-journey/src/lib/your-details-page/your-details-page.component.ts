@@ -3,7 +3,10 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
 
-import { ConfigService } from '@wesleyan-frontend/find-my-fc/data-access';
+import {
+  ConfigService,
+  YourDetailsContent,
+} from '@wesleyan-frontend/find-my-fc/data-access';
 import {
   dateValidator,
   emailValidator,
@@ -21,7 +24,7 @@ import { AppForms } from '../shared/app-forms.interface';
   encapsulation: ViewEncapsulation.None,
 })
 export class YourDetailsPageComponent implements OnInit {
-  content;
+  content: YourDetailsContent;
 
   form: FormGroup = this.builder.group({
     email: [null, [Validators.required, emailValidator]],
@@ -50,7 +53,7 @@ export class YourDetailsPageComponent implements OnInit {
     private customerDetailsFacade: CustomerDetailsFacade,
     private router: Router
   ) {
-    this.content = this.configService.content;
+    this.content = this.configService.content.yourDetails;
   }
 
   ngOnInit(): void {

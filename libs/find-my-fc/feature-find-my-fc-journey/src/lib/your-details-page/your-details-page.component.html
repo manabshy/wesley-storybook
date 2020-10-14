@@ -1,12 +1,6 @@
 <wes-header>
-  <h1>Where do you work?</h1>
-  <p>
-    Select your area of work from the options below to be matched with a
-    Financial Consultant that specialises in your field. Don't worry if your
-    field isn’t listed below, you’ll still receive advice tailored to your
-    circumstances.
-    <a class="wes-link" href="/#/reference">Customer reference</a>
-  </p>
+  <h1>{{ content.heading }}</h1>
+  <p [innerHTML]="content.summary"></p>
 </wes-header>
 
 <wes-body>
@@ -20,7 +14,7 @@
     <div class="form-wrapper border py-4 px-3 py-md-5 py-lg-6">
       <wes-form-field id="emailFormField">
         <wes-label labelTestId="lblPersonalEmail">
-          Email
+          {{ content.email.inputLabel }}
         </wes-label>
         <input
           wesInput
@@ -31,13 +25,15 @@
         />
         <wes-error *ngIf="emailControl.invalid">
           <wes-form-field-error>
-            error
+            {{ content.email.inputError }}
           </wes-form-field-error>
         </wes-error>
       </wes-form-field>
 
       <wes-form-field id="postcodeFormField">
-        <wes-label labelTestId="lblPostcode">Home Postcode</wes-label>
+        <wes-label labelTestId="lblPostcode">
+          {{ content.homePostcode.inputLabel }}
+        </wes-label>
         <input
           wesInput
           wesUppercase
@@ -49,14 +45,14 @@
 
         <wes-error *ngIf="postcodeControl.invalid">
           <wes-form-field-error>
-            Error
+            {{ content.homePostcode.inputError }}
           </wes-form-field-error>
         </wes-error>
       </wes-form-field>
 
       <div id="dobFormField" formGroupName="dateOfBirth">
         <label class="wes-form-field-label" data-test="lblDoB">
-          Date of birth
+          {{ content.dateOfBirth.inputLabel }}
         </label>
         <div class="">
           <wes-form-field class="dob-box dob-box-1">
@@ -120,7 +116,7 @@
         </div>
         <wes-error *ngIf="dateOfBirthControl.invalid">
           <wes-form-field-error>
-            Error
+            {{ content.dateOfBirth.inputError }}
           </wes-form-field-error>
         </wes-error>
         {{ emailControl.errors | json }}
@@ -135,7 +131,7 @@
       data-test="btnContinue"
       [disabled]="form.invalid"
     >
-      Continue
+      {{ content.nextButtonLabel }}
     </button>
   </form>
 </wes-body>

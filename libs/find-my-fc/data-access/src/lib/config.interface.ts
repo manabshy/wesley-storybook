@@ -6,6 +6,7 @@ export interface Config {
   customerSelector: CustomerSelectorContent;
   professionSelector: ProfessionSelectorContent;
   newCustomerPostcode: NewCustomerPostcodeContent;
+  yourDetails: YourDetailsContent;
 }
 
 export interface FormInput {
@@ -34,15 +35,24 @@ export interface ProfessionSelectorContent {
 
 export interface NewCustomerPostcodeContent {
   homePostcodeHeading: string;
-  homePostcode: {
-    inputLabel: string;
-    inputError: string;
-  };
+  homePostcode: Input;
   workPostcodeHeading: string;
-  workPostcode: {
-    inputLabel: string;
-    inputError: string;
-  };
+  workPostcode: Input;
   nextButtonLabel: string;
   backButtonLabel: string;
+}
+
+export interface YourDetailsContent {
+  heading: string;
+  summary: string;
+  email: Input;
+  homePostcode: Input;
+  dateOfBirth: Input;
+  nextButtonLabel: string;
+  backButtonLabel: string;
+}
+
+export interface Input {
+  inputLabel: string;
+  inputError: string;
 }
