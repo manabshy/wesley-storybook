@@ -31,4 +31,8 @@ export class CannotFindCustomerPageComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  onFindFCButtonClicked() {
+    this.router.navigate(['/']);
+  }
 }

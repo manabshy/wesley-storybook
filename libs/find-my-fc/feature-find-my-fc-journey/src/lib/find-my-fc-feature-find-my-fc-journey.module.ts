@@ -17,6 +17,7 @@ import { CustomerReferencePageComponent } from './customer-reference-page/custom
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
 import { CannotFindCustomerPageComponent } from './cannot-find-customer-page/cannot-find-customer-page.component';
+import { CRMErrorPageComponent } from './crm-error-page/crm-error-page.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { CannotFindCustomerPageComponent } from './cannot-find-customer-page/can
     YourDetailsPageComponent,
     CustomerReferencePageComponent,
     CannotFindCustomerPageComponent,
+    CRMErrorPageComponent,
     HeaderComponent,
     BodyComponent,
   ],

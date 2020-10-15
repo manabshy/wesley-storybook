@@ -5,4 +5,5 @@ export const routesNames = {
   YOUR_DETAILS: 'details',
   CUSTOMER_REFERENCE: 'reference',
   CANNOT_FIND_CUSTOMER: 'customer-error',
+  CRM_ERROR: 'crm-error',
 };
