@@ -2,7 +2,7 @@
     #HEADINGS
 \*------------------------------------*/
 
-$heading-colour: $global-colour-grey-900;
+$heading-colour: $global-colour-charcoal;
 
 h1,
 h2,
@@ -19,6 +19,7 @@ h5,
   text-rendering: optimizeLegibility;
   letter-spacing: 0;
   margin-top: 0;
+  color: $heading-colour;
 }
 
 h1,
