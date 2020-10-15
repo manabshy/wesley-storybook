@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+  HttpParams,
+} from '@angular/common/http';
+import { Observable, of, throwError } from 'rxjs';
 import { shareReplay, map } from 'rxjs/operators';
 
 @Injectable({
@@ -18,12 +23,14 @@ export class FindFCApiService {
   }
 
   findByCustomerID(customerId: string): Observable<any> {
-    return of({});
+    // return of({});
+    return throwError(new HttpErrorResponse({ status: 404 }));
     // return this.http.post<KnowledgeCheckResponse>(
     //   `/api/isawebapiwrapper/knowledgecheckstepinitial`,
     //   answer
     // );
   }
+
   /**
    *
    * @param dateOfBirth in yyyy-mm-dd format ie. 1950-15-01
