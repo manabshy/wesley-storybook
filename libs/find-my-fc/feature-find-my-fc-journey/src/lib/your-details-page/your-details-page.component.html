@@ -13,6 +13,9 @@
       novalidate
     >
       <div class="form-wrapper border py-4 px-2 px-sm-3 py-md-5 py-lg-6">
+        <div *ngIf="showCustomerNotFoundError$ | async">
+          Error
+        </div>
         <wes-form-field
           id="emailFormField"
           class="col-md-8 offset-md-2 col-lg-10 offset-lg-1"

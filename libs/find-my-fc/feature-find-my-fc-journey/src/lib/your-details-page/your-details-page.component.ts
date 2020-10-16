@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import {
   ConfigService,
@@ -13,7 +14,7 @@ import {
   fullUkPostcodeValidatorPattern,
 } from '@wesleyan-frontend/shared/util-validators';
 
-import { CustomerDetailsFacade } from '../core/services/customer-details.facade';
+import { CustomerFacade } from '../core/services/customer.facade';
 import { routesNames } from '../find-my-fc-journey.routes.names';
 import { AppForms } from '../shared/app-forms.interface';
 
@@ -26,6 +27,7 @@ import { AppForms } from '../shared/app-forms.interface';
 export class YourDetailsPageComponent implements OnInit {
   content: YourDetailsContent;
   backLink = '';
+  showCustomerNotFoundError$: Observable<boolean>;
 
   form: FormGroup = this.builder.group({
     email: [null, [Validators.required, emailValidator]],
@@ -54,7 +56,7 @@ export class YourDetailsPageComponent implements OnInit {
     private builder: FormBuilder,
     private formsManager: NgFormsManager<AppForms>,
     private configService: ConfigService,
-    private customerDetailsFacade: CustomerDetailsFacade,
+    private customerFacade: CustomerFacade,
     private router: Router
   ) {
     this.content = this.configService.content.yourDetails;
@@ -63,6 +65,9 @@ export class YourDetailsPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.formsManager.upsert('yourDetails', this.form);
+
+    this.customerFacade.resetRetryCounter();
+    this.showCustomerNotFoundError$ = this.customerFacade.invalidCustomerReference$;
   }
 
   onSubmit() {
@@ -70,7 +75,11 @@ export class YourDetailsPageComponent implements OnInit {
       const { email, postcode, dateOfBirth } = this.form.value;
       const formattedDob = `${dateOfBirth.year}-${dateOfBirth.month}-${dateOfBirth.day}`;
 
-      this.customerDetailsFacade.findFC(formattedDob, email, postcode);
+      this.customerFacade.findFCByCustomerDetails(
+        formattedDob,
+        email,
+        postcode
+      );
     }
   }
 }

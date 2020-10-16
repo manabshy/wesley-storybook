@@ -18,7 +18,7 @@ const ALLOWED_RETRIES = 3;
 @Injectable({
   providedIn: 'root',
 })
-export class CustomerReferenceFacade {
+export class CustomerFacade {
   private invalidCustomerReferenceCount = 0;
   private invalidCustomerReference$$ = new Subject<boolean>();
 
@@ -31,7 +31,7 @@ export class CustomerReferenceFacade {
     private router: Router
   ) {}
 
-  findFC(customerReference: string) {
+  findFCByCustomerReference(customerReference: string) {
     this.loadingService.show();
 
     this.findFinancialConsultantService
@@ -50,12 +50,39 @@ export class CustomerReferenceFacade {
       .subscribe();
   }
 
+  findFCByCustomerDetails(
+    dateOfBirth: string,
+    emailAddress: string,
+    postcode: string
+  ) {
+    this.loadingService.show();
+
+    this.findFinancialConsultantService
+      .findByCustomerDetails(dateOfBirth, emailAddress, postcode)
+      .pipe(
+        tap((_) => this.loadingService.hide()),
+        // tap((response) => this.router.navigate(['/'])),
+        take(1),
+        catchError((err: HttpErrorResponse) => {
+          this.loadingService.hide();
+          this.handleError(err);
+
+          return throwError(err);
+        })
+      )
+      .subscribe();
+  }
+
+  resetRetryCounter() {
+    this.invalidCustomerReferenceCount = 0;
+  }
+
   private handleError(err: HttpErrorResponse) {
     if (err.status === NO_FINANCIAL_CONSULTANT_FOUND) {
       this.invalidCustomerReference$$.next(true);
       this.invalidCustomerReferenceCount++;
     }
-
+    console.log(this.invalidCustomerReferenceCount);
     if (this.invalidCustomerReferenceCount === ALLOWED_RETRIES) {
       this.router.navigate([routesNames.CANNOT_FIND_CUSTOMER]);
     }

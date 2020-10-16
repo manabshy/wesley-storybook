@@ -42,7 +42,9 @@ export class FindFCApiService {
     emailAddress: string,
     postcode: string
   ): Observable<any> {
-    return of({});
+    return throwError(new HttpErrorResponse({ status: 404 }));
+
+    // return of({});
     // return this.http.post<KnowledgeCheckResponse>(
     //   `/api/isawebapiwrapper/knowledgecheckstepinitial`,
     //   answer
