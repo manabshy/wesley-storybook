@@ -153,6 +153,38 @@
     }
   }
 
+  &-cta--orange-hover {
+    background-image: linear-gradient(
+      110deg,
+      $global-colour-gold-900 50%,
+      transparent 51%
+    );
+    background-size: 100px 100%; /* some initial size to get the slanted appearance */
+    background-position: -100px 0; /* negative positioning to hide it initially */
+    background-repeat: no-repeat;
+    transition: background-size cubic-bezier(0.37, 0, 0.63, 1) 0.4s;
+
+    &:hover {
+      color: $global-colour-grey-900;
+      background-size: 200% 200%; /* 200% because gradient is colored only for 50% */
+      background-position: 0px 0px; /* bring it fully into view */
+
+      .wes-icon .svg-path-color-change {
+        transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.4s;
+      }
+
+      .wes-icon path.svg-path-color-change {
+        fill: $global-colour-white;
+      }
+      .wes-icon line.svg-path-color-change {
+        stroke: $global-colour-white;
+      }
+      .wes-icon polyline.svg-path-color-change {
+        stroke: $global-colour-white;
+      }
+    }
+  }
+
   &-cta-large {
     color: $global-colour-grey-900;
     background: $global-colour-white;
