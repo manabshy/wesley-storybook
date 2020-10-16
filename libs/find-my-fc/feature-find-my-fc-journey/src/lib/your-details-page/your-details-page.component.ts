@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
+import { Router } from '@angular/router';
 
 import {
   ConfigService,
@@ -12,8 +12,8 @@ import {
   emailValidator,
   fullUkPostcodeValidatorPattern,
 } from '@wesleyan-frontend/shared/util-validators';
-import { CustomerDetailsFacade } from '../core/services/customer-details.facade';
 
+import { CustomerDetailsFacade } from '../core/services/customer-details.facade';
 import { routesNames } from '../find-my-fc-journey.routes.names';
 import { AppForms } from '../shared/app-forms.interface';
 

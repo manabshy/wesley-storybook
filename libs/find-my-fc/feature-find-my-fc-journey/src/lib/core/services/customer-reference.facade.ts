@@ -12,6 +12,9 @@ import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-prog
 
 import { routesNames } from '../../find-my-fc-journey.routes.names';
 
+const NO_FINANCIAL_CONSULTANT_FOUND = 404;
+const ALLOWED_RETRIES = 3;
+
 @Injectable({
   providedIn: 'root',
 })
@@ -48,14 +51,12 @@ export class CustomerReferenceFacade {
   }
 
   private handleError(err: HttpErrorResponse) {
-    const NO_FINANCIAL_CONSULTANT_FOUND = 404;
-
     if (err.status === NO_FINANCIAL_CONSULTANT_FOUND) {
       this.invalidCustomerReference$$.next(true);
       this.invalidCustomerReferenceCount++;
     }
 
-    if (this.invalidCustomerReferenceCount === 3) {
+    if (this.invalidCustomerReferenceCount === ALLOWED_RETRIES) {
       this.router.navigate([routesNames.CANNOT_FIND_CUSTOMER]);
     }
   }

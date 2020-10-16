@@ -1,27 +1,17 @@
-import { NgFormsManager } from '@ngneat/forms-manager';
-import { Injectable, OnInit } from '@angular/core';
-import { Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
-import {
-  map,
-  filter,
-  tap,
-  take,
-  startWith,
-  catchError,
-  concatMap,
-  finalize,
-  shareReplay,
-} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { tap, take, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
+import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 import {
   ConfigService,
   FindFCApiService,
-  NewCustomerPostcodeContent,
 } from '@wesleyan-frontend/find-my-fc/data-access';
+import { HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
+import { routesNames } from '../../find-my-fc-journey.routes.names';
 
-import { AppForms } from '../../shared/app-forms.interface';
-import { SegmentType } from '../../shared/segment-type.interface';
-import { ProfessionFacade } from './profession.facade';
+const NO_FINANCIAL_CONSULTANT_FOUND = 404;
 
 @Injectable({
   providedIn: 'root',
@@ -29,14 +19,33 @@ import { ProfessionFacade } from './profession.facade';
 export class CustomerDetailsFacade {
   constructor(
     private configService: ConfigService,
-    private formManager: NgFormsManager<AppForms>,
-    private professionFacade: ProfessionFacade,
-    private findFinancialConsultantService: FindFCApiService
+    private loadingService: OverlayProgressSpinnerService,
+    private findFinancialConsultantService: FindFCApiService,
+    private router: Router
   ) {}
 
   findFC(dateOfBirth: string, emailAddress: string, postcode: string) {
+    this.loadingService.show();
+
     this.findFinancialConsultantService
       .findByCustomerDetails(dateOfBirth, emailAddress, postcode)
+      .pipe(
+        tap((_) => this.loadingService.hide()),
+        // tap((response) => this.router.navigate(['/'])),
+        take(1),
+        catchError((err: HttpErrorResponse) => {
+          this.loadingService.hide();
+          this.handleError(err);
+
+          return throwError(err);
+        })
+      )
       .subscribe();
+  }
+
+  private handleError(err: HttpErrorResponse) {
+    if (err.status === NO_FINANCIAL_CONSULTANT_FOUND) {
+      this.router.navigate([routesNames.CANNOT_FIND_CUSTOMER]);
+    }
   }
 }
