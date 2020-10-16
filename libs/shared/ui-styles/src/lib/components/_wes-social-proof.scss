@@ -22,7 +22,8 @@
   
       @include media-breakpoint-up(lg) {
         padding-top: rem(96px);
-        padding-bottom: rem(56px);      }
+        padding-bottom: rem(56px);      
+      }
 
       &::before {
         @extend .wes-bg-gradient-yellow;
