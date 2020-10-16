@@ -35,11 +35,14 @@ export class YourDetailsPageComponent implements OnInit {
     ],
     dateOfBirth: this.builder.group(
       {
-        day: [null, Validators.required],
-        month: [null, Validators.required],
-        year: [null, Validators.required],
+        day: ['', [Validators.required, Validators.max(31), Validators.min(1)]],
+        month: [
+          '',
+          [Validators.required, Validators.max(12), Validators.min(1)],
+        ],
+        year: ['', Validators.required],
       },
-      { validators: dateValidator }
+      { validators: [Validators.required, dateValidator], updateOn: 'blur' }
     ),
   });
 

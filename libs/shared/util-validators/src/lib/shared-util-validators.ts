@@ -144,7 +144,7 @@ export const dateValidator: ValidatorFn = (
   const day: number = control.get('day').value;
   const month: number = control.get('month').value;
   const year: number = control.get('year').value;
-  console.log(control);
+
   if (
     isEmptyInputValue(day) ||
     isEmptyInputValue(month) ||

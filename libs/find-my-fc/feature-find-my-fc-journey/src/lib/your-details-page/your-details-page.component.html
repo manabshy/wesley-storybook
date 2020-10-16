@@ -125,14 +125,11 @@
               />
             </wes-form-field>
           </div>
-          <wes-error *ngIf="dateOfBirthControl.invalid">
+          <wes-error *ngIf="dateOfBirthControl.errors?.invalidDate">
             <wes-form-field-error>
               {{ content.dateOfBirth.inputError }}
             </wes-form-field-error>
           </wes-error>
-          {{ emailControl.errors | json }}
-          {{ postcodeControl.errors | json }}
-          {{ dateOfBirthControl.errors | json }}
         </div>
       </div>
 
