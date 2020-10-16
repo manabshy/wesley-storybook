@@ -1,5 +1,4 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import { Directive, ElementRef, HostListener } from '@angular/core';
 
 /**
  * Applies to the input elements where we want a text input type
@@ -9,14 +8,40 @@ import { NgControl } from '@angular/forms';
   selector: '[wesNumbersOnly]',
 })
 export class OnlyNumberDirective {
-  constructor(private _el: ElementRef) {}
+  // Allow decimal numbers
+  private regex: RegExp = new RegExp(/^\d*$/g);
 
-  @HostListener('input', ['$event']) onInputChange(event) {
-    const initialValue = this._el.nativeElement.value;
+  // Allow key codes for special events. Reflect :
+  // Backspace, tab, end, home
+  private specialKeys: Array<string> = [
+    'Backspace',
+    'Tab',
+    'End',
+    'Home',
+    '-',
+    'ArrowLeft',
+    'ArrowRight',
+    'Del',
+    'Delete',
+  ];
 
-    this._el.nativeElement.value = initialValue.replace(/[^0-9]*/g, '');
-    if (initialValue !== this._el.nativeElement.value) {
-      event.stopPropagation();
+  constructor(private el: ElementRef) {}
+
+  @HostListener('keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent) {
+    // Allow Backspace, tab, end, and home keys
+    if (this.specialKeys.indexOf(event.key) !== -1) {
+      return;
+    }
+    let current: string = this.el.nativeElement.value;
+    const position = this.el.nativeElement.selectionStart;
+    const next: string = [
+      current.slice(0, position),
+      event.key == 'Decimal' ? '.' : event.key,
+      current.slice(position),
+    ].join('');
+    if (next && !String(next).match(this.regex)) {
+      event.preventDefault();
     }
   }
 }
