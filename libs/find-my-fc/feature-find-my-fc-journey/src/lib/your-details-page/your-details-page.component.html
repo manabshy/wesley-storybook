@@ -13,9 +13,22 @@
       novalidate
     >
       <div class="form-wrapper border py-4 px-2 px-sm-3 py-md-5 py-lg-6">
-        <div *ngIf="showCustomerNotFoundError$ | async">
-          Error
+        <div class="col-md-8 offset-md-2 col-lg-10 offset-lg-1 mb-4 mb-md-5">
+          <div
+            *ngIf="showCustomerNotFoundError$ | async"
+            class="wes-alert wes-alert-danger"
+          >
+            <div class="wes-alert-content-wrapper">
+              <div class="wes-alert-content">
+                <span class="wes-alert-title wes-text-s">
+                  {{ content.heading }}
+                </span>
+                <p class="wes-text-s">{{ content.summary }}</p>
+              </div>
+            </div>
+          </div>
         </div>
+
         <wes-form-field
           id="emailFormField"
           class="col-md-8 offset-md-2 col-lg-10 offset-lg-1"

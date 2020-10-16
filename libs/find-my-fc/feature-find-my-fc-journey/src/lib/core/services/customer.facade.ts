@@ -1,5 +1,5 @@
-import { Injectable, OnInit } from '@angular/core';
-import { Observable, throwError, Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { throwError, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { tap, take, catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -82,7 +82,7 @@ export class CustomerFacade {
       this.invalidCustomerReference$$.next(true);
       this.invalidCustomerReferenceCount++;
     }
-    console.log(this.invalidCustomerReferenceCount);
+
     if (this.invalidCustomerReferenceCount === ALLOWED_RETRIES) {
       this.router.navigate([routesNames.CANNOT_FIND_CUSTOMER]);
     }

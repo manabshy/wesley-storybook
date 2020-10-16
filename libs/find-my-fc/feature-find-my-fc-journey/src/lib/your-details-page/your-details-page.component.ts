@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { NgFormsManager } from '@ngneat/forms-manager';
+import { ViewportScroller } from '@angular/common';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import {
@@ -57,6 +59,7 @@ export class YourDetailsPageComponent implements OnInit {
     private formsManager: NgFormsManager<AppForms>,
     private configService: ConfigService,
     private customerFacade: CustomerFacade,
+    private viewPortScroller: ViewportScroller,
     private router: Router
   ) {
     this.content = this.configService.content.yourDetails;
@@ -67,7 +70,9 @@ export class YourDetailsPageComponent implements OnInit {
     this.formsManager.upsert('yourDetails', this.form);
 
     this.customerFacade.resetRetryCounter();
-    this.showCustomerNotFoundError$ = this.customerFacade.invalidCustomerReference$;
+    this.showCustomerNotFoundError$ = this.customerFacade.invalidCustomerReference$.pipe(
+      tap((_) => this.viewPortScroller.scrollToPosition([0, 0]))
+    );
   }
 
   onSubmit() {
