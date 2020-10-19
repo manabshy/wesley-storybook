@@ -22,22 +22,26 @@
           class="wes-radio-card"
           aria-labelledby="typeLabel"
           formControlName="type"
+          appearance="outline-tick"
         >
-          <wes-radio-button
-            class="mb-4"
-            [value]="questionMap.new.value"
-            labelTestId="lblNew"
-            inputTestId="rbNew"
-          >
-            <span [innerHtml]="questionMap.new.label"></span>
-          </wes-radio-button>
-          <wes-radio-button
-            [value]="questionMap.existing.value"
-            labelTestId="lblExisting"
-            inputTestId="rbExisting"
-          >
-            <span [innerHtml]="questionMap.existing.label"></span>
-          </wes-radio-button>
+          <div class="mb-4 mb-lg-0 offset-lg-1 col-lg-5 d-lg-inline-block">
+            <wes-radio-button
+              [value]="questionMap.new.value"
+              labelTestId="lblNew"
+              inputTestId="rbNew"
+            >
+              <span [innerHtml]="questionMap.new.label"></span>
+            </wes-radio-button>
+          </div>
+          <div class="col-lg-5 d-lg-inline-block">
+            <wes-radio-button
+              [value]="questionMap.existing.value"
+              labelTestId="lblExisting"
+              inputTestId="rbExisting"
+            >
+              <span [innerHtml]="questionMap.existing.label"></span>
+            </wes-radio-button>
+          </div>
         </wes-radio-group>
       </div>
 

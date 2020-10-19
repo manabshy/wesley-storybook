@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
@@ -16,6 +16,7 @@ import { CustomerType } from '../shared/customer-type.interface';
   selector: 'wes-customer-select-page',
   templateUrl: './customer-select-page.component.html',
   styleUrls: ['./customer-select-page.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CustomerSelectPageComponent implements OnInit {
   content: CustomerSelectorContent;
