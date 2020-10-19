@@ -38,13 +38,30 @@
         width: 100vw;
         transform: translateX(-50vw);
         left: 50%;
-
+        
         @include media-breakpoint-up(md) {
+          $container-gutter: map-get($grid-gutter-widths, md);
+          $container-inner-width: map-get($container-max-widths, md) - $container-gutter;
+
+          width: calc(#{$container-inner-width} + (100vw - #{$container-inner-width}) / 2);
           height: rem(332px);
-          width: 100vw;
           right: 0;
           left: initial;
           transform: translateX(0);
+        }
+
+        @include media-breakpoint-up(lg) {
+          $container-gutter: map-get($grid-gutter-widths, lg);
+          $container-inner-width: map-get($container-max-widths, lg) - $container-gutter;
+
+          width: calc(#{$container-inner-width} + (100vw - #{$container-inner-width}) / 2);
+        }
+
+        @include media-breakpoint-up(xl) {
+          $container-gutter: map-get($grid-gutter-widths, xl);
+          $container-inner-width: map-get($container-max-widths, xl) - $container-gutter;
+
+          width: calc(#{$container-inner-width} + (100vw - #{$container-inner-width}) / 2);
         }
       }
     }
