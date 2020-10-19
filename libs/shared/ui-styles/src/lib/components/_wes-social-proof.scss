@@ -8,19 +8,21 @@
     position: relative;
   
     &__header {
+      @include make-row(40px);
+
       padding-top: rem(48px);
       padding-bottom: rem(40px);
   
-      @include media-breakpoint-down(sm) {
-        @include make-row(40px);
-      }
-  
       @include media-breakpoint-up(md) {
+        @include make-row($grid-gutter-width);
+
         padding-top: rem(72px);
         padding-bottom: rem(48px);
       }
   
       @include media-breakpoint-up(lg) {
+        @include make-row($grid-gutter-width-xl);
+
         padding-top: rem(96px);
         padding-bottom: rem(56px);      
       }
@@ -39,11 +41,17 @@
 
         @include media-breakpoint-up(md) {
           height: rem(332px);
+          width: 100vw;
+          right: 0;
+          left: initial;
+          transform: translateX(0);
         }
       }
     }
   
     &__header-content {
+      @include make-col-ready();
+
       padding-left: $grid-gutter-width;
       padding-right: $grid-gutter-width;
   
@@ -51,8 +59,15 @@
         @include make-col-offset(1);
         @include make-col(10);
   
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: $grid-gutter-width / 2;
+        padding-right: $grid-gutter-width / 2;
+      }
+
+      @include media-breakpoint-up(lg) {
+        @include make-col(8);
+  
+        padding-left: $grid-gutter-width-xl / 2;
+        padding-right: $grid-gutter-width-xl / 2;
       }
     }
   
@@ -63,17 +78,38 @@
     }
   
     &__testimonials {
+      @include make-row(40px);
+
       padding-bottom: rem(48px);
+  
+      @include media-breakpoint-up(md) {
+        @include make-row($grid-gutter-width);
+      }
+  
+      @include media-breakpoint-up(lg) {
+        @include make-row($grid-gutter-width-xl);
+      }
+    }
+
+    &__testimonials-content {
+      @include make-col-ready();
+
+      padding-left: $grid-gutter-width;
+      padding-right: $grid-gutter-width;
   
       @include media-breakpoint-up(md) {
         @include make-col-offset(1);
         @include make-col(10);
+  
+        padding-left: $grid-gutter-width / 2;
+        padding-right: $grid-gutter-width / 2;
       }
   
       @include media-breakpoint-up(lg) {
-        @include make-col(8, 12);
+        @include make-col(8);
   
-        margin-right: 0;
+        padding-left: $grid-gutter-width-xl / 2;
+        padding-right: $grid-gutter-width-xl / 2;
       }
     }
   
