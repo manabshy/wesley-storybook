@@ -1,11 +1,28 @@
 #professionSelectForm {
   .wes-radio-card .wes-radio-label {
     flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
   }
   .wes-radio-label-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .radio-button-label-text {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .mat-icon {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 8px;
+      @media (min-width: 768px) {
+        width: 48px;
+        height: 48px;
+      }
+    }
   }
   .radio-buttons-container {
     display: inline-flex;
@@ -26,25 +43,9 @@
 
       @media (min-width: 768px) {
         flex-basis: 33%;
-        // &:nth-child(3n) {
-        //   padding-left: 0px;
-        //   padding-right: 10px;
-        // }
-        &:nth-child(3n) {
-          padding-left: 10px;
-          padding-right: 0px;
-        }
+        padding-left: 10px;
+        padding-right: 10px;
       }
     }
-    /*
-    1 2 3
-    4 5 6
-    7 8 9
-
-
-    */
-
-    // margin: -10px 0 0 -10px;
-    // width: calc(100% + 10px);
   }
 }
