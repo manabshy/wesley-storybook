@@ -9,8 +9,7 @@ import {
   FindFCApiService,
 } from '@wesleyan-frontend/find-my-fc/data-access';
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
-
-import { routesNames } from '../../find-my-fc-journey.routes.names';
+import { routesNames } from '@wesleyan-frontend/find-my-fc/util-const';
 
 const NO_FINANCIAL_CONSULTANT_FOUND = 404;
 const ALLOWED_RETRIES = 3;
@@ -38,7 +37,7 @@ export class CustomerFacade {
       .findByCustomerID(customerReference)
       .pipe(
         tap((_) => this.loadingService.hide()),
-        // tap((response) => this.router.navigate(['/'])),
+        tap((response) => this.navigateToFinancialConsultantPage(response.id)),
         take(1),
         catchError((err: HttpErrorResponse) => {
           this.loadingService.hide();
@@ -61,7 +60,7 @@ export class CustomerFacade {
       .findByCustomerDetails(dateOfBirth, emailAddress, postcode)
       .pipe(
         tap((_) => this.loadingService.hide()),
-        // tap((response) => this.router.navigate(['/'])),
+        tap((response) => this.navigateToFinancialConsultantPage(response.id)),
         take(1),
         catchError((err: HttpErrorResponse) => {
           this.loadingService.hide();
@@ -75,6 +74,10 @@ export class CustomerFacade {
 
   resetRetryCounter() {
     this.invalidCustomerReferenceCount = 0;
+  }
+
+  navigateToFinancialConsultantPage(consultantId: number) {
+    window.open(`/${consultantId}`, '_self');
   }
 
   private handleError(err: HttpErrorResponse) {

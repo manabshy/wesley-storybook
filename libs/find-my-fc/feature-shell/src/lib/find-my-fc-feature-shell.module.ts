@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { HttpErrorInterceptor } from '@wesleyan-frontend/find-my-fc/data-access';
 
 import { SharedUiProgressSpinnerModule } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
@@ -13,5 +15,12 @@ import { ShellComponent } from './shell/shell.component';
     FindMyFCFeatureShellRoutingModule,
   ],
   declarations: [ShellComponent],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true,
+    },
+  ],
 })
 export class FindMyFcFeatureShellModule {}

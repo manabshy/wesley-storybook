@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { tap, take, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 import {
   ConfigService,
   FindFCApiService,
 } from '@wesleyan-frontend/find-my-fc/data-access';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
-import { routesNames } from '../../find-my-fc-journey.routes.names';
+
+import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
+import { routesNames } from '@wesleyan-frontend/find-my-fc/util-const';
 
 const NO_FINANCIAL_CONSULTANT_FOUND = 404;
 

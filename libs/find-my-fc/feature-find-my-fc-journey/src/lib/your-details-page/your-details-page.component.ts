@@ -15,9 +15,9 @@ import {
   emailValidator,
   fullUkPostcodeValidatorPattern,
 } from '@wesleyan-frontend/shared/util-validators';
+import { routesNames } from '@wesleyan-frontend/find-my-fc/util-const';
 
 import { CustomerFacade } from '../core/services/customer.facade';
-import { routesNames } from '../find-my-fc-journey.routes.names';
 import { AppForms } from '../shared/app-forms.interface';
 
 @Component({
@@ -62,6 +62,7 @@ export class YourDetailsPageComponent implements OnInit {
     private viewPortScroller: ViewportScroller,
     private router: Router
   ) {
+    console.log(this.configService.content);
     this.content = this.configService.content.yourDetails;
     this.backLink = `/${routesNames.CUSTOMER_SELECT}`;
   }

@@ -9,9 +9,9 @@ import {
   ConfigService,
   CustomerReferenceContent,
 } from '@wesleyan-frontend/find-my-fc/data-access';
+import { routesNames } from '@wesleyan-frontend/find-my-fc/util-const';
 
 import { CustomerFacade } from '../core/services/customer.facade';
-import { routesNames } from '../find-my-fc-journey.routes.names';
 import { AppForms } from '../shared/app-forms.interface';
 
 @Component({

@@ -7,8 +7,8 @@ import {
   ConfigService,
   ProfessionSelectorContent,
 } from '@wesleyan-frontend/find-my-fc/data-access';
+import { routesNames } from '@wesleyan-frontend/find-my-fc/util-const';
 
-import { routesNames } from '../find-my-fc-journey.routes.names';
 import { AppForms } from '../shared/app-forms.interface';
 
 @Component({
@@ -21,12 +21,12 @@ export class ProfessionSelectPageComponent implements OnInit {
   content: ProfessionSelectorContent;
   backLink = '';
   iconMap = {
-    hospital: 'heart',
-    gppractice: 'stethoscope',
-    dental: 'tooth',
-    education: 'open-book',
-    legal: 'legal',
-    other: 'briefcase',
+    HospitalDoctor: 'heart',
+    GP: 'stethoscope',
+    Dentist: 'tooth',
+    Teacher: 'open-book',
+    Lawyer: 'legal',
+    Undefined: 'briefcase',
   };
   form: FormGroup = this.builder.group({
     sector: [null, Validators.required],

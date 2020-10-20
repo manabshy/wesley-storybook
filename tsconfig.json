@@ -101,7 +101,10 @@
       "@wesleyan-frontend/shared/ui-directives": [
         "libs/shared/ui-directives/src/index.ts"
       ],
-      "@wesleyan-frontend/shared/ui-icon": ["libs/shared/ui-icon/src/index.ts"]
+      "@wesleyan-frontend/shared/ui-icon": ["libs/shared/ui-icon/src/index.ts"],
+      "@wesleyan-frontend/find-my-fc/util-const": [
+        "libs/find-my-fc/util-const/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

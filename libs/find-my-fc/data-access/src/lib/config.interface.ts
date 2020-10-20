@@ -51,6 +51,7 @@ export interface YourDetailsContent {
   email: Input;
   homePostcode: Input;
   dateOfBirth: Input;
+  validationSummary: { heading: string; summary: string };
   nextButtonLabel: string;
   backButtonLabel: string;
 }

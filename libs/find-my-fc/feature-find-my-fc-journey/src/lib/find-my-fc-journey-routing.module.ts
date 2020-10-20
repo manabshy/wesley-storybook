@@ -1,7 +1,7 @@
 import { Route, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { routesNames } from './find-my-fc-journey.routes.names';
+import { routesNames } from '@wesleyan-frontend/find-my-fc/util-const';
 import { CustomerSelectPageComponent } from './customer-select-page/customer-select-page.component';
 import { ProfessionSelectPageComponent } from './profession-select-page/profession-select-page.component';
 import { PostcodePageComponent } from './postcode-page/postcode-page.component';

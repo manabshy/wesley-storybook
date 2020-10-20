@@ -7,8 +7,8 @@ import {
   ConfigService,
   CustomerSelectorContent,
 } from '@wesleyan-frontend/find-my-fc/data-access';
+import { routesNames } from '@wesleyan-frontend/find-my-fc/util-const';
 
-import { routesNames } from '../find-my-fc-journey.routes.names';
 import { AppForms } from '../shared/app-forms.interface';
 import { CustomerType } from '../shared/customer-type.interface';
 

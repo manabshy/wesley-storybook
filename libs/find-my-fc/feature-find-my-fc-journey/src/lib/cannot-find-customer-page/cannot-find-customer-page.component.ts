@@ -5,7 +5,7 @@ import {
   CannotMatchCustomerContent,
   ConfigService,
 } from '@wesleyan-frontend/find-my-fc/data-access';
-import { routesNames } from '../find-my-fc-journey.routes.names';
+import { routesNames } from '@wesleyan-frontend/find-my-fc/util-const';
 
 @Component({
   selector: 'wes-cannot-find-customer-page',

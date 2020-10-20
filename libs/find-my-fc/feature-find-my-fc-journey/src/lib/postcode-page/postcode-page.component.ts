@@ -9,10 +9,10 @@ import {
   NewCustomerPostcodeContent,
 } from '@wesleyan-frontend/find-my-fc/data-access';
 import { fullUkPostcodeValidatorPattern } from '@wesleyan-frontend/shared/util-validators';
+import { routesNames } from '@wesleyan-frontend/find-my-fc/util-const';
 
 import { PostcodeFacade } from '../core/services/postcode.facade';
 import { ProfessionFacade } from '../core/services/profession.facade';
-import { routesNames } from '../find-my-fc-journey.routes.names';
 import { AppForms } from '../shared/app-forms.interface';
 
 @Component({
