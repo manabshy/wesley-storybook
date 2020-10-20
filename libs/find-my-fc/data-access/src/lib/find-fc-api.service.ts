@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-  HttpParams,
-} from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
-import { shareReplay, map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { FindConsultantResponse } from './find-fc-api.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -14,21 +10,20 @@ import { shareReplay, map } from 'rxjs/operators';
 export class FindFCApiService {
   constructor(private http: HttpClient) {}
 
-  findByFCDetails(postcode: string, segment: string): Observable<any> {
-    return of({});
-    // return this.http.post<KnowledgeCheckResponse>(
-    //   `/api/isawebapiwrapper/knowledgecheckstepinitial`,
-    //   answer
-    // );
+  findByFCDetails(
+    postcode: string,
+    segment: string
+  ): Observable<FindConsultantResponse> {
+    return this.http.post<FindConsultantResponse>(
+      `/api/findmyfcwebapiwrapper/newcustomersearch`,
+      { segment, postcode }
+    );
   }
 
-  findByCustomerID(customerId: string): Observable<any> {
-    // return of({});
-    return throwError(new HttpErrorResponse({ status: 404 }));
-    // return this.http.post<KnowledgeCheckResponse>(
-    //   `/api/isawebapiwrapper/knowledgecheckstepinitial`,
-    //   answer
-    // );
+  findByCustomerID(customerId: string): Observable<FindConsultantResponse> {
+    return this.http.get<FindConsultantResponse>(
+      `/api/findmyfcwebapiwrapper/existingcustomersearch?id=${customerId}`
+    );
   }
 
   /**
@@ -41,13 +36,10 @@ export class FindFCApiService {
     dateOfBirth: string,
     emailAddress: string,
     postcode: string
-  ): Observable<any> {
-    return throwError(new HttpErrorResponse({ status: 404 }));
-
-    // return of({});
-    // return this.http.post<KnowledgeCheckResponse>(
-    //   `/api/isawebapiwrapper/knowledgecheckstepinitial`,
-    //   answer
-    // );
+  ): Observable<FindConsultantResponse> {
+    return this.http.post<FindConsultantResponse>(
+      `/api/findmyfcwebapiwrapper/existingcustomersearch`,
+      { dateOfBirth, postcode, emailAddress }
+    );
   }
 }

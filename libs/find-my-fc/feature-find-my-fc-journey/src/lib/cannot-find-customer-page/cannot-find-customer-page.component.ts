@@ -5,6 +5,7 @@ import {
   CannotMatchCustomerContent,
   ConfigService,
 } from '@wesleyan-frontend/find-my-fc/data-access';
+import { routesNames } from '../find-my-fc-journey.routes.names';
 
 @Component({
   selector: 'wes-cannot-find-customer-page',
@@ -21,6 +22,6 @@ export class CannotFindCustomerPageComponent implements OnInit {
   ngOnInit(): void {}
 
   onFindFCButtonClicked() {
-    this.router.navigate(['/']);
+    this.router.navigate([routesNames.PROFESSION_SELECT]);
   }
 }
