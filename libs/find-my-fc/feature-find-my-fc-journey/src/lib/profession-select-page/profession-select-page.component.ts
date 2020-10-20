@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
@@ -15,6 +15,7 @@ import { AppForms } from '../shared/app-forms.interface';
   selector: 'wes-profession-select-page',
   templateUrl: './profession-select-page.component.html',
   styleUrls: ['./profession-select-page.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ProfessionSelectPageComponent implements OnInit {
   content: ProfessionSelectorContent;

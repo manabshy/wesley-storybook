@@ -1,0 +1,50 @@
+#professionSelectForm {
+  .wes-radio-card .wes-radio-label {
+    flex-direction: column;
+  }
+  .wes-radio-label-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .radio-buttons-container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    & > div {
+      margin-bottom: 24px;
+
+      &:nth-child(odd) {
+        padding-right: 10px;
+      }
+      &:nth-child(even) {
+        padding-left: 10px;
+      }
+      &:nth-last-child(-n + 3) {
+        margin-bottom: 0;
+      }
+      flex-basis: 50%;
+
+      @media (min-width: 768px) {
+        flex-basis: 33%;
+        // &:nth-child(3n) {
+        //   padding-left: 0px;
+        //   padding-right: 10px;
+        // }
+        &:nth-child(3n) {
+          padding-left: 10px;
+          padding-right: 0px;
+        }
+      }
+    }
+    /*
+    1 2 3
+    4 5 6
+    7 8 9
+
+
+    */
+
+    // margin: -10px 0 0 -10px;
+    // width: calc(100% + 10px);
+  }
+}

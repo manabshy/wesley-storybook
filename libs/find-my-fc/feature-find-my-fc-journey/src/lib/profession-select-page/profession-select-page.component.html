@@ -19,21 +19,24 @@
           [innerHTML]="content.summary"
         ></label>
         <wes-radio-group
-          class="wes-radio-card"
+          class="wes-radio-card d-block"
           aria-labelledby="professionSelectLabel"
           formControlName="sector"
           appearance="outline-tick"
         >
-          <wes-radio-button
-            *ngFor="let option of content.areaOfWork"
-            class="mb-4"
-            [value]="option.id"
-            labelTestId="{{ 'lbl' + formatTestLabel(option.label) }}"
-            inputTestId="{{ 'rb' + formatTestLabel(option.label) }}"
-          >
-            <mat-icon [svgIcon]="iconMap[option.id]"></mat-icon>
-            <span [innerHtml]="option.label"></span>
-          </wes-radio-button>
+          <div class="radio-buttons-container px-0 offset-md-1 col-md-10">
+            <div class="" *ngFor="let option of content.areaOfWork">
+              <wes-radio-button
+                class=""
+                [value]="option.id"
+                labelTestId="{{ 'lbl' + formatTestLabel(option.label) }}"
+                inputTestId="{{ 'rb' + formatTestLabel(option.label) }}"
+              >
+                <mat-icon [svgIcon]="iconMap[option.id]"></mat-icon>
+                <span [innerHtml]="option.label"></span>
+              </wes-radio-button>
+            </div>
+          </div>
         </wes-radio-group>
       </div>
 
