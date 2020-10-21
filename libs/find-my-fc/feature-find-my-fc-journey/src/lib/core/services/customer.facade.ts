@@ -77,7 +77,10 @@ export class CustomerFacade {
   }
 
   navigateToFinancialConsultantPage(consultantId: number) {
-    window.open(`/${consultantId}`, '_self');
+    window.open(
+      `/${this.configService.content.endPoints.yourFinancialConsultant}?id=${consultantId}`,
+      '_self'
+    );
   }
 
   private handleError(err: HttpErrorResponse) {

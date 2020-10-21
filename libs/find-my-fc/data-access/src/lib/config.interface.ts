@@ -10,6 +10,7 @@ export interface Config {
   customerReference: CustomerReferenceContent;
   cannotMatchCustomer: CannotMatchCustomerContent;
   exception: ExceptionContent;
+  endPoints: EndPoints;
 }
 
 export interface FormInput {
@@ -18,7 +19,9 @@ export interface FormInput {
   inputOtherError?: string;
 }
 
-export interface EndPoints {}
+export interface EndPoints {
+  yourFinancialConsultant: string;
+}
 
 export interface CustomerSelectorContent {
   heading: string;
