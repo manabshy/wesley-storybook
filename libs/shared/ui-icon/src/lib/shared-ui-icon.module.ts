@@ -30,6 +30,10 @@ export class SharedUiIconModule {
       .addSvgIcon(
         'stethoscope',
         this.setIconPath(`${this.path}/icon-stethoscope.svg`)
+      )
+      .addSvgIcon(
+        'arrow-left',
+        this.setIconPath(`${this.path}/icon-arrow-left.svg`)
       );
   }
 

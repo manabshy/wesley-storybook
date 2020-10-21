@@ -266,3 +266,24 @@
     left: -30px;
   }
 }
+.wes-link.wes-icon.wes-icon-arrow-left {
+  position: relative;
+  margin-left: 22px;
+  &:before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    background-image: url("data:image/svg+xml,%3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='🎨-UI-Design' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='EC_Your-Details_1366' transform='translate(-660.000000, -934.000000)'%3E%3Cg id='Back-link' transform='translate(660.000000, 932.000000)'%3E%3Cg id='arrow' transform='translate(0.000000, 2.000000)'%3E%3Crect id='Rectangle' x='0' y='0' width='16' height='16'%3E%3C/rect%3E%3Cg id='Group-5' transform='translate(3.000000, 4.000000)' stroke='%2340474F' stroke-linecap='round'%3E%3Cpolyline id='Rectangle' stroke-linejoin='round' transform='translate(2.500000, 4.500000) scale(-1, 1) rotate(-90.000000) translate(-2.500000, -4.500000) ' points='6.5 2.5 2.5 6.5 -1.5 2.5'%3E%3C/polyline%3E%3Cline x1='10' y1='4.5' x2='1.5' y2='4.5' id='Line' transform='translate(5.500000, 4.500000) scale(-1, 1) translate(-5.500000, -4.500000) '%3E%3C/line%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.2s;
+
+    padding: 0;
+    margin: 0;
+    bottom: calc(50% - 8px);
+
+    width: 16px;
+    height: 16px;
+    left: -20px;
+  }
+}
