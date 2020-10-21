@@ -37,7 +37,9 @@ export class CustomerFacade {
       .findByCustomerID(customerReference)
       .pipe(
         tap((_) => this.loadingService.hide()),
-        tap((response) => this.navigateToFinancialConsultantPage(response.id)),
+        tap((response) =>
+          this.navigateToFinancialConsultantPage(response.id, 'existing')
+        ),
         take(1),
         catchError((err: HttpErrorResponse) => {
           this.loadingService.hide();
@@ -60,7 +62,30 @@ export class CustomerFacade {
       .findByCustomerDetails(dateOfBirth, emailAddress, postcode)
       .pipe(
         tap((_) => this.loadingService.hide()),
-        tap((response) => this.navigateToFinancialConsultantPage(response.id)),
+        tap((response) =>
+          this.navigateToFinancialConsultantPage(response.id, 'existing')
+        ),
+        take(1),
+        catchError((err: HttpErrorResponse) => {
+          this.loadingService.hide();
+          this.handleError(err);
+
+          return throwError(err);
+        })
+      )
+      .subscribe();
+  }
+
+  findFCByPostcodeAndSegment(postcode: string, segment: string) {
+    this.loadingService.show();
+
+    this.findFinancialConsultantService
+      .findByFCDetails(postcode, segment)
+      .pipe(
+        tap((_) => this.loadingService.hide()),
+        tap((response) =>
+          this.navigateToFinancialConsultantPage(response.id, 'new')
+        ),
         take(1),
         catchError((err: HttpErrorResponse) => {
           this.loadingService.hide();
@@ -76,9 +101,12 @@ export class CustomerFacade {
     this.invalidCustomerReferenceCount = 0;
   }
 
-  navigateToFinancialConsultantPage(consultantId: number) {
+  navigateToFinancialConsultantPage(
+    consultantId: number,
+    customerType: 'new' | 'existing'
+  ) {
     window.open(
-      `/${this.configService.content.endPoints.yourFinancialConsultant}?id=${consultantId}`,
+      `${this.configService.content.endPoints.yourFinancialConsultant}?id=${consultantId}&customer=${customerType}`,
       '_self'
     );
   }
