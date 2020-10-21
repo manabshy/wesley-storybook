@@ -13,11 +13,11 @@
       novalidate
     >
       <div class="form-wrapper border py-4 px-2 px-sm-3 py-md-5 py-lg-6">
-        <div class="col-md-8 offset-md-2 col-lg-10 offset-lg-1 mb-4 mb-md-5">
-          <div
-            *ngIf="showCustomerNotFoundError$ | async"
-            class="wes-alert wes-alert-danger"
-          >
+        <div
+          *ngIf="showCustomerNotFoundError$ | async"
+          class="col-md-8 offset-md-2 col-lg-10 offset-lg-1 mb-4 mb-md-5"
+        >
+          <div class="wes-alert wes-alert-danger">
             <div class="wes-alert-content-wrapper">
               <div class="wes-alert-content">
                 <span class="wes-alert-title wes-text-s">
@@ -161,7 +161,7 @@
         {{ content.nextButtonLabel }}
       </button>
       <a
-        class="wes-link wes-icon wes-icon-chevron-left wes-text-s wes-text-semi-bold mb-3 mb-md-4 d-table w-md-auto mx-auto"
+        class="wes-link wes-icon wes-icon-chevron-left wes-text-xs wes-text-semi-bold mb-3 mb-md-4 d-table w-md-auto mx-auto"
         [routerLink]="backLink"
         data-test="lnkBack"
       >
