@@ -104,6 +104,9 @@
       "@wesleyan-frontend/shared/ui-icon": ["libs/shared/ui-icon/src/index.ts"],
       "@wesleyan-frontend/find-my-fc/util-const": [
         "libs/find-my-fc/util-const/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/ui-pipes": [
+        "libs/shared/ui-pipes/src/index.ts"
       ]
     }
   },

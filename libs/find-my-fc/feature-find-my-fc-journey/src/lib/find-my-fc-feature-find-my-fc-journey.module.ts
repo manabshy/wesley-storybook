@@ -7,6 +7,7 @@ import { SharedUiFormFieldErrorModule } from '@wesleyan-frontend/shared/ui-form-
 import { SharedUiDirectivesModule } from '@wesleyan-frontend/shared/ui-directives';
 import { SharedUiFormRadioModule } from '@wesleyan-frontend/shared/ui-form-radio';
 import { SharedUiFormInputModule } from '@wesleyan-frontend/shared/ui-form-input';
+import { SharedUiPipesModule } from '@wesleyan-frontend/shared/ui-pipes';
 import { SharedUiIconModule } from '@wesleyan-frontend/shared/ui-icon';
 
 import { CannotFindCustomerPageComponent } from './cannot-find-customer-page/cannot-find-customer-page.component';
@@ -29,6 +30,7 @@ import { BodyComponent } from './components/body/body.component';
     SharedUiFormInputModule,
     SharedUiFormFieldErrorModule,
     SharedUiDirectivesModule,
+    SharedUiPipesModule,
     SharedUiIconModule,
     SharedUiProgressSpinnerModule,
   ],

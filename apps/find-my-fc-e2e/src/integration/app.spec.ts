@@ -1,6 +1,7 @@
 import {
   backButton,
   continueButton,
+  existingCustomerOption,
   newCustomerOption,
 } from '../support/customer-select.po';
 import {
@@ -11,8 +12,16 @@ import {
   legalOption,
   dentalOption,
 } from '../support/profession-select.po';
-
-import { postcodeInput, postcodeLabel } from '../support/postcode.po';
+import { postcodeLabel } from '../support/postcode.po';
+import {
+  customerReferenceLink,
+  emailInput,
+  postcodeInput,
+  dobDayInput,
+  dobMonthInput,
+  dobYearInput,
+} from '../support/your-details.po';
+import { customerReferenceInput } from '../support/customer-reference.po';
 
 describe('find-my-fc', () => {
   // beforeEach(() => cy.visit('/'));
@@ -100,17 +109,34 @@ describe('find-my-fc', () => {
     });
   });
 
-  describe('Existing Customer', () => {
+  describe('Existing Customer using Customer reference number', () => {
     it(`Given I'm on customer select page And I'm an existing customer`, () => {
       cy.visit('/');
 
-      cy.get('[data-test=lblExisting]').click();
+      existingCustomerOption().click();
       continueButton().click();
-      // Custom command example, see `../support/commands.ts` file
-      // cy.login('my-email@something.com', 'myPassword');
+    });
+    it(`When I enter my Customer Reference number`, () => {
+      customerReferenceLink().click();
+      customerReferenceInput().type('123123123');
+      continueButton().click();
+    });
+  });
 
-      // Function helper example, see `../support/app.po.ts` file
-      // getGreeting().contains('Welcome to find-my-fc!');
+  describe('Existing Customer using details', () => {
+    it(`Given I'm on customer select page And I'm an existing customer`, () => {
+      cy.visit('/');
+
+      existingCustomerOption().click();
+      continueButton().click();
+    });
+    it(`When I enter my details`, () => {
+      emailInput().type('test@test.com');
+      postcodeInput().type('B4 6AB');
+      dobDayInput().type('12');
+      dobMonthInput().type('12');
+      dobYearInput().type('1980');
+      continueButton().click();
     });
   });
 });

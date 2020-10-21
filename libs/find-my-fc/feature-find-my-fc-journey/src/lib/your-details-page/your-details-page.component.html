@@ -1,6 +1,6 @@
 <wes-header>
   <h1>{{ content.heading }}</h1>
-  <p [innerHTML]="content.summary"></p>
+  <div [innerHTML]="content.summary | safeHtml"></div>
 </wes-header>
 
 <wes-body>
