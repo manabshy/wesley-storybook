@@ -42,7 +42,7 @@ export class CustomerSelectPageComponent implements OnInit {
     private router: Router
   ) {
     this.content = this.configService.content.customerSelector;
-    console.log(this.content);
+
     this.questionMap[
       CustomerType.NEW_CUSTOMER
     ].label = this.content.newCustomerLabel;

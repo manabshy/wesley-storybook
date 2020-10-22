@@ -61,7 +61,6 @@ export class YourDetailsPageComponent implements OnInit {
     private customerFacade: CustomerFacade,
     private viewPortScroller: ViewportScroller
   ) {
-    console.log(this.configService.content);
     this.content = this.configService.content.yourDetails;
     this.backLink = `/${routesNames.CUSTOMER_SELECT}`;
   }
