@@ -59,8 +59,7 @@ export class YourDetailsPageComponent implements OnInit {
     private formsManager: NgFormsManager<AppForms>,
     private configService: ConfigService,
     private customerFacade: CustomerFacade,
-    private viewPortScroller: ViewportScroller,
-    private router: Router
+    private viewPortScroller: ViewportScroller
   ) {
     console.log(this.configService.content);
     this.content = this.configService.content.yourDetails;

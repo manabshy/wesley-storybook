@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import {
   ConfigService,
@@ -10,12 +10,10 @@ import {
   templateUrl: './crm-error-page.component.html',
   styleUrls: ['./crm-error-page.component.scss'],
 })
-export class CRMErrorPageComponent implements OnInit {
+export class CRMErrorPageComponent {
   content: ExceptionContent;
 
   constructor(private configService: ConfigService) {
     this.content = this.configService.content.exception;
   }
-
-  ngOnInit(): void {}
 }

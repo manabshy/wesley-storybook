@@ -1,26 +1,15 @@
 import { NgFormsManager } from '@ngneat/forms-manager';
-import { Injectable, OnInit } from '@angular/core';
-import { Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
-import {
-  map,
-  filter,
-  tap,
-  take,
-  startWith,
-  catchError,
-  concatMap,
-  finalize,
-  shareReplay,
-} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import {
   ConfigService,
-  FindFCApiService,
   NewCustomerPostcodeContent,
 } from '@wesleyan-frontend/find-my-fc/data-access';
 
-import { AppForms } from '../../shared/app-forms.interface';
 import { SegmentType } from '../../shared/segment-type.interface';
+import { AppForms } from '../../shared/app-forms.interface';
 import { ProfessionFacade } from './profession.facade';
 import { CustomerFacade } from './customer.facade';
 

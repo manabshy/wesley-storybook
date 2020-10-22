@@ -36,7 +36,6 @@ export class PostcodePageComponent implements OnInit {
     private formsManager: NgFormsManager<AppForms>,
     private configService: ConfigService,
     private postcodeFacade: PostcodeFacade,
-    private professionFacade: ProfessionFacade,
     private router: Router
   ) {
     this.content = this.configService.content.newCustomerPostcode;
