@@ -1,18 +1,8 @@
 import {
-  backButton,
   continueButton,
   existingCustomerOption,
-  newCustomerOption,
 } from '../support/customer-select.po';
-import {
-  hospitalOption,
-  gpOption,
-  educationOption,
-  otherOption,
-  legalOption,
-  dentalOption,
-} from '../support/profession-select.po';
-import { postcodeLabel } from '../support/postcode.po';
+
 import {
   customerReferenceLink,
   emailInput,
@@ -22,93 +12,9 @@ import {
   dobYearInput,
 } from '../support/your-details.po';
 import { customerReferenceInput } from '../support/customer-reference.po';
+import { endPoints } from '../support/end-points.const';
 
 describe('find-my-fc', () => {
-  // beforeEach(() => cy.visit('/'));
-
-  describe('New Customer segment checks', () => {
-    it(`Given I'm on customer select page And I'm a new customer`, () => {
-      cy.visit('/');
-    });
-
-    it(`When I select New Customer option and click Continue`, () => {
-      newCustomerOption().click();
-      continueButton().click();
-    });
-
-    it(`Then I'm taken to the Profession Select page`, () => {
-      cy.url().should('include', '/#/profession-type');
-    });
-
-    it(`When I select Hospital option and click Continue`, () => {
-      hospitalOption().click();
-      continueButton().click();
-    });
-
-    it(`Then I'm taken to the Postcode page`, () => {
-      cy.url().should('include', '/#/postcode');
-    });
-
-    it(`And I can enter my Home postcode`, () => {
-      postcodeLabel().contains('home');
-    });
-
-    it(`When I go back and select GP Practice option and click Continue`, () => {
-      backButton().click();
-      gpOption().click();
-      continueButton().click();
-    });
-
-    it(`Then I'm taken to the Postcode page And I can enter my Home postcode`, () => {
-      cy.url().should('include', '/#/postcode');
-      postcodeLabel().contains('home');
-    });
-
-    it(`When I go back and select Legal option and click Continue`, () => {
-      backButton().click();
-      legalOption().click();
-      continueButton().click();
-    });
-
-    it(`Then I'm taken to the Postcode page And I can enter my Home postcode`, () => {
-      cy.url().should('include', '/#/postcode');
-      postcodeLabel().contains('home');
-    });
-
-    it(`When I go back and select Other option and click Continue`, () => {
-      backButton().click();
-      otherOption().click();
-      continueButton().click();
-    });
-
-    it(`Then I'm taken to the Postcode page And I can enter my Home postcode`, () => {
-      cy.url().should('include', '/#/postcode');
-      postcodeLabel().contains('home');
-    });
-
-    it(`When I go back and select Education option and click Continue`, () => {
-      backButton().click();
-      educationOption().click();
-      continueButton().click();
-    });
-
-    it(`Then I'm taken to the Postcode page And I can enter my Work postcode`, () => {
-      cy.url().should('include', '/#/postcode');
-      postcodeLabel().contains('work');
-    });
-
-    it(`When I go back and select Dental option and click Continue`, () => {
-      backButton().click();
-      dentalOption().click();
-      continueButton().click();
-    });
-
-    it(`Then I'm taken to the Postcode page And I can enter my Work postcode`, () => {
-      cy.url().should('include', '/#/postcode');
-      postcodeLabel().contains('work');
-    });
-  });
-
   describe('Existing Customer using Customer reference number', () => {
     it(`Given I'm on customer select page And I'm an existing customer`, () => {
       cy.visit('/');
@@ -139,7 +45,7 @@ describe('find-my-fc', () => {
     });
     it(`And submit I should see my Financial Consultant `, () => {
       cy.server();
-      cy.route('POST', '/api/findmyfcwebapiwrapper/existingcustomersearch', {
+      cy.route('POST', endPoints.EXISTING_CUSTOMER, {
         id: '1231231',
       }).as('findFC');
 
@@ -168,13 +74,9 @@ describe('find-my-fc', () => {
     });
     it(`And submit I should see my Financial Consultant `, () => {
       cy.server();
-      cy.route(
-        'GET',
-        '/api/findmyfcwebapiwrapper/existingcustomersearch?id=123456789',
-        {
-          id: '1231231',
-        }
-      ).as('findFC');
+      cy.route('GET', `${endPoints.EXISTING_CUSTOMER}?id=123456789`, {
+        id: '1231231',
+      }).as('findFC');
 
       cy.route('GET', '/your-fc?id=1231231&customer=existing').as(
         'fcPageRedirect'
@@ -201,13 +103,9 @@ describe('find-my-fc', () => {
     });
     it(`And submit I should see an error message`, () => {
       cy.server({ status: 404 });
-      cy.route(
-        'GET',
-        '/api/findmyfcwebapiwrapper/existingcustomersearch?id=000000000',
-        {
-          id: '1231231',
-        }
-      ).as('findFC');
+      cy.route('GET', `${endPoints.EXISTING_CUSTOMER}?id=000000000`, {
+        id: '1231231',
+      }).as('findFC');
 
       continueButton().focus().click();
 
@@ -218,13 +116,9 @@ describe('find-my-fc', () => {
     });
     it(`And submit I should see an error message`, () => {
       cy.server({ status: 404 });
-      cy.route(
-        'GET',
-        '/api/findmyfcwebapiwrapper/existingcustomersearch?id=000000001',
-        {
-          id: '1231231',
-        }
-      ).as('findFC');
+      cy.route('GET', `${endPoints.EXISTING_CUSTOMER}?id=000000001`, {
+        id: '1231231',
+      }).as('findFC');
 
       continueButton().focus().click();
 
@@ -235,13 +129,9 @@ describe('find-my-fc', () => {
     });
     it(`And submit I should see an error page`, () => {
       cy.server({ status: 404 });
-      cy.route(
-        'GET',
-        '/api/findmyfcwebapiwrapper/existingcustomersearch?id=000000002',
-        {
-          id: '1231231',
-        }
-      ).as('findFC');
+      cy.route('GET', `${endPoints.EXISTING_CUSTOMER}?id=000000002`, {
+        id: '1231231',
+      }).as('findFC');
 
       continueButton().focus().click();
 
@@ -271,7 +161,7 @@ describe('find-my-fc', () => {
       cy.server({ status: 404, force404: true });
       cy.route({
         method: 'POST',
-        url: '**/api/findmyfcwebapiwrapper/existingcustomersearch',
+        url: `**${endPoints.EXISTING_CUSTOMER}`,
         response: {},
       });
 
@@ -286,7 +176,7 @@ describe('find-my-fc', () => {
       cy.server({ status: 404, force404: true });
       cy.route({
         method: 'POST',
-        url: '**/api/findmyfcwebapiwrapper/existingcustomersearch',
+        url: `**${endPoints.EXISTING_CUSTOMER}`,
         response: {},
       });
 
@@ -301,7 +191,7 @@ describe('find-my-fc', () => {
       cy.server({ status: 404, force404: true });
       cy.route({
         method: 'POST',
-        url: '**/api/findmyfcwebapiwrapper/existingcustomersearch',
+        url: `**${endPoints.EXISTING_CUSTOMER}`,
         response: {},
       });
 
