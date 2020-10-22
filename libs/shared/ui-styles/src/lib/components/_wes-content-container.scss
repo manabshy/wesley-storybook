@@ -43,6 +43,8 @@
     }
 
     @include media-breakpoint-up(lg) {
+      @include make-row($grid-gutter-width-xl);
+
       padding-top: rem(96px);
       padding-bottom: rem(72px);      
     }
@@ -73,13 +75,21 @@
   &__bg {
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
+    width: 100vw;
+    transform: translateX(-50vw);
+    left: 50%;
     bottom: 0;
     z-index: -1;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+
+    @include media-breakpoint-up(lg) {
+      left: $grid-gutter-width-xl / 2;
+      right: $grid-gutter-width-xl / 2;
+      transform: translateX(0);
+      width: auto;
+    }
   }
 
   &__header-content {
@@ -163,8 +173,8 @@
     @include media-breakpoint-up(md) {
       @include make-col-ready();
 
-      padding-left: 0;
-      padding-right: 0;
+      padding-left: $grid-gutter-width / 2;
+      padding-right: $grid-gutter-width / 2;
     }
 
     @include media-breakpoint-up(lg) {

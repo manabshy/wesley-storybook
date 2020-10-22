@@ -3,8 +3,47 @@
 ////
 
 .wes-who-do-we-help {
-  display: inline-block;
-  width: 100%;
+  @include make-row(40px);
+
+  padding-top: rem(48px);
+  padding-bottom: rem(48px);
+  padding-left: $grid-gutter-width;
+  padding-right: $grid-gutter-width;
+
+  @include media-breakpoint-up(md) {
+    @include make-row($grid-gutter-width);
+
+    padding-top: rem(72px);
+    padding-bottom: rem(72px);
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include make-row($grid-gutter-width-xl);
+
+    padding-top: rem(96px);
+    padding-bottom: rem(96px);
+  }
+
+  &__body {
+    @include make-col-ready();
+
+    @include media-breakpoint-up(md) {
+      @include make-col-offset(1);
+      @include make-col(10);
+
+      padding-left: $grid-gutter-width / 2;
+      padding-right: $grid-gutter-width / 2;
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding-left: $grid-gutter-width-xl / 2;
+      padding-right: $grid-gutter-width-xl / 2;
+    }
+
+    @include media-breakpoint-up(xl) {
+      @include make-col(8);
+    }
+  }
 
   &__title {
     @extend .wes-h2;
