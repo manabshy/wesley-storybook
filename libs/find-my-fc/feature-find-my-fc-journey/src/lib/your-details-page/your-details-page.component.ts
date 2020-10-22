@@ -46,7 +46,7 @@ export class YourDetailsPageComponent implements OnInit {
         ],
         year: ['', Validators.required],
       },
-      { validators: [Validators.required, dateValidator], updateOn: 'blur' }
+      { validators: [Validators.required, dateValidator] }
     ),
   });
 
