@@ -1,0 +1,29 @@
+.wes-your-fc {
+}
+.wes-your-fc-profile {
+  text-align: center;
+  margin-bottom: rem(24px);
+
+  &__intro {
+    @extend .wes-text-s;
+    @extend .wes-text-semi-bold;
+    margin-bottom: rem(8px);
+  }
+  &__name {
+    @extend .wes-h2;
+    @extend .wes-text-regular;
+  }
+  &__image {
+    display: inline-block;
+    width: 112px;
+    height: 112px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+
+    @include media-breakpoint-only(md) {
+      width: 128px;
+      height: 128px;
+    }
+  }
+}
