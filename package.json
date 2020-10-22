@@ -9,7 +9,7 @@
     "build": "ng build",
     "storybook": "ng run shared-storybook:storybook",
     "supply:isa": "ng build --prod --baseHref=/savings-and-investments/with-profits-isa/apply/ --deployUrl=/assets/Wesleyan/isa/",
-    "supply:find-my-fc": "ng build find-my-fc --prod --baseHref=/find-my-fc/ --deployUrl=/assets/Wesleyan/find-my-fc/",
+    "supply:find-my-fc": "ng e2e find-my-fc-e2e --headless && ng build find-my-fc --prod --baseHref=/find-my-fc/ --deployUrl=/assets/Wesleyan/find-my-fc/",
     "supply:just-invest-calculator": "ng build just-invest-calculator --prod --baseHref=/calculators/just-invest/ --deployUrl=/assets/Wesleyan/just-invest-calculator/",
     "supply:set-a-target-calculator": "ng build set-a-target-calculator --prod --baseHref=/calculators/set-a-target/ --deployUrl=/assets/Wesleyan/set-a-target-calculator/",
     "supply:dashboard-help-and-support": "ng build dashboard-help-and-support --prod --baseHref=/help-and-support/ --deployUrl=/assets/Wesleyan/help-and-support/",
