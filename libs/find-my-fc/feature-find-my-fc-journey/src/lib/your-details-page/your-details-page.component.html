@@ -11,6 +11,7 @@
       [formGroup]="form"
       (ngSubmit)="onSubmit()"
       novalidate
+      wesInvalidControlScroll
     >
       <div class="form-wrapper border py-4 px-2 px-sm-3 py-md-5 py-lg-6">
         <div
@@ -45,6 +46,7 @@
             formControlName="email"
             autocomplete="email"
             data-test="txtPersonalEmail"
+            [errorStateMatcher]="errorStateMatcher"
           />
           <wes-error *ngIf="emailControl.invalid">
             <wes-form-field-error>
@@ -67,6 +69,7 @@
             formControlName="postcode"
             autocomplete="postal-code"
             data-test="txtPostcode"
+            [errorStateMatcher]="errorStateMatcher"
           />
 
           <wes-error *ngIf="postcodeControl.invalid">
@@ -102,6 +105,7 @@
                 autocomplete="bday-day"
                 data-test="txtDoBDay"
                 aria-labelledby="dobDay"
+                [errorStateMatcher]="errorStateMatcher"
               />
             </wes-form-field>
             <wes-form-field class="dob-box dob-box-2 mx-1 mx-sm-2">
@@ -121,6 +125,7 @@
                 autocomplete="bday-month"
                 data-test="txtDoBMonth"
                 aria-labelledby="dobMonth"
+                [errorStateMatcher]="errorStateMatcher"
               />
             </wes-form-field>
             <wes-form-field class="dob-box dob-box-3">
@@ -141,10 +146,11 @@
                 autocomplete="bday-year"
                 data-test="txtDoBYear"
                 aria-labelledby="dobYear"
+                [errorStateMatcher]="errorStateMatcher"
               />
             </wes-form-field>
           </div>
-          <wes-error *ngIf="dateOfBirthControl.errors?.invalidDate">
+          <wes-error *ngIf="isFieldInvalid('dateOfBirth')">
             <wes-form-field-error>
               {{ content.dateOfBirth.inputError }}
             </wes-form-field-error>
@@ -156,7 +162,6 @@
         class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6 mx-auto mb-3 mb-md-4 mb-lg-5"
         type="submit"
         data-test="btnContinue"
-        [disabled]="form.invalid"
       >
         {{ content.nextButtonLabel }}
       </button>

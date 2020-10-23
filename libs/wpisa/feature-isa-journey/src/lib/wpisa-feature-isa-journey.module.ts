@@ -22,7 +22,6 @@ import { KnowledgeCheckQ2FormComponent } from './components/knowledge-check-q2-f
 
 import { ManualAddressFormComponent } from './components/manual-address-form/manual-address-form.component';
 import { AddressLookupFormComponent } from './components/address-lookup-form/address-lookup-form.component';
-import { InvalidControlScrollDirective } from './invalid-control-scroll.directive';
 import { ISAJourneyRoutingModule } from './isa-journey-routing.module';
 import { InvestmentOptionsPageComponent } from './investment-options-page/investment-options-page.component';
 import { InvestmentOptionsFormComponent } from './components/investment-options-form/investment-options-form.component';
@@ -61,7 +60,6 @@ import { InputCurrencyMaskDirective } from './input-currency-mask.directive';
     KnowledgeCheckQ1FormComponent,
     KnowledgeCheckQ2FormComponent,
     InputCurrencyMaskDirective,
-    InvalidControlScrollDirective,
     ManualAddressFormComponent,
     AddressLookupFormComponent,
     InvestmentOptionsPageComponent,

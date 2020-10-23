@@ -19,6 +19,7 @@ import { routesNames } from '@wesleyan-frontend/find-my-fc/util-const';
 
 import { CustomerFacade } from '../core/services/customer.facade';
 import { AppForms } from '../shared/app-forms.interface';
+import { OnSubmitOrHasValueErrorStateMatcher } from '../shared/error-state-matcher';
 
 @Component({
   selector: 'wes-your-details-page',
@@ -30,25 +31,36 @@ export class YourDetailsPageComponent implements OnInit {
   content: YourDetailsContent;
   backLink = '';
   showCustomerNotFoundError$: Observable<boolean>;
+  errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
+  submitted = false;
 
-  form: FormGroup = this.builder.group({
-    email: [null, [Validators.required, emailValidator]],
-    postcode: [
-      null,
-      [Validators.required, Validators.pattern(fullUkPostcodeValidatorPattern)],
-    ],
-    dateOfBirth: this.builder.group(
-      {
-        day: ['', [Validators.required, Validators.max(31), Validators.min(1)]],
-        month: [
-          '',
-          [Validators.required, Validators.max(12), Validators.min(1)],
+  form: FormGroup = this.builder.group(
+    {
+      email: [null, [Validators.required, emailValidator]],
+      postcode: [
+        null,
+        [
+          Validators.required,
+          Validators.pattern(fullUkPostcodeValidatorPattern),
         ],
-        year: ['', Validators.required],
-      },
-      { validators: [Validators.required, dateValidator] }
-    ),
-  });
+      ],
+      dateOfBirth: this.builder.group(
+        {
+          day: [
+            '',
+            [Validators.required, Validators.max(31), Validators.min(1)],
+          ],
+          month: [
+            '',
+            [Validators.required, Validators.max(12), Validators.min(1)],
+          ],
+          year: ['', Validators.required],
+        },
+        { validators: [dateValidator], updateOn: 'blur' }
+      ),
+    },
+    { updateOn: 'blur' }
+  );
 
   emailControl = this.form.controls.email;
   postcodeControl = this.form.controls.postcode;
@@ -73,8 +85,12 @@ export class YourDetailsPageComponent implements OnInit {
       tap((_) => this.viewPortScroller.scrollToPosition([0, 0]))
     );
   }
-
+  isFieldInvalid(field: string) {
+    return this.form.get(field).invalid && this.submitted;
+  }
   onSubmit() {
+    this.submitted = true;
+
     if (this.form.valid) {
       const { email, postcode, dateOfBirth } = this.form.value;
       const formattedDob = `${dateOfBirth.year}-${dateOfBirth.month}-${dateOfBirth.day}`;
