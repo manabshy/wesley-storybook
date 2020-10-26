@@ -1386,6 +1386,291 @@
         }
       }
     },
+    "find-my-fc": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@nrwl/angular:class": {
+          "skipTests": true
+        },
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "skipTests": true
+        },
+        "@nrwl/angular:directive": {
+          "skipTests": true
+        },
+        "@nrwl/angular:guard": {
+          "skipTests": true
+        },
+        "@nrwl/angular:module": {
+          "skipTests": true
+        },
+        "@nrwl/angular:pipe": {
+          "skipTests": true
+        },
+        "@nrwl/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "apps/find-my-fc",
+      "sourceRoot": "apps/find-my-fc/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/find-my-fc",
+            "index": "apps/find-my-fc/src/index.html",
+            "main": "apps/find-my-fc/src/main.ts",
+            "polyfills": "apps/find-my-fc/src/polyfills.ts",
+            "tsConfig": "apps/find-my-fc/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/find-my-fc/src/favicon.ico",
+              "apps/find-my-fc/src/assets",
+              {
+                "glob": "**/*",
+                "input": "libs/shared/assets/src/assets",
+                "output": "assets"
+              }
+            ],
+            "styles": ["libs/shared/ui-styles/src/index.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/ui-styles/src/lib"]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/find-my-fc/src/environments/environment.ts",
+                  "with": "apps/find-my-fc/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "none",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "find-my-fc:build",
+            "proxyConfig": "apps/find-my-fc/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "find-my-fc:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "find-my-fc:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/find-my-fc/tsconfig.app.json",
+              "apps/find-my-fc/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/find-my-fc/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/find-my-fc/jest.config.js",
+            "tsConfig": "apps/find-my-fc/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/find-my-fc/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "find-my-fc-e2e": {
+      "root": "apps/find-my-fc-e2e",
+      "sourceRoot": "apps/find-my-fc-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/find-my-fc-e2e/cypress.json",
+            "tsConfig": "apps/find-my-fc-e2e/tsconfig.e2e.json",
+            "devServerTarget": "find-my-fc:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "find-my-fc:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/find-my-fc-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/find-my-fc-e2e/**"]
+          }
+        }
+      }
+    },
+    "find-my-fc-data-access": {
+      "root": "libs/find-my-fc/data-access",
+      "sourceRoot": "libs/find-my-fc/data-access/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/find-my-fc/data-access/tsconfig.lib.json",
+              "libs/find-my-fc/data-access/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/find-my-fc/data-access/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/find-my-fc/data-access/jest.config.js",
+            "tsConfig": "libs/find-my-fc/data-access/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "find-my-fc-feature-shell": {
+      "projectType": "library",
+      "root": "libs/find-my-fc/feature-shell",
+      "sourceRoot": "libs/find-my-fc/feature-shell/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/find-my-fc/feature-shell/tsconfig.lib.json",
+              "libs/find-my-fc/feature-shell/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/find-my-fc/feature-shell/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/find-my-fc/feature-shell/jest.config.js",
+            "tsConfig": "libs/find-my-fc/feature-shell/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/find-my-fc/feature-shell/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "find-my-fc-feature-find-my-fc-journey": {
+      "projectType": "library",
+      "root": "libs/find-my-fc/feature-find-my-fc-journey",
+      "sourceRoot": "libs/find-my-fc/feature-find-my-fc-journey/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/find-my-fc/feature-find-my-fc-journey/tsconfig.lib.json",
+              "libs/find-my-fc/feature-find-my-fc-journey/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/find-my-fc/feature-find-my-fc-journey/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/find-my-fc/feature-find-my-fc-journey/jest.config.js",
+            "tsConfig": "libs/find-my-fc/feature-find-my-fc-journey/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/find-my-fc/feature-find-my-fc-journey/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-ui-form-field-error": {
+      "projectType": "library",
+      "root": "libs/shared/ui-form-field-error",
+      "sourceRoot": "libs/shared/ui-form-field-error/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui-form-field-error/tsconfig.lib.json",
+              "libs/shared/ui-form-field-error/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/ui-form-field-error/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui-form-field-error/jest.config.js",
+            "tsConfig": "libs/shared/ui-form-field-error/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/ui-form-field-error/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "shared-ui-directives": {
       "projectType": "library",
       "root": "libs/shared/ui-directives",
@@ -1409,6 +1694,96 @@
             "tsConfig": "libs/shared/ui-directives/tsconfig.spec.json",
             "passWithNoTests": true,
             "setupFile": "libs/shared/ui-directives/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-ui-icon": {
+      "projectType": "library",
+      "root": "libs/shared/ui-icon",
+      "sourceRoot": "libs/shared/ui-icon/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui-icon/tsconfig.lib.json",
+              "libs/shared/ui-icon/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-icon/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui-icon/jest.config.js",
+            "tsConfig": "libs/shared/ui-icon/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/ui-icon/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "find-my-fc-util-const": {
+      "root": "libs/find-my-fc/util-const",
+      "sourceRoot": "libs/find-my-fc/util-const/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/find-my-fc/util-const/tsconfig.lib.json",
+              "libs/find-my-fc/util-const/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/find-my-fc/util-const/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/find-my-fc/util-const/jest.config.js",
+            "tsConfig": "libs/find-my-fc/util-const/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-ui-pipes": {
+      "projectType": "library",
+      "root": "libs/shared/ui-pipes",
+      "sourceRoot": "libs/shared/ui-pipes/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui-pipes/tsconfig.lib.json",
+              "libs/shared/ui-pipes/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-pipes/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui-pipes/jest.config.js",
+            "tsConfig": "libs/shared/ui-pipes/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/ui-pipes/src/test-setup.ts"
           }
         }
       },

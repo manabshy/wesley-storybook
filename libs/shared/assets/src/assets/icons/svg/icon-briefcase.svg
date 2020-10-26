@@ -1,0 +1,26 @@
+<svg width="48px" height="37px" viewBox="0 0 48 37" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="🎨-UI-Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="NC_Profession-Selector_1366" transform="translate(-923.000000, -602.000000)">
+            <g id="Profession-cards" transform="translate(197.000000, 372.000000)">
+                <g id="Btn-Copy-5" transform="translate(630.000000, 200.000000)">
+                    <g id="Occupation---doctor" transform="translate(96.000000, 30.000000)">
+                        <rect id="case" stroke="#1E2630" fill="#FFFFFF" x="0.5" y="6.66666667" width="47"
+                            height="29.8333333" rx="3"></rect>
+                        <path
+                            d="M31.3043478,0.5 C31.7434511,0.5 32.1413145,0.674741735 32.4291856,0.958281436 C32.7142924,1.23909837 32.8913043,1.62685725 32.8913043,2.05555556 L32.8913043,2.05555556 L32.8913043,6.69444444 L15.1086957,6.69444444 L15.1086957,2.05555556 C15.1086957,1.62685725 15.2857076,1.23909837 15.5708144,0.958281436 C15.8586855,0.674741735 16.2565489,0.5 16.6956522,0.5 L16.6956522,0.5 Z"
+                            id="handle" stroke="#1E2630"></path>
+                        <line x1="1.04347826" y1="14.3888889" x2="19.5214839" y2="21.4666589" id="angle-line"
+                            stroke="#1E2630" stroke-linecap="square"></line>
+                        <line x1="28.4785161" y1="14.3888889" x2="46.9565217" y2="21.4666589" id="angle-line"
+                            stroke="#1E2630" stroke-linecap="square"
+                            transform="translate(37.717519, 17.927774) scale(-1, 1) translate(-37.717519, -17.927774) ">
+                        </line>
+                        <rect id="lock" stroke="#FEBD11" fill="#FFFFFF" x="20.326087" y="17.9722222" width="7.34782609"
+                            height="7.22222222" rx="2"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

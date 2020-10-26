@@ -47,8 +47,11 @@ import {
 } from '@angular/material/core';
 import { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';
 
+export type MatRadioFieldAppearance = 'standard' | 'outline-tick';
+
 export interface MatRadioDefaultOptions {
   color: ThemePalette;
+  appearance: MatRadioFieldAppearance;
 }
 
 export const MAT_RADIO_DEFAULT_OPTIONS = new InjectionToken<
@@ -61,6 +64,7 @@ export const MAT_RADIO_DEFAULT_OPTIONS = new InjectionToken<
 export function MAT_RADIO_DEFAULT_OPTIONS_FACTORY(): MatRadioDefaultOptions {
   return {
     color: 'accent',
+    appearance: 'standard',
   };
 }
 
@@ -148,6 +152,8 @@ export abstract class _MatRadioGroupBase<T extends _MatRadioButtonBase>
 
   /** Theme color for all of the radio buttons in the group. */
   @Input() color: ThemePalette;
+
+  @Input() appearance: MatRadioFieldAppearance;
 
   /** Name of the radio button group. All radio buttons inside this group will use this name. */
   @Input()
@@ -522,6 +528,21 @@ export abstract class _MatRadioButtonBase extends _MatRadioButtonMixinBase
   }
   private _color: ThemePalette;
 
+  /** The appearance style. */
+  @Input()
+  get appearance(): MatRadioFieldAppearance {
+    return (
+      this._appearance ||
+      (this.radioGroup && this.radioGroup.appearance) ||
+      (this._providerOverride && this._providerOverride.appearance) ||
+      'standard'
+    );
+  }
+  set appearance(value: MatRadioFieldAppearance) {
+    this._appearance = value;
+  }
+  _appearance: MatRadioFieldAppearance;
+
   /**
    * Event emitted when the checked state of this radio button changes.
    * Change events are only emitted when the value changes due to user interaction with
@@ -691,6 +712,8 @@ export abstract class _MatRadioButtonBase extends _MatRadioButtonMixinBase
     class: 'wes-radio-button',
     '[class.wes-radio-checked]': 'checked',
     '[class.wes-radio-disabled]': 'disabled',
+    '[class.wes-radio-appearance-outline-tick]': 'appearance == "outline-tick"',
+    '[class.wes-radio-appearance-standard]': 'appearance == "standard"',
     '[class._mat-animation-noopable]': '_animationMode === "NoopAnimations"',
     '[class.mat-primary]': 'color === "primary"',
     '[class.mat-accent]': 'color === "accent"',

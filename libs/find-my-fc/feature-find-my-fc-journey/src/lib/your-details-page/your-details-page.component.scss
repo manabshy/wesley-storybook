@@ -1,0 +1,21 @@
+$formFieldBorderBottom: 32px;
+
+#yourDetailsForm {
+  .dob-box-1,
+  .dob-box-2 {
+    display: inline-block;
+    width: 66px;
+    text-align: center;
+  }
+  .dob-box-3 {
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+  }
+}
+#emailFormField,
+#postcodeFormField {
+  display: block;
+
+  margin-bottom: $formFieldBorderBottom;
+}

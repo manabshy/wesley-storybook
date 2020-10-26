@@ -1,0 +1,177 @@
+<wes-header>
+  <h1 class="wes-h2">{{ content.heading }}</h1>
+  <div [innerHTML]="content.summary | safeHtml"></div>
+</wes-header>
+
+<wes-body>
+  <div class="col-md-10 offset-md-1 col-lg-6 offset-lg-3">
+    <form
+      id="yourDetailsForm"
+      class="wes-bg-solid-white"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      novalidate
+      wesInvalidControlScroll
+    >
+      <div class="form-wrapper border py-4 px-2 px-sm-3 py-md-5 py-lg-6">
+        <div
+          *ngIf="showCustomerNotFoundError$ | async"
+          class="col-md-8 offset-md-2 col-lg-10 offset-lg-1 mb-4 mb-md-5"
+        >
+          <div class="wes-alert wes-alert-danger">
+            <div class="wes-alert-content-wrapper">
+              <div class="wes-alert-content">
+                <span class="wes-alert-title wes-text-s">
+                  {{ content.validationSummary.heading }}
+                </span>
+                <p
+                  class="wes-text-s"
+                  [innerHTML]="content.validationSummary.summary"
+                ></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <wes-form-field
+          id="emailFormField"
+          class="col-md-8 offset-md-2 col-lg-10 offset-lg-1"
+        >
+          <wes-label labelTestId="lblPersonalEmail">
+            {{ content.email.inputLabel }}
+          </wes-label>
+          <input
+            wesInput
+            type="email"
+            formControlName="email"
+            autocomplete="email"
+            data-test="txtPersonalEmail"
+            [errorStateMatcher]="errorStateMatcher"
+          />
+          <wes-error *ngIf="emailControl.invalid">
+            <wes-form-field-error>
+              {{ content.email.inputError }}
+            </wes-form-field-error>
+          </wes-error>
+        </wes-form-field>
+
+        <wes-form-field
+          id="postcodeFormField"
+          class="col-md-8 offset-md-2 col-lg-10 offset-lg-1"
+        >
+          <wes-label labelTestId="lblPostcode">
+            {{ content.homePostcode.inputLabel }}
+          </wes-label>
+          <input
+            wesInput
+            wesUppercase
+            type="text"
+            formControlName="postcode"
+            autocomplete="postal-code"
+            data-test="txtPostcode"
+            [errorStateMatcher]="errorStateMatcher"
+          />
+
+          <wes-error *ngIf="postcodeControl.invalid">
+            <wes-form-field-error>
+              {{ content.homePostcode.inputError }}
+            </wes-form-field-error>
+          </wes-error>
+        </wes-form-field>
+
+        <div
+          id="dobFormField"
+          formGroupName="dateOfBirth"
+          class="col-md-8 offset-md-2 col-lg-10 offset-lg-1"
+        >
+          <label class="wes-form-field-label" data-test="lblDoB">
+            {{ content.dateOfBirth.inputLabel }}
+          </label>
+          <div class="d-flex d-block-sm">
+            <wes-form-field class="dob-box dob-box-1">
+              <span id="dobDay" class="cdk-visually-hidden">
+                Date of birth Day
+              </span>
+              <input
+                wesInput
+                type="text"
+                formControlName="day"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                name="bday-day"
+                placeholder="DD"
+                wesNumbersOnly
+                maxlength="2"
+                autocomplete="bday-day"
+                data-test="txtDoBDay"
+                aria-labelledby="dobDay"
+                [errorStateMatcher]="errorStateMatcher"
+              />
+            </wes-form-field>
+            <wes-form-field class="dob-box dob-box-2 mx-1 mx-sm-2">
+              <span id="dobMonth" class="cdk-visually-hidden">
+                Date of birth Month
+              </span>
+              <input
+                wesInput
+                type="text"
+                formControlName="month"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                name="bday-month"
+                placeholder="MM"
+                wesNumbersOnly
+                maxlength="2"
+                autocomplete="bday-month"
+                data-test="txtDoBMonth"
+                aria-labelledby="dobMonth"
+                [errorStateMatcher]="errorStateMatcher"
+              />
+            </wes-form-field>
+            <wes-form-field class="dob-box dob-box-3">
+              <span id="dobYear" class="cdk-visually-hidden">
+                Date of birth Year
+              </span>
+
+              <input
+                wesInput
+                type="text"
+                formControlName="year"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                name="bday-year"
+                placeholder="YYYY"
+                wesNumbersOnly
+                maxlength="4"
+                autocomplete="bday-year"
+                data-test="txtDoBYear"
+                aria-labelledby="dobYear"
+                [errorStateMatcher]="errorStateMatcher"
+              />
+            </wes-form-field>
+          </div>
+          <wes-error *ngIf="isFieldInvalid('dateOfBirth')">
+            <wes-form-field-error>
+              {{ content.dateOfBirth.inputError }}
+            </wes-form-field-error>
+          </wes-error>
+        </div>
+      </div>
+
+      <button
+        class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6 mx-auto mb-3 mb-md-4 mb-lg-5"
+        type="submit"
+        data-test="btnContinue"
+      >
+        {{ content.nextButtonLabel }}
+      </button>
+      <a
+        class="wes-link wes-icon wes-icon-arrow-left wes-text-xs wes-text-semi-bold d-table w-md-auto mx-auto"
+        [routerLink]="backLink"
+        data-test="lnkBack"
+      >
+        {{ content.backButtonLabel }}
+      </a>
+    </form>
+  </div>
+</wes-body>

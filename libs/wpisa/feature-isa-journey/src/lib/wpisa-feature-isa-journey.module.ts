@@ -11,6 +11,7 @@ import { SharedUiProgressSpinnerModule } from '@wesleyan-frontend/shared/ui-prog
 import { SharedUiFormRadioModule } from '@wesleyan-frontend/shared/ui-form-radio';
 import { SharedUiFormCheckboxModule } from '@wesleyan-frontend/shared/ui-form-checkbox';
 import { SharedUiFormInputModule } from '@wesleyan-frontend/shared/ui-form-input';
+import { SharedUiFormFieldErrorModule } from '@wesleyan-frontend/shared/ui-form-field-error';
 import { SharedUiDirectivesModule } from '@wesleyan-frontend/shared/ui-directives';
 
 import { KnowledgeCheckPageComponent } from './knowledge-check-page/knowledge-check-page.component';
@@ -21,7 +22,6 @@ import { KnowledgeCheckQ2FormComponent } from './components/knowledge-check-q2-f
 
 import { ManualAddressFormComponent } from './components/manual-address-form/manual-address-form.component';
 import { AddressLookupFormComponent } from './components/address-lookup-form/address-lookup-form.component';
-import { InvalidControlScrollDirective } from './invalid-control-scroll.directive';
 import { ISAJourneyRoutingModule } from './isa-journey-routing.module';
 import { InvestmentOptionsPageComponent } from './investment-options-page/investment-options-page.component';
 import { InvestmentOptionsFormComponent } from './components/investment-options-form/investment-options-form.component';
@@ -34,7 +34,6 @@ import { DirectDebitFormComponent } from './components/direct-debit-form/direct-
 import { KnowledgeCheckQ1PageComponent } from './knowledge-check-q1-page/knowledge-check-q1-page.component';
 import { KnowledgeCheckQ2PageComponent } from './knowledge-check-q2-page/knowledge-check-q2-page.component';
 import { ButtonLoaderDirective } from './button-loader.directive';
-import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
 import { SafeUrlPipe } from './safe-url.pipe';
 import { ErrorSummaryComponent } from './components/error-summary/error-summary.component';
 import { InputCurrencyMaskDirective } from './input-currency-mask.directive';
@@ -49,10 +48,10 @@ import { InputCurrencyMaskDirective } from './input-currency-mask.directive';
     SharedUiFormRadioModule,
     SharedUiFormCheckboxModule,
     SharedUiFormInputModule,
+    SharedUiFormFieldErrorModule,
     SharedUiDirectivesModule,
   ],
   declarations: [
-    FormFieldErrorComponent,
     KnowledgeCheckPageComponent,
     KnowledgeCheckQ1PageComponent,
     KnowledgeCheckQ2PageComponent,
@@ -61,7 +60,6 @@ import { InputCurrencyMaskDirective } from './input-currency-mask.directive';
     KnowledgeCheckQ1FormComponent,
     KnowledgeCheckQ2FormComponent,
     InputCurrencyMaskDirective,
-    InvalidControlScrollDirective,
     ManualAddressFormComponent,
     AddressLookupFormComponent,
     InvestmentOptionsPageComponent,

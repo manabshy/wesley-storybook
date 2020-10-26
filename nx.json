@@ -96,6 +96,22 @@
     "shared-util-app-monitoring": {
       "tags": []
     },
+    "find-my-fc": {
+      "tags": []
+    },
+    "find-my-fc-e2e": {
+      "tags": [],
+      "implicitDependencies": ["find-my-fc"]
+    },
+    "find-my-fc-data-access": {
+      "tags": []
+    },
+    "find-my-fc-feature-shell": {
+      "tags": []
+    },
+    "find-my-fc-feature-find-my-fc-journey": {
+      "tags": []
+    },
     "dashboard-help-and-support": {
       "tags": []
     },
@@ -131,7 +147,19 @@
     "set-a-target-calculator-feature-page": {
       "tags": []
     },
+    "shared-ui-form-field-error": {
+      "tags": []
+    },
     "shared-ui-directives": {
+      "tags": []
+    },
+    "shared-ui-icon": {
+      "tags": []
+    },
+    "find-my-fc-util-const": {
+      "tags": []
+    },
+    "shared-ui-pipes": {
       "tags": []
     }
   }

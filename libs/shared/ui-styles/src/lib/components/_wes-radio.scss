@@ -10,18 +10,23 @@ $wes-radio-outer-circle-error-colour: $global-colour-red-700;
 
 $wes-radio-inner-circle-checked-colour: $global-colour-gold-900;
 
+$wes-radio-tick-outer-circle-size: 24px;
+$wes-radio-tick-outer-circle-background-colour: $global-colour-gold-900;
+$wes-radio-tick-inner-circle-size: 14px;
+
 // Top-level host container.
 .wes-radio-button {
   display: inline-block;
   -webkit-tap-highlight-color: transparent;
   outline: 0;
+  border-radius: 4px;
 
   .wes-radio-card & {
     display: block;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 
     &.wes-radio-checked {
-      box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     }
   }
 }
@@ -45,10 +50,11 @@ $wes-radio-inner-circle-checked-colour: $global-colour-gold-900;
     @include media-breakpoint-up(md) {
       flex-direction: row;
       align-items: center;
-      padding: 40px 24px;
+      padding: 32px 24px;
     }
+
     @include media-breakpoint-up(lg) {
-      padding: 40px 32px;
+      padding: 32px 32px;
     }
 
     &:hover {
@@ -140,4 +146,68 @@ $wes-radio-inner-circle-checked-colour: $global-colour-gold-900;
 .wes-radio-disabled,
 .wes-radio-disabled .wes-radio-label {
   cursor: default;
+}
+
+.wes-radio-appearance-outline-tick {
+  .wes-radio-label {
+    position: relative;
+    @include media-breakpoint-up(lg) {
+      padding: 32px 24px;
+    }
+  }
+  .wes-radio-container {
+    position: absolute;
+    width: $wes-radio-tick-outer-circle-size;
+    height: $wes-radio-tick-outer-circle-size;
+    top: -$wes-radio-tick-outer-circle-size/2;
+    right: -$wes-radio-tick-outer-circle-size/2;
+  }
+
+  .wes-radio-outer-circle {
+    width: $wes-radio-tick-outer-circle-size;
+    height: $wes-radio-tick-outer-circle-size;
+    border-width: 0;
+    background-color: $wes-radio-tick-outer-circle-background-colour;
+    display: none;
+  }
+  &.cdk-keyboard-focused {
+    .wes-radio-outer-circle {
+      border-width: 2px;
+    }
+  }
+  &.wes-radio-checked {
+    .wes-radio-outer-circle {
+      display: block;
+    }
+  }
+
+  .wes-radio-inner-circle {
+    width: $wes-radio-tick-inner-circle-size;
+    height: $wes-radio-tick-inner-circle-size;
+    left: (
+        $wes-radio-tick-outer-circle-size - $wes-radio-tick-inner-circle-size
+      ) / 2;
+    top: ($wes-radio-tick-outer-circle-size - $wes-radio-tick-inner-circle-size) /
+      2;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg width='13px' height='9px' viewBox='0 0 13 9' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg id='Tick' transform='translate(-6.000000, -8.000000)' stroke='%23FFFFFF' stroke-width='2'%3E%3Cg id='Path-2'%3E%3Cpolyline points='7 12.1810717 10.882844 16 18 9'%3E%3C/polyline%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .wes-radio-label-content {
+    padding-left: 0;
+    padding-right: 0;
+
+    .wes-radio-card & {
+      padding-top: 0;
+      @include media-breakpoint-up(md) {
+        padding-left: 0;
+      }
+      @include media-breakpoint-up(lg) {
+        padding-left: 0;
+      }
+    }
+  }
 }

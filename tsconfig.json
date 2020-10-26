@@ -68,6 +68,15 @@
       "@wesleyan-frontend/shared/util-app-monitoring": [
         "libs/shared/util-app-monitoring/src/index.ts"
       ],
+      "@wesleyan-frontend/find-my-fc/data-access": [
+        "libs/find-my-fc/data-access/src/index.ts"
+      ],
+      "@wesleyan-frontend/find-my-fc/feature-shell": [
+        "libs/find-my-fc/feature-shell/src/index.ts"
+      ],
+      "@wesleyan-frontend/find-my-fc/feature-find-my-fc-journey": [
+        "libs/find-my-fc/feature-find-my-fc-journey/src/index.ts"
+      ],
       "@wesleyan-frontend/dashboard-help-and-support/data-access": [
         "libs/dashboard-help-and-support/data-access/src/index.ts"
       ],
@@ -86,8 +95,18 @@
       "@wesleyan-frontend/set-a-target-calculator/feature-page": [
         "libs/set-a-target-calculator/feature-page/src/index.ts"
       ],
+      "@wesleyan-frontend/shared/ui-form-field-error": [
+        "libs/shared/ui-form-field-error/src/index.ts"
+      ],
       "@wesleyan-frontend/shared/ui-directives": [
         "libs/shared/ui-directives/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/ui-icon": ["libs/shared/ui-icon/src/index.ts"],
+      "@wesleyan-frontend/find-my-fc/util-const": [
+        "libs/find-my-fc/util-const/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/ui-pipes": [
+        "libs/shared/ui-pipes/src/index.ts"
       ]
     }
   },

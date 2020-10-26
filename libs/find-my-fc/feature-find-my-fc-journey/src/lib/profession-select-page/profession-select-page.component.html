@@ -1,0 +1,63 @@
+<wes-header>
+  <h1 class="wes-h2">{{ content.heading }}</h1>
+  <div [innerHTML]="content.summary"></div>
+</wes-header>
+
+<wes-body>
+  <div class="col-12 col-md-12 col-lg-10 offset-lg-1">
+    <form
+      id="professionSelectForm"
+      class="wes-bg-solid-white"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      novalidate
+    >
+      <div class="form-wrapper border py-4 px-3 py-md-5 py-lg-6">
+        <label
+          id="professionSelectLabel"
+          class="cdk-visually-hidden"
+          [innerHTML]="content.summary"
+        ></label>
+        <wes-radio-group
+          class="wes-radio-card d-block"
+          aria-labelledby="professionSelectLabel"
+          formControlName="sector"
+          appearance="outline-tick"
+        >
+          <div class="radio-buttons-container px-0 offset-md-1 col-md-10">
+            <div class="" *ngFor="let option of content.areaOfWork">
+              <wes-radio-button
+                class=""
+                [value]="option.id"
+                labelTestId="{{ 'lbl' + formatTestLabel(option.label) }}"
+                inputTestId="{{ 'rb' + formatTestLabel(option.label) }}"
+              >
+                <mat-icon [svgIcon]="iconMap[option.id]"></mat-icon>
+                <span
+                  class="radio-button-label-text"
+                  [innerHtml]="option.label"
+                ></span>
+              </wes-radio-button>
+            </div>
+          </div>
+        </wes-radio-group>
+      </div>
+
+      <button
+        class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6 mx-auto mb-3 mb-md-4 mb-lg-5"
+        type="submit"
+        data-test="btnContinue"
+        [disabled]="form.invalid"
+      >
+        {{ content.nextButtonLabel }}
+      </button>
+      <a
+        class="wes-link wes-icon wes-icon-arrow-left wes-text-xs wes-text-semi-bold d-table w-md-auto mx-auto"
+        [routerLink]="backLink"
+        data-test="lnkBack"
+      >
+        {{ content.backButtonLabel }}
+      </a>
+    </form>
+  </div>
+</wes-body>
