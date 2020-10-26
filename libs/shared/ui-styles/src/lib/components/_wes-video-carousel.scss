@@ -109,17 +109,103 @@
     }
 
     @include media-breakpoint-up(lg) {
-      padding: rem(48px) rem(48px);
-      display: flex;
+      padding: rem(48px) rem(48px) rem(56px);
+      display: flex !important;
+    }
+
+    &.slick-slide {
+      margin-bottom: 0;
+      border-width: 0;
+      background-color: transparent;
+      padding-bottom: rem(32px + 25px + 32px);
+
+      @include media-breakpoint-up(md) {
+        padding-bottom: rem(40px + 25px + 48px);
+      }
+
+      @include media-breakpoint-up(xl) {
+        padding-bottom: rem(56px);
+      }
     }
 
     & + & {
       margin-top: rem(24px);
+    }
 
-      @include media-breakpoint-up(lg) {
+    @at-root {
+      .slick-initialized & {
         margin-top: 0;
       }
     }
+  }
+
+  &__controls {
+    display: none;
+    position: absolute;
+    bottom: rem(32px);
+    left: rem(24px + $grid-gutter-width);
+    right: rem(24px + $grid-gutter-width);
+
+    @include media-breakpoint-up(md) {
+      bottom: rem(40px);
+      left: rem(32px + $grid-gutter-width / 2);
+      right: rem(32px + $grid-gutter-width / 2);
+    }
+
+    @include media-breakpoint-up(lg) {
+      left: rem(48px + $grid-gutter-width-xl / 2);
+      right: rem(48px + $grid-gutter-width-xl / 2);
+    }
+
+    @include media-breakpoint-up(xl) {
+      left: rem(48px + $grid-gutter-width-xl / 2);
+      right: initial;
+      bottom: rem(56px);
+      flex-direction: column;
+    }
+    
+    @at-root {
+      .slick-initialized & {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+  }
+
+  &__action {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+
+    &[aria-disabled=true] polyline,
+    &[aria-disabled=true] line {
+      stroke: $global-colour-grey-100;
+    }
+  }
+
+  &__action--prev {
+    margin-right: rem(32px);
+  }
+
+  &__counter {
+    @extend .wes-text-s;
+
+    color: rgba($global-colour-grey-900, 0.5);
+    margin-left: rem(32px);
+
+    @include media-breakpoint-up(lg) {
+      margin-left: 0;
+      margin-top: rem(8px);
+    }
+  }
+
+  .slick-list {
+    background-color: $global-colour-white;
+    border: 1px solid $global-colour-grey-100;
   }
 
   &__testimonial-content {
@@ -180,7 +266,6 @@
     @include media-breakpoint-up(lg) {
       flex-grow: 1;
       margin-top: rem(8px);
-      margin-bottom: rem(8px);
     }
   }
 

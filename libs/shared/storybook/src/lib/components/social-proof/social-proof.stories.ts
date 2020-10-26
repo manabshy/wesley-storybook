@@ -71,37 +71,35 @@ export default {
     </div>
 
 
-    <!-- Integration details -->
     <!--
-    <script type="text/javascript" src="slick/slick.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-
     <script>
-      $(document).ready(function(){
-        var $el = $('.wes-social-proof__testimonials-content')
-        
-        if($el.find('blockquote').length > 1) {
-          $el.on('init', function(event, slick) {
-            $el.find('.wes-social-proof__counter .wes-social-proof__counter-current').text(slick.currentSlide + 1);
-            $el.find('.wes-social-proof__counter .wes-social-proof__counter-total').text(slick.slideCount);
-          });
-      
-          $el.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-            $el.find('.wes-social-proof__counter .wes-social-proof__counter-current').text(nextSlide + 1);
-          });
-      
-          $el.slick({
-            slide: 'blockquote',
-            adaptiveHeight: false,
-            arrows: true,
-            focusOnSelect: true,
-            draggable: false,
-            fade: true,
-            infinite: false,
-            prevArrow: '.wes-social-proof__action--prev',
-            nextArrow: '.wes-social-proof__action--next',
-          }); 
-        }
+      window.addEventListener('DOMContentLoaded', function () {
+        (function ($) {
+          var $el = $('.wes-social-proof__testimonials-content');
+
+          if (!$el.hasClass('slick-initialized') && $el.find('blockquote').length > 1) {
+            $el.on('init', function (event, slick) {
+              $el.find('.wes-social-proof__counter .wes-social-proof__counter-current').text(slick.currentSlide + 1);
+              $el.find('.wes-social-proof__counter .wes-social-proof__counter-total').text(slick.slideCount);
+            });
+
+            $el.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+              $el.find('.wes-social-proof__counter .wes-social-proof__counter-current').text(nextSlide + 1);
+            });
+
+            $el.slick({
+              slide: 'blockquote',
+              adaptiveHeight: false,
+              arrows: true,
+              focusOnSelect: true,
+              draggable: false,
+              fade: true,
+              infinite: false,
+              prevArrow: '.wes-social-proof__action--prev',
+              nextArrow: '.wes-social-proof__action--next'
+            });
+          }
+        })(jQuery);
       });
     </script>
     -->

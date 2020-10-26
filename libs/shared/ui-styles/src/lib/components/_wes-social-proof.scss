@@ -147,6 +147,7 @@
       &.slick-slide {
         margin-bottom: 0;
         border-width: 0;
+        background-color: transparent;
         padding-bottom: rem(40px + 25px + 32px);
 
         @include media-breakpoint-up(md) {
