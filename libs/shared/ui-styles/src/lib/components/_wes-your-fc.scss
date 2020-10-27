@@ -1,0 +1,176 @@
+$wes-your-fc-border-colour: $global-colour-grey-100;
+
+.wes-your-fc-background {
+  background: linear-gradient(133.23deg, #febd11, #fedd36);
+  background-size: 100% 220px;
+  background-repeat: no-repeat;
+  position: relative;
+
+  @include media-breakpoint-up(md) {
+    background-size: 100% 160px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    background-size: 100% 350px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    background-size: 100% 270px;
+  }
+
+  &:after {
+    position: absolute;
+    content: '';
+    background: inherit;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    transform-origin: top right;
+    transform: skewY(-2deg);
+  }
+}
+
+.wes-your-fc-profile {
+  text-align: center;
+  margin-bottom: rem(24px);
+
+  @include media-breakpoint-only(md) {
+    text-align: left;
+  }
+
+  &__intro {
+    @extend .wes-text-s;
+    @extend .wes-text-semi-bold;
+    margin-bottom: rem(8px);
+
+    @include media-breakpoint-only(md) {
+      margin-bottom: 0;
+    }
+  }
+  &__name {
+    @extend .wes-h2;
+    @extend .wes-text-regular;
+
+    margin-bottom: 0;
+  }
+  &__image {
+    display: inline-block;
+    width: 112px;
+    height: 112px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin-top: rem(16px);
+
+    @include media-breakpoint-only(md) {
+      width: 128px;
+      height: 128px;
+      margin-top: rem(16px);
+    }
+  }
+}
+
+.wes-your-fc-details {
+  border: 1px solid $wes-your-fc-border-colour;
+  background-color: $global-colour-white;
+  text-align: center;
+
+  display: flex;
+  flex-wrap: wrap;
+  padding: rem(24px);
+  margin-bottom: rem(32px);
+
+  @include media-breakpoint-only(md) {
+    flex-wrap: nowrap;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-bottom: rem(40px);
+  }
+
+  &__profession {
+    padding-right: rem(24px);
+    margin-bottom: rem(24px);
+    width: 50%;
+    border-right: 1px solid $wes-your-fc-border-colour;
+    @include media-breakpoint-only(md) {
+      width: 30%;
+      flex-shrink: 0;
+      margin-bottom: 0;
+    }
+  }
+  &__location {
+    padding-left: 24px;
+    width: 50%;
+    @include media-breakpoint-only(md) {
+      width: 30%;
+      flex-shrink: 0;
+      padding-right: rem(24px);
+      border-right: 1px solid $wes-your-fc-border-colour;
+    }
+  }
+  &__telephone {
+    padding-top: rem(24px);
+    width: 100%;
+    border-top: 1px solid $wes-your-fc-border-colour;
+    @include media-breakpoint-only(md) {
+      width: auto;
+      padding-top: 0;
+      padding-left: rem(40px);
+      border-top: none;
+    }
+  }
+
+  & > div {
+    @include exactly(1) {
+      &.wes-your-fc-details__telephone {
+        border-top: none;
+        padding-top: 0;
+        width: 100%;
+        @include media-breakpoint-only(md) {
+          padding-left: 0;
+        }
+      }
+    }
+    @include exactly(2) {
+      &.wes-your-fc-details__location {
+        width: 100%;
+        padding-left: 0;
+        margin-bottom: rem(24px);
+        @include media-breakpoint-only(md) {
+          width: 50%;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__icon {
+    margin-top: rem(8px);
+    margin-bottom: rem(8px);
+    height: rem(48px);
+  }
+  &__label {
+    @extend .wes-text-s;
+    margin-bottom: rem(4px);
+  }
+  &__title {
+    @extend .wes-text-semi-bold;
+    margin-bottom: rem(8px);
+  }
+}
+
+.wes-your-fc-bio {
+  &__title {
+    @extend .wes-h6;
+    @extend .wes-text-semi-bold;
+  }
+
+  &__text {
+    @extend .wes-text-s;
+
+    margin-bottom: rem(16px);
+  }
+}
