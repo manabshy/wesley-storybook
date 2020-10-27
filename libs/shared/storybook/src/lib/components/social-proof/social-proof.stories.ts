@@ -1,9 +1,9 @@
 export default {
-    title: 'Campaigns|Social Proof',
-  };
+  title: 'Campaigns|Social Proof',
+};
   
-  export const defaultSocialProof = () => ({
-    template: `
+export const defaultSocialProof = () => ({
+  template: `
     <!-- Container wrapper -->
     <div class="container">
 
@@ -103,6 +103,5 @@ export default {
       });
     </script>
     -->
-    `,
-  });
-  
+  `,
+});

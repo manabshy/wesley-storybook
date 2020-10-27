@@ -1,5 +1,5 @@
 export default {
-  title: 'Financial Consultant Page',
+  title: 'Sitecore Pages|Financial Consultant Page',
 };
 
 export const fromSharedLink = () => ({
