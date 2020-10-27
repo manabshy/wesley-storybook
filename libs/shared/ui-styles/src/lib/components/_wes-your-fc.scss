@@ -74,7 +74,7 @@ $wes-your-fc-border-colour: $global-colour-grey-100;
 
 .wes-your-fc-details {
   border: 1px solid $wes-your-fc-border-colour;
-  background-color: #fff;
+  background-color: $global-colour-white;
   text-align: center;
 
   display: flex;
