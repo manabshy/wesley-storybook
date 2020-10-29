@@ -1,1 +1,1 @@
-export * from './lib/shared-storybook.module';
+export * from './lib/pages/shared-storybook.module';

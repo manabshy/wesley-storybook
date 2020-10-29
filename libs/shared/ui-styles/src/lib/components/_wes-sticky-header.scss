@@ -1,0 +1,107 @@
+////
+/// Wesleyan Sticky Header Component
+////
+
+.wes-sticky-header {
+  @include media-breakpoint-up(lg) {
+    height: rem(72px);
+  }
+
+  &:not(.c-header__main) {
+    @extend .c-header__main;
+  }
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__logo {
+    @at-root {
+      .wes-sticky-header.js-is-sticky & {
+        @include media-breakpoint-down(sm) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__actions {
+    display: none;
+    padding-right: rem(22px);
+
+    @include media-breakpoint-up(md) {
+      display: block;
+    }
+
+    @at-root {
+      .wes-sticky-header.js-is-sticky & {
+        @include media-breakpoint-down(sm) {
+          display: block;
+          width: 100%;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  &__cta {
+    @at-root {
+      .wes-sticky-header.js-is-sticky & {
+        @include media-breakpoint-down(sm) {
+          width: 100%;
+        }
+
+        .wes-icon {
+          @include media-breakpoint-down(sm) {
+            height: rem(24px);
+            width: rem(24px);
+          }
+        }
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      @include rem(
+        (
+          font-size: 12px,
+          line-height: 20px,
+          padding: 10px 24px,
+        )
+      );
+    }
+  }
+
+  &.js-is-sticky {
+    z-index: 1;
+    
+    @include media-breakpoint-down(sm) {
+      position: fixed !important;
+      top: auto !important;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: auto;
+      transform: translateY(100%);
+
+      @include rem(
+        (
+          padding: 16px $grid-gutter-width,
+        )
+      );
+    }
+
+    &.js-is-sticky--change {
+      transition: transform $anim-speed-quick $anim-ease-in-out;
+      transform: translateY(0);
+    }
+  }
+}
+
+.js-stickybit-parent.has-wes-sticky-header {
+  @include media-breakpoint-down(sm) {
+    margin-bottom: rem(100px);
+  }
+}
