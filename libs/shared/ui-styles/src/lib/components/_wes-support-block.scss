@@ -118,7 +118,7 @@
     }
   }
 
-  &__framey {
+  &__main {
     @include make-row(40px);
 
     @include media-breakpoint-up(md) {
@@ -130,7 +130,7 @@
     }
   }
 
-  &__framey-content {
+  &__main-content {
     @include make-col-ready();
 
     padding-left: $grid-gutter-width;

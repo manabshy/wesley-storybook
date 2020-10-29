@@ -13,8 +13,8 @@ export const base = () => ({
         <div class="wes-support-block__body">
           <div class="wes-support-block__body-content">
             <div class="wes-support-block__frame">
-              <div class="wes-support-block__framey">
-                <div class="wes-support-block__framey-content">
+              <div class="wes-support-block__main">
+                <div class="wes-support-block__main-content">
                   <div class="wes-support-block__message">
                     
                   <!-- Placeholder start -->
