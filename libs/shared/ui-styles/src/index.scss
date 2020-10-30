@@ -34,6 +34,11 @@
     Legacy - here only for the header END
 \*------------------------------------*/
 
+// Scopes
+@import './lib/scopes/wes-placeholder';
+@import './lib/scopes/wes-rich-text';
+
+// Components
 @import '~@angular/cdk/a11y-prebuilt.css';
 @import '~@angular/cdk/overlay-prebuilt.css';
 @import './lib/global';

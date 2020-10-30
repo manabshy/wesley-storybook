@@ -1,0 +1,26 @@
+////
+/// Wesleyan Sitecore Placeholder Scope
+////
+
+@mixin wes-placeholder-spacing {
+  & > * + * {
+    margin-top: rem(24px);
+  }
+
+  & > .rich-text + *,
+  & > * + .rich-text {
+    margin-top: rem(32px);
+
+    @include media-breakpoint-up(md) {
+      margin-top: rem(40px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-top: rem(48px);
+    }
+  }
+}
+
+.wes-placeholder-scope {
+  @include wes-placeholder-spacing;
+}
