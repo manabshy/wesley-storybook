@@ -110,3 +110,81 @@ $wes-checkbox-inner-checked-colour: $global-colour-gold-900;
     }
   }
 }
+
+.wes-checkbox-appearance-outline-tick {
+  @extend %wes-form-card-default-shadow;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+  border-radius: 4px;
+  display: inline-block;
+
+  label {
+    @extend %wes-form-card-default;
+
+    position: relative;
+    padding: 20px 24px;
+
+    &:hover {
+      @extend %wes-form-card-hover;
+    }
+  }
+
+  &.wes-checkbox-checked label {
+    @extend %wes-form-card-selected;
+  }
+
+  &.cdk-keyboard-focused label {
+    @extend %focus-state;
+  }
+
+  .wes-checkbox-inner-container {
+    position: absolute;
+    width: $wes-radio-tick-outer-circle-size;
+    height: $wes-radio-tick-outer-circle-size;
+    top: -$wes-radio-tick-outer-circle-size/2;
+    right: -$wes-radio-tick-outer-circle-size/2;
+    margin: 0;
+  }
+
+  .wes-checkbox-frame {
+    @extend %wes-form-circle;
+    border-width: 0;
+    display: none;
+  }
+
+  .wes-checkbox-background {
+    @extend %wes-form-circle-tick;
+    display: none;
+    svg {
+      display: none;
+    }
+  }
+
+  &.cdk-keyboard-focused {
+    .wes-checkbox-frame {
+      border-width: 2px;
+    }
+  }
+
+  &.wes-checkbox-checked {
+    .wes-checkbox-frame,
+    .wes-checkbox-background {
+      display: block;
+    }
+  }
+
+  .wes-radio-label-content {
+    padding-left: 0;
+    padding-right: 0;
+
+    .wes-radio-card & {
+      padding-top: 0;
+      @include media-breakpoint-up(md) {
+        padding-left: 0;
+      }
+      @include media-breakpoint-up(lg) {
+        padding-left: 0;
+      }
+    }
+  }
+}

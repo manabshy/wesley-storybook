@@ -8,6 +8,11 @@ import { KcFailurePageComponent } from './kc-failure-page/kc-failure-page.compon
 import { ConfirmationPageComponent } from './confirmation-page/confirmation-page.component';
 @NgModule({
   imports: [CommonModule, SharedUiSiteFooterModule, SharedUiSiteHeaderModule],
-  declarations: [ProductPageComponent, BeforeYouBeginPageComponent, KcFailurePageComponent, ConfirmationPageComponent],
+  declarations: [
+    ProductPageComponent,
+    BeforeYouBeginPageComponent,
+    KcFailurePageComponent,
+    ConfirmationPageComponent,
+  ],
 })
 export class SharedStorybookModule {}
