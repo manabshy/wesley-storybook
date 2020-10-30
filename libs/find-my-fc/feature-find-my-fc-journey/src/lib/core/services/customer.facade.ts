@@ -37,9 +37,7 @@ export class CustomerFacade {
       .findByCustomerID(customerReference)
       .pipe(
         tap((_) => this.loadingService.hide()),
-        tap((response) =>
-          this.navigateToFinancialConsultantPage(response.id, 'existing')
-        ),
+        tap((response) => this.navigateToFinancialConsultantPage(response.id)),
         take(1),
         catchError((err: HttpErrorResponse) => {
           this.loadingService.hide();
@@ -62,9 +60,7 @@ export class CustomerFacade {
       .findByCustomerDetails(dateOfBirth, emailAddress, postcode)
       .pipe(
         tap((_) => this.loadingService.hide()),
-        tap((response) =>
-          this.navigateToFinancialConsultantPage(response.id, 'existing')
-        ),
+        tap((response) => this.navigateToFinancialConsultantPage(response.id)),
         take(1),
         catchError((err: HttpErrorResponse) => {
           this.loadingService.hide();
@@ -83,9 +79,7 @@ export class CustomerFacade {
       .findByFCDetails(postcode, segment)
       .pipe(
         tap((_) => this.loadingService.hide()),
-        tap((response) =>
-          this.navigateToFinancialConsultantPage(response.id, 'new')
-        ),
+        tap((response) => this.navigateToFinancialConsultantPage(response.id)),
         take(1),
         catchError((err: HttpErrorResponse) => {
           this.loadingService.hide();
@@ -101,12 +95,9 @@ export class CustomerFacade {
     this.invalidCustomerReferenceCount = 0;
   }
 
-  navigateToFinancialConsultantPage(
-    consultantId: number,
-    customerType: 'new' | 'existing'
-  ) {
+  navigateToFinancialConsultantPage(consultantId: number) {
     window.open(
-      `${this.configService.content.endPoints.yourFinancialConsultant}?id=${consultantId}&customer=${customerType}`,
+      `${this.configService.content.endPoints.yourFinancialConsultant}?id=${consultantId}`,
       '_self'
     );
   }
