@@ -1,0 +1,41 @@
+////
+///Form card appearance for radio and checkboxes
+////
+$wes-radio-tick-outer-circle-size: 24px;
+$wes-radio-tick-outer-circle-background-colour: $global-colour-gold-900;
+$wes-radio-tick-inner-circle-size: 14px;
+
+%wes-form-card-default-shadow {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+%wes-form-card-default {
+  box-shadow: inset 0 0 0 1px $global-colour-grey-100;
+  border-radius: 4px;
+}
+%wes-form-card-hover {
+  box-shadow: inset 0 0 0 1px $global-colour-grey-900;
+}
+%wes-form-card-selected {
+  box-shadow: inset 0 0 0 2px $global-colour-gold-900;
+}
+
+%wes-form-circle {
+  border-radius: 50%;
+  width: $wes-radio-tick-outer-circle-size;
+  height: $wes-radio-tick-outer-circle-size;
+  background-color: $wes-radio-tick-outer-circle-background-colour;
+}
+
+%wes-form-circle-tick {
+  width: $wes-radio-tick-inner-circle-size;
+  height: $wes-radio-tick-inner-circle-size;
+  left: ($wes-radio-tick-outer-circle-size - $wes-radio-tick-inner-circle-size) /
+    2;
+  top: ($wes-radio-tick-outer-circle-size - $wes-radio-tick-inner-circle-size) /
+    2;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg width='13px' height='9px' viewBox='0 0 13 9' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg id='Tick' transform='translate(-6.000000, -8.000000)' stroke='%23FFFFFF' stroke-width='2'%3E%3Cg id='Path-2'%3E%3Cpolyline points='7 12.1810717 10.882844 16 18 9'%3E%3C/polyline%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
