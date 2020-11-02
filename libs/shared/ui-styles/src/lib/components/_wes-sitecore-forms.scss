@@ -1,0 +1,8 @@
+.sitecore-form {
+  .wes-error {
+    display: none;
+  }
+  .wes-form-field-invalid .wes-error {
+    display: block;
+  }
+}
