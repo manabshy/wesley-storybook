@@ -1,0 +1,87 @@
+////
+/// Wesleyan Rich Text Scope
+////
+
+@mixin wes-rich-text-scope {
+  p,
+  ul,
+  ol,
+  li,
+  small,
+  blockquote,
+  pre,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    text-align: left;
+  }
+
+  dl,
+  dt,
+  dd,
+  ul,
+  ol,
+  li,
+  pre,
+  form,
+  p,
+  img {
+    margin: 0;
+    padding: 0;
+  }
+
+  > * {
+    & + * {
+      margin-top: rem(20px) !important;
+    }
+
+    & + ul, 
+    & + ol {
+      margin-top: rem(36px) !important;
+    }
+  }
+
+  i,
+  em {
+    font-style: italic;
+  }
+
+  b,
+  strong {
+    font-weight: bold;
+  }
+
+  u {
+    text-decoration: underline;
+  }
+
+  code {
+    font-family: monospace;
+  }
+
+  .numbered {
+    @extend .wes-list-numbered;
+  }
+
+  .bulleted {
+    @extend .wes-list-bullets;
+
+    list-style-type: none;
+  }
+
+  .ticked {
+    @extend .wes-list-ticks;
+
+    list-style-type: none;
+  }
+}
+
+.wes-rich-text-scope {
+  @include wes-rich-text-scope;
+}

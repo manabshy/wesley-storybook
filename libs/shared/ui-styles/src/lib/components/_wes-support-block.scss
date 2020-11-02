@@ -101,6 +101,7 @@
 
   &__message {
     @extend .wes-text-m;
+    @include wes-rich-text-scope;
 
     margin-top: rem(24px);
 
@@ -195,15 +196,16 @@
   &__placeholder {
     @include rem(
       (
-        padding: 0 32px,
+        margin-left: 32px,
+        margin-right: 32px,
       )
     );
 
     @include media-breakpoint-up(md) {
       @include rem(
         (
-          padding-left: 40px,
-          padding-right: 0,
+          margin-left: 40px,
+          margin-right: 0,
         )
       );
     }
@@ -211,10 +213,11 @@
     @include media-breakpoint-up(lg) {
       @include rem(
         (
-          padding-left: 72px,
-          padding-right: 0,
+          margin-left: 72px,
         )
       );
     }
+
+    @include wes-placeholder-spacing;
   }
 }
