@@ -1,0 +1,68 @@
+////
+/// Wesleyan Content Block (Full Width) Component
+////
+
+.wes-content-block {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  padding-top: rem(48px);
+  padding-bottom: rem(48px);
+
+  @include media-breakpoint-up(md) {
+    padding-top: rem(56px);
+    padding-bottom: rem(56px);
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: rem(96px);
+    padding-bottom: rem(96px);
+  }
+
+  &.wes-content-block--grey {
+    background-color: $global-colour-grey-50;
+  }
+
+  &__wrapper {
+    @include make-container;
+    @include make-container-max-widths;
+  }
+
+  &__body {
+    @include make-row(40px);
+
+    @include media-breakpoint-up(md) {
+      @include make-row($grid-gutter-width);
+    }
+
+    @include media-breakpoint-up(lg) {
+      @include make-row($grid-gutter-width-xl);
+    }
+  }
+
+  &__body-content {
+    @include make-col-ready();
+
+    padding-left: $grid-gutter-width;
+    padding-right: $grid-gutter-width;
+
+    @include media-breakpoint-up(md) {
+      @include make-col-offset(1);
+      @include make-col(10);
+
+      padding-left: $grid-gutter-width / 2;
+      padding-right: $grid-gutter-width / 2;
+    }
+
+    @include media-breakpoint-up(lg) {
+      @include make-col(8);
+
+      padding-left: $grid-gutter-width-xl / 2;
+      padding-right: $grid-gutter-width-xl / 2;
+    }
+  }
+
+  &__placeholder {
+    @include wes-placeholder-spacing;
+  }
+}
