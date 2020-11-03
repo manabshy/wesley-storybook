@@ -37,3 +37,11 @@
   -webkit-backface-visibility: $value;
   backface-visibility: $value;
 }
+
+/// Utility mixin to apply base styles to full-width component root elements
+@mixin wes-make-full-width-component {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+}

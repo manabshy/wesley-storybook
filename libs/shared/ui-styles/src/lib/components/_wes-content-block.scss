@@ -3,9 +3,8 @@
 ////
 
 .wes-content-block {
-  display: inline-block;
-  width: 100%;
-  position: relative;
+  @include wes-make-full-width-component;
+
   padding-top: rem(48px);
   padding-bottom: rem(48px);
 
@@ -24,41 +23,23 @@
   }
 
   &__wrapper {
-    @include make-container;
-    @include make-container-max-widths;
+    @include wes-make-container;
   }
 
   &__body {
-    @include make-row(40px);
-
-    @include media-breakpoint-up(md) {
-      @include make-row($grid-gutter-width);
-    }
-
-    @include media-breakpoint-up(lg) {
-      @include make-row($grid-gutter-width-xl);
-    }
+    @include wes-make-row;
   }
 
   &__body-content {
-    @include make-col-ready();
-
-    padding-left: $grid-gutter-width;
-    padding-right: $grid-gutter-width;
+    @include wes-make-col-ready;
 
     @include media-breakpoint-up(md) {
       @include make-col-offset(1);
       @include make-col(10);
-
-      padding-left: $grid-gutter-width / 2;
-      padding-right: $grid-gutter-width / 2;
     }
 
     @include media-breakpoint-up(lg) {
       @include make-col(8);
-
-      padding-left: $grid-gutter-width-xl / 2;
-      padding-right: $grid-gutter-width-xl / 2;
     }
   }
 

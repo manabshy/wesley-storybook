@@ -1,14 +1,12 @@
 export default {
-    title: 'Campaigns|Next Steps',
+    title: 'Campaigns|Next Steps (Full Width)',
   };
   
-  export const defaultNextSteps = () => ({
+  export const base = () => ({
     template: `
-      <!-- Container wrapper -->
-      <div class="container">
-  
-        <!-- Next Steps component root -->
-        <div class="wes-next-steps">
+      <!-- Next Steps component root -->
+      <div class="wes-next-steps">
+        <div class="wes-next-steps__wrapper">
           <div class="wes-next-steps__body">
             <div class="wes-next-steps__content">
               <h2 class="wes-next-steps__title">Book your appointment now</h2>
@@ -45,7 +43,6 @@ export default {
             </div>
           </div>
         </div>
-  
       </div>
     `,
   });

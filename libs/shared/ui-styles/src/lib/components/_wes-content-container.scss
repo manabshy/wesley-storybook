@@ -1,5 +1,5 @@
 ////
-/// Wesleyan Content Container Component
+/// Wesleyan Content Container (Full Width) Component
 ////
 
 @mixin full-bleed-bg-grey {
@@ -14,8 +14,8 @@
 }
 
 .wes-content-container {
-  display: inline-block;
-  width: 100%;
+  @include wes-make-full-width-component;
+  
   padding-top: rem(48px);
   padding-bottom: rem(48px);
 
@@ -28,23 +28,23 @@
     padding-top: 0;
   }
 
+  &__wrapper {
+    @include wes-make-container;
+  }
+
   &__header {
-    @include make-row(40px);
+    @include wes-make-row;
 
     position: relative;
     padding-top: rem(48px);
     padding-bottom: rem(40px);
 
     @include media-breakpoint-up(md) {
-      @include make-row($grid-gutter-width);
-      
       padding-top: rem(72px);
       padding-bottom: rem(48px);
     }
 
     @include media-breakpoint-up(lg) {
-      @include make-row($grid-gutter-width-xl);
-
       padding-top: rem(96px);
       padding-bottom: rem(72px);      
     }
@@ -93,24 +93,15 @@
   }
 
   &__header-content {
-    @include make-col-ready();
-
-    padding-left: $grid-gutter-width;
-    padding-right: $grid-gutter-width;
+    @include wes-make-col-ready;
 
     @include media-breakpoint-up(md) {
       @include make-col-offset(1);
       @include make-col(10);
-
-      padding-left: $grid-gutter-width / 2;
-      padding-right: $grid-gutter-width / 2;
     }
 
     @include media-breakpoint-up(lg) {
       @include make-col(8);
-
-      padding-left: $grid-gutter-width-xl / 2;
-      padding-right: $grid-gutter-width-xl / 2;
     }
 
     @at-root {
@@ -137,17 +128,9 @@
   }
 
   &__body {
-    @include make-row(40px);
+    @include wes-make-row;
 
     position: relative;
-
-    @include media-breakpoint-up(md) {
-      @include make-row($grid-gutter-width);
-    }
-
-    @include media-breakpoint-up(lg) {
-      @include make-row($grid-gutter-width-xl);
-    }
 
     @at-root {
       .wes-content-container--with-image & {
@@ -165,24 +148,11 @@
   }
 
   &__body-content {
-    @include make-col-ready();
-
-    padding-left: $grid-gutter-width;
-    padding-right: $grid-gutter-width;
-
-    @include media-breakpoint-up(md) {
-      @include make-col-ready();
-
-      padding-left: $grid-gutter-width / 2;
-      padding-right: $grid-gutter-width / 2;
-    }
+    @include wes-make-col-ready;
 
     @include media-breakpoint-up(lg) {
       @include make-col-offset(1);
       @include make-col(10);
-
-      padding-left: $grid-gutter-width-xl / 2;
-      padding-right: $grid-gutter-width-xl / 2;
     }
   }
 

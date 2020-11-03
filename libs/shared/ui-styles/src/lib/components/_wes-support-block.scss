@@ -1,11 +1,10 @@
 ////
-/// Wesleyan Support Block Component
+/// Wesleyan Support Block (Full Width) Component
 ////
 
 .wes-support-block {
-  display: inline-block;
-  width: 100%;
-  position: relative;
+  @include wes-make-full-width-component;
+
   padding-top: rem(32px);
   padding-bottom: rem(32px);
 
@@ -19,16 +18,12 @@
     padding-bottom: rem(72px);
   }
 
+  &__wrapper {
+    @include wes-make-container;
+  }
+
   &__header {
-    @include make-row(40px);
-
-    @include media-breakpoint-up(md) {
-      @include make-row($grid-gutter-width);
-    }
-
-    @include media-breakpoint-up(lg) {
-      @include make-row($grid-gutter-width-xl);   
-    }
+    @include wes-make-row;
 
     &::before {
       @extend .wes-bg-gradient-yellow;
@@ -39,17 +34,14 @@
       height: 50%;
       max-height: 444px;
       z-index: -1;
-      width: 100vw;
-      transform: translateX(-50vw);
-      left: 50%;
+      width: 100%;
+      right: 0;
 
       @include media-breakpoint-up(md) {
         $container-gutter: map-get($grid-gutter-widths, md);
         $container-inner-width: map-get($container-max-widths, md) - $container-gutter;
 
         width: calc(#{$container-inner-width} + (100vw - #{$container-inner-width}) / 2);
-        left: 0;
-        transform: translateX(0);
       }
 
       @include media-breakpoint-up(lg) {
@@ -69,26 +61,20 @@
   }
 
   &__header-content {
-    @include make-col-ready();
+    @include wes-make-col-ready;
 
-    padding-left: $grid-gutter-width;
-    padding-right: $grid-gutter-width;
     padding-bottom: rem(40px);
 
     @include media-breakpoint-up(md) {
       @include make-col-offset(1);
       @include make-col(10);
 
-      padding-left: $grid-gutter-width / 2;
-      padding-right: $grid-gutter-width / 2;
       padding-bottom: rem(48px);
     }
 
     @include media-breakpoint-up(lg) {
       @include make-col(8);
 
-      padding-left: $grid-gutter-width-xl / 2;
-      padding-right: $grid-gutter-width-xl / 2;
       padding-bottom: rem(72px);
     }
   }
@@ -111,34 +97,15 @@
   }
 
   &__body {
-    @include make-row(40px);
-
-    @include media-breakpoint-up(md) {
-      @include make-row($grid-gutter-width);
-    }
-
-    @include media-breakpoint-up(lg) {
-      @include make-row($grid-gutter-width-xl);
-    }
+    @include wes-make-row;
   }
 
   &__body-content {
-    @include make-col-ready();
-
-    padding-left: $grid-gutter-width;
-    padding-right: $grid-gutter-width;
+    @include wes-make-col-ready;
 
     @include media-breakpoint-up(md) {
       @include make-col-offset(1);
       @include make-col(11);
-
-      padding-left: $grid-gutter-width / 2;
-      padding-right: $grid-gutter-width / 2;
-    }
-
-    @include media-breakpoint-up(lg) {
-      padding-left: $grid-gutter-width-xl / 2;
-      padding-right: $grid-gutter-width-xl / 2;
     }
   }
 
@@ -161,35 +128,18 @@
   }
 
   &__main {
-    @include make-row(40px);
-
-    @include media-breakpoint-up(md) {
-      @include make-row($grid-gutter-width);
-    }
-
-    @include media-breakpoint-up(lg) {
-      @include make-row($grid-gutter-width-xl);
-    }
+    @include wes-make-row;
   }
 
   &__main-content {
-    @include make-col-ready();
-
-    padding-left: $grid-gutter-width;
-    padding-right: $grid-gutter-width;
+    @include wes-make-col-ready;
 
     @include media-breakpoint-up(md) {
       @include make-col(10, 11);
-
-      padding-left: $grid-gutter-width / 2;
-      padding-right: $grid-gutter-width / 2;
     }
 
     @include media-breakpoint-up(lg) {
       @include make-col(8, 11);
-
-      padding-left: $grid-gutter-width-xl / 2;
-      padding-right: $grid-gutter-width-xl / 2;
     }
   }
 

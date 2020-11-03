@@ -1,14 +1,12 @@
 export default {
-  title: 'Campaigns|Support Block',
+  title: 'Campaigns|Support Block (Full Width)',
 };
   
 export const base = () => ({
   template: `
-    <!-- Container wrapper -->
-    <div class="container">
-
-      <!-- Support Block component root -->
-      <div class="wes-support-block">
+    <!-- Support Block component root -->
+    <div class="wes-support-block">
+      <div class="wes-support-block__wrapper">
         <div class="wes-support-block__header"></div>
         <div class="wes-support-block__body">
           <div class="wes-support-block__body-content">
@@ -105,7 +103,6 @@ export const base = () => ({
           </div>
         </div>
       </div>
-
     </div>
   `,
   });

@@ -1,14 +1,12 @@
 export default {
-    title: 'Campaigns|Content Container',
+    title: 'Campaigns|Content Container (Full Width)',
   };
   
   export const base = () => ({
     template: `
-      <!-- Container wrapper -->
-      <div class="container">
-  
-        <!-- Content Container component root -->
-        <div class="wes-content-container">
+      <!-- Content Container component root -->
+      <div class="wes-content-container">
+        <div class="wes-content-container__wrapper">
           <div class="wes-content-container__body">
             <div class="wes-content-container__body-content">
               <div class="wes-content-container__frame">
@@ -23,18 +21,15 @@ export default {
             </div>
           </div>
         </div>
-  
       </div>
     `,
   });
 
   export const withImage = () => ({
     template: `
-      <!-- Container wrapper -->
-      <div class="container">
-  
-        <!-- Content Container component root -->
-        <div class="wes-content-container wes-content-container--with-image">
+      <!-- Content Container component root -->
+      <div class="wes-content-container wes-content-container--with-image">
+        <div class="wes-content-container__wrapper">
           <div class="wes-content-container__header">
             <div class="wes-content-container__bg" style="background-image: url(http://new.wesleyanplatform.dev.local/-/media/project/wesleyan/website/manwithglassesjpg.jpg)"></div>
           </div>
@@ -52,18 +47,15 @@ export default {
             </div>
           </div>
         </div>
-  
       </div>
     `,
   });
 
   export const withHeader = () => ({
     template: `
-      <!-- Container wrapper -->
-      <div class="container">
-  
-        <!-- Content Container component root -->
-        <div class="wes-content-container wes-content-container--with-header">
+      <!-- Content Container component root -->
+      <div class="wes-content-container wes-content-container--with-header">
+        <div class="wes-content-container__wrapper">
           <div class="wes-content-container__header">
             <div class="wes-content-container__header-content">
               <h2 class="wes-content-container__title">Insurance as unique as your home</h2>
@@ -86,7 +78,6 @@ export default {
             </div>
           </div>
         </div>
-  
       </div>
     `,
   });

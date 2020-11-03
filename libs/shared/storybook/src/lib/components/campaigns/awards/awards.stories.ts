@@ -1,14 +1,12 @@
 export default {
-  title: 'Campaigns|Awards',
+  title: 'Campaigns|Awards (Full Width)',
 };
 
 export const base = () => ({
   template: `
-    <!-- Container wrapper -->
-    <div class="container">
-
-      <!-- Awards component root -->
-      <div class="wes-awards">
+    <!-- Awards component root -->
+    <div class="wes-awards">
+      <div class="wes-awards__wrapper">
         <div class="wes-awards__header">
           <div class="wes-awards__header-content">
             <h2 class="wes-awards__title">Awards and accreditations</h2>
@@ -19,32 +17,31 @@ export const base = () => ({
           </div>
         </div>
         <div class="wes-awards__cards">
-          <article class="wes-awards__card">
-            <h3 class="wes-awards__card-title">Exclusive Financial Advice Provider to the RCGP (Royal College of General Practitioners)</h3>
-            <div class="wes-awards__card-logo">
-              <img src="/assets/images/rcgp-logo.svg" />
-            </div>
-          </article>
-          <article class="wes-awards__card">
-            <h3 class="wes-awards__card-title">Investment Team of the Year at the Insurance Asset Risk Awards 2020</h3>
-            <div class="wes-awards__card-logo">
-              <img src="/assets/images/insurance-awards.svg" />
-            </div>
-          </article>
+          <div class="wes-awards__cards-content">
+            <article class="wes-awards__card">
+              <h3 class="wes-awards__card-title">Exclusive Financial Advice Provider to the RCGP (Royal College of General Practitioners)</h3>
+              <div class="wes-awards__card-logo">
+                <img src="/assets/images/rcgp-logo.svg" />
+              </div>
+            </article>
+            <article class="wes-awards__card">
+              <h3 class="wes-awards__card-title">Investment Team of the Year at the Insurance Asset Risk Awards 2020</h3>
+              <div class="wes-awards__card-logo">
+                <img src="/assets/images/insurance-awards.svg" />
+              </div>
+            </article>
+          </div>
         </div>
       </div>
-
     </div>
   `,
 });
 
 export const withGreyAccent = () => ({
   template: `
-    <!-- Container wrapper -->
-    <div class="container">
-
-      <!-- Awards component root -->
-      <div class="wes-awards wes-awards--grey-accent">
+    <!-- Awards component root -->
+    <div class="wes-awards wes-awards--grey-accent">
+      <div class="wes-awards__wrapper">
         <div class="wes-awards__header">
           <div class="wes-awards__header-content">
             <h2 class="wes-awards__title">Awards and accreditations</h2>
@@ -55,32 +52,31 @@ export const withGreyAccent = () => ({
           </div>
         </div>
         <div class="wes-awards__cards">
-          <article class="wes-awards__card">
-            <h3 class="wes-awards__card-title">Exclusive Financial Advice Provider to the RCGP (Royal College of General Practitioners)</h3>
-            <div class="wes-awards__card-logo">
-              <img src="/assets/images/rcgp-logo.svg" />
-            </div>
-          </article>
-          <article class="wes-awards__card">
-            <h3 class="wes-awards__card-title">Investment Team of the Year at the Insurance Asset Risk Awards 2020</h3>
-            <div class="wes-awards__card-logo">
-              <img src="/assets/images/insurance-awards.svg" />
-            </div>
-          </article>
+          <div class="wes-awards__cards-content">
+            <article class="wes-awards__card">
+              <h3 class="wes-awards__card-title">Exclusive Financial Advice Provider to the RCGP (Royal College of General Practitioners)</h3>
+              <div class="wes-awards__card-logo">
+                <img src="/assets/images/rcgp-logo.svg" />
+              </div>
+            </article>
+            <article class="wes-awards__card">
+              <h3 class="wes-awards__card-title">Investment Team of the Year at the Insurance Asset Risk Awards 2020</h3>
+              <div class="wes-awards__card-logo">
+                <img src="/assets/images/insurance-awards.svg" />
+              </div>
+            </article>
+          </div>
         </div>
       </div>
-
     </div>
   `,
 });
 
 export const withIcons = () => ({
   template: `
-    <!-- Container wrapper -->
-    <div class="container">
-
-      <!-- Awards component root -->
-      <div class="wes-awards">
+    <!-- Awards component root -->
+    <div class="wes-awards">
+      <div class="wes-awards__wrapper">
         <div class="wes-awards__header">
           <div class="wes-awards__header-content">
             <h2 class="wes-awards__title">Awards and accreditations</h2>
@@ -91,32 +87,31 @@ export const withIcons = () => ({
           </div>
         </div>
         <div class="wes-awards__cards">
-          <article class="wes-awards__card">
-            <div class="wes-awards__card-icon">
-              <img alt="" src="/assets/icons/svg/icon-award.svg" />
-            </div>
-            <h3 class="wes-awards__card-title">Exclusive Financial Advice Provider to the RCGP (Royal College of General Practitioners)</h3>
-          </article>
-          <article class="wes-awards__card">
-            <div class="wes-awards__card-icon">
-              <img alt="" src="/assets/icons/svg/icon-award.svg" />
-            </div>
-            <h3 class="wes-awards__card-title">Investment Team of the Year at the Insurance Asset Risk Awards 2020</h3>
-          </article>
+          <div class="wes-awards__cards-content">
+            <article class="wes-awards__card">
+              <div class="wes-awards__card-icon">
+                <img alt="" src="/assets/icons/svg/icon-award.svg" />
+              </div>
+              <h3 class="wes-awards__card-title">Exclusive Financial Advice Provider to the RCGP (Royal College of General Practitioners)</h3>
+            </article>
+            <article class="wes-awards__card">
+              <div class="wes-awards__card-icon">
+                <img alt="" src="/assets/icons/svg/icon-award.svg" />
+              </div>
+              <h3 class="wes-awards__card-title">Investment Team of the Year at the Insurance Asset Risk Awards 2020</h3>
+            </article>
+          </div>
         </div>
       </div>
-
     </div>
   `,
 });
 
 export const single = () => ({
   template: `
-    <!-- Container wrapper -->
-    <div class="container">
-
-      <!-- Awards component root -->
-      <div class="wes-awards">
+    <!-- Awards component root -->
+    <div class="wes-awards">
+      <div class="wes-awards__wrapper">
         <div class="wes-awards__header">
           <div class="wes-awards__header-content">
             <h2 class="wes-awards__title">Awards and accreditations</h2>
@@ -127,15 +122,16 @@ export const single = () => ({
           </div>
         </div>
         <div class="wes-awards__cards">
-          <article class="wes-awards__card">
-            <h3 class="wes-awards__card-title">Investment Team of the Year at the Insurance Asset Risk Awards 2020</h3>
-            <div class="wes-awards__card-logo">
-              <img src="/assets/images/insurance-awards.svg" />
-            </div>
-          </article>
+          <div class="wes-awards__cards-content">
+            <article class="wes-awards__card">
+              <h3 class="wes-awards__card-title">Investment Team of the Year at the Insurance Asset Risk Awards 2020</h3>
+              <div class="wes-awards__card-logo">
+                <img src="/assets/images/insurance-awards.svg" />
+              </div>
+            </article>
+          </div>
         </div>
       </div>
-
     </div>
   `,
 });

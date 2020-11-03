@@ -1,14 +1,12 @@
 export default {
-  title: 'Campaigns|Social Proof',
+  title: 'Campaigns|Social Proof (Full Width)',
 };
   
-export const defaultSocialProof = () => ({
+export const base = () => ({
   template: `
-    <!-- Container wrapper -->
-    <div class="container">
-
-      <!-- Social Proof component root -->
-      <div class="wes-social-proof">
+    <!-- Social Proof component root -->
+    <div class="wes-social-proof">
+      <div class="wes-social-proof__wrapper">
         <div class="wes-social-proof__header">
           <div class="wes-social-proof__header-content">
             <h2 class="wes-social-proof__title">What our customers say:</h2>
@@ -67,9 +65,7 @@ export const defaultSocialProof = () => ({
           </div>
         </div>
       </div>
-
     </div>
-
 
     <!--
     <script>

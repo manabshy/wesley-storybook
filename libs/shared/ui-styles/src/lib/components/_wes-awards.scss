@@ -1,28 +1,26 @@
 ////
-/// Wesleyan Awards Component
+/// Wesleyan Awards (Full Width) Component
 ////
 
 .wes-awards {
-  display: inline-block;
-  width: 100%;
-  position: relative;
+  @include wes-make-full-width-component;
+
+  &__wrapper {
+    @include wes-make-container;
+  }
 
   &__header {
-    @include make-row(40px);
+    @include wes-make-row;
 
     position: relative;
     padding-top: rem(48px);
     padding-bottom: rem(100px);
 
     @include media-breakpoint-up(md) {
-      @include make-row($grid-gutter-width);
-
       padding-top: rem(72px);
     }
 
     @include media-breakpoint-up(lg) {
-      @include make-row($grid-gutter-width-xl);
-
       padding-top: rem(96px);   
     }
 
@@ -49,24 +47,15 @@
   }
 
   &__header-content {
-    @include make-col-ready();
-
-    padding-left: $grid-gutter-width;
-    padding-right: $grid-gutter-width;
+    @include wes-make-col-ready;
 
     @include media-breakpoint-up(md) {
       @include make-col-offset(1);
       @include make-col(10);
-
-      padding-left: $grid-gutter-width / 2;
-      padding-right: $grid-gutter-width / 2;
     }
 
     @include media-breakpoint-up(lg) {
       @include make-col(8);
-
-      padding-left: $grid-gutter-width-xl / 2;
-      padding-right: $grid-gutter-width-xl / 2;
     }
   }
 
@@ -83,6 +72,12 @@
   }
 
   &__cards {
+    @include wes-make-row;
+  }
+
+  &__cards-content {
+    @include wes-make-col-ready;
+    
     margin-top: rem(-60px);
     padding-bottom: rem(48px);
     position: relative;
