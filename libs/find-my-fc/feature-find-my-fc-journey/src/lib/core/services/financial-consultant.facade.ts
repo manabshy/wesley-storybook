@@ -17,7 +17,7 @@ const ALLOWED_RETRIES = 3;
 @Injectable({
   providedIn: 'root',
 })
-export class CustomerFacade {
+export class FinancialConsultantFacade {
   private invalidCustomerReferenceCount = 0;
   private invalidCustomerReference$$ = new Subject<boolean>();
 
@@ -97,7 +97,7 @@ export class CustomerFacade {
 
   navigateToFinancialConsultantPage(consultantId: number) {
     window.open(
-      `${this.configService.content.endPoints.yourFinancialConsultant}?id=${consultantId}`,
+      `${this.configService.content.endPoints.yourFinancialConsultant}`,
       '_self'
     );
   }

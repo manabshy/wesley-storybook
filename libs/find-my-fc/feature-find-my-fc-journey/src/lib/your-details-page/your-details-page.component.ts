@@ -17,7 +17,7 @@ import {
 } from '@wesleyan-frontend/shared/util-validators';
 import { routesNames } from '@wesleyan-frontend/find-my-fc/util-const';
 
-import { CustomerFacade } from '../core/services/customer.facade';
+import { FinancialConsultantFacade } from '../core/services/financial-consultant.facade';
 import { AppForms } from '../shared/app-forms.interface';
 import { OnSubmitOrHasValueErrorStateMatcher } from '../shared/error-state-matcher';
 
@@ -70,7 +70,7 @@ export class YourDetailsPageComponent implements OnInit {
     private builder: FormBuilder,
     private formsManager: NgFormsManager<AppForms>,
     private configService: ConfigService,
-    private customerFacade: CustomerFacade,
+    private fcFacade: FinancialConsultantFacade,
     private viewPortScroller: ViewportScroller
   ) {
     this.content = this.configService.content.yourDetails;
@@ -80,8 +80,8 @@ export class YourDetailsPageComponent implements OnInit {
   ngOnInit(): void {
     this.formsManager.upsert('yourDetails', this.form);
 
-    this.customerFacade.resetRetryCounter();
-    this.showCustomerNotFoundError$ = this.customerFacade.invalidCustomerReference$.pipe(
+    this.fcFacade.resetRetryCounter();
+    this.showCustomerNotFoundError$ = this.fcFacade.invalidCustomerReference$.pipe(
       tap((_) => this.viewPortScroller.scrollToPosition([0, 0]))
     );
   }
@@ -95,11 +95,7 @@ export class YourDetailsPageComponent implements OnInit {
       const { email, postcode, dateOfBirth } = this.form.value;
       const formattedDob = `${dateOfBirth.year}-${dateOfBirth.month}-${dateOfBirth.day}`;
 
-      this.customerFacade.findFCByCustomerDetails(
-        formattedDob,
-        email,
-        postcode
-      );
+      this.fcFacade.findFCByCustomerDetails(formattedDob, email, postcode);
     }
   }
 }

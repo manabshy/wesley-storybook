@@ -11,7 +11,7 @@ import {
 } from '@wesleyan-frontend/find-my-fc/data-access';
 import { routesNames } from '@wesleyan-frontend/find-my-fc/util-const';
 
-import { CustomerFacade } from '../core/services/customer.facade';
+import { FinancialConsultantFacade } from '../core/services/financial-consultant.facade';
 import { AppForms } from '../shared/app-forms.interface';
 
 @Component({
@@ -36,7 +36,7 @@ export class CustomerReferencePageComponent implements OnInit, OnDestroy {
     private builder: FormBuilder,
     private formsManager: NgFormsManager<AppForms>,
     private configService: ConfigService,
-    private customerFacade: CustomerFacade
+    private fcFacade: FinancialConsultantFacade
   ) {
     this.content = this.configService.content.customerReference;
     this.backLink = `/${routesNames.YOUR_DETAILS}`;
@@ -45,9 +45,9 @@ export class CustomerReferencePageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.formsManager.upsert('customerReference', this.form);
 
-    this.customerFacade.resetRetryCounter();
+    this.fcFacade.resetRetryCounter();
     this.subscriptions$.add(
-      this.customerFacade.invalidCustomerReference$
+      this.fcFacade.invalidCustomerReference$
         .pipe(tap((_) => this.setFieldError()))
         .subscribe()
     );
@@ -60,7 +60,7 @@ export class CustomerReferencePageComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     if (this.form.valid) {
-      this.customerFacade.findFCByCustomerReference(this.form.value.ref);
+      this.fcFacade.findFCByCustomerReference(this.form.value.ref);
     }
   }
 

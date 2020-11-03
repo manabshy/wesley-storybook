@@ -11,7 +11,7 @@ import {
 import { SegmentType } from '../../shared/segment-type.interface';
 import { AppForms } from '../../shared/app-forms.interface';
 import { ProfessionFacade } from './profession.facade';
-import { CustomerFacade } from './customer.facade';
+import { FinancialConsultantFacade } from './financial-consultant.facade';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +24,7 @@ export class PostcodeFacade {
     private configService: ConfigService,
     private formManager: NgFormsManager<AppForms>,
     private professionFacade: ProfessionFacade,
-    private customerFacade: CustomerFacade
+    private fcFacade: FinancialConsultantFacade
   ) {
     this.content = this.configService.content.newCustomerPostcode;
 
@@ -51,6 +51,6 @@ export class PostcodeFacade {
     const profession = this.formManager.getControl('professionSelect', 'sector')
       .value;
 
-    this.customerFacade.findFCByPostcodeAndSegment(postcode, profession);
+    this.fcFacade.findFCByPostcodeAndSegment(postcode, profession);
   }
 }
