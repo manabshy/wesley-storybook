@@ -79,20 +79,20 @@
     @include wes-make-col-ready;
     
     margin-top: rem(-60px);
-    padding-bottom: rem(48px);
+    padding-bottom: rem(24px);
     position: relative;
 
     @include media-breakpoint-up(md) {
       @include make-col-offset(1);
       @include make-col(10);
 
-      padding-bottom: rem(72px);
+      padding-bottom: rem(32px);
     }
 
     @include media-breakpoint-up(lg) {
       display: flex;
       flex-direction: row;
-      padding-bottom: rem(96px);
+      padding-bottom: rem(48px);
     }
 
     @at-root {

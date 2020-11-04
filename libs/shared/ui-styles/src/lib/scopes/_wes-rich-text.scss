@@ -80,8 +80,31 @@
 
     list-style-type: none;
   }
+
+  .h1 {
+    @extend .wes-h1;
+  }
+  .h2 {
+    @extend .wes-h2;
+  }
+  .h3 {
+    @extend .wes-h3;
+  }
+  .h4 {
+    @extend .wes-h4;
+  }
+  .h5 {
+    @extend .wes-h5;
+  }
+  .h6 {
+    @extend .wes-h6;
+  }
 }
 
-.wes-rich-text-scope {
+.wes-rich-text-scope:not(.scEnabledChrome) {
+  @include wes-rich-text-scope;
+}
+
+.wes-rich-text-scope > [scfieldtype="rich text"] {
   @include wes-rich-text-scope;
 }
