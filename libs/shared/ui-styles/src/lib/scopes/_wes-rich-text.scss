@@ -47,6 +47,11 @@
     }
   }
 
+  > ul + *,
+  > ol + * {
+    margin-top: rem(40px) !important;
+  }
+
   i,
   em {
     font-style: italic;
@@ -65,22 +70,30 @@
     font-family: monospace;
   }
 
-  .numbered {
-    @extend .wes-list-numbered;
+  a {
+    @include wes-link;
+
+    font-weight: normal !important;
   }
 
+  // RTE List styling
+  .numbered {
+    @extend .wes-list-numbered;
+
+    margin-top: 0 !important;
+  }
   .bulleted {
     @extend .wes-list-bullets;
 
     list-style-type: none;
   }
-
   .ticked {
     @extend .wes-list-ticks;
 
     list-style-type: none;
   }
 
+  // RTE Heading styling
   .h1 {
     @extend .wes-h1;
   }
@@ -98,6 +111,36 @@
   }
   .h6 {
     @extend .wes-h6;
+  }
+
+  // RTE Paragraph styling
+  .xs {
+    @extend .wes-text-xs;
+  }
+  .s {
+    @extend .wes-text-s;
+  }
+  .m {
+    @extend .wes-text-m;
+  }
+  .l {
+    @extend .wes-text-l;
+  }
+  .highlight:not([style*="text-align: right"]) {
+    border-left: 2px solid $global-colour-gold-900;
+    padding-left: rem(16px);
+
+    @include media-breakpoint-up(md) {
+      padding-left: rem(24px);
+    }
+  }
+  .highlight[style*="text-align: right"] {
+    border-right: 2px solid $global-colour-gold-900;
+    padding-right: rem(16px);
+
+    @include media-breakpoint-up(md) {
+      padding-right: rem(24px);
+    }
   }
 }
 

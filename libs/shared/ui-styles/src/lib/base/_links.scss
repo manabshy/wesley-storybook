@@ -29,7 +29,7 @@ a {
   }
 }
 
-.wes-link {
+@mixin wes-link {
   text-decoration: none;
   display: inline;
   font-weight: $link-text-font-weight;
@@ -56,4 +56,8 @@ a {
       border-bottom-color: $link-over-background-underline-color-hover;
     }
   }
+}
+
+.wes-link {
+  @include wes-link;
 }

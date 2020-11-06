@@ -8,7 +8,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700');
 
 /**
- * Use font-face mixin to
- * load in Bliss Bold font
+ * Use font-face mixin to load in Bliss fonts
  */
-// @include font-face('Bliss Bold', '#{$fontPath}/Bliss2-Bold', bold);
+@include font-face('Bliss2', '#{$fontPath}/Bliss2-Regular');
+@include font-face('Bliss2', '#{$fontPath}/Bliss2-Bold', bold);
+@include font-face('Bliss2', '#{$fontPath}/Bliss2-BoldItalic', normal, italic);

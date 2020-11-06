@@ -40,7 +40,7 @@
 
 /// Utility mixin to apply base styles to full-width component root elements
 @mixin wes-make-full-width-component {
-  display: inline-block;
+  display: block;
   width: 100%;
   position: relative;
   overflow-x: hidden;

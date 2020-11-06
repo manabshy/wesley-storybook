@@ -196,6 +196,16 @@
       transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.4s;
     }
 
+    .wes-icon path.svg-path-color-change {
+      fill: $global-colour-grey-900;
+    }
+    .wes-icon line.svg-path-color-change {
+      stroke: $global-colour-grey-900;
+    }
+    .wes-icon polyline.svg-path-color-change {
+      stroke: $global-colour-grey-900;
+    }
+
     &:not([disabled]):hover {
       color: $global-colour-white;
       background-size: 200% 200%; /* 200% because gradient is colored only for 50% */
