@@ -9,13 +9,7 @@
   li,
   small,
   blockquote,
-  pre,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  pre {
     font-size: inherit;
     font-weight: inherit;
     line-height: inherit;
@@ -94,22 +88,58 @@
   }
 
   // RTE Heading styling
-  .h1 {
+  .h1,
+  h1.h1,
+  h2.h1,
+  h3.h1,
+  h4.h1,
+  h5.h1,
+  h6.h1 {
     @extend .wes-h1;
   }
-  .h2 {
+  h2,
+  h1.h2,
+  h2.h2,
+  h3.h2,
+  h4.h2,
+  h5.h2,
+  h6.h2 {
     @extend .wes-h2;
   }
-  .h3 {
+  .h3,
+  h1.h3,
+  h2.h3,
+  h3.h3,
+  h4.h3,
+  h5.h3,
+  h6.h3 {
     @extend .wes-h3;
   }
-  .h4 {
+  .h4,
+  h1.h4,
+  h2.h4,
+  h3.h4,
+  h4.h4,
+  h5.h4,
+  h6.h4 {
     @extend .wes-h4;
   }
-  .h5 {
+  .h5,
+  h1.h5,
+  h2.h5,
+  h3.h5,
+  h4.h5,
+  h5.h5,
+  h6.h5 {
     @extend .wes-h5;
   }
-  .h6 {
+  .h6,
+  h1.h6,
+  h2.h6,
+  h3.h6,
+  h4.h6,
+  h5.h6,
+  h6.h6 {
     @extend .wes-h6;
   }
 

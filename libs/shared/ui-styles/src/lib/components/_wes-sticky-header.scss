@@ -3,6 +3,12 @@
 ////
 
 .wes-sticky-header {
+  height: rem(90px);
+
+  @include media-breakpoint-up(md) {
+    height: rem(69px);
+  }
+
   @include media-breakpoint-up(lg) {
     height: rem(72px);
   }
