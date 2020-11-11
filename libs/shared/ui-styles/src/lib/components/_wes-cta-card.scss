@@ -27,13 +27,10 @@
   }
 
   &__frame {
-    border: 1px solid $global-colour-grey-100;
-    border-radius: 4px;
+    @include wes-rounded-frame-with-accent-top;
+
     background-color: $global-colour-white;
-    box-shadow: 0 0 4px 0 rgba($global-colour-black, 0.05), 0px -12px 0px -8px $global-colour-gold-900;
     padding: 32px 24px;
-    transform: translateY(4px);
-    margin-bottom: 4px;
 
     @include media-breakpoint-up(md) {
       padding: 48px 0;
