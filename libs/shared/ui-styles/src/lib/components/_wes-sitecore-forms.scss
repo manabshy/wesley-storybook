@@ -5,38 +5,81 @@
   .wes-form-field-invalid .wes-error {
     display: block;
   }
-}
 
 
-.wes-form-section {
-  & + #{&} {
-    margin-top: rem(32px);
-  }
-
-  fieldset {
-    padding: 0;
-  }
-
-  .wes-form-field {
-    width: 100%;
-
-    @at-root {
-      .wes-form-section--full-width .wes-form-field {
-        @include media-breakpoint-up(lg) {
-          max-width: calc(75% - #{map-get($grid-gutter-widths, lg) / 2});
-        }
-      }
+  .wes-form-section {
+    & + .wes-form-section {
+      margin-top: rem(32px);
     }
-  }
-
-  // Overrides for narrow controls
-  &#{&}--narrow {
+  
+    fieldset {
+      padding: 0;
+    }
+  
     .wes-form-field {
-      .wes-form-field-wrapper {
-        @include media-breakpoint-up(md) {
-          max-width: calc(50% - #{map-get($grid-gutter-widths, md) / 2});
+      width: 100%;
+  
+      @at-root {
+        .wes-form-section--full-width .wes-form-field {
+          @include media-breakpoint-up(lg) {
+            max-width: calc(75% - #{map-get($grid-gutter-widths, lg) / 2});
+          }
+        }
+      }
+    }
+  
+    // Overrides for narrow controls
+    &.wes-form-section--narrow {
+      .wes-form-field {
+        .wes-form-field-wrapper {
+          @include media-breakpoint-up(md) {
+            max-width: calc(50% - #{map-get($grid-gutter-widths, md) / 2});
+          }
         }
       }
     }
   }
+  
+  .wes-form-field--checkbox-list {
+    .wes-checkbox + .wes-checkbox {
+      margin-top: rem(24px);
+    }
+  }
+  
+  .wes-form-field--checkbox-list-buttons {
+    .wes-form-field-content {
+      display: flex;
+    }
+  
+    .wes-checkbox {
+      @extend .wes-checkbox-appearance-outline-tick;
+  
+      margin-right: rem(16px);
+      flex: 33.3%;
+  
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &.wes-form-field-invalid {
+      .wes-checkbox-layout {
+        box-shadow: inset 0 0 0 2px #d72d41 !important;
+        background-color: #fefafb;
+      }
+    }
+  
+    .wes-checkbox-layout {
+      width: 100%;
+    }
+  
+    .wes-checkbox-label {
+      @extend .wes-text-m;
+  
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
 }
