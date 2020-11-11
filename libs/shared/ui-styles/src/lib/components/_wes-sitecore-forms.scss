@@ -6,3 +6,37 @@
     display: block;
   }
 }
+
+
+.wes-form-section {
+  & + #{&} {
+    margin-top: rem(32px);
+  }
+
+  fieldset {
+    padding: 0;
+  }
+
+  .wes-form-field {
+    width: 100%;
+
+    @at-root {
+      .wes-form-section--full-width .wes-form-field {
+        @include media-breakpoint-up(lg) {
+          max-width: calc(75% - #{map-get($grid-gutter-widths, lg) / 2});
+        }
+      }
+    }
+  }
+
+  // Overrides for narrow controls
+  &#{&}--narrow {
+    .wes-form-field {
+      .wes-form-field-wrapper {
+        @include media-breakpoint-up(md) {
+          max-width: calc(50% - #{map-get($grid-gutter-widths, md) / 2});
+        }
+      }
+    }
+  }
+}
