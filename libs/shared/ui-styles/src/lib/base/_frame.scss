@@ -9,13 +9,7 @@
 }
 
 @mixin wes-square-frame {
-  $wes-accent-height: 4px;
-
   border: 1px solid $global-colour-grey-100;
-  border-radius: $wes-accent-height;
-  box-shadow: 0 0 4px 0 rgba($global-colour-black, 0.05), 0px -12px 0px -8px $global-colour-gold-900;
-  transform: translateY($wes-accent-height);
-  margin-bottom: $wes-accent-height;
 }
 
 .wes-square-frame {
