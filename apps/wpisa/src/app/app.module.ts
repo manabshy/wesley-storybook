@@ -49,6 +49,14 @@ export function initializeApp(
         return () => sessionStorageService.loadAppState();
       },
     },
+    {
+      provide: 'googleTagManagerId',
+      deps: [ConfigService],
+      useFactory: (config: ConfigService) => {
+        config.loadConfig();
+        return config.content.envConfig.gtmKey;
+      },
+    },
   ],
   bootstrap: [AppComponent],
 })

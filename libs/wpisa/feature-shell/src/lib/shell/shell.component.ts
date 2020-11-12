@@ -2,15 +2,13 @@ import { Component, isDevMode } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, tap, map, mergeMap, startWith } from 'rxjs/operators';
+import { GoogleTagManagerService } from 'angular-google-tag-manager';
 
 import { ConfigService } from '@wesleyan-frontend/wpisa/data-access';
 import {
   InactivityTimeoutService,
   TotalSessionTimeoutService,
 } from '@wesleyan-frontend/wpisa/feature-inactivity-timeout';
-
-// declare ga as a function to set and sent the events
-declare let ga: Function;
 
 @Component({
   selector: 'wes-shell',
@@ -27,7 +25,8 @@ export class ShellComponent {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private timeoutService: InactivityTimeoutService,
-    private totalSessionTimeoutService: TotalSessionTimeoutService
+    private totalSessionTimeoutService: TotalSessionTimeoutService,
+    private gtmService: GoogleTagManagerService
   ) {
     this.isDevEnv = isDevMode();
     this.timeoutService.initInactivityTimeout();
@@ -38,11 +37,12 @@ export class ShellComponent {
       filter((event) => event instanceof NavigationEnd),
       startWith(this.activatedRoute),
       tap(() => {
-        //Google Analytics Page Tracking
-        if (typeof ga === 'function') {
-          ga('set', 'page', window.location.pathname + window.location.hash);
-          ga('send', 'pageview');
-        }
+        const gtmTag = {
+          event: 'Pageview',
+          pagePath: window.location.pathname + window.location.hash,
+        };
+
+        this.gtmService.pushTag(gtmTag);
       }),
       map(() => {
         let lastActivatedRoute = this.activatedRoute;
