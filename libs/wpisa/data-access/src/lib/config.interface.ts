@@ -26,6 +26,7 @@ export interface Config {
   marketSegmentList: [{ value: string; label: string }];
   envConfig: {
     applicationInsightsKey: string;
+    gtmKey: string;
   };
 }
 
