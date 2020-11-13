@@ -1,9 +1,12 @@
 ////
-/// Wesleyan Sticky Header Component
+/// Wesleyan Campaign Header Component
 ////
 
-.wes-sticky-header {
+.wes-campaign-header {
   height: rem(60px);
+  border-width: 0;
+  padding-left: 0;
+  padding-right: 0;
 
   @include media-breakpoint-up(md) {
     height: rem(69px);
@@ -26,7 +29,7 @@
 
   &__logo {
     @at-root {
-      .wes-sticky-header.js-is-sticky & {
+      .wes-campaign-header.js-is-sticky & {
         @include media-breakpoint-down(sm) {
           display: none;
         }
@@ -43,7 +46,11 @@
     }
 
     @at-root {
-      .wes-sticky-header.js-is-sticky & {
+      .modal-open .wes-campaign-header--modal & {
+        display: none;
+      }
+
+      .wes-campaign-header.js-is-sticky & {
         @include media-breakpoint-down(sm) {
           display: block;
           width: 100%;
@@ -55,7 +62,7 @@
 
   &__cta {
     @at-root {
-      .wes-sticky-header.js-is-sticky & {
+      .wes-campaign-header.js-is-sticky & {
         @include media-breakpoint-down(sm) {
           width: 100%;
         }
@@ -78,6 +85,22 @@
         )
       );
     }
+  }
+
+  &__close {
+    display: none;
+    padding-right: rem(22px);
+
+    @at-root {
+      .modal-open .wes-campaign-header--modal & {
+        display: block;
+      }
+    }
+  }
+
+  &__close-button {
+    background-color: transparent;
+    border: none;
   }
 
   &.js-is-sticky {
@@ -106,7 +129,7 @@
   }
 }
 
-.js-stickybit-parent.has-wes-sticky-header {
+.js-stickybit-parent.has-wes-campaign-header {
   @include media-breakpoint-down(sm) {
     margin-bottom: rem(100px);
   }
