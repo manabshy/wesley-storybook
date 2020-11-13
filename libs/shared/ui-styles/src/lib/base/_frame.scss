@@ -12,6 +12,11 @@
   border: 1px solid $global-colour-grey-100;
 }
 
+@mixin wes-rounded-warning-frame {
+  border: 1px solid $global-colour-red-700;
+  border-radius: 4px;
+}
+
 .wes-square-frame {
   @include wes-square-frame;
 
@@ -20,6 +25,12 @@
 
 .wes-rounded-frame-with-accent-top {
   @include wes-rounded-frame-with-accent-top;
+
+  padding: rem(24px);
+}
+
+.wes-rounded-warning-frame {
+  @include wes-rounded-warning-frame;
 
   padding: rem(24px);
 }

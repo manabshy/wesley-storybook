@@ -117,4 +117,8 @@
       )
     );
   }
+
+  &-warning {
+    color: $global-colour-red-700;
+  }
 }
