@@ -3,7 +3,7 @@
 ////
 
 .wes-sticky-header {
-  height: rem(90px);
+  height: rem(60px);
 
   @include media-breakpoint-up(md) {
     height: rem(69px);
@@ -89,7 +89,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: auto;
+      height: rem(90px);
       transform: translateY(100%);
 
       @include rem(

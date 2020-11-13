@@ -6,6 +6,13 @@
     display: block;
   }
 
+  .wes-form-error-banner {
+    display: none;
+  }
+  .wes-form-invalid .wes-form-error-banner {
+    display: block;
+  }
+
 
   .wes-form-section {
     & + .wes-form-section {
