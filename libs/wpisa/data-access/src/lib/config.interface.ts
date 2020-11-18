@@ -213,8 +213,8 @@ export interface IFramePayment {
   metaTitle: string;
   heading: string;
   summary: string;
-  infoCopy: string;
   backButtonLabel: string;
+  nextButtonLabel: string;
 }
 
 export interface EndPoints {

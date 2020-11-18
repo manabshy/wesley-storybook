@@ -1,5 +1,5 @@
 import { DomSanitizer, SafeUrl, Title } from '@angular/platform-browser';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -14,7 +14,7 @@ import { PaymentFacade } from '../core/services/payment.facade';
   styleUrls: ['./payment-page.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class PaymentPageComponent {
+export class PaymentPageComponent implements OnDestroy {
   iframeUrl: SafeUrl;
   pageContent: IFramePayment;
   paymentUrl$ = this.paymentFacade.paymentUrl$;
@@ -32,14 +32,7 @@ export class PaymentPageComponent {
     );
   }
 
-  onLoad(): void {
-    const iframe: HTMLIFrameElement = <HTMLIFrameElement>(
-      document.getElementById('paymentFrame')
-    );
-    const insideDoc = iframe.contentDocument || iframe.contentWindow.document;
-
-    insideDoc.body.innerHTML =
-      insideDoc.body.innerHTML +
-      `<style>.btn.btn--positive {background-color: #FEBD11;}</style>`;
+  ngOnDestroy() {
+    this.subscriptions$.unsubscribe();
   }
 }

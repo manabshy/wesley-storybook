@@ -1,23 +1,6 @@
 <h1>{{ pageContent.heading }}</h1>
 <div class="mb-4" [innerHtml]="pageContent.summary"></div>
 
-<div class="mb-7 wes-tooltip d-block">
-  <div class="wes-tooltip-content">
-    <img
-      src="/assets/icons/svg/icon-info.svg"
-      class="wes-icon"
-      alt="information icon"
-    />
-    <p class="wes-text-shortform">{{ pageContent.infoCopy }}</p>
-  </div>
-</div>
-
-<div class="position-relative">
-  <iframe
-    id="paymentFrame"
-    [src]="paymentUrl$ | async | safeUrl"
-    width="100%"
-    frameBorder="0"
-    scrolling="no"
-  ></iframe>
-</div>
+<a class="wes-button wes-button-primary" [href]="paymentUrl$ | async | safeUrl">
+  {{ pageContent.nextButtonLabel }}
+</a>
