@@ -1,12 +1,12 @@
 export default {
-  title: 'Campaigns|Sticky Header',
+  title: 'Campaigns|Header',
 };
   
 export const base = () => ({
   template: `
-    <header class="c-header__main wes-sticky-header">
-      <div class="wes-sticky-header__body">
-        <a href="https://www.wesleyan.co.uk" class="wes-sticky-header__logo c-logo">
+    <header class="c-header__main wes-campaign-header">
+      <div class="wes-campaign-header__body">
+        <a href="https://www.wesleyan.co.uk" class="wes-campaign-header__logo c-logo">
           <span class="sr-only">Wesleyan</span>
           <svg
             height="30px"
@@ -70,8 +70,8 @@ export const base = () => ({
           </svg>
         </a>
 
-        <div class="wes-sticky-header__actions">
-          <a class="wes-sticky-header__cta wes-button wes-button-cta wes-button-cta--orange-with-grey-hover" href="#">
+        <div class="wes-campaign-header__actions">
+          <a class="wes-campaign-header__cta wes-button wes-button-cta wes-button-cta--orange-with-grey-hover" href="#">
             <span class="wes-button-label">Speak to our experts</span>
             <svg
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -132,13 +132,10 @@ export const base = () => ({
     <script>
         window.addEventListener('DOMContentLoaded', function (event) {
             (function ($) {
-                // Add root classname to existing DOM node in Sitecore layout
-                // $('#header').addClass('wes-sticky-header');
-
-                stickybits('.wes-sticky-header', {
-                    useStickyClasses: true,
-                    parentClass: 'js-stickybit-parent has-wes-sticky-header'
-                });
+              stickybits('.wes-campaign-header', {
+                  useStickyClasses: true,
+                  parentClass: 'js-stickybit-parent has-wes-campaign-header'
+              });
             })(jQuery);
         });
     </script>
