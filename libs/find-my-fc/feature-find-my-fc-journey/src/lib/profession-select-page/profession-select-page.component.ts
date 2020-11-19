@@ -21,12 +21,12 @@ export class ProfessionSelectPageComponent implements OnInit {
   content: ProfessionSelectorContent;
   backLink = '';
   iconMap = {
-    HospitalDoctor: 'heart',
+    'Hospital Doctor': 'heart',
     GP: 'stethoscope',
     Dentist: 'tooth',
     Teacher: 'open-book',
     Lawyer: 'legal',
-    Undefined: 'briefcase',
+    Wesleyan: 'briefcase',
   };
   form: FormGroup = this.builder.group({
     sector: [null, Validators.required],
