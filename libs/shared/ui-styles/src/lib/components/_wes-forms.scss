@@ -288,7 +288,6 @@ select.wes-input-element {
 
 .wes-form-field-label {
   font: inherit;
-  pointer-events: none; // We shouldn't catch mouse events (let them through).
   font-weight: 600;
 
   width: 100%;
