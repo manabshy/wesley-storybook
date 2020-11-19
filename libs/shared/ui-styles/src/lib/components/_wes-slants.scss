@@ -13,6 +13,12 @@
     background-size: 102% 104%;
   }
 
+  &-top-left-grey-50 {
+    @extend %wes-slant;
+    @extend .wes-slant-top-right-grey-50;
+    transform: scaleX(-1);
+  }
+
   &-combined-1 {
     @extend %wes-slant;
     background-position: top center;
