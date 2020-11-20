@@ -1,0 +1,39 @@
+.wes-collapse-trigger {
+  @extend .wes-text-semi-bold;
+  position: relative;
+  text-decoration: underline;
+  padding-left: rem(32px);
+
+  &:before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 9' class='c-icon c-icon-chevron' xmlns='http://www.w3.org/2000/svg' focusable='false'%3E%3Ctitle%3E Chevron %3C/title%3E%3Cg fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round' stroke='%23FEBD11' stroke-width='2'%3E%3Cpath d='M15 1L8 8M1 1l7 7-7-7z'/%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(0deg);
+    transform-origin: center;
+    transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.3s;
+
+    padding: 0;
+    margin: 0;
+    bottom: calc(50% - 6px);
+    @include rem(
+      (
+        width: 20px,
+        height: 12px,
+        left: 0,
+      )
+    );
+  }
+
+  &.collapsed {
+    &:before {
+      transform: rotate(-90deg);
+    }
+  }
+
+  & + .collapse {
+    margin-top: rem(16px);
+  }
+}
