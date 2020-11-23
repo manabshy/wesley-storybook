@@ -38,6 +38,14 @@ I declare that:
     I understand that the With Profits ISA is governed by a standard set of terms and conditions and that Wesleyan Assurance Society will administer the plan in line with these.
 By clicking Confirm, I acknowledge I have read and understood the declarations and agree to them. I wish to enter into a contract with Wesleyan Assurance Society for a With Profits ISA on the basis set out in this application.",
   "directDebitType": "ONLINE",
+  "knowledgeCheckForm": Object {
+    "knowledgeCheckQ1": Object {
+      "question1": "Yes",
+    },
+    "knowledgeCheckQ2": Object {
+      "question2": "Yes",
+    },
+  },
   "lumpAmount": "2345",
   "marketingPreferences": Object {
     "permitForEmail": null,
