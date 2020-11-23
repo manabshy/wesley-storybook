@@ -49,7 +49,6 @@
               ],
               "optimization": true,
               "outputHashing": "none",
-              "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
@@ -95,16 +94,14 @@
               "apps/wpisa/tsconfig.app.json",
               "apps/wpisa/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/wpisa/**"]
+            "exclude": ["**/node_modules/**", "!apps/wpisa/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/wpisa/jest.config.js",
-            "tsConfig": "apps/wpisa/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/wpisa/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -131,7 +128,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["apps/wpisa-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/wpisa-e2e/**"]
+            "exclude": ["**/node_modules/**", "!apps/wpisa-e2e/**/*"]
           }
         }
       }
@@ -149,16 +146,14 @@
               "libs/wpisa/data-access/tsconfig.lib.json",
               "libs/wpisa/data-access/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/wpisa/data-access/**"]
+            "exclude": ["**/node_modules/**", "!libs/wpisa/data-access/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/wpisa/data-access/jest.config.js",
-            "tsConfig": "libs/wpisa/data-access/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/wpisa/data-access/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -179,18 +174,17 @@
           "options": {
             "tsConfig": [
               "libs/shared/ui-stepper/tsconfig.lib.json",
-              "libs/shared/ui-stepper/tsconfig.spec.json"
+              "libs/shared/ui-stepper/tsconfig.spec.json",
+              "libs/shared/ui-stepper/.storybook/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui-stepper/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-stepper/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui-stepper/jest.config.js",
-            "tsConfig": "libs/shared/ui-stepper/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/ui-stepper/src/test-setup.ts"
+            "passWithNoTests": true
           }
         },
         "storybook": {
@@ -245,7 +239,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/wpisa/feature-isa-journey/**"
+              "!libs/wpisa/feature-isa-journey/**/*"
             ]
           }
         },
@@ -253,9 +247,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/wpisa/feature-isa-journey/jest.config.js",
-            "tsConfig": "libs/wpisa/feature-isa-journey/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/wpisa/feature-isa-journey/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -278,16 +270,14 @@
               "libs/wpisa/feature-shell/tsconfig.lib.json",
               "libs/wpisa/feature-shell/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/wpisa/feature-shell/**"]
+            "exclude": ["**/node_modules/**", "!libs/wpisa/feature-shell/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/wpisa/feature-shell/jest.config.js",
-            "tsConfig": "libs/wpisa/feature-shell/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/wpisa/feature-shell/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -310,14 +300,16 @@
               "libs/shared/util-validators/tsconfig.lib.json",
               "libs/shared/util-validators/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/util-validators/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/util-validators/**/*"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/util-validators/jest.config.js",
-            "tsConfig": "libs/shared/util-validators/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -333,7 +325,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["libs/shared/ui-styles/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui-styles/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-styles/**/*"]
           }
         }
       }
@@ -350,7 +342,7 @@
             "tsConfig": ["libs/shared/ui-legacy-styles/tsconfig.lib.json"],
             "exclude": [
               "**/node_modules/**",
-              "!libs/shared/ui-legacy-styles/**"
+              "!libs/shared/ui-legacy-styles/**/*"
             ]
           }
         }
@@ -369,16 +361,17 @@
               "libs/shared/data-access-api/tsconfig.lib.json",
               "libs/shared/data-access-api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/data-access-api/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/data-access-api/**/*"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/data-access-api/jest.config.js",
-            "tsConfig": "libs/shared/data-access-api/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/data-access-api/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -403,7 +396,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/shared/ui-progress-spinner/**"
+              "!libs/shared/ui-progress-spinner/**/*"
             ]
           }
         },
@@ -411,9 +404,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui-progress-spinner/jest.config.js",
-            "tsConfig": "libs/shared/ui-progress-spinner/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/ui-progress-spinner/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -436,16 +427,17 @@
               "libs/shared/ui-site-header/tsconfig.lib.json",
               "libs/shared/ui-site-header/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui-site-header/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/ui-site-header/**/*"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui-site-header/jest.config.js",
-            "tsConfig": "libs/shared/ui-site-header/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/ui-site-header/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -468,16 +460,17 @@
               "libs/shared/ui-site-footer/tsconfig.lib.json",
               "libs/shared/ui-site-footer/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui-site-footer/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/ui-site-footer/**/*"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui-site-footer/jest.config.js",
-            "tsConfig": "libs/shared/ui-site-footer/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/ui-site-footer/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -509,7 +502,10 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["apps/shared-ui-stepper-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/shared-ui-stepper-e2e/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/shared-ui-stepper-e2e/**/*"
+            ]
           }
         }
       }
@@ -525,18 +521,17 @@
           "options": {
             "tsConfig": [
               "libs/shared/storybook/tsconfig.lib.json",
-              "libs/shared/storybook/tsconfig.spec.json"
+              "libs/shared/storybook/tsconfig.spec.json",
+              "libs/shared/storybook/.storybook/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/storybook/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/storybook/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/storybook/jest.config.js",
-            "tsConfig": "libs/shared/storybook/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/storybook/src/test-setup.ts"
+            "passWithNoTests": true
           }
         },
         "storybook": {
@@ -601,16 +596,14 @@
               "libs/shared/ui-form-radio/tsconfig.lib.json",
               "libs/shared/ui-form-radio/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui-form-radio/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-form-radio/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui-form-radio/jest.config.js",
-            "tsConfig": "libs/shared/ui-form-radio/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/ui-form-radio/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -635,7 +628,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/shared/ui-form-checkbox/**"
+              "!libs/shared/ui-form-checkbox/**/*"
             ]
           }
         },
@@ -643,9 +636,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui-form-checkbox/jest.config.js",
-            "tsConfig": "libs/shared/ui-form-checkbox/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/ui-form-checkbox/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -668,16 +659,14 @@
               "libs/shared/ui-form-input/tsconfig.lib.json",
               "libs/shared/ui-form-input/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui-form-input/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-form-input/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui-form-input/jest.config.js",
-            "tsConfig": "libs/shared/ui-form-input/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/ui-form-input/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -700,16 +689,14 @@
               "libs/shared/ui-form-field/tsconfig.lib.json",
               "libs/shared/ui-form-field/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui-form-field/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-form-field/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui-form-field/jest.config.js",
-            "tsConfig": "libs/shared/ui-form-field/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/ui-form-field/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -732,16 +719,17 @@
               "libs/shared/ui-form-select/tsconfig.lib.json",
               "libs/shared/ui-form-select/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui-form-select/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/ui-form-select/**/*"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui-form-select/jest.config.js",
-            "tsConfig": "libs/shared/ui-form-select/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/ui-form-select/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -766,7 +754,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/wpisa/feature-inactivity-timeout/**"
+              "!libs/wpisa/feature-inactivity-timeout/**/*"
             ]
           }
         },
@@ -774,9 +762,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/wpisa/feature-inactivity-timeout/jest.config.js",
-            "tsConfig": "libs/wpisa/feature-inactivity-timeout/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/wpisa/feature-inactivity-timeout/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -801,7 +787,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/shared/util-app-monitoring/**"
+              "!libs/shared/util-app-monitoring/**/*"
             ]
           }
         },
@@ -809,9 +795,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/util-app-monitoring/jest.config.js",
-            "tsConfig": "libs/shared/util-app-monitoring/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/util-app-monitoring/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -861,7 +845,6 @@
               ],
               "optimization": true,
               "outputHashing": "none",
-              "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
@@ -908,7 +891,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!apps/dashboard-help-and-support/**"
+              "!apps/dashboard-help-and-support/**/*"
             ]
           }
         },
@@ -916,9 +899,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/dashboard-help-and-support/jest.config.js",
-            "tsConfig": "apps/dashboard-help-and-support/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/dashboard-help-and-support/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -938,7 +919,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/dashboard-help-and-support/data-access/**"
+              "!libs/dashboard-help-and-support/data-access/**/*"
             ]
           }
         },
@@ -946,9 +927,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/dashboard-help-and-support/data-access/jest.config.js",
-            "tsConfig": "libs/dashboard-help-and-support/data-access/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/dashboard-help-and-support/data-access/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -973,7 +952,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/dashboard-help-and-support/feature-page/**"
+              "!libs/dashboard-help-and-support/feature-page/**/*"
             ]
           }
         },
@@ -981,9 +960,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/dashboard-help-and-support/feature-page/jest.config.js",
-            "tsConfig": "libs/dashboard-help-and-support/feature-page/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/dashboard-help-and-support/feature-page/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1033,7 +1010,6 @@
               ],
               "optimization": true,
               "outputHashing": "none",
-              "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
@@ -1079,16 +1055,17 @@
               "apps/just-invest-calculator/tsconfig.app.json",
               "apps/just-invest-calculator/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/just-invest-calculator/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/just-invest-calculator/**/*"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/just-invest-calculator/jest.config.js",
-            "tsConfig": "apps/just-invest-calculator/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/just-invest-calculator/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -1117,7 +1094,7 @@
             "tsConfig": ["apps/just-invest-calculator-e2e/tsconfig.e2e.json"],
             "exclude": [
               "**/node_modules/**",
-              "!apps/just-invest-calculator-e2e/**"
+              "!apps/just-invest-calculator-e2e/**/*"
             ]
           }
         }
@@ -1137,7 +1114,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/just-invest-calculator/data-access/**"
+              "!libs/just-invest-calculator/data-access/**/*"
             ]
           }
         }
@@ -1163,7 +1140,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/just-invest-calculator/feature-page/**"
+              "!libs/just-invest-calculator/feature-page/**/*"
             ]
           }
         },
@@ -1171,9 +1148,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/just-invest-calculator/feature-page/jest.config.js",
-            "tsConfig": "libs/just-invest-calculator/feature-page/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/just-invest-calculator/feature-page/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1223,7 +1198,6 @@
               ],
               "optimization": true,
               "outputHashing": "none",
-              "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
@@ -1271,7 +1245,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!apps/set-a-target-calculator/**"
+              "!apps/set-a-target-calculator/**/*"
             ]
           }
         },
@@ -1279,9 +1253,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/set-a-target-calculator/jest.config.js",
-            "tsConfig": "apps/set-a-target-calculator/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/set-a-target-calculator/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -1310,7 +1282,7 @@
             "tsConfig": ["apps/set-a-target-calculator-e2e/tsconfig.e2e.json"],
             "exclude": [
               "**/node_modules/**",
-              "!apps/set-a-target-calculator-e2e/**"
+              "!apps/set-a-target-calculator-e2e/**/*"
             ]
           }
         }
@@ -1331,7 +1303,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/set-a-target-calculator/data-access/**"
+              "!libs/set-a-target-calculator/data-access/**/*"
             ]
           }
         },
@@ -1339,9 +1311,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/set-a-target-calculator/data-access/jest.config.js",
-            "tsConfig": "libs/set-a-target-calculator/data-access/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/set-a-target-calculator/data-access/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1366,7 +1336,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/set-a-target-calculator/feature-page/**"
+              "!libs/set-a-target-calculator/feature-page/**/*"
             ]
           }
         },
@@ -1374,9 +1344,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/set-a-target-calculator/feature-page/jest.config.js",
-            "tsConfig": "libs/set-a-target-calculator/feature-page/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/set-a-target-calculator/feature-page/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1453,7 +1421,6 @@
               ],
               "optimization": true,
               "outputHashing": "none",
-              "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
@@ -1499,16 +1466,14 @@
               "apps/find-my-fc/tsconfig.app.json",
               "apps/find-my-fc/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/find-my-fc/**"]
+            "exclude": ["**/node_modules/**", "!apps/find-my-fc/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/find-my-fc/jest.config.js",
-            "tsConfig": "apps/find-my-fc/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/find-my-fc/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -1535,7 +1500,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["apps/find-my-fc-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/find-my-fc-e2e/**"]
+            "exclude": ["**/node_modules/**", "!apps/find-my-fc-e2e/**/*"]
           }
         }
       }
@@ -1553,14 +1518,16 @@
               "libs/find-my-fc/data-access/tsconfig.lib.json",
               "libs/find-my-fc/data-access/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/find-my-fc/data-access/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/find-my-fc/data-access/**/*"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/find-my-fc/data-access/jest.config.js",
-            "tsConfig": "libs/find-my-fc/data-access/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -1581,7 +1548,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/find-my-fc/feature-shell/**"
+              "!libs/find-my-fc/feature-shell/**/*"
             ]
           }
         },
@@ -1589,9 +1556,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/find-my-fc/feature-shell/jest.config.js",
-            "tsConfig": "libs/find-my-fc/feature-shell/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/find-my-fc/feature-shell/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1616,7 +1581,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/find-my-fc/feature-find-my-fc-journey/**"
+              "!libs/find-my-fc/feature-find-my-fc-journey/**/*"
             ]
           }
         },
@@ -1624,9 +1589,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/find-my-fc/feature-find-my-fc-journey/jest.config.js",
-            "tsConfig": "libs/find-my-fc/feature-find-my-fc-journey/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/find-my-fc/feature-find-my-fc-journey/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1651,7 +1614,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/shared/ui-form-field-error/**"
+              "!libs/shared/ui-form-field-error/**/*"
             ]
           }
         },
@@ -1659,9 +1622,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui-form-field-error/jest.config.js",
-            "tsConfig": "libs/shared/ui-form-field-error/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/ui-form-field-error/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1684,16 +1645,14 @@
               "libs/shared/ui-directives/tsconfig.lib.json",
               "libs/shared/ui-directives/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui-directives/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-directives/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui-directives/jest.config.js",
-            "tsConfig": "libs/shared/ui-directives/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/ui-directives/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1716,16 +1675,14 @@
               "libs/shared/ui-icon/tsconfig.lib.json",
               "libs/shared/ui-icon/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui-icon/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-icon/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui-icon/jest.config.js",
-            "tsConfig": "libs/shared/ui-icon/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/ui-icon/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -1748,14 +1705,16 @@
               "libs/find-my-fc/util-const/tsconfig.lib.json",
               "libs/find-my-fc/util-const/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/find-my-fc/util-const/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/find-my-fc/util-const/**/*"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/find-my-fc/util-const/jest.config.js",
-            "tsConfig": "libs/find-my-fc/util-const/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -1774,16 +1733,14 @@
               "libs/shared/ui-pipes/tsconfig.lib.json",
               "libs/shared/ui-pipes/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui-pipes/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-pipes/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui-pipes/jest.config.js",
-            "tsConfig": "libs/shared/ui-pipes/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/ui-pipes/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
