@@ -21,13 +21,48 @@ If you get an error
 
 That is because your user folder in `C:/Users` has a space in it. Follow this fix [here](https://github.com/coreybutler/nvm-windows/issues/405#issuecomment-633395759)
 
-# Build and Test
+# Run
 
-TODO: Describe and show how to build your code and run the tests.
+To run an app locally:
+
+`npm run start app-name`
+
+- `npm run start wpisa`
+- `npm run start find-my-fc`
+
+# Build for production
+
+`npm run supply:app-name`
+
+- `npm run supply:wpisa`
+- `npm run supply:find-my-fc`
+
+# Test
+
+Running e2e
+
+`npm run nx e2e app-name-e2e -- --watch`
+
+- `npm run nx e2e find-my-fc-e2e -- --watch`
+
+Running unit tests
+
+For a library or app
+
+`npm run nx test lib-name|app-name -- --watch`
+
+- `npm run nx test shared-util-validators -- --watch`
+- `npm run nx test wpisa-feature-isa-journey -- --watch`
+
+Running all the unit tests
+
+`npm run nx run-many -- --all --target=test`
+
+Running unit tests only for affected apps or libs by your changes
+
+`npm run nx affected:test -- --parallel`
 
 This project was generated using [Nx](https://nx.dev).
-
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>
 
 🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
 
