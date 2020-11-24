@@ -26,7 +26,8 @@
   },
   "projects": {
     "wpisa": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["shared-ui-styles"]
     },
     "wpisa-e2e": {
       "tags": [],
@@ -97,7 +98,8 @@
       "tags": []
     },
     "find-my-fc": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["shared-ui-styles"]
     },
     "find-my-fc-e2e": {
       "tags": [],
@@ -113,7 +115,8 @@
       "tags": []
     },
     "dashboard-help-and-support": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["shared-ui-legacy-styles"]
     },
     "dashboard-help-and-support-data-access": {
       "tags": []
@@ -122,7 +125,8 @@
       "tags": []
     },
     "just-invest-calculator": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["shared-ui-legacy-styles"]
     },
     "just-invest-calculator-e2e": {
       "tags": [],
@@ -135,7 +139,8 @@
       "tags": []
     },
     "set-a-target-calculator": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["shared-ui-legacy-styles"]
     },
     "set-a-target-calculator-e2e": {
       "tags": [],
