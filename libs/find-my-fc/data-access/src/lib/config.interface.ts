@@ -2,6 +2,7 @@ export interface Config {
   pageTitle: string;
   envConfig: {
     applicationInsightsKey: string;
+    gtmKey: string;
   };
   customerSelector: CustomerSelectorContent;
   professionSelector: ProfessionSelectorContent;

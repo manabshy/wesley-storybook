@@ -39,6 +39,14 @@ export function initializeApp(
       deps: [ConfigService, ApplicationInsightsMonitoringService],
       useFactory: initializeApp,
     },
+    {
+      provide: 'googleTagManagerId',
+      deps: [ConfigService],
+      useFactory: (config: ConfigService) => {
+        config.loadConfig();
+        return config.content.envConfig.gtmKey;
+      },
+    },
   ],
   bootstrap: [AppComponent],
 })
