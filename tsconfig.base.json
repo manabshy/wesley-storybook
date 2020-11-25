@@ -37,12 +37,6 @@
       "@wesleyan-frontend/shared/ui-progress-spinner": [
         "libs/shared/ui-progress-spinner/src/index.ts"
       ],
-      "@wesleyan-frontend/shared/ui-site-header": [
-        "libs/shared/ui-site-header/src/index.ts"
-      ],
-      "@wesleyan-frontend/shared/ui-site-footer": [
-        "libs/shared/ui-site-footer/src/index.ts"
-      ],
       "@wesleyan-frontend/shared/storybook": [
         "libs/shared/storybook/src/index.ts"
       ],

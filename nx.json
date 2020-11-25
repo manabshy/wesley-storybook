@@ -60,12 +60,6 @@
     "shared-ui-progress-spinner": {
       "tags": []
     },
-    "shared-ui-site-header": {
-      "tags": []
-    },
-    "shared-ui-site-footer": {
-      "tags": []
-    },
     "shared-ui-stepper-e2e": {
       "tags": [],
       "implicitDependencies": ["shared-ui-stepper"]
