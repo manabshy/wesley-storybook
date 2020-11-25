@@ -217,7 +217,7 @@
 .modal-header {
   border-width: 0;
 
-  + .modal-body {
+  &:not([hidden]) + .modal-body {
     padding-top: 8px;
   }
 
