@@ -21,13 +21,106 @@ If you get an error
 
 That is because your user folder in `C:/Users` has a space in it. Follow this fix [here](https://github.com/coreybutler/nvm-windows/issues/405#issuecomment-633395759)
 
-# Build and Test
+# Run
 
-TODO: Describe and show how to build your code and run the tests.
+To run an app locally:
+
+`npm run start app-name`
+
+- `npm run start wpisa`
+- `npm run start find-my-fc`
+
+# Build for production
+
+`npm run supply:app-name`
+
+- `npm run supply:wpisa`
+- `npm run supply:find-my-fc`
+
+# Test
+
+Running end-to-end tests
+
+`npm run nx e2e app-name-e2e -- --watch`
+
+- `npm run nx e2e find-my-fc-e2e -- --watch`
+
+Running unit tests for a library or app
+
+`npm run nx test lib-name|app-name -- --watch`
+
+- `npm run nx test shared-util-validators -- --watch`
+- `npm run nx test wpisa-feature-isa-journey -- --watch`
+
+Running all the unit tests
+
+`npm run nx run-many -- --all --target=test`
+
+Running unit tests only for apps/libs affected by your changes
+
+`npm run nx affected:test -- --parallel`
+
+# Creating a new app
+
+It will need to use the shared styling lib `shared-ui-style` and probably the assets lib. In `angular.json` make sure you add the following for the new app
+
+    ...
+    "architect": {
+        "build": {
+          ...,
+          "options": {
+            ...
+            "assets": [
+              ...
+              {
+                "glob": "**/*",
+                "input": "libs/shared/assets/src/assets",
+                "output": "assets"
+              }
+            ],
+            "styles": ["libs/shared/ui-styles/src/index.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/ui-styles/src/lib"]
+            },
+
+Because we are not directly importing the style lib like a typescript lib nx doesn't know to recompile after a build(builds are cached locally). To make this working we need to add the style lib as an implicit dependency in `nx.json` like
+
+    "find-my-fc": {
+      "tags": [],
+      "implicitDependencies": ["shared-ui-styles"]
+    }
+
+This will also link your new app with the `shared-ui-styles` when viewing the dependency graph.
+
+# Naming conventions
+
+When generating a new app make sure that the same name used for the app is used in the build command in package.json `supply:app-name` and in the `libs` folder i.e `libs\app-name`.
+
+When creating a new library there are few types to consider
+
+- **Feature libraries:**
+  Developers should consider feature libraries as libraries that implement smart UI (with access to data sources) for specific business use cases or pages in an application.
+  Prefix with `feature-`
+
+* **UI libraries:**
+  A UI library contains only presentational components (also called "dumb" components).
+  Prefix with `ui-`
+
+- **Data-access libraries:**
+  A data-access library contains code for interacting with a back-end system. It also includes all the code related to state management.
+  Prefix with `data-access-`
+
+* **Utility libraries:**
+  A utility library contains low-level utilities used by many libraries and applications.
+  Prefix with `util-`
+
+You can read more about lib types [here](https://nx.dev/latest/angular/workspace/structure/library-types).
+
+# Gotchas
+
+If you have problem running the NX Console in VSCode open PowerShell run `notepad $profile`, comment out everything, save and try again.
 
 This project was generated using [Nx](https://nx.dev).
-
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>
 
 🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
 
