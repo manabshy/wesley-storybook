@@ -1,6 +1,3 @@
-import { SharedUiSiteFooterModule } from '@wesleyan-frontend/shared/ui-site-footer';
-import { SharedUiSiteHeaderModule } from '@wesleyan-frontend/shared/ui-site-header';
-
 import { ProductPageComponent } from './product-page.component';
 import { BeforeYouBeginPageComponent } from '../before-you-begin-page/before-you-begin-page.component';
 import { ConfirmationPageComponent } from '../confirmation-page/confirmation-page.component';
@@ -12,7 +9,7 @@ export default {
 
 export const productPage = () => ({
   moduleMetadata: {
-    imports: [SharedUiSiteFooterModule, SharedUiSiteHeaderModule],
+    imports: [],
   },
   component: ProductPageComponent,
   props: {},
@@ -20,7 +17,7 @@ export const productPage = () => ({
 
 export const beforeYouBeginPage = () => ({
   moduleMetadata: {
-    imports: [SharedUiSiteFooterModule, SharedUiSiteHeaderModule],
+    imports: [],
   },
   component: BeforeYouBeginPageComponent,
   props: {},
@@ -28,7 +25,7 @@ export const beforeYouBeginPage = () => ({
 
 export const knowledgeCheckFailurePage = () => ({
   moduleMetadata: {
-    imports: [SharedUiSiteFooterModule, SharedUiSiteHeaderModule],
+    imports: [],
   },
   component: KcFailurePageComponent,
   props: {},
@@ -36,7 +33,7 @@ export const knowledgeCheckFailurePage = () => ({
 
 export const confirmationPage = () => ({
   moduleMetadata: {
-    imports: [SharedUiSiteFooterModule, SharedUiSiteHeaderModule],
+    imports: [],
   },
   component: ConfirmationPageComponent,
   props: {},
