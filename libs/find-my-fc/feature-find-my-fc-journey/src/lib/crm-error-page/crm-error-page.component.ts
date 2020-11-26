@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 import {
   ConfigService,
@@ -13,7 +14,11 @@ import {
 export class CRMErrorPageComponent {
   content: ExceptionContent;
 
-  constructor(private configService: ConfigService) {
+  constructor(
+    private configService: ConfigService,
+    private titleService: Title
+  ) {
     this.content = this.configService.content.exception;
+    this.titleService.setTitle(this.configService.content.exception.metaTitle);
   }
 }

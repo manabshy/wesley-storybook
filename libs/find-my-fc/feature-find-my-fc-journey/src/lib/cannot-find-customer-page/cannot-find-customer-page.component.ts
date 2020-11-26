@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 import {
@@ -12,14 +13,17 @@ import { routesNames } from '@wesleyan-frontend/find-my-fc/util-const';
   templateUrl: './cannot-find-customer-page.component.html',
   styleUrls: ['./cannot-find-customer-page.component.scss'],
 })
-export class CannotFindCustomerPageComponent implements OnInit {
+export class CannotFindCustomerPageComponent {
   content: CannotMatchCustomerContent;
 
-  constructor(private configService: ConfigService, private router: Router) {
+  constructor(
+    private configService: ConfigService,
+    private router: Router,
+    private titleService: Title
+  ) {
     this.content = this.configService.content.cannotMatchCustomer;
+    this.titleService.setTitle(this.content.metaTitle);
   }
-
-  ngOnInit(): void {}
 
   onFindFCButtonClicked() {
     this.router.navigate([routesNames.PROFESSION_SELECT]);
