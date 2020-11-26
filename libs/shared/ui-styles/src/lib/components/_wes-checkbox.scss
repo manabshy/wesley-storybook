@@ -71,7 +71,8 @@ $wes-checkbox-inner-checked-colour: $global-colour-gold-900;
   border: 2px solid $wes-checkbox-outer-default-colour;
   background-color: #ffffff;
 
-  .wes-checkbox-checked & {
+  .wes-checkbox-checked &,
+  .wes-checkbox-input:checked:not(:disabled) + & {
     border-color: $wes-checkbox-outer-checked-colour;
   }
 
@@ -102,12 +103,17 @@ $wes-checkbox-inner-checked-colour: $global-colour-gold-900;
     width: 11px;
   }
 
-  .wes-checkbox-checked & {
+  .wes-checkbox-checked &,
+  .wes-checkbox-input:checked ~ & {
     background-color: $wes-checkbox-inner-checked-colour;
 
     svg {
       opacity: 1;
     }
+  }
+
+  .wes-checkbox-input:disabled ~ & {
+    background-color: $wes-checkbox-outer-default-colour;
   }
 }
 
