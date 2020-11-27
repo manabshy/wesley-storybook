@@ -139,7 +139,7 @@ describe('find-my-fc', () => {
     });
     it(`And I can start the search as new customer to select my profession`, () => {
       continueButton().click();
-      cy.url().should('include', 'profession-type');
+      cy.url().should('include', 'profession');
     });
   });
 
@@ -201,7 +201,7 @@ describe('find-my-fc', () => {
     });
     it(`And I can start the search as new customer to select my profession`, () => {
       continueButton().click();
-      cy.url().should('include', 'profession-type');
+      cy.url().should('include', 'profession');
     });
   });
 });
