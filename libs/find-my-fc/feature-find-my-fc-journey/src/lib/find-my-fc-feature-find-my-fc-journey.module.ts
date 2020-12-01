@@ -20,6 +20,7 @@ import { CRMErrorPageComponent } from './crm-error-page/crm-error-page.component
 import { PostcodePageComponent } from './postcode-page/postcode-page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
+import { CanActivatePostcode } from './core/can-activate-postcode.guard';
 
 @NgModule({
   imports: [
@@ -45,5 +46,6 @@ import { BodyComponent } from './components/body/body.component';
     HeaderComponent,
     BodyComponent,
   ],
+  providers: [CanActivatePostcode],
 })
 export class FindMyFcFeatureFindMyFcJourneyModule {}
