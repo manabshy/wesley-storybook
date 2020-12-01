@@ -8,6 +8,7 @@
     "start": "ng serve",
     "build": "ng build",
     "storybook": "ng run shared-storybook:storybook",
+    "build-storybook": "ng run shared-storybook:build-storybook",
     "supply:wpisa": "nx affected:test --parallel && ng build wpisa --prod --baseHref=/savings-and-investments/with-profits-isa/apply/ --deployUrl=/assets/Wesleyan/isa/",
     "supply:find-my-fc": "nx affected:test --parallel && ng e2e find-my-fc-e2e --headless && ng build find-my-fc --prod --baseHref=/find-my-fc/ --deployUrl=/assets/Wesleyan/find-my-fc/",
     "supply:just-invest-calculator": "nx affected:test --parallel && ng build just-invest-calculator --prod --baseHref=/calculators/just-invest/ --deployUrl=/assets/Wesleyan/just-invest-calculator/",
