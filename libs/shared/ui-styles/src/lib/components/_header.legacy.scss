@@ -29,6 +29,10 @@ body.nav-is-open {
       height: 69px;
     }
 
+    .on-page-editor & {
+      height: auto !important;
+    }
+
     .c-header-nav {
       z-index: 8;
       &__list {
