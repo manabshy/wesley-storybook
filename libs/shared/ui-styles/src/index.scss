@@ -37,6 +37,11 @@
 @import './lib/scopes/wes-placeholder';
 @import './lib/scopes/wes-rich-text';
 
+
+// Core components
+@import './lib/components/core/wes-content-block';
+@import './lib/components/core/wes-card-deck';
+
 // Components
 @import '~@angular/cdk/a11y-prebuilt.css';
 @import '~@angular/cdk/overlay-prebuilt.css';
@@ -72,7 +77,6 @@
 @import './lib/components/wes-video-carousel';
 @import './lib/components/wes-campaign-header';
 @import './lib/components/wes-support-block';
-@import './lib/components/wes-content-block';
 @import './lib/components/wes-value-proposition';
 @import './lib/components/wes-your-fc';
 @import './lib/components/wes-sitecore-forms';
