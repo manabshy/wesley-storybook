@@ -10,6 +10,7 @@ import { YourDetailsPageComponent } from './your-details-page/your-details-page.
 import { CustomerReferencePageComponent } from './customer-reference-page/customer-reference-page.component';
 import { CannotFindCustomerPageComponent } from './cannot-find-customer-page/cannot-find-customer-page.component';
 import { CRMErrorPageComponent } from './crm-error-page/crm-error-page.component';
+import { CanActivatePostcode } from './core/can-activate-postcode.guard';
 
 export const routes: Route[] = [
   {
@@ -28,6 +29,7 @@ export const routes: Route[] = [
   {
     path: routesNames.POSTCODE,
     component: PostcodePageComponent,
+    canActivate: [CanActivatePostcode],
   },
   {
     path: routesNames.YOUR_DETAILS,
