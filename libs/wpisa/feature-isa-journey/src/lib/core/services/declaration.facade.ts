@@ -214,11 +214,17 @@ export class DeclarationFacade {
               : true,
           lumpSumPayment: {
             label: 'Lump-sum amount',
-            value: `${formatCurrencyGBP(lumpSumAmount)}`,
+            value:
+              selectedInvestmentOption === InvestmentOptionPaymentType.MONTHLY
+                ? '—'
+                : `${formatCurrencyGBP(lumpSumAmount)}`,
           },
           monthlyPayment: {
             label: 'Monthly payments',
-            value: `${formatCurrencyGBP(monthlyAmount)}`,
+            value:
+              selectedInvestmentOption === InvestmentOptionPaymentType.LUMP_SUM
+                ? '—'
+                : `${formatCurrencyGBP(monthlyAmount)}`,
           },
           total: {
             label: this.formatTaxYear(
