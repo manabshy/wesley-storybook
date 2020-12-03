@@ -1,62 +1,70 @@
-<a
-  class="wes-link wes-icon wes-icon-chevron-left wes-text-s wes-text-semi-bold mb-3 mb-md-4 d-inline-block"
-  [routerLink]="investmentOptionLink"
-  data-test="lnkBack"
-  >{{ pageContent.backButtonLabel }}</a
->
-
-<h1>{{ pageContent.heading }}</h1>
-<div class="mb-6 mb-md-7" [innerHtml]="pageContent.summary"></div>
-
-<wes-error-summary class="mb-5 mb-md-7" *ngIf="showOverallError">
-</wes-error-summary>
-
-<form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
-  <wes-form-field id="monthlyAmount" class="mb-4 mb-md-5">
-    <wes-label labelTestId="lblAmount">{{
-      pageContent.monthlyAmount.inputLabel
-    }}</wes-label>
-    <input
-      wesInput
-      wesFloatOnly
-      wesInputCurrencyMask
-      inputmode="numeric"
-      type="text"
-      formControlName="amount"
-      [errorStateMatcher]="errorStateMatcher"
-      data-test="txtAmount"
-      autocomplete="off"
-    />
-    <span wesPrefix><strong>£</strong>&nbsp;</span>
-    <wes-hint>{{ pageContent.monthlyHelpText }}</wes-hint>
-    <wes-error *ngIf="isFieldInvalid('amount')">
-      <wes-form-field-error
-        *ngIf="
-          amountControl.errors.min ||
-          amountControl.errors.required ||
-          amountControl.errors.pattern
-        "
-      >
-        {{ pageContent.monthlyAmount.inputMinError }}
-      </wes-form-field-error>
-      <wes-form-field-error *ngIf="amountControl.errors.max">
-        {{ pageContent.monthlyAmount.inputMaxError }}
-      </wes-form-field-error>
-    </wes-error>
-  </wes-form-field>
-
-  <wes-direct-debit-form
-    formControlName="directDebit"
-    [content]="directDebitContent"
-    [touched]="directDebitControl.touched"
-    [submitAttempt]="submitAttempt"
-  ></wes-direct-debit-form>
-
-  <button
-    class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
-    type="submit"
-    data-test="btnContinue"
+<wes-container>
+  <a
+    class="wes-link wes-icon wes-icon-chevron-left wes-text-s wes-text-semi-bold mb-3 mb-md-4 d-inline-block"
+    [routerLink]="investmentOptionLink"
+    data-test="lnkBack"
   >
-    {{ pageContent.nextButtonLabel }}
-  </button>
-</form>
+    {{ pageContent.backButtonLabel }}
+  </a>
+
+  <h1>{{ pageContent.heading }}</h1>
+  <div class="mb-6 mb-md-7" [innerHtml]="pageContent.summary"></div>
+
+  <wes-error-summary
+    class="mb-5 mb-md-7"
+    *ngIf="showOverallError"
+  ></wes-error-summary>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" wesInvalidControlScroll>
+    <wes-form-field id="monthlyAmount" class="mb-4 mb-md-5">
+      <wes-label labelTestId="lblAmount">
+        {{ pageContent.monthlyAmount.inputLabel }}
+      </wes-label>
+      <input
+        wesInput
+        wesFloatOnly
+        wesInputCurrencyMask
+        inputmode="numeric"
+        type="text"
+        formControlName="amount"
+        [errorStateMatcher]="errorStateMatcher"
+        data-test="txtAmount"
+        autocomplete="off"
+      />
+      <span wesPrefix>
+        <strong>£</strong>
+        &nbsp;
+      </span>
+      <wes-hint>{{ pageContent.monthlyHelpText }}</wes-hint>
+      <wes-error *ngIf="isFieldInvalid('amount')">
+        <wes-form-field-error
+          *ngIf="
+            amountControl.errors.min ||
+            amountControl.errors.required ||
+            amountControl.errors.pattern
+          "
+        >
+          {{ pageContent.monthlyAmount.inputMinError }}
+        </wes-form-field-error>
+        <wes-form-field-error *ngIf="amountControl.errors.max">
+          {{ pageContent.monthlyAmount.inputMaxError }}
+        </wes-form-field-error>
+      </wes-error>
+    </wes-form-field>
+
+    <wes-direct-debit-form
+      formControlName="directDebit"
+      [content]="directDebitContent"
+      [touched]="directDebitControl.touched"
+      [submitAttempt]="submitAttempt"
+    ></wes-direct-debit-form>
+
+    <button
+      class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
+      type="submit"
+      data-test="btnContinue"
+    >
+      {{ pageContent.nextButtonLabel }}
+    </button>
+  </form>
+</wes-container>

@@ -1,118 +1,127 @@
-<a
-  class="wes-link wes-icon wes-icon-chevron-left wes-text-s wes-text-semi-bold mb-3 mb-md-4 d-inline-block"
-  [routerLink]="investmentOptionLink"
-  data-test="lnkBack"
-  >{{ pageContent.backButtonLabel }}</a
->
-<h1>{{ pageContent.heading }}</h1>
-<div class="mb-6 mb-md-7" [innerHtml]="pageContent.summary"></div>
-
-<wes-error-summary
-  class="mb-5 mb-md-7"
-  *ngIf="showOverallError"
-></wes-error-summary>
-
-<form
-  [formGroup]="form"
-  (ngSubmit)="onSubmit()"
-  wesInvalidControlScroll
-  novalidate
->
-  <div class="form-group mb-4 mb-md-5" formGroupName="totalAmount">
-    <wes-form-field id="lumpSumAmount" class="mb-3">
-      <wes-label labelTestId="lblLumpSumAmount">{{
-        pageContent.lumpSumAmount.inputLabel
-      }}</wes-label>
-      <input
-        wesInput
-        wesFloatOnly
-        wesInputCurrencyMask
-        inputmode="numeric"
-        type="text"
-        formControlName="lumpSumAmount"
-        [errorStateMatcher]="errorStateMatcher"
-        data-test="txtLumpSumAmount"
-        autocomplete="off"
-      />
-      <span wesPrefix><strong>£</strong>&nbsp;</span>
-      <wes-hint>{{ pageContent.lumpSumHelpText }}</wes-hint>
-      <wes-error *ngIf="isFieldInvalid('totalAmount.lumpSumAmount')">
-        <wes-form-field-error
-          *ngIf="
-            lumpSumControl.errors.min ||
-            lumpSumControl.errors.max ||
-            lumpSumControl.errors.required
-          "
-        >
-          {{ pageContent.lumpSumAmount.inputError }}
-        </wes-form-field-error>
-        <wes-form-field-error
-          *ngIf="lumpSumControl.errors.totalAnnualAllowance"
-        >
-          {{ pageContent.monthlyAmount.inputOtherError }}
-        </wes-form-field-error>
-      </wes-error>
-    </wes-form-field>
-
-    <div class="wes-tooltip wes-tooltip-bottom-right d-block">
-      <div class="wes-tooltip-content">
-        <img
-          src="/assets/icons/svg/icon-info.svg"
-          class="wes-icon"
-          alt="information icon"
-        />
-        <p class="wes-text-shortform">{{ pageContent.lumpSumTooltip }}</p>
-      </div>
-    </div>
-    <hr class="my-4 my-md-5" />
-
-    <wes-form-field id="monthlyAmount">
-      <wes-label labelTestId="lblMonthlyAmount">{{
-        pageContent.monthlyAmount.inputLabel
-      }}</wes-label>
-      <input
-        wesInput
-        wesFloatOnly
-        wesInputCurrencyMask
-        inputmode="numeric"
-        type="text"
-        formControlName="monthlyAmount"
-        [errorStateMatcher]="errorStateMatcher"
-        data-test="txtMonthlyAmount"
-        autocomplete="off"
-      />
-      <span wesPrefix><strong>£</strong>&nbsp;</span>
-      <wes-hint>{{ pageContent.monthlyHelpText }}</wes-hint>
-      <wes-error *ngIf="isFieldInvalid('totalAmount.monthlyAmount')">
-        <wes-form-field-error
-          *ngIf="monthlyControl.errors.min || monthlyControl.errors.required"
-        >
-          {{ pageContent.monthlyAmount.inputMinError }}
-        </wes-form-field-error>
-        <wes-form-field-error *ngIf="monthlyControl.errors.max">
-          {{ pageContent.monthlyAmount.inputMaxError }}
-        </wes-form-field-error>
-        <wes-form-field-error
-          *ngIf="monthlyControl.errors.totalAnnualAllowance"
-        >
-          {{ pageContent.monthlyAmount.inputOtherError }}
-        </wes-form-field-error>
-      </wes-error>
-    </wes-form-field>
-  </div>
-
-  <wes-direct-debit-form
-    formControlName="directDebit"
-    [content]="directDebitContent"
-    [touched]="directDebitControl.touched"
-    [submitAttempt]="submitAttempt"
-  ></wes-direct-debit-form>
-
-  <button
-    class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
-    data-test="btnContinue"
-    type="submit"
+<wes-container>
+  <a
+    class="wes-link wes-icon wes-icon-chevron-left wes-text-s wes-text-semi-bold mb-3 mb-md-4 d-inline-block"
+    [routerLink]="investmentOptionLink"
+    data-test="lnkBack"
   >
-    {{ pageContent.nextButtonLabel }}
-  </button>
-</form>
+    {{ pageContent.backButtonLabel }}
+  </a>
+  <h1>{{ pageContent.heading }}</h1>
+  <div class="mb-6 mb-md-7" [innerHtml]="pageContent.summary"></div>
+
+  <wes-error-summary
+    class="mb-5 mb-md-7"
+    *ngIf="showOverallError"
+  ></wes-error-summary>
+
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    wesInvalidControlScroll
+    novalidate
+  >
+    <div class="form-group mb-4 mb-md-5" formGroupName="totalAmount">
+      <wes-form-field id="lumpSumAmount" class="mb-3">
+        <wes-label labelTestId="lblLumpSumAmount">
+          {{ pageContent.lumpSumAmount.inputLabel }}
+        </wes-label>
+        <input
+          wesInput
+          wesFloatOnly
+          wesInputCurrencyMask
+          inputmode="numeric"
+          type="text"
+          formControlName="lumpSumAmount"
+          [errorStateMatcher]="errorStateMatcher"
+          data-test="txtLumpSumAmount"
+          autocomplete="off"
+        />
+        <span wesPrefix>
+          <strong>£</strong>
+          &nbsp;
+        </span>
+        <wes-hint>{{ pageContent.lumpSumHelpText }}</wes-hint>
+        <wes-error *ngIf="isFieldInvalid('totalAmount.lumpSumAmount')">
+          <wes-form-field-error
+            *ngIf="
+              lumpSumControl.errors.min ||
+              lumpSumControl.errors.max ||
+              lumpSumControl.errors.required
+            "
+          >
+            {{ pageContent.lumpSumAmount.inputError }}
+          </wes-form-field-error>
+          <wes-form-field-error
+            *ngIf="lumpSumControl.errors.totalAnnualAllowance"
+          >
+            {{ pageContent.monthlyAmount.inputOtherError }}
+          </wes-form-field-error>
+        </wes-error>
+      </wes-form-field>
+
+      <div class="wes-tooltip wes-tooltip-bottom-right d-block">
+        <div class="wes-tooltip-content">
+          <img
+            src="/assets/icons/svg/icon-info.svg"
+            class="wes-icon"
+            alt="information icon"
+          />
+          <p class="wes-text-shortform">{{ pageContent.lumpSumTooltip }}</p>
+        </div>
+      </div>
+      <hr class="my-4 my-md-5" />
+
+      <wes-form-field id="monthlyAmount">
+        <wes-label labelTestId="lblMonthlyAmount">
+          {{ pageContent.monthlyAmount.inputLabel }}
+        </wes-label>
+        <input
+          wesInput
+          wesFloatOnly
+          wesInputCurrencyMask
+          inputmode="numeric"
+          type="text"
+          formControlName="monthlyAmount"
+          [errorStateMatcher]="errorStateMatcher"
+          data-test="txtMonthlyAmount"
+          autocomplete="off"
+        />
+        <span wesPrefix>
+          <strong>£</strong>
+          &nbsp;
+        </span>
+        <wes-hint>{{ pageContent.monthlyHelpText }}</wes-hint>
+        <wes-error *ngIf="isFieldInvalid('totalAmount.monthlyAmount')">
+          <wes-form-field-error
+            *ngIf="monthlyControl.errors.min || monthlyControl.errors.required"
+          >
+            {{ pageContent.monthlyAmount.inputMinError }}
+          </wes-form-field-error>
+          <wes-form-field-error *ngIf="monthlyControl.errors.max">
+            {{ pageContent.monthlyAmount.inputMaxError }}
+          </wes-form-field-error>
+          <wes-form-field-error
+            *ngIf="monthlyControl.errors.totalAnnualAllowance"
+          >
+            {{ pageContent.monthlyAmount.inputOtherError }}
+          </wes-form-field-error>
+        </wes-error>
+      </wes-form-field>
+    </div>
+
+    <wes-direct-debit-form
+      formControlName="directDebit"
+      [content]="directDebitContent"
+      [touched]="directDebitControl.touched"
+      [submitAttempt]="submitAttempt"
+    ></wes-direct-debit-form>
+
+    <button
+      class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
+      data-test="btnContinue"
+      type="submit"
+    >
+      {{ pageContent.nextButtonLabel }}
+    </button>
+  </form>
+</wes-container>

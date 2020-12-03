@@ -234,6 +234,10 @@ export class DeclarationFacade {
               )
             )}`,
           },
+          smallCopy: this.formatTotalAnnualAllowance(
+            this.pageContent.totalInvestmentSmallText,
+            isaLimits.totalAnnualAllowance
+          ),
         })
       )
     );
@@ -629,5 +633,9 @@ export class DeclarationFacade {
         '/' +
         format(new Date(isaLimits.endDateTime), 'yyyy')
     );
+  }
+
+  formatTotalAnnualAllowance(text: string, amount: number) {
+    return text.replace('{total-annual-allowance}', formatCurrencyGBP(amount));
   }
 }

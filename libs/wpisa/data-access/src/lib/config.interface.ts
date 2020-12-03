@@ -199,6 +199,7 @@ export interface Declaration {
   yourInvestmentLabel: string;
   perMonthLabel: string;
   totalInvestmentText: string;
+  totalInvestmentSmallText: string;
   isaLabel: string;
   isaRules: string;
   adviceContent: string;
