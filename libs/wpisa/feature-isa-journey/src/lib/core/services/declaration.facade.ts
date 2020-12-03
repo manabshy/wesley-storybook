@@ -537,13 +537,7 @@ export class DeclarationFacade {
       taxPeriodCode: '',
       customerPermissionGranted: true,
       declarationsText: (
-        this.pageContent.isaRules +
-        this.pageContent.adviceContent +
-        this.pageContent.authoriseCheckbox.inputLabel +
-        this.pageContent.authoriseContent +
-        this.pageContent.declarationCheckbox.inputLabel +
-        this.pageContent.content +
-        this.pageContent.confirmContent
+        this.pageContent.declarationText + this.pageContent.confirmContent
       ).replace(/<[^>]*>/g, ''),
       knowledgeCheckForm: this.getKnowledgeCheckAnswersDTO(),
     };

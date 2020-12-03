@@ -201,13 +201,8 @@ export interface Declaration {
   totalInvestmentText: string;
   totalInvestmentSmallText: string;
   isaLabel: string;
-  isaRules: string;
-  adviceContent: string;
-  authoriseCheckbox: FormInput;
-  authoriseContent: string;
-  declarationCheckbox: FormInput;
-  content: string;
   confirmContent: string;
+  declarationText: string;
 }
 
 export interface IFramePayment {
