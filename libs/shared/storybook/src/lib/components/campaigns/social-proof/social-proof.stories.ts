@@ -4,7 +4,6 @@ export default {
   
 export const base = () => ({
   template: `
-    <!-- Social Proof component root -->
     <div class="wes-social-proof">
       <div class="wes-social-proof__wrapper">
         <div class="wes-social-proof__header">

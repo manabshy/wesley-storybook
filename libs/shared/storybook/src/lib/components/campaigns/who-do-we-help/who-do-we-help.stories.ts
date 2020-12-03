@@ -11,7 +11,6 @@ const variants = {
 
 export const whoDoWeHelp = () => ({
   template: `
-    <!-- Who Do We Help component root -->
     <div class="wes-who-do-we-help {{variant}}">
       <div class="wes-who-do-we-help__wrapper">
         <div class="wes-who-do-we-help__body">

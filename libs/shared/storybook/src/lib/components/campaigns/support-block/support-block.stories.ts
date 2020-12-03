@@ -11,7 +11,6 @@ const variants = {
   
 export const supportBlock = () => ({
   template: `
-    <!-- Support Block component root -->
     <div class="wes-support-block">
       <div class="wes-support-block__wrapper">
         <div class="wes-support-block__header">

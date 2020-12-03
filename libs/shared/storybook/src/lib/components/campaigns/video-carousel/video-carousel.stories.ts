@@ -4,7 +4,6 @@ export default {
   
 export const base = () => ({
   template: `
-    <!-- Video Carousel component root -->
     <div class="wes-video-carousel">
       <div class="wes-video-carousel__wrapper">
         <div class="wes-video-carousel__header"></div>

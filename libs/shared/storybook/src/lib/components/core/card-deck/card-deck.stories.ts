@@ -13,7 +13,6 @@ const variants = {
 
 export const cardDeck = () => ({
   template: `
-    <!-- Card Deck component root -->
     <div class="wes-card-deck {{variant}}">
       <div class="wes-card-deck__wrapper">
         <div *ngIf="!!title || !!message" class="wes-card-deck__header">

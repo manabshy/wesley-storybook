@@ -11,7 +11,6 @@ const variants = {
   
 export const contentBlock = () => ({
   template: `
-    <!-- Content Block component root -->
     <div class="wes-content-block {{variant}}">
       <div class="wes-content-block__wrapper">
         <div class="wes-content-block__body">

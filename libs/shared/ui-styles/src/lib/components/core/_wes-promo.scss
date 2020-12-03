@@ -1,0 +1,168 @@
+////
+/// Wesleyan Promo (Full Width) Component
+////
+
+.wes-promo {
+  @include wes-make-full-width-component;
+
+  &__wrapper {
+    @include wes-make-container;
+  }
+
+  &__header {
+    position: relative;
+    height: rem(280px);
+    margin-bottom: -6vw;
+
+    @include media-breakpoint-up(md) {
+      height: rem(433px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      height: rem(577px);
+      margin-bottom: -11vw;
+    }
+
+    @include media-breakpoint-up(xl) {
+      height: rem(769px);
+      margin-bottom: -17vw;
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    left: 50%;
+    min-width: 100vw;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-50%);
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &__body {
+    @include wes-make-row;
+
+    min-height: 20vw;
+    position: relative;
+    margin-top: 6vw;
+    margin-bottom: 6vw;
+  }
+
+  &__trapezoid {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      background-color: $global-colour-grey-50;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform-origin: top right;
+      transform: skewY(3deg);
+
+      @at-root {
+        .wes-promo--shout &,
+        .wes-promo--cheer & {
+          background-color: transparent;
+          background-image: linear-gradient(
+            90deg,
+            $global-colour-gold-900 0%,
+            $global-colour-yellow-700 100%
+          );
+        }
+      }
+    }
+
+    &::after {
+      transform-origin: bottom right;
+      transform: skewY(-3deg);
+    }
+  }
+
+  &__content {
+    @include wes-make-col-ready;
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    @include media-breakpoint-up(md) {
+      @include make-col(11);
+    }
+
+    @include media-breakpoint-up(lg) {
+      @include make-col(9);
+    }
+
+    @include media-breakpoint-up(xl) {
+      @include make-col(7);
+    }
+  }
+
+  &__title {
+    @extend .wes-h2;
+
+    margin: 0;
+  }
+
+  &__message {
+    @extend .wes-text-m;
+
+    margin-top: rem(24px);
+
+    @include media-breakpoint-up(lg) {
+      margin-top: rem(16px);
+    }
+
+    @include media-breakpoint-up(xl) {
+      margin-top: rem(32px);
+    }
+  }
+
+  &__actions {
+    margin-top: rem(32px);
+
+    @include media-breakpoint-up(md) {
+      margin-top: rem(40px);
+    }
+
+    @include media-breakpoint-only(xs) {
+      .wes-promo__cta {
+        width: 100%;
+      }
+    }
+  }
+
+  &__cta {
+    @extend .wes-button;
+    @extend .wes-button-cta;
+
+    @at-root {
+      .wes-promo:not(.wes-promo--shout):not(.wes-promo--cheer) & {
+        @extend .wes-button-cta--orange-with-grey-hover;
+      }
+    }
+  }
+
+  &__footnote {
+    @extend .wes-text-s;
+
+    margin-top: rem(24px);
+  }
+
+  &__placeholder {
+    margin-top: rem(40px);
+
+    @include media-breakpoint-up(md) {
+      margin-top: rem(48px);
+    }
+  }
+}

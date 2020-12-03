@@ -11,7 +11,6 @@ const variants = {
 
 export const CTACard = () => ({
   template: `
-    <!-- Component root -->
     <div class="wes-cta-card {{variant}}">
       <div class="wes-cta-card__wrapper">
         <div class="wes-cta-card__frame">

@@ -4,7 +4,6 @@ export default {
 
 export const base = () => ({
   template: `
-    <!-- Awards component root -->
     <div class="wes-awards">
       <div class="wes-awards__wrapper">
         <div class="wes-awards__header">
