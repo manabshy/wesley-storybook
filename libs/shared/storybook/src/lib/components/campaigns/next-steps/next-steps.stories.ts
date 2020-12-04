@@ -1,7 +1,7 @@
 export default {
   title: 'Campaigns|Next Steps (Full Width)',
 };
-  
+
 export const base = () => ({
   template: `
     <!-- Next Steps component root -->

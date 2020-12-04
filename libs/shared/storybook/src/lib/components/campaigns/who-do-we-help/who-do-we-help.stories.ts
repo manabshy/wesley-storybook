@@ -1,8 +1,7 @@
-import { select, withKnobs } from '@storybook/addon-knobs';
+import { select } from '@storybook/addon-knobs';
 
 export default {
   title: 'Campaigns|Who Do We Help (Full Width)',
-  decorators: [withKnobs],
 };
 
 const variants = {
