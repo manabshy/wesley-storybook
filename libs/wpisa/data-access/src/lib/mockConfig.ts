@@ -347,37 +347,13 @@ export const mockConfig = {
     },
   ],
   marketSegmentList: [
-    {
-      value: 'GENMEDPRAC',
-      label: 'GP',
-    },
-    {
-      value: 'HOSDOCS',
-      label: 'Hospital Doctor',
-    },
-    {
-      value: 'STUDENTMED',
-      label: 'Student Medic',
-    },
-    {
-      value: 'DENTISTS',
-      label: 'Dentist',
-    },
-    {
-      value: 'DENTALSTU',
-      label: 'Student Dentist',
-    },
-    {
-      value: 'TEACHERS',
-      label: 'Teacher',
-    },
-    {
-      value: 'WFL',
-      label: 'Lawyer',
-    },
-    {
-      value: 'OTHER',
-      label: 'Other',
-    },
+    { key: '123', value: 'GENMEDPRAC', label: 'GP' },
+    { key: '124', value: 'HOSDOCS', label: 'Hospital Doctor' },
+    { key: '125', value: 'STUDENTMED', label: 'Student Medic' },
+    { key: '126', value: 'DENTISTS', label: 'Dentist' },
+    { key: '127', value: 'DENTALSTU', label: 'Student Dentist' },
+    { key: '128', value: 'TEACHERS', label: 'Teacher' },
+    { key: '129', value: 'WFL', label: 'Lawyer' },
+    { key: '120', value: 'OTHER', label: 'Other' },
   ],
 };

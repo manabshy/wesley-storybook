@@ -23,7 +23,7 @@ export interface Config {
   inactivityModal: InactivityModal;
   sessionTimeoutModal: SessionTimeoutModal;
   titleList: [{ value: string; label: string }];
-  marketSegmentList: [{ value: string; label: string }];
+  marketSegmentList: [{ value: string; label: string; key: string }];
   envConfig: {
     applicationInsightsKey: string;
     gtmKey: string;

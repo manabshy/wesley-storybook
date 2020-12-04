@@ -82,8 +82,8 @@ export class CustomerDetailsFacade {
     );
 
     this.marketSegmentList$ = of(
-      this.configService.content.marketSegmentList.map(({ value, label }) => ({
-        value,
+      this.configService.content.marketSegmentList.map(({ key, label }) => ({
+        value: key,
         description: label,
       }))
     );
@@ -139,7 +139,7 @@ export class CustomerDetailsFacade {
       surname: value.lastName,
       forename: value.firstName,
       emailAddress: value.personalEmail,
-      marketSegmentCode: value.profession,
+      marketSegmentCode: this.getSegmentValueByKey(value.profession),
       dateOfBirth: `${value.dob.year}-${value.dob.month}-${value.dob.day}`,
       mobilePhoneNumber: value.personalMobileNumber.replace(/[^0-9]/g, ''),
       niNumber: value.nationalInsuranceNumber.replace(/[^A-Za-z0-9]/g, ''),
@@ -231,6 +231,12 @@ export class CustomerDetailsFacade {
     return this.marketSegmentList$.pipe(
       map((list) => list.find((item) => item.value === id).description)
     );
+  }
+
+  getSegmentValueByKey(key: string): string {
+    return this.configService.content.marketSegmentList
+      .filter((v) => v.key === key)
+      .map((v) => v.value)[0];
   }
 
   private rehydrateCurrentTaxPeriodFromAppState() {
