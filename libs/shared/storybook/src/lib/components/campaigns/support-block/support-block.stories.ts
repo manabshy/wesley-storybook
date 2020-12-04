@@ -1,8 +1,7 @@
-import { text, boolean, withKnobs } from '@storybook/addon-knobs';
+import { text, boolean } from '@storybook/addon-knobs';
 
 export default {
   title: 'Campaigns|Support Block (Full Width)',
-  decorators: [withKnobs],
 };
 
 const variants = {

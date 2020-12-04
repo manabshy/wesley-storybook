@@ -1,8 +1,7 @@
-import { text, select, withKnobs } from '@storybook/addon-knobs';
+import { text, select } from '@storybook/addon-knobs';
 
 export default {
   title: 'Campaigns|CTA Card (Full Width)',
-  decorators: [withKnobs],
 };
 
 const variants = {

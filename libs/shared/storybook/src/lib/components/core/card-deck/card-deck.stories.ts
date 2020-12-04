@@ -1,8 +1,7 @@
-import { boolean, number, text, select, withKnobs } from '@storybook/addon-knobs';
+import { boolean, number, text, select } from '@storybook/addon-knobs';
 
 export default {
   title: 'Core|Card Deck (Full Width)',
-  decorators: [withKnobs],
 };
 
 const variants = {
