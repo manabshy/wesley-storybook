@@ -1,9 +1,10 @@
-import { Component, isDevMode } from '@angular/core';
+import { filter, tap, map, mergeMap, startWith, skip } from 'rxjs/operators';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Component, isDevMode } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
-import { filter, tap, map, mergeMap, startWith } from 'rxjs/operators';
-import { GoogleTagManagerService } from 'angular-google-tag-manager';
 
+import { GoogleTagManagerService } from '@wesleyan-frontend/shared/util-gtm';
 import { ConfigService } from '@wesleyan-frontend/wpisa/data-access';
 import {
   InactivityTimeoutService,
@@ -19,6 +20,19 @@ export class ShellComponent {
   currentStepIndex$: Observable<number>;
   progressBarContent;
   isDevEnv = false;
+  consentGiven = false;
+  gtmTracking$ = this.router.events.pipe(
+    filter((event) => event instanceof NavigationEnd),
+    skip(1), //skip triggering for first page load as it's part of addGtmToDom()
+    tap(() => {
+      const gtmTag = {
+        event: 'Pageview',
+        pagePath: window.location.pathname + window.location.hash,
+      };
+
+      this.gtmService.pushTag(gtmTag);
+    })
+  );
 
   constructor(
     private configService: ConfigService,
@@ -26,7 +40,8 @@ export class ShellComponent {
     private activatedRoute: ActivatedRoute,
     private timeoutService: InactivityTimeoutService,
     private totalSessionTimeoutService: TotalSessionTimeoutService,
-    private gtmService: GoogleTagManagerService
+    private gtmService: GoogleTagManagerService,
+    private cookieService: CookieService
   ) {
     this.isDevEnv = isDevMode();
     this.timeoutService.initInactivityTimeout();
@@ -36,14 +51,6 @@ export class ShellComponent {
     this.currentStepIndex$ = this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
       startWith(this.activatedRoute),
-      tap(() => {
-        const gtmTag = {
-          event: 'Pageview',
-          pagePath: window.location.pathname + window.location.hash,
-        };
-
-        this.gtmService.pushTag(gtmTag);
-      }),
       map(() => {
         let lastActivatedRoute = this.activatedRoute;
 
@@ -57,5 +64,13 @@ export class ShellComponent {
       mergeMap((route) => route.data),
       map((event) => event.step)
     );
+
+    this.consentGiven =
+      this.cookieService.get('WesleyanAnalyticalOptIn') === 'yes';
+
+    if (this.consentGiven) {
+      this.gtmService.addGtmToDom();
+      this.gtmTracking$.subscribe();
+    }
   }
 }

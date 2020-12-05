@@ -160,6 +160,9 @@
     },
     "shared-ui-pipes": {
       "tags": []
+    },
+    "shared-util-gtm": {
+      "tags": []
     }
   },
   "affected": {

@@ -35,5 +35,6 @@ module.exports = {
     '<rootDir>/libs/shared/ui-icon',
     '<rootDir>/libs/find-my-fc/util-const',
     '<rootDir>/libs/shared/ui-pipes',
+    '<rootDir>/libs/shared/util-gtm',
   ],
 };

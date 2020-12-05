@@ -1680,6 +1680,36 @@
           "style": "scss"
         }
       }
+    },
+    "shared-util-gtm": {
+      "projectType": "library",
+      "root": "libs/shared/util-gtm",
+      "sourceRoot": "libs/shared/util-gtm/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/util-gtm/tsconfig.lib.json",
+              "libs/shared/util-gtm/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/util-gtm/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/util-gtm/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
