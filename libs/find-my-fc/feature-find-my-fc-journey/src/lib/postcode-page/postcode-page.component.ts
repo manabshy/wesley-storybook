@@ -1,8 +1,9 @@
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgFormsManager } from '@ngneat/forms-manager';
-import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 import {
   ConfigService,
@@ -19,7 +20,7 @@ import { AppForms } from '../shared/app-forms.interface';
   templateUrl: './postcode-page.component.html',
   styleUrls: ['./postcode-page.component.scss'],
 })
-export class PostcodePageComponent implements OnInit {
+export class PostcodePageComponent implements OnInit, OnDestroy {
   content: NewCustomerPostcodeContent;
   backLink = '';
   form: FormGroup = this.builder.group({
@@ -29,6 +30,7 @@ export class PostcodePageComponent implements OnInit {
     ],
   });
   headingContent$: Observable<{ title: string; description: string }>;
+  subscriptions = new Subscription();
 
   constructor(
     private builder: FormBuilder,
@@ -45,11 +47,26 @@ export class PostcodePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.formsManager.upsert('newCustomerPostcode', this.form);
+    this.subscriptions.add(
+      this.postcodeFacade.postcodeError$
+        .pipe(tap((err) => this.setPostcodeInvalidOrServiceFailure()))
+        .subscribe()
+    );
+  }
+
+  setPostcodeInvalidOrServiceFailure() {
+    this.form.controls.postcode.setErrors({ postcodeOrServiceFailure: true });
+    this.form.controls.postcode.markAsDirty();
   }
 
   onSubmit() {
     if (this.form.valid) {
       this.postcodeFacade.findFC(this.form.value.postcode);
     }
+  }
+
+  ngOnDestroy() {
+    this.formsManager.unsubscribe('newCustomerPostcode');
+    this.subscriptions.unsubscribe();
   }
 }
