@@ -1,8 +1,7 @@
-import { text, select, withKnobs } from '@storybook/addon-knobs';
+import { text, select } from '@storybook/addon-knobs';
 
 export default {
   title: 'Campaigns|Content Container (Full Width)',
-  decorators: [withKnobs],
 };
 
 const variants = {
