@@ -36,5 +36,6 @@ module.exports = {
     '<rootDir>/libs/find-my-fc/util-const',
     '<rootDir>/libs/shared/ui-pipes',
     '<rootDir>/libs/shared/util-gtm',
+    '<rootDir>/libs/shared/util-cookie-consent',
   ],
 };

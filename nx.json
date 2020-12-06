@@ -163,6 +163,9 @@
     },
     "shared-util-gtm": {
       "tags": []
+    },
+    "shared-util-cookie-consent": {
+      "tags": []
     }
   },
   "affected": {

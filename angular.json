@@ -1710,6 +1710,39 @@
           "style": "scss"
         }
       }
+    },
+    "shared-util-cookie-consent": {
+      "projectType": "library",
+      "root": "libs/shared/util-cookie-consent",
+      "sourceRoot": "libs/shared/util-cookie-consent/src",
+      "prefix": "wesleyan-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/util-cookie-consent/tsconfig.lib.json",
+              "libs/shared/util-cookie-consent/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/util-cookie-consent/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/util-cookie-consent/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

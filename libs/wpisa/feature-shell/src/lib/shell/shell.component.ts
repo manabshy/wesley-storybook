@@ -1,9 +1,9 @@
 import { filter, tap, map, mergeMap, startWith, skip } from 'rxjs/operators';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Component, isDevMode } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 
+import { CookieConsentService } from '@wesleyan-frontend/shared/util-cookie-consent';
 import { GoogleTagManagerService } from '@wesleyan-frontend/shared/util-gtm';
 import { ConfigService } from '@wesleyan-frontend/wpisa/data-access';
 import {
@@ -20,19 +20,6 @@ export class ShellComponent {
   currentStepIndex$: Observable<number>;
   progressBarContent;
   isDevEnv = false;
-  consentGiven = false;
-  gtmTracking$ = this.router.events.pipe(
-    filter((event) => event instanceof NavigationEnd),
-    skip(1), //skip triggering for first page load as it's part of addGtmToDom()
-    tap(() => {
-      const gtmTag = {
-        event: 'Pageview',
-        pagePath: window.location.pathname + window.location.hash,
-      };
-
-      this.gtmService.pushTag(gtmTag);
-    })
-  );
 
   constructor(
     private configService: ConfigService,
@@ -41,7 +28,7 @@ export class ShellComponent {
     private timeoutService: InactivityTimeoutService,
     private totalSessionTimeoutService: TotalSessionTimeoutService,
     private gtmService: GoogleTagManagerService,
-    private cookieService: CookieService
+    private cookieConsentService: CookieConsentService
   ) {
     this.isDevEnv = isDevMode();
     this.timeoutService.initInactivityTimeout();
@@ -65,12 +52,33 @@ export class ShellComponent {
       map((event) => event.step)
     );
 
-    this.consentGiven =
-      this.cookieService.get('WesleyanAnalyticalOptIn') === 'yes';
+    combineLatest([
+      this.router.events.pipe(
+        filter((event) => event instanceof NavigationEnd)
+      ),
+      //Only add GTM if consent given
+      this.cookieConsentService.analyticsConsentGiven$.pipe(
+        filter((given) => given),
+        tap((_) => this.gtmService.addGtmToDom())
+      ),
+    ])
+      //This is reached only when analyticsConsentGiven$ emits
+      //and is true
+      .pipe(
+        //We don't want to trigger the event twice
+        //as is first triggered above, so is
+        //triggered with the next nav event
+        skip(1),
 
-    if (this.consentGiven) {
-      this.gtmService.addGtmToDom();
-      this.gtmTracking$.subscribe();
-    }
+        tap(() => {
+          const gtmTag = {
+            event: 'Pageview',
+            pagePath: window.location.pathname + window.location.hash,
+          };
+
+          this.gtmService.pushTag(gtmTag);
+        })
+      )
+      .subscribe();
   }
 }
