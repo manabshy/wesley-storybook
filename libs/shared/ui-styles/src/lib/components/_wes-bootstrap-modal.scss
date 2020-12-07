@@ -249,3 +249,11 @@
     }
   }
 }
+
+.modal-backdrop {
+  background-color: $global-colour-grey-900;
+
+  &.show {
+    opacity: 0.95;
+  }
+}
