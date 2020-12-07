@@ -21,6 +21,8 @@ export class ShellComponent {
     private activatedRoute: ActivatedRoute,
     private gtmService: GoogleTagManagerService
   ) {
+    document.getElementsByTagName('body')[0].classList.add('find-my-fc-app');
+
     this.isDevEnv = isDevMode();
     this.router.events
       .pipe(

@@ -19,6 +19,7 @@ import { FinancialConsultantFacade } from './financial-consultant.facade';
 export class PostcodeFacade {
   content: NewCustomerPostcodeContent;
   postcodePageContent$: Observable<{ title: string; description: string }>;
+  postcodeError$ = this.fcFacade.invalidCustomerReference$;
 
   constructor(
     private configService: ConfigService,

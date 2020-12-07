@@ -174,3 +174,15 @@ $wes-your-fc-border-colour: $global-colour-grey-100;
     margin-bottom: rem(16px);
   }
 }
+
+//Find FC Overrides until core change take over, remove after that
+.find-my-fc-app {
+  .wes-fc-page-title {
+    font-weight: normal;
+    color: #1e2630;
+  }
+
+  p {
+    color: #1e2630;
+  }
+}
