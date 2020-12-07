@@ -28,9 +28,7 @@ export const promo = () => ({
               <p [innerHTML]="message"></p>
             </div>
             <div class="wes-promo__actions">
-              <a class="wes-promo__cta" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">
-                <span class="wes-button-label" [innerHTML]="primaryCtaText"></span>
-              </a>
+              <a class="wes-promo__cta" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank" [innerHTML]="primaryCtaText"></a>
             </div>
             <div *ngIf="footnote" class="wes-promo__footnote">
               <!-- Rich text -->

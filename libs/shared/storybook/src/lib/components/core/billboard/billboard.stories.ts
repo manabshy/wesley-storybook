@@ -23,9 +23,7 @@ export const billboard = () => ({
                 <p [innerHTML]="message"></p>
               </div>
               <div class="wes-promo__actions">
-                <a class="wes-button wes-button-cta wes-button-cta--orange-with-grey-hover" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">
-                  <span class="wes-button-label" [innerHTML]="primaryCtaText"></span>
-                </a>
+                <a class="wes-button wes-button--on-light" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank" [innerHTML]="primaryCtaText"></a>
               </div>
             </div>
           </div>
