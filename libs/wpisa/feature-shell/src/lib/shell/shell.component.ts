@@ -57,7 +57,7 @@ export class ShellComponent {
         filter((event) => event instanceof NavigationEnd)
       ),
       //Only use GTM if consent given
-      this.cookieConsentService.analyticsConsentGiven$.pipe(
+      this.cookieConsentService.performanceConsentGiven$.pipe(
         filter((given) => given),
         //GTM scripts are added externally by Cassie
         tap((_) => this.gtmService.gtmScriptsLoadedExternally())
@@ -70,7 +70,6 @@ export class ShellComponent {
         //as is first triggered above, so is
         //triggered with the next nav event
         skip(1),
-
         tap(() => {
           const gtmTag = {
             event: 'Pageview',

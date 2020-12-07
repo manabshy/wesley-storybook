@@ -8,13 +8,13 @@ interface ConsentUpdateEvent extends CustomEvent {
   detail: { cookieName: string };
 }
 
-const ANALYTICS_CONSENT_COOKIE = 'WesleyanAnalyticalOptIn';
+const PERFORMANCE_CONSENT_COOKIE = 'WesleyanPerformanceOptIn';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CookieConsentService {
-  private analyticsConsentGiven$$ = new BehaviorSubject(false);
+  private performanceConsentGiven$$ = new BehaviorSubject(false);
 
   /**
    * A custom event needs added to Cassie Cookie Manager
@@ -24,7 +24,7 @@ export class CookieConsentService {
    * i.e
    * document.dispatchEvent(
    *    new CustomEvent("consent-update", {detail:{
-   *         cookieName:'WesleyanAnalyticalOptIn'
+   *         cookieName:'WesleyanPerformanceOptIn'
    * }}))
    * */
   private consentUpdateEvent$ = fromEvent<ConsentUpdateEvent>(
@@ -32,7 +32,7 @@ export class CookieConsentService {
     'consent-update'
   );
 
-  analyticsConsentGiven$ = this.analyticsConsentGiven$$.asObservable();
+  performanceConsentGiven$ = this.performanceConsentGiven$$.asObservable();
 
   constructor(private cookieService: CookieService) {
     this.checkAnalyticalConsentGiven();
@@ -41,14 +41,14 @@ export class CookieConsentService {
   private checkAnalyticalConsentGiven() {
     merge(
       //Consent already given previously, cookie should be present
-      of(this.cookieService.get(ANALYTICS_CONSENT_COOKIE) === 'yes'),
+      of(this.cookieService.get(PERFORMANCE_CONSENT_COOKIE) === 'yes'),
       //Consent modal present on the app, waiting for user consent
       this.consentUpdateEvent$.pipe(
-        filter((e) => e.detail.cookieName === ANALYTICS_CONSENT_COOKIE),
-        map((v) => this.cookieService.get(ANALYTICS_CONSENT_COOKIE) === 'yes')
+        filter((e) => e.detail.cookieName === PERFORMANCE_CONSENT_COOKIE),
+        map((v) => this.cookieService.get(PERFORMANCE_CONSENT_COOKIE) === 'yes')
       )
     )
-      .pipe(tap((v) => this.analyticsConsentGiven$$.next(v)))
+      .pipe(tap((v) => this.performanceConsentGiven$$.next(v)))
       .subscribe();
   }
 }
