@@ -22,7 +22,7 @@ export class ProfessionSelectPageComponent implements OnInit {
   content: ProfessionSelectorContent;
   backLink = '';
   iconMap = {
-    'Hospital Doctor': 'heart',
+    HospitalDoctor: 'heart',
     GP: 'stethoscope',
     Dentist: 'tooth',
     Teacher: 'open-book',

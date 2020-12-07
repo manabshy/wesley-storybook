@@ -31,6 +31,7 @@ describe('find-my-fc', () => {
 
     it(`When I select Hospital option and click Continue`, () => {
       hospitalOption().click();
+      cy.wait(300);
       continueButton().click();
     });
 
