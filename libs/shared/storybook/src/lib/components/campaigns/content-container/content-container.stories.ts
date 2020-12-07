@@ -12,7 +12,6 @@ const variants = {
 
 export const contentContainer = () => ({
   template: `
-    <!-- Content Container component root -->
     <div class="wes-content-container {{variant}}">
       <div class="wes-content-container__wrapper">
         <div *ngIf="!!variant" class="wes-content-container__header">
