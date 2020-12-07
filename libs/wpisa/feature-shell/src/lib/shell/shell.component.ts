@@ -67,8 +67,9 @@ export class ShellComponent {
       //and is true
       .pipe(
         //We don't want to trigger the event twice
-        //as is first triggered above, so is
-        //triggered with the next nav event
+        //as is first triggered when cassie adds
+        //it to the page, so is triggered with
+        //the next nav event
         skip(1),
         tap(() => {
           const gtmTag = {

@@ -1,5 +1,5 @@
+import { distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
 import { BehaviorSubject, fromEvent, merge, of } from 'rxjs';
-import { filter, map, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 
 import { CookieService } from 'ngx-cookie-service';
@@ -48,7 +48,12 @@ export class CookieConsentService {
         map((v) => this.cookieService.get(PERFORMANCE_CONSENT_COOKIE) === 'yes')
       )
     )
-      .pipe(tap((v) => this.performanceConsentGiven$$.next(v)))
+      .pipe(
+        //If consent already given before the app loads
+        //two true values will fire, we need only one
+        distinctUntilChanged(),
+        tap((v) => this.performanceConsentGiven$$.next(v))
+      )
       .subscribe();
   }
 }
