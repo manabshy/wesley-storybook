@@ -1,15 +1,129 @@
-import { moduleMetadata } from '@storybook/angular';
-import { SharedUiStepperModule } from '@wesleyan-frontend/shared/ui-stepper';
+import { text, select, boolean } from '@storybook/addon-knobs';
+
 export default {
   title: 'Atoms|Button',
-  decorators: [
-    moduleMetadata({
-      imports: [SharedUiStepperModule],
-    }),
-  ],
 };
 
-export const buttons = () => ({
+const variants = {
+  'On Light': 'wes-button--on-light',
+  'On Gold': 'wes-button--on-gold',
+  'On Dark': 'wes-button--on-dark',
+};
+
+export const core = () => ({
+  template: `
+    <div class="bg-solid-white" style="padding:2rem;">
+      <div class="d-flex">
+        <div class="pr-3">
+          <button class="wes-button wes-button--on-light">Book an appointment</button>
+          <br><br>
+        </div>
+        <div class="pr-3">
+          <a class="wes-button wes-button--on-light" href="#">Book an appointment (link)</a>
+          <br><br>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="pr-3">
+          <button class="wes-button wes-button--on-light" disabled>Book an appointment</button>
+          <br><br>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="pr-3">
+          <button class="wes-button wes-button--on-light wes-button--outline">Book an appointment</button>
+          <br><br> 
+        </div>
+        <div class="pr-3">
+          <a class="wes-button wes-button--on-light wes-button--outline" href="#">Book an appointment (link)</a>
+          <br><br> 
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="pr-3">
+          <button class="wes-button wes-button--on-light wes-button--outline" disabled>Book an appointment</button>
+          <br><br>
+        </div>
+      </div>
+    </div>
+
+    <div class="wes-bg-solid-gold-900" style="padding:2rem;">
+      <div class="d-flex">
+        <div class="pr-3">
+          <button class="wes-button wes-button--on-gold">Book an appointment</button>
+          <br><br>
+        </div>
+        <div class="pr-3">
+          <a class="wes-button wes-button--on-gold" href="#">Book an appointment (link)</a>
+          <br><br>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="pr-3">
+          <button class="wes-button wes-button--on-gold" disabled>Book an appointment</button>
+          <br><br>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="pr-3">
+          <button class="wes-button wes-button--on-gold wes-button--outline">Book an appointment</button>
+          <br><br> 
+        </div>
+        <div class="pr-3">
+          <a class="wes-button wes-button--on-gold wes-button--outline" href="#">Book an appointment (link)</a>
+          <br><br> 
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="pr-3">
+          <button class="wes-button wes-button--on-gold wes-button--outline" disabled>Book an appointment</button>
+          <br><br>
+        </div>
+      </div>
+    </div>
+
+    <div class="wes-bg-solid-grey-900" style="padding:2rem;">
+      <div class="d-flex">
+        <div class="pr-3">
+          <button class="wes-button wes-button--on-dark">Book an appointment</button>
+          <br><br>
+        </div>
+        <div class="pr-3">
+          <a class="wes-button wes-button--on-dark" href="#">Book an appointment (link)</a>
+          <br><br>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="pr-3">
+          <button class="wes-button wes-button--on-dark" disabled>Book an appointment</button>
+          <br><br>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="pr-3">
+          <button class="wes-button wes-button--on-dark wes-button--outline">Book an appointment</button>
+          <br><br> 
+        </div>
+        <div class="pr-3">
+          <a class="wes-button wes-button--on-dark wes-button--outline" href="#">Book an appointment (link)</a>
+          <br><br> 
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="pr-3">
+          <button class="wes-button wes-button--on-dark wes-button--outline" disabled>Book an appointment</button>
+          <br><br>
+        </div>
+      </div>
+    </div>
+  `,
+});
+
+
+
+
+
+export const legacy = () => ({
   template: `
     <div class="bg-solid-white" style="padding:2rem;">
       <div class="d-flex">

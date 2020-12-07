@@ -143,11 +143,11 @@
 
   &__cta {
     @extend .wes-button;
-    @extend .wes-button-cta;
+    @extend .wes-button--on-gold;
 
     @at-root {
       .wes-promo:not(.wes-promo--shout):not(.wes-promo--cheer) & {
-        @extend .wes-button-cta--orange-with-grey-hover;
+        @extend .wes-button--on-light;
       }
     }
   }
