@@ -56,10 +56,11 @@ export class ShellComponent {
       this.router.events.pipe(
         filter((event) => event instanceof NavigationEnd)
       ),
-      //Only add GTM if consent given
+      //Only use GTM if consent given
       this.cookieConsentService.analyticsConsentGiven$.pipe(
         filter((given) => given),
-        tap((_) => this.gtmService.addGtmToDom())
+        //GTM scripts are added externally by Cassie
+        tap((_) => this.gtmService.gtmScriptsLoadedExternally())
       ),
     ])
       //This is reached only when analyticsConsentGiven$ emits
