@@ -8,21 +8,30 @@
     }
   }
 }
+dl {
+  margin-bottom: 0;
+}
 dt {
-  font-weight: 600;
+  font-weight: 400;
+  font-size: 16px;
 }
 dd {
-  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 16px;
 }
 .wes-investment-card {
   .wes-card-title {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #d9dadc;
+    h2 {
+      margin-bottom: 24px;
+    }
   }
 
-  .wes-card-body {
-    padding-top: 24px;
+  .small-copy {
+    font-size: 14px;
+    line-height: 20px;
   }
 }
 

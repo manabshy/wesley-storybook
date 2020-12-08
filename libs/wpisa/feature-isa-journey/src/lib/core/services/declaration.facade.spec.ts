@@ -42,7 +42,7 @@ describe('DeclarationFacade', () => {
       month: '02',
       year: '1980',
     },
-    profession: 'DENTISTS',
+    profession: '126',
     nationalInsuranceNumber: 'SN 234 234 A',
     nationality: '119',
     addressLookup: {

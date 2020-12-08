@@ -1,18 +1,21 @@
-<a
-  class="wes-link wes-icon wes-icon-chevron-left wes-text-s wes-text-semi-bold mb-3 mb-md-4 d-inline-block"
-  data-test="lnkBack"
-  [routerLink]="introLink"
-  >{{ pageContent.knowledgeCheck.step1.backButtonLabel }}</a
->
-<h1>{{ pageContent.knowledgeCheck.step1.heading }}</h1>
-
-<wes-knowledge-check-q1-form (formSubmitted)="submitQuestion1($event)">
-  <button
-    class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
-    type="submit"
-    data-test="btnContinue"
-    [disabled]="!(q1Valid$ | async)"
+<wes-container>
+  <a
+    class="wes-link wes-icon wes-icon-chevron-left wes-text-s wes-text-semi-bold mb-3 mb-md-4 d-inline-block"
+    data-test="lnkBack"
+    [routerLink]="introLink"
   >
-    {{ pageContent.knowledgeCheck.step1.nextButtonLabel }}
-  </button>
-</wes-knowledge-check-q1-form>
+    {{ pageContent.knowledgeCheck.step1.backButtonLabel }}
+  </a>
+  <h1>{{ pageContent.knowledgeCheck.step1.heading }}</h1>
+
+  <wes-knowledge-check-q1-form (formSubmitted)="submitQuestion1($event)">
+    <button
+      class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
+      type="submit"
+      data-test="btnContinue"
+      [disabled]="!(q1Valid$ | async)"
+    >
+      {{ pageContent.knowledgeCheck.step1.nextButtonLabel }}
+    </button>
+  </wes-knowledge-check-q1-form>
+</wes-container>

@@ -1,210 +1,182 @@
-<a
-  class="wes-link wes-icon wes-icon-chevron-left wes-text-s wes-text-semi-bold mb-3 mb-md-4 d-inline-block"
-  [routerLink]="investmentOptionLink"
-  data-test="lnkBackToInvestmentOptions"
-  >{{ pageContent.backButtonLabel }}</a
->
-<h1>{{ pageContent.heading }}</h1>
-<div class="mb-6 mb-md-7 mb-lg-8" [innerHtml]="pageContent.summary"></div>
-
-<ng-container *ngIf="investmentCardViewModelData$ | async as investment">
-  <div
-    class="wes-investment-card wes-bg-solid-grey-50 mb-3 mb-md-4 p-3 px-lg-4"
-  >
-    <div class="wes-card-title">
-      <h2 class="wes-h4">{{ pageContent.yourInvestmentLabel }}</h2>
-      <div class="flex-shrink-0">
-        <a
-          class="wes-link wes-text-s wes-text-semi-bold"
-          [routerLink]="yourInvestmentLink"
-          data-test="lnkBackToYourInvestment"
-          >{{ pageContent.editLabel }}</a
-        >
-      </div>
-    </div>
-    <div class="wes-card-body d-md-flex flex-md-wrap">
-      <div *ngIf="investment.showLumpSum" class="flex-grow-lg-1 pr-md-6">
-        <p>{{ investment.lumpSumPayment.label }}</p>
-        <p class="wes-h2" data-test="pLumpSumAmount">
-          <strong>{{ investment.lumpSumPayment.value }}</strong>
-        </p>
-      </div>
-      <div *ngIf="investment.showMonthly" class="mb-3 flex-grow-lg-1">
-        <p>{{ investment.monthlyPayment.label }}</p>
-        <span>
-          <span class="wes-h2" data-test="pMonthlyAmount"
-            ><strong>{{ investment.monthlyPayment.value }}</strong></span
-          >
-          {{ pageContent.perMonthLabel }}
-        </span>
-      </div>
-      <div class="investment-total w-100">
-        <img
-          src="/assets/icons/svg/icon-calculator.svg"
-          alt="calculator icon"
-        />
-        <p data-test="pTotalAmount">
-          {{ investment.total.label }}
-          <strong>{{ investment.total.value }}</strong>
-        </p>
-      </div>
-    </div>
-  </div>
-</ng-container>
-
-<ng-container *ngIf="directDebitContent$ | async as dd">
-  <div
-    *ngIf="dd.showDD"
-    class="wes-investment-card wes-bg-solid-grey-50 mb-3 mb-md-4 p-3 px-lg-4"
-  >
-    <div class="wes-card-title">
-      <h2 class="wes-h4">{{ pageContent.directDebitLabel }}</h2>
-      <div class="flex-shrink-0">
-        <a
-          class="wes-link wes-text-s wes-text-semi-bold"
-          [routerLink]="yourInvestmentLink"
-          data-test="lnkBackToDD"
-          >{{ pageContent.editLabel }}</a
-        >
-      </div>
-    </div>
-    <div class="wes-card-body">
-      <dl class="row">
-        <dt class="col-sm-4">{{ dd.accountNumber.label }}</dt>
-        <dd class="col-sm-8">
-          {{ dd.accountNumber.value }}
-        </dd>
-
-        <dt class="col-sm-4">{{ dd.sortCode.label }}</dt>
-        <dd class="col-sm-8">
-          {{ dd.sortCode.value }}
-        </dd>
-      </dl>
-    </div>
-  </div>
-</ng-container>
-
-<ng-container *ngIf="personalDetailsContent$ | async as personalDetails">
-  <div
-    class="wes-investment-card wes-bg-solid-grey-50 mb-3 mb-md-4 p-3 px-lg-4"
-  >
-    <div class="wes-card-title">
-      <h2 class="wes-h4">{{ pageContent.yourDetailsLabel }}</h2>
-      <div class="flex-shrink-0">
-        <a
-          class="wes-link wes-text-s wes-text-semi-bold"
-          [routerLink]="yourDetailsLink"
-          data-test="lnkBackToPersonalDetails"
-          >{{ pageContent.editLabel }}</a
-        >
-      </div>
-    </div>
-    <div class="wes-card-body">
-      <dl class="row">
-        <dt class="col-sm-4">{{ personalDetails.name.label }}</dt>
-        <dd class="col-sm-8">
-          {{ personalDetails.name.value }}
-        </dd>
-
-        <dt class="col-sm-4">{{ personalDetails.dob.label }}</dt>
-        <dd class="col-sm-8">
-          {{ personalDetails.dob.value }}
-        </dd>
-        <dt class="col-sm-4">{{ personalDetails.profession.label }}</dt>
-        <dd class="col-sm-8">
-          {{ personalDetails.profession.value }}
-        </dd>
-        <dt class="col-sm-4">{{ personalDetails.nationality.label }}</dt>
-        <dd class="col-sm-8">
-          {{ personalDetails.nationality.value }}
-        </dd>
-        <dt class="col-sm-4">{{ personalDetails.emailAddress.label }}</dt>
-        <dd class="col-sm-8">
-          {{ personalDetails.emailAddress.value }}
-        </dd>
-        <dt class="col-sm-4">{{ personalDetails.phoneNumber.label }}</dt>
-        <dd class="col-sm-8">
-          {{ personalDetails.phoneNumber.value }}
-        </dd>
-        <dt class="col-sm-4">{{ personalDetails.homeAddress.label }}</dt>
-        <dd class="col-sm-8">
-          {{ personalDetails.homeAddress.value }}
-        </dd>
-      </dl>
-    </div>
-  </div>
-</ng-container>
-
-<h2 class="wes-h4">{{ pageContent.isaLabel }}</h2>
-
-<div class="wes-notification wes-notification-warning mb-4 mb-5">
-  <div class="wes-notification-content-wrapper">
-    <img
-      class="wes-notification-icon wes-icon flex-shrink-0"
-      src="/assets/icons/svg/icon-important.svg"
-      alt="notification icon"
-    />
+<div class="container pt-4 pt-md-7 pb-8 pb-md-9">
+  <div class="row">
     <div
-      class="wes-notification-content"
-      [innerHtml]="pageContent.isaRules"
-    ></div>
+      class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 mb-5 mb-md-7 mb-lg-8"
+    >
+      <a
+        class="wes-link wes-icon wes-icon-chevron-left wes-text-s wes-text-semi-bold mb-3 mb-md-4 d-inline-block"
+        [routerLink]="investmentOptionLink"
+        data-test="lnkBackToInvestmentOptions"
+      >
+        {{ pageContent.backButtonLabel }}
+      </a>
+      <h1>{{ pageContent.heading }}</h1>
+      <div [innerHtml]="pageContent.summary"></div>
+    </div>
+  </div>
+
+  <div class="row mb-6 mb-md-7">
+    <div class="col-12 col-md-5 col-lg-4 offset-lg-1 mb-3 mb-md-0">
+      <ng-container *ngIf="investmentCardViewModelData$ | async as investment">
+        <div class="wes-investment-card border h-100 p-3 px-lg-4">
+          <div class="wes-card-title">
+            <h2 class="wes-h4">{{ pageContent.yourInvestmentLabel }}</h2>
+            <div class="flex-shrink-0">
+              <a
+                class="wes-link wes-text-s wes-text-semi-bold"
+                [routerLink]="yourInvestmentLink"
+                data-test="lnkBackToYourInvestment"
+              >
+                {{ pageContent.editLabel }}
+              </a>
+            </div>
+          </div>
+          <div class="wes-card-body d-md-flex flex-md-wrap">
+            <dl>
+              <dt>{{ investment.lumpSumPayment.label }}</dt>
+              <dd data-test="pLumpSumAmount">
+                {{ investment.lumpSumPayment.value }}
+              </dd>
+
+              <dt>{{ investment.monthlyPayment.label }}</dt>
+              <dd data-test="pMonthlyAmount">
+                {{ investment.monthlyPayment.value }}
+              </dd>
+            </dl>
+
+            <div class="w-100">
+              <p class="wes-text-s" data-test="pTotalAmount">
+                {{ investment.total.label }}
+                <strong>{{ investment.total.value }}*</strong>
+              </p>
+            </div>
+            <hr class="my-3 w-100" />
+            <p class="small-copy">{{ investment.smallCopy }}</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="col-12 col-md-7 col-lg-6">
+      <ng-container *ngIf="directDebitContent$ | async as dd">
+        <div
+          *ngIf="dd.showDD"
+          class="wes-investment-card border mb-3 p-3 px-lg-4"
+        >
+          <div class="wes-card-title">
+            <h2 class="wes-h4">{{ pageContent.directDebitLabel }}</h2>
+            <div class="flex-shrink-0">
+              <a
+                class="wes-link wes-text-s wes-text-semi-bold"
+                [routerLink]="yourInvestmentLink"
+                data-test="lnkBackToDD"
+              >
+                {{ pageContent.editLabel }}
+              </a>
+            </div>
+          </div>
+          <div class="wes-card-body">
+            <div class="row">
+              <dl class="col-12 col-md-6 mb-0">
+                <dt>{{ dd.accountNumber.label }}</dt>
+                <dd class="mb-md-0">
+                  {{ dd.accountNumber.value }}
+                </dd>
+              </dl>
+              <dl class="col-12 col-md-6 mb-0">
+                <dt>{{ dd.sortCode.label }}</dt>
+                <dd class="mb-0">
+                  {{ dd.sortCode.value }}
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="personalDetailsContent$ | async as personalDetails">
+        <div
+          class="wes-investment-card border p-3 px-lg-4"
+          [class.h-100]="!(directDebitContent$ | async)"
+        >
+          <div class="wes-card-title">
+            <h2 class="wes-h4">{{ pageContent.yourDetailsLabel }}</h2>
+            <div class="flex-shrink-0">
+              <a
+                class="wes-link wes-text-s wes-text-semi-bold"
+                [routerLink]="yourDetailsLink"
+                data-test="lnkBackToPersonalDetails"
+              >
+                {{ pageContent.editLabel }}
+              </a>
+            </div>
+          </div>
+          <div class="wes-card-body">
+            <div class="row">
+              <dl class="col-md-7">
+                <dt>{{ personalDetails.name.label }}</dt>
+                <dd>
+                  {{ personalDetails.name.value }}
+                </dd>
+              </dl>
+              <dl class="col-md-5">
+                <dt>{{ personalDetails.dob.label }}</dt>
+                <dd>
+                  {{ personalDetails.dob.value }}
+                </dd>
+              </dl>
+            </div>
+            <div class="row">
+              <dl class="col-md-7">
+                <dt>{{ personalDetails.profession.label }}</dt>
+                <dd>
+                  {{ personalDetails.profession.value }}
+                </dd>
+              </dl>
+              <dl class="col-md-5">
+                <dt>{{ personalDetails.nationality.label }}</dt>
+                <dd>
+                  {{ personalDetails.nationality.value }}
+                </dd>
+              </dl>
+            </div>
+            <div class="row">
+              <dl class="col-md-7">
+                <dt>{{ personalDetails.emailAddress.label }}</dt>
+                <dd class="text-break">
+                  {{ personalDetails.emailAddress.value }}
+                </dd>
+              </dl>
+              <dl class="col-md-5">
+                <dt>{{ personalDetails.phoneNumber.label }}</dt>
+                <dd>
+                  {{ personalDetails.phoneNumber.value }}
+                </dd>
+              </dl>
+            </div>
+            <dl>
+              <dt>{{ personalDetails.homeAddress.label }}</dt>
+              <dd class="mb-0">
+                {{ personalDetails.homeAddress.value }}
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h2 class="wes-h2">{{ pageContent.isaLabel }}</h2>
+      <div [innerHtml]="pageContent.confirmContent"></div>
+
+      <button
+        class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
+        data-test="btnConfirm"
+        (click)="onSubmit()"
+      >
+        {{ pageContent.nextButtonLabel }}
+      </button>
+    </div>
   </div>
 </div>
-
-<div [innerHtml]="pageContent.adviceContent"></div>
-
-<hr class="my-5" />
-
-<form
-  [formGroup]="form"
-  (ngSubmit)="onSubmit()"
-  wesInvalidControlScroll
-  class="declaration-form"
->
-  <wes-checkbox
-    formControlName="authorise"
-    class="d-block mb-1"
-    [ngClass]="{ 'wes-checkbox-error': isFieldInvalid('authorise') }"
-    labelTestId="lblAuthorise"
-    inputTestId="cbAuthorise"
-    ><strong>{{
-      pageContent.authoriseCheckbox.inputLabel
-    }}</strong></wes-checkbox
-  >
-  <wes-form-field-error
-    *ngIf="isFieldInvalid('authorise')"
-    class="d-block mb-1"
-    >{{ pageContent.authoriseCheckbox.inputError }}</wes-form-field-error
-  >
-
-  <div
-    class="t-and-c-list mt-1 mb-6"
-    [innerHtml]="pageContent.authoriseContent"
-  ></div>
-
-  <wes-checkbox
-    formControlName="declaration"
-    class="d-block mb-1"
-    [ngClass]="{ 'wes-checkbox-error': isFieldInvalid('declaration') }"
-    labelTestId="lblDeclaration"
-    inputTestId="cbDeclaration"
-    ><strong>{{
-      pageContent.declarationCheckbox.inputLabel
-    }}</strong></wes-checkbox
-  >
-  <wes-form-field-error
-    *ngIf="isFieldInvalid('declaration')"
-    class="d-block mb-1"
-    >{{ pageContent.declarationCheckbox.inputError }}
-  </wes-form-field-error>
-  <div class="t-and-c-list mt-1 mb-5" [innerHtml]="pageContent.content"></div>
-
-  <div [innerHtml]="pageContent.confirmContent"></div>
-  <button
-    class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
-    type="submit"
-    data-test="btnConfirm"
-  >
-    {{ pageContent.nextButtonLabel }}
-  </button>
-</form>

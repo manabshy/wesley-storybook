@@ -101,6 +101,12 @@
       ],
       "@wesleyan-frontend/shared/ui-pipes": [
         "libs/shared/ui-pipes/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/util-gtm": [
+        "libs/shared/util-gtm/src/index.ts"
+      ],
+      "@wesleyan-frontend/shared/util-cookie-consent": [
+        "libs/shared/util-cookie-consent/src/index.ts"
       ]
     }
   },
