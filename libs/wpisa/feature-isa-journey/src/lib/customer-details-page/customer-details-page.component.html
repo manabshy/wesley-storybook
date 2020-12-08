@@ -176,7 +176,7 @@
           {{ marketSegment.description }}
         </option>
       </select>
-
+      <wes-hint>{{ pageContent.professionTooltip }}</wes-hint>
       <wes-error *ngIf="isFieldInvalid('profession')">
         <wes-form-field-error *ngIf="controls.profession.errors.required">
           {{ pageContent.profession.inputError }}
