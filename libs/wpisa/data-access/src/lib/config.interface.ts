@@ -57,6 +57,7 @@ export interface YourDetails {
   profession: FormInput;
   niNumber: FormInput;
   niTooltip: string;
+  professionTooltip: string;
   nationality: FormInput;
   addressDetails: YourDetailsAddressDetails;
   contactDetails: YourDetailsContactDetails;
