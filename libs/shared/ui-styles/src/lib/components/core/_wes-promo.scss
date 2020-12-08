@@ -129,9 +129,12 @@
 
   &__actions {
     margin-top: rem(32px);
+    display: flex;
+    flex-direction: column;
 
     @include media-breakpoint-up(md) {
       margin-top: rem(40px);
+      flex-direction: row;
     }
 
     @include media-breakpoint-only(xs) {
@@ -148,6 +151,17 @@
     @at-root {
       .wes-promo:not(.wes-promo--shout):not(.wes-promo--cheer) & {
         @extend .wes-button--on-light;
+      }
+    }
+
+    &--secondary {
+      @extend .wes-button--outline;
+
+      margin-top: rem(24px);
+
+      @include media-breakpoint-up(md) {
+        margin-top: 0;
+        margin-left: rem(40px);
       }
     }
   }

@@ -18,10 +18,7 @@ export const promo = () => ({
           <div class="wes-promo__bg" style="background-image:url(http://placekitten.com/500/300)"></div>
         </div>
         <div class="wes-promo__body">
-          <div class="wes-promo__trapezoid">
-            <span class="wes-promo__trapezoid-top"></span>
-            <span class="wes-promo__trapezoid-bottom"></span>
-          </div>
+          <div class="wes-promo__trapezoid"></div>
           <div class="wes-promo__content">
             <h2 class="wes-promo__title" [innerHTML]="title"></h2>
             <div class="wes-promo__message">
@@ -29,6 +26,7 @@ export const promo = () => ({
             </div>
             <div class="wes-promo__actions">
               <a class="wes-promo__cta" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank" [innerHTML]="primaryCtaText"></a>
+              <a class="wes-promo__cta wes-promo__cta--secondary" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank" [innerHTML]="secondaryCtaText"></a>
             </div>
             <div *ngIf="footnote" class="wes-promo__footnote">
               <!-- Rich text -->
