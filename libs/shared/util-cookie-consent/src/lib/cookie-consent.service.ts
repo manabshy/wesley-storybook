@@ -9,12 +9,14 @@ interface ConsentUpdateEvent extends CustomEvent {
 }
 
 const PERFORMANCE_CONSENT_COOKIE = 'WesleyanPerformanceOptIn';
+const FUNCTIONAL_CONSENT_COOKIE = 'WesleyanFunctionalOptIn';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CookieConsentService {
   private performanceConsentGiven$$ = new BehaviorSubject(false);
+  private functionalConsentGiven$$ = new BehaviorSubject(false);
 
   /**
    * A custom event needs added to Cassie Cookie Manager
@@ -33,26 +35,34 @@ export class CookieConsentService {
   );
 
   performanceConsentGiven$ = this.performanceConsentGiven$$.asObservable();
+  functionalConsentGiven$ = this.functionalConsentGiven$$.asObservable();
 
   constructor(private cookieService: CookieService) {
-    this.checkAnalyticalConsentGiven();
+    this.checkConsentGiven(
+      PERFORMANCE_CONSENT_COOKIE,
+      this.performanceConsentGiven$$
+    );
+    this.checkConsentGiven(
+      FUNCTIONAL_CONSENT_COOKIE,
+      this.functionalConsentGiven$$
+    );
   }
 
-  private checkAnalyticalConsentGiven() {
+  private checkConsentGiven(cookieName: string, bs: BehaviorSubject<boolean>) {
     merge(
       //Consent already given previously, cookie should be present
-      of(this.cookieService.get(PERFORMANCE_CONSENT_COOKIE) === 'yes'),
+      of(this.cookieService.get(cookieName) === 'yes'),
       //Consent modal present on the app, waiting for user consent
       this.consentUpdateEvent$.pipe(
-        filter((e) => e.detail.cookieName === PERFORMANCE_CONSENT_COOKIE),
-        map((v) => this.cookieService.get(PERFORMANCE_CONSENT_COOKIE) === 'yes')
+        filter((e) => e.detail.cookieName === cookieName),
+        map((v) => this.cookieService.get(cookieName) === 'yes')
       )
     )
       .pipe(
         //If consent already given before the app loads
         //two true values will fire, we need only one
         distinctUntilChanged(),
-        tap((v) => this.performanceConsentGiven$$.next(v))
+        tap((v) => bs.next(v))
       )
       .subscribe();
   }

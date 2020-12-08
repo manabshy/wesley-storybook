@@ -10,6 +10,7 @@ import {
   InactivityTimeoutService,
   TotalSessionTimeoutService,
 } from '@wesleyan-frontend/wpisa/feature-inactivity-timeout';
+import { ApplicationInsightsMonitoringService } from '@wesleyan-frontend/shared/util-app-monitoring';
 
 @Component({
   selector: 'wes-shell',
@@ -28,7 +29,8 @@ export class ShellComponent {
     private timeoutService: InactivityTimeoutService,
     private totalSessionTimeoutService: TotalSessionTimeoutService,
     private gtmService: GoogleTagManagerService,
-    private cookieConsentService: CookieConsentService
+    private cookieConsentService: CookieConsentService,
+    private appInsightsService: ApplicationInsightsMonitoringService
   ) {
     this.isDevEnv = isDevMode();
     this.timeoutService.initInactivityTimeout();
@@ -79,6 +81,14 @@ export class ShellComponent {
 
           this.gtmService.pushTag(gtmTag);
         })
+      )
+      .subscribe();
+
+    //Only use AppInsights if consent given
+    this.cookieConsentService.functionalConsentGiven$
+      .pipe(
+        filter((given) => given),
+        tap((_) => this.appInsightsService.startMonitoring())
       )
       .subscribe();
   }
