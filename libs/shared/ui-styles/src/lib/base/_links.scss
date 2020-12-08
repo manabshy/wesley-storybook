@@ -1,19 +1,30 @@
 /*------------------------------------*\
     #LINKS
 \*------------------------------------*/
-$link-text-color: $global-colour-grey-900;
+$link-text-color: $global-colour-grey-1000;
 $link-underline-color: $global-colour-gold-900;
-$link-text-color-hover: $global-colour-grey-900;
-$link-underline-color-hover: $global-colour-grey-900;
+$link-text-color-hover: $global-colour-grey-1000;
+$link-underline-color-hover: $global-colour-grey-1000;
 $link-underline-thickness: 2px;
-$link-text-font-weight: bold;
+$link-text-font-weight: 600;
 
-$link-over-background-text-color: $global-colour-grey-900;
-$link-over-background-underline-color: $global-colour-grey-900;
-$link-over-background-text-color-hover: $global-colour-grey-900;
+$link-text-color--on-gold: $global-colour-grey-1000;
+$link-underline-color--on-gold: $global-colour-grey-1000;
+$link-text-color-hover--on-gold: $global-colour-grey-1000;
+$link-underline-color-hover--on-gold: $global-colour-white;
+
+$link-text-color--on-dark: $global-colour-white;
+$link-underline-color--on-dark: $global-colour-gold-900;
+$link-text-color-hover--on-dark: $global-colour-white;
+$link-underline-color-hover--on-dark: $global-colour-white;
+
+$link-over-background-text-color: $global-colour-grey-1000;
+$link-over-background-underline-color: $global-colour-grey-1000;
+$link-over-background-text-color-hover: $global-colour-grey-1000;
 $link-over-background-underline-color-hover: $global-colour-white;
 $link-over-background-underline-thickness: 2px;
-$link-over-background-text-font-weight: bold;
+
+
 
 /**
  * Links
@@ -47,6 +58,35 @@ a {
   &:focus {
     text-decoration: none;
     border-bottom-color: $link-underline-color-hover;
+  }
+
+  &:focus {
+    outline: 3px dotted currentColor;
+    outline-offset: 3px;
+  }
+
+  // Core Link -- OnGold
+  &--on-gold {
+    color: $link-text-color--on-gold;
+    border-bottom-color: $link-underline-color--on-gold;
+
+    &:hover,
+    &:focus {
+      color: $link-text-color-hover--on-gold;
+      border-bottom-color: $link-underline-color-hover--on-gold;
+    }
+  }
+
+  // Core Link -- OnDark
+  &--on-dark {
+    color: $link-text-color--on-dark;
+    border-bottom-color: $link-underline-color--on-dark;
+
+    &:hover,
+    &:focus {
+      color: $link-text-color-hover--on-dark;
+      border-bottom-color: $link-underline-color-hover--on-dark;
+    }
   }
 
   &--over-background {
