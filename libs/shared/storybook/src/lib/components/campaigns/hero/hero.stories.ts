@@ -1,3 +1,5 @@
+import { boolean } from '@storybook/addon-knobs';
+
 export default {
   title: 'Campaigns|Hero',
 };
@@ -97,7 +99,7 @@ export const base = () => ({
       </div>
     </div>
 
-    <div class="wes-value-proposition">
+    <div class="wes-value-proposition" [ngClass]="{'wes-value-proposition--grey':valuePropositionOnGrey}">
       <div class="wes-value-proposition__wrapper">
         <div class="wes-value-proposition__body">
           <div class="wes-value-proposition__body-content">
@@ -118,6 +120,9 @@ export const base = () => ({
       </div>
     </div>
   `,
+  props: {
+    valuePropositionOnGrey: boolean('Value proposition on grey', false),
+  },
 });
   
 export const grey = () => ({
