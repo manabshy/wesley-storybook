@@ -1,0 +1,29 @@
+////
+/// Wesleyan Resource Link Component
+////
+
+.wes-resource-link {
+  position: relative;
+
+  & + & {
+    margin-top: rem(24px);
+  }
+
+  svg {
+    position: absolute;
+    left: 1px;
+    top: 6px;
+  }
+
+  &__body {
+    margin-left: rem(32px);
+  }
+
+  &__link {
+    @extend .wes-link;
+  }
+
+  &__meta {
+    white-space: nowrap;
+  }
+}

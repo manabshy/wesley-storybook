@@ -89,6 +89,10 @@
     }
   }
 
+  &__actions {
+    margin-top: rem(32px);
+  }
+
   &__bg {
     @include wes-make-col-ready;
 
