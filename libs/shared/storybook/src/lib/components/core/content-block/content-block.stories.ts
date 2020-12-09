@@ -30,7 +30,7 @@ export const contentBlock = () => ({
                   <li>Should I stay in the NHS Pension Scheme?</li>
                   <li>What should I do with my pension benefits when I take them?</li>
                 </ul>
-                <p>Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+                <p>Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
                 <p>Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
                 <ul class="bulleted">
                   <li>How can I retire early?</li>

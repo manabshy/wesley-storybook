@@ -114,8 +114,8 @@ wes.cassieDomModule = (function () {
                   </svg>\
                   </button>\
               </div>\
-              <div class="modal-body wes-rich-text-scope"></div>\
-              <div class="modal-footer"></div>\
+              <div class="modal-body wes-rich-text-scope wes-text-s"></div>\
+              <div class="modal-footer wes-text-s"></div>\
             </div>\
           </div>\
         </div>\
@@ -246,7 +246,7 @@ wes.cassieDomModule = (function () {
       .find('#acceptAllDiv')
       .detach()
       .end()
-      .addClass('wes-rich-text-scope')
+      .addClass('wes-rich-text-scope wes-text-s')
       .removeAttr('id');
     }
 
@@ -254,7 +254,7 @@ wes.cassieDomModule = (function () {
     return $popup
       .find('#footer-content')
       .detach()
-      .addClass('wes-rich-text-scope')
+      .addClass('wes-rich-text-scope wes-text-s')
       .removeAttr('id');
     }
 
