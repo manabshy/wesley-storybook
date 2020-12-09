@@ -171,7 +171,7 @@ wes.cassieDomModule = (function () {
                   </button>\
               </div>\
               <div class="modal-body">\
-                <div class="cassie-clone">\
+                <div class="wes-cassie">\
                 </div>\
               </div>\
               <div class="modal-footer"></div>\
@@ -292,7 +292,7 @@ wes.cassieDomModule = (function () {
       .find('.modal-body')
       .prepend(_grabHeader($cassiePopup))
       .append(_grabFooter($cassiePopup))
-      .find('.cassie-clone')
+      .find('.wes-cassie')
       .append(
         $cassiePopupClone.find('#header-content').detach().attr('hidden', 'true'),
         $cassiePopupClone.find('.body_content').map(function(i, el) { return _enhanceCheckbox($(el)) }).get()

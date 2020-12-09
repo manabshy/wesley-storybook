@@ -1,0 +1,46 @@
+////
+/// Wesleyan Cassie Cookie Module Overrides
+////
+
+.wes-cassie {
+  margin-top: rem(24px);
+  margin-bottom: rem(24px);
+
+  @include media-breakpoint-up(lg) {
+    margin-top: rem(32px);
+    margin-bottom: rem(32px);
+  }
+
+  @include media-breakpoint-up(xl) {
+    margin-top: rem(40px);
+    margin-bottom: rem(40px);
+  }
+
+  .body_content {
+    display: flex;
+  }
+
+  .body_content + .body_content {
+    margin-top: rem(24px);
+
+    @include media-breakpoint-up(xl) {
+      margin-top: rem(32px);
+    }
+  }
+
+  .switch {
+    order: -1;
+    margin-right: rem(16px);
+    position: relative;
+    height: rem(28px);
+    min-width: rem(28px);
+  }
+
+  .switch .status {
+    display: none;
+  }
+
+  .switch .slider {
+    display: none;
+  }
+}
