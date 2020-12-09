@@ -218,3 +218,31 @@
     @extend %wes-table-style-3__cell--cross;
   }
 }
+
+.wes-table-style-4 {
+  @at-root {
+    table#{&} {
+      @extend .wes-text-s;
+    }
+  }
+
+  table {
+    @extend .wes-text-s;
+  }
+
+  th {
+    font-weight: bold;
+    background-color: $global-colour-grey-50;
+  }
+
+  th,
+  td {
+    padding: rem(16px);
+  }
+
+  tbody {
+    tr + tr {
+      border-top: 1px solid #D9DADC;
+    }
+  }
+}

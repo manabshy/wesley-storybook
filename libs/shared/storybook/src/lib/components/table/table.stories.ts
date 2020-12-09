@@ -117,3 +117,42 @@ export const style3 = () => ({
     </div>
   `,
 });
+
+export const style4 = () => ({
+  template: `
+    <div class="container">
+      <div class="row">
+        <div class="col-10">
+
+          <table class="wes-table-style-4">
+            <thead>
+              <tr>
+                <th>Cookies</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SC_ANALYTICS_&#8203;GLOBAL_COOKIE</td>
+                <td>Preserves the visitor's session state across page requests. This cookie expires after the browser session. This is a first party cookie. </td>
+              </tr>
+              <tr>
+                <td>_gtm</td>
+                <td>Used by Google Tag Manager to load other scripts and code into a page. It is regarded as Strictly Necessary as, without it, other scripts may not function correctly. This cookie expires after the browser session. This is a first party cookie.</td>
+              </tr>
+              <tr>
+                <td>sxa_site</td>
+                <td>Used by our content management system (Sitecore) to identify the visitor's session state across page requests on the server. This cookie expires after the browser session. This is a first party cookie.</td>
+              </tr>
+              <tr>
+                <td>SyrenisCookiexxxx</td>
+                <td>Used by our consent management system (Cassie) to enable us to capture users' preferences compliantly under regulatory frameworks.</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  `,
+});

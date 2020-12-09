@@ -114,8 +114,8 @@ wes.cassieDomModule = (function () {
                   </svg>\
                   </button>\
               </div>\
-              <div class="modal-body wes-rich-text-scope"></div>\
-              <div class="modal-footer"></div>\
+              <div class="modal-body wes-rich-text-scope wes-text-s"></div>\
+              <div class="modal-footer wes-text-s"></div>\
             </div>\
           </div>\
         </div>\
@@ -171,7 +171,7 @@ wes.cassieDomModule = (function () {
                   </button>\
               </div>\
               <div class="modal-body">\
-                <div class="cassie-clone">\
+                <div class="wes-cassie">\
                 </div>\
               </div>\
               <div class="modal-footer"></div>\
@@ -246,7 +246,7 @@ wes.cassieDomModule = (function () {
       .find('#acceptAllDiv')
       .detach()
       .end()
-      .addClass('wes-rich-text-scope')
+      .addClass('wes-rich-text-scope wes-text-s')
       .removeAttr('id');
     }
 
@@ -254,7 +254,7 @@ wes.cassieDomModule = (function () {
     return $popup
       .find('#footer-content')
       .detach()
-      .addClass('wes-rich-text-scope')
+      .addClass('wes-rich-text-scope wes-text-s')
       .removeAttr('id');
     }
 
@@ -292,7 +292,7 @@ wes.cassieDomModule = (function () {
       .find('.modal-body')
       .prepend(_grabHeader($cassiePopup))
       .append(_grabFooter($cassiePopup))
-      .find('.cassie-clone')
+      .find('.wes-cassie')
       .append(
         $cassiePopupClone.find('#header-content').detach().attr('hidden', 'true'),
         $cassiePopupClone.find('.body_content').map(function(i, el) { return _enhanceCheckbox($(el)) }).get()
