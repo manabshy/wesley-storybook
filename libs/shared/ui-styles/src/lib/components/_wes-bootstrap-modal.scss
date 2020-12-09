@@ -231,6 +231,7 @@
 .modal-footer {
   @include media-breakpoint-down(sm) {
     flex-direction: column;
+    flex-shrink: 0;
   }
 
   > * + * {
