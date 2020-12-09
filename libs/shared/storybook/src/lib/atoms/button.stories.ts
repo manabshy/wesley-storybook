@@ -25,7 +25,7 @@ export const core = () => ({
       </div>
       <div class="d-flex">
         <div class="pr-3">
-          <button class="wes-button wes-button--on-light" disabled>Book an appointment</button>
+          <button class="wes-button wes-button--on-light" disabled aria-disabled="true">Book an appointment</button>
           <br><br>
         </div>
       </div>
@@ -41,7 +41,7 @@ export const core = () => ({
       </div>
       <div class="d-flex">
         <div class="pr-3">
-          <button class="wes-button wes-button--on-light wes-button--outline" disabled>Book an appointment</button>
+          <button class="wes-button wes-button--on-light wes-button--outline" disabled aria-disabled="true">Book an appointment</button>
           <br><br>
         </div>
       </div>
@@ -60,7 +60,7 @@ export const core = () => ({
       </div>
       <div class="d-flex">
         <div class="pr-3">
-          <button class="wes-button wes-button--on-gold" disabled>Book an appointment</button>
+          <button class="wes-button wes-button--on-gold" disabled aria-disabled="true">Book an appointment</button>
           <br><br>
         </div>
       </div>
@@ -76,7 +76,7 @@ export const core = () => ({
       </div>
       <div class="d-flex">
         <div class="pr-3">
-          <button class="wes-button wes-button--on-gold wes-button--outline" disabled>Book an appointment</button>
+          <button class="wes-button wes-button--on-gold wes-button--outline" disabled aria-disabled="true">Book an appointment</button>
           <br><br>
         </div>
       </div>
@@ -95,7 +95,7 @@ export const core = () => ({
       </div>
       <div class="d-flex">
         <div class="pr-3">
-          <button class="wes-button wes-button--on-dark" disabled>Book an appointment</button>
+          <button class="wes-button wes-button--on-dark" disabled aria-disabled="true">Book an appointment</button>
           <br><br>
         </div>
       </div>
@@ -111,7 +111,7 @@ export const core = () => ({
       </div>
       <div class="d-flex">
         <div class="pr-3">
-          <button class="wes-button wes-button--on-dark wes-button--outline" disabled>Book an appointment</button>
+          <button class="wes-button wes-button--on-dark wes-button--outline" disabled aria-disabled="true">Book an appointment</button>
           <br><br>
         </div>
       </div>
@@ -134,7 +134,7 @@ export const legacy = () => ({
           <a href="#" class="wes-button wes-button-primary">&lt;a /&gt;</a>
         </div>
         <div class="pr-3">
-          <button class="wes-button wes-button-primary" disabled>[disabled]</button>
+          <button class="wes-button wes-button-primary" disabled aria-disabled="true">[disabled]</button>
         </div>
       </div>
     </div>
