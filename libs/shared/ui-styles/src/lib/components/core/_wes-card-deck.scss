@@ -84,15 +84,17 @@
   }
 
   &__title {
-    @extend .wes-h2;
+    @include wes-typeset(level2);
 
-    font-weight: 400;
+    color: $global-colour-grey-1000;
     margin-bottom: 0;
   }
 
   &__message {
+    @include wes-typeset(regular);
     @extend .wes-rich-text-scope;
 
+    color: $global-colour-grey-900;
     margin-top: rem(16px);
   }
 
@@ -245,15 +247,17 @@
     }
 
     &-title {
-      @extend .wes-text-l;
-      @extend .wes-text-semi-bold;
+      @include wes-typeset(level3);
 
+      color: $global-colour-grey-1000;
       margin: 0;
     }
 
     &-message {
-      @extend .wes-text-s;
+      @include wes-typeset(small);
+      @extend .wes-rich-text-scope;
 
+      color: $global-colour-grey-900;
       margin-top: rem(16px);
       flex-grow: 1;
     }

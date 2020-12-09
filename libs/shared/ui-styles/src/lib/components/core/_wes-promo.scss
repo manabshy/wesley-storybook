@@ -95,39 +95,46 @@
   &__content {
     @include wes-make-col-ready;
 
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: rem(48px);
+    padding-bottom: rem(48px);
 
     @include media-breakpoint-up(md) {
       @include make-col(11);
+
+      padding-top: rem(88px);
+      padding-bottom: rem(88px);
     }
 
     @include media-breakpoint-up(lg) {
       @include make-col(9);
+
+      padding-top: rem(80px);
+      padding-bottom: rem(80px);
     }
 
     @include media-breakpoint-up(xl) {
       @include make-col(7);
+
+      padding-top: rem(72px);
+      padding-bottom: rem(72px);
     }
   }
 
   &__title {
-    @extend .wes-h2;
+    @include wes-typeset(promo);
 
+    color: $global-colour-grey-1000;
     margin: 0;
   }
 
   &__message {
-    @extend .wes-text-m;
+    @include wes-typeset(regular);
 
-    margin-top: rem(24px);
-
-    @include media-breakpoint-up(lg) {
-      margin-top: rem(16px);
-    }
+    color: $global-colour-grey-1000;
+    margin-top: rem(16px);
 
     @include media-breakpoint-up(xl) {
-      margin-top: rem(32px);
+      margin-top: rem(24px);
     }
   }
 
@@ -171,7 +178,7 @@
   }
 
   &__footnote {
-    @extend .wes-text-s;
+    @include wes-typeset(small);
 
     margin-top: rem(24px);
   }

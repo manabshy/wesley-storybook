@@ -78,8 +78,15 @@
       padding: rem(48px) rem(40px);
     }
 
+    @include media-breakpoint-up(lg) {
+      min-height: rem(456px);
+      display: flex;
+      flex-direction: column;
+    }
+
     @include media-breakpoint-up(xl) {
       padding: rem(56px) rem(48px);
+      min-height: rem(416px);
     }
 
     @at-root {
@@ -89,8 +96,30 @@
     }
   }
 
+  &__title {
+    @include wes-typeset(level2);
+
+    color: $global-colour-grey-1000;
+    margin: 0;
+  }
+
+  &__message {
+    @include wes-typeset(regular);
+
+    color: $global-colour-grey-900;
+    margin-top: rem(24px);
+
+    @include media-breakpoint-up(md) {
+      margin-top: rem(32px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      flex-grow: 1;
+    }
+  }
+
   &__actions {
-    margin-top: rem(32px);
+    margin-top: rem(40px);
   }
 
   &__bg {
