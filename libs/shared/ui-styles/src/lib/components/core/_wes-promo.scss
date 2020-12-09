@@ -5,6 +5,10 @@
 .wes-promo {
   @include wes-make-full-width-component;
 
+  &.wes-promo--grey {
+    background-color: $global-colour-grey-50;
+  }
+
   &__wrapper {
     @include wes-make-container;
   }

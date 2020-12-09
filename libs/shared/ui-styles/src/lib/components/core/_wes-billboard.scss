@@ -134,14 +134,16 @@
     background-size: cover;
     background-repeat: no-repeat;
 
+    $mobile-gutter-and-padding: 48px;
+
     @include media-breakpoint-down(sm) {
-      right: 0;
-      left: initial;
-      width: calc(100% - #{map-get($grid-gutter-widths, xs) / 2} - 26px);
+      left: $mobile-gutter-and-padding;
+      width: calc((100% + (100vw - 100%) / 2) - #{$mobile-gutter-and-padding});
 
       @at-root {
         .wes-billboard--reverse & {
-          left: 0;
+          right: $mobile-gutter-and-padding;
+          left: initial;
         }
       }
     }
