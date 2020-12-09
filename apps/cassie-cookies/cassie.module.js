@@ -159,7 +159,7 @@ wes.cassieDomModule = (function () {
   function _createWesSettingsModal() {
     return $('\
       <div class="popup">\
-        <div class="modal" id="wes-cookie-popup" tabindex="-1" role="dialog" xdata-backdrop="static" xdata-keyboard="false">\
+        <div class="modal" id="wes-cookie-popup" tabindex="-1" role="dialog">\
           <div class="modal-dialog modal-dialog-centered">\
             <div class="modal-content">\
               <div class="modal-header">\
