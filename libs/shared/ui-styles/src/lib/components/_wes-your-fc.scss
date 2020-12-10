@@ -43,6 +43,8 @@ $wes-your-fc-border-colour: $global-colour-grey-100;
   &__intro {
     @extend .wes-text-s;
     @extend .wes-text-semi-bold;
+    color: $global-colour-grey-1000;
+
     margin-bottom: rem(8px);
 
     @include media-breakpoint-only(md) {
@@ -183,6 +185,13 @@ $wes-your-fc-border-colour: $global-colour-grey-100;
   }
 
   p {
+    color: $global-colour-grey-1000;
+  }
+}
+.your-fc-page {
+  h1,
+  h2 {
+    font-weight: normal;
     color: $global-colour-grey-1000;
   }
 }
