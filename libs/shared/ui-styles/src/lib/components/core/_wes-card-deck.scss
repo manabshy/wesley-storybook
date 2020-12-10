@@ -263,6 +263,8 @@
     }
   
     &-footer {
+      @include wes-typeset(small);
+      
       margin-top: rem(24px);
 
       @include media-breakpoint-up(md) {
@@ -272,7 +274,6 @@
 
     &-cta {
       @extend .wes-link;
-      @extend .wes-text-s;
     }
   }
 }

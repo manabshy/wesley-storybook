@@ -2,7 +2,41 @@ export default {
   title: 'Atoms|Link',
 };
 
-export const links = () => ({
+const variants = {
+  'On Light': 'wes-button--on-light',
+  'On Gold': 'wes-button--on-gold',
+  'On Dark': 'wes-button--on-dark',
+};
+
+export const core = () => ({
+  template: `
+    <div class="bg-solid-white" style="padding:2rem;">
+      <div class="d-flex">
+        <div class="pr-3">
+          <a href="#" class="wes-link">Book an appointment</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="wes-bg-solid-gold-900" style="padding:2rem;">
+      <div class="d-flex">
+        <div class="pr-3">
+          <a href="#" class="wes-link wes-link--on-gold">Book an appointment</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="wes-bg-solid-grey-900" style="padding:2rem;">
+      <div class="d-flex">
+        <div class="pr-3">
+          <a href="#" class="wes-link wes-link--on-dark">Book an appointment</a>
+        </div>
+      </div>
+    </div>
+  `,
+});
+
+export const legacy = () => ({
   template: `
     <div class="bg-solid-white" style="padding:2rem;">
       <p>
