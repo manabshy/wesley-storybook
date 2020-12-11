@@ -17,3 +17,6 @@
     transform: skewY(-2deg);
   }
 }
+:host ::ng-deep p {
+  color: #1e2630;
+}

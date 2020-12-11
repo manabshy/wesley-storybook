@@ -83,7 +83,7 @@ export class FinancialConsultantFacade {
         take(1),
         catchError((err: HttpErrorResponse) => {
           this.loadingService.hide();
-          this.invalidCustomerReference$$.next(true);
+          this.handleError(err);
 
           return throwError(err);
         })

@@ -15,7 +15,7 @@ export function initializeApp(
   appInsightsService: ApplicationInsightsMonitoringService
 ) {
   const promise = configService.loadConfig().then(() => {
-    appInsightsService.init(
+    appInsightsService.config(
       configService.content.envConfig.applicationInsightsKey,
       'fmfc'
     );
