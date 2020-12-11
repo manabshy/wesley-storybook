@@ -1,9 +1,20 @@
+@mixin wes-square-frame-with-accent-top {
+  $wes-accent-height: 4px;
+  $wes-accent-padding: 16px;
+
+  border: 1px solid $global-colour-grey-100;
+  box-shadow: 0px -#{$wes-accent-height + $wes-accent-padding} 0 -#{$wes-accent-padding} $global-colour-gold-900;
+  transform: translateY($wes-accent-height);
+  margin-bottom: $wes-accent-height;
+}
+
 @mixin wes-rounded-frame-with-accent-top {
   $wes-accent-height: 4px;
+  $wes-accent-padding: 8px;
 
   border: 1px solid $global-colour-grey-100;
   border-radius: $wes-accent-height;
-  box-shadow: 0 0 4px 0 rgba($global-colour-black, 0.05), 0px -12px 0px -8px $global-colour-gold-900;
+  box-shadow: 0 0 4px 0 rgba($global-colour-black, 0.05), 0 -#{$wes-accent-height + $wes-accent-padding} 0 -#{$wes-accent-padding} $global-colour-gold-900;
   transform: translateY($wes-accent-height);
   margin-bottom: $wes-accent-height;
 }
@@ -21,6 +32,10 @@
   @include wes-square-frame;
 
   padding: rem(24px);
+}
+
+.wes-square-frame-with-accent-top {
+  @include wes-square-frame-with-accent-top;
 }
 
 .wes-rounded-frame-with-accent-top {

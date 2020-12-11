@@ -5,9 +5,9 @@ export default {
 };
 
 const variants = {
-  'Whisper': 'wes-promo--whisper',
+  'Whisper': '',
   'Shout': 'wes-promo--shout',
-  'Shout On Grey': 'wes-promo--shout wes-promo--grey',
+  'Shout :: On Grey': 'wes-promo--shout wes-promo--grey',
 };
   
 export const promo = () => ({

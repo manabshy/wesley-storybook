@@ -7,6 +7,10 @@ export default {
 const variants = {
   'On White': '',
   'On Grey': 'wes-content-block--grey',
+  'On White :: Right Aligned': 'wes-content-block--right',
+  'On Grey :: Right Aligned': 'wes-content-block--right wes-content-block--grey',
+  'On White :: Campaign': 'wes-content-block--campaign',
+  'On Grey :: Campaign': 'wes-content-block--campaign wes-content-block--grey',
 };
   
 export const contentBlock = () => ({

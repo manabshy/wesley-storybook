@@ -39,7 +39,28 @@
     }
 
     @include media-breakpoint-up(lg) {
-      @include make-col(8);
+      @include make-col-offset(2);
+      @include make-col(9);
+    }
+
+    @include media-breakpoint-up(xl) {
+      @include make-col-offset(0);
+      @include make-col(7);
+    }
+
+    @at-root {
+      .wes-content-block--right & {    
+        @include media-breakpoint-up(xl) {
+          @include make-col-offset(3);
+        }
+      }
+
+      .wes-content-block--campaign & {
+        @include media-breakpoint-up(lg) {
+          @include make-col-offset(1);
+          @include make-col(8);
+        }
+      }
     }
   }
 

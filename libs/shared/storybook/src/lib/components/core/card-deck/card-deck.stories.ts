@@ -7,8 +7,8 @@ export default {
 const variants = {
   'On White': '',
   'On Grey': 'wes-card-deck--grey',
-  'On White With Icons': 'wes-card-deck--icons',
-  'On Grey With Icons': 'wes-card-deck--grey wes-card-deck--icons',
+  'On White :: With Icons': 'wes-card-deck--icons',
+  'On Grey :: With Icons': 'wes-card-deck--grey wes-card-deck--icons',
 };
 
 export const cardDeck = () => ({
