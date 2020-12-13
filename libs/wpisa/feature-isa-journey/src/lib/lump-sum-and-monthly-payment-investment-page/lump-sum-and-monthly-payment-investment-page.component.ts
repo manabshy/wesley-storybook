@@ -1,5 +1,16 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewEncapsulation,
+  ViewChild,
+} from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { Title } from '@angular/platform-browser';
 import {
@@ -10,16 +21,17 @@ import {
   startWith,
   map,
 } from 'rxjs/operators';
-import { Subscription, merge, Observable } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 import {
   MonthlyAndLumpSumPayment,
   DirectDebitDetails,
 } from '@wesleyan-frontend/wpisa/data-access';
-import { totalAnnualAllowanceValidator } from '@wesleyan-frontend/shared/util-validators';
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
+import { totalAnnualAllowanceValidator } from '@wesleyan-frontend/shared/util-validators';
 
+import { DirectDebitFormComponent } from '../components/direct-debit-form/direct-debit-form.component';
 import { InvestmentOptionsFacade } from '../core/services/investment-options.facade';
 import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
 import { AppStateFacade } from '../core/services/app-state-facade';
@@ -35,6 +47,8 @@ import { currencyNumeric } from '../core/patterns';
 })
 export class LumpSumAndMonthlyPaymentInvestmentPageComponent
   implements OnInit, OnDestroy {
+  @ViewChild(DirectDebitFormComponent, { static: true })
+  ddForm: DirectDebitFormComponent;
   pageContent: MonthlyAndLumpSumPayment;
   directDebitContent: DirectDebitDetails;
   submitAttempt = false;
@@ -43,51 +57,13 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
   subscriptions$ = new Subscription();
   errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
 
-  form = this.fb.group({
-    totalAmount: this.fb.group({
-      lumpSumAmount: [
-        null,
-        {
-          validators: [
-            Validators.required,
-            Validators.pattern(currencyNumeric),
-          ],
-          updateOn: 'blur',
-        },
-      ],
-      monthlyAmount: [
-        null,
-        {
-          validators: [
-            Validators.required,
-            Validators.pattern(currencyNumeric),
-          ],
-          updateOn: 'blur',
-        },
-      ],
-    }),
-    directDebit: [null, Validators.required],
-  });
+  form: FormGroup;
+  lumpSumControl: AbstractControl;
+  monthlyControl: AbstractControl;
+  totalAmountControl: AbstractControl;
+  directDebitControl: AbstractControl;
 
-  lumpSumControl = this.form.get('totalAmount.lumpSumAmount');
-  monthlyControl = this.form.get('totalAmount.monthlyAmount');
-  totalAmountControl = this.form.get('totalAmount');
-  directDebitControl = this.form.get('directDebit');
-  latestAmountChangeControlName$: Observable<
-    'lumpSumAmount' | 'monthlyAmount'
-  > = this.totalAmountControl.valueChanges.pipe(
-    startWith(this.totalAmountControl.value),
-    pairwise(),
-
-    map(([prev, curr]) => {
-      if (prev.lumpSumAmount !== curr.lumpSumAmount) {
-        return 'lumpSumAmount';
-      }
-      if (prev.monthlyAmount !== curr.monthlyAmount) {
-        return 'monthlyAmount';
-      }
-    })
-  );
+  latestAmountChangeControlName$: Observable<'lumpSumAmount' | 'monthlyAmount'>;
 
   constructor(
     private loadingService: OverlayProgressSpinnerService,
@@ -105,6 +81,39 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
         this.titleService.setTitle(this.pageContent.metaTitle);
       })
     );
+  }
+
+  ngOnInit() {
+    this.form = this.fb.group({
+      totalAmount: this.fb.group({
+        lumpSumAmount: [
+          null,
+          {
+            validators: [
+              Validators.required,
+              Validators.pattern(currencyNumeric),
+            ],
+            updateOn: 'blur',
+          },
+        ],
+        monthlyAmount: [
+          null,
+          {
+            validators: [
+              Validators.required,
+              Validators.pattern(currencyNumeric),
+            ],
+            updateOn: 'blur',
+          },
+        ],
+      }),
+      directDebit: this.ddForm.createGroup(),
+    });
+
+    this.lumpSumControl = this.form.get('totalAmount.lumpSumAmount');
+    this.monthlyControl = this.form.get('totalAmount.monthlyAmount');
+    this.totalAmountControl = this.form.get('totalAmount');
+    this.directDebitControl = this.form.get('directDebit');
 
     this.formsManager.upsert('lumpSumAndMonthly', this.form);
 
@@ -114,9 +123,21 @@ export class LumpSumAndMonthlyPaymentInvestmentPageComponent
         this.appStateFacade.state.forms.lumpSumAndMonthly
       );
     }
-  }
 
-  ngOnInit() {
+    this.latestAmountChangeControlName$ = this.totalAmountControl.valueChanges.pipe(
+      startWith(this.totalAmountControl.value),
+      pairwise(),
+
+      map(([prev, curr]) => {
+        if (prev.lumpSumAmount !== curr.lumpSumAmount) {
+          return 'lumpSumAmount';
+        }
+        if (prev.monthlyAmount !== curr.monthlyAmount) {
+          return 'monthlyAmount';
+        }
+      })
+    );
+
     this.subscriptions$.add(
       this.investmentOptionsFacade.currentTaxPeriodISALimits$
         .pipe(

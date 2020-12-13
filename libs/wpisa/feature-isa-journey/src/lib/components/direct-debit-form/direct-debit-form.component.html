@@ -12,9 +12,9 @@
     </div>
 
     <wes-form-field id="bankName" class="mb-4">
-      <wes-label labelTestId="lblBankName">{{
-        content.bankName.inputLabel
-      }}</wes-label>
+      <wes-label labelTestId="lblBankName">
+        {{ content.bankName.inputLabel }}
+      </wes-label>
       <input
         wesInput
         type="text"
@@ -31,9 +31,9 @@
     </wes-form-field>
 
     <wes-form-field id="accountName" class="mb-4">
-      <wes-label labelTestId="lblAccountHolderFullName">{{
-        content.accountName.inputLabel
-      }}</wes-label>
+      <wes-label labelTestId="lblAccountHolderFullName">
+        {{ content.accountName.inputLabel }}
+      </wes-label>
       <input
         wesInput
         type="text"
@@ -50,9 +50,9 @@
     </wes-form-field>
 
     <wes-form-field id="accountNumber" class="mb-4">
-      <wes-label labelTestId="lblAccountNumber">{{
-        content.accountNumber.inputLabel
-      }}</wes-label>
+      <wes-label labelTestId="lblAccountNumber">
+        {{ content.accountNumber.inputLabel }}
+      </wes-label>
       <input
         wesInput
         type="text"
@@ -75,13 +75,14 @@
           class="wes-form-field-label"
           for="sortCode"
           data-test="lblSortCode"
-          >{{ content.sortCode.inputLabel }}</label
         >
+          {{ content.sortCode.inputLabel }}
+        </label>
         <div class="boxes">
           <wes-form-field class="sort-code-box">
-            <span id="sortCode1" class="cdk-visually-hidden"
-              >Sort code text box 1</span
-            >
+            <span id="sortCode1" class="cdk-visually-hidden">
+              Sort code text box 1
+            </span>
 
             <input
               wesInput
@@ -98,9 +99,9 @@
           </wes-form-field>
 
           <wes-form-field class="sort-code-box mx-2">
-            <span id="sortCode2" class="cdk-visually-hidden"
-              >Sort code text box 2</span
-            >
+            <span id="sortCode2" class="cdk-visually-hidden">
+              Sort code text box 2
+            </span>
             <input
               wesInput
               type="text"
@@ -116,9 +117,9 @@
           </wes-form-field>
 
           <wes-form-field class="sort-code-box">
-            <span id="sortCode3" class="cdk-visually-hidden"
-              >Sort code text box 3</span
-            >
+            <span id="sortCode3" class="cdk-visually-hidden">
+              Sort code text box 3
+            </span>
             <input
               wesInput
               type="text"

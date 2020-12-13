@@ -1,5 +1,16 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewEncapsulation,
+  ViewChild,
+} from '@angular/core';
+import {
+  Validators,
+  FormBuilder,
+  FormGroup,
+  AbstractControl,
+} from '@angular/forms';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -12,6 +23,7 @@ import {
 } from '@wesleyan-frontend/wpisa/data-access';
 import { OverlayProgressSpinnerService } from '@wesleyan-frontend/shared/ui-progress-spinner';
 
+import { DirectDebitFormComponent } from '../components/direct-debit-form/direct-debit-form.component';
 import { InvestmentOptionsFacade } from '../core/services/investment-options.facade';
 import { OnSubmitOrHasValueErrorStateMatcher } from '../core/error-state-matcher';
 import { AppStateFacade } from '../core/services/app-state-facade';
@@ -26,6 +38,9 @@ import { currencyNumeric } from '../core/patterns';
 })
 export class MonthlyPaymentsInvestmentPageComponent
   implements OnInit, OnDestroy {
+  @ViewChild(DirectDebitFormComponent, { static: true })
+  ddForm: DirectDebitFormComponent;
+
   pageContent: MonthlyPayment;
   directDebitContent: DirectDebitDetails;
   submitAttempt = false;
@@ -34,18 +49,9 @@ export class MonthlyPaymentsInvestmentPageComponent
   errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
 
   subscriptions$ = new Subscription();
-  form = this.fb.group({
-    amount: [
-      null,
-      {
-        validators: [Validators.required],
-        updateOn: 'blur',
-      },
-    ],
-    directDebit: [null, Validators.required],
-  });
-  amountControl = this.form.get('amount');
-  directDebitControl = this.form.get('directDebit');
+  form: FormGroup;
+  amountControl: AbstractControl;
+  directDebitControl: AbstractControl;
 
   constructor(
     private loadingService: OverlayProgressSpinnerService,
@@ -63,6 +69,22 @@ export class MonthlyPaymentsInvestmentPageComponent
         this.titleService.setTitle(this.pageContent.metaTitle);
       })
     );
+  }
+
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      amount: [
+        null,
+        {
+          validators: [Validators.required],
+          updateOn: 'blur',
+        },
+      ],
+      directDebit: this.ddForm.createGroup(),
+    });
+
+    this.amountControl = this.form.get('amount');
+    this.directDebitControl = this.form.get('directDebit');
 
     this.formsManager.upsert('monthlyPayment', this.form);
 
@@ -72,9 +94,7 @@ export class MonthlyPaymentsInvestmentPageComponent
         this.appStateFacade.state.forms.monthlyPayment
       );
     }
-  }
 
-  ngOnInit(): void {
     this.subscriptions$.add(
       this.investmentOptionsFacade.currentTaxPeriodISALimits$
         .pipe(
