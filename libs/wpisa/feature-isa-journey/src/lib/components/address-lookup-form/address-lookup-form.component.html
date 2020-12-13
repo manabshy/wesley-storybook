@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-12">
       <wes-form-field id="postcodeFormField" class="d-block mb-3 mb-md-2">
-        <wes-label labelTestId="lblFindAddressPostcode">{{
-          pageContent.addressDetails.postcode.inputLabel
-        }}</wes-label>
+        <wes-label labelTestId="lblFindAddressPostcode">
+          {{ pageContent.addressDetails.postcode.inputLabel }}
+        </wes-label>
         <input
           wesInput
           type="text"
@@ -18,6 +18,11 @@
         <wes-error *ngIf="isFieldInvalid('postcode')">
           <wes-form-field-error *ngIf="controls.postcode.hasError('required')">
             {{ pageContent.addressDetails.postcode.inputError }}
+          </wes-form-field-error>
+          <wes-form-field-error
+            *ngIf="controls.postcode.hasError('postcodeSearchNotInitiated')"
+          >
+            {{ pageContent.addressDetails.selectYourAddress.inputOtherError }}
           </wes-form-field-error>
           <wes-form-field-error
             *ngIf="controls.postcode.hasError('postcodeOrServiceFailure')"
@@ -46,9 +51,9 @@
       class="d-block mb-3"
       *ngIf="addressList.length > 0"
     >
-      <wes-label labelTestId="lblAddressList">{{
-        pageContent.addressDetails.selectYourAddress.inputLabel
-      }}</wes-label>
+      <wes-label labelTestId="lblAddressList">
+        {{ pageContent.addressDetails.selectYourAddress.inputLabel }}
+      </wes-label>
 
       <select
         wesNativeControl
@@ -59,9 +64,9 @@
       >
         <option value="" selected>Please select</option>
 
-        <option *ngFor="let address of addressList" [value]="address.moniker">{{
-          address.singleLine
-        }}</option>
+        <option *ngFor="let address of addressList" [value]="address.moniker">
+          {{ address.singleLine }}
+        </option>
       </select>
 
       <wes-error *ngIf="isFieldInvalid('selectedAddressId')">
@@ -73,9 +78,9 @@
   </ng-container>
 
   <p class="wes-text-s">
-    <ng-container *ngIf="(addressList$ | async).length > 0"
-      >{{ pageContent.addressDetails.cantSeeAddressLabel }}&nbsp;</ng-container
-    >
+    <ng-container *ngIf="(addressList$ | async).length > 0">
+      {{ pageContent.addressDetails.cantSeeAddressLabel }}&nbsp;
+    </ng-container>
 
     <button
       type="button"
