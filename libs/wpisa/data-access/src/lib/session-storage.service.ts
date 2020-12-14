@@ -14,7 +14,7 @@ const mockFormsStateString = JSON.stringify({
       question2: 'Yes',
     },
     customerPersonalDetails: {
-      title: '8',
+      title: 'c2044dac-a1eb-48c8-b23c-5255bac96bc0',
       firstName: 'Alex',
       lastName: 'Cote',
       dob: {
@@ -22,7 +22,7 @@ const mockFormsStateString = JSON.stringify({
         month: '02',
         year: '1980',
       },
-      profession: 'DENTISTS',
+      profession: '1237',
       nationalInsuranceNumber: 'SN 234 234 A',
       nationality: '92',
       addressLookup: {

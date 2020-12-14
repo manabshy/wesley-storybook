@@ -3,32 +3,17 @@ import {
   OnInit,
   Input,
   OnDestroy,
-  forwardRef,
   OnChanges,
   SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
-import {
-  FormGroup,
-  Validators,
-  FormBuilder,
-  NG_VALUE_ACCESSOR,
-  ControlValueAccessor,
-  AbstractControl,
-  ValidationErrors,
-  NG_VALIDATORS,
-  Validator,
-} from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { NgFormsManager } from '@ngneat/forms-manager';
+import { Subscription } from 'rxjs';
 
-import {
-  LumpSumPayment,
-  DirectDebitDetails,
-} from '@wesleyan-frontend/wpisa/data-access';
+import { DirectDebitDetails } from '@wesleyan-frontend/wpisa/data-access';
 
 import { OnSubmitOrHasValueErrorStateMatcher } from '../../core/error-state-matcher';
-import { DirectDebitFormValue } from './direct-debit-form-value.interface';
 import { AppForms } from '../../core/models/app-forms.interface';
 
 @Component({
@@ -36,93 +21,75 @@ import { AppForms } from '../../core/models/app-forms.interface';
   templateUrl: './direct-debit-form.component.html',
   styleUrls: ['./direct-debit-form.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => DirectDebitFormComponent),
-      multi: true,
-    },
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DirectDebitFormComponent),
-      multi: true,
-    },
-  ],
 })
-export class DirectDebitFormComponent
-  implements ControlValueAccessor, Validator, OnChanges, OnInit, OnDestroy {
+export class DirectDebitFormComponent implements OnInit, OnDestroy, OnChanges {
   @Input() submitAttempt = false;
-  @Input() touched = false;
   @Input() content: DirectDebitDetails;
 
   errorStateMatcher = new OnSubmitOrHasValueErrorStateMatcher();
   private subscription = new Subscription();
 
-  form: FormGroup = this.fb.group(
-    {
-      accountHolderFullName: [
-        null,
-        [Validators.required, Validators.maxLength(100)],
-      ],
-      sortCode: this.fb.group({
-        c1: [
-          null,
-          [
-            Validators.required,
-            Validators.pattern('[0-9]*'),
-            Validators.minLength(2),
-            Validators.maxLength(2),
-          ],
-        ],
-        c2: [
-          null,
-          [
-            Validators.required,
-            Validators.pattern('[0-9]*'),
-            Validators.minLength(2),
-            Validators.maxLength(2),
-          ],
-        ],
-        c3: [
-          null,
-          [
-            Validators.required,
-            Validators.pattern('[0-9]*'),
-            Validators.minLength(2),
-            Validators.maxLength(2),
-          ],
-        ],
-      }),
-      accountNumber: [
-        null,
-        [
-          Validators.required,
-          Validators.pattern('[0-9]*'),
-          Validators.minLength(6),
-          Validators.maxLength(8),
-        ],
-      ],
-      bankName: [null, [Validators.required, Validators.maxLength(100)]],
-    },
-    { updateOn: 'blur' }
-  );
-
-  onChange: any = (_: DirectDebitFormValue) => {};
-  onTouch: any = () => {};
+  form: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private formsManager: NgFormsManager<AppForms>
-  ) {
-    this.formsManager.upsert('directDebit', this.form);
-  }
+  ) {}
 
-  ngOnInit(): void {
-    this.subscription.add(
-      this.form.valueChanges.subscribe((value: DirectDebitFormValue) => {
-        this.onChange(value);
-      })
+  ngOnInit(): void {}
+
+  createGroup() {
+    this.form = this.fb.group(
+      {
+        accountHolderFullName: [
+          null,
+          [Validators.required, Validators.maxLength(100)],
+        ],
+        sortCode: this.fb.group({
+          c1: [
+            null,
+            [
+              Validators.required,
+              Validators.pattern('[0-9]*'),
+              Validators.minLength(2),
+              Validators.maxLength(2),
+            ],
+          ],
+          c2: [
+            null,
+            [
+              Validators.required,
+              Validators.pattern('[0-9]*'),
+              Validators.minLength(2),
+              Validators.maxLength(2),
+            ],
+          ],
+          c3: [
+            null,
+            [
+              Validators.required,
+              Validators.pattern('[0-9]*'),
+              Validators.minLength(2),
+              Validators.maxLength(2),
+            ],
+          ],
+        }),
+        accountNumber: [
+          null,
+          [
+            Validators.required,
+            Validators.pattern('[0-9]*'),
+            Validators.minLength(6),
+            Validators.maxLength(8),
+          ],
+        ],
+        bankName: [null, [Validators.required, Validators.maxLength(100)]],
+      },
+      { updateOn: 'blur' }
     );
+    this.formsManager.upsert('directDebit', this.form);
+
+    return this.form;
   }
 
   isFieldInvalid(fieldName: string) {
@@ -151,32 +118,6 @@ export class DirectDebitFormComponent
     ) {
       this.errorStateMatcher.submitted = true;
     }
-  }
-
-  writeValue(value: null | DirectDebitFormValue): void {
-    if (value) {
-      this.form.reset(value);
-    }
-  }
-
-  registerOnChange(fn: () => {}): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: (_: DirectDebitFormValue) => {}): void {
-    this.onTouch = fn;
-  }
-
-  validate(control: AbstractControl): ValidationErrors {
-    if (this.form.valid) {
-      return null;
-    }
-
-    return {
-      invalid: {
-        value: this.form.value,
-      },
-    };
   }
 
   ngOnDestroy() {
