@@ -229,6 +229,7 @@ wes.cassieDomModule = (function () {
         .replaceWith('<label class="switch">')
         .end()
       .find('.switch')
+        .append('<span hidden>Update cookie preference</span>')
         .append(switchContents)
         .end()
       .find('input')
