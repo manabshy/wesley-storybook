@@ -24,6 +24,7 @@ export class OnlyFloatDirective {
     'ArrowRight',
     'Del',
     'Delete',
+    'Enter',
   ];
 
   constructor(private el: ElementRef) {}
