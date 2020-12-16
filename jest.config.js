@@ -37,5 +37,6 @@ module.exports = {
     '<rootDir>/libs/shared/ui-pipes',
     '<rootDir>/libs/shared/util-gtm',
     '<rootDir>/libs/shared/util-cookie-consent',
+    '<rootDir>/apps/style',
   ],
 };

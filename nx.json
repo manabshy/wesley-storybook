@@ -166,6 +166,9 @@
     },
     "shared-util-cookie-consent": {
       "tags": []
+    },
+    "style": {
+      "tags": []
     }
   },
   "affected": {
