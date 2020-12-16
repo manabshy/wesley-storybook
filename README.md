@@ -32,10 +32,17 @@ To run an app locally:
 
 # Build for production
 
-`npm run supply:app-name`
+`npm run supply:app-nam`
+Generated file are at this location `C:\VSTS\Digital Programme\Wesleyan-Frontend\dist\apps\app-name`
 
 - `npm run supply:wpisa`
 - `npm run supply:find-my-fc`
+
+## Build style.css only
+
+`npm run supply:style`
+
+`style.css` should be locate here `C:\VSTS\Digital Programme\Wesleyan-Frontend\dist\apps\style`
 
 # Test
 
