@@ -68,3 +68,51 @@
     width: auto;
   }
 }
+
+//Hack to fix the two cols layout, remove after core rebuild
+.c-navigation--footer-nav {
+  ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    @include media-breakpoint-up(md) {
+      flex-wrap: nowrap;
+    }
+    @include media-breakpoint-up(lg) {
+      justify-content: end;
+    }
+  }
+  li {
+    flex-shrink: 0;
+  }
+  @include media-breakpoint-down(sm) {
+    li {
+      flex-basis: 50%;
+    }
+    .item0 {
+      order: 0;
+    }
+    .item1 {
+      order: 2;
+    }
+    .item2 {
+      order: 4;
+    }
+    .item3 {
+      order: 6;
+    }
+    .item4 {
+      order: 1;
+      padding-left: rem(30px);
+    }
+    .item5 {
+      order: 3;
+      padding-left: rem(30px);
+    }
+    .item6 {
+      order: 5;
+      padding-left: rem(30px);
+    }
+  }
+}
+//Hack End
