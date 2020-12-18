@@ -2,6 +2,11 @@ import { boolean, select, text } from '@storybook/addon-knobs';
 
 export default {
   title: 'Core|Promo (Full Width)',
+  parameters: { 
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
 
 const variants = {
@@ -20,17 +25,16 @@ export const promo = () => ({
         <div class="wes-promo__body">
           <div class="wes-promo__trapezoid"></div>
           <div class="wes-promo__content">
-            <h2 class="wes-promo__title" [innerHTML]="title"></h2>
-            <div class="wes-promo__message">
-              <p [innerHTML]="message"></p>
+            <h2 class="wes-promo__title">{{ title }}</h2>
+            <div class="wes-promo__message" [innerHTML]="message">
+              <!-- Rich text content -->
             </div>
             <div class="wes-promo__actions">
-              <a class="wes-promo__cta" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank" [innerHTML]="primaryCtaText"></a>
-              <a class="wes-promo__cta wes-promo__cta--secondary" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank" [innerHTML]="secondaryCtaText"></a>
+              <a class="wes-promo__cta" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">{{ primaryCtaText }}</a>
+              <a *ngIf="secondaryCtaText" class="wes-promo__cta wes-promo__cta--secondary" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">{{ secondaryCtaText }}</a>
             </div>
-            <div *ngIf="footnote" class="wes-promo__footnote">
-              <!-- Rich text -->
-              <p [innerHTML]="footnote"></p>
+            <div *ngIf="footnote" class="wes-promo__footnote" [innerHTML]="footnote">
+              <!-- Rich text content -->
             </div>
             <div *ngIf="customContent" class="wes-promo__placeholder">
               <!-- Custom components -->
@@ -45,10 +49,10 @@ export const promo = () => ({
     variant: select('Variant', variants, ''),
     withImage: boolean('With image', false),
     title: text('Title', 'Not sure what’s right for you?'),
-    message: text('Message', 'With so many different options for saving and investing your money, it can be a good idea to take expert advice. Why not book a no-obligation meeting with a Wesleyan Financial Services Consultant near you?'),
-    primaryCtaText: text('Primary CTA text', 'Book your appointment'),
-    secondaryCtaText: text('Primary CTA text', 'Book your appointment'),
-    footnote: text('Footnote', 'No initial charge when you open your ISA online.'),
+    message: text('Message', '<p>With so many different options for saving and investing your money, it can be a good idea to take expert advice. Why not book a no-obligation meeting with a Wesleyan Financial Services Consultant near you?</p>'),
+    primaryCtaText: text('Primary CTA text', 'Open your ISA online'),
+    secondaryCtaText: text('Secondary CTA text', 'Book your appointment'),
+    footnote: text('Footnote', '<p>No initial charge when you open your ISA online.</p>'),
     customContent: boolean('Custom content', false),
   },
 });

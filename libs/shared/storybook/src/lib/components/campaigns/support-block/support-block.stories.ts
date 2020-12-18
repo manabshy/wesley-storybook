@@ -2,11 +2,11 @@ import { text, boolean } from '@storybook/addon-knobs';
 
 export default {
   title: 'Campaigns|Support Block (Full Width)',
-};
-
-const variants = {
-  'Default': '',
-  'With Header': 'wes-support-block--grey',
+  parameters: { 
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
   
 export const supportBlock = () => ({
@@ -15,9 +15,9 @@ export const supportBlock = () => ({
       <div class="wes-support-block__wrapper">
         <div class="wes-support-block__header">
           <div *ngIf="withHeader" class="wes-support-block__header-content">
-            <h2 class="wes-support-block__title" [innerHTML]="title"></h2>
-            <div class="wes-support-block__message">
-              <p [innerHTML]="message">This component can conditionally have header content.</p>
+            <h2 class="wes-support-block__title">{{ title }}</h2>
+            <div class="wes-support-block__message" [innerHTML]="message">
+              <!-- Rich text content -->
             </div>
           </div>
         </div>
@@ -121,6 +121,6 @@ export const supportBlock = () => ({
   props: {
     withHeader: boolean('With header', false),
     title: text('Title', 'Support Block'),
-    message: text('Message', 'This component can conditionally have header content.'),
+    message: text('Message', '<p>This component can conditionally have header content.</p>'),
   },
 });

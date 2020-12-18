@@ -2,6 +2,11 @@ import { text, select } from '@storybook/addon-knobs';
 
 export default {
   title: 'Campaigns|Content Container (Full Width)',
+  parameters: { 
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
 
 const variants = {
@@ -17,9 +22,9 @@ export const contentContainer = () => ({
         <div *ngIf="!!variant" class="wes-content-container__header">
           <div *ngIf="variant.includes('with-image')" class="wes-content-container__bg" style="background-image: url(http://placekitten.com/700/320)"></div>
           <div *ngIf="variant.includes('with-header')" class="wes-content-container__header-content">
-            <h2 class="wes-content-container__title" [innerHTML]="title"></h2>
-            <div class="wes-content-container__message">
-              <p [innerHTML]="message"></p>
+            <h2 class="wes-content-container__title">{{ title }}</h2>
+            <div class="wes-content-container__message" [innerHTML]="message">
+              <!-- Rich text content -->
             </div>
           </div>
         </div>
@@ -42,6 +47,6 @@ export const contentContainer = () => ({
   props: {
     variant: select('Variant', variants, ''),
     title: text('Title', 'Insurance as unique as your home'),
-    message: text('Message', 'When you own a high-value home, a standard insurance policy doesn\'t quite come up to scratch. That\'s why we work with a hand-picked panel of premium UK insurers to bring you the bespoke cover you need.'),
+    message: text('Message', '<p>When you own a high-value home, a standard insurance policy doesn\'t quite come up to scratch. That\'s why we work with a hand-picked panel of premium UK insurers to bring you the bespoke cover you need.</p>'),
   },
 });

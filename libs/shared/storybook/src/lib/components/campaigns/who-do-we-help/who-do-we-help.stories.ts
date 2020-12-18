@@ -1,7 +1,12 @@
-import { select } from '@storybook/addon-knobs';
+import { number, select, text, withKnobs } from '@storybook/addon-knobs';
 
 export default {
   title: 'Campaigns|Who Do We Help (Full Width)',
+  parameters: { 
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
 
 const variants = {
@@ -9,20 +14,28 @@ const variants = {
   'On Grey': 'wes-who-do-we-help--grey',
 };
 
+const professionMap = [
+  { label: 'GPs', svg: '<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g transform="translate(5.333)" fill="none" fill-rule="evenodd"><path d="M4.594 2.286L0 3.234c1.42 9.527 4.468 14.29 9.143 14.29M13.692 2.286l4.594.948c-1.42 9.527-4.468 14.29-9.143 14.29" stroke="#1E2630" stroke-linejoin="round"/><path d="M9.143 17.524v9.905c.013 2.063.778 3.095 2.295 3.095 1.518 0 2.276-.61 2.276-1.83v-7.208c.119-1.14.91-1.709 2.375-1.709 1.464 0 2.197.57 2.197 1.709v4.463" stroke="#1E2630"/><rect stroke="#1E2630" fill="#D8D8D8" x="4.31" y=".5" width="1" height="3.571" rx=".5"/><rect stroke="#1E2630" fill="#D8D8D8" x="13.452" y=".5" width="1" height="3.571" rx=".5"/><circle stroke="#FEBD11" cx="18.286" cy="27.429" r="1.786"/></g></svg>' }
+];
+
 export const whoDoWeHelp = () => ({
   template: `
     <div class="wes-who-do-we-help {{variant}}">
       <div class="wes-who-do-we-help__wrapper">
         <div class="wes-who-do-we-help__body">
           <div class="wes-who-do-we-help__body-content">
-            <h2 class="wes-who-do-we-help__title">Who do we help?</h2>
+            <h2 class="wes-who-do-we-help__title">{{ title }}</h2>
             <ul class="wes-who-do-we-help__list">
-              <li class="wes-who-do-we-help__item">
-                <span class="wes-who-do-we-help__item-svg">
-                  <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g transform="translate(5.333)" fill="none" fill-rule="evenodd"><path d="M4.594 2.286L0 3.234c1.42 9.527 4.468 14.29 9.143 14.29M13.692 2.286l4.594.948c-1.42 9.527-4.468 14.29-9.143 14.29" stroke="#1E2630" stroke-linejoin="round"/><path d="M9.143 17.524v9.905c.013 2.063.778 3.095 2.295 3.095 1.518 0 2.276-.61 2.276-1.83v-7.208c.119-1.14.91-1.709 2.375-1.709 1.464 0 2.197.57 2.197 1.709v4.463" stroke="#1E2630"/><rect stroke="#1E2630" fill="#D8D8D8" x="4.31" y=".5" width="1" height="3.571" rx=".5"/><rect stroke="#1E2630" fill="#D8D8D8" x="13.452" y=".5" width="1" height="3.571" rx=".5"/><circle stroke="#FEBD11" cx="18.286" cy="27.429" r="1.786"/></g></svg>
-                </span>
-                <p class="wes-who-do-we-help__item-text">GPs</p>
-              </li>
+              <ng-container *ngFor="let card of [].constructor(professionCount)">
+                <li class="wes-who-do-we-help__item">
+                  <span class="wes-who-do-we-help__item-svg">
+                    <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g transform="translate(5.333)" fill="none" fill-rule="evenodd"><path d="M4.594 2.286L0 3.234c1.42 9.527 4.468 14.29 9.143 14.29M13.692 2.286l4.594.948c-1.42 9.527-4.468 14.29-9.143 14.29" stroke="#1E2630" stroke-linejoin="round"/><path d="M9.143 17.524v9.905c.013 2.063.778 3.095 2.295 3.095 1.518 0 2.276-.61 2.276-1.83v-7.208c.119-1.14.91-1.709 2.375-1.709 1.464 0 2.197.57 2.197 1.709v4.463" stroke="#1E2630"/><rect stroke="#1E2630" fill="#D8D8D8" x="4.31" y=".5" width="1" height="3.571" rx=".5"/><rect stroke="#1E2630" fill="#D8D8D8" x="13.452" y=".5" width="1" height="3.571" rx=".5"/><circle stroke="#FEBD11" cx="18.286" cy="27.429" r="1.786"/></g></svg>
+                  </span>
+                  <p class="wes-who-do-we-help__item-text">GPs</p>
+                </li>
+              </ng-container>
+
+              <!--
               <li class="wes-who-do-we-help__item">
                 <span class="wes-who-do-we-help__item-svg">
                   <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
@@ -87,16 +100,14 @@ export const whoDoWeHelp = () => ({
                 </span>
                 <p class="wes-who-do-we-help__item-text">Medical students</p>
               </li>
+              -->
+
             </ul>
-
-            <div class="wes-who-do-we-help__message">
-              <!-- Rich Text -->
-              <p>90% of GP customers rated their Wesleyan Financial Services Consultant as very good or excellent in 2019*</p>
+            <div class="wes-who-do-we-help__message" [innerHTML]="message">
+              <!-- Rich text content -->
             </div>
-
-            <div class="wes-who-do-we-help__footnote">
-              <!-- Rich Text -->
-              <p>*Wesleyan Sales Survey 2019 – based on scoring 8, 9 or 10 out of 10</p>
+            <div class="wes-who-do-we-help__footnote" [innerHTML]="footnote">
+              <!-- Rich text content -->
             </div>
           </div>
         </div>
@@ -105,5 +116,9 @@ export const whoDoWeHelp = () => ({
   `,
   props: {
     variant: select('Variant', variants, ''),
+    title: text('Title', 'Who do we help?'),
+    professionCount: number('Number of professions', 6, {min:1,max:6}),
+    message: text('Message', '<p>90% of GP customers rated their Wesleyan Financial Services Consultant as very good or excellent in 2019*</p>'),
+    footnote: text('Footnote', '<p>*Wesleyan Sales Survey 2019 – based on scoring 8, 9 or 10 out of 10</p>'),
   },
 });
