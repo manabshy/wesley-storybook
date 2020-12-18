@@ -39,17 +39,20 @@
     }
 
     @include media-breakpoint-up(lg) {
-      @include make-col-offset(2);
+      @include make-col-offset(0);
       @include make-col(9);
     }
 
     @include media-breakpoint-up(xl) {
-      @include make-col-offset(0);
       @include make-col(7);
     }
 
     @at-root {
-      .wes-content-block--right & {    
+      .wes-content-block--right & {
+        @include media-breakpoint-up(lg) {
+          @include make-col-offset(2);
+        }
+
         @include media-breakpoint-up(xl) {
           @include make-col-offset(3);
         }
