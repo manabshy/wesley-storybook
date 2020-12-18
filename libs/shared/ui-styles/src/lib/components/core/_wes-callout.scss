@@ -34,7 +34,6 @@
     @include wes-make-col-ready;
 
     @include media-breakpoint-up(lg) {
-      @include make-col-offset(1);
       @include make-col(11);
     }
 
@@ -45,6 +44,10 @@
 
     @at-root {
       .wes-callout--right & {    
+        @include media-breakpoint-up(lg) {
+          @include make-col-offset(1);
+        }
+
         @include media-breakpoint-up(xl) {
           @include make-col-offset(2);
         }
