@@ -5,7 +5,7 @@ export default {
 };
 
 const variants = {
-  'On White': 'wes-billboard',
+  'On White': '',
   'On Grey': 'wes-billboard--grey',
   'On White (Reversed)': 'wes-billboard--reverse',
   'On Grey (Reversed)': 'wes-billboard--reverse wes-billboard--grey',
