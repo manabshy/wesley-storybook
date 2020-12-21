@@ -2,6 +2,11 @@ import { text, select } from '@storybook/addon-knobs';
 
 export default {
   title: 'Campaigns|CTA Card (Full Width)',
+  parameters: { 
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
 
 const variants = {
@@ -27,11 +32,11 @@ export const CTACard = () => ({
                 </svg>
               </div>
               <div class="wes-cta-card__content">
-                <div class="wes-cta-card__message">
-                  <p [innerHTML]="message"></p>
+                <div class="wes-cta-card__message" [innerHTML]="message">
+                  <!-- Rich text content -->
                 </div>
                 <div class="wes-cta-card__action">
-                  <a class="wes-link" href="#" [innerHTML]="linkText"></a>
+                  <a class="wes-link" href="#">{{ linkText }}</a>
                 </div>
               </div>
             </div>
@@ -42,7 +47,7 @@ export const CTACard = () => ({
   `,
   props: {
     variant: select('Variant', variants, ''),
-    message: text('Message', 'Book today and we\'ll also send you our free guide to the NHS pension - packed with useful information to help you make sense of the scheme.'),
+    message: text('Message', '<p>Book today and we\'ll also send you our free guide to the NHS pension - packed with useful information to help you make sense of the scheme.</p>'),
     linkText: text('Link Text', 'Get your free NHS pension guide'),
   },
 });

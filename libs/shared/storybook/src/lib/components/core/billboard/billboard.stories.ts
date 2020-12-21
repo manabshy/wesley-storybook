@@ -2,13 +2,18 @@ import { select, text } from '@storybook/addon-knobs';
 
 export default {
   title: 'Core|Billboard (Full Width)',
+  parameters: { 
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
 
 const variants = {
-  'On White': 'wes-billboard',
+  'On White': '',
   'On Grey': 'wes-billboard--grey',
-  'On White (Reversed)': 'wes-billboard--reverse',
-  'On Grey (Reversed)': 'wes-billboard--reverse wes-billboard--grey',
+  'On White :: Reversed': 'wes-billboard--reverse',
+  'On Grey :: Reversed': 'wes-billboard--reverse wes-billboard--grey',
 };
   
 export const billboard = () => ({
@@ -18,12 +23,12 @@ export const billboard = () => ({
         <div class="wes-billboard__body">
           <div class="wes-billboard__body-content">
             <div class="wes-billboard__content">
-              <h2 class="wes-billboard__title" [innerHTML]="title"></h2>
-              <div class="wes-billboard__message">
-                <p [innerHTML]="message"></p>
+              <h2 class="wes-billboard__title">{{ title }}</h2>
+              <div class="wes-billboard__message" [innerHTML]="message">
+                <!-- Rich text content -->
               </div>
               <div class="wes-billboard__actions">
-                <a class="wes-billboard__cta wes-button wes-button--on-light" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank" [innerHTML]="primaryCtaText"></a>
+                <a class="wes-billboard__cta wes-button wes-button--on-light" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">{{ primaryCtaText }}</a>
               </div>
             </div>
           </div>
@@ -37,7 +42,7 @@ export const billboard = () => ({
   props: {
     variant: select('Variant', variants, ''),
     title: text('Title', 'Stocks and shares ISA'),
-    message: text('Message', 'Offering a tax shelter for your savings, plus the potential for growth, a stocks and shares ISA is a popular way to invest. There are two stocks and shares ISAs available from Wesleyan Group – find the right product for you and apply online today.'),
+    message: text('Message', '<p>Offering a tax shelter for your savings, plus the potential for growth, a stocks and shares ISA is a popular way to invest. There are two stocks and shares ISAs available from Wesleyan Group – find the right product for you and apply online today.</p>'),
     primaryCtaText: text('Primary CTA text', 'Choose your ISA'),
   },
 });
