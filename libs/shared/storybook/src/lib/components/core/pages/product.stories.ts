@@ -55,6 +55,19 @@ export const basic = () => ({
         </div>
       </div>
     </div>
+    <div class="wes-emphasis  {{ variant.replaceAll('wes-core-component', 'wes-emphasis') }}">
+      <div class="wes-emphasis__wrapper">
+        <div class="wes-emphasis__body">
+          <div class="wes-emphasis__body-content">
+            <div class="wes-emphasis__frame">
+              <div class="wes-emphasis__message">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec scelerisque magna, et consequat magna. Nulla a lacus molestie, tristique sapien eu, auctor ipsum. Praesent purus libero, aliquet ut odio eu, consequat fermentum libero.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   `,
   props: {
     variant: select('Variant', variants, ''),
