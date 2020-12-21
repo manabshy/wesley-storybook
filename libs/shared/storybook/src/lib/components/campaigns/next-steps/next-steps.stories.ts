@@ -14,7 +14,7 @@ const variants = {
   'On Grey': 'wes-next-steps--grey',
 };
 
-export const base = () => ({
+export const nextSteps = () => ({
   template: `
     <div class="wes-next-steps {{variant}}">
       <div class="wes-next-steps__wrapper">

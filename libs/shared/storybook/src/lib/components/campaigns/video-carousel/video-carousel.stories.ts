@@ -1,8 +1,15 @@
+import { text } from '@storybook/addon-knobs';
+
 export default {
   title: 'Campaigns|Video Carousel (Full Width)',
+  parameters: { 
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
   
-export const base = () => ({
+export const videoCarousel = () => ({
   template: `
     <div class="wes-video-carousel">
       <div class="wes-video-carousel__wrapper">
@@ -13,10 +20,10 @@ export const base = () => ({
             <!-- Repeatable nested video carousel components -->
             <div class="wes-video-carousel__testimonial">
               <blockquote class="wes-video-carousel__testimonial-content">
-                <p class="wes-video-carousel__quote">"I thought I knew about retirement planning. It was amazing what I didn’t know."</p>
+                <p class="wes-video-carousel__quote" [innerHTML]="videoQuote"></p>
                 <footer class="wes-video-carousel__attribution">
                   <cite class="wes-video-carousel__citation">
-                    <span class="wes-video-carousel__author">Dr Shiv Pabary, MBE</span>    
+                    <span class="wes-video-carousel__author">{{ videoAuthor }}</span>    
                   </cite>
                 </footer>
               </blockquote>
@@ -92,5 +99,9 @@ export const base = () => ({
   </script>
   -->
   `,
+  props: {
+    videoQuote: text('Video quote', '"I thought I knew about retirement planning. It was amazing what I didn’t know."'),
+    videoAuthor: text('Video author', 'Dr Shiv Pabary, MBE'),
+  },
 });
   

@@ -16,7 +16,7 @@ export const supportBlock = () => ({
         <div class="wes-support-block__header">
           <div *ngIf="withHeader" class="wes-support-block__header-content">
             <h2 class="wes-support-block__title">{{ title }}</h2>
-            <div class="wes-support-block__message" [innerHTML]="message">
+            <div class="wes-support-block__message" [innerHTML]="subtitle">
               <!-- Rich text content -->
             </div>
           </div>
@@ -121,6 +121,6 @@ export const supportBlock = () => ({
   props: {
     withHeader: boolean('With header', false),
     title: text('Title', 'Support Block'),
-    message: text('Message', '<p>This component can conditionally have header content.</p>'),
+    subtitle: text('Subtitle', '<p>This component can conditionally have header content.</p>'),
   },
 });
