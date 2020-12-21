@@ -105,6 +105,9 @@
   &__deck-item {
     @include wes-make-col-ready;
 
+    display: flex;
+    flex-direction: column;
+
     @include media-breakpoint-down(md) {
       & + & {
         margin-top: rem(24px);
