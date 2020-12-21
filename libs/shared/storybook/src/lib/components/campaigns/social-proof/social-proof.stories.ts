@@ -1,14 +1,21 @@
+import { text } from '@storybook/addon-knobs';
+
 export default {
   title: 'Campaigns|Social Proof (Full Width)',
+  parameters: { 
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
   
-export const base = () => ({
+export const socialProof = () => ({
   template: `
     <div class="wes-social-proof">
       <div class="wes-social-proof__wrapper">
         <div class="wes-social-proof__header">
           <div class="wes-social-proof__header-content">
-            <h2 class="wes-social-proof__title">What our customers say:</h2>
+            <h2 class="wes-social-proof__title">{{ title }}</h2>
           </div>
         </div>
         <div class="wes-social-proof__testimonials">
@@ -16,21 +23,11 @@ export const base = () => ({
 
             <!-- Repeatable nested testimonial components -->
             <blockquote class="wes-social-proof__testimonial">
-              <p class="wes-social-proof__quote">"The excellent service provided by Wesleyan recently was reflected in my e-mail to David who responded efficiently, courteously and promptly to my telephone call. It seems all too rare to get such a good personal customer service today, so I commend Wesleyan for having a such a customer- friendly accessible system."</p>
+              <p class="wes-social-proof__quote" [innerHTML]="testimonialQuote"></p>
               <footer class="wes-social-proof__attribution">
                 <cite class="wes-social-proof__citation">
-                  <span class="wes-social-proof__author">Neville Harrison, Surrey, UK</span>
-                  <span class="wes-social-proof__date">2018</span>    
-                </cite>
-              </footer>
-            </blockquote>
-
-            <blockquote class="wes-social-proof__testimonial">
-              <p class="wes-social-proof__quote">"The excellent service provided by Wesleyan recently was reflected in my e-mail."</p>
-              <footer class="wes-social-proof__attribution">
-                <cite class="wes-social-proof__citation">
-                  <span class="wes-social-proof__author">Somebody Else, Kent, UK</span>
-                  <span class="wes-social-proof__date">2020</span>    
+                  <span class="wes-social-proof__author">{{ testimonialAuthor }}</span>
+                  <span class="wes-social-proof__date">{{ testimonialDate }}</span>    
                 </cite>
               </footer>
             </blockquote>
@@ -99,4 +96,10 @@ export const base = () => ({
     </script>
     -->
   `,
+  props: {
+    title: text('Title', 'What our customers say:'),
+    testimonialQuote: text('Testimonial quote', '"The excellent service provided by Wesleyan recently was reflected in my e-mail to David who responded efficiently, courteously and promptly to my telephone call. It seems all too rare to get such a good personal customer service today, so I commend Wesleyan for having a such a customer- friendly accessible system."'),
+    testimonialAuthor: text('Testimonial author', 'Neville Harrison, Surrey, UK'),
+    testimonialDate: text('Testimonial date', '2018'),
+  },
 });
