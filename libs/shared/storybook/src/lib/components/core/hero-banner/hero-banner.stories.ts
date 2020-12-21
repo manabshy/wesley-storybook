@@ -19,7 +19,7 @@ export const heroBanner = () => ({
               <a *ngIf="secondaryCtaText.length > 0" class="wes-hero-banner-2__cta wes-hero-banner-2__cta--secondary" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank" [innerHTML]="secondaryCtaText"></a>
             </div>
             <div *ngIf="footnote" class="wes-hero-banner-2__footnote">
-              <p>{{footnote}} <a *ngIf="supportingLinkText.length > 0" class="" href="/" target="_blank" [innerHTML]="supportingLinkText"></a></p>
+              <p>{{footnote}} <a *ngIf="supportingLinkText.length > 0" class="wes-hero-banner-2__support-link" href="/" target="_blank" [innerHTML]="supportingLinkText"></a></p>
             </div>
           </div>
         </div>
