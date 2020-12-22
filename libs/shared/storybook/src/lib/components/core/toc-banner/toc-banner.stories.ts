@@ -1,4 +1,4 @@
-import { boolean, select, text } from '@storybook/addon-knobs';
+import { text, array } from '@storybook/addon-knobs';
 
 export default {
   title: 'Core|TOC Banner (Full Width)',
@@ -14,10 +14,21 @@ export const tocBanner = () => ({
             <div class="wes-toc-banner__message">
               <p>{{subheading}}</p>
             </div>
-            <div *ngIf="footnote" class="wes-toc-banner__toc">
-              <p>{{footnote}} <a *ngIf="supportingLinkText.length > 0" class="wes-toc-banner__support-link" href="/" target="_blank" [innerHTML]="supportingLinkText"></a></p>
-            </div>
           </div>
+        </div>
+      </div>
+      <div class="wes-toc-banner__toc-background">
+        <div class="wes-toc-banner__toc-wrapper">
+            <div class="wes-toc-banner_toc-body">
+                <div class="wes-toc-banner__toc-content">
+                <h2 class="wes-toc-banner__toc-content-header">{{tocHeading}}</h2>
+                <ul class="wes-toc-banner__toc-links">
+                    <li *ngFor="let link of links">
+                        <a class="wes-toc-banner__toc-link" href="/" target="_blank">{{link}}</a>
+                    </li>
+                </ul>
+                </div>
+            </div>
         </div>
       </div>
       <div class="wes-toc-banner__shapes">
@@ -77,12 +88,14 @@ export const tocBanner = () => ({
       'Subheading',
       'The NHS pension scheme is a well-earned benefit for the hard workers of the health service.'
     ),
-    primaryCtaText: text('Primary CTA text', 'Open your account'),
-    secondaryCtaText: text('Secondary CTA text', 'Manage your account'),
-    footnote: text('Footnote', 'Existing customer?'),
-    supportingLinkText: text(
-      'Supporting Link',
-      'Manage your investment account here'
-    ),
+    tocHeading: text('Toc Heading', 'On this page'),
+    links: array('Links', [
+      'Where to start with saving for a house',
+      'How to save for your deposit',
+      'The best accounts for saving for a house',
+      'The extra costs you’ll need to think about',
+      'Other options for first-time buyers',
+      'Maintaining the saving habit',
+    ]),
   },
 });

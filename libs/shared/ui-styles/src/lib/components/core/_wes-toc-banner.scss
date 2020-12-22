@@ -4,16 +4,15 @@
 
 .wes-toc-banner {
   @include wes-make-full-width-component;
-  @extend .wes-bg-solid-gold-900;
+
   z-index: 0;
   height: auto;
-  overflow: hidden;
 
   @include media-breakpoint-up(lg) {
-    height: 504px;
+    min-height: 504px;
   }
   @include media-breakpoint-up(xl) {
-    height: 600px;
+    min-height: 600px;
   }
 
   &__wrapper {
@@ -24,23 +23,20 @@
   &__shapes {
     position: absolute;
     top: 0;
+    bottom: 0;
     width: 100%;
     text-align: center;
     z-index: -1;
 
     background-repeat: no-repeat;
-    background-color: $global-colour-gold-900;
-
     background-image: linear-gradient(
       0deg,
-      $global-colour-gold-900 60%,
+      $global-colour-gold-900 80%,
       $global-colour-white 44%
     );
-
     background-position-x: 160%;
     background-position: top;
     background-size: contain;
-    bottom: 0;
 
     svg#wes-toc-banner__shapes-mobile {
       width: 100%;
@@ -60,6 +56,7 @@
     }
 
     @include media-breakpoint-up(lg) {
+      height: 504px;
       background-position-x: right;
       background-position-y: inherit;
       background-image: linear-gradient(
@@ -74,13 +71,15 @@
 
       svg#wes-toc-banner__shapes-desktop {
         display: inline;
-        height: 100%;
+        height: 504px;
         margin-left: 60px;
       }
     }
     @include media-breakpoint-up(xl) {
+      height: 600px;
       svg#wes-toc-banner__shapes-desktop {
-        margin-left: -458px;
+        margin-left: 0;
+        height: 600px;
       }
     }
   }
@@ -106,11 +105,12 @@
 
     @include media-breakpoint-up(lg) {
       @include make-col(7);
-      padding-top: 0;
+      padding-top: rem(96px);
       padding-bottom: 0;
     }
 
     @include media-breakpoint-up(xl) {
+      padding-top: rem(112px);
       @include make-col(6);
     }
   }
@@ -133,57 +133,69 @@
     }
   }
 
-  &__actions {
-    margin-top: rem(32px);
-    display: flex;
-    flex-direction: column;
-
-    .wes-promo__cta {
-      width: 100%;
-    }
-
-    @include media-breakpoint-up(md) {
-      margin-top: rem(40px);
-      flex-direction: row;
-      .wes-promo__cta {
-        width: auto;
-      }
-    }
-    @include media-breakpoint-up(xl) {
-      margin-top: rem(56px);
+  &__toc-background {
+    background-color: $global-colour-grey-50;
+    @include media-breakpoint-up(lg) {
+      background-color: transparent;
     }
   }
-
-  &__cta {
-    @extend .wes-button;
-    @extend .wes-button--on-gold;
-
-    &--secondary {
-      @extend .wes-button--outline;
-
-      margin-top: rem(24px);
-
-      @include media-breakpoint-up(md) {
-        margin-top: 0;
-        margin-left: rem(32px);
-      }
-    }
+  &__toc-wrapper {
+    @include wes-make-container;
+    height: 100%;
   }
-
-  &__toc {
-    padding: rem(40px) rem(20px);
+  &__toc-body {
+    @include wes-make-row;
+  }
+  &__toc-content {
+    @include make-col(12);
+    padding: rem(40px) rem(20px) rem(16px);
     margin: rem(56px) rem(-20px) 0 rem(-20px);
 
     background-color: $global-colour-grey-50;
 
     @include media-breakpoint-up(md) {
       margin-top: rem(96px);
-      padding: rem(48px) rem(20px);
+      padding: rem(48px) rem(20px) rem(24px);
+    }
+    @include media-breakpoint-up(lg) {
+      margin: rem(64px) 0 0 0;
+      padding: rem(48px) rem(48px) rem(24px);
+    }
+    @include media-breakpoint-up(xl) {
+      margin-top: rem(72px);
+      padding: rem(56px) rem(56px) rem(32px);
     }
   }
+  &__toc-content-header {
+    @include wes-typeset(level4);
+    margin-bottom: rem(32px);
+  }
+  &__toc-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
-  &__support-link {
+    @include media-breakpoint-up(md) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    li {
+      @include wes-typeset(small);
+      margin-bottom: rem(24px);
+
+      @include media-breakpoint-up(md) {
+        flex-shrink: 0;
+        flex-grow: 1;
+        flex-basis: 50%;
+
+        &:nth-child(even) {
+          padding-left: rem(20px);
+        }
+      }
+    }
+  }
+  &__toc-link {
     @extend .wes-link;
-    @extend .wes-link--on-gold;
   }
 }
