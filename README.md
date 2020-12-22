@@ -38,11 +38,15 @@ Generated file are at this location `C:\VSTS\Digital Programme\Wesleyan-Frontend
 - `npm run supply:wpisa`
 - `npm run supply:find-my-fc`
 
+There is also a PowerShell script for each app ( `RunSupplyWPISA.ps1`, `RunSupplyFindMyFC.ps1`) that runs the previous command and copies the generated `.css` and `.js` files to the correct location in `inetpub` for local dev and `Sitecore Platform` folder.
+
 ## Build style.css only
 
 `npm run supply:style`
 
 `style.css` should be locate here `C:\VSTS\Digital Programme\Wesleyan-Frontend\dist\apps\style`
+
+There is also a PowerShell script `RunSupplyStyle.ps1` that runs the previous command and copies the generated styles to the correct location in `inetpub` for local dev and `Sitecore Platform` folder.
 
 # Test
 
