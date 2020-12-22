@@ -170,6 +170,13 @@
       padding-right: rem(24px);
     }
   }
+  .emphasis {
+    @include wes-typeset(regularSemiBold);
+
+    color: $global-colour-charcoal;
+    border-left: 2px solid $global-colour-gold-900;
+    padding-left: rem(30px);
+  }
 }
 
 .wes-rich-text-scope:not(.scEnabledChrome) {

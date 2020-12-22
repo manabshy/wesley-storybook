@@ -1795,7 +1795,13 @@
                 "output": "assets"
               }
             ],
-            "styles": ["libs/shared/ui-styles/src/index.scss"],
+            "styles": [
+              "libs/shared/ui-styles/src/index.scss",
+              {
+                "input": "libs/shared/ui-styles/src/rte.scss",
+                "bundleName": "rte"
+              }
+            ],
             "stylePreprocessorOptions": {
               "includePaths": ["libs/shared/ui-styles/src/lib"]
             },
