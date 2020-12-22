@@ -1,11 +1,21 @@
+import { select } from '@storybook/addon-knobs';
+
 export default {
   title: 'Core|Content Block (Full Width)',
 };
+
+const variants = {
+  'On White': '',
+  'On Grey': 'wes-content-block--grey',
+  'On White :: Right Aligned': 'wes-content-block--right',
+  'On Grey :: Right Aligned': 'wes-content-block--right wes-content-block--grey',
+  'On White :: Campaign': 'wes-content-block--campaign',
+  'On Grey :: Campaign': 'wes-content-block--campaign wes-content-block--grey',
+};
   
-export const base = () => ({
+export const contentBlock = () => ({
   template: `
-    <!-- Content Block component root -->
-    <div class="wes-content-block">
+    <div class="wes-content-block {{variant}}">
       <div class="wes-content-block__wrapper">
         <div class="wes-content-block__body">
           <div class="wes-content-block__body-content">
@@ -24,7 +34,18 @@ export const base = () => ({
                   <li>Should I stay in the NHS Pension Scheme?</li>
                   <li>What should I do with my pension benefits when I take them?</li>
                 </ul>
-                <p>Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+                <p>Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+                
+                <h3><span class="h3">Highlight effect</span></h3>
+                <h4>Left</h4>
+                <p class="highlight">Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+                
+                <h4>Right</h4>
+                <p class="highlight" style="text-align: right">Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+                
+                <h3><span class="h3">Emphasis effect</span></h3>
+                <p class="emphasis">I walked down the Kokusai Dori, the main street of the city, doubling back and weaving off to lose anybody who was trailing me. Unfortunately my alpha potential is still too weak to achieve invisibility, so I have to shake trailers the old-fashioned way.</p>
+                
                 <p>Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
                 <ul class="bulleted">
                   <li>How can I retire early?</li>
@@ -51,38 +72,7 @@ export const base = () => ({
       </div>
     </div>
   `,
+  props: {
+    variant: select('Variant', variants, ''),
+  },
 });
-
-export const grey = () => ({
-  template: `
-    <!-- Content Block component root -->
-    <div class="wes-content-block wes-content-block--grey">
-      <div class="wes-content-block__wrapper">
-        <div class="wes-content-block__body">
-          <div class="wes-content-block__body-content">
-            <div class="wes-content-block__placeholder">
-              
-            <!-- Placeholder start -->
-
-              <!-- Rich Text start -->
-              <div class="component rich-text">
-                <div class="component-content">
-                  <h2>NHS pensions advice, tailored to you</h2>
-                  <p>Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
-                  <p>Risk must be acceptable to underwriters at normal terms.</p>
-                  <p>Wesleyan Financial Services Ltd is a broker and our insurance products are provided by a number of insurers.</p>
-                  <p>Total Home Protection (except key care cover) is provided by Legal Protection Group who is authorised by the Prudential Regulation Authority and regulated by the Financial Conduct Authority and the Prudential Regulation Authority. Key care cover is provided by Sparta Limited who is authorised and regulated by the Financial Conduct Authority.</p>
-                  <p>Wesleyan Financial Services is a credit broker. Premium finance is provided by Premium Credit Ltd. who pay variable commission to us which could impact the interest rate you pay, now or in the future.</p>        
-                </div>
-              </div>
-              <!-- Rich Text end -->
-
-            <!-- Placeholder end -->
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `,
-  });

@@ -23,13 +23,14 @@ export class OnlyNumberDirective {
     'ArrowRight',
     'Del',
     'Delete',
+    'Enter',
   ];
 
   constructor(private el: ElementRef) {}
 
   @HostListener('keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {
-    // Allow Backspace, tab, end, and home keys
+    // Allow Enter, Backspace, tab, end, and home keys
     if (this.specialKeys.indexOf(event.key) !== -1) {
       return;
     }

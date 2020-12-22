@@ -1,0 +1,33 @@
+////
+/// Wesleyan Typesetting Mixin
+////
+
+$wes-typography-map: (
+  level1: ( 'xs': ( 36px 48px 400 ), 'md': ( 54px 68px 400 ) ),
+  promo: ( 'xs': ( 34px 40px 400 ), 'md': ( 38px 48px 400 ) ),
+  level2: ( 'xs': ( 28px 40px 400 ), 'md': ( 32px 44px 400 ) ),
+  level3: ( 'xs': ( 22px 32px 600 ) ),
+  level4: ( 'xs': ( 19px 28px 600 ) ),
+  lead: ( 'xs': ( 20px 32px 400 ), 'md': ( 24px 36px 400 ) ),
+  regular: ( 'xs': ( 18px 28px 400 ) ),
+  regularSemiBold: ( 'xs': ( 18px 28px 600 ) ),
+  small: ( 'xs': ( 16px 24px 400 ) ),
+  xsmall: ( 'xs': ( 12px 24px 400 ) )
+);
+
+/// @access private
+@function wes-get-typography-config($scale) {
+  @return map-get($wes-typography-map, $scale);
+}
+
+@mixin wes-typeset($scale) {
+  $bps: wes-get-typography-config($scale);
+
+  @each $bp, $settings in $bps {
+    @include media-breakpoint-up($bp) {
+      font-size: rem(nth($settings, 1));
+      line-height: rem(nth($settings, 2));
+      font-weight: nth($settings, 3);
+    }
+  }
+}

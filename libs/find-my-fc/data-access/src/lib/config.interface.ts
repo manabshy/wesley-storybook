@@ -2,6 +2,7 @@ export interface Config {
   pageTitle: string;
   envConfig: {
     applicationInsightsKey: string;
+    gtmKey: string;
   };
   customerSelector: CustomerSelectorContent;
   professionSelector: ProfessionSelectorContent;
@@ -24,6 +25,7 @@ export interface EndPoints {
 }
 
 export interface CustomerSelectorContent {
+  metaTitle: string;
   heading: string;
   summary: string;
   newCustomerLabel: string;
@@ -32,6 +34,7 @@ export interface CustomerSelectorContent {
 }
 
 export interface ProfessionSelectorContent {
+  metaTitle: string;
   heading: string;
   summary: string;
   areaOfWork: { label: string; id: string }[];
@@ -40,6 +43,7 @@ export interface ProfessionSelectorContent {
 }
 
 export interface NewCustomerPostcodeContent {
+  metaTitle: string;
   homePostcodeHeading: string;
   homePostcode: Input;
   workPostcodeHeading: string;
@@ -49,6 +53,7 @@ export interface NewCustomerPostcodeContent {
 }
 
 export interface YourDetailsContent {
+  metaTitle: string;
   heading: string;
   summary: string;
   email: Input;
@@ -65,6 +70,7 @@ export interface Input {
 }
 
 export interface CustomerReferenceContent {
+  metaTitle: string;
   heading: string;
   customerReferenceNumber: Input;
   nextButtonLabel: string;
@@ -72,6 +78,7 @@ export interface CustomerReferenceContent {
 }
 
 export interface CannotMatchCustomerContent {
+  metaTitle: string;
   heading: string;
   summary: string;
   bodyCopy: string;
@@ -79,6 +86,7 @@ export interface CannotMatchCustomerContent {
 }
 
 export interface ExceptionContent {
+  metaTitle: string;
   heading: string;
   summary: string;
   bodyCopy: string;

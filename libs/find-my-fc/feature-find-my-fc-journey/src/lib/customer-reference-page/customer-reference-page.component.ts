@@ -1,6 +1,7 @@
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgFormsManager } from '@ngneat/forms-manager';
+import { Title } from '@angular/platform-browser';
 import { tap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
@@ -36,10 +37,12 @@ export class CustomerReferencePageComponent implements OnInit, OnDestroy {
     private builder: FormBuilder,
     private formsManager: NgFormsManager<AppForms>,
     private configService: ConfigService,
-    private fcFacade: FinancialConsultantFacade
+    private fcFacade: FinancialConsultantFacade,
+    private titleService: Title
   ) {
     this.content = this.configService.content.customerReference;
     this.backLink = `/${routesNames.YOUR_DETAILS}`;
+    this.titleService.setTitle(this.content.metaTitle);
   }
 
   ngOnInit(): void {

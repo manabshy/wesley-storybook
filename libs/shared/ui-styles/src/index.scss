@@ -37,6 +37,16 @@
 @import './lib/scopes/wes-placeholder';
 @import './lib/scopes/wes-rich-text';
 
+// Core components
+@import './lib/components/core/wes-content-block';
+@import './lib/components/core/wes-card-deck';
+@import './lib/components/core/wes-promo';
+@import './lib/components/core/wes-billboard';
+@import './lib/components/core/wes-hero-banner-2';
+@import './lib/components/core/wes-callout';
+@import './lib/components/core/wes-toc-banner';
+@import './lib/components/core/wes-emphasis';
+
 // Components
 @import '~@angular/cdk/a11y-prebuilt.css';
 @import '~@angular/cdk/overlay-prebuilt.css';
@@ -56,6 +66,7 @@
 @import './lib/components/wes-sitecore-temp';
 @import './lib/components/wes-isa-investment';
 @import './lib/components/wes-modal';
+@import './lib/components/wes-bootstrap-modal';
 @import './lib/components/wes-tooltip';
 @import './lib/components/wes-alert';
 @import './lib/components/wes-notification';
@@ -72,8 +83,10 @@
 @import './lib/components/wes-video-carousel';
 @import './lib/components/wes-campaign-header';
 @import './lib/components/wes-support-block';
-@import './lib/components/wes-content-block';
 @import './lib/components/wes-value-proposition';
 @import './lib/components/wes-your-fc';
 @import './lib/components/wes-sitecore-forms';
 @import './lib/components/wes-collapse';
+@import './lib/components/wes-isa-feature-card';
+@import './lib/components/wes-resource-link';
+@import './lib/components/wes-cassie-overrides';

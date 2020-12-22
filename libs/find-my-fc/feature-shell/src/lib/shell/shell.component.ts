@@ -1,12 +1,11 @@
-import { Component, isDevMode } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { Observable } from 'rxjs';
-import { filter, tap, map, mergeMap, startWith } from 'rxjs/operators';
+import { Component, isDevMode } from '@angular/core';
+import { filter, tap, skip } from 'rxjs/operators';
+import { combineLatest, Observable } from 'rxjs';
 
+import { CookieConsentService } from '@wesleyan-frontend/shared/util-cookie-consent';
+import { GoogleTagManagerService } from '@wesleyan-frontend/shared/util-gtm';
 import { ConfigService } from '@wesleyan-frontend/find-my-fc/data-access';
-
-// declare ga as a function to set and sent the events
-declare let ga: Function;
 
 @Component({
   selector: 'wes-shell',
@@ -20,31 +19,42 @@ export class ShellComponent {
   constructor(
     private configService: ConfigService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private gtmService: GoogleTagManagerService,
+    private cookieConsentService: CookieConsentService
   ) {
+    document.getElementsByTagName('body')[0].classList.add('find-my-fc-app');
+
     this.isDevEnv = isDevMode();
-    /*
-    this.currentStepIndex$ = this.router.events.pipe(
-      filter((event) => event instanceof NavigationEnd),
-      startWith(this.activatedRoute),
-      tap(() => {
-        //Google Analytics Page Tracking
-        if (typeof ga === 'function') {
-          ga('set', 'page', window.location.pathname + window.location.hash);
-          ga('send', 'pageview');
-        }
-      }),
-      map(() => {
-        let lastActivatedRoute = this.activatedRoute;
 
-        while (lastActivatedRoute.firstChild) {
-          lastActivatedRoute = lastActivatedRoute.firstChild;
-        }
+    combineLatest([
+      this.router.events.pipe(
+        filter((event) => event instanceof NavigationEnd)
+      ),
+      //Only use GTM if consent given
+      this.cookieConsentService.performanceConsentGiven$.pipe(
+        filter((given) => given),
+        //GTM scripts are added externally by Cassie
+        tap((_) => this.gtmService.gtmScriptsLoadedExternally())
+      ),
+    ])
+      //This is reached only when analyticsConsentGiven$ emits
+      //and is true
+      .pipe(
+        //We don't want to trigger the event twice
+        //as is first triggered when cassie adds
+        //it to the page, so is triggered with
+        //the next nav event
+        skip(1),
+        tap(() => {
+          const gtmTag = {
+            event: 'Pageview',
+            pagePath: window.location.pathname + window.location.hash,
+          };
 
-        return lastActivatedRoute;
-      }),
-      filter((route) => route.outlet === 'primary'),
-      mergeMap((route) => route.data)
-    );*/
+          this.gtmService.pushTag(gtmTag);
+        })
+      )
+      .subscribe();
   }
 }

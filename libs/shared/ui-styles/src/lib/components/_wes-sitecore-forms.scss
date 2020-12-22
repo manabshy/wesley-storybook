@@ -96,4 +96,10 @@
       text-align: center;
     }
   }
+
+  .wes-form-field--small {
+    .wes-checkbox-label {
+      font-size: rem(16px);
+    }
+  }
 }

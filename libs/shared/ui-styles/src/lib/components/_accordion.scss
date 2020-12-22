@@ -27,10 +27,11 @@
     &:first-child {
       border-top: 1px solid $global-colour-grey-100;
     }
-
-    &:hover {
-      cursor: pointer;
-      border-bottom-color: $global-colour-grey-900;
+    @media (hover: hover) {
+      &:hover {
+        cursor: pointer;
+        border-bottom-color: $global-colour-grey-900;
+      }
     }
     .field-heading strong {
       font-weight: 600;

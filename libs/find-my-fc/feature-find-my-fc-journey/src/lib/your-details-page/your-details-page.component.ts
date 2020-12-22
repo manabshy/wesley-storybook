@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import { ViewportScroller } from '@angular/common';
-import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
@@ -18,8 +18,8 @@ import {
 import { routesNames } from '@wesleyan-frontend/find-my-fc/util-const';
 
 import { FinancialConsultantFacade } from '../core/services/financial-consultant.facade';
-import { AppForms } from '../shared/app-forms.interface';
 import { OnSubmitOrHasValueErrorStateMatcher } from '../shared/error-state-matcher';
+import { AppForms } from '../shared/app-forms.interface';
 
 @Component({
   selector: 'wes-your-details-page',
@@ -71,9 +71,11 @@ export class YourDetailsPageComponent implements OnInit {
     private formsManager: NgFormsManager<AppForms>,
     private configService: ConfigService,
     private fcFacade: FinancialConsultantFacade,
-    private viewPortScroller: ViewportScroller
+    private viewPortScroller: ViewportScroller,
+    private titleService: Title
   ) {
     this.content = this.configService.content.yourDetails;
+    this.titleService.setTitle(this.content.metaTitle);
     this.backLink = `/${routesNames.CUSTOMER_SELECT}`;
   }
 

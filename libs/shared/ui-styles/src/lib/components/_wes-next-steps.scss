@@ -5,14 +5,18 @@
 .wes-next-steps {
   @include wes-make-full-width-component;
 
-  margin-top: rem(24px);
+  padding-top: rem(24px);
 
   @include media-breakpoint-up(md) {
-    margin-top: rem(32px);
+    padding-top: rem(32px);
   }
 
   @include media-breakpoint-up(lg) {
-    margin-top: rem(48px);
+    padding-top: rem(48px);
+  }
+
+  &.wes-next-steps--grey {
+    background-color: $global-colour-grey-50;
   }
   
   &__wrapper {
@@ -60,7 +64,7 @@
       width: 100vw;
       transform: translateX(-50vw);
       left: 50%;
-      z-index: -1;
+      z-index: 0;
     }
 
     &::after {
@@ -78,6 +82,12 @@
 
       @include media-breakpoint-up(xl) {
         height: rem(80px);
+      }
+
+      @at-root {
+        .wes-next-steps--grey & {
+          background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTM2N3B4IiBoZWlnaHQ9IjU3cHgiIHZpZXdCb3g9IjAgMCAxMzY3IDU3IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPlNsYW50L0xhcmdlPC90aXRsZT4KICAgIDxnIGlkPSLwn5+gLU5IUy1QZW5zaW9uLUFkdmljZSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Ik5IUy1QZW5zaW9uX0NhbXBhaWduLVBnXzEzNjYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLCAtNTcxOC4wMDAwMDApIj4KICAgICAgICAgICAgPGcgaWQ9IlNsYW50L0xhcmdlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNTcxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxyZWN0IGlkPSJCYWNrZ3JvdW5kX0J0bSIgZmlsbD0iIzQwNDc0RiIgeD0iMCIgeT0iMCIgd2lkdGg9IjEzNjciIGhlaWdodD0iNTYiPjwvcmVjdD4KICAgICAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJCYWNrZ3JvdW5kX1RvcCIgZmlsbD0iI2Y2ZjZmNiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjgzLjUwMDAwMCwgMjguMDAwMDAwKSBzY2FsZSgtMSwgLTEpIHRyYW5zbGF0ZSgtNjgzLjUwMDAwMCwgLTI4LjAwMDAwMCkgIiBwb2ludHM9IjEzNjcgMCAxMzY3IDU2IDAgNTYiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxnIGlkPSJTbGFudF9IYWxmIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgMC41MDAwMDApIiBmaWxsPSIjRkVCRDExIj4KICAgICAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aCIgcG9pbnRzPSIwIDAgNjgzLjUgMjggMCA1NiI+PC9wb2x5Z29uPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=');
+        }
       }
     }
   }

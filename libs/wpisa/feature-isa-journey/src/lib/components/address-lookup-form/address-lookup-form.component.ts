@@ -10,7 +10,13 @@ import {
   EventEmitter,
 } from '@angular/core';
 
-import { take, tap, catchError, finalize } from 'rxjs/operators';
+import {
+  take,
+  tap,
+  catchError,
+  finalize,
+  withLatestFrom,
+} from 'rxjs/operators';
 import { Subscription, Observable, of, throwError } from 'rxjs';
 import { NgFormsManager } from '@ngneat/forms-manager';
 import {
@@ -91,6 +97,41 @@ export class AddressLookupFormComponent
     this.formsManager.upsert('addressLookup', this.form, {
       withInitialValue: true,
     });
+
+    this.controls = this.form.controls;
+  }
+
+  ngOnInit(): void {
+    this.subscription.add(
+      this.form.valueChanges.subscribe((value: AddressLookupFormValue) => {
+        this.onChange(value);
+      })
+    );
+    this.subscription.add(
+      this.submitAttempt$
+        .pipe(
+          tap((attempt) => (this._submitAttempt = attempt)),
+          tap((_) => this.form.markAllAsTouched()),
+          tap((_) => (this.errorStateMatcher.submitted = this._submitAttempt))
+        )
+        .subscribe()
+    );
+
+    this.subscription.add(
+      this.submitAttempt$
+        .pipe(
+          withLatestFrom(this.addressList$),
+          tap(([submitted, searchedAddresses]) => {
+            if (
+              this.controls.postcode.value.length > 0 &&
+              searchedAddresses.length === 0
+            ) {
+              this.setPostcodeSearchNotInitiatedError();
+            }
+          })
+        )
+        .subscribe()
+    );
   }
 
   isFieldInvalid(fieldName: string) {
@@ -107,6 +148,10 @@ export class AddressLookupFormComponent
 
     this.resetAddressList();
     this.form.markAllAsTouched();
+
+    //Update validity for error when case postcode was filled
+    //but find button not pressed
+    this.controls.postcode.updateValueAndValidity();
 
     if (this.form.controls.postcode.valid) {
       this.findingAddress = true;
@@ -160,23 +205,9 @@ export class AddressLookupFormComponent
     this.controls.postcode.markAsDirty();
   }
 
-  ngOnInit(): void {
-    this.subscription.add(
-      this.form.valueChanges.subscribe((value: AddressLookupFormValue) => {
-        this.onChange(value);
-      })
-    );
-    this.subscription.add(
-      this.submitAttempt$
-        .pipe(
-          tap((attempt) => (this._submitAttempt = attempt)),
-          tap((_) => this.form.markAllAsTouched()),
-          tap((_) => (this.errorStateMatcher.submitted = this._submitAttempt))
-        )
-        .subscribe()
-    );
-
-    this.controls = this.form.controls;
+  setPostcodeSearchNotInitiatedError() {
+    this.controls.postcode.setErrors({ postcodeSearchNotInitiated: true });
+    this.controls.postcode.markAsDirty();
   }
 
   ngOnChanges(simpleChanges: SimpleChanges) {

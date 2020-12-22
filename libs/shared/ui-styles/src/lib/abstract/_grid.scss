@@ -47,6 +47,8 @@ $grid-gutter-widths: (
 /// Wesleyan-specific version of Bootstrap `make-row`
 /// Applies correct margins aligned with the declarative overrides above 
 @mixin wes-make-row {
+  @include make-row;
+  
   @each $grid-breakpoint, $grid-gutter-width in $grid-gutter-widths {
     @include media-breakpoint-up($grid-breakpoint) {
       $grid-gutter-half-width: $grid-gutter-width / 2;

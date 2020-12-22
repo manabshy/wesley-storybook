@@ -15,7 +15,7 @@ export const mockAppStateFormCompleted = {
         month: '12',
         year: '1990',
       },
-      profession: 'GENMEDPRAC',
+      profession: '123',
       nationalInsuranceNumber: 'SN 234 234 A',
       nationality: '92',
       addressLookup: {

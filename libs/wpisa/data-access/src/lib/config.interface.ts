@@ -23,7 +23,7 @@ export interface Config {
   inactivityModal: InactivityModal;
   sessionTimeoutModal: SessionTimeoutModal;
   titleList: [{ value: string; label: string }];
-  marketSegmentList: [{ value: string; label: string }];
+  marketSegmentList: [{ value: string; label: string; key: string }];
   envConfig: {
     applicationInsightsKey: string;
     gtmKey: string;
@@ -57,6 +57,7 @@ export interface YourDetails {
   profession: FormInput;
   niNumber: FormInput;
   niTooltip: string;
+  professionTooltip: string;
   nationality: FormInput;
   addressDetails: YourDetailsAddressDetails;
   contactDetails: YourDetailsContactDetails;
@@ -199,14 +200,10 @@ export interface Declaration {
   yourInvestmentLabel: string;
   perMonthLabel: string;
   totalInvestmentText: string;
+  totalInvestmentSmallText: string;
   isaLabel: string;
-  isaRules: string;
-  adviceContent: string;
-  authoriseCheckbox: FormInput;
-  authoriseContent: string;
-  declarationCheckbox: FormInput;
-  content: string;
   confirmContent: string;
+  declarationText: string;
 }
 
 export interface IFramePayment {

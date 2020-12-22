@@ -43,21 +43,21 @@
         $container-gutter: map-get($grid-gutter-widths, md);
         $container-inner-width: map-get($container-max-widths, md) - $container-gutter;
 
-        width: calc(#{$container-inner-width} + (100vw - #{$container-inner-width}) / 2);
+        width: calc(#{$container-inner-width} + (100% - #{$container-inner-width}) / 2);
       }
 
       @include media-breakpoint-up(lg) {
         $container-gutter: map-get($grid-gutter-widths, lg);
         $container-inner-width: map-get($container-max-widths, lg) - $container-gutter;
 
-        width: calc(#{$container-inner-width} + (100vw - #{$container-inner-width}) / 2);
+        width: calc(#{$container-inner-width} + (100% - #{$container-inner-width}) / 2);
       }
 
       @include media-breakpoint-up(xl) {
         $container-gutter: map-get($grid-gutter-widths, xl);
         $container-inner-width: map-get($container-max-widths, xl) - $container-gutter;
 
-        width: calc(#{$container-inner-width} + (100vw - #{$container-inner-width}) / 2);
+        width: calc(#{$container-inner-width} + (100% - #{$container-inner-width}) / 2);
       }
     }
   }

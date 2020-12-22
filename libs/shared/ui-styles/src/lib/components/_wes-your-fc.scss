@@ -43,6 +43,8 @@ $wes-your-fc-border-colour: $global-colour-grey-100;
   &__intro {
     @extend .wes-text-s;
     @extend .wes-text-semi-bold;
+    color: $global-colour-grey-1000;
+
     margin-bottom: rem(8px);
 
     @include media-breakpoint-only(md) {
@@ -172,5 +174,20 @@ $wes-your-fc-border-colour: $global-colour-grey-100;
     @extend .wes-text-s;
 
     margin-bottom: rem(16px);
+  }
+}
+
+//Find FC Overrides until core change take over, remove after that
+.find-my-fc-app {
+  .wes-fc-page-title {
+    font-weight: normal;
+    color: $global-colour-grey-1000;
+  }
+}
+.your-fc-page {
+  h1,
+  h2 {
+    font-weight: normal;
+    color: $global-colour-grey-1000;
   }
 }

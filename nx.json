@@ -160,6 +160,16 @@
     },
     "shared-ui-pipes": {
       "tags": []
+    },
+    "shared-util-gtm": {
+      "tags": []
+    },
+    "shared-util-cookie-consent": {
+      "tags": []
+    },
+    "style": {
+      "tags": [],
+      "implicitDependencies": ["shared-ui-styles"]
     }
   },
   "affected": {

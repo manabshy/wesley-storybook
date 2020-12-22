@@ -1,18 +1,16 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgFormsManager } from '@ngneat/forms-manager';
+import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { tap, filter, switchMap } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
 import { Subscription, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { Declaration } from '@wesleyan-frontend/wpisa/data-access';
 
-import { isaRoutesNames } from '../isa-journey.routes.names';
-import { DeclarationFacade } from '../core/services/declaration.facade';
+import { InvestmentOptionPaymentType } from '../core/models/investment-option-form-value.interface';
 import { PersonalDetailsViewModel } from '../core/models/personal-details-view-model.interface';
 import { DirectDebitViewModel } from '../core/models/direct-debit-view-model.interface';
-import { InvestmentOptionPaymentType } from '../core/models/investment-option-form-value.interface';
+import { DeclarationFacade } from '../core/services/declaration.facade';
+import { isaRoutesNames } from '../isa-journey.routes.names';
 
 @Component({
   selector: 'wes-declaration-page',
@@ -20,7 +18,7 @@ import { InvestmentOptionPaymentType } from '../core/models/investment-option-fo
   styleUrls: ['./declaration-page.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class DeclarationPageComponent implements OnInit, OnDestroy {
+export class DeclarationPageComponent implements OnDestroy {
   pageContent: Declaration;
   personalDetailsContent$: Observable<PersonalDetailsViewModel> = this
     .declarationFacade.personalDetailsViewModelData$;
@@ -42,18 +40,10 @@ export class DeclarationPageComponent implements OnInit, OnDestroy {
   submitAttempt = false;
   subscriptions$ = new Subscription();
 
-  form: FormGroup = this.fb.group({
-    authorise: [null, [Validators.requiredTrue]],
-    declaration: [null, [Validators.requiredTrue]],
-  });
-  formValid$ = this.formsManager.validityChanges('declaration');
-
   constructor(
     private declarationFacade: DeclarationFacade,
     private router: Router,
-    private formsManager: NgFormsManager,
-    private titleService: Title,
-    private fb: FormBuilder
+    private titleService: Title
   ) {
     this.subscriptions$.add(
       this.declarationFacade.pageContent$.subscribe((content) => {
@@ -72,80 +62,59 @@ export class DeclarationPageComponent implements OnInit, OnDestroy {
         .subscribe()
     );
   }
-  ngOnInit(): void {
-    this.formsManager.upsert('declaration', this.form, {
-      withInitialValue: true,
-    });
-  }
 
   onSubmit() {
-    this.submitAttempt = true;
+    this.subscriptions$.add(
+      this.selectedInvestmentOption$
+        .pipe(
+          filter(
+            (investmentOption) =>
+              investmentOption === InvestmentOptionPaymentType.MONTHLY
+          ),
+          switchMap(() => this.declarationFacade.submitMonthlyISA())
+        )
+        .subscribe()
+    );
 
-    if (this.form.valid) {
-      this.subscriptions$.add(
-        this.selectedInvestmentOption$
-          .pipe(
-            filter(
-              (investmentOption) =>
-                investmentOption === InvestmentOptionPaymentType.MONTHLY
-            ),
-            switchMap(() => this.declarationFacade.submitMonthlyISA())
+    this.subscriptions$.add(
+      this.selectedInvestmentOption$
+        .pipe(
+          filter(
+            (investmentOption) =>
+              investmentOption === InvestmentOptionPaymentType.LUMP_SUM
+          ),
+          switchMap(() =>
+            this.declarationFacade
+              .submitLumpSumISA()
+              .pipe(
+                tap((_) => this.router.navigate([`${isaRoutesNames.PAYMENT}`]))
+              )
           )
-          .subscribe()
-      );
+        )
+        .subscribe()
+    );
 
-      this.subscriptions$.add(
-        this.selectedInvestmentOption$
-          .pipe(
-            filter(
-              (investmentOption) =>
-                investmentOption === InvestmentOptionPaymentType.LUMP_SUM
-            ),
-            switchMap(() =>
-              this.declarationFacade
-                .submitLumpSumISA()
-                .pipe(
-                  tap((_) =>
-                    this.router.navigate([`${isaRoutesNames.PAYMENT}`])
-                  )
-                )
-            )
+    this.subscriptions$.add(
+      this.selectedInvestmentOption$
+        .pipe(
+          filter(
+            (investmentOption) =>
+              investmentOption ===
+              InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
+          ),
+          switchMap(() =>
+            this.declarationFacade
+              .submitLumpSumAndMonthlyISA()
+              .pipe(
+                tap((_) => this.router.navigate([`${isaRoutesNames.PAYMENT}`]))
+              )
           )
-          .subscribe()
-      );
-
-      this.subscriptions$.add(
-        this.selectedInvestmentOption$
-          .pipe(
-            filter(
-              (investmentOption) =>
-                investmentOption ===
-                InvestmentOptionPaymentType.MONTHLY_AND_LUMP_SUM
-            ),
-            switchMap(() =>
-              this.declarationFacade
-                .submitLumpSumAndMonthlyISA()
-                .pipe(
-                  tap((_) =>
-                    this.router.navigate([`${isaRoutesNames.PAYMENT}`])
-                  )
-                )
-            )
-          )
-          .subscribe()
-      );
-    }
-  }
-
-  isFieldInvalid(fieldName: string) {
-    return (
-      (this.form.get(fieldName).invalid && this.form.get(fieldName).dirty) ||
-      (this.form.get(fieldName).invalid && this.submitAttempt)
+        )
+        .subscribe()
     );
   }
 
   ngOnDestroy() {
     this.subscriptions$.unsubscribe();
-    this.formsManager.unsubscribe('declaration');
   }
 }

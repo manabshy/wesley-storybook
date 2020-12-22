@@ -52,9 +52,10 @@ $wes-radio-inner-circle-checked-colour: $global-colour-gold-900;
     @include media-breakpoint-up(lg) {
       padding: 32px 32px;
     }
-
-    &:hover {
-      @extend %wes-form-card-hover;
+    @media (hover: hover) {
+      &:hover {
+        @include wes-form-card-hover;
+      }
     }
   }
 }

@@ -214,11 +214,17 @@ export class DeclarationFacade {
               : true,
           lumpSumPayment: {
             label: 'Lump-sum amount',
-            value: `${formatCurrencyGBP(lumpSumAmount)}`,
+            value:
+              selectedInvestmentOption === InvestmentOptionPaymentType.MONTHLY
+                ? '—'
+                : `${formatCurrencyGBP(lumpSumAmount)}`,
           },
           monthlyPayment: {
             label: 'Monthly payments',
-            value: `${formatCurrencyGBP(monthlyAmount)}`,
+            value:
+              selectedInvestmentOption === InvestmentOptionPaymentType.LUMP_SUM
+                ? '—'
+                : `${formatCurrencyGBP(monthlyAmount)}`,
           },
           total: {
             label: this.formatTaxYear(
@@ -234,6 +240,10 @@ export class DeclarationFacade {
               )
             )}`,
           },
+          smallCopy: this.formatTotalAnnualAllowance(
+            this.pageContent.totalInvestmentSmallText,
+            isaLimits.totalAnnualAllowance
+          ),
         })
       )
     );
@@ -527,13 +537,7 @@ export class DeclarationFacade {
       taxPeriodCode: '',
       customerPermissionGranted: true,
       declarationsText: (
-        this.pageContent.isaRules +
-        this.pageContent.adviceContent +
-        this.pageContent.authoriseCheckbox.inputLabel +
-        this.pageContent.authoriseContent +
-        this.pageContent.declarationCheckbox.inputLabel +
-        this.pageContent.content +
-        this.pageContent.confirmContent
+        this.pageContent.declarationText + this.pageContent.confirmContent
       ).replace(/<[^>]*>/g, ''),
       knowledgeCheckForm: this.getKnowledgeCheckAnswersDTO(),
     };
@@ -629,5 +633,9 @@ export class DeclarationFacade {
         '/' +
         format(new Date(isaLimits.endDateTime), 'yyyy')
     );
+  }
+
+  formatTotalAnnualAllowance(text: string, amount: number) {
+    return text.replace('{total-annual-allowance}', formatCurrencyGBP(amount));
   }
 }

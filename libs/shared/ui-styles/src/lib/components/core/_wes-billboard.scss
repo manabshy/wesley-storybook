@@ -1,0 +1,190 @@
+////
+/// Wesleyan Billboard (Full Width) Component
+////
+
+.wes-billboard {
+  @include wes-make-full-width-component;
+
+  padding-top: rem(24px);
+  padding-bottom: rem(24px);
+
+  @include media-breakpoint-up(md) {
+    padding-top: rem(32px);
+    padding-bottom: rem(32px);
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: rem(48px);
+    padding-bottom: rem(48px);
+  }
+
+  &.wes-billboard--grey {
+    background-color: $global-colour-grey-50;
+  }
+
+  &__wrapper {
+    @include wes-make-container;
+  }
+
+  &__body {
+    @include wes-make-row;
+
+    @include media-breakpoint-down(sm) {
+      margin-top: rem(56px);
+      padding-bottom: rem(48px);
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 100vw;
+        transform: translateX(-50%);
+        background-color: $global-colour-grey-50;
+
+        @at-root {
+          .wes-billboard--grey & {
+            background-color: $global-colour-white;
+          }
+        }
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      padding-bottom: rem(48px);
+    }
+
+    @include media-breakpoint-up(xl) {
+      padding-bottom: rem(48px);
+    }
+  }
+
+  &__body-content {
+    @include wes-make-col-ready;
+
+    z-index: 1;
+
+    @include media-breakpoint-up(md) {
+      @include make-col(7);
+    }
+  }
+
+  &__content {
+    background-color: $global-colour-grey-50;
+    
+    @include media-breakpoint-up(md) {
+      padding: rem(48px) rem(40px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      min-height: rem(456px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include media-breakpoint-up(xl) {
+      padding: rem(56px) rem(48px);
+      min-height: rem(416px);
+    }
+
+    @at-root {
+      .wes-billboard--grey & {
+        background-color: $global-colour-white;
+      }
+    }
+  }
+
+  &__title {
+    @include wes-typeset(level2);
+
+    color: $global-colour-grey-1000;
+    margin: 0;
+  }
+
+  &__message {
+    @include wes-typeset(regular);
+
+    color: $global-colour-grey-900;
+    margin-top: rem(24px);
+
+    @include media-breakpoint-up(md) {
+      margin-top: rem(32px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      flex-grow: 1;
+    }
+  }
+
+  &__actions {
+    margin-top: rem(40px);
+  }
+
+  &__bg {
+    @include wes-make-col-ready;
+
+    position: relative;
+
+    @include media-breakpoint-down(sm) {
+      order: -1;
+      height: 240px;
+      top: rem(-56px);
+    }
+
+    @include media-breakpoint-up(md) {
+      @include make-col(6);
+
+      top: rem(48px);
+      margin-left: -8.4%;
+    }
+
+    @include media-breakpoint-up(xl) {
+      top: rem(56px);
+    }
+
+    @at-root {
+      .wes-billboard--reverse & {
+        order: -1;
+        margin-left: 0;
+        margin-right: -8.4%;
+      }
+    }
+  }
+
+  &__bg-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - #{map-get($grid-gutter-widths, xs) / 2});
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    $mobile-gutter-and-padding: 48px;
+
+    @include media-breakpoint-down(sm) {
+      left: $mobile-gutter-and-padding;
+      width: calc((100% + (100vw - 100%) / 2) - #{$mobile-gutter-and-padding});
+
+      @at-root {
+        .wes-billboard--reverse & {
+          right: $mobile-gutter-and-padding;
+          left: initial;
+        }
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      left: #{map-get($grid-gutter-widths, md) / 2};
+      width: calc(100% - #{map-get($grid-gutter-widths, md)});
+    }
+
+    @include media-breakpoint-up(lg) {
+      left: #{map-get($grid-gutter-widths, lg) / 2};
+      width: calc(100% - #{map-get($grid-gutter-widths, lg)});
+    }
+  }
+}

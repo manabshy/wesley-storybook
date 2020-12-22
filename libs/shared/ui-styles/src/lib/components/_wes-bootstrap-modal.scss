@@ -231,6 +231,7 @@
 .modal-footer {
   @include media-breakpoint-down(sm) {
     flex-direction: column;
+    flex-shrink: 0;
   }
 
   > * + * {
@@ -247,5 +248,13 @@
       order: -1;
       align-self: stretch;
     }
+  }
+}
+
+.modal-backdrop {
+  background-color: $global-colour-grey-900;
+
+  &.show {
+    opacity: 0.95;
   }
 }

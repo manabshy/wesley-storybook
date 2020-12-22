@@ -7,6 +7,7 @@ import { MatInputCommifiedDirective } from './mat-input-commified.directive';
 import { UppercaseDirective } from './uppercase.directive';
 import { InvalidControlScrollContainerDirective } from './invalid-control-scroll-container.directive';
 import { InvalidControlScrollDirective } from './invalid-control-scroll.directive';
+import { ControlUpdateOnBlurOrChangeDirective } from './control-update-on-blur.directive';
 
 @NgModule({
   imports: [CommonModule],
@@ -18,6 +19,7 @@ import { InvalidControlScrollDirective } from './invalid-control-scroll.directiv
     UppercaseDirective,
     InvalidControlScrollContainerDirective,
     InvalidControlScrollDirective,
+    ControlUpdateOnBlurOrChangeDirective,
   ],
   exports: [
     ClearRestoreInputOnFocusDirective,
@@ -27,6 +29,7 @@ import { InvalidControlScrollDirective } from './invalid-control-scroll.directiv
     UppercaseDirective,
     InvalidControlScrollContainerDirective,
     InvalidControlScrollDirective,
+    ControlUpdateOnBlurOrChangeDirective,
   ],
 })
 export class SharedUiDirectivesModule {}

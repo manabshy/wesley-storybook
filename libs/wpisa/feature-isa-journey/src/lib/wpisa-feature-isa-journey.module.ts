@@ -37,6 +37,7 @@ import { ButtonLoaderDirective } from './button-loader.directive';
 import { SafeUrlPipe } from './safe-url.pipe';
 import { ErrorSummaryComponent } from './components/error-summary/error-summary.component';
 import { InputCurrencyMaskDirective } from './input-currency-mask.directive';
+import { ContainerComponent } from './components/container/container.component';
 
 @NgModule({
   imports: [
@@ -73,6 +74,7 @@ import { InputCurrencyMaskDirective } from './input-currency-mask.directive';
     ButtonLoaderDirective,
     SafeUrlPipe,
     ErrorSummaryComponent,
+    ContainerComponent,
   ],
   providers: [
     {

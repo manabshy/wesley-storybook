@@ -1,346 +1,357 @@
-<h1>{{ pageContent.heading }}</h1>
-<div class="mb-6 mb-md-7" [innerHtml]="pageContent.summary"></div>
+<wes-container>
+  <h1>{{ pageContent.heading }}</h1>
+  <div class="mb-6 mb-md-7" [innerHtml]="pageContent.summary"></div>
 
-<wes-error-summary class="mb-5 mb-md-7" *ngIf="showOverallError">
-</wes-error-summary>
+  <wes-error-summary
+    class="mb-5 mb-md-7"
+    *ngIf="showOverallError"
+  ></wes-error-summary>
 
-<form
-  id="customerDetailsForm"
-  [formGroup]="form"
-  (ngSubmit)="onSubmit()"
-  novalidate
-  wesInvalidControlScroll
-  autocomplete="on"
->
-  <h2 class="wes-h4 mb-4">{{ pageContent.personalInformationLabel }}</h2>
-  <wes-form-field id="titleFormField">
-    <wes-label labelTestId="lblTitle">{{
-      pageContent.title.inputLabel
-    }}</wes-label>
+  <form
+    id="customerDetailsForm"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    novalidate
+    wesInvalidControlScroll
+    autocomplete="on"
+  >
+    <h2 class="wes-h4 mb-4">{{ pageContent.personalInformationLabel }}</h2>
+    <wes-form-field id="titleFormField">
+      <wes-label labelTestId="lblTitle">
+        {{ pageContent.title.inputLabel }}
+      </wes-label>
 
-    <select
-      wesNativeControl
-      formControlName="title"
-      [errorStateMatcher]="errorStateMatcher"
-      class="form-control"
-      data-test="ddTitle"
-    >
-      <option value="" selected>{{ emptyOptionLabel }}</option>
-      <option
-        *ngFor="let title of titleList$ | async"
-        value="{{ title.value }}"
+      <select
+        wesNativeControl
+        formControlName="title"
+        [errorStateMatcher]="errorStateMatcher"
+        class="form-control"
+        data-test="ddTitle"
       >
-        {{ title.description }}
-      </option>
-    </select>
-
-    <wes-error *ngIf="isFieldInvalid('title')">
-      <wes-form-field-error *ngIf="controls.title.errors.required">
-        {{ pageContent.title.inputError }}
-      </wes-form-field-error>
-    </wes-error>
-  </wes-form-field>
-
-  <wes-form-field id="firstNameFormField">
-    <wes-label labelTestId="lblFirstName">{{
-      pageContent.firstName.inputLabel
-    }}</wes-label>
-    <input
-      wesInput
-      type="text"
-      formControlName="firstName"
-      [errorStateMatcher]="errorStateMatcher"
-      autocomplete="given-name"
-      data-test="txtFirstName"
-    />
-    <wes-error *ngIf="isFieldInvalid('firstName')">
-      <wes-form-field-error>
-        {{ pageContent.firstName.inputError }}
-      </wes-form-field-error>
-    </wes-error>
-  </wes-form-field>
-
-  <wes-form-field id="lastNameFormField">
-    <wes-label labelTestId="lblLastName">{{
-      pageContent.surname.inputLabel
-    }}</wes-label>
-    <input
-      wesInput
-      type="text"
-      formControlName="lastName"
-      [errorStateMatcher]="errorStateMatcher"
-      autocomplete="family-name"
-      data-test="txtLastName"
-    />
-    <wes-error *ngIf="isFieldInvalid('lastName')">
-      <wes-form-field-error>{{
-        pageContent.surname.inputError
-      }}</wes-form-field-error></wes-error
-    >
-  </wes-form-field>
-
-  <div id="dobFormField" formGroupName="dob">
-    <label class="wes-form-field-label" data-test="lblDoB">{{
-      pageContent.dob.inputLabel
-    }}</label>
-    <div class="">
-      <wes-form-field class="dob-box dob-box-1">
-        <span id="dobDay" class="cdk-visually-hidden">Date of birth Day</span>
-        <input
-          wesInput
-          type="text"
-          formControlName="day"
-          [errorStateMatcher]="errorStateMatcher"
-          inputmode="numeric"
-          pattern="[0-9]*"
-          name="bday-day"
-          placeholder="DD"
-          wesNumbersOnly
-          maxlength="2"
-          autocomplete="bday-day"
-          data-test="txtDoBDay"
-          aria-labelledby="dobDay"
-        />
-      </wes-form-field>
-      <wes-form-field class="dob-box dob-box-2 mx-2">
-        <span id="dobMonth" class="cdk-visually-hidden"
-          >Date of birth Month</span
+        <option value="" selected>{{ emptyOptionLabel }}</option>
+        <option
+          *ngFor="let title of titleList$ | async"
+          value="{{ title.value }}"
         >
-        <input
-          wesInput
-          type="text"
-          formControlName="month"
-          [errorStateMatcher]="errorStateMatcher"
-          inputmode="numeric"
-          pattern="[0-9]*"
-          name="bday-month"
-          placeholder="MM"
-          wesNumbersOnly
-          maxlength="2"
-          autocomplete="bday-month"
-          data-test="txtDoBMonth"
-          aria-labelledby="dobMonth"
-        />
-      </wes-form-field>
-      <wes-form-field class="dob-box dob-box-3">
-        <span id="dobYear" class="cdk-visually-hidden">Date of birth Year</span>
+          {{ title.description }}
+        </option>
+      </select>
 
-        <input
-          wesInput
-          type="text"
-          formControlName="year"
-          [errorStateMatcher]="errorStateMatcher"
-          inputmode="numeric"
-          pattern="[0-9]*"
-          name="bday-year"
-          placeholder="YYYY"
-          wesNumbersOnly
-          maxlength="4"
-          autocomplete="bday-year"
-          data-test="txtDoBYear"
-          aria-labelledby="dobYear"
-        />
-      </wes-form-field>
+      <wes-error *ngIf="isFieldInvalid('title')">
+        <wes-form-field-error *ngIf="controls.title.errors.required">
+          {{ pageContent.title.inputError }}
+        </wes-form-field-error>
+      </wes-error>
+    </wes-form-field>
+
+    <wes-form-field id="firstNameFormField">
+      <wes-label labelTestId="lblFirstName">
+        {{ pageContent.firstName.inputLabel }}
+      </wes-label>
+      <input
+        wesInput
+        type="text"
+        formControlName="firstName"
+        [errorStateMatcher]="errorStateMatcher"
+        autocomplete="given-name"
+        data-test="txtFirstName"
+      />
+      <wes-error *ngIf="isFieldInvalid('firstName')">
+        <wes-form-field-error>
+          {{ pageContent.firstName.inputError }}
+        </wes-form-field-error>
+      </wes-error>
+    </wes-form-field>
+
+    <wes-form-field id="lastNameFormField">
+      <wes-label labelTestId="lblLastName">
+        {{ pageContent.surname.inputLabel }}
+      </wes-label>
+      <input
+        wesInput
+        type="text"
+        formControlName="lastName"
+        [errorStateMatcher]="errorStateMatcher"
+        autocomplete="family-name"
+        data-test="txtLastName"
+      />
+      <wes-error *ngIf="isFieldInvalid('lastName')">
+        <wes-form-field-error>
+          {{ pageContent.surname.inputError }}
+        </wes-form-field-error>
+      </wes-error>
+    </wes-form-field>
+
+    <div id="dobFormField" formGroupName="dob">
+      <label class="wes-form-field-label" data-test="lblDoB">
+        {{ pageContent.dob.inputLabel }}
+      </label>
+      <div class="">
+        <wes-form-field class="dob-box dob-box-1">
+          <span id="dobDay" class="cdk-visually-hidden">Date of birth Day</span>
+          <input
+            wesInput
+            type="text"
+            formControlName="day"
+            [errorStateMatcher]="errorStateMatcher"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            name="bday-day"
+            placeholder="DD"
+            wesNumbersOnly
+            maxlength="2"
+            autocomplete="bday-day"
+            data-test="txtDoBDay"
+            aria-labelledby="dobDay"
+          />
+        </wes-form-field>
+        <wes-form-field class="dob-box dob-box-2 mx-2">
+          <span id="dobMonth" class="cdk-visually-hidden">
+            Date of birth Month
+          </span>
+          <input
+            wesInput
+            type="text"
+            formControlName="month"
+            [errorStateMatcher]="errorStateMatcher"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            name="bday-month"
+            placeholder="MM"
+            wesNumbersOnly
+            maxlength="2"
+            autocomplete="bday-month"
+            data-test="txtDoBMonth"
+            aria-labelledby="dobMonth"
+          />
+        </wes-form-field>
+        <wes-form-field class="dob-box dob-box-3">
+          <span id="dobYear" class="cdk-visually-hidden">
+            Date of birth Year
+          </span>
+
+          <input
+            wesInput
+            type="text"
+            formControlName="year"
+            [errorStateMatcher]="errorStateMatcher"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            name="bday-year"
+            placeholder="YYYY"
+            wesNumbersOnly
+            maxlength="4"
+            autocomplete="bday-year"
+            data-test="txtDoBYear"
+            aria-labelledby="dobYear"
+          />
+        </wes-form-field>
+      </div>
+      <wes-error *ngIf="isFieldInvalid('dob')">
+        <wes-form-field-error *ngIf="controls.dob.errors.invalidDate">
+          {{ pageContent.dob.inputError }}
+        </wes-form-field-error>
+        <wes-form-field-error *ngIf="controls.dob.errors.tooYoungOrTooOld">
+          {{ pageContent.dob.inputOtherError }}
+        </wes-form-field-error>
+      </wes-error>
     </div>
-    <wes-error *ngIf="isFieldInvalid('dob')">
-      <wes-form-field-error *ngIf="controls.dob.errors.invalidDate">
-        {{ pageContent.dob.inputError }}
-      </wes-form-field-error>
-      <wes-form-field-error *ngIf="controls.dob.errors.tooYoungOrTooOld">
-        {{ pageContent.dob.inputOtherError }}
-      </wes-form-field-error>
-    </wes-error>
-  </div>
 
-  <wes-form-field id="professionFormField">
-    <wes-label labelTestId="lblProfession">{{
-      pageContent.profession.inputLabel
-    }}</wes-label>
+    <wes-form-field id="professionFormField">
+      <wes-label labelTestId="lblProfession">
+        {{ pageContent.profession.inputLabel }}
+      </wes-label>
 
-    <select
-      wesNativeControl
-      formControlName="profession"
-      [errorStateMatcher]="errorStateMatcher"
-      data-test="ddProfession"
-    >
-      <option value="" selected>{{ emptyOptionLabel }}</option>
-      <option
-        *ngFor="let marketSegment of marketSegmentList$ | async"
-        value="{{ marketSegment.value }}"
-        >{{ marketSegment.description }}</option
+      <select
+        wesNativeControl
+        formControlName="profession"
+        [errorStateMatcher]="errorStateMatcher"
+        data-test="ddProfession"
       >
-    </select>
+        <option value="" selected>{{ emptyOptionLabel }}</option>
+        <option
+          *ngFor="let marketSegment of marketSegmentList$ | async"
+          value="{{ marketSegment.value }}"
+        >
+          {{ marketSegment.description }}
+        </option>
+      </select>
+      <wes-hint>{{ pageContent.professionTooltip }}</wes-hint>
+      <wes-error *ngIf="isFieldInvalid('profession')">
+        <wes-form-field-error *ngIf="controls.profession.errors.required">
+          {{ pageContent.profession.inputError }}
+        </wes-form-field-error>
+      </wes-error>
+    </wes-form-field>
 
-    <wes-error *ngIf="isFieldInvalid('profession')">
-      <wes-form-field-error *ngIf="controls.profession.errors.required">
-        {{ pageContent.profession.inputError }}
-      </wes-form-field-error>
-    </wes-error>
-  </wes-form-field>
+    <wes-form-field id="ninoFormField">
+      <wes-label labelTestId="lblNino">
+        {{ pageContent.niNumber.inputLabel }}
+      </wes-label>
+      <input
+        wesInput
+        type="text"
+        formControlName="nationalInsuranceNumber"
+        [errorStateMatcher]="errorStateMatcher"
+        data-test="txtNino"
+      />
+      <wes-hint>{{ pageContent.niTooltip }}</wes-hint>
+      <wes-error *ngIf="isFieldInvalid('nationalInsuranceNumber')">
+        <wes-form-field-error>
+          {{ pageContent.niNumber.inputError }}
+        </wes-form-field-error>
+      </wes-error>
+    </wes-form-field>
 
-  <wes-form-field id="ninoFormField">
-    <wes-label labelTestId="lblNino">{{
-      pageContent.niNumber.inputLabel
-    }}</wes-label>
-    <input
-      wesInput
-      type="text"
-      formControlName="nationalInsuranceNumber"
-      [errorStateMatcher]="errorStateMatcher"
-      data-test="txtNino"
-    />
-    <wes-hint>{{ pageContent.niTooltip }}</wes-hint>
-    <wes-error *ngIf="isFieldInvalid('nationalInsuranceNumber')">
-      <wes-form-field-error>{{
-        pageContent.niNumber.inputError
-      }}</wes-form-field-error></wes-error
-    >
-  </wes-form-field>
+    <wes-form-field id="nationalityFormField">
+      <wes-label labelTestId="lblNationality">
+        {{ pageContent.nationality.inputLabel }}
+      </wes-label>
 
-  <wes-form-field id="nationalityFormField">
-    <wes-label labelTestId="lblNationality">{{
-      pageContent.nationality.inputLabel
-    }}</wes-label>
-
-    <select
-      wesNativeControl
-      formControlName="nationality"
-      [errorStateMatcher]="errorStateMatcher"
-      data-test="ddNationality"
-    >
-      <option value="" selected>{{ emptyOptionLabel }}</option>
-      <option
-        *ngFor="let nationality of nationalityList$ | async"
-        value="{{ nationality.value }}"
-        >{{ nationality.description }}</option
+      <select
+        wesNativeControl
+        formControlName="nationality"
+        [errorStateMatcher]="errorStateMatcher"
+        data-test="ddNationality"
       >
-    </select>
+        <option value="" selected>{{ emptyOptionLabel }}</option>
+        <option
+          *ngFor="let nationality of nationalityList$ | async"
+          value="{{ nationality.value }}"
+        >
+          {{ nationality.description }}
+        </option>
+      </select>
 
-    <wes-error *ngIf="isFieldInvalid('nationality')">
-      <wes-form-field-error *ngIf="controls.nationality.errors.required">
-        {{ pageContent.nationality.inputError }}
-      </wes-form-field-error>
-    </wes-error>
-  </wes-form-field>
+      <wes-error *ngIf="isFieldInvalid('nationality')">
+        <wes-form-field-error *ngIf="controls.nationality.errors.required">
+          {{ pageContent.nationality.inputError }}
+        </wes-form-field-error>
+      </wes-error>
+    </wes-form-field>
 
-  <div class="my-6 my-md-7 my-lg-8">
-    <h2 class="wes-h4">{{ pageContent.addressDetails.heading }}</h2>
-    <div class="mb-4" [innerHTML]="pageContent.addressDetails.summary"></div>
+    <div class="my-6 my-md-7 my-lg-8">
+      <h2 class="wes-h4">{{ pageContent.addressDetails.heading }}</h2>
+      <div class="mb-4" [innerHTML]="pageContent.addressDetails.summary"></div>
 
-    <wes-address-lookup-form
-      *ngIf="!isManualAddressVisible"
-      formControlName="addressLookup"
-      [touched]="controls.addressLookup.touched"
-      [submitAttempt$]="submitAttempt$"
-      (searchedAddress)="onFindPostcode($event)"
-      (selectedAddress)="onSelectedAddress($event)"
-      (showManualAddress)="onShowManualAddress($event)"
-    ></wes-address-lookup-form>
+      <wes-address-lookup-form
+        *ngIf="!isManualAddressVisible"
+        formControlName="addressLookup"
+        [touched]="controls.addressLookup.touched"
+        [submitAttempt$]="submitAttempt$"
+        (searchedAddress)="onFindPostcode($event)"
+        (selectedAddress)="onSelectedAddress($event)"
+        (showManualAddress)="onShowManualAddress($event)"
+      ></wes-address-lookup-form>
+
+      <button
+        *ngIf="isManualAddressVisible"
+        type="button"
+        class="wes-button wes-button-link wes-text-s wes-text-semi-bold mb-4"
+        (click)="onShowAddressLookup()"
+        data-test="btnShowFindAddress"
+      >
+        {{ pageContent.addressDetails.findAddress }}
+      </button>
+      <wes-manual-address-form
+        id="manualAddressForm"
+        [style.display]="isManualAddressVisible ? 'block' : 'none'"
+        formControlName="manualAddress"
+        [touched]="controls.manualAddress.touched"
+        [submitAttempt]="submitAttempt$ | async"
+      ></wes-manual-address-form>
+    </div>
+
+    <h2 class="wes-h4 mb-4">{{ pageContent.contactDetails.heading }}</h2>
+
+    <wes-form-field id="emailFormField">
+      <wes-label labelTestId="lblPersonalEmail">
+        {{ pageContent.contactDetails.personalEmail.inputLabel }}
+      </wes-label>
+      <input
+        wesInput
+        type="email"
+        formControlName="personalEmail"
+        autocomplete="email"
+        data-test="txtPersonalEmail"
+      />
+      <wes-error
+        *ngIf="
+          controls.personalEmail.invalid &&
+          (showOverallError ||
+            controls.personalEmail.dirty ||
+            controls.personalEmail.touched)
+        "
+      >
+        <wes-form-field-error>
+          {{ pageContent.contactDetails.personalEmail.inputError }}
+        </wes-form-field-error>
+      </wes-error>
+    </wes-form-field>
+
+    <wes-form-field id="phoneFormField">
+      <wes-label labelTestId="lblPersonalMobileNumber">
+        {{ pageContent.contactDetails.mobileNumber.inputLabel }}
+      </wes-label>
+      <input
+        wesInput
+        type="text"
+        autocomplete="tel"
+        inputmode="numeric"
+        pattern="[\d\(\)\s-]*"
+        formControlName="personalMobileNumber"
+        data-test="textPersonalMobileNumber"
+      />
+      <wes-error
+        *ngIf="
+          controls.personalMobileNumber.invalid &&
+          (showOverallError ||
+            controls.personalMobileNumber.dirty ||
+            controls.personalMobileNumber.touched)
+        "
+      >
+        <wes-form-field-error>
+          {{ pageContent.contactDetails.mobileNumber.inputError }}
+        </wes-form-field-error>
+      </wes-error>
+    </wes-form-field>
+
+    <div class="mb-4 mt-6" [innerHTML]="pageContent.marketing.heading"></div>
+
+    <div class="mb-3">
+      <wes-checkbox
+        formControlName="marketingEmail"
+        class="d-block mb-2"
+        labelTestId="lblMarketingEmail"
+        inputTestId="cbMarketingEmail"
+      >
+        {{ pageContent.marketing.email }}
+      </wes-checkbox>
+      <wes-checkbox
+        formControlName="marketingPhone"
+        class="d-block mb-2"
+        labelTestId="lblMarketingPhone"
+        inputTestId="cbMarketingPhone"
+      >
+        {{ pageContent.marketing.phone }}
+      </wes-checkbox>
+      <wes-checkbox
+        formControlName="marketingPost"
+        class="d-block"
+        labelTestId="lblMarketingPost"
+        inputTestId="cbMarketingPost"
+      >
+        {{ pageContent.marketing.post }}
+      </wes-checkbox>
+    </div>
+    <div [innerHTML]="pageContent.privacy"></div>
 
     <button
-      *ngIf="isManualAddressVisible"
-      type="button"
-      class="wes-button wes-button-link wes-text-s wes-text-semi-bold mb-4"
-      (click)="onShowAddressLookup()"
-      data-test="btnShowFindAddress"
+      class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
+      type="submit"
+      data-test="btnContinue"
     >
-      {{ pageContent.addressDetails.findAddress }}
+      Continue
     </button>
-    <wes-manual-address-form
-      id="manualAddressForm"
-      [style.display]="isManualAddressVisible ? 'block' : 'none'"
-      formControlName="manualAddress"
-      [touched]="controls.manualAddress.touched"
-      [submitAttempt]="submitAttempt$ | async"
-    ></wes-manual-address-form>
-  </div>
-
-  <h2 class="wes-h4 mb-4">{{ pageContent.contactDetails.heading }}</h2>
-
-  <wes-form-field id="emailFormField">
-    <wes-label labelTestId="lblPersonalEmail">{{
-      pageContent.contactDetails.personalEmail.inputLabel
-    }}</wes-label>
-    <input
-      wesInput
-      type="email"
-      formControlName="personalEmail"
-      autocomplete="email"
-      data-test="txtPersonalEmail"
-    />
-    <wes-error
-      *ngIf="
-        controls.personalEmail.invalid &&
-        (showOverallError ||
-          controls.personalEmail.dirty ||
-          controls.personalEmail.touched)
-      "
-    >
-      <wes-form-field-error>{{
-        pageContent.contactDetails.personalEmail.inputError
-      }}</wes-form-field-error></wes-error
-    >
-  </wes-form-field>
-
-  <wes-form-field id="phoneFormField">
-    <wes-label labelTestId="lblPersonalMobileNumber">{{
-      pageContent.contactDetails.mobileNumber.inputLabel
-    }}</wes-label>
-    <input
-      wesInput
-      type="text"
-      autocomplete="tel"
-      inputmode="numeric"
-      pattern="[\d\(\)\s-]*"
-      formControlName="personalMobileNumber"
-      data-test="textPersonalMobileNumber"
-    />
-    <wes-error
-      *ngIf="
-        controls.personalMobileNumber.invalid &&
-        (showOverallError ||
-          controls.personalMobileNumber.dirty ||
-          controls.personalMobileNumber.touched)
-      "
-    >
-      <wes-form-field-error>{{
-        pageContent.contactDetails.mobileNumber.inputError
-      }}</wes-form-field-error></wes-error
-    >
-  </wes-form-field>
-
-  <div class="mb-4 mt-6" [innerHTML]="pageContent.marketing.heading"></div>
-
-  <div class="mb-3">
-    <wes-checkbox
-      formControlName="marketingEmail"
-      class="d-block mb-2"
-      labelTestId="lblMarketingEmail"
-      inputTestId="cbMarketingEmail"
-      >{{ pageContent.marketing.email }}</wes-checkbox
-    >
-    <wes-checkbox
-      formControlName="marketingPhone"
-      class="d-block mb-2"
-      labelTestId="lblMarketingPhone"
-      inputTestId="cbMarketingPhone"
-      >{{ pageContent.marketing.phone }}</wes-checkbox
-    >
-    <wes-checkbox
-      formControlName="marketingPost"
-      class="d-block"
-      labelTestId="lblMarketingPost"
-      inputTestId="cbMarketingPost"
-      >{{ pageContent.marketing.post }}</wes-checkbox
-    >
-  </div>
-  <div [innerHTML]="pageContent.privacy"></div>
-
-  <button
-    class="wes-button wes-button-primary d-block w-100 w-md-auto mt-5 mt-md-6"
-    type="submit"
-    data-test="btnContinue"
-  >
-    Continue
-  </button>
-</form>
+  </form>
+</wes-container>

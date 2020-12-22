@@ -1,0 +1,218 @@
+////
+/// Wesleyan Hero Banner (Full Width) Component
+////
+
+.wes-hero-banner-2 {
+  @include wes-make-full-width-component;
+  @extend .wes-bg-solid-gold-900;
+  z-index: 0;
+  height: auto;
+  overflow: hidden;
+
+  @include media-breakpoint-up(lg) {
+    height: 504px;
+  }
+  @include media-breakpoint-up(xl) {
+    height: 600px;
+  }
+
+  &__wrapper {
+    @include wes-make-container;
+    height: 100%;
+  }
+
+  &__image {
+    position: absolute;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    width: 100%;
+
+    @include media-breakpoint-up(sm) {
+      height: 50%;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: auto;
+      right: 0;
+      left: calc(50% + 153px);
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      margin-left: 0;
+    }
+
+    @include media-breakpoint-up(xl) {
+      left: calc(50% + 110px);
+    }
+  }
+
+  &__shapes {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    z-index: -1;
+
+    background-repeat: no-repeat;
+    background-color: $global-colour-gold-900;
+
+    background-image: linear-gradient(
+      0deg,
+      $global-colour-gold-900 45%,
+      $global-colour-grey-900 44%
+    );
+
+    background-position-x: 160%;
+    background-position: top;
+    background-size: contain;
+    bottom: 0;
+
+    svg#wes-hero-banner-2__shapes-mobile {
+      width: 100%;
+      display: inline-block;
+      margin-top: 144px;
+    }
+
+    svg#wes-hero-banner-2__shapes-desktop {
+      position: relative;
+      display: none;
+    }
+
+    @include media-breakpoint-up(sm) {
+      svg#wes-hero-banner-2__shapes-mobile {
+        margin-top: 292px;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      background-position-x: right;
+      background-position-y: inherit;
+      background-image: linear-gradient(
+        90deg,
+        $global-colour-gold-900 45%,
+        $global-colour-grey-900 44%
+      );
+
+      svg#wes-hero-banner-2__shapes-mobile {
+        display: none;
+      }
+
+      svg#wes-hero-banner-2__shapes-desktop {
+        display: inline;
+        height: 100%;
+        margin-left: -260px;
+      }
+    }
+    @include media-breakpoint-up(xl) {
+      svg#wes-hero-banner-2__shapes-desktop {
+        margin-left: -458px;
+      }
+    }
+  }
+
+  &__body {
+    @include wes-make-row;
+    @include media-breakpoint-up(lg) {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+
+  &__content {
+    @include wes-make-col-ready;
+    padding-top: 268px;
+    padding-bottom: rem(56px);
+
+    @include media-breakpoint-up(sm) {
+      @include make-col(9);
+      padding-top: 488px;
+      padding-bottom: rem(90px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      @include make-col(7);
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    @include media-breakpoint-up(xl) {
+      @include make-col(6);
+    }
+  }
+
+  &__title {
+    @include wes-typeset(level1);
+
+    color: $global-colour-grey-1000;
+    margin: 0;
+  }
+
+  &__message {
+    @include wes-typeset(lead);
+
+    color: $global-colour-grey-1000;
+    margin-top: rem(16px);
+
+    @include media-breakpoint-up(md) {
+      margin-top: rem(24px);
+    }
+  }
+
+  &__actions {
+    margin-top: rem(32px);
+    display: flex;
+    flex-direction: column;
+
+    .wes-promo__cta {
+      width: 100%;
+    }
+
+    @include media-breakpoint-up(md) {
+      margin-top: rem(40px);
+      flex-direction: row;
+      .wes-promo__cta {
+        width: auto;
+      }
+    }
+    @include media-breakpoint-up(xl) {
+      margin-top: rem(56px);
+    }
+  }
+
+  &__cta {
+    @extend .wes-button;
+    @extend .wes-button--on-gold;
+
+    &--secondary {
+      @extend .wes-button--outline;
+
+      margin-top: rem(24px);
+
+      @include media-breakpoint-up(md) {
+        margin-top: 0;
+        margin-left: rem(32px);
+      }
+    }
+  }
+
+  &__footnote {
+    @include wes-typeset(small);
+    color: $global-colour-grey-1000;
+
+    margin-top: rem(24px);
+
+    @include media-breakpoint-up(md) {
+      margin-top: rem(32px);
+    }
+  }
+
+  &__support-link {
+    @extend .wes-link;
+    @extend .wes-link--on-gold;
+  }
+}

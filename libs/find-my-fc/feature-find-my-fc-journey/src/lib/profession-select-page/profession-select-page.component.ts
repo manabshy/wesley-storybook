@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NgFormsManager } from '@ngneat/forms-manager';
 
@@ -21,7 +22,7 @@ export class ProfessionSelectPageComponent implements OnInit {
   content: ProfessionSelectorContent;
   backLink = '';
   iconMap = {
-    'Hospital Doctor': 'heart',
+    HospitalDoctor: 'heart',
     GP: 'stethoscope',
     Dentist: 'tooth',
     Teacher: 'open-book',
@@ -36,10 +37,12 @@ export class ProfessionSelectPageComponent implements OnInit {
     private builder: FormBuilder,
     private formsManager: NgFormsManager<AppForms>,
     private configService: ConfigService,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) {
     this.content = this.configService.content.professionSelector;
     this.backLink = `/${routesNames.CUSTOMER_SELECT}`;
+    this.titleService.setTitle(this.content.metaTitle);
   }
 
   ngOnInit(): void {

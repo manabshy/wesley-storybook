@@ -1,13 +1,26 @@
+import { text, boolean } from '@storybook/addon-knobs';
+
 export default {
   title: 'Campaigns|Support Block (Full Width)',
+  parameters: { 
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
   
-export const base = () => ({
+export const supportBlock = () => ({
   template: `
-    <!-- Support Block component root -->
     <div class="wes-support-block">
       <div class="wes-support-block__wrapper">
-        <div class="wes-support-block__header"></div>
+        <div class="wes-support-block__header">
+          <div *ngIf="withHeader" class="wes-support-block__header-content">
+            <h2 class="wes-support-block__title">{{ title }}</h2>
+            <div class="wes-support-block__message" [innerHTML]="subtitle">
+              <!-- Rich text content -->
+            </div>
+          </div>
+        </div>
         <div class="wes-support-block__body">
           <div class="wes-support-block__body-content">
             <div class="wes-support-block__frame">
@@ -105,51 +118,9 @@ export const base = () => ({
       </div>
     </div>
   `,
-  });
-  
-export const withHeader = () => ({
-  template: `
-    <!-- Container wrapper -->
-    <div class="container">
-
-      <!-- Support Block component root -->
-      <div class="wes-support-block">
-        <div class="wes-support-block__header">
-          <div class="wes-support-block__header-content">
-            <h2 class="wes-support-block__title">Support Block</h2>
-            <div class="wes-support-block__message">
-              <p>This component can conditionally have header content.</p>
-            </div>
-          </div>
-        </div>
-        <div class="wes-support-block__body">
-          <div class="wes-support-block__body-content">
-            <div class="wes-support-block__frame">
-              <div class="wes-support-block__main">
-                <div class="wes-support-block__main-content">
-                  <div class="wes-support-block__placeholder">
-                    
-                  <!-- Placeholder start -->
-
-                    <!-- Rich Text start -->
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quam mi, porttitor finibus gravida a, vestibulum at odio. Quisque augue nisl, condimentum sed lectus at, sodales tempor tellus. Vestibulum mauris diam, sagittis et vulputate et, dignissim eget mauris. Donec maximus arcu pulvinar ante scelerisque dapibus. Duis dignissim scelerisque purus, eu feugiat diam luctus vitae. Phasellus vitae maximus odio, eget pellentesque dui. Aenean orci elit, ullamcorper id volutpat mattis, hendrerit id massa. Praesent congue dui sit amet vulputate luctus. Praesent sit amet massa dui. Vestibulum congue ante quis elementum ullamcorper. Cras accumsan a enim hendrerit cursus. Mauris a mollis libero. Nunc ut fringilla felis, ut luctus risus. Sed ac lacinia leo. Praesent in porta nulla. Etiam interdum risus tincidunt nunc vestibulum, ac accumsan purus iaculis.</p>
-                    <p>Donec finibus auctor interdum. Nullam commodo scelerisque euismod. Sed risus nisl, elementum sit amet vehicula sit amet, fringilla eu felis. Pellentesque auctor ligula ac sapien sollicitudin, id vulputate mi molestie. Nulla viverra feugiat ante, nec ullamcorper mauris porttitor sit amet. Maecenas cursus ligula augue. Suspendisse suscipit nunc vitae maximus feugiat. In ac nisi elementum purus rhoncus ornare. Pellentesque accumsan velit eu turpis porta, vitae venenatis metus eleifend. Cras molestie velit ante, id porta est dapibus vel. In vitae cursus neque. Aliquam tincidunt mi turpis, eu venenatis ex fermentum nec. Mauris lobortis egestas nisi, facilisis porttitor sapien rutrum id. Nulla sit amet interdum lacus. Morbi posuere, ligula ac ultrices lacinia, magna massa congue nibh, et congue ante eros sit amet arcu.</p>
-                    <p>Maecenas tincidunt dictum bibendum. Donec elementum nibh in iaculis ornare. Nunc tempus dolor non mattis scelerisque. Aenean at laoreet massa. Sed congue malesuada mollis. Vivamus ultrices lorem a odio laoreet, ac euismod ante suscipit. Nam ac justo nec orci tempor mattis sit amet tempus dui. Proin id tincidunt sem. Phasellus orci dui, iaculis a varius et, posuere id mi. Fusce iaculis cursus varius. Nam sollicitudin, lorem in congue facilisis, turpis felis bibendum ipsum, et volutpat dolor lacus a nibh.</p>
-                    <p>Donec mollis tempor sapien at suscipit. Nullam iaculis pharetra porta. Integer faucibus mi ac dolor dapibus ornare. Donec quis lobortis dui. Mauris sed lorem id odio gravida accumsan in sit amet libero. Vivamus at metus diam. Suspendisse ligula odio, eleifend eget facilisis at, dapibus eu purus. Sed tortor diam, vulputate ut pharetra vel, lobortis non orci.</p>
-                    <p>Mauris vel laoreet velit. Etiam scelerisque varius tellus, et finibus tellus volutpat tristique. Nunc auctor elementum ante id vestibulum. Maecenas molestie malesuada diam, in dapibus metus sollicitudin ac. Nam eget ornare libero, mollis dignissim elit. Mauris eu libero dolor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam convallis libero vel massa pharetra elementum. Sed sagittis sagittis nunc, a maximus ex vestibulum ac. Pellentesque sit amet nibh lectus. Integer cursus dapibus sapien, pretium dapibus metus gravida a. Nullam eget urna accumsan, mollis nulla non, elementum eros. Praesent diam leo, malesuada porta finibus vel, elementum a elit. Pellentesque sed lobortis risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;</p>
-                    <!-- Rich Text end -->
-
-                  <!-- Placeholder end -->
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  `,
-  });
-  
+  props: {
+    withHeader: boolean('With header', false),
+    title: text('Title', 'Support Block'),
+    subtitle: text('Subtitle', '<p>This component can conditionally have header content.</p>'),
+  },
+});

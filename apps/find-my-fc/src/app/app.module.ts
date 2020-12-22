@@ -15,7 +15,7 @@ export function initializeApp(
   appInsightsService: ApplicationInsightsMonitoringService
 ) {
   const promise = configService.loadConfig().then(() => {
-    appInsightsService.init(
+    appInsightsService.config(
       configService.content.envConfig.applicationInsightsKey,
       'fmfc'
     );
@@ -38,6 +38,14 @@ export function initializeApp(
       multi: true,
       deps: [ConfigService, ApplicationInsightsMonitoringService],
       useFactory: initializeApp,
+    },
+    {
+      provide: 'googleTagManagerId',
+      deps: [ConfigService],
+      useFactory: (config: ConfigService) => {
+        config.loadConfig();
+        return config.content.envConfig.gtmKey;
+      },
     },
   ],
   bootstrap: [AppComponent],

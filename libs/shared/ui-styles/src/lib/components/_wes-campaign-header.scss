@@ -4,9 +4,11 @@
 
 .wes-campaign-header {
   height: rem(60px);
+  min-height: rem(60px);
   border-width: 0;
   padding-left: 0;
   padding-right: 0;
+  z-index: 1;
 
   @include media-breakpoint-up(md) {
     height: rem(69px);
