@@ -19,6 +19,11 @@
   &__wrapper {
     @include wes-make-container;
     height: 100%;
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
   }
 
   &__image {
@@ -115,12 +120,6 @@
 
   &__body {
     @include wes-make-row;
-    @include media-breakpoint-up(lg) {
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-    }
   }
 
   &__content {
