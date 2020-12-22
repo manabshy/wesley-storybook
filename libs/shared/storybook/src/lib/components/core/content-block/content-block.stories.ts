@@ -35,6 +35,17 @@ export const contentBlock = () => ({
                   <li>What should I do with my pension benefits when I take them?</li>
                 </ul>
                 <p>Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+                
+                <h3><span class="h3">Highlight effect</span></h3>
+                <h4>Left</h4>
+                <p class="highlight">Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+                
+                <h4>Right</h4>
+                <p class="highlight" style="text-align: right">Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+                
+                <h3><span class="h3">Emphasis effect</span></h3>
+                <p class="emphasis">I walked down the Kokusai Dori, the main street of the city, doubling back and weaving off to lose anybody who was trailing me. Unfortunately my alpha potential is still too weak to achieve invisibility, so I have to shake trailers the old-fashioned way.</p>
+                
                 <p>Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
                 <ul class="bulleted">
                   <li>How can I retire early?</li>
