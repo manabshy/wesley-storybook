@@ -5,17 +5,17 @@
 .wes-emphasis {
   @include wes-make-full-width-component;
 
-  padding-top: rem(24px);
-  padding-bottom: rem(24px);
+  padding-top: rem(56px);
+  padding-bottom: rem(56px);
 
   @include media-breakpoint-up(md) {
-    padding-top: rem(32px);
-    padding-bottom: rem(32px);
+    padding-top: rem(96px);
+    padding-bottom: rem(96px);
   }
 
-  @include media-breakpoint-up(lg) {
-    padding-top: rem(48px);
-    padding-bottom: rem(48px);
+  @include media-breakpoint-up(xl) {
+    padding-top: rem(112px);
+    padding-bottom: rem(112px);
   }
 
   &.wes-emphasis--grey {

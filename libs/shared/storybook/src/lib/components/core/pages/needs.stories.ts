@@ -1,7 +1,7 @@
 import { select, text } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Core Pages|Needs Based',
+  title: 'Core Pages|Needs',
 };
 
 const variants = {
@@ -9,7 +9,7 @@ const variants = {
   'On Grey': 'wes-core-component--right wes-core-component--grey',
 };
 
-export const basic = () => ({
+export const example = () => ({
   template: `
     <div class="wes-content-block {{ variant.replaceAll('wes-core-component', 'wes-content-block') }}">
       <div class="wes-content-block__wrapper">
