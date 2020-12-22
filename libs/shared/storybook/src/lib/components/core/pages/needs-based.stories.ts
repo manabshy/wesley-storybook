@@ -55,7 +55,7 @@ export const basic = () => ({
         </div>
       </div>
     </div>
-    <div class="wes-emphasis  {{ variant.replaceAll('wes-core-component', 'wes-emphasis') }}">
+    <div class="wes-emphasis {{ variant.replaceAll('wes-core-component', 'wes-emphasis') }}">
       <div class="wes-emphasis__wrapper">
         <div class="wes-emphasis__body">
           <div class="wes-emphasis__body-content">

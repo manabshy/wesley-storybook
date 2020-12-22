@@ -95,6 +95,20 @@ export const copyHighlight = () => ({
   `,
 });
 
+export const copyEmphasis = () => ({
+  template: `
+    <div class="bg-solid-white" style="padding:2rem;">
+
+      <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
+        
+        <!-- Output from Sitecore RTE -->
+        <p class="emphasis">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+
+      </div>
+    </div>
+  `,
+});
+
 export const copyExtraSmall = () => ({
   template: `
     <div class="bg-solid-white" style="padding:2rem;">
