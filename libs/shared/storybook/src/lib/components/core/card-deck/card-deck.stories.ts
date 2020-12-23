@@ -1,4 +1,4 @@
-import { boolean, number, text, select } from '@storybook/addon-knobs';
+import { number, text, select, optionsKnob } from '@storybook/addon-knobs';
 
 export default {
   title: 'Core|Card Deck (Full Width)',
@@ -32,7 +32,7 @@ export const cardDeck = () => ({
           
           <div class="wes-card-deck__deck-item" *ngFor="let card of [].constructor(cardCount)">
             <article class="wes-card-deck__card">
-              <div *ngIf="withImage" class="wes-card-deck__card-bg" style="background-image:url(http://placekitten.com/572/320)"></div>
+              <div *ngIf="withImage == 'yes'" class="wes-card-deck__card-bg" style="background-image:url(http://placekitten.com/572/320)"></div>
               <div class="wes-card-deck__card-icon">
                 <svg height="64" width="64" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                   <g fill="none" fill-rule="evenodd">
@@ -66,7 +66,12 @@ export const cardDeck = () => ({
   props: {
     variant: select('Variant', variants, ''),
     cardCount: number('Number of cards', 6, {min:2}),
-    withImage: boolean('With image', true),
+    withImage: optionsKnob('With image', {
+      'Yes': 'yes', 
+      'No': 'no'
+    }, 'yes', {
+      display: 'inline-radio',
+    }),
     title: text('Title', 'Unit trust products from WUTM'),
     message: text('Message', '<p>Wesleyan Unit Trust Managers (WUTM) products allow you to invest in fully managed unit trust funds, run by an award-winning team.</p>'),
     cardTitle: text('Card title', 'With Profits ISA'),
