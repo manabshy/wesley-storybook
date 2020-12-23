@@ -20,6 +20,11 @@ export const billboard = () => ({
   template: `
     <div class="wes-billboard {{variant}}">
       <div class="wes-billboard__wrapper">
+        <div *ngIf="!!groupTitle" class="wes-billboard__header">
+          <div class="wes-billboard__header-content">
+            <h2 *ngIf="!!groupTitle" class="wes-billboard__group-title">{{ groupTitle }}</h2>
+          </div>
+        </div>
         <div class="wes-billboard__body">
           <div class="wes-billboard__body-content">
             <div class="wes-billboard__content">
@@ -41,6 +46,7 @@ export const billboard = () => ({
   `,
   props: {
     variant: select('Variant', variants, ''),
+    groupTitle: text('Group title', ''),
     title: text('Title', 'Stocks and shares ISA'),
     message: text('Message', '<p>Offering a tax shelter for your savings, plus the potential for growth, a stocks and shares ISA is a popular way to invest. There are two stocks and shares ISAs available from Wesleyan Group – find the right product for you and apply online today.</p>'),
     primaryCtaText: text('Primary CTA text', 'Choose your ISA'),

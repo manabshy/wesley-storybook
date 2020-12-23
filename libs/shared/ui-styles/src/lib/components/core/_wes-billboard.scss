@@ -26,6 +26,43 @@
     @include wes-make-container;
   }
 
+  &__header {
+    @include wes-make-row;
+
+    margin-bottom: rem(32px);
+
+    @include media-breakpoint-up(md) {
+      margin-bottom: rem(48px);
+    }
+
+    @include media-breakpoint-up(xl) {
+      margin-bottom: rem(64px);
+    }
+  }
+
+  &__header-content {
+    @include wes-make-col-ready;
+
+    @include media-breakpoint-up(md) {
+      @include make-col(11);
+    }
+
+    @include media-breakpoint-up(lg) {
+      @include make-col(9);
+    }
+
+    @include media-breakpoint-up(xl) {
+      @include make-col(7);
+    }
+  }
+
+  &__group-title {
+    @include wes-typeset(level2);
+
+    color: $global-colour-grey-1000;
+    margin-bottom: 0;
+  }
+
   &__body {
     @include wes-make-row;
 

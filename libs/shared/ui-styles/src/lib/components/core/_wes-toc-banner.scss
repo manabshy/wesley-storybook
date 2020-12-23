@@ -124,6 +124,7 @@
 
   &__message {
     @include wes-typeset(lead);
+    @include wes-rich-text-scope;
 
     color: $global-colour-grey-1000;
     margin-top: rem(16px);

@@ -34,12 +34,11 @@
     @include wes-make-col-ready;
 
     @include media-breakpoint-up(md) {
-      @include make-col-offset(1);
-      @include make-col(10);
+      @include make-col-offset(0);
+      @include make-col(11);
     }
 
     @include media-breakpoint-up(lg) {
-      @include make-col-offset(0);
       @include make-col(9);
     }
 
@@ -59,8 +58,12 @@
       }
 
       .wes-content-block--campaign & {
-        @include media-breakpoint-up(lg) {
+        @include media-breakpoint-up(md) {
           @include make-col-offset(1);
+          @include make-col(10);
+        }
+
+        @include media-breakpoint-up(lg) {
           @include make-col(8);
         }
       }
