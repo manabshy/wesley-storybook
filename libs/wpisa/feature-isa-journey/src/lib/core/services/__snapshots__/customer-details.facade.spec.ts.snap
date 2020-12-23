@@ -4,35 +4,35 @@ exports[`CustomerDetailsFacade marketSegmentList$ should map marketSegmentList 1
 Array [
   Object {
     "description": "GP",
-    "value": "GENMEDPRAC",
+    "value": "123",
   },
   Object {
     "description": "Hospital Doctor",
-    "value": "HOSDOCS",
+    "value": "124",
   },
   Object {
     "description": "Student Medic",
-    "value": "TBD",
+    "value": "125",
   },
   Object {
     "description": "Dentist",
-    "value": "DENTISTS",
+    "value": "126",
   },
   Object {
     "description": "Student Dentist",
-    "value": "DENTALSTU",
+    "value": "127",
   },
   Object {
     "description": "Teacher",
-    "value": "TEACHERS",
+    "value": "128",
   },
   Object {
     "description": "Lawyer",
-    "value": "WFL",
+    "value": "129",
   },
   Object {
     "description": "Other",
-    "value": "OTHER",
+    "value": "120",
   },
 ]
 `;

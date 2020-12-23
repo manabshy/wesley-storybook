@@ -30,6 +30,14 @@ export const getPaymentUrl = (response) => {
   }).as('getPaymentUrl');
 };
 
+export const submitTransaction = (response) => {
+  cy.route({
+    method: 'PUT',
+    url: 'api/isawebapiwrapper/transaction',
+    response,
+  }).as('submitTransaction');
+};
+
 export const findAddressByPostcode = (postcode: string, response) => {
   cy.route({
     method: 'GET',
@@ -44,4 +52,36 @@ export const getAddressDetails = (addrId: string, response) => {
     url: `/api/lookup/select?moniker=${addrId}&format=experian`,
     response,
   }).as('getAddressDetails');
+};
+
+export const getAppState = (response) => {
+  cy.route({
+    method: 'GET',
+    url: `/api/isawebapiwrapper/appstate`,
+    response,
+  }).as('getAppState');
+};
+
+export const saveAppState = (response) => {
+  cy.route({
+    method: 'POST',
+    url: `/api/isawebapiwrapper/appstate`,
+    response,
+  }).as('saveAppState');
+};
+
+export const customerSearch = (response) => {
+  cy.route({
+    method: 'POST',
+    url: `/api/isawebapiwrapper/customersearch`,
+    response,
+  }).as('customerSearch');
+};
+
+export const getGenericLookups = (response) => {
+  cy.route({
+    method: 'POST',
+    url: `/api/isawebapiwrapper/genericlookup`,
+    response,
+  }).as('getGenericLookups');
 };
