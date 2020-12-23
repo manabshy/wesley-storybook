@@ -1,4 +1,4 @@
-import { number, optionsKnob, select, text, withKnobs } from '@storybook/addon-knobs';
+import { optionsKnob, select, text } from '@storybook/addon-knobs';
 
 export default {
   title: 'Campaigns|Who Do We Help (Full Width)',
