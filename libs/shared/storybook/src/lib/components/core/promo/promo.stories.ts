@@ -13,6 +13,8 @@ const variants = {
   'Whisper': '',
   'Shout': 'wes-promo--shout',
   'Shout :: On Grey': 'wes-promo--shout wes-promo--grey',
+  'Shout :: With Grey Top': 'wes-promo--shout wes-promo--grey-top',
+  'Shout :: With Grey Bottom': 'wes-promo--shout wes-promo--grey-bottom',
 };
   
 export const promo = () => ({

@@ -5,8 +5,33 @@
 .wes-promo {
   @include wes-make-full-width-component;
 
-  &.wes-promo--grey {
+  &::before {
+    content: '';
+    display: none;
     background-color: $global-colour-grey-50;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    @at-root {
+      .wes-promo--grey#{&},
+      .wes-promo--grey-top#{&},
+      .wes-promo--grey-bottom#{&} {
+        display: block;
+      }
+
+      .wes-promo--grey-top#{&} {
+        top: 0;
+        bottom: 50%;
+      }
+
+      .wes-promo--grey-bottom#{&} {
+        top: 50%;
+        bottom: 0;
+      }
+    }
   }
 
   &__wrapper {
