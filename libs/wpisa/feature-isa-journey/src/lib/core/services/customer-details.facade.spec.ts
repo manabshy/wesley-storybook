@@ -19,6 +19,7 @@ import {
 
 import { CustomerDetailsFacade } from './customer-details.facade';
 import { AppStateFacade } from './app-state-facade';
+import { take } from 'rxjs/operators';
 
 describe('CustomerDetailsFacade', () => {
   let customerDetailsFacade: CustomerDetailsFacade;
@@ -120,6 +121,30 @@ describe('CustomerDetailsFacade', () => {
       );
 
       expect(result).toEqual(expected);
+    });
+  });
+
+  describe('titleList$', () => {
+    it('should map titles', () => {
+      customerDetailsFacade.titleList$.subscribe((list) => {
+        expect(list).toMatchSnapshot();
+      });
+    });
+  });
+
+  describe('nationalityList$', () => {
+    it('should map nationality', () => {
+      customerDetailsFacade.nationalityList$.subscribe((list) => {
+        expect(list).toMatchSnapshot();
+      });
+    });
+  });
+
+  describe('marketSegmentList$', () => {
+    it('should map marketSegmentList', () => {
+      customerDetailsFacade.marketSegmentList$.subscribe((list) => {
+        expect(list).toMatchSnapshot();
+      });
     });
   });
 });

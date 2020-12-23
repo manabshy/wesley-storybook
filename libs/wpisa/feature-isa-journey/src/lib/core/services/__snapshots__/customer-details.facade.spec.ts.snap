@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomerDetailsFacade marketSegmentList$ should map marketSegmentList 1`] = `
+Array [
+  Object {
+    "description": "GP",
+    "value": "123",
+  },
+  Object {
+    "description": "Hospital Doctor",
+    "value": "124",
+  },
+  Object {
+    "description": "Student Medic",
+    "value": "125",
+  },
+  Object {
+    "description": "Dentist",
+    "value": "126",
+  },
+  Object {
+    "description": "Student Dentist",
+    "value": "127",
+  },
+  Object {
+    "description": "Teacher",
+    "value": "128",
+  },
+  Object {
+    "description": "Lawyer",
+    "value": "129",
+  },
+  Object {
+    "description": "Other",
+    "value": "120",
+  },
+]
+`;
+
+exports[`CustomerDetailsFacade nationalityList$ should map nationality 1`] = `
+Array [
+  Object {
+    "description": "British",
+    "value": "92",
+  },
+  Object {
+    "description": "American",
+    "value": "95",
+  },
+  Object {
+    "description": "Australian",
+    "value": "159",
+  },
+  Object {
+    "description": "Dutch",
+    "value": "113",
+  },
+  Object {
+    "description": "French",
+    "value": "119",
+  },
+  Object {
+    "description": "German",
+    "value": "121",
+  },
+]
+`;
+
+exports[`CustomerDetailsFacade titleList$ should map titles 1`] = `
+Array [
+  Object {
+    "description": "Mr",
+    "value": "c2044dac-a1eb-48c8-b23c-5255bac96bc0",
+  },
+  Object {
+    "description": "Mrs",
+    "value": "37c037af-7ecb-47a9-8c16-738150d57d26",
+  },
+  Object {
+    "description": "Miss",
+    "value": "b0fae53c-fc94-4a82-9b92-426e4b54485f",
+  },
+  Object {
+    "description": "Ms",
+    "value": "d7743753-25ff-4343-820d-c1a45ce39d25",
+  },
+  Object {
+    "description": "Dr",
+    "value": "ad28900f-c863-4ea3-bbcf-83aca8065533",
+  },
+  Object {
+    "description": "Professor",
+    "value": "ae9cde20-ab54-4b07-ba80-933b487729f6",
+  },
+]
+`;
