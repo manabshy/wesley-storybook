@@ -80,8 +80,8 @@
     color: $global-colour-charcoal;
   }
 
-  &__message,
-  &__message * {
+  &__message {
     @include wes-typeset(regular);
+    @include wes-rich-text-scope;
   }
 }
