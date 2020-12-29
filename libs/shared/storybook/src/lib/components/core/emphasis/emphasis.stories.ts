@@ -11,9 +11,13 @@ export default {
 
 const variants = {
   'On White': '',
-  'On Grey': 'wes-emphasis--grey',
+  'On White :: Collapsed': 'wes-emphasis--collapse',
   'On White :: Right Aligned': 'wes-emphasis--right',
+  'On White :: Right Aligned :: Collapsed': 'wes-emphasis--right wes-emphasis--collapse',
+  'On Grey': 'wes-emphasis--grey',
+  'On Grey :: Collapsed': 'wes-emphasis--grey wes-emphasis--collapse',
   'On Grey :: Right Aligned': 'wes-emphasis--right wes-emphasis--grey',
+  'On Grey :: Right Aligned :: Collapsed': 'wes-emphasis--right wes-emphasis--grey wes-emphasis--collapse',
 };
   
 export const emphasis = () => ({
