@@ -19,7 +19,7 @@ const variants = {
   'On Grey :: Reversed': 'wes-billboard--reverse wes-billboard--grey',
   'On Grey :: Reversed :: Collapsed': 'wes-billboard--reverse wes-billboard--grey wes-billboard--collapse',
 };
-  
+
 export const billboard = () => ({
   template: `
     <div class="wes-billboard {{variant}}">
@@ -55,6 +55,62 @@ export const billboard = () => ({
   props: {
     variant: select('Variant', variants, ''),
     withHeader: optionsKnob('With header', {
+      'Yes': 'yes', 
+      'No': 'no'
+    }, 'no', {
+      display: 'inline-radio',
+    }),
+    billboardTitle: text('Billboard title', 'Stocks and shares ISA'),
+    billboardMessage: text('Billboard message', '<p>Offering a tax shelter for your savings, plus the potential for growth, a stocks and shares ISA is a popular way to invest. There are two stocks and shares ISAs available from Wesleyan Group – find the right product for you and apply online today.</p>'),
+    primaryCtaText: text('Primary CTA text', 'Choose your ISA'),
+  },
+});
+
+export const collapsible = () => ({
+  template: `
+    <div class="wes-billboard">
+      <div class="wes-billboard__wrapper">
+        <div class="wes-billboard__body">
+          <div class="wes-billboard__body-content">
+            <div class="wes-billboard__content">
+              <h2 class="wes-billboard__title">{{ billboardTitle }}</h2>
+              <div class="wes-billboard__message" [innerHTML]="billboardMessage">
+                <!-- Rich text content -->
+              </div>
+              <div class="wes-billboard__actions">
+                <a class="wes-billboard__cta wes-button wes-button--on-light" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">{{ primaryCtaText }}</a>
+              </div>
+            </div>
+          </div>
+          <div class="wes-billboard__bg">
+            <div class="wes-billboard__bg-image" style="background-image: url(http://placekitten.com/600/400)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wes-billboard wes-billboard--reverse" [ngClass]="{'wes-billboard--collapse': collapse == 'yes', 'wes-billboard--grey': collapse == 'no'}">
+      <div class="wes-billboard__wrapper">
+        <div class="wes-billboard__body">
+          <div class="wes-billboard__body-content">
+            <div class="wes-billboard__content">
+              <h2 class="wes-billboard__title">{{ billboardTitle }}</h2>
+              <div class="wes-billboard__message" [innerHTML]="billboardMessage">
+                <!-- Rich text content -->
+              </div>
+              <div class="wes-billboard__actions">
+                <a class="wes-billboard__cta wes-button wes-button--on-light" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">{{ primaryCtaText }}</a>
+              </div>
+            </div>
+          </div>
+          <div class="wes-billboard__bg">
+            <div class="wes-billboard__bg-image" style="background-image: url(http://placekitten.com/600/400)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+  props: {
+    collapse: optionsKnob('Collapse', {
       'Yes': 'yes', 
       'No': 'no'
     }, 'no', {
