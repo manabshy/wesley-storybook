@@ -11,9 +11,13 @@ export default {
 
 const variants = {
   'On White': '',
-  'On Grey': 'wes-billboard--grey',
+  'On White :: Collapsed': 'wes-billboard--collapse',
   'On White :: Reversed': 'wes-billboard--reverse',
+  'On White :: Reversed :: Collapsed': 'wes-billboard--reverse wes-billboard--collapse',
+  'On Grey': 'wes-billboard--grey',
+  'On Grey :: Collapsed': 'wes-billboard--grey wes-billboard--collapse',
   'On Grey :: Reversed': 'wes-billboard--reverse wes-billboard--grey',
+  'On Grey :: Reversed :: Collapsed': 'wes-billboard--reverse wes-billboard--grey wes-billboard--collapse',
 };
   
 export const billboard = () => ({
