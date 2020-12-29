@@ -1,32 +1,47 @@
-/* Copy */
-p.xs {/*!*/}
-p.s {/*!*/}
-p.m {/*!*/}
-p.l {/*!*/}
-p.highlight {/*!*/}
-p.emphasis {/*!*/}
+/* Legacy typography */
+p.xs {}
+p.s {}
+p.m {}
+p.l {}
+p.highlight {}
 
-/* Headings */
-.h1 {/*!*/}
-.h2 {/*!*/}
-.h3 {/*!*/}
-.h4 {/*!*/}
-.h5 {/*!*/}
-.h6 {/*!*/}
+/* Legacy headings */
+.h1 {}
+.h2 {}
+.h3 {}
+.h4 {}
+.h5 {}
+.h6 {}
 
 /* Core typography */
-.level1 {/*!*/}
-.promo {/*!*/}
-.level2 {/*!*/}
-.level3 {/*!*/}
-.level4 {/*!*/}
-.lead {/*!*/}
-.regular {/*!*/}
-.regularSemiBold {/*!*/}
-.small {/*!*/}
-.xsmall {/*!*/}
+h2.level1 {}
+
+h3.level1 {}
+h3.level2 {}
+
+h4.level1 {}
+h4.level2 {}
+h4.level3 {}
+
+h5.level2 {}
+h5.level3 {}
+h5.level4 {}
+
+h6.level3 {}
+h6.level4 {}
+h6.level5 {}
+
+p.promo {}
+p.lead {}
+p.regular {}
+p.regularSemiBold {}
+p.small {}
+p.xsmall {}
+
+/* Core emphasis */ 
+p.emphasis {}
 
 /* Lists */
-ol.numbered {/*!*/}
-ul.bulleted {/*!*/}
-ul.ticked {/*!*/}
+ol.numbered {}
+ul.bulleted {}
+ul.ticked {}
