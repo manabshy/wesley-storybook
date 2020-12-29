@@ -6,9 +6,13 @@ export default {
 
 const variants = {
   'On White': '',
-  'On Grey': 'wes-content-block--grey',
+  'On White :: Collapsed': 'wes-content-block--collapse',
   'On White :: Right Aligned': 'wes-content-block--right',
+  'On White :: Right Aligned :: Collapsed': 'wes-content-block--right wes-content-block--collapse',
+  'On Grey': 'wes-content-block--grey',
+  'On Grey :: Collapsed': 'wes-content-block--grey wes-content-block--collapse',
   'On Grey :: Right Aligned': 'wes-content-block--right wes-content-block--grey',
+  'On Grey :: Right Aligned :: Collapsed': 'wes-content-block--right wes-content-block--grey wes-content-block--collapse',
   'On White :: Campaign': 'wes-content-block--campaign',
   'On Grey :: Campaign': 'wes-content-block--campaign wes-content-block--grey',
 };
