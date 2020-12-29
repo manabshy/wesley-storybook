@@ -168,19 +168,9 @@
     display: flex;
     flex-direction: column;
 
-    .wes-promo__cta {
-      width: 100%;
-    }
-
     @include media-breakpoint-up(md) {
       margin-top: rem(40px);
       flex-direction: row;
-      .wes-promo__cta {
-        width: auto;
-      }
-    }
-    @include media-breakpoint-up(xl) {
-      margin-top: rem(56px);
     }
   }
 
