@@ -1793,14 +1793,15 @@
                 "glob": "**/*",
                 "input": "libs/shared/assets/src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "rte.css",
+                "input": "libs/shared/ui-styles/src",
+                "output": ""
               }
             ],
             "styles": [
-              "libs/shared/ui-styles/src/index.scss",
-              {
-                "input": "libs/shared/ui-styles/src/rte.scss",
-                "bundleName": "rte"
-              }
+              "libs/shared/ui-styles/src/index.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["libs/shared/ui-styles/src/lib"]
