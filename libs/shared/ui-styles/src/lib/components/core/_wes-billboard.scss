@@ -63,6 +63,14 @@
     margin-bottom: 0;
   }
 
+  &__group-message {
+    @include wes-typeset(regular);
+    @extend .wes-rich-text-scope;
+
+    color: $global-colour-grey-900;
+    margin-top: rem(16px);
+  }
+
   &__body {
     @include wes-make-row;
 

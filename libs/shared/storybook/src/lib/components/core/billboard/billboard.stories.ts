@@ -1,4 +1,4 @@
-import { select, text } from '@storybook/addon-knobs';
+import { optionsKnob, select, text } from '@storybook/addon-knobs';
 
 export default {
   title: 'Core|Billboard (Full Width)',
@@ -20,16 +20,20 @@ export const billboard = () => ({
   template: `
     <div class="wes-billboard {{variant}}">
       <div class="wes-billboard__wrapper">
-        <div *ngIf="!!groupTitle" class="wes-billboard__header">
+        <div *ngIf="withHeader == 'yes'" class="wes-billboard__header">
           <div class="wes-billboard__header-content">
-            <h2 *ngIf="!!groupTitle" class="wes-billboard__group-title">{{ groupTitle }}</h2>
+            <h2 class="wes-billboard__group-title">Featured products</h2>
+            <div class="wes-billboard__group-message">
+              <!-- Rich text content -->
+              <p>Wesleyan Unit Trust Managers (WUTM) products allow you to invest in fully managed unit trust funds, run by an award-winning team.</p>
+            </div>
           </div>
         </div>
         <div class="wes-billboard__body">
           <div class="wes-billboard__body-content">
             <div class="wes-billboard__content">
-              <h2 class="wes-billboard__title">{{ title }}</h2>
-              <div class="wes-billboard__message" [innerHTML]="message">
+              <h2 class="wes-billboard__title">{{ billboardTitle }}</h2>
+              <div class="wes-billboard__message" [innerHTML]="billboardMessage">
                 <!-- Rich text content -->
               </div>
               <div class="wes-billboard__actions">
@@ -46,9 +50,14 @@ export const billboard = () => ({
   `,
   props: {
     variant: select('Variant', variants, ''),
-    groupTitle: text('Group title', ''),
-    title: text('Title', 'Stocks and shares ISA'),
-    message: text('Message', '<p>Offering a tax shelter for your savings, plus the potential for growth, a stocks and shares ISA is a popular way to invest. There are two stocks and shares ISAs available from Wesleyan Group – find the right product for you and apply online today.</p>'),
+    withHeader: optionsKnob('With header', {
+      'Yes': 'yes', 
+      'No': 'no'
+    }, 'no', {
+      display: 'inline-radio',
+    }),
+    billboardTitle: text('Billboard title', 'Stocks and shares ISA'),
+    billboardMessage: text('Billboard message', '<p>Offering a tax shelter for your savings, plus the potential for growth, a stocks and shares ISA is a popular way to invest. There are two stocks and shares ISAs available from Wesleyan Group – find the right product for you and apply online today.</p>'),
     primaryCtaText: text('Primary CTA text', 'Choose your ISA'),
   },
 });
