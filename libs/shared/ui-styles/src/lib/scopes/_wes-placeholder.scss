@@ -21,26 +21,6 @@
   }
 }
 
-$coreComponents: ('wes-content-block', 'wes-card-deck', 'wes-billboard', 'emphasis');
-
-@mixin wes-placeholder-spacing-core {
-  @each $coreComponent in $coreComponents {
-    & > .#{$coreComponent}:not([class*='--grey']) + .#{$coreComponent}:not([class*='--grey']),
-    & > .#{$coreComponent}[class*='--grey'] + .#{$coreComponent}[class*='--grey'] {
-      padding-top: 0;
-      margin-top: rem(-8px);
-  
-      @include media-breakpoint-up(md) {
-        margin-top: rem(-48px);
-      }
-    }    
-  }
-}
-
 .wes-placeholder-scope {
   @include wes-placeholder-spacing;
-}
-
-.wes-placeholder-scope--core {
-  @include wes-placeholder-spacing-core;
 }
