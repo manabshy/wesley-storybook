@@ -11,9 +11,13 @@ export default {
 
 const variants = {
   'On White': '',
-  'On Grey': 'wes-card-deck--grey',
+  'On White :: Collapsed': 'wes-card-deck--collapse',
   'On White :: With Icons': 'wes-card-deck--icons',
+  'On White :: With Icons :: Collapsed': 'wes-card-deck--icons wes-card-deck--collapse',
+  'On Grey': 'wes-card-deck--grey',
+  'On Grey :: Collapsed': 'wes-card-deck--grey wes-card-deck--collapse',
   'On Grey :: With Icons': 'wes-card-deck--grey wes-card-deck--icons',
+  'On Grey :: With Icons :: Collapsed': 'wes-card-deck--grey wes-card-deck--icons wes-card-deck--collapse',
 };
 
 export const cardDeck = () => ({
