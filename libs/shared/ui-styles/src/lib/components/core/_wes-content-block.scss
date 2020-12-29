@@ -31,6 +31,21 @@
     }
   }
 
+  &.wes-content-block--campaign {
+    padding-top: rem(24px);
+    padding-bottom: rem(24px);
+  
+    @include media-breakpoint-up(md) {
+      padding-top: rem(32px);
+      padding-bottom: rem(32px);
+    }
+  
+    @include media-breakpoint-up(lg) {
+      padding-top: rem(48px);
+      padding-bottom: rem(48px);
+    }
+  }
+
   &__wrapper {
     @include wes-make-container;
   }
