@@ -6,7 +6,6 @@
   @include wes-make-full-width-component;
 
   z-index: 0;
-  height: auto;
 
   @include media-breakpoint-up(lg) {
     min-height: rem(504px);
@@ -54,6 +53,10 @@
       svg#wes-toc-banner__shapes-mobile {
         margin-top: rem(16px);
       }
+    }
+
+    @include media-breakpoint-down(md) {
+      overflow: hidden;
     }
 
     @include media-breakpoint-up(lg) {
