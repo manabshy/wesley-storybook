@@ -1,75 +1,37 @@
-import { select, text } from '@storybook/addon-knobs';
-
 export default {
   title: 'Core Pages|Product',
 };
 
-const variants = {
-  'On White': '',
-  'On Grey': 'wes-core-component--grey',
-};
-
-export const basic = () => ({
+export const example = () => ({
   template: `
-    <div class="wes-content-block {{ variant.replaceAll('wes-core-component', 'wes-content-block') }}">
-      <div class="wes-content-block__wrapper">
-        <div class="wes-content-block__body">
-          <div class="wes-content-block__body-content">
-            <div class="wes-content-block__placeholder">
-              <div class="component rich-text wes-rich-text-scope">
-                <h2><span class="h2">How much you might need to save</span></h2>
-                <p>Taking the average house price in the UK as an example (£230,000 at April 2020), a 10% deposit would be £23,000. There are other costs like solicitors’ fees to add to that as well, but we’ll come to those later.</p>
-                <p>Of course, depending on where you live in the country, house prices could be significantly higher or lower than the average, so you’ll need to do your research to see what property prices are like where you want to buy - and work out your target deposit from there.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="wes-callout {{ variant.replaceAll('wes-core-component', 'wes-callout') }}">
-      <div class="wes-callout__wrapper">
-        <div class="wes-callout__body">
-          <div class="wes-callout__body-content">
-            <div class="wes-callout__frame">
-              <h2 class="wes-callout__title">How to save for your deposit</h2>
-              <div class="wes-callout__message">
-                <p>Just as it\'s important to be realistic about what kind of house and mortgage you can afford, it\'s crucial to set a realistic timeframe for saving up the deposit. Estimates suggest it can take an average of 3.5 years for a couple to save their deposit, and that rises to 13.5 years if you\'re buying alone.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="wes-content-block {{ variant.replaceAll('wes-core-component', 'wes-content-block') }}">
-      <div class="wes-content-block__wrapper">
-        <div class="wes-content-block__body">
-          <div class="wes-content-block__body-content">
-            <div class="wes-content-block__placeholder">
-              <div class="component rich-text wes-rich-text-scope">
-                <h2><span class="h2">How much you might need to save</span></h2>
-                <p>Taking the average house price in the UK as an example (£230,000 at April 2020), a 10% deposit would be £23,000. There are other costs like solicitors’ fees to add to that as well, but we’ll come to those later.</p>
-                <p>Of course, depending on where you live in the country, house prices could be significantly higher or lower than the average, so you’ll need to do your research to see what property prices are like where you want to buy - and work out your target deposit from there.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="wes-emphasis {{ variant.replaceAll('wes-core-component', 'wes-emphasis') }}">
-      <div class="wes-emphasis__wrapper">
-        <div class="wes-emphasis__body">
-          <div class="wes-emphasis__body-content">
-            <div class="wes-emphasis__frame">
-              <div class="wes-emphasis__message">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec scelerisque magna, et consequat magna. Nulla a lacus molestie, tristique sapien eu, auctor ipsum. Praesent purus libero, aliquet ut odio eu, consequat fermentum libero.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- HeroBanner -->
+    <div class="wes-hero-banner-2"><div class="wes-hero-banner-2__wrapper"><div class="wes-hero-banner-2__body"><div class="wes-hero-banner-2__content"><h1 class="wes-hero-banner-2__title">Unit Trust ISA</h1><div class="wes-hero-banner-2__message"><p>Tax-friendly investment, at a risk level right for you</p></div><div class="wes-hero-banner-2__actions"><a class="wes-hero-banner-2__cta" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">Open your ISA now</a></div><div class="wes-hero-banner-2__footnote"><p>Existing customer? <a class="wes-hero-banner-2__support-link" href="/" target="_blank">Manage your investment account here</a></p></div></div></div></div><div class="wes-hero-banner-2__shapes"><div class="wes-hero-banner-2__image" style="background-image: url(assets/images/hero-banner-2.jpg);"></div><svg xmlns:xlink="http://www.w3.org/1999/xlink" id="wes-hero-banner-2__shapes-desktop" viewBox="0 0 912 600" xmlns="http://www.w3.org/2000/svg"><defs><rect height="600" id="*banner-supergrphic_xl-a" width="912" x="0" y="0"></rect><linearGradient id="*banner-supergrphic_xl-c" x1="36.892%" x2="63.109%" y1="0%" y2="100%"><stop offset="0%" stop-color="#FEBD11"></stop><stop offset="60%" stop-color="#FEDD36" stop-opacity=".3"></stop><stop offset="100%" stop-color="#FEDD36" stop-opacity=".1"></stop></linearGradient></defs><g fill="none" fill-rule="evenodd"><mask fill="#fff" id="*banner-supergrphic_xl-b"><use xlink:href="#*banner-supergrphic_xl-a"></use></mask><g mask="url(#*banner-supergrphic_xl-b)"><polygon fill="#FFF" points="0 0 764 0 382 1059" transform="translate(142)"></polygon><path d="M0,600 L0,0 L688,0 L688,0.003 L905.628705,600 L0,600 Z" fill="#FEBD11"></path><polygon fill="url(#*banner-supergrphic_xl-c)" points="0 0 764 0 382 1059" transform="translate(142)"></polygon></g></g></svg><svg xmlns:xlink="http://www.w3.org/1999/xlink" id="wes-hero-banner-2__shapes-mobile" viewBox="0 0 375 324" xmlns="http://www.w3.org/2000/svg"><defs><rect height="324" id="*banner-supergrphic_xs-a" width="375" x="0" y="0"></rect><linearGradient id="*banner-supergrphic_xs-c" x1="36.862%" x2="63.139%" y1="0%" y2="100%"><stop offset="0%" stop-color="#FEBD11"></stop><stop offset="60%" stop-color="#FEDD36" stop-opacity=".3"></stop><stop offset="100%" stop-color="#FEDD36" stop-opacity=".1"></stop></linearGradient></defs><g fill="none" fill-rule="evenodd"><mask fill="#fff" id="*banner-supergrphic_xs-b"><use xlink:href="#*banner-supergrphic_xs-a"></use></mask><g mask="url(#*banner-supergrphic_xs-b)"><g transform="translate(-49)"><polygon fill="#FFF" points="52.083 -51.747 322.917 -51.747 187.5 323.253" transform="matrix(0 -1 -1 0 372.253 323.253)"></polygon><polygon fill="#FEBD11" points="99.14 -98.5 614.86 -98.5 357 615.5" transform="rotate(-90 381.5 234)"></polygon><polygon fill="#FEBD11" points="119.624 255.376 119.624 -119.624 255.376 255.376" transform="matrix(0 -1 -1 0 304.376 255.376)"></polygon><polygon fill="url(#*banner-supergrphic_xs-c)" points="58.88 -58.5 365.12 -58.5 212 365.5" transform="matrix(0 -1 -1 0 365.5 365.5)"></polygon></g></g></g></svg></div></div>
+
+    <!-- ContentBlock -->
+    <div class="wes-content-block "><div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder"><div class="component rich-text wes-rich-text-scope"><h2><span class="h2">Why choose a Unit Trust ISA?</span></h2><p>A simple, transparent stocks and shares ISA from Wesleyan Unit Trust Managers (WUTM), the Unit Trust ISA lets you invest in a range of risk-rated funds, each expertly managed on your behalf.</p><ul class="ticked"><li>Save up to £20,000 in the 2020/2021 tax year</li><li>Pay no income tax or capital gains tax on your investment returns</li><li>Take your pick from six funds to suit your own appetite for risk</li><li>Leave your investment in the hands of our award-winning Fund Managers</li><li>Open an account online with no initial charge*</li><li>View your portfolio online at any time</li></ul><p><a href="#">Dealing costs and ongoing charges will apply.</a> If you take advice from a Wesleyan Financial Services Consultant, an initial advice charge will also apply.</p></div></div></div></div></div></div>
+
+    <!-- ContentBlock -->
+    <div class="wes-content-block wes-content-block--grey"><div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder"><div class="component rich-text wes-rich-text-scope"><h2><span class="h2">How it works</span></h2><p>Our Unit Trust ISA allows you to invest your tax-free ISA allowance (£20,000 for 2020/2021) in a range of funds managed by WUTM’s award-winning team.</p><p>When you invest in our Unit Trust funds, you’re effectively pooling your money with other investors - giving you the collective buying power to invest in things that might be hard to access on your own.</p></div></div></div></div></div></div>
+
+    <!-- Emphasis -->
+    <div class="wes-emphasis wes-emphasis--grey wes-emphasis--collapse"><div class="wes-emphasis__wrapper"><div class="wes-emphasis__body"><div class="wes-emphasis__body-content"><div class="wes-emphasis__frame"><div class="wes-emphasis__message"><p>All our funds are invested differently to suit a range of different risk appetites, but typically, you’ll be putting your money into stocks, shares, bonds and other securities.</p></div></div></div></div></div></div>
+
+    <!-- ContentBlock -->
+    <div class="wes-content-block wes-content-block--grey wes-content-block--collapse"><div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder"><div class="component rich-text wes-rich-text-scope"><h2><span class="h2">How it works</span></h2><p>If those underlying assets perform well, your fund units gain value and your pot grows. Best of all, you won’t pay tax on any potential gains you make.</p><p>For more information, <a href="#">read our guide to Investing in Unit Trusts.</a></p></div></div></div></div></div></div>
+
+    <!-- Unimplemented: Features -->
+    <!-- Unimplemented: TabbedContainer -->
+
+    <!-- Promo -->
+    <div class="wes-promo wes-promo--shout"><div class="wes-promo__wrapper"><div class="wes-promo__header"><div class="wes-promo__bg" style="background-image:url(http://placekitten.com/500/300)"></div></div><div class="wes-promo__body"><div class="wes-promo__trapezoid"></div><div class="wes-promo__content"><h2 class="wes-promo__title">Ready to open your Unit Trust ISA?</h2><div class="wes-promo__message"><p>There are a couple of ways you can open your Unit Trust ISA. You can apply quickly and conveniently online or book an appointment with a Wesleyan Financial Services Consultant*.</p></div><div class="wes-promo__actions"><a class="wes-promo__cta" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">Apply online</a><a class="wes-promo__cta wes-promo__cta--secondary" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">Book an appointment</a></div><div class="wes-promo__footnote"><p>*3% initial charge applies for advised applications</p></div></div></div></div></div>
+
+    <!-- ContentBlock -->
+    <div class="wes-content-block "><div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder"><div class="component rich-text wes-rich-text-scope"><p><b>Want to transfer in from an existing ISA?</b> You’ll need to <a href="#">book an appointment</a> with a Wesleyan Financial Services Consultant (initial advice charge applies).</p><p><b>Got a question about the Unit Trust ISA?</b> Call us on 0330 123 3813. We're open Monday to Friday, 9am to 5pm.</p></div></div></div></div></div></div>
+
+    <!-- Unimplemented: Accordion -->
+
+    <!-- ContentBlock -->
+    
+    <!-- ContentBlock -->
   `,
-  props: {
-    variant: select('Variant', variants, ''),
-  },
 });

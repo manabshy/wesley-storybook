@@ -11,9 +11,13 @@ export default {
 
 const variants = {
   'On White': '',
-  'On Grey': 'wes-callout--grey',
+  'On White :: Collapsed': 'wes-callout--collapse',
   'On White :: Right Aligned': 'wes-callout--right',
+  'On White :: Right Aligned :: Collapsed': 'wes-callout--right wes-callout--collapse',
+  'On Grey': 'wes-callout--grey',
+  'On Grey :: Collapsed': 'wes-callout--grey wes-callout--collapse',
   'On Grey :: Right Aligned': 'wes-callout--right wes-callout--grey',
+  'On Grey :: Right Aligned :: Collapsed': 'wes-callout--right wes-callout--grey wes-callout--collapse',
 };
   
 export const callout = () => ({
