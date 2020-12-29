@@ -14,22 +14,29 @@ p.highlight {}
 .h6 {}
 
 /* Core typography */
+h1.level1 {}
+
 h2.level1 {}
+h2.level2 {}
 
 h3.level1 {}
 h3.level2 {}
+h3.level3 {}
 
 h4.level1 {}
 h4.level2 {}
 h4.level3 {}
+h4.level4 {}
 
 h5.level2 {}
 h5.level3 {}
 h5.level4 {}
+h5.level5 {}
 
 h6.level3 {}
 h6.level4 {}
 h6.level5 {}
+h6.level6 {}
 
 p.promo {}
 p.lead {}
