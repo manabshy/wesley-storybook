@@ -130,6 +130,7 @@
   &__message {
     @extend .wes-text-m;
     @extend .wes-text-semi-bold;
+    @include wes-rich-text-campaign-scope;
 
     @include rem(
       (
@@ -153,6 +154,7 @@
   &__footnote {
     @extend .wes-text-shortform;
     @extend .wes-text-italic;
+    @include wes-rich-text-campaign-scope;
 
     @include rem(
       (

@@ -77,6 +77,7 @@
 
   &__message {
     @extend .wes-text-m;
+    @include wes-rich-text-campaign-scope;
 
     margin-top: rem(24px);
   }

@@ -87,16 +87,12 @@
 
   &__message {
     @extend .wes-text-m;
-    @include wes-rich-text-scope;
+    @include wes-rich-text-campaign-scope;
 
     margin-top: rem(24px);
 
     @include media-breakpoint-up(lg) {
       margin-top: rem(32px);
-    }
-
-    > [scfieldtype="rich text"] {
-      @include wes-rich-text-scope;
     }
   }
 

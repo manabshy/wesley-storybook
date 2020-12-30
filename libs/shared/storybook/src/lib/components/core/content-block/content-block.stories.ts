@@ -50,11 +50,7 @@ export const contentBlock = () => ({
                 
                 <h3 class="level3">L3 - Emphasis effect</h3>
                 <p class="emphasis">I walked down the Kokusai Dori, the main street of the city, doubling back and weaving off to lose anybody who was trailing me. Unfortunately my alpha potential is still too weak to achieve invisibility, so I have to shake trailers the old-fashioned way.</p>
-                
-                <h3 class="level2">L2 - Highlight effect</h3>
-                <h4 class="level3">L3 - Left</h4>
-                <p class="highlight">Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
-                
+
                 <h4 class="level3">L3 - Right</h4>
                 <p class="highlight" style="text-align: right">Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
 
