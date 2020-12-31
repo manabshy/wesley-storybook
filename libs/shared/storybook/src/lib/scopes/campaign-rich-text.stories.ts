@@ -1,157 +1,97 @@
 export default {
-  title: 'Scopes|Campaign Rich Text',
+  title: 'Scopes|Rich Text Campaign',
 };
 
-// export const headings = () => ({
-//   template: `
-//     <div class="bg-solid-white" style="padding:2rem;">
+export const headings = () => ({
+  template: `
+    <div class="bg-solid-white" style="padding:2rem;">
 
-//       <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
+      <div class="wes-random-component__message wes-rich-text-campaign-scope" style="width:600px;margin:0 auto;">
         
-//         <!-- Output from Sitecore RTE -->
-//         <h6><span class="h1">NHS pensions advice, tailored to you</span></h6>
-//         <h6><span class="h2">NHS pensions advice, tailored to you</span></h6>
-//         <h6><span class="h3">NHS pensions advice, tailored to you</span></h6>
-//         <h6><span class="h4">NHS pensions advice, tailored to you</span></h6>
-//         <h6><span class="h5">NHS pensions advice, tailored to you</span></h6>
-//         <h6><span class="h6">NHS pensions advice, tailored to you</span></h6>
+        <!-- Output from Sitecore RTE -->
+        <h1>NHS pensions advice, tailored to you</h1>
+        <h2>NHS pensions advice, tailored to you</h2>
+        <h3>NHS pensions advice, tailored to you</h3>
+        <h4>NHS pensions advice, tailored to you</h4>
+        <h5>NHS pensions advice, tailored to you</h5>
+        <h6>NHS pensions advice, tailored to you</h6>
       
-//       </div>
-//     </div>
-//   `,
-// });
+      </div>
+    </div>
+  `,
+});
 
-// export const listBulleted = () => ({
-//   template: `
-//     <div class="bg-solid-white" style="padding:2rem;">
+export const copyHighlight = () => ({
+  template: `
+    <div class="bg-solid-white" style="padding:2rem;">
 
-//       <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
+      <div class="wes-random-component__message wes-rich-text-campaign-scope" style="width:600px;margin:0 auto;">
         
-//         <!-- Output from Sitecore RTE -->
-//         <ul class="bulleted">
-//           <li>How can I retire early?</li>
-//           <li>How do I maximise my Pension Lifetime Allowance?</li>
-//           <li>How much will my NHS Pension lump sum be?</li>
-//           <li>Should I stay in the NHS Pension Scheme?</li>
-//           <li>What should I do with my pension benefits when I take them?</li>
-//         </ul>
+        <!-- Output from Sitecore RTE -->
+        <p class="highlight">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
 
-//       </div>
-//     </div>
-//   `,
-// });
+      </div>
+    </div>
+  `,
+});
 
-// export const listTicked = () => ({
-//   template: `
-//     <div class="bg-solid-white" style="padding:2rem;">
+export const copyExtraSmall = () => ({
+  template: `
+    <div class="bg-solid-white" style="padding:2rem;">
 
-//       <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
+      <div class="wes-random-component__message wes-rich-text-campaign-scope" style="width:600px;margin:0 auto;">
         
-//         <!-- Output from Sitecore RTE -->
-//         <ul class="ticked">
-//           <li>How can I retire early?</li>
-//           <li>How do I maximise my Pension Lifetime Allowance?</li>
-//           <li>How much will my NHS Pension lump sum be?</li>
-//           <li>Should I stay in the NHS Pension Scheme?</li>
-//           <li>What should I do with my pension benefits when I take them?</li>
-//         </ul>
+        <!-- Output from Sitecore RTE -->
+        <p class="xs">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
 
-//       </div>
-//     </div>
-//   `,
-// });
+      </div>
+    </div>
+  `,
+});
 
-// export const listNumbered = () => ({
-//   template: `
-//     <div class="bg-solid-white" style="padding:2rem;">
+export const copySmall = () => ({
+  template: `
+    <div class="bg-solid-white" style="padding:2rem;">
 
-//       <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
+      <div class="wes-random-component__message wes-rich-text-campaign-scope" style="width:600px;margin:0 auto;">
         
-//         <!-- Output from Sitecore RTE -->
-//         <ol class="numbered">
-//           <li>How can I retire early?</li>
-//           <li>How do I maximise my Pension Lifetime Allowance?</li>
-//           <li>How much will my NHS Pension lump sum be?</li>
-//           <li>Should I stay in the NHS Pension Scheme?</li>
-//           <li>What should I do with my pension benefits when I take them?</li>
-//         </ol>
+        <!-- Output from Sitecore RTE -->
+        <p class="s">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
 
-//       </div>
-//     </div>
-//   `,
-// });
+      </div>
+    </div>
+  `,
+});
 
-// export const copyHighlight = () => ({
-//   template: `
-//     <div class="bg-solid-white" style="padding:2rem;">
+export const copyMedium = () => ({
+  template: `
+    <div class="bg-solid-white" style="padding:2rem;">
 
-//       <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
+      <div class="wes-random-component__message wes-rich-text-campaign-scope" style="width:600px;margin:0 auto;">
         
-//         <!-- Output from Sitecore RTE -->
-//         <p class="highlight">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+        <!-- Output from Sitecore RTE -->
+        <p class="m">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
 
-//       </div>
-//     </div>
-//   `,
-// });
+      </div>
+    </div>
+  `,
+});
 
-// export const copyExtraSmall = () => ({
-//   template: `
-//     <div class="bg-solid-white" style="padding:2rem;">
+export const copyLarge = () => ({
+  template: `
+    <div class="bg-solid-white" style="padding:2rem;">
 
-//       <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
+      <div class="wes-random-component__message wes-rich-text-campaign-scope" style="width:600px;margin:0 auto;">
         
-//         <!-- Output from Sitecore RTE -->
-//         <p class="xs">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+        <!-- Output from Sitecore RTE -->
+        <p class="l">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
 
-//       </div>
-//     </div>
-//   `,
-// });
+      </div>
+    </div>
+  `,
+});
 
-// export const copySmall = () => ({
-//   template: `
-//     <div class="bg-solid-white" style="padding:2rem;">
-
-//       <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
-        
-//         <!-- Output from Sitecore RTE -->
-//         <p class="s">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
-
-//       </div>
-//     </div>
-//   `,
-// });
-
-// export const copyMedium = () => ({
-//   template: `
-//     <div class="bg-solid-white" style="padding:2rem;">
-
-//       <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
-        
-//         <!-- Output from Sitecore RTE -->
-//         <p class="m">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
-
-//       </div>
-//     </div>
-//   `,
-// });
-
-// export const copyLarge = () => ({
-//   template: `
-//     <div class="bg-solid-white" style="padding:2rem;">
-
-//       <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
-        
-//         <!-- Output from Sitecore RTE -->
-//         <p class="l">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
-
-//       </div>
-//     </div>
-//   `,
-// });
-
-export const complete = () => ({
+export const example = () => ({
   template: `
     <div class="bg-solid-white" style="padding:2rem;">
 
