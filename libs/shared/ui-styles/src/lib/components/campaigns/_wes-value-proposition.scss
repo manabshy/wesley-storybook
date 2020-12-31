@@ -80,7 +80,7 @@
 
   &__message,
   &__message > [scfieldtype="rich text"] {
-    @include wes-rich-text-scope;
+    @include wes-rich-text-campaign-scope;
   }
 }
   

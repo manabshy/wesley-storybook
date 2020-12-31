@@ -2,7 +2,7 @@
 /// Wesleyan Rich Text Scope
 ////
 
-@mixin wes-rich-text-scope {
+@mixin wes-rich-text-scope-base {
   p,
   ul,
   ol,
@@ -28,43 +28,6 @@
   img {
     margin: 0;
     padding: 0;
-  }
-
-  > * {
-    & + * {
-      margin-top: rem(24px);
-    }
-
-    & + .level1,
-    & + .level2 {
-      margin-top: rem(56px);
-
-      @include media-breakpoint-up(md) {
-        margin-top: rem(72px);
-      }
-    }
-
-    & + .level3 {
-      margin-top: rem(48px);
-    }
-
-    & + .level4 {
-      margin-top: rem(40px);
-    }
-
-    & + ul, 
-    & + ol {
-      margin-top: rem(36px);
-    }
-  }
-
-  > p + p {
-    margin-top: rem(24px);
-  }
-
-  > ul + *,
-  > ol + * {
-    margin-top: rem(40px);
   }
 
   i,
@@ -105,143 +68,230 @@
 
     list-style-type: none;
   }
+}
 
-  // RTE Legacy Heading styling
-  h1,
-  .h1 {
-    @extend .wes-h1;
+// Apply Core typography
+@mixin wes-rich-text-scope {
+  @include wes-rich-text-scope-base;
 
-    margin-bottom: 0;
-  }
-  h2,
-  .h2 {
-    @extend .wes-h2;
+  &:not(.scEnabledChrome),
+  > [scfieldtype="rich text"] {
 
-    margin-bottom: 0;
-  }
-  h3,
-  .h3 {
-    @extend .wes-h3;
-
-    margin-bottom: 0;
-  }
-  h4,
-  .h4 {
-    @extend .wes-h4;
-
-    margin-bottom: 0;
-  }
-  h5,
-  .h5 {
-    @extend .wes-h5;
-
-    margin-bottom: 0;
-  }
-  h6,
-  .h6 {
-    @extend .wes-h6;
-
-    margin-bottom: 0;
-  }
- 
-  // RTE Core typography
-  .level1 {
-    @include wes-typeset(level1);
-
-    & + * {
-      margin-top: rem(16px);
-
-      @include media-breakpoint-up(md) {
+    > * {
+      & + p {
         margin-top: rem(24px);
       }
-    }
-  }
-  .promo {
-    @include wes-typeset(promo);
-  }
-  .level2 {
-    @include wes-typeset(level2);
-
-    & + * {
-      margin-top: rem(16px);
-
-      @include media-breakpoint-up(md) {
-        margin-top: rem(24px);
+  
+      & + .level1,
+      & + .level2 {
+        margin-top: rem(56px);
+  
+        @include media-breakpoint-up(md) {
+          margin-top: rem(72px);
+        }
+      }
+  
+      & + .level3 {
+        margin-top: rem(48px);
+      }
+  
+      & + .level4 {
+        margin-top: rem(40px);
+      }
+  
+      & + ul, 
+      & + ol {
+        margin-top: rem(36px);
       }
     }
-  }
-  .level3 {
-    @include wes-typeset(level3);
-
-    & + * {
-      margin-top: rem(16px);
+  
+    > p + p {
+      margin-top: rem(24px);
     }
-  }
-  .level4 {
-    @include wes-typeset(level4);
-
-    & + * {
-      margin-top: rem(12px);
+  
+    > ul + *,
+    > ol + * {
+      margin-top: rem(40px);
     }
-  }
-  .lead {
-    @include wes-typeset(lead);
-  }
-  .regular {
-    @include wes-typeset(regular);
-  }
-  .regularSemiBold {
-    @include wes-typeset(regularSemiBold);
-  }
-  .small {
-    @include wes-typeset(small);
-  }
-  .xsmall {
-    @include wes-typeset(xsmall);
-  }
-
-  // RTE Paragraph styling
-  .xs {
-    @extend .wes-text-xs;
-  }
-  .s {
-    @extend .wes-text-s;
-  }
-  .m {
-    @extend .wes-text-m;
-  }
-  .l {
-    @extend .wes-text-l;
-  }
-  .highlight:not([style*="text-align: right"]) {
-    border-left: 2px solid $global-colour-gold-900;
-    padding-left: rem(16px);
-
-    @include media-breakpoint-up(md) {
-      padding-left: rem(24px);
+  
+  
+    // RTE Core typography
+    h1,
+    .level1 {
+      @include wes-typeset(level1);
+  
+      & + * {
+        margin-top: rem(16px);
+  
+        @include media-breakpoint-up(md) {
+          margin-top: rem(24px);
+        }
+      }
     }
-  }
-  .highlight[style*="text-align: right"] {
-    border-right: 2px solid $global-colour-gold-900;
-    padding-right: rem(16px);
-
-    @include media-breakpoint-up(md) {
-      padding-right: rem(24px);
+    h2,
+    .level2 {
+      @include wes-typeset(level2);
+  
+      & + * {
+        margin-top: rem(16px);
+  
+        @include media-breakpoint-up(md) {
+          margin-top: rem(24px);
+        }
+      }
     }
-  }
-  .emphasis {
-    @include wes-typeset(regularSemiBold);
+    h3,
+    .level3 {
+      @include wes-typeset(level3);
+  
+      & + * {
+        margin-top: rem(16px);
+      }
+    }
+    h4,
+    h5,
+    h6,
+    .level4 {
+      @include wes-typeset(level4);
+  
+      & + * {
+        margin-top: rem(12px);
+      }
+    }
+    .promo {
+      @include wes-typeset(promo);
+    }
+    .lead {
+      @include wes-typeset(lead);
+    }
+    .regular {
+      @include wes-typeset(regular);
+    }
+    .regularSemiBold {
+      @include wes-typeset(regularSemiBold);
+    }
+    .small {
+      @include wes-typeset(small);
+    }
+    .xsmall {
+      @include wes-typeset(xsmall);
+    }
+  
+    .emphasis {
+      @include wes-typeset(regularSemiBold);
+  
+      color: $global-colour-charcoal;
+      border-left: 2px solid $global-colour-gold-900;
+      padding-left: rem(30px);
+    }
 
-    color: $global-colour-charcoal;
-    border-left: 2px solid $global-colour-gold-900;
-    padding-left: rem(30px);
   }
 }
 
-.wes-rich-text-scope:not(.scEnabledChrome) {
+// Apply legacy typography
+@mixin wes-rich-text-campaign-scope {
+  @include wes-rich-text-scope-base;
+  
+  &:not(.scEnabledChrome),
+  > [scfieldtype="rich text"] {
+
+    > * {
+      & + * {
+        margin-top: rem(24px) !important;
+      }
+
+      & + ul, 
+      & + ol {
+        margin-top: rem(36px);
+      }
+    }
+
+    > p + p {
+      margin-top: rem(24px);
+    }
+
+    > ul + *,
+    > ol + * {
+      margin-top: rem(40px);
+    }
+
+    // RTE Legacy Heading styling
+    h1,
+    .h1 {
+      @extend .wes-h1;
+
+      margin-bottom: 0;
+    }
+    h2,
+    .h2 {
+      @extend .wes-h2;
+
+      margin-bottom: 0;
+    }
+    h3,
+    .h3 {
+      @extend .wes-h3;
+
+      margin-bottom: 0;
+    }
+    h4,
+    .h4 {
+      @extend .wes-h4;
+
+      margin-bottom: 0;
+    }
+    h5,
+    .h5 {
+      @extend .wes-h5;
+
+      margin-bottom: 0;
+    }
+    h6,
+    .h6 {
+      @extend .wes-h6;
+
+      margin-bottom: 0;
+    }
+
+    // RTE Paragraph styling
+    .xs {
+      @extend .wes-text-xs;
+    }
+    .s {
+      @extend .wes-text-s;
+    }
+    .m {
+      @extend .wes-text-m;
+    }
+    .l {
+      @extend .wes-text-l;
+    }
+
+    .highlight:not([style*="text-align: right"]) {
+      border-left: 2px solid $global-colour-gold-900;
+      padding-left: rem(16px);
+
+      @include media-breakpoint-up(md) {
+        padding-left: rem(24px);
+      }
+    }
+    .highlight[style*="text-align: right"] {
+      border-right: 2px solid $global-colour-gold-900;
+      padding-right: rem(16px);
+
+      @include media-breakpoint-up(md) {
+        padding-right: rem(24px);
+      }
+    }
+
+  }
+}
+
+
+.wes-rich-text-scope {
   @include wes-rich-text-scope;
 }
 
-.wes-rich-text-scope > [scfieldtype="rich text"] {
-  @include wes-rich-text-scope;
+.wes-rich-text-campaign-scope {
+  @include wes-rich-text-campaign-scope;
 }

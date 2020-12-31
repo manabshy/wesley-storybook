@@ -1,5 +1,5 @@
 export default {
-  title: 'Scopes|Rich Text',
+  title: 'Scopes|Rich Text Core',
 };
 
 export const headings = () => ({
@@ -9,12 +9,12 @@ export const headings = () => ({
       <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
         
         <!-- Output from Sitecore RTE -->
-        <h6><span class="h1">NHS pensions advice, tailored to you</span></h6>
-        <h6><span class="h2">NHS pensions advice, tailored to you</span></h6>
-        <h6><span class="h3">NHS pensions advice, tailored to you</span></h6>
-        <h6><span class="h4">NHS pensions advice, tailored to you</span></h6>
-        <h6><span class="h5">NHS pensions advice, tailored to you</span></h6>
-        <h6><span class="h6">NHS pensions advice, tailored to you</span></h6>
+        <h1>NHS pensions advice, tailored to you</h1>
+        <h2>NHS pensions advice, tailored to you</h2>
+        <h3>NHS pensions advice, tailored to you</h3>
+        <h4>NHS pensions advice, tailored to you</h4>
+        <h5>NHS pensions advice, tailored to you</h5>
+        <h6>NHS pensions advice, tailored to you</h6>
       
       </div>
     </div>
@@ -81,20 +81,6 @@ export const listNumbered = () => ({
   `,
 });
 
-export const copyHighlight = () => ({
-  template: `
-    <div class="bg-solid-white" style="padding:2rem;">
-
-      <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
-        
-        <!-- Output from Sitecore RTE -->
-        <p class="highlight">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
-
-      </div>
-    </div>
-  `,
-});
-
 export const copyEmphasis = () => ({
   template: `
     <div class="bg-solid-white" style="padding:2rem;">
@@ -116,7 +102,7 @@ export const copyExtraSmall = () => ({
       <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
         
         <!-- Output from Sitecore RTE -->
-        <p class="xs">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+        <p class="xsmall">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
 
       </div>
     </div>
@@ -130,42 +116,56 @@ export const copySmall = () => ({
       <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
         
         <!-- Output from Sitecore RTE -->
-        <p class="s">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+        <p class="small">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
 
       </div>
     </div>
   `,
 });
 
-export const copyMedium = () => ({
+export const copyRegularSemiBold = () => ({
   template: `
     <div class="bg-solid-white" style="padding:2rem;">
 
       <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
         
         <!-- Output from Sitecore RTE -->
-        <p class="m">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+        <p class="regularSemiBold">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
 
       </div>
     </div>
   `,
 });
 
-export const copyLarge = () => ({
+export const copyLead = () => ({
   template: `
     <div class="bg-solid-white" style="padding:2rem;">
 
       <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
         
         <!-- Output from Sitecore RTE -->
-        <p class="l">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+        <p class="lead">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
 
       </div>
     </div>
   `,
 });
 
-export const complete = () => ({
+export const copyPromo = () => ({
+  template: `
+    <div class="bg-solid-white" style="padding:2rem;">
+
+      <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
+        
+        <!-- Output from Sitecore RTE -->
+        <p class="promo">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+
+      </div>
+    </div>
+  `,
+});
+
+export const example = () => ({
   template: `
     <div class="bg-solid-white" style="padding:2rem;">
 
@@ -173,9 +173,16 @@ export const complete = () => ({
       <div class="wes-random-component__message wes-rich-text-scope" style="width:600px;margin:0 auto;">
 
         <!-- Output from Sitecore RTE -->
-        <h2><span class="h2">NHS pensions advice, tailored to you</span></h2>
+        <h1 class="level1">L1 - Unit trusts</h1>
+        <p class="lead">Lead - Wesleyan Unit Trust Managers (WUTM) offers a trio of products that enable you to invest in fully managed unit trust funds, run by an award-winning team. Whether you’re looking to build your own investment or save for your children’s future, we’ve got a product for you.</p>
+        <h2 class="level2">L2 - What is a stocks and shares ISA?</h2>
         <p>Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
-        <h2><span class="h3">NHS pensions advice, tailored to you</span></h2>
+        <p>Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+        <h3 class="level3">L3 - The tax benefits of an investment ISA</h3>
+        <p>Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+        <h4 class="level4">L4 - How long does the meeting last?</h4>
+        <p>Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+        
         <ul class="ticked">
           <li>How can I retire early?</li>
           <li>How do I maximise my Pension Lifetime Allowance?</li>
@@ -183,7 +190,12 @@ export const complete = () => ({
           <li>Should I stay in the NHS Pension Scheme?</li>
           <li>What should I do with my pension benefits when I take them?</li>
         </ul>
-        <p>Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+        <p>Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
+        
+        <h3 class="level3">L3 - Emphasis effect</h3>
+        <p class="emphasis">I walked down the Kokusai Dori, the main street of the city, doubling back and weaving off to lose anybody who was trailing me. Unfortunately my alpha potential is still too weak to achieve invisibility, so I have to shake trailers the old-fashioned way.</p>
+        
+        <h5 class="level4">L4 - Lorem ipsum</h5>
         <p>Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
         <ul class="bulleted">
           <li>How can I retire early?</li>
@@ -192,7 +204,6 @@ export const complete = () => ({
           <li>Should I stay in the NHS Pension Scheme?</li>
           <li>What should I do with my pension benefits when I take them?</li>
         </ul>
-        <h2><span class="h4">NHS pensions advice, tailored to you</span></h2>
         <p>Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
         <ol class="numbered">
           <li>Home emergency support – We have a network of registered tradespeople available 24/7, ready to help fix your domestic crises like a burst pipe or heating breakdown.</li>
@@ -200,10 +211,6 @@ export const complete = () => ({
           <li>Family legal expenses – Protects you and your family from the costs of legal disputes, whether with a neighbour or your employer.</li>
         </ol>
         <p>Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
-        <p class="highlight">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
-        <p>Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
-        <p class="s"><em>Limits, exclusions <a href="#">and charges do apply</a>. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</em></p>
-
       </div>
 
     </div>

@@ -47,6 +47,18 @@
 @import './lib/components/core/wes-toc-banner';
 @import './lib/components/core/wes-emphasis';
 
+// Campaign components
+@import './lib/components/campaigns/wes-awards';
+@import './lib/components/campaigns/wes-campaign-header';
+@import './lib/components/campaigns/wes-content-container';
+@import './lib/components/campaigns/wes-cta-card';
+@import './lib/components/campaigns/wes-next-steps';
+@import './lib/components/campaigns/wes-social-proof';
+@import './lib/components/campaigns/wes-support-block';
+@import './lib/components/campaigns/wes-video-carousel';
+@import './lib/components/campaigns/wes-who-do-we-help';
+@import './lib/components/campaigns/wes-value-proposition';
+
 // Components
 @import '~@angular/cdk/a11y-prebuilt.css';
 @import '~@angular/cdk/overlay-prebuilt.css';
@@ -74,16 +86,6 @@
 @import './lib/components/wes-col-6';
 @import './lib/components/wes-footer';
 @import './lib/components/wes-tabs';
-@import './lib/components/wes-cta-card';
-@import './lib/components/wes-awards';
-@import './lib/components/wes-who-do-we-help';
-@import './lib/components/wes-social-proof';
-@import './lib/components/wes-next-steps';
-@import './lib/components/wes-content-container';
-@import './lib/components/wes-video-carousel';
-@import './lib/components/wes-campaign-header';
-@import './lib/components/wes-support-block';
-@import './lib/components/wes-value-proposition';
 @import './lib/components/wes-your-fc';
 @import './lib/components/wes-sitecore-forms';
 @import './lib/components/wes-collapse';

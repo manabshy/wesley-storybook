@@ -62,7 +62,7 @@
     }
   }
 
-  &__cta {
+  &__cta.wes-button-cta {
     @at-root {
       .wes-campaign-header.js-is-sticky & {
         @include media-breakpoint-down(sm) {

@@ -118,6 +118,7 @@
   
   &__title {
     @extend .wes-h2;
+    @include wes-rich-text-campaign-scope;
 
     margin-bottom: 0;
   }
@@ -224,9 +225,8 @@
     }
   }
 
-  &__main,
-  &__main > [scfieldtype="rich text"] {
-    @include wes-rich-text-scope;
+  &__main {
+    @include wes-rich-text-campaign-scope;
   }
 }
   

@@ -113,6 +113,7 @@
 
   &__message {
     @extend .wes-text-m;
+    @include wes-rich-text-campaign-scope;
 
     margin-top: rem(36px);
 
@@ -145,6 +146,7 @@
 
   &__footnote {
     @extend .wes-text-m;
+    @include wes-rich-text-campaign-scope;
 
     margin-top: rem(32px);
 
