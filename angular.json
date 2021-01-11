@@ -1875,6 +1875,32 @@
           }
         }
       }
+    },
+    "cassie-cookies": {
+      "projectType": "library",
+      "root": "apps/cassie-cookies",
+      "sourceRoot": "apps/cassie-cookies",
+      "prefix": "",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [],
+            "exclude": []
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

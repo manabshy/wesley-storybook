@@ -27,17 +27,16 @@ $grid-gutter-widths: (
   }
 }
 
-
 /// Wesleyan-specific version of Bootstrap `make-container`
-/// Applies correct paddings aligned with the declarative overrides above 
+/// Applies correct paddings aligned with the declarative overrides above
 @mixin wes-make-container {
   @include make-container;
-  @include make-container-max-widths;
+  // @include make-container-max-widths; // depricated TODO: check max-width
 
   @each $grid-breakpoint, $grid-gutter-width in $grid-gutter-widths {
     @include media-breakpoint-up($grid-breakpoint) {
       $grid-gutter-half-width: $grid-gutter-width / 2;
-      
+
       padding-right: $grid-gutter-half-width;
       padding-left: $grid-gutter-half-width;
     }
@@ -45,14 +44,14 @@ $grid-gutter-widths: (
 }
 
 /// Wesleyan-specific version of Bootstrap `make-row`
-/// Applies correct margins aligned with the declarative overrides above 
+/// Applies correct margins aligned with the declarative overrides above
 @mixin wes-make-row {
   @include make-row;
-  
+
   @each $grid-breakpoint, $grid-gutter-width in $grid-gutter-widths {
     @include media-breakpoint-up($grid-breakpoint) {
       $grid-gutter-half-width: $grid-gutter-width / 2;
-      
+
       margin-right: -$grid-gutter-half-width;
       margin-left: -$grid-gutter-half-width;
     }
@@ -60,14 +59,14 @@ $grid-gutter-widths: (
 }
 
 /// Wesleyan-specific version of Bootstrap `make-col-ready`
-/// Applies correct paddings aligned with the declarative overrides above 
+/// Applies correct paddings aligned with the declarative overrides above
 @mixin wes-make-col-ready {
   @include make-col-ready();
 
   @each $grid-breakpoint, $grid-gutter-width in $grid-gutter-widths {
     @include media-breakpoint-up($grid-breakpoint) {
       $grid-gutter-half-width: $grid-gutter-width / 2;
-      
+
       padding-right: $grid-gutter-half-width;
       padding-left: $grid-gutter-half-width;
     }

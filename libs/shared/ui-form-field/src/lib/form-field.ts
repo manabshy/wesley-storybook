@@ -31,8 +31,6 @@ import {
 import {
   CanColor,
   CanColorCtor,
-  LabelOptions,
-  MAT_LABEL_GLOBAL_OPTIONS,
   mixinColor,
 } from '@angular/material/core';
 import { fromEvent, merge, Subject } from 'rxjs';
@@ -152,7 +150,8 @@ export const MAT_FORM_FIELD = new InjectionToken<WesFormField>('WesFormField');
   inputs: ['color'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: MAT_FORM_FIELD, useExisting: WesFormField }],
+  providers: [{ provide: MAT_FORM_FIELD, useExisting: WesFormField },
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'always' } }],
 })
 export class WesFormField extends _MatFormFieldMixinBase
   implements
@@ -161,7 +160,6 @@ export class WesFormField extends _MatFormFieldMixinBase
     AfterViewInit,
     OnDestroy,
     CanColor {
-  private _labelOptions: LabelOptions;
 
   /**
    * Whether the outline gap needs to be calculated
@@ -250,7 +248,7 @@ export class WesFormField extends _MatFormFieldMixinBase
   }
   set floatLabel(value: FloatLabelType) {
     if (value !== this._floatLabel) {
-      this._floatLabel = value || this._getDefaultFloatLabelState();
+      this._floatLabel = value;
       this._changeDetectorRef.markForCheck();
     }
   }
@@ -313,7 +311,6 @@ export class WesFormField extends _MatFormFieldMixinBase
   constructor(
     public _elementRef: ElementRef,
     private _changeDetectorRef: ChangeDetectorRef,
-    @Optional() @Inject(MAT_LABEL_GLOBAL_OPTIONS) labelOptions: LabelOptions,
     @Optional() private _dir: Directionality,
     @Optional()
     @Inject(MAT_FORM_FIELD_DEFAULT_OPTIONS)
@@ -324,8 +321,6 @@ export class WesFormField extends _MatFormFieldMixinBase
   ) {
     super(_elementRef);
 
-    this._labelOptions = labelOptions ? labelOptions : {};
-    this.floatLabel = this._getDefaultFloatLabelState();
     this._animationsEnabled = _animationMode !== 'NoopAnimations';
 
     // Set the default through here so we invoke the setter on the first run.
@@ -545,13 +540,13 @@ export class WesFormField extends _MatFormFieldMixinBase
   }
 
   /** Gets the default float label state. */
-  private _getDefaultFloatLabelState(): FloatLabelType {
-    return (
-      (this._defaults && this._defaults.floatLabel) ||
-      this._labelOptions.float ||
-      'auto'
-    );
-  }
+  // private _getDefaultFloatLabelState(): FloatLabelType {
+  //   return (
+  //     (this._defaults && this._defaults.floatLabel) ||
+  //     this._labelOptions.float ||
+  //     'auto'
+  //   );
+  // }
 
   /**
    * Sets the list of element IDs that describe the child control. This allows the control to update
