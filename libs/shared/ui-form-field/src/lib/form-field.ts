@@ -247,7 +247,7 @@ export class WesFormField extends _MatFormFieldMixinBase
       : this._floatLabel;
   }
   set floatLabel(value: FloatLabelType) {
-    if (value !== this._floatLabel) {
+    if (value && value !== this._floatLabel) {
       this._floatLabel = value;
       this._changeDetectorRef.markForCheck();
     }
