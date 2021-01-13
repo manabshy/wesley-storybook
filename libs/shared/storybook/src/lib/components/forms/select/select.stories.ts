@@ -1,5 +1,5 @@
 export default {
-  title: 'Components|Form - Select',
+  title: 'Components/Form - Select',
 };
 
 export const base = () => ({

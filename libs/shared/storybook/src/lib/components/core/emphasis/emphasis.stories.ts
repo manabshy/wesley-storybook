@@ -1,7 +1,7 @@
 import { select, text } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Core|Emphasis (Full Width)',
+  title: 'Core/Emphasis (Full Width)',
   parameters: { 
     knobs: {
       escapeHTML: false,

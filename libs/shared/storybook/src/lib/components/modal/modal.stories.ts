@@ -1,5 +1,5 @@
 export default {
-  title: 'Components|Modal',
+  title: 'Components/Modal',
 };
 
 export const base = () => ({

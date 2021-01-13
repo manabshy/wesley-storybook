@@ -1,5 +1,5 @@
 export default {
-  title: 'Core Pages|Product Section',
+  title: 'Core Pages/Product Section',
 };
 
 export const example = () => ({

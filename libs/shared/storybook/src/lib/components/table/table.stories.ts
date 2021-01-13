@@ -1,5 +1,5 @@
 export default {
-  title: 'Components|Table',
+  title: 'Components/Table',
 };
 
 export const style1 = () => ({

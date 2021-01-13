@@ -1,7 +1,7 @@
 import { text, select, boolean } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Atoms|Button',
+  title: 'Atoms/Button',
 };
 
 const variants = {

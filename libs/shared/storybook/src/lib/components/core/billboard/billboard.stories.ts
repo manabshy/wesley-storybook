@@ -1,7 +1,7 @@
 import { optionsKnob, select, text } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Core|Billboard (Full Width)',
+  title: 'Core/Billboard (Full Width)',
   parameters: { 
     knobs: {
       escapeHTML: false,

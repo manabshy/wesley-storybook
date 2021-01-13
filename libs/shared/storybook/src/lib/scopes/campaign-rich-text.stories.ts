@@ -1,5 +1,5 @@
 export default {
-  title: 'Scopes|Rich Text Campaign',
+  title: 'Scopes/Rich Text Campaign',
 };
 
 export const headings = () => ({

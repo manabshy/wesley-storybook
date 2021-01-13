@@ -1,5 +1,5 @@
 export default {
-  title: 'Components|Download Card',
+  title: 'Components/Download Card',
 };
 
 export const downloadCard = () => ({

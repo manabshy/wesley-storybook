@@ -1,7 +1,7 @@
 import { text, select } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Campaigns|CTA Card (Full Width)',
+  title: 'Campaigns/CTA Card (Full Width)',
   parameters: { 
     knobs: {
       escapeHTML: false,

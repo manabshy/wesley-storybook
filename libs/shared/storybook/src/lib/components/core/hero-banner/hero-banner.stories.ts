@@ -1,7 +1,7 @@
 import { boolean, select, text } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Core|Hero Banner (Full Width)',
+  title: 'Core/Hero Banner (Full Width)',
 };
 
 export const heroBanner = () => ({
