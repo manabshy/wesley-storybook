@@ -8,6 +8,6 @@ describe('set-a-target-calculator', () => {
     cy.login('my-email@something.com', 'myPassword');
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome to set-a-target-calculator!');
+    getGreeting().contains('Investment calculator');
   });
 });
