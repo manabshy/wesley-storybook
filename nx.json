@@ -170,6 +170,9 @@
     "style": {
       "tags": [],
       "implicitDependencies": ["shared-ui-styles"]
+    },
+    "cassie-cookies": {
+      "tags": []
     }
   },
   "affected": {
