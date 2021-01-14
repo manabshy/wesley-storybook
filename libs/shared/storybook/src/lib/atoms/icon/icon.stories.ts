@@ -1,7 +1,7 @@
 import { color, number } from "@storybook/addon-knobs";
 
 export default {
-  title: 'Atoms|Icon',
+  title: 'Atoms/Icon',
 };
 
 export const spritesheet = () => ({

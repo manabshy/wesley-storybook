@@ -1,7 +1,7 @@
 import { text, optionsKnob } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Campaigns|Support Block (Full Width)',
+  title: 'Campaigns/Support Block (Full Width)',
   parameters: { 
     knobs: {
       escapeHTML: false,

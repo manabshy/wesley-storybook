@@ -1,7 +1,7 @@
 import { text } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Campaigns|Social Proof (Full Width)',
+  title: 'Campaigns/Social Proof (Full Width)',
   parameters: { 
     knobs: {
       escapeHTML: false,

@@ -1,7 +1,7 @@
 import { text, select } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Campaigns|Content Container (Full Width)',
+  title: 'Campaigns/Content Container (Full Width)',
   parameters: { 
     knobs: {
       escapeHTML: false,

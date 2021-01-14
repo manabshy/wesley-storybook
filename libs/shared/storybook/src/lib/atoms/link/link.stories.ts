@@ -1,5 +1,5 @@
 export default {
-  title: 'Atoms|Link',
+  title: 'Atoms/Link',
 };
 
 const variants = {

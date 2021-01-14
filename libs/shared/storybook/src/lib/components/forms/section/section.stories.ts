@@ -1,5 +1,5 @@
 export default {
-  title: 'Components|Form - Section',
+  title: 'Components/Form - Section',
 };
 
 const affectedFormControl = `

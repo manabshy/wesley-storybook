@@ -1,7 +1,7 @@
 import { boolean, optionsKnob } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Campaigns|Hero',
+  title: 'Campaigns/Hero',
 };
 
 export const base = () => ({

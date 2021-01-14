@@ -915,6 +915,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "echarts"
+            ],
             "outputPath": "dist/apps/just-invest-calculator",
             "index": "apps/just-invest-calculator/src/index.html",
             "main": "apps/just-invest-calculator/src/main.ts",

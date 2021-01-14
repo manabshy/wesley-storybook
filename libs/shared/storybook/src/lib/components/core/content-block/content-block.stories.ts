@@ -1,7 +1,7 @@
 import { select } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Core|Content Block (Full Width)',
+  title: 'Core/Content Block (Full Width)',
 };
 
 const variants = {

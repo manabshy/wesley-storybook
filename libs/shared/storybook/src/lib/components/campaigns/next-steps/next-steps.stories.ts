@@ -1,7 +1,7 @@
 import { text, select } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Campaigns|Next Steps (Full Width)',
+  title: 'Campaigns/Next Steps (Full Width)',
   parameters: { 
     knobs: {
       escapeHTML: false,

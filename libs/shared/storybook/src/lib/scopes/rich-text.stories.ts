@@ -1,5 +1,5 @@
 export default {
-  title: 'Scopes|Rich Text Core',
+  title: 'Scopes/Rich Text Core',
 };
 
 export const headings = () => ({

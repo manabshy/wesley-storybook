@@ -1,7 +1,7 @@
 import { optionsKnob, select, text } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Core|Promo (Full Width)',
+  title: 'Core/Promo (Full Width)',
   parameters: { 
     knobs: {
       escapeHTML: false,

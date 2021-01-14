@@ -4,7 +4,7 @@ import { ConfirmationPageComponent } from '../confirmation-page/confirmation-pag
 import { KcFailurePageComponent } from '../kc-failure-page/kc-failure-page.component';
 
 export default {
-  title: 'Sitecore Pages|ISA',
+  title: 'Sitecore Pages/ISA',
 };
 
 export const productPage = () => ({

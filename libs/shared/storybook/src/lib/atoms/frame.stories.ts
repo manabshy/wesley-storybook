@@ -1,5 +1,5 @@
 export default {
-  title: 'Atoms|Frame',
+  title: 'Atoms/Frame',
 };
 
 export const square = () => ({

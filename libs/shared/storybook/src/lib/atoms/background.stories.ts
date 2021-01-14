@@ -3,7 +3,7 @@ import {
   SharedUiStepperModule,
 } from '@wesleyan-frontend/shared/ui-stepper';
 export default {
-  title: 'Atoms|Background',
+  title: 'Atoms/Background',
   decorators: [
     moduleMetadata({
       imports: [SharedUiStepperModule],

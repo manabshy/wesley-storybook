@@ -1,7 +1,7 @@
 import { optionsKnob, select, text } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Campaigns|Who Do We Help (Full Width)',
+  title: 'Campaigns/Who Do We Help (Full Width)',
   parameters: { 
     knobs: {
       escapeHTML: false,

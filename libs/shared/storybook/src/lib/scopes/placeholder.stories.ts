@@ -1,5 +1,5 @@
 export default {
-  title: 'Scopes|Placeholder',
+  title: 'Scopes/Placeholder',
 };
 
 export const base = () => ({

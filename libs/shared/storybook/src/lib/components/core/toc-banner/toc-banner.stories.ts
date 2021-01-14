@@ -1,7 +1,7 @@
 import { text, array } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Core|TOC Banner (Full Width)',
+  title: 'Core/TOC Banner (Full Width)',
 };
 
 export const tocBanner = () => ({

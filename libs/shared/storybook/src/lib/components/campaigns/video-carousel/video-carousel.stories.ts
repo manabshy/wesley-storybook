@@ -1,7 +1,7 @@
 import { text } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Campaigns|Video Carousel (Full Width)',
+  title: 'Campaigns/Video Carousel (Full Width)',
   parameters: { 
     knobs: {
       escapeHTML: false,

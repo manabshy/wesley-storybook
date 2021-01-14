@@ -2,7 +2,7 @@ import { optionsKnob, select, text } from '@storybook/addon-knobs';
 import { OptionsKnobOptions } from '@storybook/addon-knobs/dist/components/types';
 
 export default {
-  title: 'Campaigns|Awards & Accreditations (Full Width)',
+  title: 'Campaigns/Awards & Accreditations (Full Width)',
   parameters: { 
     knobs: {
       escapeHTML: false,

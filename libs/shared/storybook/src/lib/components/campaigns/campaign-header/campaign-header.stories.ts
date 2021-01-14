@@ -1,5 +1,5 @@
 export default {
-  title: 'Campaigns|Header',
+  title: 'Campaigns/Header',
 };
   
 export const base = () => ({

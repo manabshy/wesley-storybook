@@ -1,7 +1,7 @@
 import { number, text, select, optionsKnob } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Core|Card Deck (Full Width)',
+  title: 'Core/Card Deck (Full Width)',
   parameters: { 
     knobs: {
       escapeHTML: false,

@@ -1,5 +1,5 @@
 export default {
-  title: 'Components|Resource Link',
+  title: 'Components/Resource Link',
 };
 
 export const resourceLink = () => ({

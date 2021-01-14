@@ -1,7 +1,7 @@
 import { select, text } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Core|Callout (Full Width)',
+  title: 'Core/Callout (Full Width)',
   parameters: { 
     knobs: {
       escapeHTML: false,
