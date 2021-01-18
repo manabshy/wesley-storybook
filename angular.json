@@ -63,6 +63,9 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "es5": {
+              "tsConfig": "apps/wpisa/tsconfig-es5.app.json"
             }
           }
         },
@@ -75,6 +78,9 @@
           "configurations": {
             "production": {
               "browserTarget": "wpisa:build:production"
+            },
+            "es5": {
+              "browserTarget": "wpisa:build:es5"
             }
           }
         },
@@ -206,6 +212,13 @@
             "outputPath": "dist/storybook/shared-ui-stepper",
             "config": {
               "configFolder": "libs/shared/ui-stepper/.storybook"
+            }
+          },
+          "build": {
+            "configurations": {
+              "es5": {
+                "tsConfig": "./tsconfig-es5.app.json"
+              }
             }
           },
           "configurations": {
@@ -472,7 +485,12 @@
             "port": 4400,
             "config": {
               "configFolder": "libs/shared/storybook/.storybook"
-            }
+            },
+            "tsConfig": [
+              "libs/shared/storybook/tsconfig.lib.json",
+              "libs/shared/storybook/tsconfig.spec.json",
+              "libs/shared/storybook/.storybook/tsconfig.json"
+            ]
           },
           "configurations": {
             "ci": {
@@ -750,6 +768,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["lodash"],
             "outputPath": "dist/apps/dashboard-help-and-support",
             "index": "apps/dashboard-help-and-support/src/index.html",
             "main": "apps/dashboard-help-and-support/src/main.ts",
@@ -793,6 +812,9 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "es5": {
+              "tsConfig": "./tsconfig-es5.app.json"
             }
           }
         },
@@ -804,6 +826,9 @@
           "configurations": {
             "production": {
               "browserTarget": "dashboard-help-and-support:build:production"
+            },
+            "es5": {
+              "browserTarget": "dashboard-help-and-support:build:es5"
             }
           }
         },
@@ -915,9 +940,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": [
-              "echarts"
-            ],
+            "allowedCommonJsDependencies": ["echarts"],
             "outputPath": "dist/apps/just-invest-calculator",
             "index": "apps/just-invest-calculator/src/index.html",
             "main": "apps/just-invest-calculator/src/main.ts",
@@ -961,6 +984,9 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "es5": {
+              "tsConfig": "./tsconfig-es5.app.json"
             }
           }
         },
@@ -973,6 +999,9 @@
           "configurations": {
             "production": {
               "browserTarget": "just-invest-calculator:build:production"
+            },
+            "es5": {
+              "browserTarget": "just-invest-calculator:build:es5"
             }
           }
         },
@@ -1118,7 +1147,10 @@
             ],
             "styles": ["libs/shared/ui-legacy-styles/src/index.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/ui-legacy-styles/src/lib"]
+              "includePaths": [
+                "libs/shared/ui-legacy-styles/src/lib",
+                "libs/shared/ui-styles/src/lib"
+              ]
             },
             "scripts": []
           },
@@ -1149,6 +1181,9 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "es5": {
+              "tsConfig": "apps/set-a-target-calculator/tsconfig-es5.app.json"
             }
           }
         },
@@ -1161,6 +1196,9 @@
           "configurations": {
             "production": {
               "browserTarget": "set-a-target-calculator:build:production"
+            },
+            "es5": {
+              "browserTarget": "set-a-target-calculator:build:es5"
             }
           }
         },
@@ -1372,6 +1410,9 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "es5": {
+              "tsConfig": "apps/find-my-fc/tsconfig-es5.app.json"
             }
           }
         },
@@ -1384,6 +1425,9 @@
           "configurations": {
             "production": {
               "browserTarget": "find-my-fc:build:production"
+            },
+            "es5": {
+              "browserTarget": "find-my-fc:build:es5"
             }
           }
         },
@@ -1803,9 +1847,7 @@
                 "output": ""
               }
             ],
-            "styles": [
-              "libs/shared/ui-styles/src/index.scss"
-            ],
+            "styles": ["libs/shared/ui-styles/src/index.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["libs/shared/ui-styles/src/lib"]
             },
@@ -1839,6 +1881,9 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "es5": {
+              "tsConfig": "./tsconfig-es5.app.json"
             }
           }
         },
@@ -1850,6 +1895,9 @@
           "configurations": {
             "production": {
               "browserTarget": "style:build:production"
+            },
+            "es5": {
+              "browserTarget": "style:build:es5"
             }
           }
         },
@@ -1895,6 +1943,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
+            "jestConfig": "apps/cassie-cookies/jest.config.js",
             "passWithNoTests": true
           }
         }
