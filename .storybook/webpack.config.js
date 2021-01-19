@@ -7,11 +7,11 @@ const path = require('path');
  */
 module.exports = async ({ config, mode }) => {
   const entry = [
+    ...config.entry,
     ...[
       path.resolve('node_modules/core-js/stable', 'index.js'),
       path.resolve('node_modules/regenerator-runtime', 'runtime.js'),
     ],
-    ...config.entry,
   ];
   config.entry = entry;
   return config;
