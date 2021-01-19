@@ -214,13 +214,6 @@
               "configFolder": "libs/shared/ui-stepper/.storybook"
             }
           },
-          "build": {
-            "configurations": {
-              "es5": {
-                "tsConfig": "./tsconfig-es5.app.json"
-              }
-            }
-          },
           "configurations": {
             "ci": {
               "quiet": true
@@ -814,7 +807,7 @@
               ]
             },
             "es5": {
-              "tsConfig": "./tsconfig-es5.app.json"
+              "tsConfig": "apps/dashboard-help-and-support/tsconfig-es5.app.json"
             }
           }
         },
@@ -986,7 +979,7 @@
               ]
             },
             "es5": {
-              "tsConfig": "./tsconfig-es5.app.json"
+              "tsConfig": "apps/just-invest-calculator/tsconfig-es5.app.json"
             }
           }
         },
@@ -1883,7 +1876,7 @@
               ]
             },
             "es5": {
-              "tsConfig": "./tsconfig-es5.app.json"
+              "tsConfig": "apps/style/tsconfig-es5.app.json"
             }
           }
         },

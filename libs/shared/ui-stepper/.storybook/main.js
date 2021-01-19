@@ -5,7 +5,6 @@ module.exports = {
     '@storybook/addon-a11y',
     '@storybook/addon-viewport',
     '@storybook/addon-docs',
-    '@storybook/addon-notes/register'
-
+    '@storybook/addon-notes/register',
   ],
-}
+};
