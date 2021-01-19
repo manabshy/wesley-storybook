@@ -65,9 +65,10 @@
     background-color: $global-colour-gold-900;
 
     background-image: linear-gradient(
-      0deg,
-      $global-colour-gold-900 45%,
-      $global-colour-grey-900 44%
+      153.27deg,
+      $global-colour-gold-900 0%,
+      rgba(254, 221, 54, 0.3) 60%,
+      rgba(254, 221, 54, 0.1) 100%
     );
 
     background-position-x: 160%;
