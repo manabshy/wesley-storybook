@@ -10,7 +10,7 @@ module.exports = async ({ config, mode }) => {
   config = await rootWebpackConfig({ config, mode });
 
   const tsPaths = new TsconfigPathsPlugin({
-    configFile: path.resolve(__dirname, 'tsconfig.json'),
+    configFile: path.resolve(__dirname, 'tsconfig-es5.app.json'),
   });
 
   config.resolve.plugins

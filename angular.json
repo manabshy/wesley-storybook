@@ -202,6 +202,9 @@
           "configurations": {
             "ci": {
               "quiet": true
+            },
+            "es5": {
+              "tsConfig": "./tsconfig-es5.app.json"
             }
           }
         },
@@ -217,6 +220,9 @@
           "configurations": {
             "ci": {
               "quiet": true
+            },
+            "es5": {
+              "tsConfig": "./tsconfig-es5.app.json"
             }
           }
         }
@@ -488,6 +494,9 @@
           "configurations": {
             "ci": {
               "quiet": true
+            },
+            "es5": {
+              "tsConfig": "./tsconfig-es5.app.json"
             }
           }
         },
@@ -503,6 +512,9 @@
           "configurations": {
             "ci": {
               "quiet": true
+            },
+            "es5": {
+              "tsConfig": "./tsconfig-es5.app.json"
             }
           }
         }
