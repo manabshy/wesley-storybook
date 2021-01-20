@@ -92,7 +92,7 @@ export const accordionCustom = () => ({
                  <div class="component container">
                     <div class="component col-sm-12 col-lg-10 offset-lg-1">
                        <div class="component rich-text pb-4 pb-lg-6 pb-md-5">
-                          <div class="component-content">
+                          <div class="component-content header">
                             Frequently Asked Questions
                           </div>
                        </div>
@@ -110,7 +110,7 @@ export const accordionCustom = () => ({
                                             </div>
                                          </div>
                                       </div>
-                                      <div class="toggle-content" [ngClass]="{'hidden': !opened}">
+                                      <div *ngIf="opened" class="toggle-content">
                                          <div class="component content">
                                             <div class="component-content">
                                                <div class="field-content">
@@ -154,7 +154,7 @@ export const accordionCustom = () => ({
 </div>
   `,
   props: {
-    text: 'Hello Button',
+    text: 'Accordion',
     opened: false,
     toggle: (event: any) => {
       console.log('some bindings work');

@@ -1,11 +1,9 @@
 //Sitecore SXA accordion styling
 .accordion {
-  .hidden{
-    display: none;
-  }
-  .component .rich-text {
-    font-size: 32px;
-    font-family: 'OPEN SANS';
+
+  .component-content.header{
+    font-size: $global-font-size-heading;
+    font-family: $global-font-opensans;
   }
   .items {
     margin: 0;
