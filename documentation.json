@@ -1136,7 +1136,7 @@
         {
             "name": "Chainable",
             "id": "interface-Chainable-ea23acd80fc8c355d0a7601f33ba03ca-3",
-            "file": "apps/set-a-target-calculator-e2e/src/support/commands.ts",
+            "file": "apps/wpisa-e2e/src/support/commands.ts",
             "type": "interface",
             "sourceCode": "declare namespace Cypress {\n  interface Chainable<Subject> {\n    login(email: string, password: string): void;\n  }\n}\n//\n// -- This is a parent command --\nCypress.Commands.add('login', (email, password) => {\n  console.log('Custom command example: Login', email, password);\n});\n//\n// -- This is a child command --\n// Cypress.Commands.add(\"drag\", { prevSubject: 'element'}, (subject, options) => { ... })\n//\n//\n// -- This is a dual command --\n// Cypress.Commands.add(\"dismiss\", { prevSubject: 'optional'}, (subject, options) => { ... })\n//\n//\n// -- This will overwrite an existing command --\n// Cypress.Commands.overwrite(\"visit\", (originalFn, url, options) => { ... })\n",
             "properties": [],
@@ -1184,7 +1184,7 @@
         {
             "name": "Chainable",
             "id": "interface-Chainable-ea23acd80fc8c355d0a7601f33ba03ca-4",
-            "file": "apps/wpisa-e2e/src/support/commands.ts",
+            "file": "apps/set-a-target-calculator-e2e/src/support/commands.ts",
             "type": "interface",
             "sourceCode": "declare namespace Cypress {\n  interface Chainable<Subject> {\n    login(email: string, password: string): void;\n  }\n}\n//\n// -- This is a parent command --\nCypress.Commands.add('login', (email, password) => {\n  console.log('Custom command example: Login', email, password);\n});\n//\n// -- This is a child command --\n// Cypress.Commands.add(\"drag\", { prevSubject: 'element'}, (subject, options) => { ... })\n//\n//\n// -- This is a dual command --\n// Cypress.Commands.add(\"dismiss\", { prevSubject: 'optional'}, (subject, options) => { ... })\n//\n//\n// -- This will overwrite an existing command --\n// Cypress.Commands.overwrite(\"visit\", (originalFn, url, options) => { ... })\n",
             "properties": [],
@@ -1231,7 +1231,97 @@
         },
         {
             "name": "Config",
-            "id": "interface-Config-b9419f6e155dea1e3638e85e3a4c4da8",
+            "id": "interface-Config-4f949da1757a0a74ef839bef87a8adaa",
+            "file": "libs/dashboard-help-and-support/data-access/src/lib/config.interface.ts",
+            "type": "interface",
+            "sourceCode": "export interface Config {\n  searchProps:   SearchProps;\n  contactUsInfo: ContactUsInfo;\n  data:          Data;\n  className:     string;\n}\n\nexport interface ContactUsInfo {\n  verticalLayout: boolean;\n  lightTheme:     boolean;\n  timeTables:     TimeTable[];\n  contacts:       Contacts;\n}\n\nexport interface Contacts {\n  icon:    string;\n  text:    string;\n  ctaText: string;\n  ctaURL:  string;\n}\n\nexport interface TimeTable {\n  title:    string;\n  phone:    string;\n  openings: Opening[];\n}\n\nexport interface Opening {\n  day:  string;\n  time: string;\n}\n\nexport interface Data {\n  sections: Section[];\n}\n\nexport interface Section {\n  title:        Title;\n  href:         string;\n  articles:     Article[];\n  dataGtmId:    string;\n  dataGtmClass: string;\n}\n\nexport interface Article {\n  title:   string;\n  content: string;\n  tag:     Title;\n}\n\nexport enum Title {\n  General = \"General\",\n  Glossary = \"Glossary\",\n  MyProfile = \"My profile\",\n  Policies = \"Policies\",\n}\n\nexport interface SearchProps {\n  id:            string;\n  label:         string;\n  fieldType:     string;\n  placeholder:   string;\n  noResultsText: NoResultsText;\n  dataGtmId:     string;\n  dataGtmClass:  string;\n}\n\nexport interface NoResultsText {\n  heading:   string;\n  strapline: string;\n}\n",
+            "properties": [
+                {
+                    "name": "className",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "contactUsInfo",
+                    "type": "ContactUsInfo",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "data",
+                    "type": "Data",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "searchProps",
+                    "type": "SearchProps",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "Config",
+            "id": "interface-Config-ebee3d67b38168930ba45cf9c662cd0f-1",
+            "file": "libs/just-invest-calculator/data-access/src/lib/config.interface.ts",
+            "type": "interface",
+            "sourceCode": "export interface Config {\n  apiErrorMessage:           string;\n  pageHeading:               string;\n  apiEndPoints:              APIEndPoints;\n  calculator:                Calculator;\n  serviceUnavailableContent: ServiceUnavailableContent;\n}\n\nexport interface APIEndPoints {\n  budgetBasedApiUrl: string;\n}\n\nexport interface Calculator {\n  type:         string;\n  isStandalone: boolean;\n  budget:       Budget;\n  disclaimers:  Disclaimers;\n  footer:       Footer;\n}\n\nexport interface Budget {\n  initialValues:  InitialValues;\n  header:         Header;\n  description:    string;\n  sliders:        Slider[];\n  inputs:         any[];\n  riskInvestment: RiskInvestment;\n  results:        Results;\n}\n\nexport interface Header {\n  icon:  string;\n  title: string;\n}\n\nexport interface InitialValues {\n  contributionAmount: number;\n  balanceAmount:      number;\n  frequency:          string;\n  initialTermYears:   number;\n  remainingTermYears: number;\n  passedTermYears:    number;\n  riskCode:           string;\n}\n\nexport interface Results {\n  truncate:     Truncate;\n  params:       Param[];\n  graphs:       Graphs;\n  dataGtmClass: string;\n}\n\nexport interface Graphs {\n  summary:      Summary;\n  xAxisLabel:   string;\n  yAxisLabel:   string;\n  dataGtmId:    string;\n  dataGtmClass: string;\n}\n\nexport interface Summary {\n  title:    string;\n  sentence: string;\n}\n\nexport interface Param {\n  id:      string;\n  text:    string;\n  value:   string;\n  tooltip: Tooltip;\n  label?:  string;\n}\n\nexport interface Tooltip {\n  content: string;\n}\n\nexport interface Truncate {\n  description:    string;\n  truncatedLines: boolean;\n}\n\nexport interface RiskInvestment {\n  title:       string;\n  name:        string;\n  placeholder: string;\n  tooltip:     Tooltip;\n  values:      Value[];\n}\n\nexport interface Value {\n  label: string;\n  value: string;\n}\n\nexport interface Slider {\n  label:             string;\n  tooltip:           Tooltip;\n  name:              string;\n  type:              string;\n  sliderMin:         number;\n  sliderMax:         number;\n  sliderStep:        number;\n  inputMin:          number;\n  inputMax:          number;\n  value:             number;\n  prefix?:           string;\n  size:              number;\n  validationMessage: string;\n  maxErrorMessage:   string;\n  minErrorMessage:   string;\n  dataGtmId?:        string;\n  dataGtmClass?:     string;\n  suffix?:           string;\n}\n\nexport interface Disclaimers {\n  defaultDisclaimers: DefaultDisclaimersClass;\n  remodelDisclaimers: DefaultDisclaimersClass;\n}\n\nexport interface DefaultDisclaimersClass {\n  leftDisclaimers:  string[];\n  rightDisclaimers: string[];\n}\n\nexport interface Footer {\n  buttons: Button[];\n}\n\nexport interface Button {\n  key:        string;\n  label:      string;\n  url:        string;\n  dataGtmId?: string;\n}\n\nexport interface ServiceUnavailableContent {\n  serviceUnavailableTitle:   string;\n  serviceUnavailableSummary: string;\n}\n",
+            "properties": [
+                {
+                    "name": "apiEndPoints",
+                    "type": "APIEndPoints",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "apiErrorMessage",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "calculator",
+                    "type": "Calculator",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "pageHeading",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "serviceUnavailableContent",
+                    "type": "ServiceUnavailableContent",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": [],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "Config-1"
+        },
+        {
+            "name": "Config",
+            "id": "interface-Config-b9419f6e155dea1e3638e85e3a4c4da8-2",
             "file": "libs/find-my-fc/data-access/src/lib/config.interface.ts",
             "type": "interface",
             "sourceCode": "export interface Config {\n  pageTitle: string;\n  envConfig: {\n    applicationInsightsKey: string;\n    gtmKey: string;\n  };\n  customerSelector: CustomerSelectorContent;\n  professionSelector: ProfessionSelectorContent;\n  newCustomerPostcode: NewCustomerPostcodeContent;\n  yourDetails: YourDetailsContent;\n  customerReference: CustomerReferenceContent;\n  cannotMatchCustomer: CannotMatchCustomerContent;\n  exception: ExceptionContent;\n  endPoints: EndPoints;\n}\n\nexport interface FormInput {\n  inputLabel: string;\n  inputError: string;\n  inputOtherError?: string;\n}\n\nexport interface EndPoints {\n  yourFinancialConsultant: string;\n}\n\nexport interface CustomerSelectorContent {\n  metaTitle: string;\n  heading: string;\n  summary: string;\n  newCustomerLabel: string;\n  existingCustomerLabel: string;\n  nextButtonLabel: string;\n}\n\nexport interface ProfessionSelectorContent {\n  metaTitle: string;\n  heading: string;\n  summary: string;\n  areaOfWork: { label: string; id: string }[];\n  nextButtonLabel: string;\n  backButtonLabel: string;\n}\n\nexport interface NewCustomerPostcodeContent {\n  metaTitle: string;\n  homePostcodeHeading: string;\n  homePostcode: Input;\n  workPostcodeHeading: string;\n  workPostcode: Input;\n  nextButtonLabel: string;\n  backButtonLabel: string;\n}\n\nexport interface YourDetailsContent {\n  metaTitle: string;\n  heading: string;\n  summary: string;\n  email: Input;\n  homePostcode: Input;\n  dateOfBirth: Input;\n  validationSummary: { heading: string; summary: string };\n  nextButtonLabel: string;\n  backButtonLabel: string;\n}\n\nexport interface Input {\n  inputLabel: string;\n  inputError: string;\n}\n\nexport interface CustomerReferenceContent {\n  metaTitle: string;\n  heading: string;\n  customerReferenceNumber: Input;\n  nextButtonLabel: string;\n  backButtonLabel: string;\n}\n\nexport interface CannotMatchCustomerContent {\n  metaTitle: string;\n  heading: string;\n  summary: string;\n  bodyCopy: string;\n  nextButtonLabel: string;\n}\n\nexport interface ExceptionContent {\n  metaTitle: string;\n  heading: string;\n  summary: string;\n  bodyCopy: string;\n  nextButtonLabel: string;\n}\n",
@@ -1309,21 +1399,24 @@
             ],
             "indexSignatures": [],
             "kind": 150,
-            "methods": []
+            "methods": [],
+            "isDuplicate": true,
+            "duplicateId": 2,
+            "duplicateName": "Config-2"
         },
         {
             "name": "Config",
-            "id": "interface-Config-ebee3d67b38168930ba45cf9c662cd0f-1",
-            "file": "libs/just-invest-calculator/data-access/src/lib/config.interface.ts",
+            "id": "interface-Config-e4a2c0654e39a321c96c88b9b0c8fd31-3",
+            "file": "libs/set-a-target-calculator/data-access/src/lib/config.interface.ts",
             "type": "interface",
-            "sourceCode": "export interface Config {\n  apiErrorMessage:           string;\n  pageHeading:               string;\n  apiEndPoints:              APIEndPoints;\n  calculator:                Calculator;\n  serviceUnavailableContent: ServiceUnavailableContent;\n}\n\nexport interface APIEndPoints {\n  budgetBasedApiUrl: string;\n}\n\nexport interface Calculator {\n  type:         string;\n  isStandalone: boolean;\n  budget:       Budget;\n  disclaimers:  Disclaimers;\n  footer:       Footer;\n}\n\nexport interface Budget {\n  initialValues:  InitialValues;\n  header:         Header;\n  description:    string;\n  sliders:        Slider[];\n  inputs:         any[];\n  riskInvestment: RiskInvestment;\n  results:        Results;\n}\n\nexport interface Header {\n  icon:  string;\n  title: string;\n}\n\nexport interface InitialValues {\n  contributionAmount: number;\n  balanceAmount:      number;\n  frequency:          string;\n  initialTermYears:   number;\n  remainingTermYears: number;\n  passedTermYears:    number;\n  riskCode:           string;\n}\n\nexport interface Results {\n  truncate:     Truncate;\n  params:       Param[];\n  graphs:       Graphs;\n  dataGtmClass: string;\n}\n\nexport interface Graphs {\n  summary:      Summary;\n  xAxisLabel:   string;\n  yAxisLabel:   string;\n  dataGtmId:    string;\n  dataGtmClass: string;\n}\n\nexport interface Summary {\n  title:    string;\n  sentence: string;\n}\n\nexport interface Param {\n  id:      string;\n  text:    string;\n  value:   string;\n  tooltip: Tooltip;\n  label?:  string;\n}\n\nexport interface Tooltip {\n  content: string;\n}\n\nexport interface Truncate {\n  description:    string;\n  truncatedLines: boolean;\n}\n\nexport interface RiskInvestment {\n  title:       string;\n  name:        string;\n  placeholder: string;\n  tooltip:     Tooltip;\n  values:      Value[];\n}\n\nexport interface Value {\n  label: string;\n  value: string;\n}\n\nexport interface Slider {\n  label:             string;\n  tooltip:           Tooltip;\n  name:              string;\n  type:              string;\n  sliderMin:         number;\n  sliderMax:         number;\n  sliderStep:        number;\n  inputMin:          number;\n  inputMax:          number;\n  value:             number;\n  prefix?:           string;\n  size:              number;\n  validationMessage: string;\n  maxErrorMessage:   string;\n  minErrorMessage:   string;\n  dataGtmId?:        string;\n  dataGtmClass?:     string;\n  suffix?:           string;\n}\n\nexport interface Disclaimers {\n  defaultDisclaimers: DefaultDisclaimersClass;\n  remodelDisclaimers: DefaultDisclaimersClass;\n}\n\nexport interface DefaultDisclaimersClass {\n  leftDisclaimers:  string[];\n  rightDisclaimers: string[];\n}\n\nexport interface Footer {\n  buttons: Button[];\n}\n\nexport interface Button {\n  key:        string;\n  label:      string;\n  url:        string;\n  dataGtmId?: string;\n}\n\nexport interface ServiceUnavailableContent {\n  serviceUnavailableTitle:   string;\n  serviceUnavailableSummary: string;\n}\n",
+            "sourceCode": "export interface Config {\n  apiErrorMessage: string;\n  pageHeading: string;\n  calculator: Calculator;\n  apiEndPoints: APIEndPoints;\n  serviceUnavailableContent: ServiceUnavailableContent;\n}\n\nexport interface APIEndPoints {\n  budgetBasedApiUrl: string;\n  targetOneOffApiUrl: string;\n  targetRegularApiUrl: string;\n}\n\nexport interface Calculator {\n  type: string;\n  isStandalone: boolean;\n  target: CalculatorTarget;\n  disclaimers: Disclaimers;\n  footer: Footer;\n}\n\nexport interface Disclaimers {\n  defaultDisclaimers: string[];\n  remodelDisclaimers: any[];\n}\n\nexport interface Footer {\n  buttons: Button[];\n}\n\nexport interface Button {\n  key: string;\n  label: string;\n  url: string;\n  dataGtmId?: string;\n}\n\nexport interface CalculatorTarget {\n  header: Header;\n  description: string;\n  initialValues: InitialValues;\n  sliders: Slider[];\n  inputs: Input[];\n  riskInvestment: RiskInvestment;\n  results: Results;\n}\n\nexport interface Header {\n  icon: string;\n  title: string;\n}\n\nexport interface InitialValues {\n  targetAmount: number;\n  initialTermYears: number;\n  remainingTermYears: number;\n  passedTermYears: number;\n  contributionAmount: number;\n  balanceAmount: number;\n  riskCode: string;\n  frequency: string;\n}\n\nexport interface Input {\n  title?: string;\n  id: string;\n  name: string;\n  label: string;\n  type: string;\n  value: string;\n  defaultChecked: boolean;\n  disabled: boolean;\n  tooltip: Tooltip;\n}\n\nexport interface Tooltip {\n  content: string;\n}\n\nexport interface Results {\n  standaloneInitialLabel: string;\n  emptyResultsLabel: string;\n  description: string;\n  labels: Labels;\n}\n\nexport interface Labels {\n  target: string;\n  term: string;\n  projection: string;\n  lumpSumContributionLabel: string;\n  monthlyContributionLabel: string;\n  worse: string;\n  better: string;\n  projectionDisclaimer: string;\n  gtm: Gtm;\n  dataGtmId: string;\n}\n\nexport interface Gtm {\n  target: GtmTarget;\n  projection: Projection;\n  worse: Best;\n  best: Best;\n}\n\nexport interface Best {}\n\nexport interface Projection {\n  dataGtmId: string;\n  dataGtmClass: string;\n}\n\nexport interface GtmTarget {\n  dataGtmId: string;\n}\n\nexport interface RiskInvestment {\n  title: string;\n  name: string;\n  placeholder: string;\n  tooltip: Tooltip;\n  values: Value[];\n}\n\nexport interface Value {\n  label: string;\n  value: string;\n}\n\nexport interface Slider {\n  label: string;\n  name: string;\n  value: number;\n  type: string;\n  sliderMin: number;\n  sliderMax: number;\n  sliderStep: number;\n  inputMin: number;\n  inputMax: number;\n  defaultValue: number;\n  prefix: string;\n  size: number;\n  validationMessage: string;\n  maxErrorMessage: string;\n  minErrorMessage: string;\n  suffix: string;\n  tooltip: Tooltip;\n  dataGtmId: string;\n  dataGtmClass: string;\n}\n\nexport interface ServiceUnavailableContent {\n  serviceUnavailableTitle: string;\n  serviceUnavailableSummary: string;\n}\n",
             "properties": [
                 {
                     "name": "apiEndPoints",
                     "type": "APIEndPoints",
                     "optional": false,
                     "description": "",
-                    "line": 4
+                    "line": 5
                 },
                 {
                     "name": "apiErrorMessage",
@@ -1337,7 +1430,7 @@
                     "type": "Calculator",
                     "optional": false,
                     "description": "",
-                    "line": 5
+                    "line": 4
                 },
                 {
                     "name": "pageHeading",
@@ -1358,12 +1451,12 @@
             "kind": 150,
             "methods": [],
             "isDuplicate": true,
-            "duplicateId": 1,
-            "duplicateName": "Config-1"
+            "duplicateId": 3,
+            "duplicateName": "Config-3"
         },
         {
             "name": "Config",
-            "id": "interface-Config-c2927dc2e100b6009e80c5b83c167e37-2",
+            "id": "interface-Config-c2927dc2e100b6009e80c5b83c167e37-4",
             "file": "libs/wpisa/data-access/src/lib/config.interface.ts",
             "type": "interface",
             "sourceCode": "export interface Config {\n  pageTitle: string;\n  endPoints: EndPoints;\n  progressBar: {\n    steps: string[];\n  };\n  intro: {\n    metaTitle: string;\n    pageTitle: string;\n    heading: string;\n    summary: string;\n    nextButtonLabel: string;\n  };\n  knowledgeCheck: KnowledgeCheck;\n  yourDetails: YourDetails;\n  investmentOptions: InvestmentOptions;\n  validationSummary: {\n    heading: string;\n    summary: string;\n  };\n  declaration: Declaration;\n  payment: IFramePayment;\n  inactivityModal: InactivityModal;\n  sessionTimeoutModal: SessionTimeoutModal;\n  titleList: [{ value: string; label: string }];\n  marketSegmentList: [{ value: string; label: string; key: string }];\n  envConfig: {\n    applicationInsightsKey: string;\n    gtmKey: string;\n  };\n}\n\nexport interface KnowledgeCheck {\n  metaTitle: string;\n  step1: KnowledgeCheckStep;\n  step2: KnowledgeCheckStep;\n}\n\nexport interface KnowledgeCheckStep {\n  metaTitle: string;\n  heading: string;\n  summary: string;\n  questions: string[];\n  nextButtonLabel: string;\n  backButtonLabel: string;\n}\n\nexport interface YourDetails {\n  metaTitle: string;\n  heading: string;\n  summary: string;\n  personalInformationLabel: string;\n  title: FormInput;\n  firstName: FormInput;\n  surname: FormInput;\n  dob: YourDetailsDob;\n  profession: FormInput;\n  niNumber: FormInput;\n  niTooltip: string;\n  professionTooltip: string;\n  nationality: FormInput;\n  addressDetails: YourDetailsAddressDetails;\n  contactDetails: YourDetailsContactDetails;\n  marketing: YourDetailsMarketing;\n  privacy: string;\n  nextButtonLabel: string;\n}\n\nexport interface YourDetailsAddressDetails {\n  heading: string;\n  summary: string;\n  findAddress: string;\n  searchForAddress: FormInput;\n  enterAddressManuallyLabel: string;\n  cantSeeAddressLabel: string;\n  postcode: FormInput;\n  selectYourAddress: FormInput;\n  flatNumber: FormInput;\n  houseNumber: FormInput;\n  houseName: FormInput;\n  street: FormInput;\n  town: FormInput;\n  region: FormInput;\n  county: FormInput;\n}\n\nexport interface FormInput {\n  inputLabel: string;\n  inputError: string;\n  inputOtherError?: string;\n}\n\nexport interface YourDetailsContactDetails {\n  heading: string;\n  personalEmail: FormInput;\n  mobileNumber: FormInput;\n}\n\nexport interface YourDetailsDob {\n  inputLabel: string;\n  inputError: string;\n  inputOtherError: string;\n}\n\nexport interface YourDetailsMarketing {\n  heading: string;\n  email: string;\n  phone: string;\n  post: string;\n}\n\nexport interface InvestmentOptions {\n  metaTitle: string;\n  heading: string;\n  summary: string;\n  singleLumpSum: SingleLumpSum;\n  monthlyPayments: MonthlyPayments;\n  monthlyAndLumpSum: MonthlyAndLumpSum;\n  directDebitDetails: DirectDebitDetails;\n  nextButtonLabel: string;\n  backButtonLabel: string;\n}\n\nexport interface DirectDebitDetails {\n  bankName: FormInput;\n  bankNameTooltip: string;\n  accountName: FormInput;\n  accountNumber: FormInput;\n  sortCode: FormInput;\n  heading: string;\n  summary: string;\n  bodyCopy: string;\n}\n\nexport interface MonthlyAndLumpSum {\n  title: string;\n  summary: string;\n  monthlyAndLumpSumPayment: MonthlyAndLumpSumPayment;\n}\n\nexport interface MonthlyAndLumpSumPayment {\n  metaTitle: string;\n  heading: string;\n  summary: string;\n  monthlyAmount: Omit<FormInput, 'inputError'> & {\n    inputMinError: string;\n    inputMaxError: string;\n  };\n  monthlyHelpText: string;\n  lumpSumAmount: FormInput;\n  lumpSumHelpText: string;\n  lumpSumTooltip: string;\n  nextButtonLabel: string;\n  backButtonLabel: string;\n}\n\nexport interface MonthlyPayments {\n  title: string;\n  summary: string;\n  monthlyPayment: MonthlyPayment;\n}\n\nexport interface MonthlyPayment {\n  metaTitle: string;\n  heading: string;\n  summary: string;\n  monthlyAmount: Omit<FormInput, 'inputError'> & {\n    inputMinError: string;\n    inputMaxError: string;\n  };\n  monthlyHelpText: string;\n  nextButtonLabel: string;\n  backButtonLabel: string;\n}\n\nexport interface SingleLumpSum {\n  title: string;\n  summary: string;\n  lumpSumPayment: LumpSumPayment;\n}\n\nexport interface LumpSumPayment {\n  metaTitle: string;\n  heading: string;\n  summary: string;\n  lumpSumAmount: FormInput;\n  lumpSumHelpText: string;\n  nextButtonLabel: string;\n  backButtonLabel: string;\n}\nexport interface Declaration {\n  heading: string;\n  summary: string;\n  metaTitle: string;\n  nextButtonLabel: string;\n  backButtonLabel: string;\n  editLabel: string;\n  yourDetailsLabel: string;\n  directDebitLabel: string;\n  yourInvestmentLabel: string;\n  perMonthLabel: string;\n  totalInvestmentText: string;\n  totalInvestmentSmallText: string;\n  isaLabel: string;\n  confirmContent: string;\n  declarationText: string;\n}\n\nexport interface IFramePayment {\n  metaTitle: string;\n  heading: string;\n  summary: string;\n  backButtonLabel: string;\n  nextButtonLabel: string;\n}\n\nexport interface EndPoints {\n  confirmationErrorPage: string;\n  confirmationPage: string;\n  knowledgecheckFailurePage: string;\n  bookmarkRedirectPage: string;\n  formUnavailablePage: string;\n}\n\nexport interface InactivityModal {\n  heading: string;\n  summary: string;\n  continueButtonLabel: string;\n  idleTimeInSeconds: number;\n  timeoutTimeInSeconds: number;\n}\nexport interface SessionTimeoutModal {\n  heading: string;\n  summary: string;\n  continueButtonLabel: string;\n}\n",
@@ -1472,99 +1565,6 @@
                     "optional": false,
                     "description": "",
                     "line": 15
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 150,
-            "methods": [],
-            "isDuplicate": true,
-            "duplicateId": 2,
-            "duplicateName": "Config-2"
-        },
-        {
-            "name": "Config",
-            "id": "interface-Config-e4a2c0654e39a321c96c88b9b0c8fd31-3",
-            "file": "libs/set-a-target-calculator/data-access/src/lib/config.interface.ts",
-            "type": "interface",
-            "sourceCode": "export interface Config {\n  apiErrorMessage: string;\n  pageHeading: string;\n  calculator: Calculator;\n  apiEndPoints: APIEndPoints;\n  serviceUnavailableContent: ServiceUnavailableContent;\n}\n\nexport interface APIEndPoints {\n  budgetBasedApiUrl: string;\n  targetOneOffApiUrl: string;\n  targetRegularApiUrl: string;\n}\n\nexport interface Calculator {\n  type: string;\n  isStandalone: boolean;\n  target: CalculatorTarget;\n  disclaimers: Disclaimers;\n  footer: Footer;\n}\n\nexport interface Disclaimers {\n  defaultDisclaimers: string[];\n  remodelDisclaimers: any[];\n}\n\nexport interface Footer {\n  buttons: Button[];\n}\n\nexport interface Button {\n  key: string;\n  label: string;\n  url: string;\n  dataGtmId?: string;\n}\n\nexport interface CalculatorTarget {\n  header: Header;\n  description: string;\n  initialValues: InitialValues;\n  sliders: Slider[];\n  inputs: Input[];\n  riskInvestment: RiskInvestment;\n  results: Results;\n}\n\nexport interface Header {\n  icon: string;\n  title: string;\n}\n\nexport interface InitialValues {\n  targetAmount: number;\n  initialTermYears: number;\n  remainingTermYears: number;\n  passedTermYears: number;\n  contributionAmount: number;\n  balanceAmount: number;\n  riskCode: string;\n  frequency: string;\n}\n\nexport interface Input {\n  title?: string;\n  id: string;\n  name: string;\n  label: string;\n  type: string;\n  value: string;\n  defaultChecked: boolean;\n  disabled: boolean;\n  tooltip: Tooltip;\n}\n\nexport interface Tooltip {\n  content: string;\n}\n\nexport interface Results {\n  standaloneInitialLabel: string;\n  emptyResultsLabel: string;\n  description: string;\n  labels: Labels;\n}\n\nexport interface Labels {\n  target: string;\n  term: string;\n  projection: string;\n  lumpSumContributionLabel: string;\n  monthlyContributionLabel: string;\n  worse: string;\n  better: string;\n  projectionDisclaimer: string;\n  gtm: Gtm;\n  dataGtmId: string;\n}\n\nexport interface Gtm {\n  target: GtmTarget;\n  projection: Projection;\n  worse: Best;\n  best: Best;\n}\n\nexport interface Best {}\n\nexport interface Projection {\n  dataGtmId: string;\n  dataGtmClass: string;\n}\n\nexport interface GtmTarget {\n  dataGtmId: string;\n}\n\nexport interface RiskInvestment {\n  title: string;\n  name: string;\n  placeholder: string;\n  tooltip: Tooltip;\n  values: Value[];\n}\n\nexport interface Value {\n  label: string;\n  value: string;\n}\n\nexport interface Slider {\n  label: string;\n  name: string;\n  value: number;\n  type: string;\n  sliderMin: number;\n  sliderMax: number;\n  sliderStep: number;\n  inputMin: number;\n  inputMax: number;\n  defaultValue: number;\n  prefix: string;\n  size: number;\n  validationMessage: string;\n  maxErrorMessage: string;\n  minErrorMessage: string;\n  suffix: string;\n  tooltip: Tooltip;\n  dataGtmId: string;\n  dataGtmClass: string;\n}\n\nexport interface ServiceUnavailableContent {\n  serviceUnavailableTitle: string;\n  serviceUnavailableSummary: string;\n}\n",
-            "properties": [
-                {
-                    "name": "apiEndPoints",
-                    "type": "APIEndPoints",
-                    "optional": false,
-                    "description": "",
-                    "line": 5
-                },
-                {
-                    "name": "apiErrorMessage",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 2
-                },
-                {
-                    "name": "calculator",
-                    "type": "Calculator",
-                    "optional": false,
-                    "description": "",
-                    "line": 4
-                },
-                {
-                    "name": "pageHeading",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 3
-                },
-                {
-                    "name": "serviceUnavailableContent",
-                    "type": "ServiceUnavailableContent",
-                    "optional": false,
-                    "description": "",
-                    "line": 6
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 150,
-            "methods": [],
-            "isDuplicate": true,
-            "duplicateId": 3,
-            "duplicateName": "Config-3"
-        },
-        {
-            "name": "Config",
-            "id": "interface-Config-4f949da1757a0a74ef839bef87a8adaa-4",
-            "file": "libs/dashboard-help-and-support/data-access/src/lib/config.interface.ts",
-            "type": "interface",
-            "sourceCode": "export interface Config {\n  searchProps:   SearchProps;\n  contactUsInfo: ContactUsInfo;\n  data:          Data;\n  className:     string;\n}\n\nexport interface ContactUsInfo {\n  verticalLayout: boolean;\n  lightTheme:     boolean;\n  timeTables:     TimeTable[];\n  contacts:       Contacts;\n}\n\nexport interface Contacts {\n  icon:    string;\n  text:    string;\n  ctaText: string;\n  ctaURL:  string;\n}\n\nexport interface TimeTable {\n  title:    string;\n  phone:    string;\n  openings: Opening[];\n}\n\nexport interface Opening {\n  day:  string;\n  time: string;\n}\n\nexport interface Data {\n  sections: Section[];\n}\n\nexport interface Section {\n  title:        Title;\n  href:         string;\n  articles:     Article[];\n  dataGtmId:    string;\n  dataGtmClass: string;\n}\n\nexport interface Article {\n  title:   string;\n  content: string;\n  tag:     Title;\n}\n\nexport enum Title {\n  General = \"General\",\n  Glossary = \"Glossary\",\n  MyProfile = \"My profile\",\n  Policies = \"Policies\",\n}\n\nexport interface SearchProps {\n  id:            string;\n  label:         string;\n  fieldType:     string;\n  placeholder:   string;\n  noResultsText: NoResultsText;\n  dataGtmId:     string;\n  dataGtmClass:  string;\n}\n\nexport interface NoResultsText {\n  heading:   string;\n  strapline: string;\n}\n",
-            "properties": [
-                {
-                    "name": "className",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 5
-                },
-                {
-                    "name": "contactUsInfo",
-                    "type": "ContactUsInfo",
-                    "optional": false,
-                    "description": "",
-                    "line": 3
-                },
-                {
-                    "name": "data",
-                    "type": "Data",
-                    "optional": false,
-                    "description": "",
-                    "line": 4
-                },
-                {
-                    "name": "searchProps",
-                    "type": "SearchProps",
-                    "optional": false,
-                    "description": "",
-                    "line": 2
                 }
             ],
             "indexSignatures": [],
@@ -7793,8 +7793,8 @@
         },
         {
             "name": "ConfigService",
-            "id": "injectable-ConfigService-61f11b252c5cdac3f64b9a4ec90a0baf",
-            "file": "libs/find-my-fc/data-access/src/lib/config.service.ts",
+            "id": "injectable-ConfigService-ba5449227ff71fe2e45bc5cc22e05d10",
+            "file": "libs/dashboard-help-and-support/data-access/src/lib/config.service.ts",
             "properties": [
                 {
                     "name": "appConfig",
@@ -7829,7 +7829,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { Config } from './config.interface';\nimport { Observable, of } from 'rxjs';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ConfigService {\n  private appConfig: Config;\n\n  private loadConfigFromHtml(): Observable<Config> {\n    let configAttrData: string;\n    let data: Config;\n\n    try {\n      configAttrData = document\n        .getElementById('find-my-fc-config')\n        .getAttribute('data-model');\n    } catch (error) {\n      throw Error(\n        'Initial Sitecore config data missing from index.html <div id=\"find-my-fc-config\" data-model=\"*MISSING*\">'\n      );\n    }\n\n    if (configAttrData) {\n      try {\n        data = JSON.parse(configAttrData);\n      } catch (error) {\n        throw Error('Config string is not a valid json');\n      }\n    }\n    return of(data);\n  }\n\n  loadConfig() {\n    return this.loadConfigFromHtml()\n      .toPromise()\n      .then((data) => {\n        this.appConfig = data;\n      });\n  }\n\n  get content() {\n    if (!this.appConfig) {\n      throw Error('Config not loaded');\n    }\n\n    return this.appConfig;\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { Config } from './config.interface';\nimport { Observable, of } from 'rxjs';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ConfigService {\n  private appConfig: Config;\n\n  private loadConfigFromHtml(): Observable<Config> {\n    let configAttrData: string;\n    let data: Config;\n\n    try {\n      configAttrData = document\n        .getElementById('help-and-support-config')\n        .getAttribute('data-model');\n    } catch (error) {\n      throw Error(\n        'Initial Sitecore config data missing from index.html <div id=\"help-and-support-config\" data-model=\"*MISSING*\">'\n      );\n    }\n\n    if (configAttrData) {\n      try {\n        data = JSON.parse(configAttrData);\n      } catch (error) {\n        throw Error('Config string is not a valid json');\n      }\n    }\n    return of(data);\n  }\n\n  loadConfig() {\n    return this.loadConfigFromHtml()\n      .toPromise()\n      .then((data) => {\n        this.appConfig = data;\n      });\n  }\n\n  get content() {\n    if (!this.appConfig) {\n      throw Error('Config not loaded');\n    }\n\n    return this.appConfig;\n  }\n}\n",
             "accessors": {
                 "content": {
                     "name": "content",
@@ -7900,8 +7900,8 @@
         },
         {
             "name": "ConfigService",
-            "id": "injectable-ConfigService-5cc266a58b64617fad979b76b25eb9b1-2",
-            "file": "libs/wpisa/data-access/src/lib/config.service.ts",
+            "id": "injectable-ConfigService-61f11b252c5cdac3f64b9a4ec90a0baf-2",
+            "file": "libs/find-my-fc/data-access/src/lib/config.service.ts",
             "properties": [
                 {
                     "name": "appConfig",
@@ -7936,7 +7936,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { Config } from './config.interface';\nimport { Observable, of } from 'rxjs';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ConfigService {\n  private appConfig: Config;\n\n  private loadConfigFromHtml(): Observable<Config> {\n    let configAttrData: string;\n    let data: Config;\n\n    try {\n      configAttrData = document\n        .getElementById('isa-config')\n        .getAttribute('data-model');\n    } catch (error) {\n      throw Error(\n        'Initial Sitecore config data missing from index.html <div id=\"isa-config\" data-model=\"*MISSING*\">'\n      );\n    }\n\n    if (configAttrData) {\n      try {\n        data = JSON.parse(configAttrData);\n      } catch (error) {\n        throw Error('Config string is not a valid json');\n      }\n    }\n    return of(data);\n  }\n\n  loadConfig() {\n    return this.loadConfigFromHtml()\n      .toPromise()\n      .then((data) => {\n        this.appConfig = data;\n      });\n  }\n\n  get content() {\n    if (!this.appConfig) {\n      throw Error('Config not loaded');\n    }\n\n    return this.appConfig;\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { Config } from './config.interface';\nimport { Observable, of } from 'rxjs';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ConfigService {\n  private appConfig: Config;\n\n  private loadConfigFromHtml(): Observable<Config> {\n    let configAttrData: string;\n    let data: Config;\n\n    try {\n      configAttrData = document\n        .getElementById('find-my-fc-config')\n        .getAttribute('data-model');\n    } catch (error) {\n      throw Error(\n        'Initial Sitecore config data missing from index.html <div id=\"find-my-fc-config\" data-model=\"*MISSING*\">'\n      );\n    }\n\n    if (configAttrData) {\n      try {\n        data = JSON.parse(configAttrData);\n      } catch (error) {\n        throw Error('Config string is not a valid json');\n      }\n    }\n    return of(data);\n  }\n\n  loadConfig() {\n    return this.loadConfigFromHtml()\n      .toPromise()\n      .then((data) => {\n        this.appConfig = data;\n      });\n  }\n\n  get content() {\n    if (!this.appConfig) {\n      throw Error('Config not loaded');\n    }\n\n    return this.appConfig;\n  }\n}\n",
             "accessors": {
                 "content": {
                     "name": "content",
@@ -8010,8 +8010,8 @@
         },
         {
             "name": "ConfigService",
-            "id": "injectable-ConfigService-ba5449227ff71fe2e45bc5cc22e05d10-4",
-            "file": "libs/dashboard-help-and-support/data-access/src/lib/config.service.ts",
+            "id": "injectable-ConfigService-5cc266a58b64617fad979b76b25eb9b1-4",
+            "file": "libs/wpisa/data-access/src/lib/config.service.ts",
             "properties": [
                 {
                     "name": "appConfig",
@@ -8046,7 +8046,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { Config } from './config.interface';\nimport { Observable, of } from 'rxjs';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ConfigService {\n  private appConfig: Config;\n\n  private loadConfigFromHtml(): Observable<Config> {\n    let configAttrData: string;\n    let data: Config;\n\n    try {\n      configAttrData = document\n        .getElementById('help-and-support-config')\n        .getAttribute('data-model');\n    } catch (error) {\n      throw Error(\n        'Initial Sitecore config data missing from index.html <div id=\"help-and-support-config\" data-model=\"*MISSING*\">'\n      );\n    }\n\n    if (configAttrData) {\n      try {\n        data = JSON.parse(configAttrData);\n      } catch (error) {\n        throw Error('Config string is not a valid json');\n      }\n    }\n    return of(data);\n  }\n\n  loadConfig() {\n    return this.loadConfigFromHtml()\n      .toPromise()\n      .then((data) => {\n        this.appConfig = data;\n      });\n  }\n\n  get content() {\n    if (!this.appConfig) {\n      throw Error('Config not loaded');\n    }\n\n    return this.appConfig;\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { Config } from './config.interface';\nimport { Observable, of } from 'rxjs';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ConfigService {\n  private appConfig: Config;\n\n  private loadConfigFromHtml(): Observable<Config> {\n    let configAttrData: string;\n    let data: Config;\n\n    try {\n      configAttrData = document\n        .getElementById('isa-config')\n        .getAttribute('data-model');\n    } catch (error) {\n      throw Error(\n        'Initial Sitecore config data missing from index.html <div id=\"isa-config\" data-model=\"*MISSING*\">'\n      );\n    }\n\n    if (configAttrData) {\n      try {\n        data = JSON.parse(configAttrData);\n      } catch (error) {\n        throw Error('Config string is not a valid json');\n      }\n    }\n    return of(data);\n  }\n\n  loadConfig() {\n    return this.loadConfigFromHtml()\n      .toPromise()\n      .then((data) => {\n        this.appConfig = data;\n      });\n  }\n\n  get content() {\n    if (!this.appConfig) {\n      throw Error('Config not loaded');\n    }\n\n    return this.appConfig;\n  }\n}\n",
             "accessors": {
                 "content": {
                     "name": "content",
@@ -15393,38 +15393,7 @@
         },
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-7bea676d12503a53a1879c4b265df9a4",
-            "file": "apps/dashboard-help-and-support/src/app/app.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "wesleyan-frontend-root",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./app.component.html"
-            ],
-            "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n\n@Component({\n  selector: 'wesleyan-frontend-root',\n  templateUrl: './app.component.html',\n})\nexport class AppComponent {\n\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "templateData": "<wes-landing-page></wes-landing-page>"
-        },
-        {
-            "name": "AppComponent",
-            "id": "component-AppComponent-137af5a9e1b714e1bf74c1e6df5f763a-1",
+            "id": "component-AppComponent-137af5a9e1b714e1bf74c1e6df5f763a",
             "file": "apps/find-my-fc/src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -15451,14 +15420,11 @@
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "isDuplicate": true,
-            "duplicateId": 1,
-            "duplicateName": "AppComponent-1",
             "templateData": "<router-outlet></router-outlet>\n"
         },
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-467711f79fa11e9e50eada6488a01edb-2",
+            "id": "component-AppComponent-467711f79fa11e9e50eada6488a01edb-1",
             "file": "apps/just-invest-calculator/src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -15486,13 +15452,13 @@
             "styleUrlsData": "",
             "stylesData": "",
             "isDuplicate": true,
-            "duplicateId": 2,
-            "duplicateName": "AppComponent-2",
+            "duplicateId": 1,
+            "duplicateName": "AppComponent-1",
             "templateData": "<wes-invest-calculator></wes-invest-calculator>"
         },
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-c54e43e787210682ac84e204bc705f82-3",
+            "id": "component-AppComponent-c54e43e787210682ac84e204bc705f82-2",
             "file": "apps/set-a-target-calculator/src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -15536,13 +15502,13 @@
             ],
             "stylesData": "",
             "isDuplicate": true,
-            "duplicateId": 3,
-            "duplicateName": "AppComponent-3",
+            "duplicateId": 2,
+            "duplicateName": "AppComponent-2",
             "templateData": "<wes-target-calculator></wes-target-calculator>\n"
         },
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-137af5a9e1b714e1bf74c1e6df5f763a-4",
+            "id": "component-AppComponent-137af5a9e1b714e1bf74c1e6df5f763a-3",
             "file": "apps/style/src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -15570,13 +15536,13 @@
             "styleUrlsData": "",
             "stylesData": "",
             "isDuplicate": true,
-            "duplicateId": 4,
-            "duplicateName": "AppComponent-4",
+            "duplicateId": 3,
+            "duplicateName": "AppComponent-3",
             "templateData": "<header class=\"flex\">\n  <h1>This is used only to generate the styles.css</h1>\n</header>\n"
         },
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-8db5a506a11664ff824c0eadca46726a-5",
+            "id": "component-AppComponent-8db5a506a11664ff824c0eadca46726a-4",
             "file": "apps/wpisa/src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -15611,9 +15577,43 @@
             ],
             "stylesData": "",
             "isDuplicate": true,
+            "duplicateId": 4,
+            "duplicateName": "AppComponent-4",
+            "templateData": "<router-outlet></router-outlet>\n"
+        },
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-7bea676d12503a53a1879c4b265df9a4-5",
+            "file": "apps/dashboard-help-and-support/src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "wesleyan-frontend-root",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n\n@Component({\n  selector: 'wesleyan-frontend-root',\n  templateUrl: './app.component.html',\n})\nexport class AppComponent {\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "isDuplicate": true,
             "duplicateId": 5,
             "duplicateName": "AppComponent-5",
-            "templateData": "<router-outlet></router-outlet>\n"
+            "templateData": "<wes-landing-page></wes-landing-page>"
         },
         {
             "name": "BeforeYouBeginPageComponent",
@@ -26844,47 +26844,6 @@
                     "type": "imports",
                     "elements": [
                         {
-                            "name": "DashboardHelpAndSupportFeaturePageModule"
-                        }
-                    ]
-                },
-                {
-                    "type": "exports",
-                    "elements": []
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": [
-                        {
-                            "name": "AppComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        },
-        {
-            "name": "AppModule",
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": [
-                        {
-                            "name": "AppComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "imports",
-                    "elements": [
-                        {
                             "name": "FindMyFcFeatureShellModule"
                         }
                     ]
@@ -27046,6 +27005,47 @@
                     "elements": [
                         {
                             "name": "WpisaFeatureShellModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "DashboardHelpAndSupportFeaturePageModule"
                         }
                     ]
                 },
@@ -28719,17 +28719,17 @@
                 "name": "base",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/shared/storybook/src/lib/components/forms/checkbox/checkbox.component.stories.ts",
+                "file": "libs/shared/storybook/src/lib/components/forms/select/select.stories.ts",
                 "type": "",
-                "defaultValue": "() => ({\n  template: `\n    <div class=\"wes-form-section\">\n\n      <fieldset class=\"wes-form-field wes-form-field--checkbox-list\">\n        <legend class=\"wes-form-field-label sr-only\">Contact preferences</legend>\n        <div class=\"wes-form-field-content\">\n          <div class=\"wes-checkbox\" id=\"wes-checkbox-fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value\">\n            <label class=\"wes-checkbox-layout\" for=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-0\">\n              <div class=\"wes-checkbox-inner-container\">\n                <input type=\"checkbox\" class=\"wes-checkbox-input cdk-visually-hidden valid\" id=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-0\" name=\"fxb.76605747-849b-49b9-a375-4ae7458fb24f.Fields[38b28032-aeb2-4f28-af6b-b90a2c99a61c].Value\" data-val-ischecked=\"\" value=\"Email\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Checkbox list V2\" tabindex=\"0\" aria-invalid=\"false\">\n                <div class=\"wes-checkbox-frame\"></div>\n                <div class=\"wes-checkbox-background\">\n                  <svg viewBox=\"0 0 8 6\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" class=\"wes-checkbox-checkmark\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-101.000000, -149.000000)\" fill=\"#ffffff\"><g transform=\"translate(0.000000, 72.000000)\"><g transform=\"translate(97.000000, 72.000000)\"><path d=\"M6.95084897,9.47966533 L5.01075876,7.41619317 C4.77953371,7.17026313 4.40464384,7.17026313 4.17341879,7.41619317 C3.94219374,7.6621232 3.94219374,8.06085457 4.17341879,8.3067846 L6.53217898,10.8155525 C6.76340403,11.0614825 7.13829391,11.0614825 7.36951896,10.8155525 L11.8265812,6.07503896 C12.0578063,5.82910892 12.0578063,5.43037756 11.8265812,5.18444752 C11.5953562,4.93851749 11.2204663,4.93851749 10.9892412,5.18444752 L6.95084897,9.47966533 Z\" id=\"Path-2\"></path></g></g></g></g></svg>\n                  <div class=\"wes-checkbox-mixedmark\"></div>\n                </div>\n              </div>\n              <span class=\"wes-checkbox-label\">Email</span>\n            </label>\n          </div>\n          <div class=\"wes-checkbox\" id=\"wes-checkbox-fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value\">\n            <label class=\"wes-checkbox-layout\" for=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-1\">\n              <div class=\"wes-checkbox-inner-container\">\n                <input type=\"checkbox\" checked disabled class=\"wes-checkbox-input cdk-visually-hidden\" id=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-1\" name=\"fxb.76605747-849b-49b9-a375-4ae7458fb24f.Fields[38b28032-aeb2-4f28-af6b-b90a2c99a61c].Value\" data-val-ischecked=\"\" value=\"Phone\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Checkbox list V2\" tabindex=\"0\">\n                <div class=\"wes-checkbox-frame\"></div>\n                <div class=\"wes-checkbox-background\">\n                  <svg viewBox=\"0 0 8 6\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" class=\"wes-checkbox-checkmark\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-101.000000, -149.000000)\" fill=\"#ffffff\"><g transform=\"translate(0.000000, 72.000000)\"><g transform=\"translate(97.000000, 72.000000)\"><path d=\"M6.95084897,9.47966533 L5.01075876,7.41619317 C4.77953371,7.17026313 4.40464384,7.17026313 4.17341879,7.41619317 C3.94219374,7.6621232 3.94219374,8.06085457 4.17341879,8.3067846 L6.53217898,10.8155525 C6.76340403,11.0614825 7.13829391,11.0614825 7.36951896,10.8155525 L11.8265812,6.07503896 C12.0578063,5.82910892 12.0578063,5.43037756 11.8265812,5.18444752 C11.5953562,4.93851749 11.2204663,4.93851749 10.9892412,5.18444752 L6.95084897,9.47966533 Z\" id=\"Path-2\"></path></g></g></g></g></svg>\n                  <div class=\"wes-checkbox-mixedmark\"></div>\n                </div>\n              </div>\n              <span class=\"wes-checkbox-label\">\n                <span style=\"display: none;\">&nbsp;</span>Phone\n              </span>\n            </label>\n          </div>\n          <div class=\"wes-checkbox\" id=\"wes-checkbox-fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value\">\n            <label class=\"wes-checkbox-layout\" for=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-2\">\n              <div class=\"wes-checkbox-inner-container\">\n                <input type=\"checkbox\" class=\"wes-checkbox-input cdk-visually-hidden\" id=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-2\" name=\"fxb.76605747-849b-49b9-a375-4ae7458fb24f.Fields[38b28032-aeb2-4f28-af6b-b90a2c99a61c].Value\" data-val-ischecked=\"\" value=\"Post\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Checkbox list V2\" tabindex=\"0\">\n                <div class=\"wes-checkbox-frame\"></div>\n                <div class=\"wes-checkbox-background\">\n                  <svg viewBox=\"0 0 8 6\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" class=\"wes-checkbox-checkmark\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-101.000000, -149.000000)\" fill=\"#ffffff\"><g transform=\"translate(0.000000, 72.000000)\"><g transform=\"translate(97.000000, 72.000000)\"><path d=\"M6.95084897,9.47966533 L5.01075876,7.41619317 C4.77953371,7.17026313 4.40464384,7.17026313 4.17341879,7.41619317 C3.94219374,7.6621232 3.94219374,8.06085457 4.17341879,8.3067846 L6.53217898,10.8155525 C6.76340403,11.0614825 7.13829391,11.0614825 7.36951896,10.8155525 L11.8265812,6.07503896 C12.0578063,5.82910892 12.0578063,5.43037756 11.8265812,5.18444752 C11.5953562,4.93851749 11.2204663,4.93851749 10.9892412,5.18444752 L6.95084897,9.47966533 Z\" id=\"Path-2\"></path></g></g></g></g></svg>\n                  <div class=\"wes-checkbox-mixedmark\"></div>\n                </div>\n              </div>\n              <span class=\"wes-checkbox-label\">\n                <span style=\"display: none;\">&nbsp;</span>Post\n              </span>\n            </label>\n          </div>\n        </div> \n      </fieldset>\n      \n    </div>\n  `,\n})"
+                "defaultValue": "() => ({\n  template: `\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-md-10 col-lg-8 offset-md-1\">\n\n          <div class=\"wes-form-section wes-form-section--full-width wes-form-section--narrow\">\n\n            <!-- Example output from Sitecore Form Builder -->\n            <div class=\"wes-form-field wes-form-field-type-wes-native-select\">\n              <div class=\"wes-form-field-label-wrapper\">\n                <label for=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_e8496906-389a-4c31-9809-a780e2e2b2f2__Value\" class=\"wes-form-field-label \" aria-owns=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_e8496906-389a-4c31-9809-a780e2e2b2f2__Value\">\n                    Title\n                </label>\n              </div>\n              <div class=\"wes-form-field-wrapper \">\n                <div class=\"wes-form-field-flex\">\n                  <div class=\"wes-form-field-infix\">\n                    <select class=\"wes-input-element form-control d-block\" id=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_e8496906-389a-4c31-9809-a780e2e2b2f2__Value\" name=\"fxb.a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce.Fields[e8496906-389a-4c31-9809-a780e2e2b2f2].Value\" data-val-required=\"Please select one of the options above\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Dropdown List V2\" data-val=\"true\">\n                      <option value=\"\" disabled=\"\" selected=\"\">Please select</option>\n                      <option value=\"Mr\">Mr</option>\n                      <option value=\"Mrs\">Mrs</option>\n                      <option value=\"Miss\">Miss</option>\n                    </select>\n                  </div>\n                </div>\n              </div>\n              \n              <div class=\"wes-form-field-subscript-wrapper \">\n                <div role=\"alert\" class=\"wes-error\">\n                  <div class=\"wes-form-field-error-message\">\n                    <p>\n                      <svg _ngcontent-cme-c57=\"\" height=\"16\" viewBox=\"0 0 16 16\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><g _ngcontent-cme-c57=\"\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g _ngcontent-cme-c57=\"\" id=\"6_1_Declaration_Validation_768\" transform=\"translate(-138.000000, -2139.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Declaration\" transform=\"translate(94.000000, 1575.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Checkbox_1\" transform=\"translate(0.000000, 522.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Checkbox\"><g _ngcontent-cme-c57=\"\" id=\"Icon\" transform=\"translate(44.000000, 42.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Error-icon\"><circle _ngcontent-cme-c57=\"\" id=\"Oval\" fill=\"#D72D41\" cx=\"8\" cy=\"8\" r=\"8\"></circle><path _ngcontent-cme-c57=\"\" d=\"M8.76388889,9 L9,4 L7,4 L7.23611111,9 L8.76388889,9 Z M8.00956938,12 C8.32216906,12 8.56539075,11.9120975 8.73923445,11.7362924 C8.91307815,11.5604874 9,11.3159269 9,11.002611 C9,10.6858138 8.91626794,10.4395126 8.74880383,10.2637076 C8.58133971,10.0879025 8.33492823,10 8.00956938,10 C7.68102073,10 7.43062201,10.0879025 7.25837321,10.2637076 C7.0861244,10.4395126 7,10.6858138 7,11.002611 C7,11.3159269 7.08931419,11.5604874 7.26794258,11.7362924 C7.44657097,11.9120975 7.6937799,12 8.00956938,12 Z\" id=\"!\" fill=\"#FFFFFF\" fill-rule=\"nonzero\"></path></g></g></g></g></g></g></g></svg>\n                      <span class=\"field-validation-valid\" data-valmsg-for=\"fxb.a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce.Fields[e8496906-389a-4c31-9809-a780e2e2b2f2].Value\" data-valmsg-replace=\"true\">Please select one of the options above</span>\n                    </p>\n                  </div>\n                </div>\n              </div>\n            </div>\n\n          </div>\n\n          <div class=\"wes-form-section wes-form-section--full-width\">\n\n            <div class=\"wes-form-field wes-form-field-type-wes-input  d-block\">\n              <div class=\"wes-form-field-label-wrapper\">\n                <label class=\"wes-form-field-label \" id=\"wes-form-field-label-19\" for=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_7b74e437-cb7b-4eb8-9d3f-f113c2098acd__Value\" aria-owns=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_7b74e437-cb7b-4eb8-9d3f-f113c2098acd__Value\">\n                  <span labeltestid=\"lblPersonalEmail\" class=\"\">First name</span>\n                </label>\n              </div>\n              <div class=\"wes-form-field-wrapper \">\n                <div class=\"wes-form-field-flex \">\n                  <div class=\"wes-form-field-infix \">\n                    <input name=\"fxb.a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce.Fields[7b74e437-cb7b-4eb8-9d3f-f113c2098acd].Value\" type=\"text\" class=\"wes-input-element\" id=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_7b74e437-cb7b-4eb8-9d3f-f113c2098acd__Value\" value=\"\" maxlength=\"255\" placeholder=\"\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Input V2\" data-val-required=\"First name is required.\" data-val=\"true\">\n                  </div>\n                </div>\n              </div>\n              <div class=\"wes-form-field-subscript-wrapper \">\n                <div role=\"alert\" class=\"wes-error\" id=\"wes-error-0\" style=\"\">\n                  <div>\n                    <div class=\"wes-form-field-error-message\">\n                      <p>\n                        <svg _ngcontent-cme-c57=\"\" height=\"18\" viewBox=\"0 0 16 16\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><g _ngcontent-cme-c57=\"\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g _ngcontent-cme-c57=\"\" id=\"6_1_Declaration_Validation_768\" transform=\"translate(-138.000000, -2139.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Declaration\" transform=\"translate(94.000000, 1575.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Checkbox_1\" transform=\"translate(0.000000, 522.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Checkbox\"><g _ngcontent-cme-c57=\"\" id=\"Icon\" transform=\"translate(44.000000, 42.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Error-icon\"><circle _ngcontent-cme-c57=\"\" id=\"Oval\" fill=\"#D72D41\" cx=\"8\" cy=\"8\" r=\"8\"></circle><path _ngcontent-cme-c57=\"\" d=\"M8.76388889,9 L9,4 L7,4 L7.23611111,9 L8.76388889,9 Z M8.00956938,12 C8.32216906,12 8.56539075,11.9120975 8.73923445,11.7362924 C8.91307815,11.5604874 9,11.3159269 9,11.002611 C9,10.6858138 8.91626794,10.4395126 8.74880383,10.2637076 C8.58133971,10.0879025 8.33492823,10 8.00956938,10 C7.68102073,10 7.43062201,10.0879025 7.25837321,10.2637076 C7.0861244,10.4395126 7,10.6858138 7,11.002611 C7,11.3159269 7.08931419,11.5604874 7.26794258,11.7362924 C7.44657097,11.9120975 7.6937799,12 8.00956938,12 Z\" id=\"!\" fill=\"#FFFFFF\" fill-rule=\"nonzero\"></path></g></g></g></g></g></g></g></svg>\n                        <span class=\"field-validation-valid\" data-valmsg-for=\"fxb.a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce.Fields[7b74e437-cb7b-4eb8-9d3f-f113c2098acd].Value\" data-valmsg-replace=\"true\">Please complete the field above</span>\n                      </p>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n\n          </div>\n\n          <div class=\"wes-form-section wes-form-section--full-width\">\n\n            <!-- Example output from Sitecore Form Builder -->\n            <div class=\"wes-form-field wes-form-field-type-wes-native-select\">\n              <div class=\"wes-form-field-label-wrapper\">\n                <label for=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_e8496906-389a-4c31-9809-a780e2e2b2f2__Value\" class=\"wes-form-field-label \" aria-owns=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_e8496906-389a-4c31-9809-a780e2e2b2f2__Value\">\n                    Profession\n                </label>\n              </div>\n              <div class=\"wes-form-field-wrapper \">\n                <div class=\"wes-form-field-flex\">\n                  <div class=\"wes-form-field-infix\">\n                    <select class=\"wes-input-element form-control d-block\" id=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_e8496906-389a-4c31-9809-a780e2e2b2f2__Value\" name=\"fxb.a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce.Fields[e8496906-389a-4c31-9809-a780e2e2b2f2].Value\" data-val-required=\"Please select one of the options above\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Dropdown List V2\" data-val=\"true\">\n                      <option value=\"\" disabled=\"\" selected=\"\">Please select</option>\n                      <option value=\"Mr\">Mr</option>\n                      <option value=\"Mrs\">Mrs</option>\n                      <option value=\"Miss\">Miss</option>\n                    </select>\n                  </div>\n                </div>\n              </div>\n              \n              <div class=\"wes-form-field-subscript-wrapper \">\n                <div role=\"alert\" class=\"wes-error\">\n                  <div class=\"wes-form-field-error-message\">\n                    <p>\n                      <svg _ngcontent-cme-c57=\"\" height=\"16\" viewBox=\"0 0 16 16\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><g _ngcontent-cme-c57=\"\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g _ngcontent-cme-c57=\"\" id=\"6_1_Declaration_Validation_768\" transform=\"translate(-138.000000, -2139.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Declaration\" transform=\"translate(94.000000, 1575.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Checkbox_1\" transform=\"translate(0.000000, 522.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Checkbox\"><g _ngcontent-cme-c57=\"\" id=\"Icon\" transform=\"translate(44.000000, 42.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Error-icon\"><circle _ngcontent-cme-c57=\"\" id=\"Oval\" fill=\"#D72D41\" cx=\"8\" cy=\"8\" r=\"8\"></circle><path _ngcontent-cme-c57=\"\" d=\"M8.76388889,9 L9,4 L7,4 L7.23611111,9 L8.76388889,9 Z M8.00956938,12 C8.32216906,12 8.56539075,11.9120975 8.73923445,11.7362924 C8.91307815,11.5604874 9,11.3159269 9,11.002611 C9,10.6858138 8.91626794,10.4395126 8.74880383,10.2637076 C8.58133971,10.0879025 8.33492823,10 8.00956938,10 C7.68102073,10 7.43062201,10.0879025 7.25837321,10.2637076 C7.0861244,10.4395126 7,10.6858138 7,11.002611 C7,11.3159269 7.08931419,11.5604874 7.26794258,11.7362924 C7.44657097,11.9120975 7.6937799,12 8.00956938,12 Z\" id=\"!\" fill=\"#FFFFFF\" fill-rule=\"nonzero\"></path></g></g></g></g></g></g></g></svg>\n                      <span class=\"field-validation-valid\" data-valmsg-for=\"fxb.a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce.Fields[e8496906-389a-4c31-9809-a780e2e2b2f2].Value\" data-valmsg-replace=\"true\">Please select one of the options above</span>\n                    </p>\n                  </div>\n                </div>\n              </div>\n            </div>\n\n          </div>\n\n        </div>\n      </div>\n    </div>\n  `,\n})"
             },
             {
                 "name": "base",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/shared/storybook/src/lib/components/forms/select/select.stories.ts",
+                "file": "libs/shared/storybook/src/lib/components/forms/checkbox/checkbox.component.stories.ts",
                 "type": "",
-                "defaultValue": "() => ({\n  template: `\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-md-10 col-lg-8 offset-md-1\">\n\n          <div class=\"wes-form-section wes-form-section--full-width wes-form-section--narrow\">\n\n            <!-- Example output from Sitecore Form Builder -->\n            <div class=\"wes-form-field wes-form-field-type-wes-native-select\">\n              <div class=\"wes-form-field-label-wrapper\">\n                <label for=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_e8496906-389a-4c31-9809-a780e2e2b2f2__Value\" class=\"wes-form-field-label \" aria-owns=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_e8496906-389a-4c31-9809-a780e2e2b2f2__Value\">\n                    Title\n                </label>\n              </div>\n              <div class=\"wes-form-field-wrapper \">\n                <div class=\"wes-form-field-flex\">\n                  <div class=\"wes-form-field-infix\">\n                    <select class=\"wes-input-element form-control d-block\" id=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_e8496906-389a-4c31-9809-a780e2e2b2f2__Value\" name=\"fxb.a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce.Fields[e8496906-389a-4c31-9809-a780e2e2b2f2].Value\" data-val-required=\"Please select one of the options above\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Dropdown List V2\" data-val=\"true\">\n                      <option value=\"\" disabled=\"\" selected=\"\">Please select</option>\n                      <option value=\"Mr\">Mr</option>\n                      <option value=\"Mrs\">Mrs</option>\n                      <option value=\"Miss\">Miss</option>\n                    </select>\n                  </div>\n                </div>\n              </div>\n              \n              <div class=\"wes-form-field-subscript-wrapper \">\n                <div role=\"alert\" class=\"wes-error\">\n                  <div class=\"wes-form-field-error-message\">\n                    <p>\n                      <svg _ngcontent-cme-c57=\"\" height=\"16\" viewBox=\"0 0 16 16\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><g _ngcontent-cme-c57=\"\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g _ngcontent-cme-c57=\"\" id=\"6_1_Declaration_Validation_768\" transform=\"translate(-138.000000, -2139.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Declaration\" transform=\"translate(94.000000, 1575.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Checkbox_1\" transform=\"translate(0.000000, 522.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Checkbox\"><g _ngcontent-cme-c57=\"\" id=\"Icon\" transform=\"translate(44.000000, 42.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Error-icon\"><circle _ngcontent-cme-c57=\"\" id=\"Oval\" fill=\"#D72D41\" cx=\"8\" cy=\"8\" r=\"8\"></circle><path _ngcontent-cme-c57=\"\" d=\"M8.76388889,9 L9,4 L7,4 L7.23611111,9 L8.76388889,9 Z M8.00956938,12 C8.32216906,12 8.56539075,11.9120975 8.73923445,11.7362924 C8.91307815,11.5604874 9,11.3159269 9,11.002611 C9,10.6858138 8.91626794,10.4395126 8.74880383,10.2637076 C8.58133971,10.0879025 8.33492823,10 8.00956938,10 C7.68102073,10 7.43062201,10.0879025 7.25837321,10.2637076 C7.0861244,10.4395126 7,10.6858138 7,11.002611 C7,11.3159269 7.08931419,11.5604874 7.26794258,11.7362924 C7.44657097,11.9120975 7.6937799,12 8.00956938,12 Z\" id=\"!\" fill=\"#FFFFFF\" fill-rule=\"nonzero\"></path></g></g></g></g></g></g></g></svg>\n                      <span class=\"field-validation-valid\" data-valmsg-for=\"fxb.a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce.Fields[e8496906-389a-4c31-9809-a780e2e2b2f2].Value\" data-valmsg-replace=\"true\">Please select one of the options above</span>\n                    </p>\n                  </div>\n                </div>\n              </div>\n            </div>\n\n          </div>\n\n          <div class=\"wes-form-section wes-form-section--full-width\">\n\n            <div class=\"wes-form-field wes-form-field-type-wes-input  d-block\">\n              <div class=\"wes-form-field-label-wrapper\">\n                <label class=\"wes-form-field-label \" id=\"wes-form-field-label-19\" for=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_7b74e437-cb7b-4eb8-9d3f-f113c2098acd__Value\" aria-owns=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_7b74e437-cb7b-4eb8-9d3f-f113c2098acd__Value\">\n                  <span labeltestid=\"lblPersonalEmail\" class=\"\">First name</span>\n                </label>\n              </div>\n              <div class=\"wes-form-field-wrapper \">\n                <div class=\"wes-form-field-flex \">\n                  <div class=\"wes-form-field-infix \">\n                    <input name=\"fxb.a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce.Fields[7b74e437-cb7b-4eb8-9d3f-f113c2098acd].Value\" type=\"text\" class=\"wes-input-element\" id=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_7b74e437-cb7b-4eb8-9d3f-f113c2098acd__Value\" value=\"\" maxlength=\"255\" placeholder=\"\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Input V2\" data-val-required=\"First name is required.\" data-val=\"true\">\n                  </div>\n                </div>\n              </div>\n              <div class=\"wes-form-field-subscript-wrapper \">\n                <div role=\"alert\" class=\"wes-error\" id=\"wes-error-0\" style=\"\">\n                  <div>\n                    <div class=\"wes-form-field-error-message\">\n                      <p>\n                        <svg _ngcontent-cme-c57=\"\" height=\"18\" viewBox=\"0 0 16 16\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><g _ngcontent-cme-c57=\"\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g _ngcontent-cme-c57=\"\" id=\"6_1_Declaration_Validation_768\" transform=\"translate(-138.000000, -2139.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Declaration\" transform=\"translate(94.000000, 1575.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Checkbox_1\" transform=\"translate(0.000000, 522.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Checkbox\"><g _ngcontent-cme-c57=\"\" id=\"Icon\" transform=\"translate(44.000000, 42.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Error-icon\"><circle _ngcontent-cme-c57=\"\" id=\"Oval\" fill=\"#D72D41\" cx=\"8\" cy=\"8\" r=\"8\"></circle><path _ngcontent-cme-c57=\"\" d=\"M8.76388889,9 L9,4 L7,4 L7.23611111,9 L8.76388889,9 Z M8.00956938,12 C8.32216906,12 8.56539075,11.9120975 8.73923445,11.7362924 C8.91307815,11.5604874 9,11.3159269 9,11.002611 C9,10.6858138 8.91626794,10.4395126 8.74880383,10.2637076 C8.58133971,10.0879025 8.33492823,10 8.00956938,10 C7.68102073,10 7.43062201,10.0879025 7.25837321,10.2637076 C7.0861244,10.4395126 7,10.6858138 7,11.002611 C7,11.3159269 7.08931419,11.5604874 7.26794258,11.7362924 C7.44657097,11.9120975 7.6937799,12 8.00956938,12 Z\" id=\"!\" fill=\"#FFFFFF\" fill-rule=\"nonzero\"></path></g></g></g></g></g></g></g></svg>\n                        <span class=\"field-validation-valid\" data-valmsg-for=\"fxb.a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce.Fields[7b74e437-cb7b-4eb8-9d3f-f113c2098acd].Value\" data-valmsg-replace=\"true\">Please complete the field above</span>\n                      </p>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n\n          </div>\n\n          <div class=\"wes-form-section wes-form-section--full-width\">\n\n            <!-- Example output from Sitecore Form Builder -->\n            <div class=\"wes-form-field wes-form-field-type-wes-native-select\">\n              <div class=\"wes-form-field-label-wrapper\">\n                <label for=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_e8496906-389a-4c31-9809-a780e2e2b2f2__Value\" class=\"wes-form-field-label \" aria-owns=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_e8496906-389a-4c31-9809-a780e2e2b2f2__Value\">\n                    Profession\n                </label>\n              </div>\n              <div class=\"wes-form-field-wrapper \">\n                <div class=\"wes-form-field-flex\">\n                  <div class=\"wes-form-field-infix\">\n                    <select class=\"wes-input-element form-control d-block\" id=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_e8496906-389a-4c31-9809-a780e2e2b2f2__Value\" name=\"fxb.a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce.Fields[e8496906-389a-4c31-9809-a780e2e2b2f2].Value\" data-val-required=\"Please select one of the options above\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Dropdown List V2\" data-val=\"true\">\n                      <option value=\"\" disabled=\"\" selected=\"\">Please select</option>\n                      <option value=\"Mr\">Mr</option>\n                      <option value=\"Mrs\">Mrs</option>\n                      <option value=\"Miss\">Miss</option>\n                    </select>\n                  </div>\n                </div>\n              </div>\n              \n              <div class=\"wes-form-field-subscript-wrapper \">\n                <div role=\"alert\" class=\"wes-error\">\n                  <div class=\"wes-form-field-error-message\">\n                    <p>\n                      <svg _ngcontent-cme-c57=\"\" height=\"16\" viewBox=\"0 0 16 16\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><g _ngcontent-cme-c57=\"\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g _ngcontent-cme-c57=\"\" id=\"6_1_Declaration_Validation_768\" transform=\"translate(-138.000000, -2139.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Declaration\" transform=\"translate(94.000000, 1575.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Checkbox_1\" transform=\"translate(0.000000, 522.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Checkbox\"><g _ngcontent-cme-c57=\"\" id=\"Icon\" transform=\"translate(44.000000, 42.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Error-icon\"><circle _ngcontent-cme-c57=\"\" id=\"Oval\" fill=\"#D72D41\" cx=\"8\" cy=\"8\" r=\"8\"></circle><path _ngcontent-cme-c57=\"\" d=\"M8.76388889,9 L9,4 L7,4 L7.23611111,9 L8.76388889,9 Z M8.00956938,12 C8.32216906,12 8.56539075,11.9120975 8.73923445,11.7362924 C8.91307815,11.5604874 9,11.3159269 9,11.002611 C9,10.6858138 8.91626794,10.4395126 8.74880383,10.2637076 C8.58133971,10.0879025 8.33492823,10 8.00956938,10 C7.68102073,10 7.43062201,10.0879025 7.25837321,10.2637076 C7.0861244,10.4395126 7,10.6858138 7,11.002611 C7,11.3159269 7.08931419,11.5604874 7.26794258,11.7362924 C7.44657097,11.9120975 7.6937799,12 8.00956938,12 Z\" id=\"!\" fill=\"#FFFFFF\" fill-rule=\"nonzero\"></path></g></g></g></g></g></g></g></svg>\n                      <span class=\"field-validation-valid\" data-valmsg-for=\"fxb.a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce.Fields[e8496906-389a-4c31-9809-a780e2e2b2f2].Value\" data-valmsg-replace=\"true\">Please select one of the options above</span>\n                    </p>\n                  </div>\n                </div>\n              </div>\n            </div>\n\n          </div>\n\n        </div>\n      </div>\n    </div>\n  `,\n})"
+                "defaultValue": "() => ({\n  template: `\n    <div class=\"wes-form-section\">\n\n      <fieldset class=\"wes-form-field wes-form-field--checkbox-list\">\n        <legend class=\"wes-form-field-label sr-only\">Contact preferences</legend>\n        <div class=\"wes-form-field-content\">\n          <div class=\"wes-checkbox\" id=\"wes-checkbox-fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value\">\n            <label class=\"wes-checkbox-layout\" for=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-0\">\n              <div class=\"wes-checkbox-inner-container\">\n                <input type=\"checkbox\" class=\"wes-checkbox-input cdk-visually-hidden valid\" id=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-0\" name=\"fxb.76605747-849b-49b9-a375-4ae7458fb24f.Fields[38b28032-aeb2-4f28-af6b-b90a2c99a61c].Value\" data-val-ischecked=\"\" value=\"Email\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Checkbox list V2\" tabindex=\"0\" aria-invalid=\"false\">\n                <div class=\"wes-checkbox-frame\"></div>\n                <div class=\"wes-checkbox-background\">\n                  <svg viewBox=\"0 0 8 6\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" class=\"wes-checkbox-checkmark\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-101.000000, -149.000000)\" fill=\"#ffffff\"><g transform=\"translate(0.000000, 72.000000)\"><g transform=\"translate(97.000000, 72.000000)\"><path d=\"M6.95084897,9.47966533 L5.01075876,7.41619317 C4.77953371,7.17026313 4.40464384,7.17026313 4.17341879,7.41619317 C3.94219374,7.6621232 3.94219374,8.06085457 4.17341879,8.3067846 L6.53217898,10.8155525 C6.76340403,11.0614825 7.13829391,11.0614825 7.36951896,10.8155525 L11.8265812,6.07503896 C12.0578063,5.82910892 12.0578063,5.43037756 11.8265812,5.18444752 C11.5953562,4.93851749 11.2204663,4.93851749 10.9892412,5.18444752 L6.95084897,9.47966533 Z\" id=\"Path-2\"></path></g></g></g></g></svg>\n                  <div class=\"wes-checkbox-mixedmark\"></div>\n                </div>\n              </div>\n              <span class=\"wes-checkbox-label\">Email</span>\n            </label>\n          </div>\n          <div class=\"wes-checkbox\" id=\"wes-checkbox-fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value\">\n            <label class=\"wes-checkbox-layout\" for=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-1\">\n              <div class=\"wes-checkbox-inner-container\">\n                <input type=\"checkbox\" checked disabled class=\"wes-checkbox-input cdk-visually-hidden\" id=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-1\" name=\"fxb.76605747-849b-49b9-a375-4ae7458fb24f.Fields[38b28032-aeb2-4f28-af6b-b90a2c99a61c].Value\" data-val-ischecked=\"\" value=\"Phone\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Checkbox list V2\" tabindex=\"0\">\n                <div class=\"wes-checkbox-frame\"></div>\n                <div class=\"wes-checkbox-background\">\n                  <svg viewBox=\"0 0 8 6\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" class=\"wes-checkbox-checkmark\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-101.000000, -149.000000)\" fill=\"#ffffff\"><g transform=\"translate(0.000000, 72.000000)\"><g transform=\"translate(97.000000, 72.000000)\"><path d=\"M6.95084897,9.47966533 L5.01075876,7.41619317 C4.77953371,7.17026313 4.40464384,7.17026313 4.17341879,7.41619317 C3.94219374,7.6621232 3.94219374,8.06085457 4.17341879,8.3067846 L6.53217898,10.8155525 C6.76340403,11.0614825 7.13829391,11.0614825 7.36951896,10.8155525 L11.8265812,6.07503896 C12.0578063,5.82910892 12.0578063,5.43037756 11.8265812,5.18444752 C11.5953562,4.93851749 11.2204663,4.93851749 10.9892412,5.18444752 L6.95084897,9.47966533 Z\" id=\"Path-2\"></path></g></g></g></g></svg>\n                  <div class=\"wes-checkbox-mixedmark\"></div>\n                </div>\n              </div>\n              <span class=\"wes-checkbox-label\">\n                <span style=\"display: none;\">&nbsp;</span>Phone\n              </span>\n            </label>\n          </div>\n          <div class=\"wes-checkbox\" id=\"wes-checkbox-fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value\">\n            <label class=\"wes-checkbox-layout\" for=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-2\">\n              <div class=\"wes-checkbox-inner-container\">\n                <input type=\"checkbox\" class=\"wes-checkbox-input cdk-visually-hidden\" id=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-2\" name=\"fxb.76605747-849b-49b9-a375-4ae7458fb24f.Fields[38b28032-aeb2-4f28-af6b-b90a2c99a61c].Value\" data-val-ischecked=\"\" value=\"Post\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Checkbox list V2\" tabindex=\"0\">\n                <div class=\"wes-checkbox-frame\"></div>\n                <div class=\"wes-checkbox-background\">\n                  <svg viewBox=\"0 0 8 6\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" class=\"wes-checkbox-checkmark\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-101.000000, -149.000000)\" fill=\"#ffffff\"><g transform=\"translate(0.000000, 72.000000)\"><g transform=\"translate(97.000000, 72.000000)\"><path d=\"M6.95084897,9.47966533 L5.01075876,7.41619317 C4.77953371,7.17026313 4.40464384,7.17026313 4.17341879,7.41619317 C3.94219374,7.6621232 3.94219374,8.06085457 4.17341879,8.3067846 L6.53217898,10.8155525 C6.76340403,11.0614825 7.13829391,11.0614825 7.36951896,10.8155525 L11.8265812,6.07503896 C12.0578063,5.82910892 12.0578063,5.43037756 11.8265812,5.18444752 C11.5953562,4.93851749 11.2204663,4.93851749 10.9892412,5.18444752 L6.95084897,9.47966533 Z\" id=\"Path-2\"></path></g></g></g></g></svg>\n                  <div class=\"wes-checkbox-mixedmark\"></div>\n                </div>\n              </div>\n              <span class=\"wes-checkbox-label\">\n                <span style=\"display: none;\">&nbsp;</span>Post\n              </span>\n            </label>\n          </div>\n        </div> \n      </fieldset>\n      \n    </div>\n  `,\n})"
             },
             {
                 "name": "base",
@@ -29208,22 +29208,6 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "apps/dashboard-help-and-support/src/environments/environment.prod.ts",
-                "type": "object",
-                "defaultValue": "{\n  production: true,\n}"
-            },
-            {
-                "name": "environment",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "apps/dashboard-help-and-support/src/environments/environment.ts",
-                "type": "object",
-                "defaultValue": "{\n  production: false,\n}"
-            },
-            {
-                "name": "environment",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "apps/find-my-fc/src/environments/environment.prod.ts",
                 "type": "object",
                 "defaultValue": "{\n  production: true,\n}"
@@ -29256,14 +29240,6 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "apps/set-a-target-calculator/src/environments/environment.prod.ts",
-                "type": "object",
-                "defaultValue": "{\n  production: true,\n}"
-            },
-            {
-                "name": "environment",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "apps/set-a-target-calculator/src/environments/environment.ts",
                 "type": "object",
                 "defaultValue": "{\n  production: false,\n}"
@@ -29272,7 +29248,7 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "apps/style/src/environments/environment.prod.ts",
+                "file": "apps/set-a-target-calculator/src/environments/environment.prod.ts",
                 "type": "object",
                 "defaultValue": "{\n  production: true,\n}"
             },
@@ -29288,7 +29264,7 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "apps/wpisa/src/environments/environment.prod.ts",
+                "file": "apps/style/src/environments/environment.prod.ts",
                 "type": "object",
                 "defaultValue": "{\n  production: true,\n}"
             },
@@ -29297,6 +29273,30 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "apps/wpisa/src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: false,\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "apps/wpisa/src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: true,\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "apps/dashboard-help-and-support/src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: true,\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "apps/dashboard-help-and-support/src/environments/environment.ts",
                 "type": "object",
                 "defaultValue": "{\n  production: false,\n}"
             },
@@ -29512,7 +29512,7 @@
                 "name": "getGreeting",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "apps/set-a-target-calculator-e2e/src/support/app.po.ts",
+                "file": "apps/wpisa-e2e/src/support/app.po.ts",
                 "type": "",
                 "defaultValue": "() => cy.get('h1')"
             },
@@ -29520,7 +29520,7 @@
                 "name": "getGreeting",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "apps/wpisa-e2e/src/support/app.po.ts",
+                "file": "apps/set-a-target-calculator-e2e/src/support/app.po.ts",
                 "type": "",
                 "defaultValue": "() => cy.get('h1')"
             },
@@ -30194,14 +30194,6 @@
                 "name": "nextUniqueId",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/shared/ui-form-input/src/lib/input.ts",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
-                "name": "nextUniqueId",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/shared/ui-form-field/src/lib/error.ts",
                 "type": "number",
                 "defaultValue": "0"
@@ -30227,6 +30219,14 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/shared/ui-form-radio/src/lib/radio.ts",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "nextUniqueId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/ui-form-input/src/lib/input.ts",
                 "type": "number",
                 "defaultValue": "0"
             },
@@ -30568,17 +30568,17 @@
                 "name": "style1",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/shared/storybook/src/lib/components/table/table.stories.ts",
+                "file": "libs/shared/storybook/src/lib/components/tooltip/tooltip.stories.ts",
                 "type": "",
-                "defaultValue": "() => ({\n  template: `\n    <div class=\"container\">\n      <div class=\"col-md-6 offset-md-3\" style=\"padding:20px 0\">\n\n        <div class=\"wes-table-style-1\">\n          <table>\n            <tr>\n              <td>Save up to £20,000 in the 2020/2021 tax year</td>\n            </tr>\n            <tr>\n              <td>Pay no income tax or capital gains tax on your investment returns</td>\n            </tr>\n            <tr>\n              <td>Share in Wesleyan's profits through the With Profits ISA Fund</td>\n            </tr>\n          </table>\n        </div>\n\n      </div>\n    </div>\n  `,\n})"
+                "defaultValue": "() => ({\n  template: `\n    <div class=\"container\">\n      <div class=\"col-md-6 offset-md-3\" style=\"padding:20px 0\">\n\n      <div class=\"wes-tooltip d-block\">\n      <div class=\"wes-tooltip-content\">\n        <img\n          src=\"/assets/icons/svg/icon-info.svg\"\n          class=\"wes-icon\"\n          alt=\"information icon\"\n        />\n        <p class=\"wes-text-shortform\">We're required to ask these questions by the Financial Conduct Authority, as we manage investments on your behalf.</p>\n      </div>\n    </div>\n\n      </div>\n    </div>\n  `,\n})"
             },
             {
                 "name": "style1",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/shared/storybook/src/lib/components/tooltip/tooltip.stories.ts",
+                "file": "libs/shared/storybook/src/lib/components/table/table.stories.ts",
                 "type": "",
-                "defaultValue": "() => ({\n  template: `\n    <div class=\"container\">\n      <div class=\"col-md-6 offset-md-3\" style=\"padding:20px 0\">\n\n      <div class=\"wes-tooltip d-block\">\n      <div class=\"wes-tooltip-content\">\n        <img\n          src=\"/assets/icons/svg/icon-info.svg\"\n          class=\"wes-icon\"\n          alt=\"information icon\"\n        />\n        <p class=\"wes-text-shortform\">We're required to ask these questions by the Financial Conduct Authority, as we manage investments on your behalf.</p>\n      </div>\n    </div>\n\n      </div>\n    </div>\n  `,\n})"
+                "defaultValue": "() => ({\n  template: `\n    <div class=\"container\">\n      <div class=\"col-md-6 offset-md-3\" style=\"padding:20px 0\">\n\n        <div class=\"wes-table-style-1\">\n          <table>\n            <tr>\n              <td>Save up to £20,000 in the 2020/2021 tax year</td>\n            </tr>\n            <tr>\n              <td>Pay no income tax or capital gains tax on your investment returns</td>\n            </tr>\n            <tr>\n              <td>Share in Wesleyan's profits through the With Profits ISA Fund</td>\n            </tr>\n          </table>\n        </div>\n\n      </div>\n    </div>\n  `,\n})"
             },
             {
                 "name": "style2",
@@ -30712,57 +30712,9 @@
                 "name": "variants",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/shared/storybook/src/lib/components/campaigns/cta-card/cta-card.stories.ts",
-                "type": "object",
-                "defaultValue": "{\n  'On White': '',\n  'On Grey': 'wes-cta-card--grey',\n}"
-            },
-            {
-                "name": "variants",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/shared/storybook/src/lib/components/campaigns/awards/awards.stories.ts",
-                "type": "object",
-                "defaultValue": "{\n  'On White': '',\n  'On Grey': 'wes-awards--grey-accent',\n}"
-            },
-            {
-                "name": "variants",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/shared/storybook/src/lib/components/campaigns/content-container/content-container.stories.ts",
-                "type": "object",
-                "defaultValue": "{\n  'Default': '',\n  'With Image': 'wes-content-container--with-image',\n  'With Header': ' wes-content-container--with-header',\n}"
-            },
-            {
-                "name": "variants",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/shared/storybook/src/lib/components/campaigns/next-steps/next-steps.stories.ts",
-                "type": "object",
-                "defaultValue": "{\n  'On White': '',\n  'On Grey': 'wes-next-steps--grey',\n}"
-            },
-            {
-                "name": "variants",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/shared/storybook/src/lib/components/campaigns/who-do-we-help/who-do-we-help.stories.ts",
-                "type": "object",
-                "defaultValue": "{\n  'On White': '',\n  'On Grey': 'wes-who-do-we-help--grey',\n}"
-            },
-            {
-                "name": "variants",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/shared/storybook/src/lib/components/core/billboard/billboard.stories.ts",
                 "type": "object",
                 "defaultValue": "{\n  'On White': '',\n  'On White :: Collapsed': 'wes-billboard--collapse',\n  'On White :: Reversed': 'wes-billboard--reverse',\n  'On White :: Reversed :: Collapsed': 'wes-billboard--reverse wes-billboard--collapse',\n  'On Grey': 'wes-billboard--grey',\n  'On Grey :: Collapsed': 'wes-billboard--grey wes-billboard--collapse',\n  'On Grey :: Reversed': 'wes-billboard--reverse wes-billboard--grey',\n  'On Grey :: Reversed :: Collapsed': 'wes-billboard--reverse wes-billboard--grey wes-billboard--collapse',\n}"
-            },
-            {
-                "name": "variants",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/shared/storybook/src/lib/components/core/content-block/content-block.stories.ts",
-                "type": "object",
-                "defaultValue": "{\n  'On White': '',\n  'On White :: Collapsed': 'wes-content-block--collapse',\n  'On White :: Right Aligned': 'wes-content-block--right',\n  'On White :: Right Aligned :: Collapsed': 'wes-content-block--right wes-content-block--collapse',\n  'On Grey': 'wes-content-block--grey',\n  'On Grey :: Collapsed': 'wes-content-block--grey wes-content-block--collapse',\n  'On Grey :: Right Aligned': 'wes-content-block--right wes-content-block--grey',\n  'On Grey :: Right Aligned :: Collapsed': 'wes-content-block--right wes-content-block--grey wes-content-block--collapse',\n  'On White :: Campaign': 'wes-content-block--campaign',\n  'On Grey :: Campaign': 'wes-content-block--campaign wes-content-block--grey',\n}"
             },
             {
                 "name": "variants",
@@ -30784,6 +30736,14 @@
                 "name": "variants",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/shared/storybook/src/lib/components/core/content-block/content-block.stories.ts",
+                "type": "object",
+                "defaultValue": "{\n  'On White': '',\n  'On White :: Collapsed': 'wes-content-block--collapse',\n  'On White :: Right Aligned': 'wes-content-block--right',\n  'On White :: Right Aligned :: Collapsed': 'wes-content-block--right wes-content-block--collapse',\n  'On Grey': 'wes-content-block--grey',\n  'On Grey :: Collapsed': 'wes-content-block--grey wes-content-block--collapse',\n  'On Grey :: Right Aligned': 'wes-content-block--right wes-content-block--grey',\n  'On Grey :: Right Aligned :: Collapsed': 'wes-content-block--right wes-content-block--grey wes-content-block--collapse',\n  'On White :: Campaign': 'wes-content-block--campaign',\n  'On Grey :: Campaign': 'wes-content-block--campaign wes-content-block--grey',\n}"
+            },
+            {
+                "name": "variants",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/shared/storybook/src/lib/components/core/emphasis/emphasis.stories.ts",
                 "type": "object",
                 "defaultValue": "{\n  'On White': '',\n  'On White :: Collapsed': 'wes-emphasis--collapse',\n  'On White :: Right Aligned': 'wes-emphasis--right',\n  'On White :: Right Aligned :: Collapsed': 'wes-emphasis--right wes-emphasis--collapse',\n  'On Grey': 'wes-emphasis--grey',\n  'On Grey :: Collapsed': 'wes-emphasis--grey wes-emphasis--collapse',\n  'On Grey :: Right Aligned': 'wes-emphasis--right wes-emphasis--grey',\n  'On Grey :: Right Aligned :: Collapsed': 'wes-emphasis--right wes-emphasis--grey wes-emphasis--collapse',\n}"
@@ -30795,6 +30755,46 @@
                 "file": "libs/shared/storybook/src/lib/components/core/promo/promo.stories.ts",
                 "type": "object",
                 "defaultValue": "{\n  'Whisper': '',\n  'Shout': 'wes-promo--shout',\n  'Shout :: On Grey': 'wes-promo--shout wes-promo--grey',\n  'Shout :: With Grey Top': 'wes-promo--shout wes-promo--grey-top',\n  'Shout :: With Grey Bottom': 'wes-promo--shout wes-promo--grey-bottom',\n}"
+            },
+            {
+                "name": "variants",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/storybook/src/lib/components/campaigns/cta-card/cta-card.stories.ts",
+                "type": "object",
+                "defaultValue": "{\n  'On White': '',\n  'On Grey': 'wes-cta-card--grey',\n}"
+            },
+            {
+                "name": "variants",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/storybook/src/lib/components/campaigns/next-steps/next-steps.stories.ts",
+                "type": "object",
+                "defaultValue": "{\n  'On White': '',\n  'On Grey': 'wes-next-steps--grey',\n}"
+            },
+            {
+                "name": "variants",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/storybook/src/lib/components/campaigns/content-container/content-container.stories.ts",
+                "type": "object",
+                "defaultValue": "{\n  'Default': '',\n  'With Image': 'wes-content-container--with-image',\n  'With Header': ' wes-content-container--with-header',\n}"
+            },
+            {
+                "name": "variants",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/storybook/src/lib/components/campaigns/who-do-we-help/who-do-we-help.stories.ts",
+                "type": "object",
+                "defaultValue": "{\n  'On White': '',\n  'On Grey': 'wes-who-do-we-help--grey',\n}"
+            },
+            {
+                "name": "variants",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/storybook/src/lib/components/campaigns/awards/awards.stories.ts",
+                "type": "object",
+                "defaultValue": "{\n  'On White': '',\n  'On Grey': 'wes-awards--grey-accent',\n}"
             },
             {
                 "name": "videoCarousel",
@@ -32424,24 +32424,6 @@
                     "defaultValue": "() => ({\n  template: `\n    <div class=\"wes-hero-banner wes-hero-banner--campaign-full-width\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"wes-hero-banner__text\">\n              <div class=\"text-container\">\n                <h1 class=\"wes-hero-banner__title\">High-value home insurance</h1>\n\n                <p class=\"wes-hero-banner__sub-title\">High-value home cover, for priceless peace of mind</p>\n\n                <a class=\"wes-hero-banner__cta wes-button-cta--orange-with-grey-hover wes-button wes-button-cta\" href=\"/savings-and-investments/with-profits-isa/before-you-begin\" target=\"_blank\">\n                  <span class=\"wes-button-label\">Get a quote</span>\n                  <svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" class=\"wes-icon wes-icon-size-m\" version=\"1.1\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" fill-rule=\"evenodd\" stroke=\"none\" stroke-linecap=\"round\" stroke-width=\"1\"><g stroke=\"#FEBD11\" stroke-width=\"2\" transform=\"translate(-293.000000, -340.000000)\"><g transform=\"translate(0.000000, 72.000000)\"><g transform=\"translate(97.000000, 88.000000)\"><g transform=\"translate(0.000000, 160.000000)\"><g transform=\"translate(32.000000, 20.000000)\"><g transform=\"translate(164.000000, 0.000000)\"><polyline class=\"svg-path-color-change\" id=\"Rectangle\" points=\"25 9 19 15 13 9\" stroke-linejoin=\"round\" transform=\"translate(19.000000, 12.000000) rotate(-90.000000) translate(-19.000000, -12.000000) \"></polyline><line class=\"svg-path-color-change\" id=\"Line\" x1=\"21\" x2=\"2\" y1=\"12\" y2=\"12\"></line></g></g></g></g></g></g></g></svg>\n                </a>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"wes-hero-banner__image\" style=\"background-image: url(https://via.placeholder.com/1445x963.jpg);\"></div>\n    </div>\n\n    <div class=\"wes-value-proposition wes-value-proposition--wide\">\n      <div class=\"wes-value-proposition__wrapper\">\n        <div class=\"wes-value-proposition__body\">\n          <div class=\"wes-value-proposition__body-content\">\n            <div class=\"wes-value-proposition__frame\">\n              <div class=\"wes-value-proposition__main\">\n                <div class=\"wes-value-proposition__main-content\">\n                  <div class=\"wes-value-proposition__message\">\n\n                    <!-- RTE content -->\n                    <p class=\"highlight\" style=\"text-align: right\">Limits, exclusions and charges do apply. Full terms and conditions of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>\n                \n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  `,\n})"
                 }
             ],
-            "libs/shared/storybook/src/lib/components/forms/checkbox/checkbox.component.stories.ts": [
-                {
-                    "name": "base",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/shared/storybook/src/lib/components/forms/checkbox/checkbox.component.stories.ts",
-                    "type": "",
-                    "defaultValue": "() => ({\n  template: `\n    <div class=\"wes-form-section\">\n\n      <fieldset class=\"wes-form-field wes-form-field--checkbox-list\">\n        <legend class=\"wes-form-field-label sr-only\">Contact preferences</legend>\n        <div class=\"wes-form-field-content\">\n          <div class=\"wes-checkbox\" id=\"wes-checkbox-fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value\">\n            <label class=\"wes-checkbox-layout\" for=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-0\">\n              <div class=\"wes-checkbox-inner-container\">\n                <input type=\"checkbox\" class=\"wes-checkbox-input cdk-visually-hidden valid\" id=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-0\" name=\"fxb.76605747-849b-49b9-a375-4ae7458fb24f.Fields[38b28032-aeb2-4f28-af6b-b90a2c99a61c].Value\" data-val-ischecked=\"\" value=\"Email\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Checkbox list V2\" tabindex=\"0\" aria-invalid=\"false\">\n                <div class=\"wes-checkbox-frame\"></div>\n                <div class=\"wes-checkbox-background\">\n                  <svg viewBox=\"0 0 8 6\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" class=\"wes-checkbox-checkmark\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-101.000000, -149.000000)\" fill=\"#ffffff\"><g transform=\"translate(0.000000, 72.000000)\"><g transform=\"translate(97.000000, 72.000000)\"><path d=\"M6.95084897,9.47966533 L5.01075876,7.41619317 C4.77953371,7.17026313 4.40464384,7.17026313 4.17341879,7.41619317 C3.94219374,7.6621232 3.94219374,8.06085457 4.17341879,8.3067846 L6.53217898,10.8155525 C6.76340403,11.0614825 7.13829391,11.0614825 7.36951896,10.8155525 L11.8265812,6.07503896 C12.0578063,5.82910892 12.0578063,5.43037756 11.8265812,5.18444752 C11.5953562,4.93851749 11.2204663,4.93851749 10.9892412,5.18444752 L6.95084897,9.47966533 Z\" id=\"Path-2\"></path></g></g></g></g></svg>\n                  <div class=\"wes-checkbox-mixedmark\"></div>\n                </div>\n              </div>\n              <span class=\"wes-checkbox-label\">Email</span>\n            </label>\n          </div>\n          <div class=\"wes-checkbox\" id=\"wes-checkbox-fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value\">\n            <label class=\"wes-checkbox-layout\" for=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-1\">\n              <div class=\"wes-checkbox-inner-container\">\n                <input type=\"checkbox\" checked disabled class=\"wes-checkbox-input cdk-visually-hidden\" id=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-1\" name=\"fxb.76605747-849b-49b9-a375-4ae7458fb24f.Fields[38b28032-aeb2-4f28-af6b-b90a2c99a61c].Value\" data-val-ischecked=\"\" value=\"Phone\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Checkbox list V2\" tabindex=\"0\">\n                <div class=\"wes-checkbox-frame\"></div>\n                <div class=\"wes-checkbox-background\">\n                  <svg viewBox=\"0 0 8 6\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" class=\"wes-checkbox-checkmark\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-101.000000, -149.000000)\" fill=\"#ffffff\"><g transform=\"translate(0.000000, 72.000000)\"><g transform=\"translate(97.000000, 72.000000)\"><path d=\"M6.95084897,9.47966533 L5.01075876,7.41619317 C4.77953371,7.17026313 4.40464384,7.17026313 4.17341879,7.41619317 C3.94219374,7.6621232 3.94219374,8.06085457 4.17341879,8.3067846 L6.53217898,10.8155525 C6.76340403,11.0614825 7.13829391,11.0614825 7.36951896,10.8155525 L11.8265812,6.07503896 C12.0578063,5.82910892 12.0578063,5.43037756 11.8265812,5.18444752 C11.5953562,4.93851749 11.2204663,4.93851749 10.9892412,5.18444752 L6.95084897,9.47966533 Z\" id=\"Path-2\"></path></g></g></g></g></svg>\n                  <div class=\"wes-checkbox-mixedmark\"></div>\n                </div>\n              </div>\n              <span class=\"wes-checkbox-label\">\n                <span style=\"display: none;\">&nbsp;</span>Phone\n              </span>\n            </label>\n          </div>\n          <div class=\"wes-checkbox\" id=\"wes-checkbox-fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value\">\n            <label class=\"wes-checkbox-layout\" for=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-2\">\n              <div class=\"wes-checkbox-inner-container\">\n                <input type=\"checkbox\" class=\"wes-checkbox-input cdk-visually-hidden\" id=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-2\" name=\"fxb.76605747-849b-49b9-a375-4ae7458fb24f.Fields[38b28032-aeb2-4f28-af6b-b90a2c99a61c].Value\" data-val-ischecked=\"\" value=\"Post\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Checkbox list V2\" tabindex=\"0\">\n                <div class=\"wes-checkbox-frame\"></div>\n                <div class=\"wes-checkbox-background\">\n                  <svg viewBox=\"0 0 8 6\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" class=\"wes-checkbox-checkmark\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-101.000000, -149.000000)\" fill=\"#ffffff\"><g transform=\"translate(0.000000, 72.000000)\"><g transform=\"translate(97.000000, 72.000000)\"><path d=\"M6.95084897,9.47966533 L5.01075876,7.41619317 C4.77953371,7.17026313 4.40464384,7.17026313 4.17341879,7.41619317 C3.94219374,7.6621232 3.94219374,8.06085457 4.17341879,8.3067846 L6.53217898,10.8155525 C6.76340403,11.0614825 7.13829391,11.0614825 7.36951896,10.8155525 L11.8265812,6.07503896 C12.0578063,5.82910892 12.0578063,5.43037756 11.8265812,5.18444752 C11.5953562,4.93851749 11.2204663,4.93851749 10.9892412,5.18444752 L6.95084897,9.47966533 Z\" id=\"Path-2\"></path></g></g></g></g></svg>\n                  <div class=\"wes-checkbox-mixedmark\"></div>\n                </div>\n              </div>\n              <span class=\"wes-checkbox-label\">\n                <span style=\"display: none;\">&nbsp;</span>Post\n              </span>\n            </label>\n          </div>\n        </div> \n      </fieldset>\n      \n    </div>\n  `,\n})"
-                },
-                {
-                    "name": "button",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/shared/storybook/src/lib/components/forms/checkbox/checkbox.component.stories.ts",
-                    "type": "",
-                    "defaultValue": "() => ({\n  moduleMetadata: {\n    imports: [],\n  },\n  component: CheckboxComponent,\n  props: {},\n})"
-                }
-            ],
             "libs/shared/storybook/src/lib/components/forms/select/select.stories.ts": [
                 {
                     "name": "base",
@@ -32458,6 +32440,24 @@
                     "file": "libs/shared/storybook/src/lib/components/forms/select/select.stories.ts",
                     "type": "",
                     "defaultValue": "() => ({\n  template: `\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-md-8 offset-md-1\">\n\n          <!-- Example output from Sitecore Form Builder -->\n          <div class=\"wes-form-field wes-form-field-type-wes-native-select\">\n            <div class=\"wes-form-field-label-wrapper\">\n              <label for=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_e8496906-389a-4c31-9809-a780e2e2b2f2__Value\" class=\"wes-form-field-label \" aria-owns=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_e8496906-389a-4c31-9809-a780e2e2b2f2__Value\">\n                  Title\n              </label>\n            </div>\n            <div class=\"wes-form-field-wrapper \">\n              <div class=\"wes-form-field-flex\">\n                <div class=\"wes-form-field-infix\">\n                  <select class=\"wes-input-element form-control d-block\" id=\"fxb_a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce_Fields_e8496906-389a-4c31-9809-a780e2e2b2f2__Value\" name=\"fxb.a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce.Fields[e8496906-389a-4c31-9809-a780e2e2b2f2].Value\" data-val-required=\"Please select one of the options above\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Dropdown List V2\" data-val=\"true\">\n                    <option value=\"\" disabled=\"\" selected=\"\">Please select</option>\n                    <option value=\"Mr\">Mr</option>\n                    <option value=\"Mrs\">Mrs</option>\n                    <option value=\"Miss\">Miss</option>\n                  </select>\n                </div>\n              </div>\n            </div>\n            \n            <div class=\"wes-form-field-subscript-wrapper \">\n              <div role=\"alert\" class=\"wes-error\">\n                <div class=\"wes-form-field-error-message\">\n                  <p>\n                    <svg _ngcontent-cme-c57=\"\" height=\"18\" viewBox=\"0 0 16 16\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><g _ngcontent-cme-c57=\"\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g _ngcontent-cme-c57=\"\" id=\"6_1_Declaration_Validation_768\" transform=\"translate(-138.000000, -2139.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Declaration\" transform=\"translate(94.000000, 1575.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Checkbox_1\" transform=\"translate(0.000000, 522.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Checkbox\"><g _ngcontent-cme-c57=\"\" id=\"Icon\" transform=\"translate(44.000000, 42.000000)\"><g _ngcontent-cme-c57=\"\" id=\"Error-icon\"><circle _ngcontent-cme-c57=\"\" id=\"Oval\" fill=\"#D72D41\" cx=\"8\" cy=\"8\" r=\"8\"></circle><path _ngcontent-cme-c57=\"\" d=\"M8.76388889,9 L9,4 L7,4 L7.23611111,9 L8.76388889,9 Z M8.00956938,12 C8.32216906,12 8.56539075,11.9120975 8.73923445,11.7362924 C8.91307815,11.5604874 9,11.3159269 9,11.002611 C9,10.6858138 8.91626794,10.4395126 8.74880383,10.2637076 C8.58133971,10.0879025 8.33492823,10 8.00956938,10 C7.68102073,10 7.43062201,10.0879025 7.25837321,10.2637076 C7.0861244,10.4395126 7,10.6858138 7,11.002611 C7,11.3159269 7.08931419,11.5604874 7.26794258,11.7362924 C7.44657097,11.9120975 7.6937799,12 8.00956938,12 Z\" id=\"!\" fill=\"#FFFFFF\" fill-rule=\"nonzero\"></path></g></g></g></g></g></g></g></svg>\n                    <span class=\"field-validation-valid\" data-valmsg-for=\"fxb.a3d5cfd9-c0a4-4c57-9bae-91070e25a7ce.Fields[e8496906-389a-4c31-9809-a780e2e2b2f2].Value\" data-valmsg-replace=\"true\">Please select one of the options above</span>\n                  </p>\n                </div>\n              </div>\n            </div>\n          </div>\n\n        </div>\n      </div>\n    </div>\n  `,\n})"
+                }
+            ],
+            "libs/shared/storybook/src/lib/components/forms/checkbox/checkbox.component.stories.ts": [
+                {
+                    "name": "base",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/storybook/src/lib/components/forms/checkbox/checkbox.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  template: `\n    <div class=\"wes-form-section\">\n\n      <fieldset class=\"wes-form-field wes-form-field--checkbox-list\">\n        <legend class=\"wes-form-field-label sr-only\">Contact preferences</legend>\n        <div class=\"wes-form-field-content\">\n          <div class=\"wes-checkbox\" id=\"wes-checkbox-fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value\">\n            <label class=\"wes-checkbox-layout\" for=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-0\">\n              <div class=\"wes-checkbox-inner-container\">\n                <input type=\"checkbox\" class=\"wes-checkbox-input cdk-visually-hidden valid\" id=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-0\" name=\"fxb.76605747-849b-49b9-a375-4ae7458fb24f.Fields[38b28032-aeb2-4f28-af6b-b90a2c99a61c].Value\" data-val-ischecked=\"\" value=\"Email\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Checkbox list V2\" tabindex=\"0\" aria-invalid=\"false\">\n                <div class=\"wes-checkbox-frame\"></div>\n                <div class=\"wes-checkbox-background\">\n                  <svg viewBox=\"0 0 8 6\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" class=\"wes-checkbox-checkmark\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-101.000000, -149.000000)\" fill=\"#ffffff\"><g transform=\"translate(0.000000, 72.000000)\"><g transform=\"translate(97.000000, 72.000000)\"><path d=\"M6.95084897,9.47966533 L5.01075876,7.41619317 C4.77953371,7.17026313 4.40464384,7.17026313 4.17341879,7.41619317 C3.94219374,7.6621232 3.94219374,8.06085457 4.17341879,8.3067846 L6.53217898,10.8155525 C6.76340403,11.0614825 7.13829391,11.0614825 7.36951896,10.8155525 L11.8265812,6.07503896 C12.0578063,5.82910892 12.0578063,5.43037756 11.8265812,5.18444752 C11.5953562,4.93851749 11.2204663,4.93851749 10.9892412,5.18444752 L6.95084897,9.47966533 Z\" id=\"Path-2\"></path></g></g></g></g></svg>\n                  <div class=\"wes-checkbox-mixedmark\"></div>\n                </div>\n              </div>\n              <span class=\"wes-checkbox-label\">Email</span>\n            </label>\n          </div>\n          <div class=\"wes-checkbox\" id=\"wes-checkbox-fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value\">\n            <label class=\"wes-checkbox-layout\" for=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-1\">\n              <div class=\"wes-checkbox-inner-container\">\n                <input type=\"checkbox\" checked disabled class=\"wes-checkbox-input cdk-visually-hidden\" id=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-1\" name=\"fxb.76605747-849b-49b9-a375-4ae7458fb24f.Fields[38b28032-aeb2-4f28-af6b-b90a2c99a61c].Value\" data-val-ischecked=\"\" value=\"Phone\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Checkbox list V2\" tabindex=\"0\">\n                <div class=\"wes-checkbox-frame\"></div>\n                <div class=\"wes-checkbox-background\">\n                  <svg viewBox=\"0 0 8 6\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" class=\"wes-checkbox-checkmark\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-101.000000, -149.000000)\" fill=\"#ffffff\"><g transform=\"translate(0.000000, 72.000000)\"><g transform=\"translate(97.000000, 72.000000)\"><path d=\"M6.95084897,9.47966533 L5.01075876,7.41619317 C4.77953371,7.17026313 4.40464384,7.17026313 4.17341879,7.41619317 C3.94219374,7.6621232 3.94219374,8.06085457 4.17341879,8.3067846 L6.53217898,10.8155525 C6.76340403,11.0614825 7.13829391,11.0614825 7.36951896,10.8155525 L11.8265812,6.07503896 C12.0578063,5.82910892 12.0578063,5.43037756 11.8265812,5.18444752 C11.5953562,4.93851749 11.2204663,4.93851749 10.9892412,5.18444752 L6.95084897,9.47966533 Z\" id=\"Path-2\"></path></g></g></g></g></svg>\n                  <div class=\"wes-checkbox-mixedmark\"></div>\n                </div>\n              </div>\n              <span class=\"wes-checkbox-label\">\n                <span style=\"display: none;\">&nbsp;</span>Phone\n              </span>\n            </label>\n          </div>\n          <div class=\"wes-checkbox\" id=\"wes-checkbox-fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value\">\n            <label class=\"wes-checkbox-layout\" for=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-2\">\n              <div class=\"wes-checkbox-inner-container\">\n                <input type=\"checkbox\" class=\"wes-checkbox-input cdk-visually-hidden\" id=\"fxb_76605747-849b-49b9-a375-4ae7458fb24f_Fields_38b28032-aeb2-4f28-af6b-b90a2c99a61c__Value-2\" name=\"fxb.76605747-849b-49b9-a375-4ae7458fb24f.Fields[38b28032-aeb2-4f28-af6b-b90a2c99a61c].Value\" data-val-ischecked=\"\" value=\"Post\" data-sc-tracking=\"True\" data-sc-field-name=\"Custom Checkbox list V2\" tabindex=\"0\">\n                <div class=\"wes-checkbox-frame\"></div>\n                <div class=\"wes-checkbox-background\">\n                  <svg viewBox=\"0 0 8 6\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" class=\"wes-checkbox-checkmark\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-101.000000, -149.000000)\" fill=\"#ffffff\"><g transform=\"translate(0.000000, 72.000000)\"><g transform=\"translate(97.000000, 72.000000)\"><path d=\"M6.95084897,9.47966533 L5.01075876,7.41619317 C4.77953371,7.17026313 4.40464384,7.17026313 4.17341879,7.41619317 C3.94219374,7.6621232 3.94219374,8.06085457 4.17341879,8.3067846 L6.53217898,10.8155525 C6.76340403,11.0614825 7.13829391,11.0614825 7.36951896,10.8155525 L11.8265812,6.07503896 C12.0578063,5.82910892 12.0578063,5.43037756 11.8265812,5.18444752 C11.5953562,4.93851749 11.2204663,4.93851749 10.9892412,5.18444752 L6.95084897,9.47966533 Z\" id=\"Path-2\"></path></g></g></g></g></svg>\n                  <div class=\"wes-checkbox-mixedmark\"></div>\n                </div>\n              </div>\n              <span class=\"wes-checkbox-label\">\n                <span style=\"display: none;\">&nbsp;</span>Post\n              </span>\n            </label>\n          </div>\n        </div> \n      </fieldset>\n      \n    </div>\n  `,\n})"
+                },
+                {
+                    "name": "button",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/storybook/src/lib/components/forms/checkbox/checkbox.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  moduleMetadata: {\n    imports: [],\n  },\n  component: CheckboxComponent,\n  props: {},\n})"
                 }
             ],
             "libs/wpisa/feature-isa-journey/src/lib/core/app.constants.ts": [
@@ -33186,26 +33186,6 @@
                     "defaultValue": "{\n  EXISTING_CUSTOMER: '/api/findmyfcwebapiwrapper/existingcustomersearch',\n  NEW_CUSTOMER: '/api/findmyfcwebapiwrapper/newcustomersearch',\n  FINANCIAL_CONSULTANT_LINK: '/your-fc',\n}"
                 }
             ],
-            "apps/dashboard-help-and-support/src/environments/environment.prod.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "apps/dashboard-help-and-support/src/environments/environment.prod.ts",
-                    "type": "object",
-                    "defaultValue": "{\n  production: true,\n}"
-                }
-            ],
-            "apps/dashboard-help-and-support/src/environments/environment.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "apps/dashboard-help-and-support/src/environments/environment.ts",
-                    "type": "object",
-                    "defaultValue": "{\n  production: false,\n}"
-                }
-            ],
             "apps/find-my-fc/src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
@@ -33246,16 +33226,6 @@
                     "defaultValue": "{\n  production: false,\n}"
                 }
             ],
-            "apps/set-a-target-calculator/src/environments/environment.prod.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "apps/set-a-target-calculator/src/environments/environment.prod.ts",
-                    "type": "object",
-                    "defaultValue": "{\n  production: true,\n}"
-                }
-            ],
             "apps/set-a-target-calculator/src/environments/environment.ts": [
                 {
                     "name": "environment",
@@ -33266,12 +33236,12 @@
                     "defaultValue": "{\n  production: false,\n}"
                 }
             ],
-            "apps/style/src/environments/environment.prod.ts": [
+            "apps/set-a-target-calculator/src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "apps/style/src/environments/environment.prod.ts",
+                    "file": "apps/set-a-target-calculator/src/environments/environment.prod.ts",
                     "type": "object",
                     "defaultValue": "{\n  production: true,\n}"
                 }
@@ -33286,12 +33256,12 @@
                     "defaultValue": "{\n  production: false,\n}"
                 }
             ],
-            "apps/wpisa/src/environments/environment.prod.ts": [
+            "apps/style/src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "apps/wpisa/src/environments/environment.prod.ts",
+                    "file": "apps/style/src/environments/environment.prod.ts",
                     "type": "object",
                     "defaultValue": "{\n  production: true,\n}"
                 }
@@ -33302,6 +33272,36 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "apps/wpisa/src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false,\n}"
+                }
+            ],
+            "apps/wpisa/src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/wpisa/src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true,\n}"
+                }
+            ],
+            "apps/dashboard-help-and-support/src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/dashboard-help-and-support/src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true,\n}"
+                }
+            ],
+            "apps/dashboard-help-and-support/src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/dashboard-help-and-support/src/environments/environment.ts",
                     "type": "object",
                     "defaultValue": "{\n  production: false,\n}"
                 }
@@ -33890,6 +33890,16 @@
                     "defaultValue": "() => ({\n  template: `\n    <div class=\"wes-social-proof\">\n      <div class=\"wes-social-proof__wrapper\">\n        <div class=\"wes-social-proof__header\">\n          <div class=\"wes-social-proof__header-content\">\n            <h2 class=\"wes-social-proof__title\">{{ title }}</h2>\n          </div>\n        </div>\n        <div class=\"wes-social-proof__testimonials\">\n          <div class=\"wes-social-proof__testimonials-content\">\n\n            <!-- Repeatable nested testimonial components -->\n            <blockquote class=\"wes-social-proof__testimonial\">\n              <p class=\"wes-social-proof__quote\" [innerHTML]=\"testimonialQuote\"></p>\n              <footer class=\"wes-social-proof__attribution\">\n                <cite class=\"wes-social-proof__citation\">\n                  <span class=\"wes-social-proof__author\">{{ testimonialAuthor }}</span>\n                  <span class=\"wes-social-proof__date\">{{ testimonialDate }}</span>    \n                </cite>\n              </footer>\n            </blockquote>\n\n            <div class=\"wes-social-proof__controls\">\n              <div class=\"wes-social-proof__actions\">\n                <button type=\"button\" class=\"wes-social-proof__action wes-social-proof__action--prev\" aria-label=\"Previous testimonial\">\n                  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\">\n                    <g fill=\"none\" fill-rule=\"evenodd\">\n                      <polyline stroke=\"#FEBD11\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" points=\"8 6 2 12 8 18\"/>\n                      <line x1=\"2\" x2=\"22\" y1=\"12\" y2=\"12\" stroke=\"#FEBD11\" stroke-linecap=\"round\" stroke-width=\"2\"/>\n                    </g>\n                  </svg>\n                </button>\n                <button type=\"button\" class=\"wes-social-proof__action wes-social-proof__action--next\" aria-label=\"Next testimonial\">\n                  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\">\n                    <g fill=\"none\" fill-rule=\"evenodd\" stroke-linecap=\"round\">\n                      <polyline stroke=\"#FEBD11\" stroke-linejoin=\"round\" stroke-width=\"2\" points=\"16 6 22 12 16 18\"/>\n                      <line x1=\"21\" x2=\"2\" y1=\"12\" y2=\"12\" stroke=\"#FEBD11\" stroke-width=\"2\"/>\n                    </g>\n                  </svg>\n                </button>\n              </div>\n              <div class=\"wes-social-proof__counter\">\n                <span class=\"wes-social-proof__counter-current\"></span>\n                <span class=\"wes-social-proof__counter-divider\"> / </span>\n                <span class=\"wes-social-proof__counter-total\"></span>\n              </div>\n            </div>\n            \n          </div>\n        </div>\n      </div>\n    </div>\n\n    <!--\n    <script>\n      window.addEventListener('DOMContentLoaded', function () {\n        (function ($) {\n          var $el = $('.wes-social-proof__testimonials-content');\n\n          if (!$el.hasClass('slick-initialized') && $el.find('blockquote').length > 1) {\n            $el.on('init', function (event, slick) {\n              $el.find('.wes-social-proof__counter .wes-social-proof__counter-current').text(slick.currentSlide + 1);\n              $el.find('.wes-social-proof__counter .wes-social-proof__counter-total').text(slick.slideCount);\n            });\n\n            $el.on('beforeChange', function (event, slick, currentSlide, nextSlide) {\n              $el.find('.wes-social-proof__counter .wes-social-proof__counter-current').text(nextSlide + 1);\n            });\n\n            $el.slick({\n              slide: 'blockquote',\n              adaptiveHeight: false,\n              arrows: true,\n              focusOnSelect: true,\n              draggable: false,\n              fade: true,\n              infinite: false,\n              prevArrow: '.wes-social-proof__action--prev',\n              nextArrow: '.wes-social-proof__action--next'\n            });\n          }\n        })(jQuery);\n      });\n    </script>\n    -->\n  `,\n  props: {\n    title: text('Title', 'What our customers say:'),\n    testimonialQuote: text('Testimonial quote', '\"The excellent service provided by Wesleyan recently was reflected in my e-mail to David who responded efficiently, courteously and promptly to my telephone call. It seems all too rare to get such a good personal customer service today, so I commend Wesleyan for having a such a customer- friendly accessible system.\"'),\n    testimonialAuthor: text('Testimonial author', 'Neville Harrison, Surrey, UK'),\n    testimonialDate: text('Testimonial date', '2018'),\n  },\n})"
                 }
             ],
+            "libs/shared/storybook/src/lib/components/tooltip/tooltip.stories.ts": [
+                {
+                    "name": "style1",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/storybook/src/lib/components/tooltip/tooltip.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  template: `\n    <div class=\"container\">\n      <div class=\"col-md-6 offset-md-3\" style=\"padding:20px 0\">\n\n      <div class=\"wes-tooltip d-block\">\n      <div class=\"wes-tooltip-content\">\n        <img\n          src=\"/assets/icons/svg/icon-info.svg\"\n          class=\"wes-icon\"\n          alt=\"information icon\"\n        />\n        <p class=\"wes-text-shortform\">We're required to ask these questions by the Financial Conduct Authority, as we manage investments on your behalf.</p>\n      </div>\n    </div>\n\n      </div>\n    </div>\n  `,\n})"
+                }
+            ],
             "libs/shared/storybook/src/lib/components/table/table.stories.ts": [
                 {
                     "name": "style1",
@@ -33922,16 +33932,6 @@
                     "file": "libs/shared/storybook/src/lib/components/table/table.stories.ts",
                     "type": "",
                     "defaultValue": "() => ({\n  template: `\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-10\">\n\n          <table class=\"wes-table-style-4\">\n            <thead>\n              <tr>\n                <th>Cookies</th>\n                <th>Purpose</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td>SC_ANALYTICS_&#8203;GLOBAL_COOKIE</td>\n                <td>Preserves the visitor's session state across page requests. This cookie expires after the browser session. This is a first party cookie. </td>\n              </tr>\n              <tr>\n                <td>_gtm</td>\n                <td>Used by Google Tag Manager to load other scripts and code into a page. It is regarded as Strictly Necessary as, without it, other scripts may not function correctly. This cookie expires after the browser session. This is a first party cookie.</td>\n              </tr>\n              <tr>\n                <td>sxa_site</td>\n                <td>Used by our content management system (Sitecore) to identify the visitor's session state across page requests on the server. This cookie expires after the browser session. This is a first party cookie.</td>\n              </tr>\n              <tr>\n                <td>SyrenisCookiexxxx</td>\n                <td>Used by our consent management system (Cassie) to enable us to capture users' preferences compliantly under regulatory frameworks.</td>\n              </tr>\n            </tbody>\n          </table>\n\n        </div>\n      </div>\n    </div>\n  `,\n})"
-                }
-            ],
-            "libs/shared/storybook/src/lib/components/tooltip/tooltip.stories.ts": [
-                {
-                    "name": "style1",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/shared/storybook/src/lib/components/tooltip/tooltip.stories.ts",
-                    "type": "",
-                    "defaultValue": "() => ({\n  template: `\n    <div class=\"container\">\n      <div class=\"col-md-6 offset-md-3\" style=\"padding:20px 0\">\n\n      <div class=\"wes-tooltip d-block\">\n      <div class=\"wes-tooltip-content\">\n        <img\n          src=\"/assets/icons/svg/icon-info.svg\"\n          class=\"wes-icon\"\n          alt=\"information icon\"\n        />\n        <p class=\"wes-text-shortform\">We're required to ask these questions by the Financial Conduct Authority, as we manage investments on your behalf.</p>\n      </div>\n    </div>\n\n      </div>\n    </div>\n  `,\n})"
                 }
             ],
             "libs/shared/storybook/src/lib/components/campaigns/support-block/support-block.stories.ts": [

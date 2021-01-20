@@ -6,16 +6,16 @@ const path = require('path');
  *
  * @param {Parameters<typeof rootWebpackConfig>[0]} options
  */
-module.exports = async ({ config, mode }) => {
-  config = await rootWebpackConfig({ config, mode });
+// module.exports = async ({ config, mode }) => {
+//   config = await rootWebpackConfig({ config, mode });
 
-  const tsPaths = new TsconfigPathsPlugin({
-    configFile: path.resolve(__dirname, 'tsconfig-es5.app.json'),
-  });
+//   const tsPaths = new TsconfigPathsPlugin({
+//     configFile: path.resolve(__dirname, 'tsconfig-es5.app.json'),
+//   });
 
-  config.resolve.plugins
-    ? config.resolve.plugins.push(tsPaths)
-    : (config.resolve.plugins = [tsPaths]);
+//   config.resolve.plugins
+//     ? config.resolve.plugins.push(tsPaths)
+//     : (config.resolve.plugins = [tsPaths]);
 
-  return config;
-};
+//   return config;
+// };
