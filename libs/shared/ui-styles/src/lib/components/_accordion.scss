@@ -1,5 +1,12 @@
 //Sitecore SXA accordion styling
 .accordion {
+  .hidden{
+    display: none;
+  }
+  .component .rich-text {
+    font-size: 32px;
+    font-family: 'OPEN SANS';
+  }
   .items {
     margin: 0;
     padding: 0;
@@ -30,6 +37,8 @@
     @media (hover: hover) {
       &:hover {
         cursor: pointer;
+        border-style: dotted;
+        box-sizing: border-box;
         border-bottom-color: $global-colour-grey-900;
       }
     }

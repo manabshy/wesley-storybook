@@ -1,24 +1,40 @@
+import { AccordionComponent } from './accordion.component';
+import { moduleMetadata } from '@storybook/angular';
+import { AccordionModule } from './accordion.module';
 export default {
   title: 'Components/Accordion',
+  decorators: [
+    moduleMetadata({
+      imports: [
+        AccordionModule
+      ]
+    })
+  ],
+  component: AccordionComponent
 };
 
 export const base = () => ({
+  template: `
+  <wes-accordion></wes-accordion>
+  `,
+});
+export const accordionFullWidth= () => ({
   template: `
   <div class="component accordion initialized" data-properties="{&quot;expandOnHover&quot;:false,&quot;expandedByDefault&quot;:false,&quot;speed&quot;:500,&quot;easing&quot;:&quot;swing&quot;,&quot;canOpenMultiple&quot;:true,&quot;canToggle&quot;:true,&quot;isControlEditable&quot;:false}">
   <div class="component-content">
      <div>
         <ul class="items">
            <li class="item">
-              <div class="toggle-header" tabindex="0">
+              <div class="toggle-header" (click)="toggle(0)" tabindex="0">
                  <div class="label">
                     <div class="component content">
                        <div class="component-content">
-                          <div class="field-heading"><strong>Accordion Item 1</strong></div>
+                          <div class="field-heading"><strong>{{text_one}}</strong></div>
                        </div>
                     </div>
                  </div>
               </div>
-              <div class="toggle-content" style="display: none;">
+              <div *ngIf="opened" class="toggle-content" [ngClass]="{'hidden': !opened}">
                  <div class="component content">
                     <div class="component-content">
                        <div class="field-content">
@@ -29,7 +45,7 @@ export const base = () => ({
               </div>
            </li>
            <li class="item">
-              <div class="toggle-header" tabindex="-1">
+              <div class="toggle-header" (click)="toggleMenu(1)" tabindex="-1">
                  <div class="label">
                     <div class="component content">
                        <div class="component-content">
@@ -38,7 +54,7 @@ export const base = () => ({
                     </div>
                  </div>
               </div>
-              <div class="toggle-content" style="display: none;">
+              <div *ngIf="opened" class="toggle-content" [ngClass]="{'hidden': !opened}">
                  <div class="component content">
                     <div class="component-content">
                        <div class="field-content">
@@ -52,10 +68,20 @@ export const base = () => ({
      </div>
   </div>
 </div>
-  `,
-});
 
-export const withClose = () => ({
+  `,
+  props: {
+    text_one: 'Accordion item 1',
+    text_two: 'Accordion item 2',
+    opened: false,
+    toggle: (event: any) => {
+      console.log('some bindings work');
+      console.log(event);
+    },
+  },
+  component: AccordionComponent
+});
+export const accordionCustom = () => ({
   template: `
   <div class="component snippet initialized">
   <div class="component-content">
@@ -67,7 +93,7 @@ export const withClose = () => ({
                     <div class="component col-sm-12 col-lg-10 offset-lg-1">
                        <div class="component rich-text pb-4 pb-lg-6 pb-md-5">
                           <div class="component-content">
-                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Frequently Asked Questions
                           </div>
                        </div>
                        <div class="component accordion initialized" data-properties="{&quot;expandOnHover&quot;:false,&quot;expandedByDefault&quot;:false,&quot;speed&quot;:500,&quot;easing&quot;:&quot;swing&quot;,&quot;canOpenMultiple&quot;:true,&quot;canToggle&quot;:true,&quot;isControlEditable&quot;:false}">
@@ -75,7 +101,7 @@ export const withClose = () => ({
                              <div>
                                 <ul class="items">
                                    <li class="item">
-                                      <div class="toggle-header" tabindex="0">
+                                      <div class="toggle-header" tabindex="0" (click)="toggle()">
                                          <div class="label">
                                             <div class="component content">
                                                <div class="component-content">
@@ -84,7 +110,7 @@ export const withClose = () => ({
                                             </div>
                                          </div>
                                       </div>
-                                      <div class="toggle-content" style="display: none;">
+                                      <div class="toggle-content" [ngClass]="{'hidden': !opened}">
                                          <div class="component content">
                                             <div class="component-content">
                                                <div class="field-content">
@@ -127,4 +153,11 @@ export const withClose = () => ({
   </div>
 </div>
   `,
+  props: {
+    text: 'Hello Button',
+    opened: false,
+    toggle: (event: any) => {
+      console.log('some bindings work');
+    },
+  },
 });
