@@ -2,7 +2,7 @@ import { optionsKnob, select, text } from '@storybook/addon-knobs';
 
 export default {
   title: 'Core/Promo (Full Width)',
-  parameters: { 
+  parameters: {
     knobs: {
       escapeHTML: false,
     },
@@ -10,13 +10,13 @@ export default {
 };
 
 const variants = {
-  'Whisper': '',
-  'Shout': 'wes-promo--shout',
+  Whisper: '',
+  Shout: 'wes-promo--shout',
   'Shout :: On Grey': 'wes-promo--shout wes-promo--grey',
   'Shout :: With Grey Top': 'wes-promo--shout wes-promo--grey-top',
   'Shout :: With Grey Bottom': 'wes-promo--shout wes-promo--grey-bottom',
 };
-  
+
 export const promo = () => ({
   template: `
     <div class="wes-promo {{variant}}">
@@ -38,9 +38,19 @@ export const promo = () => ({
             <div *ngIf="footnote" class="wes-promo__footnote" [innerHTML]="footnote">
               <!-- Rich text content -->
             </div>
-            <div *ngIf="customContent == 'yes'" class="wes-promo__placeholder">
+            <div *ngIf="fcDetail == 'yes'" class="wes-promo__placeholder">
               <!-- Custom components -->
-              <p>Custom content to go here</p>
+                <div class="row no-gutters align-items-start wes-promo__fc-details">
+                  <div class="col-6 col-md-12 pb-4 pb-md-0">
+                    <p class="wes-promo__fc-details-title">Your Financial Consultant is:</p>
+                    <span class="promo-icon-profile wes-promo__fc-details-label">David Llewelyn-Smith</span>
+                  </div>
+                  
+                  <div class="col-6 col-md-12 pt-4 pt-md-0">
+                    <p class="wes-promo__fc-details-title">Specialist in:</p>
+                    <span class="promo-icon-medical wes-promo__fc-details-label">Medical</span>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
@@ -49,22 +59,38 @@ export const promo = () => ({
   `,
   props: {
     variant: select('Variant', variants, ''),
-    withImage: optionsKnob('With image', {
-      'Yes': 'yes', 
-      'No': 'no'
-    }, 'no', {
-      display: 'inline-radio',
-    }),
+    withImage: optionsKnob(
+      'With image',
+      {
+        Yes: 'yes',
+        No: 'no',
+      },
+      'no',
+      {
+        display: 'inline-radio',
+      }
+    ),
     title: text('Title', 'Not sure what’s right for you?'),
-    message: text('Message', '<p>With so many different options for saving and investing your money, it can be a good idea to take expert advice. Why not book a no-obligation meeting with a Wesleyan Financial Services Consultant near you?</p>'),
+    message: text(
+      'Message',
+      '<p>With so many different options for saving and investing your money, it can be a good idea to take expert advice. Why not book a no-obligation meeting with a Wesleyan Financial Services Consultant near you?</p>'
+    ),
     primaryCtaText: text('Primary CTA text', 'Open your ISA online'),
     secondaryCtaText: text('Secondary CTA text', 'Book your appointment'),
-    footnote: text('Footnote', '<p>No initial charge when you open your ISA online.</p>'),
-    customContent: optionsKnob('Custom content', {
-      'Yes': 'yes', 
-      'No': 'no'
-    }, 'no', {
-      display: 'inline-radio',
-    }),
+    footnote: text(
+      'Footnote',
+      '<p>No initial charge when you open your ISA online.</p>'
+    ),
+    fcDetail: optionsKnob(
+      'FC detail',
+      {
+        Yes: 'yes',
+        No: 'no',
+      },
+      'no',
+      {
+        display: 'inline-radio',
+      }
+    ),
   },
 });
