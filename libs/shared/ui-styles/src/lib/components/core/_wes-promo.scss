@@ -224,6 +224,11 @@
   &__fc-details {
     div:not(:first-child) {
       border-top: 1px solid $color-brand-charcoal;
+      @include media-breakpoint-up(md) {
+        border: 0 none;
+        border-left: 1px solid $color-brand-charcoal;
+        padding-left: rem(40px);
+      }
     }
 
     &-title {
@@ -254,6 +259,8 @@
         line-height: rem(32px);
         background-repeat: no-repeat;
         margin-right: rem(10px);
+        object-fit: contain;
+        background-position: center;
       }
     }
     .promo-icon-profile {

@@ -32,8 +32,14 @@ export const promo = () => ({
               <!-- Rich text content -->
             </div>
             <div class="wes-promo__actions">
-              <a class="wes-promo__cta" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">{{ primaryCtaText }}</a>
-              <a *ngIf="secondaryCtaText" class="wes-promo__cta wes-promo__cta--secondary" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">{{ secondaryCtaText }}</a>
+              <a class="wes-promo__cta wes-button wes-button-cta" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">
+              <span class="wes-button-label">{{ primaryCtaText }}</span>
+              <svg xmlns:xlink="http://www.w3.org/1999/xlink" class="wes-icon wes-icon-size-m" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="none" stroke-linecap="round" stroke-width="1"><g stroke="#FEBD11" stroke-width="2" transform="translate(-293.000000, -340.000000)"><g transform="translate(0.000000, 72.000000)"><g transform="translate(97.000000, 88.000000)"><g transform="translate(0.000000, 160.000000)"><g transform="translate(32.000000, 20.000000)"><g transform="translate(164.000000, 0.000000)"><polyline class="svg-path-color-change" id="Rectangle" points="25 9 19 15 13 9" stroke-linejoin="round" transform="translate(19.000000, 12.000000) rotate(-90.000000) translate(-19.000000, -12.000000) "></polyline><line class="svg-path-color-change" id="Line" x1="21" x2="2" y1="12" y2="12"></line></g></g></g></g></g></g></g></svg>
+              </a>
+              <a *ngIf="secondaryCtaText" class="wes-promo__cta wes-promo__cta--secondary" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">
+              <span class="wes-button-label">{{ secondaryCtaText }}</span>
+              <svg xmlns:xlink="http://www.w3.org/1999/xlink" class="wes-icon wes-icon-size-m" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="none" stroke-linecap="round" stroke-width="1"><g stroke="#FEBD11" stroke-width="2" transform="translate(-293.000000, -340.000000)"><g transform="translate(0.000000, 72.000000)"><g transform="translate(97.000000, 88.000000)"><g transform="translate(0.000000, 160.000000)"><g transform="translate(32.000000, 20.000000)"><g transform="translate(164.000000, 0.000000)"><polyline class="svg-path-color-change" id="Rectangle" points="25 9 19 15 13 9" stroke-linejoin="round" transform="translate(19.000000, 12.000000) rotate(-90.000000) translate(-19.000000, -12.000000) "></polyline><line class="svg-path-color-change" id="Line" x1="21" x2="2" y1="12" y2="12"></line></g></g></g></g></g></g></g></svg>
+              </a>
             </div>
             <div *ngIf="footnote" class="wes-promo__footnote" [innerHTML]="footnote">
               <!-- Rich text content -->
@@ -41,12 +47,12 @@ export const promo = () => ({
             <div *ngIf="fcDetail == 'yes'" class="wes-promo__placeholder">
               <!-- Custom components -->
                 <div class="row no-gutters align-items-start wes-promo__fc-details">
-                  <div class="col-6 col-md-12 pb-4 pb-md-0">
+                  <div class="col-12 col-md-6 pb-4 pb-md-0">
                     <p class="wes-promo__fc-details-title">Your Financial Consultant is:</p>
                     <span class="promo-icon-profile wes-promo__fc-details-label">David Llewelyn-Smith</span>
                   </div>
                   
-                  <div class="col-6 col-md-12 pt-4 pt-md-0">
+                  <div class="col-12 col-md-6 pt-4 pt-md-0">
                     <p class="wes-promo__fc-details-title">Specialist in:</p>
                     <span class="promo-icon-medical wes-promo__fc-details-label">Medical</span>
                   </div>
