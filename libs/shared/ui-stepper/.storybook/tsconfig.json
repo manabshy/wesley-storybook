@@ -1,8 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "emitDecoratorMetadata": true,
-    "target": "es5"
+    "emitDecoratorMetadata": true
   },
   "exclude": ["../src/test.ts", "../**/*.spec.ts"],
   "include": ["../src/**/*"]
