@@ -17,5 +17,6 @@ export const parameters = {
     options: {},
     manual: false,
   },
+  layout: 'fullscreen',
 };
 setCompodocJson(docJson);
