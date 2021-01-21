@@ -19,7 +19,7 @@
             "index": "apps/wpisa/src/index.html",
             "main": "apps/wpisa/src/main.ts",
             "polyfills": "apps/wpisa/src/polyfills.ts",
-            "tsConfig": "apps/wpisa/tsconfig.app.json",
+            "tsConfig": "apps/wpisa/tsconfig-es5.app.json",
             "aot": true,
             "assets": [
               "apps/wpisa/src/favicon.ico",
@@ -63,9 +63,6 @@
                   "maximumError": "10kb"
                 }
               ]
-            },
-            "es5": {
-              "tsConfig": "apps/wpisa/tsconfig-es5.app.json"
             }
           }
         },
@@ -78,9 +75,6 @@
           "configurations": {
             "production": {
               "browserTarget": "wpisa:build:production"
-            },
-            "es5": {
-              "browserTarget": "wpisa:build:es5"
             }
           }
         },
@@ -202,9 +196,6 @@
           "configurations": {
             "ci": {
               "quiet": true
-            },
-            "es5": {
-              "tsConfig": "./tsconfig-es5.app.json"
             }
           }
         },
@@ -220,9 +211,6 @@
           "configurations": {
             "ci": {
               "quiet": true
-            },
-            "es5": {
-              "tsConfig": "./tsconfig-es5.app.json"
             }
           }
         }
@@ -494,9 +482,6 @@
           "configurations": {
             "ci": {
               "quiet": true
-            },
-            "es5": {
-              "tsConfig": "./tsconfig-es5.app.json"
             }
           }
         },
@@ -512,9 +497,6 @@
           "configurations": {
             "ci": {
               "quiet": true
-            },
-            "es5": {
-              "tsConfig": "./tsconfig-es5.app.json"
             }
           }
         }
@@ -778,7 +760,7 @@
             "index": "apps/dashboard-help-and-support/src/index.html",
             "main": "apps/dashboard-help-and-support/src/main.ts",
             "polyfills": "apps/dashboard-help-and-support/src/polyfills.ts",
-            "tsConfig": "apps/dashboard-help-and-support/tsconfig.app.json",
+            "tsConfig": "apps/dashboard-help-and-support/tsconfig-es5.app.json",
             "aot": true,
             "assets": [
               "apps/dashboard-help-and-support/src/favicon.ico",
@@ -817,9 +799,6 @@
                   "maximumError": "10kb"
                 }
               ]
-            },
-            "es5": {
-              "tsConfig": "apps/dashboard-help-and-support/tsconfig-es5.app.json"
             }
           }
         },
@@ -831,9 +810,6 @@
           "configurations": {
             "production": {
               "browserTarget": "dashboard-help-and-support:build:production"
-            },
-            "es5": {
-              "browserTarget": "dashboard-help-and-support:build:es5"
             }
           }
         },
@@ -950,7 +926,7 @@
             "index": "apps/just-invest-calculator/src/index.html",
             "main": "apps/just-invest-calculator/src/main.ts",
             "polyfills": "apps/just-invest-calculator/src/polyfills.ts",
-            "tsConfig": "apps/just-invest-calculator/tsconfig.app.json",
+            "tsConfig": "apps/just-invest-calculator/tsconfig-es5.app.json",
             "aot": true,
             "assets": [
               "apps/just-invest-calculator/src/favicon.ico",
@@ -989,9 +965,6 @@
                   "maximumError": "10kb"
                 }
               ]
-            },
-            "es5": {
-              "tsConfig": "apps/just-invest-calculator/tsconfig-es5.app.json"
             }
           }
         },
@@ -1004,9 +977,6 @@
           "configurations": {
             "production": {
               "browserTarget": "just-invest-calculator:build:production"
-            },
-            "es5": {
-              "browserTarget": "just-invest-calculator:build:es5"
             }
           }
         },
@@ -1144,7 +1114,7 @@
             "index": "apps/set-a-target-calculator/src/index.html",
             "main": "apps/set-a-target-calculator/src/main.ts",
             "polyfills": "apps/set-a-target-calculator/src/polyfills.ts",
-            "tsConfig": "apps/set-a-target-calculator/tsconfig.app.json",
+            "tsConfig": "apps/set-a-target-calculator/tsconfig-es5.app.json",
             "aot": true,
             "assets": [
               "apps/set-a-target-calculator/src/favicon.ico",
@@ -1186,9 +1156,6 @@
                   "maximumError": "10kb"
                 }
               ]
-            },
-            "es5": {
-              "tsConfig": "apps/set-a-target-calculator/tsconfig-es5.app.json"
             }
           }
         },
@@ -1201,9 +1168,6 @@
           "configurations": {
             "production": {
               "browserTarget": "set-a-target-calculator:build:production"
-            },
-            "es5": {
-              "browserTarget": "set-a-target-calculator:build:es5"
             }
           }
         },
@@ -1371,7 +1335,7 @@
             "index": "apps/find-my-fc/src/index.html",
             "main": "apps/find-my-fc/src/main.ts",
             "polyfills": "apps/find-my-fc/src/polyfills.ts",
-            "tsConfig": "apps/find-my-fc/tsconfig.app.json",
+            "tsConfig": "apps/find-my-fc/tsconfig-es5.app.json",
             "aot": true,
             "assets": [
               "apps/find-my-fc/src/favicon.ico",
@@ -1415,9 +1379,6 @@
                   "maximumError": "10kb"
                 }
               ]
-            },
-            "es5": {
-              "tsConfig": "apps/find-my-fc/tsconfig-es5.app.json"
             }
           }
         },
@@ -1430,9 +1391,6 @@
           "configurations": {
             "production": {
               "browserTarget": "find-my-fc:build:production"
-            },
-            "es5": {
-              "browserTarget": "find-my-fc:build:es5"
             }
           }
         },
@@ -1836,7 +1794,7 @@
             "index": "apps/style/src/index.html",
             "main": "apps/style/src/main.ts",
             "polyfills": "apps/style/src/polyfills.ts",
-            "tsConfig": "apps/style/tsconfig.app.json",
+            "tsConfig": "apps/style/tsconfig-es5.app.json",
             "aot": true,
             "assets": [
               "apps/style/src/favicon.ico",
@@ -1886,9 +1844,6 @@
                   "maximumError": "10kb"
                 }
               ]
-            },
-            "es5": {
-              "tsConfig": "apps/style/tsconfig-es5.app.json"
             }
           }
         },
@@ -1900,9 +1855,6 @@
           "configurations": {
             "production": {
               "browserTarget": "style:build:production"
-            },
-            "es5": {
-              "browserTarget": "style:build:es5"
             }
           }
         },

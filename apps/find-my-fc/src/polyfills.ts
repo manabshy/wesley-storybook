@@ -21,9 +21,7 @@
 /** IE10 and IE11 requires the following for NgClass support on SVG elements */
 import 'classlist.js'; // Run `npm install --save classlist.js`.
 /** Evergreen browsers require these. **/
-import 'core-js/es/reflect';
-/** IE10 and 11 arrays */
-import 'core-js/es/array';
+import 'core-js/stable';
 
 /**
  * Web Animations `@angular/platform-browser/animations`
