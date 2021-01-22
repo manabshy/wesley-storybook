@@ -32,11 +32,11 @@ export const promo = () => ({
               <!-- Rich text content -->
             </div>
             <div class="wes-promo__actions">
-              <a class="wes-promo__cta wes-button wes-button-cta" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">
+              <a *ngIf="primaryCtaText.length > 0" class="wes-button-cta wes-button wes-button--outline" [ngClass]="variant.indexOf('wes-promo--shout') > -1 ? 'wes-button--on-gold': 'wes-button--on-light wes-button-cta--orange-hover'" href="javascript:void(0)" target="_blank">
               <span class="wes-button-label">{{ primaryCtaText }}</span>
               <svg xmlns:xlink="http://www.w3.org/1999/xlink" class="wes-icon wes-icon-size-m" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="none" stroke-linecap="round" stroke-width="1"><g stroke="#FEBD11" stroke-width="2" transform="translate(-293.000000, -340.000000)"><g transform="translate(0.000000, 72.000000)"><g transform="translate(97.000000, 88.000000)"><g transform="translate(0.000000, 160.000000)"><g transform="translate(32.000000, 20.000000)"><g transform="translate(164.000000, 0.000000)"><polyline class="svg-path-color-change" id="Rectangle" points="25 9 19 15 13 9" stroke-linejoin="round" transform="translate(19.000000, 12.000000) rotate(-90.000000) translate(-19.000000, -12.000000) "></polyline><line class="svg-path-color-change" id="Line" x1="21" x2="2" y1="12" y2="12"></line></g></g></g></g></g></g></g></svg>
               </a>
-              <a *ngIf="secondaryCtaText" class="wes-promo__cta wes-promo__cta--secondary" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">
+              <a *ngIf="secondaryCtaText.length > 0" class="mt-3 mt-md-0 ml-0 ml-md-8 ml-lg-10 wes-button-cta wes-button" [ngClass]="variant.indexOf('wes-promo--shout') > -1 ? 'wes-button--on-gold wes-button--outline' : 'wes-button-cta--orange-with-grey-hover'" href="javascript:void(0)" target="_blank">
               <span class="wes-button-label">{{ secondaryCtaText }}</span>
               <svg xmlns:xlink="http://www.w3.org/1999/xlink" class="wes-icon wes-icon-size-m" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="none" stroke-linecap="round" stroke-width="1"><g stroke="#FEBD11" stroke-width="2" transform="translate(-293.000000, -340.000000)"><g transform="translate(0.000000, 72.000000)"><g transform="translate(97.000000, 88.000000)"><g transform="translate(0.000000, 160.000000)"><g transform="translate(32.000000, 20.000000)"><g transform="translate(164.000000, 0.000000)"><polyline class="svg-path-color-change" id="Rectangle" points="25 9 19 15 13 9" stroke-linejoin="round" transform="translate(19.000000, 12.000000) rotate(-90.000000) translate(-19.000000, -12.000000) "></polyline><line class="svg-path-color-change" id="Line" x1="21" x2="2" y1="12" y2="12"></line></g></g></g></g></g></g></g></svg>
               </a>
@@ -45,18 +45,16 @@ export const promo = () => ({
               <!-- Rich text content -->
             </div>
             <div *ngIf="fcDetail == 'yes'" class="wes-promo__placeholder">
-              <!-- Custom components -->
-                <div class="row no-gutters align-items-start wes-promo__fc-details">
-                  <div class="col-12 col-md-6 pb-4 pb-md-0">
+              <div class="d-flex flex-column flex-md-row">
+                <div class="wes-promo__fc-details">
                     <p class="wes-promo__fc-details-title">Your Financial Consultant is:</p>
                     <span class="promo-icon-profile wes-promo__fc-details-label">David Llewelyn-Smith</span>
-                  </div>
-                  
-                  <div class="col-12 col-md-6 pt-4 pt-md-0">
+                </div>
+                <div class="wes-promo__fc-details">
                     <p class="wes-promo__fc-details-title">Specialist in:</p>
                     <span class="promo-icon-medical wes-promo__fc-details-label">Medical</span>
-                  </div>
                 </div>
+              </div>
             </div>
           </div>
         </div>
@@ -81,8 +79,8 @@ export const promo = () => ({
       'Message',
       '<p>With so many different options for saving and investing your money, it can be a good idea to take expert advice. Why not book a no-obligation meeting with a Wesleyan Financial Services Consultant near you?</p>'
     ),
-    primaryCtaText: text('Primary CTA text', 'Open your ISA online'),
-    secondaryCtaText: text('Secondary CTA text', 'Book your appointment'),
+    primaryCtaText: text('Primary CTA text', 'Book your appointment'),
+    secondaryCtaText: text('Secondary CTA text', 'Open your ISA online'),
     footnote: text(
       'Footnote',
       '<p>No initial charge when you open your ISA online.</p>'
