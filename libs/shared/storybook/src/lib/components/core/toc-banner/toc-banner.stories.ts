@@ -22,7 +22,7 @@ export const tocBanner = () => ({
             <div class="wes-toc-banner_toc-body">
                 <div class="wes-toc-banner__toc-content">
                 <h2 class="wes-toc-banner__toc-content-header">{{tocHeading}}</h2>
-                <ul class="wes-toc-banner__toc-links">
+                <ul class="wes-list wes-list-chevron column-2">
                     <li *ngFor="let link of links">
                         <a class="wes-toc-banner__toc-link" href="/" target="_blank">{{link}}</a>
                     </li>
