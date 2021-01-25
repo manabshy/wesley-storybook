@@ -185,28 +185,6 @@
     }
   }
 
-  // &__cta {
-  //   @extend .wes-button;
-  //   @extend .wes-button--on-gold;
-
-  //   @at-root {
-  //     .wes-promo:not(.wes-promo--shout) & {
-  //       @extend .wes-button--on-light;
-  //     }
-  //   }
-
-  //   &--secondary {
-  //     @extend .wes-button--outline;
-
-  //     margin-top: rem(24px);
-
-  //     @include media-breakpoint-up(md) {
-  //       margin-top: 0;
-  //       margin-left: rem(40px);
-  //     }
-  //   }
-  // }
-
   &__footnote {
     @include wes-typeset(small);
 
