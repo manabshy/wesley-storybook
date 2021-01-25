@@ -2,6 +2,13 @@
   "name": "wesleyan-frontend",
   "version": "0.0.0",
   "license": "MIT",
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead",
+    "IE >= 11"
+  ],
   "scripts": {
     "ng": "nx",
     "nx": "nx",
@@ -68,6 +75,7 @@
     "ramda": "~0.27.0",
     "rxjs": "~6.6.0",
     "tslib": "~2.0.0",
+    "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
