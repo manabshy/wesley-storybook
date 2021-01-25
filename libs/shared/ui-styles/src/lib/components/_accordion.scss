@@ -1,5 +1,10 @@
 //Sitecore SXA accordion styling
 .accordion {
+
+  .component-content.header{
+    font-size: $global-font-size-heading;
+    font-family: $global-font-opensans;
+  }
   .items {
     margin: 0;
     padding: 0;
@@ -30,6 +35,8 @@
     @media (hover: hover) {
       &:hover {
         cursor: pointer;
+        border-style: dotted;
+        box-sizing: border-box;
         border-bottom-color: $global-colour-grey-900;
       }
     }

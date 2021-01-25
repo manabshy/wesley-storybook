@@ -30,6 +30,11 @@ To run an app locally:
 - `npm run start wpisa`
 - `npm run start find-my-fc`
 
+# Build
+
+In the file `angular.json` All build tsConfig have been set to `"tsConfig": "apps/wpisa/tsconfig-es5.app.json"` using [differential builds](https://angular.io/guide/deployment#differential-builds)
+When IE11 is depprecated in summer 2021 please change the above to `"tsConfig": "apps/wpisa/tsconfig.app.json"`
+
 # Build for production
 
 `npm run supply:app-nam`

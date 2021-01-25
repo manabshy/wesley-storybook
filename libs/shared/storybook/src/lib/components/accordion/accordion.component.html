@@ -1,0 +1,48 @@
+<div class="component accordion initialized" data-properties="{&quot;expandOnHover&quot;:false,&quot;expandedByDefault&quot;:false,&quot;speed&quot;:500,&quot;easing&quot;:&quot;swing&quot;,&quot;canOpenMultiple&quot;:true,&quot;canToggle&quot;:true,&quot;isControlEditable&quot;:false}">
+  <div class="component-content">
+     <div>
+        <ul class="items">
+           <li class="item">
+              <div class="toggle-header" (click)="toggleMenu(0)" tabindex="0">
+                 <div class="label">
+                    <div class="component content">
+                       <div class="component-content">
+                          <div class="field-heading"><strong>Accordion Item 1</strong></div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="toggle-content" [ngClass]="{'hidden_one': !opened_1}">
+                 <div class="component content">
+                    <div class="component-content">
+                       <div class="field-content">
+                          <p style="box-sizing: inherit; font-size: 1.125rem; line-height: 1.688rem; font-weight: 400; margin-top: 10px; margin-bottom: 20px;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit. 1</p>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </li>
+           <li class="item">
+              <div class="toggle-header" (click)="toggleMenu(1)" tabindex="-1">
+                 <div class="label">
+                    <div class="component content">
+                       <div class="component-content">
+                          <div class="field-heading"><strong>Accordion Item 2</strong></div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="toggle-content" [ngClass]="{'hidden_two': !opened_2}">
+                 <div class="component content">
+                    <div class="component-content">
+                       <div class="field-content">
+                          <p style="box-sizing: inherit; font-size: 1.125rem; line-height: 1.688rem; font-weight: 400; margin-top: 10px; margin-bottom: 20px;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit. 2</p>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </li>
+        </ul>
+     </div>
+  </div>
+</div>
