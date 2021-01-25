@@ -18,6 +18,7 @@ export class AccordionComponent {
   @ViewChild(TemplateRef)
   content: TemplateRef<any>;
   @Input() active = false;
+  @Input() type = 'base';
  /**
    * If the panel is opened or closed
    */
