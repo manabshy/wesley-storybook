@@ -9,14 +9,21 @@
     position: relative;
     top: 12px;
   }
-  fa-icon:right.ng-fa-icon {
+  fa-icon.right.ng-fa-icon {
     position: relative;
+    left: 10px;
     bottom: 10px;
     float: right;
   }
 }
 
 .wes-button {
+  fa-icon.left {
+    margin: 0px 7px 0 0px;
+  }
+  fa-icon.right {
+    margin: 0px 0px 0 7px;
+  }
   position: relative;
   cursor: pointer;
   color: $color-text;
