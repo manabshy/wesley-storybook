@@ -2,51 +2,71 @@ export default {
   title: 'Components/Table',
 };
 
-export const style1 = () => ({
+export const light_grey = () => ({
   template: `
-    <div class="container">
-      <div class="col-md-6 offset-md-3" style="padding:20px 0">
-
-        <div class="wes-table-style-1">
-          <table>
-            <tr>
-              <td>Save up to £20,000 in the 2020/2021 tax year</td>
-            </tr>
-            <tr>
-              <td>Pay no income tax or capital gains tax on your investment returns</td>
-            </tr>
-            <tr>
-              <td>Share in Wesleyan's profits through the With Profits ISA Fund</td>
-            </tr>
-          </table>
-        </div>
-
-      </div>
-    </div>
+  <div class="container wes-table-container">
+  <table class="wes-table light-grey">
+    <caption>England and Wales NHS pension contributions</caption>
+    <thead>
+      <tr>
+        <th>Salary Range</th>
+        <th>Your contribution (before tax relief)</th>
+        <th>Employer’s contribution</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-title="Salary Range">£15,432 - £21,477</td>
+        <td data-title="Your contribution (before tax relief)">5%</td>
+        <td data-title="Employer’s contribution">20.68%</td>
+      </tr>
+      <tr>
+        <td data-title="Salary Range">£15,432 - £21,477</td>
+        <td data-title="Your contribution (before tax relief)">5.6%</td>
+        <td data-title="Employer’s contribution">20.68%</td>
+      </tr>
+      <tr>
+        <td data-title="Salary Range">£15,432 - £21,477</td>
+        <td data-title="Your contribution (before tax relief)">7.1%</td>
+        <td data-title="Employer’s contribution">20.68%</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
   `,
 });
 
-export const style2 = () => ({
+export const dark_grey = () => ({
   template: `
-    <div class="container">
-      <div class="col-md-6 offset-md-3" style="padding:20px 0">
-
-        <div class="wes-table-style-2">
-          <table>
-            <tr>
-              <td>Save up to £20,000 in the 2020/2021 tax year</td>
-            </tr>
-            <tr>
-              <td>Pay no income tax or capital gains tax on your investment returns</td>
-            </tr>
-            <tr>
-              <td>Share in Wesleyan's profits through the With Profits ISA Fund</td>
-            </tr>
-          </table>
-        </div>
-
-      </div>
-    </div>
+  <div class="container wes-table-container">
+  <table class="wes-table dark-grey">
+    <caption>England and Wales NHS pension contributions</caption>
+    <thead>
+      <tr>
+        <th>Salary Range</th>
+        <th>Your contribution (before tax relief)</th>
+        <th>Employer’s contribution</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-title="Salary Range">£15,432 - £21,477</td>
+        <td data-title="Your contribution (before tax relief)">5%</td>
+        <td data-title="Employer’s contribution">20.68%</td>
+      </tr>
+      <tr>
+        <td data-title="Salary Range">£15,432 - £21,477</td>
+        <td data-title="Your contribution (before tax relief)">5.6%</td>
+        <td data-title="Employer’s contribution">20.68%</td>
+      </tr>
+      <tr>
+        <td data-title="Salary Range">£15,432 - £21,477</td>
+        <td data-title="Your contribution (before tax relief)">7.1%</td>
+        <td data-title="Employer’s contribution">20.68%</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
   `,
 });
 
