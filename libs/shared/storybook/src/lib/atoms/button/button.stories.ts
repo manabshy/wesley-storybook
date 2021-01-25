@@ -1,7 +1,20 @@
+
 import { text, select, boolean } from '@storybook/addon-knobs';
+import { moduleMetadata } from '@storybook/angular';
+import { ButtonComponent } from './button.component';
+import { ButtonModule } from './button.module';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 export default {
   title: 'Atoms/Button',
+  decorators: [
+    moduleMetadata({
+      imports: [
+        ButtonModule
+      ]
+    })
+  ],
+  component: ButtonComponent
 };
 
 const variants = {
@@ -9,8 +22,13 @@ const variants = {
   'On Gold': 'wes-button--on-gold',
   'On Dark': 'wes-button--on-dark',
 };
-
+export const base = () => ({
+  template: `
+  <wes-button></wes-button>
+  `,
+});
 export const core = () => ({
+
   template: `
     <div class="bg-solid-white" style="padding:2rem;">
       <div class="d-flex">
@@ -32,11 +50,11 @@ export const core = () => ({
       <div class="d-flex">
         <div class="pr-3">
           <button class="wes-button wes-button--on-light wes-button--outline">Book an appointment</button>
-          <br><br> 
+          <br><br>
         </div>
         <div class="pr-3">
           <a class="wes-button wes-button--on-light wes-button--outline" href="#">Book an appointment (link)</a>
-          <br><br> 
+          <br><br>
         </div>
       </div>
       <div class="d-flex">
@@ -67,11 +85,11 @@ export const core = () => ({
       <div class="d-flex">
         <div class="pr-3">
           <button class="wes-button wes-button--on-gold wes-button--outline">Book an appointment</button>
-          <br><br> 
+          <br><br>
         </div>
         <div class="pr-3">
           <a class="wes-button wes-button--on-gold wes-button--outline" href="#">Book an appointment (link)</a>
-          <br><br> 
+          <br><br>
         </div>
       </div>
       <div class="d-flex">
@@ -102,11 +120,11 @@ export const core = () => ({
       <div class="d-flex">
         <div class="pr-3">
           <button class="wes-button wes-button--on-dark wes-button--outline">Book an appointment</button>
-          <br><br> 
+          <br><br>
         </div>
         <div class="pr-3">
           <a class="wes-button wes-button--on-dark wes-button--outline" href="#">Book an appointment (link)</a>
-          <br><br> 
+          <br><br>
         </div>
       </div>
       <div class="d-flex">
@@ -117,6 +135,9 @@ export const core = () => ({
       </div>
     </div>
   `,
+  props: {
+    faCoffee : faCoffee
+  }
 });
 
 
