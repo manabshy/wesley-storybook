@@ -3,9 +3,12 @@ import { array, select, object, text, withKnobs } from '@storybook/addon-knobs';
 
 addParameters({ docs: { iframeHeight: 500 } });
 
-const variants = {
+const style1Variants = {
   'light grey': 'light-grey',
   'dark grey': 'dark-grey',
+};
+
+const style2Variants = {
   transparent: 'transparent',
   'transparent with alternate gold': 'transparent alternate-gold-columns',
 };
@@ -41,7 +44,7 @@ export const style1 = () => ({
   `,
   props: {
     caption: text('caption', 'England and Wales NHS pension contributions'),
-    variant: select('Variant', variants, 'light-grey'),
+    variant: select('Variant', style1Variants, 'light-grey'),
     tableHeaders: array('table headers', [
       'Salary Range',
       'Your contribution (before tax relief)',
@@ -90,7 +93,7 @@ export const style2 = () => ({
   `,
   props: {
     caption: text('caption', 'England and Wales NHS pension contributions'),
-    variant: select('Variant', variants, 'transparent'),
+    variant: select('Variant', style2Variants, 'transparent'),
     tableHeaders: array('table headers', [
       '',
       'Annuities',
