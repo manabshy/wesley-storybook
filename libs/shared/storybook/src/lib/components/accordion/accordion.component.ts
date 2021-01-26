@@ -33,7 +33,6 @@ export class AccordionComponent {
 
   opened_1: Boolean = false;
   opened_2: Boolean = false;
-
   /**
    * Emitted when user clicks on group titlebar
    * @type {EventEmitter<any>}
