@@ -1,287 +1,115 @@
 import { addParameters } from '@storybook/angular';
+import { array, select, object, text, withKnobs } from '@storybook/addon-knobs';
 
 addParameters({ docs: { iframeHeight: 500 } });
 
-export default {
-  title: 'Components/Table',
+const variants = {
+  'light grey': 'light-grey',
+  'dark grey': 'dark-grey',
+  transparent: 'transparent',
+  'transparent with alternate gold': 'transparent alternate-gold-columns',
 };
 
-export const light_grey = () => ({
+export default {
+  title: 'Components/Table',
+  decorators: [withKnobs],
+};
+
+export const style1 = () => ({
   template: `
   <div class="container wes-table-container">
-  <table class="wes-table light-grey">
-    <caption>England and Wales NHS pension contributions</caption>
+  <table class="wes-table {{variant}}">
+    <caption *ngIf="caption">
+      {{caption}}
+    </caption>
     <thead>
       <tr>
-        <th>Salary Range</th>
-        <th>Your contribution (before tax relief)</th>
-        <th>Employer’s contribution</th>
+        <th *ngFor="let tableHeader of tableHeaders">
+        {{tableHeader}}
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td data-title="Salary Range">£15,432 - £21,477</td>
-        <td data-title="Your contribution (before tax relief)">5%</td>
-        <td data-title="Employer’s contribution">20.68%</td>
-      </tr>
-      <tr>
-        <td data-title="Salary Range">£15,432 - £21,477</td>
-        <td data-title="Your contribution (before tax relief)">5.6%</td>
-        <td data-title="Employer’s contribution">20.68%</td>
-      </tr>
-      <tr>
-        <td data-title="Salary Range">£15,432 - £21,477</td>
-        <td data-title="Your contribution (before tax relief)">7.1%</td>
-        <td data-title="Employer’s contribution">20.68%</td>
-      </tr>
+        <tr *ngFor="let tableRow of tableRowText;">
+          <td *ngFor="let tableColumn of tableRow; let i = index" [attr.data-title]="tableHeaders[i]">
+          {{tableColumn}}
+          </td>
+        </tr>
     </tbody>
   </table>
 </div>
   `,
+  props: {
+    caption: text('caption', 'England and Wales NHS pension contributions'),
+    variant: select('Variant', variants, 'light-grey'),
+    tableHeaders: array('table headers', [
+      'Salary Range',
+      'Your contribution (before tax relief)',
+      'Employer’s contribution',
+    ]),
+    tableRowText: object('table row text', [
+      ['£15,432 - £21,477', '5%', '20.68%'],
+      ['£21,477 - £41,477', '5.6%', '20.68%'],
+      ['£41,477 - £100,000', '7.1%', '20.68%'],
+    ]),
+  },
 });
 
-export const dark_grey = () => ({
-  template: `
-  <div class="container wes-table-container">
-  <table class="wes-table dark-grey">
-    <caption>England and Wales NHS pension contributions</caption>
-    <thead>
-      <tr>
-        <th>Salary Range</th>
-        <th>Your contribution (before tax relief)</th>
-        <th>Employer’s contribution</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-title="Salary Range">£15,432 - £21,477</td>
-        <td data-title="Your contribution (before tax relief)">5%</td>
-        <td data-title="Employer’s contribution">20.68%</td>
-      </tr>
-      <tr>
-        <td data-title="Salary Range">£15,432 - £21,477</td>
-        <td data-title="Your contribution (before tax relief)">5.6%</td>
-        <td data-title="Employer’s contribution">20.68%</td>
-      </tr>
-      <tr>
-        <td data-title="Salary Range">£15,432 - £21,477</td>
-        <td data-title="Your contribution (before tax relief)">7.1%</td>
-        <td data-title="Employer’s contribution">20.68%</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-  `,
-});
-
-export const transparent = () => ({
+export const style2 = () => ({
   template: `
     <div class="container wes-table-container">
-      <table class="wes-table transparent">
-      <caption>England and Wales NHS pension contributions</caption>
-      <thead>
+      <table class="wes-table {{variant}}">
+      <caption *ngIf="caption">England and Wales NHS pension contributions</caption>
+      <thead *ngIf="tableHeaders">
         <tr>
-          <th colspan="2"></th>
-          <th>Annuities</th>
-          <th>Cash lump sums</th>
-          <th>Drawdown</th>
-          <th>Taking your whole pot as cash</th>
+          <th *ngFor="let tableHeader of tableHeaders; let i = index" [attr.colspan]="i === 0? 2 : null">
+            {{tableHeader}}
+          </th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th colspan="2">
-            Provides an income?
-          </th>
-          <td data-title="Annuities">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Cash lump sums">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-          <td data-title="Drawdown">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Taking your whole pot as cash">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
+        <tr *ngFor="let tableRow of tableRowText; let i = index">
+          <ng-container *ngFor="let tableColumn of tableRow; let j = index">
+         
+            <th *ngIf="j===0; else normalColumn" colspan="2">
+              {{tableColumn}}
+            </th>
+
+            <ng-template #normalColumn>
+                <td [attr.data-title]="tableHeaders[j]">
+                  <span [attr.aria-label]="tableColumn" class="icon-{{tableColumn}}"></span>
+                </td>
+            </ng-template>
+
+          </ng-container>
         </tr>
-        <tr>
-          <th colspan="2">
-          Provides a secure income for life?
-          </th>
-          <td data-title="Annuities">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Cash lump sums">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-          <td data-title="Drawdown">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Taking your whole pot as cash">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="2">
-          Allows you to change your income?
-          </th>
-          <td data-title="Annuities">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-          <td data-title="Cash lump sums">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Drawdown">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Taking your whole pot as cash">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="2">
-          Is your remaining pot still invested?
-          </th>
-          <td data-title="Annuities">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-          <td data-title="Cash lump sums">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Drawdown">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Taking your whole pot as cash">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="2">
-          Affected by the stock market?
-          </th>
-          <td data-title="Annuities">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Cash lump sums">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Drawdown">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Taking your whole pot as cash">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-        </tr>
+        
       </tbody>
       </table>
     </div>
   `,
-});
-
-export const alternate_columns = () => ({
-  template: `
-    <div class="container wes-table-container">
-      <table class="wes-table transparent alternate-gold-columns">
-      <caption>England and Wales NHS pension contributions</caption>
-      <thead>
-        <tr>
-          <th colspan="2"></th>
-          <th>Annuities</th>
-          <th>Cash lump sums</th>
-          <th>Drawdown</th>
-          <th>Taking your whole pot as cash</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th colspan="2">
-            Provides an income?
-          </th>
-          <td data-title="Annuities">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Cash lump sums">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-          <td data-title="Drawdown">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Taking your whole pot as cash">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="2">
-          Provides a secure income for life?
-          </th>
-          <td data-title="Annuities">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Cash lump sums">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-          <td data-title="Drawdown">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Taking your whole pot as cash">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="2">
-          Allows you to change your income?
-          </th>
-          <td data-title="Annuities">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-          <td data-title="Cash lump sums">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Drawdown">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Taking your whole pot as cash">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="2">
-          Is your remaining pot still invested?
-          </th>
-          <td data-title="Annuities">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-          <td data-title="Cash lump sums">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Drawdown">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Taking your whole pot as cash">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="2">
-          Affected by the stock market?
-          </th>
-          <td data-title="Annuities">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Cash lump sums">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Drawdown">
-            <span aria-label="tick" class="icon-tick"></span>
-          </td>
-          <td data-title="Taking your whole pot as cash">
-            <span aria-label="cross" class="icon-cross"></span>
-          </td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
-  `,
+  props: {
+    caption: text('caption', 'England and Wales NHS pension contributions'),
+    variant: select('Variant', variants, 'transparent'),
+    tableHeaders: array('table headers', [
+      '',
+      'Annuities',
+      'Cash lump sums',
+      'Drawdown',
+      'Taking your whole pot as cash',
+    ]),
+    tableRowText: object('table row text', [
+      ['Provides an income?', 'tick', 'cross', 'tick', 'cross'],
+      ['Provides a secure income for life?', 'tick', 'cross', 'tick', 'cross'],
+      ['Allows you to change your income?', 'cross', 'tick', 'tick', 'cross'],
+      [
+        'Is your remaining pot still invested?',
+        'cross',
+        'tick',
+        'tick',
+        'cross',
+      ],
+      ['Affected by the stock market?', 'tick', 'tick', 'tick', 'cross'],
+    ]),
+  },
 });
