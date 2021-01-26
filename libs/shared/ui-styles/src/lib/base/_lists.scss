@@ -85,20 +85,29 @@ ul {
       &:before {
         @include rem(
           (
-            padding-right: $numbered-list-cell-spacing + $numbered-list-number-padding,
+            padding-right: $numbered-list-cell-spacing +
+              $numbered-list-number-padding,
             background-position: -$numbered-list-cell-spacing 0,
           )
         );
 
+        color: $global-colour-charcoal;
+        font-weight: 600;
         counter-increment: numbered-list;
         content: counter(numbered-list);
         display: table-cell;
-        background-image: linear-gradient(to left, $global-colour-gold-900 1px, transparent 1px, transparent);
+        background-image: linear-gradient(
+          to left,
+          $global-colour-gold-900 1px,
+          transparent 1px,
+          transparent
+        );
 
         @include media-breakpoint-up(lg) {
           @include rem(
             (
-              padding-right: $numbered-list-cell-spacing-lg + $numbered-list-number-padding,
+              padding-right: $numbered-list-cell-spacing-lg +
+                $numbered-list-number-padding,
               background-position: -$numbered-list-cell-spacing-lg 0,
             )
           );
