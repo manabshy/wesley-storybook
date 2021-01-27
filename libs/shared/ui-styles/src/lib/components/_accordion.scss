@@ -35,7 +35,6 @@
     @media (hover: hover) {
       &:hover {
         cursor: pointer;
-        border-style: dotted;
         box-sizing: border-box;
         border-bottom-color: $global-colour-grey-900;
       }
