@@ -75,54 +75,52 @@
   @include wes-rich-text-scope-base;
 
   &:not(.scEnabledChrome),
-  > [scfieldtype="rich text"] {
-
+  > [scfieldtype='rich text'] {
     > * {
       & + p {
         margin-top: rem(24px);
       }
-  
+
       & + .level1,
       & + .level2 {
         margin-top: rem(56px);
-  
+
         @include media-breakpoint-up(md) {
           margin-top: rem(72px);
         }
       }
-  
+
       & + .level3 {
         margin-top: rem(48px);
       }
-  
+
       & + .level4 {
         margin-top: rem(40px);
       }
-  
-      & + ul, 
+
+      & + ul,
       & + ol {
         margin-top: rem(36px);
       }
     }
-  
+
     > p + p {
       margin-top: rem(24px);
     }
-  
+
     > ul + *,
     > ol + * {
       margin-top: rem(40px);
     }
-  
-  
+
     // RTE Core typography
     h1,
     .level1 {
       @include wes-typeset(level1);
-  
+
       & + * {
         margin-top: rem(16px);
-  
+
         @include media-breakpoint-up(md) {
           margin-top: rem(24px);
         }
@@ -131,10 +129,10 @@
     h2,
     .level2 {
       @include wes-typeset(level2);
-  
+
       & + * {
         margin-top: rem(16px);
-  
+
         @include media-breakpoint-up(md) {
           margin-top: rem(24px);
         }
@@ -143,7 +141,7 @@
     h3,
     .level3 {
       @include wes-typeset(level3);
-  
+
       & + * {
         margin-top: rem(16px);
       }
@@ -153,7 +151,7 @@
     h6,
     .level4 {
       @include wes-typeset(level4);
-  
+
       & + * {
         margin-top: rem(12px);
       }
@@ -176,31 +174,29 @@
     .xsmall {
       @include wes-typeset(xsmall);
     }
-  
+
     .emphasis {
       @include wes-typeset(regularSemiBold);
-  
+
       color: $global-colour-charcoal;
       border-left: 2px solid $global-colour-gold-900;
       padding-left: rem(30px);
     }
-
   }
 }
 
 // Apply legacy typography
 @mixin wes-rich-text-campaign-scope {
   @include wes-rich-text-scope-base;
-  
-  &:not(.scEnabledChrome),
-  > [scfieldtype="rich text"] {
 
+  &:not(.scEnabledChrome),
+  > [scfieldtype='rich text'] {
     > * {
       & + * {
         margin-top: rem(24px) !important;
       }
 
-      & + ul, 
+      & + ul,
       & + ol {
         margin-top: rem(36px);
       }
@@ -267,7 +263,7 @@
       @extend .wes-text-l;
     }
 
-    .highlight:not([style*="text-align: right"]) {
+    .highlight:not([style*='text-align: right']) {
       border-left: 2px solid $global-colour-gold-900;
       padding-left: rem(16px);
 
@@ -275,7 +271,7 @@
         padding-left: rem(24px);
       }
     }
-    .highlight[style*="text-align: right"] {
+    .highlight[style*='text-align: right'] {
       border-right: 2px solid $global-colour-gold-900;
       padding-right: rem(16px);
 
@@ -283,13 +279,18 @@
         padding-right: rem(24px);
       }
     }
-
   }
 }
 
-
 .wes-rich-text-scope {
   @include wes-rich-text-scope;
+
+  .level1,
+  .level2,
+  .level3,
+  .level4 {
+    color: $global-colour-charcoal;
+  }
 }
 
 .wes-rich-text-campaign-scope {
