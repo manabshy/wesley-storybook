@@ -89,6 +89,8 @@ ul {
           )
         );
 
+        color: $global-colour-charcoal;
+        font-weight: 600;
         counter-increment: numbered-list;
         content: counter(numbered-list);
         display: table-cell;
