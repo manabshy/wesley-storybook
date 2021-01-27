@@ -12,5 +12,6 @@
     {
       "path": "./tsconfig.spec.json"
     }
-  ]
+  ],
+  "includePaths": ["libs/shared/ui-styles/src/lib"]
 }

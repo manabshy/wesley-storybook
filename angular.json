@@ -19,7 +19,7 @@
             "index": "apps/wpisa/src/index.html",
             "main": "apps/wpisa/src/main.ts",
             "polyfills": "apps/wpisa/src/polyfills.ts",
-            "tsConfig": "apps/wpisa/tsconfig.app.json",
+            "tsConfig": "apps/wpisa/tsconfig-es5.app.json",
             "aot": true,
             "assets": [
               "apps/wpisa/src/favicon.ico",
@@ -472,7 +472,12 @@
             "port": 4400,
             "config": {
               "configFolder": "libs/shared/storybook/.storybook"
-            }
+            },
+            "tsConfig": [
+              "libs/shared/storybook/tsconfig.lib.json",
+              "libs/shared/storybook/tsconfig.spec.json",
+              "libs/shared/storybook/.storybook/tsconfig.json"
+            ]
           },
           "configurations": {
             "ci": {
@@ -750,11 +755,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["lodash"],
             "outputPath": "dist/apps/dashboard-help-and-support",
             "index": "apps/dashboard-help-and-support/src/index.html",
             "main": "apps/dashboard-help-and-support/src/main.ts",
             "polyfills": "apps/dashboard-help-and-support/src/polyfills.ts",
-            "tsConfig": "apps/dashboard-help-and-support/tsconfig.app.json",
+            "tsConfig": "apps/dashboard-help-and-support/tsconfig-es5.app.json",
             "aot": true,
             "assets": [
               "apps/dashboard-help-and-support/src/favicon.ico",
@@ -915,14 +921,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": [
-              "echarts"
-            ],
+            "allowedCommonJsDependencies": ["echarts"],
             "outputPath": "dist/apps/just-invest-calculator",
             "index": "apps/just-invest-calculator/src/index.html",
             "main": "apps/just-invest-calculator/src/main.ts",
             "polyfills": "apps/just-invest-calculator/src/polyfills.ts",
-            "tsConfig": "apps/just-invest-calculator/tsconfig.app.json",
+            "tsConfig": "apps/just-invest-calculator/tsconfig-es5.app.json",
             "aot": true,
             "assets": [
               "apps/just-invest-calculator/src/favicon.ico",
@@ -1110,7 +1114,7 @@
             "index": "apps/set-a-target-calculator/src/index.html",
             "main": "apps/set-a-target-calculator/src/main.ts",
             "polyfills": "apps/set-a-target-calculator/src/polyfills.ts",
-            "tsConfig": "apps/set-a-target-calculator/tsconfig.app.json",
+            "tsConfig": "apps/set-a-target-calculator/tsconfig-es5.app.json",
             "aot": true,
             "assets": [
               "apps/set-a-target-calculator/src/favicon.ico",
@@ -1118,7 +1122,10 @@
             ],
             "styles": ["libs/shared/ui-legacy-styles/src/index.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/ui-legacy-styles/src/lib"]
+              "includePaths": [
+                "libs/shared/ui-legacy-styles/src/lib",
+                "libs/shared/ui-styles/src/lib"
+              ]
             },
             "scripts": []
           },
@@ -1328,7 +1335,7 @@
             "index": "apps/find-my-fc/src/index.html",
             "main": "apps/find-my-fc/src/main.ts",
             "polyfills": "apps/find-my-fc/src/polyfills.ts",
-            "tsConfig": "apps/find-my-fc/tsconfig.app.json",
+            "tsConfig": "apps/find-my-fc/tsconfig-es5.app.json",
             "aot": true,
             "assets": [
               "apps/find-my-fc/src/favicon.ico",
@@ -1787,7 +1794,7 @@
             "index": "apps/style/src/index.html",
             "main": "apps/style/src/main.ts",
             "polyfills": "apps/style/src/polyfills.ts",
-            "tsConfig": "apps/style/tsconfig.app.json",
+            "tsConfig": "apps/style/tsconfig-es5.app.json",
             "aot": true,
             "assets": [
               "apps/style/src/favicon.ico",
@@ -1803,9 +1810,7 @@
                 "output": ""
               }
             ],
-            "styles": [
-              "libs/shared/ui-styles/src/index.scss"
-            ],
+            "styles": ["libs/shared/ui-styles/src/index.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["libs/shared/ui-styles/src/lib"]
             },
@@ -1895,6 +1900,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
+            "jestConfig": "apps/cassie-cookies/jest.config.js",
             "passWithNoTests": true
           }
         }
