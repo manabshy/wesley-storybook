@@ -16,7 +16,7 @@
 
   &__wrapper {
     @include wes-make-container;
-
+    padding-bottom: 56px;
     height: 100%;
   }
 
@@ -156,7 +156,7 @@
 
   &__toc-wrapper {
     @include wes-make-container;
-    
+
     height: 100%;
   }
 
@@ -167,8 +167,7 @@
   &__toc-content {
     @include make-col(12);
 
-    padding: rem(40px) rem(20px) rem(16px);
-    margin: rem(56px) rem(-20px) 0 rem(-20px);
+    padding: rem(40px) 0;
 
     background-color: $global-colour-grey-50;
 
@@ -194,32 +193,6 @@
     margin-bottom: rem(32px);
   }
 
-  &__toc-links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    @include media-breakpoint-up(md) {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    li {
-      @include wes-typeset(small);
-      margin-bottom: rem(24px);
-
-      @include media-breakpoint-up(md) {
-        flex-shrink: 0;
-        flex-grow: 1;
-        flex-basis: 50%;
-
-        &:nth-child(even) {
-          padding-left: rem(20px);
-        }
-      }
-    }
-  }
-  
   &__toc-link {
     @extend .wes-link;
   }
