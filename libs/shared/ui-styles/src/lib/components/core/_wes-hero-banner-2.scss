@@ -63,6 +63,13 @@
 
     background-repeat: no-repeat;
     background-color: $global-colour-gold-900;
+    // fallback for non rgba
+    background-image: linear-gradient(
+      153.27deg,
+      $global-colour-gold-900 0%,
+      #fef4c2 60%,
+      #fefbea 100%
+    );
 
     background-image: linear-gradient(
       153.27deg,
