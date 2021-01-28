@@ -16,7 +16,7 @@
     "build": "ng build",
     "docs:json": "compodoc -p ./tsconfig.base.json -e json -d .",
     "storybook": "npm run docs:json && ng run shared-storybook:storybook",
-    "build-storybook": "ng run shared-storybook:build-storybook",
+    "build-storybook": "npm run docs:json && ng run shared-storybook:build-storybook",
     "supply:style": "ng build style --prod",
     "supply:wpisa": "nx affected:test --parallel && ng e2e wpisa-e2e --headless && ng build wpisa --prod --baseHref=/savings-and-investments/with-profits-isa/apply/ --deployUrl=/assets/Wesleyan/isa/",
     "supply:find-my-fc": "nx affected:test --parallel && ng e2e find-my-fc-e2e --headless && ng build find-my-fc --prod --baseHref=/find-my-fc/ --deployUrl=/assets/Wesleyan/find-my-fc/",
