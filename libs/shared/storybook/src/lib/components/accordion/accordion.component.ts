@@ -1,5 +1,6 @@
 import {
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   Output,
@@ -20,8 +21,9 @@ export class AccordionComponent {
   @Input() active = false;
   @Input() type = 'base';
   @Input() value;
-
- /**
+  toggleIcon;
+  constructor(private el: ElementRef) {}
+  /**
    * If the panel is opened or closed
    */
   @Input() opened = false;
@@ -47,9 +49,23 @@ export class AccordionComponent {
   }
   toggleMenu(event: number) {
     if ( event === 0 ) {
+      this.toggleIcon = this.el.nativeElement.querySelector('.item.one');
+      if ( !this.toggleIcon.classList.contains('active')) {
+        this.toggleIcon.classList.add('active');
+      }
+      else {
+        this.toggleIcon.classList.remove('active');
+      }
       this.opened_1 = !this.opened_1 ? true : false;
     }
     if ( event === 1 ) {
+      this.toggleIcon = this.el.nativeElement.querySelector('.item.two');
+      if ( !this.toggleIcon.classList.contains('active')) {
+        this.toggleIcon.classList.add('active');
+      }
+      else {
+        this.toggleIcon.classList.remove('active');
+      }
       this.opened_2 = !this.opened_2 ? true : false;
     }
   }
