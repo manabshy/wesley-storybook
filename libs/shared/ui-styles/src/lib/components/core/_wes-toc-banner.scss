@@ -165,6 +165,7 @@
   }
 
   &__toc-content {
+    color:$global-colour-charcoal;
     @include make-col(12);
 
     padding: rem(40px) 0;
