@@ -55,3 +55,37 @@ export const numberedList = () => ({
     </div>
   `,
 });
+
+export const chevronList = () => ({
+  template: `
+    <div class="container">
+      <div class="col-md-6 offset-md-3" style="padding:20px 0">
+
+        <ul class="wes-list wes-list-chevron">
+          <li>Save up to £20,000 in the 2020/2021 tax year</li>
+          <li>Pay no income tax or capital gains tax on your investment returns</li>
+          <li>Share in Wesleyan's profits through the With Profits ISA Fund</li>
+          <li>Smooth the ups and downs of market returns</li>
+        </ul>
+
+      </div>
+    </div>
+  `,
+});
+
+export const chevronListGrey = () => ({
+  template: `
+    <div class="container">
+      <div class="col-md-6 offset-md-3" style="padding:20px 0">
+
+        <ul class="wes-list wes-list-chevron list-icon-grey">
+          <li>Save up to £20,000 in the 2020/2021 tax year</li>
+          <li>Pay no income tax or capital gains tax on your investment returns</li>
+          <li>Share in Wesleyan's profits through the With Profits ISA Fund</li>
+          <li>Smooth the ups and downs of market returns</li>
+        </ul>
+
+      </div>
+    </div>
+  `,
+});
