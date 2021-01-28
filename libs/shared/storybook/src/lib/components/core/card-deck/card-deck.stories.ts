@@ -2,7 +2,7 @@ import { number, text, select, optionsKnob } from '@storybook/addon-knobs';
 
 export default {
   title: 'Core/Card Deck (Full Width)',
-  parameters: { 
+  parameters: {
     knobs: {
       escapeHTML: false,
     },
@@ -13,11 +13,13 @@ const variants = {
   'On White': '',
   'On White :: Collapsed': 'wes-card-deck--collapse',
   'On White :: With Icons': 'wes-card-deck--icons',
-  'On White :: With Icons :: Collapsed': 'wes-card-deck--icons wes-card-deck--collapse',
+  'On White :: With Icons :: Collapsed':
+    'wes-card-deck--icons wes-card-deck--collapse',
   'On Grey': 'wes-card-deck--grey',
   'On Grey :: Collapsed': 'wes-card-deck--grey wes-card-deck--collapse',
   'On Grey :: With Icons': 'wes-card-deck--grey wes-card-deck--icons',
-  'On Grey :: With Icons :: Collapsed': 'wes-card-deck--grey wes-card-deck--icons wes-card-deck--collapse',
+  'On Grey :: With Icons :: Collapsed':
+    'wes-card-deck--grey wes-card-deck--icons wes-card-deck--collapse',
 };
 
 export const cardDeck = () => ({
@@ -57,7 +59,10 @@ export const cardDeck = () => ({
                   <!-- Rich text content -->
                 </div>
                 <div class="wes-card-deck__card-footer">
-                  <a class="wes-card-deck__card-cta" href="#">{{ cardLinkText }}</a>
+                  <a class="wes-card-deck__card-cta" href="#">
+                  <span *ngIf="withILinkIcon === 'yes'" aria-hidden="true" class="icon-right-arrow"></span>
+                  {{ cardLinkText }}
+                  </a>
                 </div>
               </div>
             </article>
@@ -69,17 +74,39 @@ export const cardDeck = () => ({
   `,
   props: {
     variant: select('Variant', variants, ''),
-    cardCount: number('Number of cards', 6, {min:2}),
-    withImage: optionsKnob('With image', {
-      'Yes': 'yes', 
-      'No': 'no'
-    }, 'yes', {
-      display: 'inline-radio',
-    }),
+    cardCount: number('Number of cards', 6, { min: 2 }),
+    withImage: optionsKnob(
+      'With image',
+      {
+        Yes: 'yes',
+        No: 'no',
+      },
+      'yes',
+      {
+        display: 'inline-radio',
+      }
+    ),
+    withILinkIcon: optionsKnob(
+      'With link icon',
+      {
+        Yes: 'yes',
+        No: 'no',
+      },
+      'yes',
+      {
+        display: 'inline-radio',
+      }
+    ),
     title: text('Title', 'Unit trust products from WUTM'),
-    message: text('Message', '<p>Wesleyan Unit Trust Managers (WUTM) products allow you to invest in fully managed unit trust funds, run by an award-winning team.</p>'),
+    message: text(
+      'Message',
+      '<p>Wesleyan Unit Trust Managers (WUTM) products allow you to invest in fully managed unit trust funds, run by an award-winning team.</p>'
+    ),
     cardTitle: text('Card title', 'With Profits ISA'),
-    cardMessage: text('Card message', '<p>A stocks and shares ISA invested in Wesleyan’s With Profits Fund, the With Profits ISA lets you share in Wesleyan’s financial success.</p>'),
+    cardMessage: text(
+      'Card message',
+      '<p>A stocks and shares ISA invested in Wesleyan’s With Profits Fund, the With Profits ISA lets you share in Wesleyan’s financial success.</p>'
+    ),
     cardLinkText: text('Card link text', 'Apply now'),
   },
 });
