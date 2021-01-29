@@ -41,12 +41,6 @@ export class AccordionComponent {
    */
   @Output() toggle: EventEmitter<any> = new EventEmitter<any>();
 
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-
-    console.log(this.value);
-  }
   toggleMenu(event: number) {
     if ( event === 0 ) {
       this.toggleIcon = this.el.nativeElement.querySelector('.item.one');
