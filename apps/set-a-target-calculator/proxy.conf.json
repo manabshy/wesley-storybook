@@ -1,7 +1,7 @@
 {
   "/api": {
-    "target": "https://my.wesleyanplatform.dev.local/",
-    "secure": false,
+    "target": "https://test.www2.wesleyan.co.uk",
+    "secure": true,
     "changeOrigin": true
   }
 }
