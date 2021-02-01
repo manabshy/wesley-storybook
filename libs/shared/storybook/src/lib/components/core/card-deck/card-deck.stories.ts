@@ -20,8 +20,11 @@ const variants = {
   'On Grey :: With Icons': 'wes-card-deck--grey wes-card-deck--icons',
   'On Grey :: With Icons :: Collapsed':
     'wes-card-deck--grey wes-card-deck--icons wes-card-deck--collapse',
+  'card_deck_images__icons': true,
+  'card_deck_images__icons :: hide': false
 };
 
+const defaultValue = variants['card_deck_images__icons'];
 export const cardDeck = () => ({
   template: `
     <div class="wes-card-deck {{variant}}">
@@ -35,9 +38,9 @@ export const cardDeck = () => ({
           </div>
         </div>
         <div class="wes-card-deck__deck">
-          
+
           <div class="wes-card-deck__deck-item" *ngFor="let card of [].constructor(cardCount)">
-            <article class="wes-card-deck__card">
+            <article class="wes-card-deck__card" [ngClass]="{'wes-card-deck__images': variant, 'wes-card-deck__icons': variant }">
               <div *ngIf="withImage == 'yes'" class="wes-card-deck__card-bg" style="background-image:url(http://placekitten.com/572/320)"></div>
               <div class="wes-card-deck__card-icon">
                 <svg height="64" width="64" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +76,7 @@ export const cardDeck = () => ({
     </div>
   `,
   props: {
-    variant: select('Variant', variants, ''),
+    variant: select('Variant', variants, defaultValue),
     cardCount: number('Number of cards', 6, { min: 2 }),
     withImage: optionsKnob(
       'With image',
