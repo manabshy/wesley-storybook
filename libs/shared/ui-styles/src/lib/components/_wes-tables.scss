@@ -51,6 +51,7 @@ table.wes-table {
   th {
     font-weight: 600;
     letter-spacing: 0;
+    color: $global-colour-charcoal;
   }
   th,
   td {
@@ -108,6 +109,9 @@ table.wes-table {
     thead {
       background-color: $global-colour-grey-900;
       color: $global-colour-white;
+      th {
+        color: $global-colour-white;
+      }
     }
     th,
     td {
