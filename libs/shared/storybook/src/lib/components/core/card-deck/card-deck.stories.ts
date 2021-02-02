@@ -20,11 +20,11 @@ const variants = {
   'On Grey :: With Icons': 'wes-card-deck--grey wes-card-deck--icons',
   'On Grey :: With Icons :: Collapsed':
     'wes-card-deck--grey wes-card-deck--icons wes-card-deck--collapse',
-  'card_deck_images__icons': true,
-  'card_deck_images__icons :: hide': false
+  'Deck With Images and Icons': true,
+  'Deck Without Images and Icons': false
 };
 
-const defaultValue = variants['card_deck_images__icons'];
+const defaultValue = variants['Deck With Images and Icons'];
 export const cardDeck = () => ({
   template: `
     <div class="wes-card-deck {{variant}}">

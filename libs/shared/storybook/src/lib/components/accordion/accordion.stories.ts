@@ -8,7 +8,7 @@ const label = 'Colors';
 const options = {
   white: '#F6F6F6',
   grey: '#D9DADC',
-  none: null,
+  none: '',
 };
 const defaultValue = options.white;
 const groupId = 'GROUP-ID1';
