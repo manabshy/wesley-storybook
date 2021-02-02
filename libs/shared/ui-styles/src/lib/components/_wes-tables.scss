@@ -11,12 +11,12 @@ table.wes-table {
 
   // to be replaced by font-icons
   span {
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-
     &[class^='icon-'],
     [class*=' icon-'] {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+
       &:before {
         content: '';
         display: inline-block;
@@ -48,7 +48,7 @@ table.wes-table {
     font-size: 18px;
   }
 
-  thead {
+  th {
     font-weight: 600;
     letter-spacing: 0;
   }
@@ -56,11 +56,6 @@ table.wes-table {
   td {
     padding: 16px 16px;
     vertical-align: top;
-
-    &:first-child {
-      font-weight: 600;
-      letter-spacing: 0;
-    }
   }
 
   @include media-breakpoint-down(sm) {
@@ -82,10 +77,9 @@ table.wes-table {
       display: flex;
       justify-content: flex-start;
     }
-    td:first-child {
-      background-color: $global-colour-grey-70;
-    }
-    tbody tr td::before {
+
+    tbody tr td[data-title]:before,
+    tbody tr th[data-title]:before {
       content: attr(data-title);
       display: inline-block;
       width: 50%;
@@ -102,6 +96,12 @@ table.wes-table {
     td {
       border-bottom: 1px solid $global-colour-grey-70;
     }
+
+    @include media-breakpoint-down(sm) {
+      tbody tr th:first-child {
+        background-color: $global-colour-grey-70;
+      }
+    }
   }
 
   &.dark-grey {
@@ -115,7 +115,7 @@ table.wes-table {
     }
 
     @include media-breakpoint-down(sm) {
-      td:first-child {
+      tbody tr th:first-child {
         background-color: $global-colour-grey-900;
         color: $global-colour-white;
       }

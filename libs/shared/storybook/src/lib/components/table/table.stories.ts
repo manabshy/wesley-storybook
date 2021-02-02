@@ -34,9 +34,16 @@ export const style1 = () => ({
     </thead>
     <tbody>
         <tr *ngFor="let tableRow of tableRowText;">
-          <td *ngFor="let tableColumn of tableRow; let i = index" [attr.data-title]="tableHeaders[i]">
-          {{tableColumn}}
-          </td>
+          <ng-container *ngFor="let tableColumn of tableRow; let i = index">
+              <td *ngIf="i > 0; else thTemplate" [attr.data-title]="tableHeaders[i]">
+              {{tableColumn}}
+              </td>
+              <ng-template #thTemplate>
+                <th [attr.data-title]="tableHeaders[i]">
+                {{tableColumn}}
+                </th>
+              </ng-template>
+          </ng-container>
         </tr>
     </tbody>
   </table>
@@ -74,7 +81,7 @@ export const style2 = () => ({
         <tr *ngFor="let tableRow of tableRowText; let i = index">
           <ng-container *ngFor="let tableColumn of tableRow; let j = index">
          
-            <th *ngIf="j===0; else normalColumn" colspan="2">
+            <th *ngIf="j===0; else normalColumn" colspan="2" [attr.data-title]="tableHeaders[j] ? tableHeaders[j] : null">
               {{tableColumn}}
             </th>
 
@@ -95,7 +102,7 @@ export const style2 = () => ({
     caption: text('caption', 'England and Wales NHS pension contributions'),
     variant: select('Variant', style2Variants, 'transparent'),
     tableHeaders: array('table headers', [
-      '',
+      ,
       'Annuities',
       'Cash lump sums',
       'Drawdown',
