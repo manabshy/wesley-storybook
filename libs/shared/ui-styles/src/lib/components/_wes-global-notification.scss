@@ -1,0 +1,118 @@
+.wes-global-notification {
+  background-color: $global-colour-white;
+  border-bottom: 4px solid;
+  border-image-source: linear-gradient(133.23deg, #febd11 0%, #fedd36 100%);
+  border-image-slice: 1;
+  color: $global-colour-grey-900;
+  padding: 24px 20px;
+
+  &.single-page {
+    background-color: $global-colour-grey-900;
+    color: $global-colour-white;
+    border: 1px solid $global-colour-charcoal;
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding: 28px 28px;
+  }
+
+  @include media-breakpoint-up(md) {
+    padding: 28px 36px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: 28px 60px;
+  }
+
+  .container {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  &__header {
+    color: $global-colour-charcoal;
+    display: flex;
+    align-items: center;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 28px;
+
+    .single-page & {
+      color: $global-colour-white;
+    }
+  }
+
+  .me-auto {
+    margin-right: auto !important;
+  }
+
+  &__close {
+    width: 24px;
+    height: 24px;
+    border: 0;
+    padding: 4px 4px;
+    opacity: 0.75;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%231E2630' stroke-width='2' fill='none' fill-rule='evenodd' stroke-linecap='round'%3E%3Cpath d='M15 1L1 15M1 1l14 14'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 14px 14px;
+
+    &:hover,
+    &:active,
+    &:focus {
+      opacity: 1;
+    }
+
+    &:focus {
+      border: 2px dotted $global-colour-charcoal;
+    }
+
+    .single-page & {
+      background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%23FFFFFF' stroke-width='2' fill='none' fill-rule='evenodd' stroke-linecap='round'%3E%3Cpath d='M15 1L1 15M1 1l14 14'/%3E%3C/g%3E%3C/svg%3E");
+
+      &:focus {
+        border-color: $global-colour-white;
+      }
+    }
+  }
+
+  &__body,
+  &__timestamp {
+    margin-top: 16px;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 20px;
+  }
+
+  &__body a {
+    font-weight: 600;
+    border-bottom: 2px solid $global-colour-gold-900;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border-bottom-color: $global-colour-charcoal;
+    }
+
+    &:focus {
+      outline: 2px dotted $global-colour-charcoal;
+      outline-offset: 3px;
+    }
+
+    .single-page & {
+      color: $global-colour-white;
+
+      &:hover,
+      &:active,
+      &:focus {
+        border-bottom-color: $global-colour-white;
+      }
+
+      &:focus {
+        outline-color: $global-colour-white;
+      }
+    }
+  }
+}
