@@ -14,12 +14,24 @@ const styleVariants = {
   'Single Page': 'single-page',
 };
 
+const hideNotification = function (e: Event) {
+  const target: HTMLButtonElement = e.target as HTMLButtonElement;
+  const selector = target.getAttribute('data-bs-dismiss');
+  const notification = target.closest(`.${selector}`);
+  notification.classList.remove('show');
+
+  const tm = setTimeout(() => {
+    notification.classList.add('show');
+    clearTimeout(tm);
+  }, 5000);
+};
+
 export const notifications = () => ({
   template: `<div class="wes-global-notification fade show {{variant}}" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="container">
     <div class="wes-global-notification__header">
       <span class="me-auto">{{headerText}}</span>
-      <button *ngIf="variant !== 'single-page'"  type="button" class="wes-global-notification__close" data-bs-dismiss="wes-global-notification" aria-label="Close"></button>
+      <button *ngIf="variant !== 'single-page'" type="button" (click)="clickClose($event)" class="wes-global-notification__close" data-bs-dismiss="wes-global-notification" aria-label="Close"></button>
     </div>
     <div *ngIf="bodyText.length > 0" class="wes-global-notification__body" [innerHtml]="bodyText"></div>
     <div *ngIf="timeStamp.length > 0 && withDateStamp == 'yes'" class="wes-global-notification__timestamp">
@@ -46,5 +58,6 @@ export const notifications = () => ({
         display: 'inline-radio',
       }
     ),
+    clickClose: hideNotification,
   },
 });

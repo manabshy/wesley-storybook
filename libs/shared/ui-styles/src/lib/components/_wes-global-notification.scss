@@ -6,6 +6,18 @@
   color: $global-colour-grey-900;
   padding: 24px 20px;
 
+  &.fade {
+    transition: opacity 0.15s linear;
+  }
+
+  &.hide {
+    display: none;
+  }
+
+  &:not(.showing):not(.show) {
+    opacity: 0;
+  }
+
   &.single-page {
     background-color: $global-colour-grey-900;
     color: $global-colour-white;
