@@ -3,6 +3,26 @@
 ////
 
 .wes-content-block {
+  .wes-callout__wrapper {
+    width: 1073px;
+    height: 324px;
+    margin-top: 72px;
+    margin-bottom: 72px;
+
+  }
+  .wes-video-carousel__video {
+    width: 872px;
+    height: 488px;
+    margin-top: 80px;
+  }
+  img.wes-image {
+    width: 872px;
+    height: 488px;
+    margin-top: 80px;
+  }
+  .wes-table.wide {
+    width: 1073px;
+  }
   @include wes-make-full-width-component;
 
   padding-top: rem(56px);
@@ -34,12 +54,12 @@
   &.wes-content-block--campaign {
     padding-top: rem(24px);
     padding-bottom: rem(24px);
-  
+
     @include media-breakpoint-up(md) {
       padding-top: rem(32px);
       padding-bottom: rem(32px);
     }
-  
+
     @include media-breakpoint-up(lg) {
       padding-top: rem(48px);
       padding-bottom: rem(48px);
@@ -93,6 +113,8 @@
       }
     }
   }
+
+
 
   &__placeholder {
     @include wes-placeholder-spacing;
