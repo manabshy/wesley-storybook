@@ -3,6 +3,15 @@
 ////
 
 .wes-toc-banner {
+  .wes-toc-banner__toc-link {
+    a {
+      @extend .wes-link;
+    }
+
+  }
+}
+.wes-toc-banner {
+
   @include wes-make-full-width-component;
 
   z-index: 0;
@@ -192,9 +201,5 @@
     @include wes-typeset(level4);
 
     margin-bottom: rem(32px);
-  }
-
-  &__toc-link {
-    @extend .wes-link;
   }
 }
