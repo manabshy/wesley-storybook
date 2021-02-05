@@ -1,0 +1,34 @@
+.wes-card-feature {
+  .wes-card-feature__title {
+    font-family: 'Open Sans';
+    font-size: 32px;
+    letter-spacing: 0;
+    line-height: 44px;
+    text-align: center;
+    margin-top: 112px;
+  }
+  .wes-card-deck.feature {
+    .wes-card-deck__card-title {
+      text-align: center;
+      margin-right: 65px;
+    }
+    .wes-cta-card__icon {
+      text-align: center;
+    }
+    .wes-card-deck__card-body {
+      background-color: #fff;
+    }
+    .wes-card-deck__card-message {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    color: #40474f;
+    flex-grow: 1;
+    width: 253px;
+    color: #40474F;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 28px;
+    }
+  }
+}

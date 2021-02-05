@@ -1,0 +1,53 @@
+
+<div class="wes-card-feature">
+  <div class="wes-card-feature__header-content">
+    <h2 class="wes-card-feature__title">{{ title }}</h2>
+  </div>
+  <div class="wes-card-deck feature">
+    <div class="wes-cta-card__frame wes-card-deck__wrapper">
+      <div class="wes-card-deck__deck">
+        <div class="wes-card-deck__deck-item" *ngFor="let card of [].constructor(cardCount)">
+          <article class="wes-card-deck__card">
+            <div class="wes-card-deck__card-body">
+              <div class="wes-cta-card__icon">
+                <svg height="80" width="80" xmlns="http://www.w3.org/2000/svg">
+                  <g fill="none" fill-rule="evenodd">
+                    <path
+                      d="M1 46.5h42.5"
+                      stroke="#FEBD11"
+                      stroke-linecap="square"
+                    ></path>
+                    <path
+                      d="M25.5.5v22.557L18 17.969l-7.5 5.088V.5h15z"
+                      stroke="#FEBD11"
+                    ></path>
+                    <path
+                      d="M.5.5h42a2 2 0 012 2v51a2 2 0 01-2 2H.5h0V.5z"
+                      stroke="#1E2630"
+                      stroke-linecap="round"
+                    ></path>
+                    <path
+                      d="M35.5.5v54"
+                      stroke="#1E2630"
+                      stroke-linecap="square"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+
+              <div class="wes-card-deck__card-header">
+                <h2 class="wes-card-deck__card-title">{{ cardTitle }}</h2>
+              </div>
+              <div class="wes-card-deck__card-message">
+                <p>Start your investment with a £1,000 lump sum or £100 per month.</p>
+                <!-- Rich text content -->
+              </div>
+
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
