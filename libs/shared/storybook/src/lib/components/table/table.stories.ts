@@ -3,7 +3,13 @@ import { array, select, object, text, withKnobs } from '@storybook/addon-knobs';
 
 addParameters({ docs: { iframeHeight: 500 } });
 
+const viewVariants = {
+  standard: 'standard',
+  wide: 'wide',
+};
+
 const style1Variants = {
+  transparent: '',
   'light grey': 'light-grey',
   'dark grey': 'dark-grey',
 };
@@ -21,7 +27,7 @@ export default {
 export const style1 = () => ({
   template: `
   <div class="container wes-table-container">
-  <table class="wes-table {{variant}}">
+  <table class="wes-table {{variant}} {{view}}">
     <caption *ngIf="caption">
       {{caption}}
     </caption>
@@ -51,7 +57,8 @@ export const style1 = () => ({
   `,
   props: {
     caption: text('caption', 'England and Wales NHS pension contributions'),
-    variant: select('Variant', style1Variants, 'light-grey'),
+    view: select('view', viewVariants, 'standard'),
+    variant: select('variant', style1Variants, 'transparent'),
     tableHeaders: array('table headers', [
       'Salary Range',
       'Your contribution (before tax relief)',
@@ -68,7 +75,7 @@ export const style1 = () => ({
 export const style2 = () => ({
   template: `
     <div class="container wes-table-container">
-      <table class="wes-table {{variant}}">
+      <table class="wes-table {{variant}}  {{view}}">
       <caption *ngIf="caption">England and Wales NHS pension contributions</caption>
       <thead *ngIf="tableHeaders">
         <tr>
@@ -100,7 +107,8 @@ export const style2 = () => ({
   `,
   props: {
     caption: text('caption', 'England and Wales NHS pension contributions'),
-    variant: select('Variant', style2Variants, 'transparent'),
+    view: select('view', viewVariants, 'standard'),
+    variant: select('variant', style2Variants, 'transparent'),
     tableHeaders: array('table headers', [
       ,
       'Annuities',
