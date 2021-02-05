@@ -106,8 +106,8 @@
   }
 
   &.js-is-sticky {
-    z-index: 1;
-    
+    z-index: $zindex-sticky;
+
     @include media-breakpoint-down(sm) {
       position: fixed !important;
       top: auto !important;
