@@ -9,6 +9,16 @@ table.wes-table {
   width: 100%;
   font-size: 18px;
 
+  &.standard {
+    @extend .col-md-12;
+    @extend .col-lg-9;
+    @extend .col-xl-7;
+  }
+
+  &.wide {
+    @extend .col-12;
+  }
+
   // to be replaced by font-icons
   span {
     &[class^='icon-'],
@@ -57,6 +67,7 @@ table.wes-table {
   td {
     padding: 16px 16px;
     vertical-align: top;
+    border-bottom: 1px solid $global-colour-grey-100;
   }
 
   @include media-breakpoint-down(sm) {
