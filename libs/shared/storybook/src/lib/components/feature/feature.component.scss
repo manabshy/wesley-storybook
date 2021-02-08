@@ -1,4 +1,17 @@
 .wes-card-feature {
+  @media (min-width: 1200px) {
+    .wes-card-deck__wrapper {
+        width:1172px;
+    }
+    .wes-card-deck__wrapper.standard-feature {
+      width: 902px;
+    }
+    .wes-card-feature__header-content {
+      width: 672px;
+    }
+  }
+
+
   .wes-card-feature__title {
     font-family: 'Open Sans';
     font-size: 32px;
@@ -7,28 +20,51 @@
     text-align: center;
     margin-top: 112px;
   }
+  .wes-card-feature__header-content {
+    margin: auto;
+    height: 88px;
+    font-size: 32px;
+    font-family: 'Open Sans';
+  }
   .wes-card-deck.feature {
+    .wes-card-deck__card-body {
+      padding: 1rem;
+    }
     .wes-card-deck__card-title {
       text-align: center;
       margin-right: 65px;
     }
+    .wes-card-deck__deck-item {
+      margin-bottom: 0px;
+    }
     .wes-cta-card__icon {
       text-align: center;
+      margin-bottom: 24px;
     }
     .wes-card-deck__card-body {
       background-color: #fff;
     }
     .wes-card-deck__card-message {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-weight: 400;
-    color: #40474f;
-    flex-grow: 1;
-    width: 253px;
-    color: #40474F;
-    font-size: 18px;
-    letter-spacing: 0;
-    line-height: 28px;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      font-weight: 400;
+      color: #40474f;
+      flex-grow: 1;
+      font-size: 18px;
+      letter-spacing: 0;
+      line-height: 28px;
+      margin-left:32px;
+    }
+    .wes-cta-card__frame {
+      border: 1px solid #d9dadc;
+      border-radius: 4px;
+      box-shadow: 0 4px 2px -2px #febd11, 0 -12px 0 -8px #febd11;
+    }
+  }
+  .wes-card-deck.feature.plain-feature {
+    .wes-cta-card__frame {
+      box-shadow: none;
+      border: none;
     }
   }
 }

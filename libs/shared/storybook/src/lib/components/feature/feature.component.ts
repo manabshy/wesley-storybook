@@ -1,9 +1,7 @@
 import {
   Component,
   ElementRef,
-  EventEmitter,
   Input,
-  Output,
   TemplateRef,
   ViewChild,
   ViewEncapsulation,
@@ -24,9 +22,9 @@ export class FeatureComponent {
   @Input() cardTitle;
   @Input() title;
   @Input() message;
-
+  @Input() variant;
+  @Input() size;
   @Input() value;
-  toggleIcon;
   constructor(private el: ElementRef) {}
 
 
