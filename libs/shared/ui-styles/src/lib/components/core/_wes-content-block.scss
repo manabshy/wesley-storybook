@@ -23,6 +23,13 @@
   .wes-table.wide {
     width: 1073px;
   }
+  @media (max-width: 767.98px) {
+
+    table.wes-table td[data-title='Salary Range'] {
+        font-size: 18px;
+        font-weight: 600;
+    }
+  }
   @include wes-make-full-width-component;
 
   padding-top: rem(56px);
