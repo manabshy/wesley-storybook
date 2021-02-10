@@ -27,7 +27,7 @@ const variants = {
 const defaultValue = variants['Deck With Images and Icons'];
 export const cardDeck = () => ({
   template: `
-    <div class="wes-card-deck {{variant}}">
+    <div class="wes-card-deck {{variant}}" [ngClass]="{'wes-card-deck__images': variant, 'wes-card-deck__icons': variant }">
       <div class="wes-card-deck__wrapper">
         <div *ngIf="!!title || !!message" class="wes-card-deck__header">
           <div class="wes-card-deck__header-content">
@@ -40,7 +40,7 @@ export const cardDeck = () => ({
         <div class="wes-card-deck__deck">
 
           <div class="wes-card-deck__deck-item" *ngFor="let card of [].constructor(cardCount)">
-            <article class="wes-card-deck__card" [ngClass]="{'wes-card-deck__images': variant, 'wes-card-deck__icons': variant }">
+            <article class="wes-card-deck__card">
               <div *ngIf="withImage == 'yes'" class="wes-card-deck__card-bg" style="background-image:url(http://placekitten.com/572/320)"></div>
               <div class="wes-card-deck__card-icon">
                 <svg height="64" width="64" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">

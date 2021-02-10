@@ -167,6 +167,25 @@
     @include wes-make-container;
 
     height: 100%;
+    .wes-list {
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+    }
+    @media (min-width: 768px) {
+      .wes-list-chevron.column-2 {
+        ul {
+          width: 100%;
+          display: flex;
+          flex-flow: row wrap;
+          align-items: stretch;
+          justify-content: space-around;
+          padding: 0;
+        }
+      }
+    }
   }
 
   &__toc-body {

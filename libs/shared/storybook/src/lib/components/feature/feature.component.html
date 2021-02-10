@@ -1,0 +1,30 @@
+
+<div class="wes-card-feature">
+  <div class="wes-card-feature__header-content">
+    <h2 class="wes-card-feature__title">{{ title }}</h2>
+  </div>
+  <div class="wes-card-deck feature" [ngClass]="variant">
+    <div class="wes-cta-card__frame wes-card-deck__wrapper" [ngClass]="size" [ngStyle]="{'background-color':value}">
+      <div class="wes-card-deck__deck">
+        <div class="wes-card-deck__deck-item" *ngFor="let card of [].constructor(cardCount)">
+          <article class="wes-card-deck__card">
+            <div class="wes-card-deck__card-body"  [ngStyle]="{'background-color':value}">
+              <div class="wes-cta-card__icon">
+                <img alt="" src="/assets/icons/svg/icon-feature.svg" />
+              </div>
+
+              <div class="wes-card-deck__card-header">
+                <h2 class="wes-card-deck__card-title">{{ cardTitle }}</h2>
+              </div>
+              <div class="wes-card-deck__card-message">
+                <p>{{message}}</p>
+              </div>
+
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
