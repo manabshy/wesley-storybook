@@ -20,14 +20,18 @@
     height: 488px;
     margin-top: 80px;
   }
-  .wes-table.wide {
-    width: 1073px;
-  }
+
   @media (max-width: 767.98px) {
 
     table.wes-table td[data-title='Salary Range'] {
         font-size: 18px;
         font-weight: 600;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    table.wes-table.wide {
+       width: 1073px;
     }
   }
   @include wes-make-full-width-component;
