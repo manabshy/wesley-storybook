@@ -10,17 +10,17 @@
     margin-bottom: 72px;
 
   }
-  .wes-video-carousel__video {
-    width: 872px;
-    height: 488px;
-    margin-top: 80px;
-  }
 
   @media (min-width: 768px) {
     img.wes-image {
       width: 680px;
       height: auto;
       margin-top: 25.6px;
+    }
+    .wes-video-carousel__video {
+      width: 680px;
+      height: auto;
+      margin-top: 40px;
     }
   }
   @media (max-width: 767.98px) {
@@ -34,6 +34,11 @@
       height: auto;
       margin-top: 25.6px;
     }
+    .wes-video-carousel__video {
+      width: auto;
+      height: auto;
+      margin-top: 20px;
+    }
   }
 
   @media (min-width: 1200px) {
@@ -41,6 +46,11 @@
        width: 1073px;
     }
     img.wes-image {
+      width: 872px;
+      height: 488px;
+      margin-top: 80px;
+    }
+    .wes-video-carousel__video {
       width: 872px;
       height: 488px;
       margin-top: 80px;
