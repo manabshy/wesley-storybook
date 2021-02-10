@@ -1,172 +1,136 @@
-import { addParameters, storiesOf } from '@storybook/angular';
-import { array, select, object, text, withKnobs } from '@storybook/addon-knobs';
-import addons from '@storybook/addons';
-import jquery from 'jquery';
+import { addParameters, moduleMetadata } from '@storybook/angular';
+import { array, select, text, withKnobs } from '@storybook/addon-knobs';
+import { Pipe, PipeTransform } from '@angular/core';
+
+import * as jquery from 'jquery';
 import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min';
-// import 'bootstrap/js/dist/dropdown';
 
 global = { ...global, ...{ $: jquery, jQuery: jquery, bootstrap: bootstrap } };
+
+@Pipe({ name: 'stripSpacesToLower' })
+/*export*/
+class StripSpacesToLower implements PipeTransform {
+  transform(str: string): any {
+    return str
+      .replace(/\s/g, '')
+      .replace(/[^a-zA-Z0-9]/g, '')
+      .toLocaleLowerCase();
+  }
+}
 
 addParameters({ docs: { iframeHeight: 500 } });
 
 export default {
   title: 'Components/Tabs',
-  decorators: [withKnobs],
+  decorators: [
+    withKnobs,
+    moduleMetadata({
+      declarations: [StripSpacesToLower],
+    }),
+  ],
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
 
 const styleVariants = {
-  'white background': 'white-background',
-  'grey background': 'grey-background',
+  'white background': 'container-white',
+  'grey background': 'container-grey',
 };
-
-const tabScript = () => {
-  // get data attribute for media match
-
-  // check state and execute tabs or accordion accordingly
-  var triggerTabList = [].slice.call(
-    document.querySelectorAll('a[data-toggle]')
-  );
-  triggerTabList.forEach(function (triggerEl) {
-    var tabTrigger = new bootstrap.Tab(triggerEl);
-
-    triggerEl.addEventListener('click', function (event) {
-      event.preventDefault();
-      tabTrigger.show();
-    });
-  });
-};
-
-// export const tabs = () => ({
-//   template: `
-//     <div class="component tabs initialized">
-//   <div class="component-content">
-//     <div class="tabs-inner">
-//       <ul class="tabs-heading">
-//         <li tabindex="0" class="active">
-//           <div>
-//             <div class="component content">
-//               <div class="component-content">
-//                 <div class="field-heading">Tab Item 1</div>
-//               </div>
-//             </div>
-//           </div>
-//         </li>
-//         <li tabindex="-1">
-//           <div>
-//             <div class="component content">
-//               <div class="component-content">
-//                 <div class="field-heading">Tab Item 2</div>
-//               </div>
-//             </div>
-//           </div>
-//         </li>
-//       </ul>
-//       <div class="tabs-container">
-//         <div class="tab active">
-//           <div class="component content">
-//             <div class="component-content">
-//               <div class="field-content"><p>TEXT 1</p></div>
-//             </div>
-//           </div>
-//         </div>
-//         <div class="tab">
-//           <div class="component content">
-//             <div class="component-content">
-//               <div class="field-content"><p>TEXT 2</p></div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   </div>
-// </div>
-//     `,
-// });
 
 export const tabs1 = () => ({
   template: `
-  <div class="container wes-tabs">
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Messages</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
-      </li>
-    </ul>
+  <div class="wes-tabs {{variant}}">
+    <div class="container">
+      <h2 *ngIf="this.mainHeading.length > 0" class="text-center tab-header">{{this.mainHeading}}</h2>
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+        <ng-container *ngFor="let tabTitle of tabTitles; let i = index">
+          <li class="nav-item" role="presentation" *ngIf="{ name: tabTitle | stripSpacesToLower } as data">
+            <a class="nav-link" [ngClass]="{'active': i === 0}" id="{{data.name}}-tab" data-toggle="tab" href="#{{data.name}}" role="tab" [attr.aria-controls]="data.name" aria-selected="true">
+              {{tabTitle}}
+            </a>
+          </li>
+        </ng-container>
+      </ul>
 
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent=".tab-pane" href="#collapse1">
-              Home
-            </a>
-          </h4>
-        </div>
-        <div id="collapse1" class="tab-panel-body collapse">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis vehicula arcu id maximus. Nam finibus eget arcu sit amet interdum. Sed at tellus sem. Suspendisse maximus mollis hendrerit. Quisque venenatis quam at tellus pretium ornare. Morbi aliquam, turpis vel cursus iaculis, purus lectus dictum velit, in placerat purus neque non est. Phasellus dui risus, consequat et gravida eget, pharetra ac nunc. Sed in augue sodales odio laoreet tincidunt id eget lacus. In id nulla eget lectus euismod fermentum vulputate fermentum metus. Aenean ac lectus erat. Quisque at orci orci.
-        </div>
-      </div>
-      <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent=".tab-pane" href="#collapse2">
-              Profile
-            </a>
-          </h4>
-        </div>
-        <div id="collapse2" class="tab-panel-body collapse">
-          Nulla est ullamco ut irure incididunt nulla Lorem Lorem minim irure officia enim reprehenderit. Magna duis labore cillum sint adipisicing exercitation ipsum. Nostrud ut anim non exercitation velit laboris fugiat cupidatat. Commodo esse dolore fugiat sint velit ullamco magna consequat voluptate minim amet aliquip ipsum aute laboris nisi. Labore labore veniam irure irure ipsum pariatur mollit magna in cupidatat dolore magna irure esse tempor ad mollit. Dolore commodo nulla minim amet ipsum officia consectetur amet ullamco voluptate nisi commodo ea sit eu.
-        </div>
-      </div>
-      <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent=".tab-pane" href="#collapse3">
-              Messages
-            </a>
-          </h4>
-        </div>
-        <div id="collapse3" class="tab-panel-body collapse">
-          Morbi in pellentesque tortor. Mauris metus ipsum, luctus sed purus vel, faucibus sollicitudin nibh. Donec suscipit lacinia libero, a condimentum dolor tincidunt ac. Phasellus gravida, risus sit amet semper venenatis, tellus purus fermentum enim, vel ullamcorper dui nisl non ligula. Phasellus dignissim vehicula magna, sed ultrices arcu. Suspendisse tortor nulla, dictum et odio at, tincidunt laoreet felis. Quisque quis dui dui. Donec in velit mollis, feugiat augue id, efficitur neque.
-        </div>
-      </div>
-      <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent=".tab-pane" href="#collapse4">
-              Settings
-            </a>
-          </h4>
-        </div>
-        <div id="collapse4" class="tab-panel-body collapse">
-        Vestibulum scelerisque eleifend augue, in faucibus massa tempus et. Sed id neque nulla. In a massa maximus, tempus lectus non, porttitor purus. Quisque vestibulum suscipit vehicula. Suspendisse iaculis, nisl in congue hendrerit, purus ipsum blandit ligula, eu cursus quam neque ut sapien. Phasellus hendrerit lorem velit, eu semper sapien volutpat auctor. Proin enim metus, pellentesque in euismod vel, hendrerit a lorem. Ut viverra magna ut diam rhoncus, vel pretium arcu porta. Donec sodales feugiat augue, quis blandit sem finibus ac. Ut ac nisi vel urna euismod scelerisque. Ut vehicula tempor justo. Aenean posuere, mi sed molestie tempor, purus nisi rutrum eros, in tempus ex ligula nec sem. In rutrum lorem in eros gravida, id convallis orci tincidunt. Pellentesque feugiat blandit nulla nec vehicula.
-        </div>
+      <!-- Tab panes -->
+      <div class="tab-content" aria-live="polite">
+        <ng-container *ngFor="let tabTitle of tabTitles; let i = index">
+          <div *ngIf="{ name: tabTitle | stripSpacesToLower } as data" [ngClass]="{'active': i === 0}" class="tab-pane" id="{{data.name}}" role="tabpanel" [attr.aria-labelledby]="data.name+'-tab'">
+            <div class="panel-heading">
+              <a class="panel-title" data-toggle="collapse" data-parent=".tab-pane" href="#collapse{{data.name}}">
+              {{tabTitle}}
+              </a>
+            </div>
+            <div id="collapse{{data.name}}" class="panel collapse">
+              <div class="panel-text">
+                <div class="panel-text-heading">{{tabTitle}}</div>
+                <div [innerHtml]="tabText[i]"></div>
+              </div>
+              <div class="panel-image" [ngStyle]="{'background-image': 'url(' + tabImages[i] + ')'}" >
+              </div>
+            </div>
+          </div>
+        </ng-container>
       </div>
     </div>
   </div>
     `,
+  props: {
+    variant: select('variant', styleVariants, 'container-white'),
+    mainHeading: text('main heading', 'Three stages of cover…'),
+    tabTitles: array('tab titles', [
+      'Share in our profits',
+      'Find your financial consultant',
+      'Save or invest?',
+    ]),
+    tabText: array(
+      'tab text (*Note delimeter is ||)',
+      [
+        `
+      <p>
+        One of the key features of the Capital Investment Bond is that it provides
+        access to our Life With Profits Fund. As the name suggests, the With Profits
+        Fund includes Wesleyan’s profits and losses from across the business - so
+        it’s a chance to share in our financial success.
+      </p>
+      <p><a href="javascript:void(0)">Find out more about the With Profits Fund here</a></p>
+      `,
+        `
+      <p>
+        Request an appointment to discuss your finances and we’ll match you with a
+        Financial Consultant that’s local to you.
+      </p>
+      <p>
+        Looking for a full financial review or just want to learn more about one of
+        our products? You can meet us in-person or via video call, at a date and
+        time that fits around your schedule. And if you’re a doctor, dentist, lawyer
+        or teacher, we’ll pair you with a specialist adviser for your field.
+      </p>
+      `,
+        `
+      <p>
+        When you’re saving for your child’s future, you might like the security of
+        saving in cash - but if you want to be more adventurous with your money and
+        look for potentially greater gains, you could choose to invest in a stocks
+        and shares junior ISA instead. You can even contribute to both at once,
+        though the £9,000 overall limit still applies.
+      </p>
+      <p>
+        If you do choose to invest, remember that the value of investments can fall
+        as well as rise, and you may get back less than you put in.
+      </p>    
+      `,
+      ],
+      `||`
+    ),
+    tabImages: array('tab images', [
+      `http://placekitten.com/600/400`,
+      `http://placekitten.com/408/287`,
+      `http://placekitten.com/200/287`,
+    ]),
+  },
 });
-
-// tabs1.decorators = [
-//   (storyFunc) => {
-//     const story = storyFunc();
-//     // setTimeout(() => {
-//     //   tabScript();
-//     // });
-
-//     return {
-//       ...story,
-//       template: `${story.template}`,
-//     };
-//   },
-// ];
