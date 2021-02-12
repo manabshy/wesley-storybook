@@ -3,25 +3,63 @@
 ////
 
 .wes-content-block {
-  .wes-callout__wrapper {
-    width: 1073px;
-    height: 324px;
-    margin-top: 72px;
-    margin-bottom: 72px;
 
+  @media (min-width: 768px) {
+    img.wes-image {
+      width: 680px;
+      height: auto;
+      margin-top: 25.6px;
+    }
+    .wes-video-carousel__video {
+      width: 680px;
+      height: auto;
+      margin-top: 40px;
+    }
+    .wes-callout__wrapper {
+      margin-top: 40px;
+    }
   }
-  .wes-video-carousel__video {
-    width: 872px;
-    height: 488px;
-    margin-top: 80px;
+  @media (max-width: 767.98px) {
+
+    table.wes-table td[data-title='Salary Range'] {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    img.wes-image {
+      width: 335px;
+      height: auto;
+      margin-top: 25.6px;
+    }
+    .wes-video-carousel__video {
+      width: auto;
+      height: auto;
+      margin-top: 20px;
+    }
+    .wes-callout__wrapper {
+      margin-top: 40px;
+    }
   }
-  img.wes-image {
-    width: 872px;
-    height: 488px;
-    margin-top: 80px;
-  }
-  .wes-table.wide {
-    width: 1073px;
+
+  @media (min-width: 1200px) {
+    table.wes-table.wide {
+       width: 1073px;
+    }
+    img.wes-image {
+      width: 872px;
+      height: 488px;
+      margin-top: 80px;
+    }
+    .wes-video-carousel__video {
+      width: 872px;
+      height: 488px;
+      margin-top: 80px;
+    }
+    .wes-callout__wrapper {
+      width: 1073px;
+      height: 324px;
+      margin-top: 72px;
+      margin-bottom: 72px;
+    }
   }
   @include wes-make-full-width-component;
 
