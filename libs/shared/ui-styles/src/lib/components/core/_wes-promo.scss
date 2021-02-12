@@ -3,6 +3,14 @@
 ////
 
 .wes-promo {
+  @media (min-width: 1200px) {
+    .wes-promo__message.cta {
+        width: 640px;
+        a.cta {
+          font-weight: bold!important;
+        }
+    }
+  }
   @include wes-make-full-width-component;
 
   &::before {
@@ -121,7 +129,29 @@
 
     padding-top: rem(48px);
     padding-bottom: rem(48px);
+    @media (min-width: 768px) {
+      .wes-promo__title {
+        font-size: 38px;
+      }
+    }
+    @media (min-width: 768px) {
+      .wes-promo__message.cta {
+        a.cta {
+          text-decoration: none!important;
+          font-weight: bold !important;
+        }
+      }
+    }
+    @media (max-width: 767.98px) {
+      .wes-promo__message.cta {
+        a.cta {
+          text-decoration: underline !important;
+          font-weight: bold !important;
+          cursor: pointer !important;
 
+        }
+      }
+    }
     @include media-breakpoint-up(md) {
       @include make-col(11);
 
