@@ -3,7 +3,9 @@
 ////
 
 .wes-content-block {
-
+  .ticked li::before {
+    height: 16px !important;
+  }
   @media (min-width: 768px) {
     img.wes-image {
       width: 680px;
@@ -43,6 +45,7 @@
   @media (min-width: 1200px) {
     table.wes-table.wide {
        width: 1073px;
+       max-width: none;
     }
     img.wes-image {
       width: 872px;
