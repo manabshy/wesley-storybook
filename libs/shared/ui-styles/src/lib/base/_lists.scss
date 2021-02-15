@@ -16,22 +16,27 @@ ul {
 
   &-bullets {
     @include rem(padding, 0 0 0 30px);
-
-    li:not(:last-child) {
+    li {
       margin-bottom: rem(16px);
-    }
+      line-height: 28px;
+      &:before {
+        content: '';
+        display: inline-block;
+        background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8V0l8 4z' fill='%23FEBD11' fill-rule='evenodd'/%3E%3C/svg%3E");
+        background-size: contain;
+        background-repeat: no-repeat;
+        line-height: inherit;
+        vertical-align: middle;
+        @include rem(
+          (
+            width: 8px,
+            height: 8px,
+            margin: 0 0 0 -32px,
+            padding: 0 0 0 32px,
+          )
+        );
+      }
 
-    li:before {
-      display: inline-block;
-      content: '▸';
-      color: $color-brand-gold;
-      line-height: inherit;
-      @include rem(
-        (
-          width: 30px,
-          margin: 0 0 0 -30px,
-        )
-      );
     }
   }
 
