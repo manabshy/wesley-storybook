@@ -63,6 +63,9 @@
       margin-top: 72px;
       margin-bottom: 72px;
     }
+    .wes-callout__frame {
+      padding: 3.75rem 3.5rem;
+    }
   }
   @include wes-make-full-width-component;
 
