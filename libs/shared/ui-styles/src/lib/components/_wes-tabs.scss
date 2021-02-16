@@ -1,10 +1,13 @@
 .wes-tabs {
   padding-top: 56px;
+  padding-bottom: 56px;
   @include media-breakpoint-up(md) {
     padding-top: 96px;
+    padding-bottom: 96px;
   }
   @include media-breakpoint-up(lg) {
     padding-top: 112px;
+    padding-bottom: 112px;
   }
   &.container-white {
     background-color: $global-colour-white;
@@ -19,9 +22,6 @@
       &:focus {
         background-color: $global-colour-grey-50;
       }
-    }
-    .tab-pane {
-      background-color: $global-colour-grey-50;
     }
   }
 
@@ -39,13 +39,17 @@
         background-color: $global-colour-white;
       }
     }
-    .tab-pane {
-      background-color: $global-colour-white;
-    }
+  }
+
+  .nav-tabs {
+    border-bottom: 0 none;
   }
 
   .tab-header {
+    color: $global-colour-charcoal;
+    font-weight: normal;
     margin: 0 0 32px 0;
+
     @include media-breakpoint-up(md) {
       margin: 0 0 56px 0;
     }
@@ -56,10 +60,26 @@
 
   @include media-breakpoint-down(sm) {
     .tab-content {
-      border-bottom: 1px solid $global-colour-grey-100;
       margin: 32px 0;
       .tab-pane {
         display: block;
+
+        &:first-child {
+          .container:before {
+            display: block;
+            content: '';
+            width: 100%;
+            border-bottom: 1px solid $global-colour-grey-100;
+          }
+        }
+        .container {
+          &:after {
+            display: block;
+            content: '';
+            width: 100%;
+            border-bottom: 1px solid $global-colour-grey-100;
+          }
+        }
       }
     }
     .nav-tabs {
@@ -67,7 +87,6 @@
     }
     .panel-heading {
       padding: 15px 8px;
-      border-top: 1px solid $global-colour-grey-100;
     }
     a.panel-title {
       display: block;
@@ -116,6 +135,20 @@
   }
 
   @include media-breakpoint-up(md) {
+    .tab-content {
+      border-top: 1px solid $global-colour-grey-100;
+      display: flex;
+      > .tab-pane {
+        display: block;
+        visibility: hidden;
+        margin-right: -100%;
+        width: 100%;
+      }
+      > .active {
+        visibility: visible;
+      }
+    }
+
     .panel-heading {
       display: none;
     }
@@ -124,11 +157,17 @@
       .panel-text {
         background-color: $global-colour-white;
       }
+      .tab-pane {
+        background-color: $global-colour-grey-50;
+      }
     }
 
     &.container-grey {
       .panel-text {
         background-color: $global-colour-grey-50;
+      }
+      .tab-pane {
+        background-color: $global-colour-white;
       }
     }
 
@@ -151,6 +190,7 @@
         letter-spacing: 0;
         line-height: 32px;
         margin-bottom: 16px;
+        color: $global-colour-charcoal;
       }
       .panel-text {
         padding: 48px 40px;
@@ -212,6 +252,7 @@
         border-top: 1px solid $global-colour-grey-100;
         border-bottom: 1px solid $global-colour-grey-100;
         border-right: 0;
+        color: $global-colour-charcoal;
 
         &.active {
           border-top: 4px solid $global-colour-gold-900;
