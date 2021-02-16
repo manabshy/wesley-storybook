@@ -147,6 +147,7 @@
         .container {
           padding-left: 0;
           padding-right: 0;
+          height: 100%;
         }
       }
       > .active {
@@ -178,11 +179,11 @@
 
     .panel {
       $shadow-offset: 12%; // subtle shadow offset
-
       border: none;
       box-shadow: none;
-      height: auto;
+      height: 100%;
       padding: 56px 0 96px 0;
+
       &.collapse {
         display: block;
         position: relative;
