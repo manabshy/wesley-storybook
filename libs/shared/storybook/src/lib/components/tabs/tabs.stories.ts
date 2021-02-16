@@ -55,11 +55,12 @@ export const tabs1 = () => ({
           </li>
         </ng-container>
       </ul>
-
-      <!-- Tab panes -->
-      <div class="tab-content" aria-live="polite">
-        <ng-container *ngFor="let tabTitle of tabTitles; let i = index">
-          <div *ngIf="{ name: tabTitle | stripSpacesToLower } as data" [ngClass]="{'active': i === 0}" class="tab-pane" id="{{data.name}}" role="tabpanel" [attr.aria-labelledby]="data.name+'-tab'">
+    </div>
+    <!-- Tab panes -->
+    <div class="tab-content" aria-live="polite">
+      <ng-container *ngFor="let tabTitle of tabTitles; let i = index">
+        <div *ngIf="{ name: tabTitle | stripSpacesToLower } as data" [ngClass]="{'active': i === 0}" class="tab-pane" id="{{data.name}}" role="tabpanel" [attr.aria-labelledby]="data.name+'-tab'">
+          <div class="container">  
             <div class="panel-heading">
               <a class="panel-title" data-toggle="collapse" data-parent=".tab-pane" href="#collapse{{data.name}}">
               {{tabTitle}}
@@ -74,8 +75,8 @@ export const tabs1 = () => ({
               </div>
             </div>
           </div>
-        </ng-container>
-      </div>
+        </div>
+      </ng-container>
     </div>
   </div>
     `,

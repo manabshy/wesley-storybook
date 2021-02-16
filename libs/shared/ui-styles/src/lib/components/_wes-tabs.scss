@@ -41,6 +41,10 @@
     }
   }
 
+  .nav-tabs {
+    border-bottom: 0 none;
+  }
+
   .tab-header {
     color: $global-colour-charcoal;
     font-weight: normal;
@@ -56,10 +60,26 @@
 
   @include media-breakpoint-down(sm) {
     .tab-content {
-      border-bottom: 1px solid $global-colour-grey-100;
       margin: 32px 0;
       .tab-pane {
         display: block;
+
+        &:first-child {
+          .container:before {
+            display: block;
+            content: '';
+            width: 100%;
+            border-bottom: 1px solid $global-colour-grey-100;
+          }
+        }
+        .container {
+          &:after {
+            display: block;
+            content: '';
+            width: 100%;
+            border-bottom: 1px solid $global-colour-grey-100;
+          }
+        }
       }
     }
     .nav-tabs {
@@ -67,7 +87,6 @@
     }
     .panel-heading {
       padding: 15px 8px;
-      border-top: 1px solid $global-colour-grey-100;
     }
     a.panel-title {
       display: block;
@@ -116,6 +135,10 @@
   }
 
   @include media-breakpoint-up(md) {
+    .tab-content {
+      border-top: 1px solid $global-colour-grey-100;
+    }
+
     .panel-heading {
       display: none;
     }
