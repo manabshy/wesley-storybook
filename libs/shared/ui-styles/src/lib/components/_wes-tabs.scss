@@ -137,6 +137,16 @@
   @include media-breakpoint-up(md) {
     .tab-content {
       border-top: 1px solid $global-colour-grey-100;
+      display: flex;
+      > .tab-pane {
+        display: block;
+        visibility: hidden;
+        margin-right: -100%;
+        width: 100%;
+      }
+      > .active {
+        visibility: visible;
+      }
     }
 
     .panel-heading {
