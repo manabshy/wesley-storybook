@@ -44,7 +44,7 @@ export const tabs1 = () => ({
   template: `
   <div class="wes-tabs {{variant}}">
     <div class="container">
-      <h2 *ngIf="this.mainHeading.length > 0" class="text-center tab-header">{{this.mainHeading}}</h2>
+      <h2 *ngIf="mainHeading.length > 0" class="text-md-center tab-header">{{mainHeading}}</h2>
       <!-- Nav tabs -->
       <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
         <ng-container *ngFor="let tabTitle of tabTitles; let i = index">
