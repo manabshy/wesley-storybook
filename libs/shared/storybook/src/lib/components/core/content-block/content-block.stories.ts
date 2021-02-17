@@ -8,11 +8,14 @@ const variants = {
   'On White': '',
   'On White :: Collapsed': 'wes-content-block--collapse',
   'On White :: Right Aligned': 'wes-content-block--right',
-  'On White :: Right Aligned :: Collapsed': 'wes-content-block--right wes-content-block--collapse',
+  'On White :: Right Aligned :: Collapsed':
+    'wes-content-block--right wes-content-block--collapse',
   'On Grey': 'wes-content-block--grey',
   'On Grey :: Collapsed': 'wes-content-block--grey wes-content-block--collapse',
-  'On Grey :: Right Aligned': 'wes-content-block--right wes-content-block--grey',
-  'On Grey :: Right Aligned :: Collapsed': 'wes-content-block--right wes-content-block--grey wes-content-block--collapse',
+  'On Grey :: Right Aligned':
+    'wes-content-block--right wes-content-block--grey',
+  'On Grey :: Right Aligned :: Collapsed':
+    'wes-content-block--right wes-content-block--grey wes-content-block--collapse',
   'On White :: Campaign': 'wes-content-block--campaign',
   'On Grey :: Campaign': 'wes-content-block--campaign wes-content-block--grey',
 };
@@ -30,91 +33,65 @@ export const contentBlock = () => ({
                  <h1 class="level1">L1 - Unit trusts</h1>
                  <p class="lead">Lead - Wesleyan Unit Trust Managers (WUTM) offers a trio of products that enable you to invest in fully managed unit trust funds, run by an award-winning team. Whether you’re looking to build your own investment or save for your children’s future, we’ve got a product for you.</p>
                  <h2 class="level2">L2 - What is a stocks and shares ISA?</h2>
-                 <table class="wes-table light-grey">
-                    <caption> England and Wales NHS pension contributions </caption>
-                    <thead>
-                       <tr>
-                          <!--bindings={
-                             "ng-reflect-ng-for-of": "Salary Range,Your contribution"
-                             }-->
-                          <th> Salary Range </th>
-                          <th> Your contribution (before tax relief) </th>
-                          <th> Employer’s contribution </th>
-                       </tr>
-                    </thead>
-                    <tbody>
-                       <!--bindings={
-                          "ng-reflect-ng-for-of": "£15,432 - £21,477,5%,20.68%,£2"
-                          }-->
-                       <tr>
-                          <!--bindings={
-                             "ng-reflect-ng-for-of": "£15,432 - £21,477,5%,20.68%"
-                             }-->
-                          <td data-title="Salary Range"> £15,432 - £21,477 </td>
-                          <td data-title="Your contribution (before tax relief)"> 5% </td>
-                          <td data-title="Employer’s contribution"> 20.68% </td>
-                       </tr>
-                       <tr>
-                          <!--bindings={
-                             "ng-reflect-ng-for-of": "£21,477 - £41,477,5.6%,20.68%"
-                             }-->
-                          <td data-title="Salary Range"> £21,477 - £41,477 </td>
-                          <td data-title="Your contribution (before tax relief)"> 5.6% </td>
-                          <td data-title="Employer’s contribution"> 20.68% </td>
-                       </tr>
-                       <tr>
-                          <!--bindings={
-                             "ng-reflect-ng-for-of": "£41,477 - £100,000,7.1%,20.68%"
-                             }-->
-                          <td data-title="Salary Range"> £41,477 - £100,000 </td>
-                          <td data-title="Your contribution (before tax relief)"> 7.1% </td>
-                          <td data-title="Employer’s contribution"> 20.68% </td>
-                       </tr>
-                    </tbody>
+                 
+                 <table class="wes-table transparent">
+                   <caption>England and Wales NHS pension contributions</caption>
+                   <thead>
+                     <tr>
+                       <th>Salary Range</th>
+                       <th>Your contribution (before tax relief)</th>
+                       <th>Employer&rsquo;s contribution</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                       <th data-title="Salary Range">&pound;15,432 - &pound;21,477</th>
+                       <td data-title="Your contribution (before tax relief)">5%</td>
+                       <td data-title="Employer&rsquo;s contribution">20.68%</td>
+                     </tr>
+                     <tr>
+                       <th data-title="Salary Range">&pound;21,477 - &pound;41,477</th>
+                       <td data-title="Your contribution (before tax relief)">5.6%</td>
+                       <td data-title="Employer&rsquo;s contribution">20.68%</td>
+                     </tr>
+                     <tr>
+                       <th data-title="Salary Range">&pound;41,477 - &pound;100,000</th>
+                       <td data-title="Your contribution (before tax relief)">7.1%</td>
+                       <td data-title="Employer&rsquo;s contribution">20.68%</td>
+                     </tr>
+                   </tbody>
                  </table>
+              
                  <h2 class="level2">L2 - What is a stocks and shares ISA?</h2>
-                 <table class="wes-table wide light-grey">
-                    <caption> England and Wales NHS pension contributions </caption>
-                    <thead>
-                       <tr>
-                          <!--bindings={
-                             "ng-reflect-ng-for-of": "Salary Range,Your contribution"
-                             }-->
-                          <th> Salary Range </th>
-                          <th> Your contribution (before tax relief) </th>
-                          <th> Employer’s contribution </th>
-                       </tr>
-                    </thead>
-                    <tbody>
-                       <!--bindings={
-                          "ng-reflect-ng-for-of": "£15,432 - £21,477,5%,20.68%,£2"
-                          }-->
-                       <tr>
-                          <!--bindings={
-                             "ng-reflect-ng-for-of": "£15,432 - £21,477,5%,20.68%"
-                             }-->
-                          <td data-title="Salary Range"> £15,432 - £21,477 </td>
-                          <td data-title="Your contribution (before tax relief)"> 5% </td>
-                          <td data-title="Employer’s contribution"> 20.68% </td>
-                       </tr>
-                       <tr>
-                          <!--bindings={
-                             "ng-reflect-ng-for-of": "£21,477 - £41,477,5.6%,20.68%"
-                             }-->
-                          <td data-title="Salary Range"> £21,477 - £41,477 </td>
-                          <td data-title="Your contribution (before tax relief)"> 5.6% </td>
-                          <td data-title="Employer’s contribution"> 20.68% </td>
-                       </tr>
-                       <tr>
-                          <!--bindings={
-                             "ng-reflect-ng-for-of": "£41,477 - £100,000,7.1%,20.68%"
-                             }-->
-                          <td data-title="Salary Range"> £41,477 - £100,000 </td>
-                          <td data-title="Your contribution (before tax relief)"> 7.1% </td>
-                          <td data-title="Employer’s contribution"> 20.68% </td>
-                       </tr>
-                    </tbody>
+                 
+                 <table class="wes-table wide transparent">
+                   <caption>England and Wales NHS pension contributions</caption>
+                   <thead>
+                     <tr>
+                       <th>Salary Range</th>
+                       <th>Your contribution (before tax relief)</th>
+                       <th>Employer&rsquo;s contribution</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                       <th data-title="Salary Range">&pound;15,432 - &pound;21,477</th>
+                       <td data-title="Your contribution (before tax relief)">5%</td>
+                       <td data-title="Employer&rsquo;s contribution">20.68%</td>
+                     </tr>
+                     <tr>
+                       <th data-title="Salary Range">&pound;21,477 - &pound;41,477</th>
+                       <td data-title="Your contribution (before tax relief)">5.6%</td>
+                       <td data-title="Employer&rsquo;s contribution">20.68%</td>
+                     </tr>
+                     <tr>
+                       <th data-title="Salary Range">&pound;41,477 - &pound;100,000</th>
+                       <td data-title="Your contribution (before tax relief)">7.1%</td>
+                       <td data-title="Employer&rsquo;s contribution">20.68%</td>
+                     </tr>
+                   </tbody>
                  </table>
+               
                  <h2 class="level2">L2 - What is a stocks and shares ISA?</h2>
                  <p>I returned to the hotel for my midday cleaning and meditation. I ate some crackers, seaweed snacks and cashew nuts, and drank green tea from a vending machine outside my room. When I went out again after lunch the unclean receptionist gave me a map, and I chose a tourist spot to visit.</p>
                  <!--image-->
@@ -124,7 +101,7 @@ export const contentBlock = () => ({
                  <!-- Repeatable nested video carousel components -->
                  <div class="wes-video-carousel__video">
                     <div class="wes-video-carousel__video-frame">
-                       <iframe src="https://video.wesleyan.co.uk/v.ihtml/player.html?token=244588c11a6b9731d586512913ee3293&amp;source=embed&amp;photo%5fid=64659215" style="width:100%; height:100%; position: absolute; top: 0; left: 0;" frameborder="0" border="0" scrolling="no" mozallowfullscreen="1" webkitallowfullscreen="1" allowfullscreen="1" allow="autoplay; fullscreen"></iframe>
+                       <iframe title="title of video" src="https://video.wesleyan.co.uk/v.ihtml/player.html?token=244588c11a6b9731d586512913ee3293&amp;source=embed&amp;photo%5fid=64659215" style="width:100%; height:100%; position: absolute; top: 0; left: 0;" frameborder="0" border="0" scrolling="no" mozallowfullscreen="1" webkitallowfullscreen="1" allowfullscreen="1" allow="autoplay; fullscreen"></iframe>
                     </div>
                  </div>
                  <div class="wes-video-carousel__controls">
