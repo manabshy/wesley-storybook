@@ -4,9 +4,14 @@ import { moduleMetadata } from '@storybook/angular';
 import { ButtonComponent } from './button.component';
 import { ButtonModule } from './button.module';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-
+import  mdx from './button.mdx'
 export default {
   title: 'Atoms/Button',
+  parameters: {
+    docs: {
+      page: mdx
+    }
+  },
   decorators: [
     moduleMetadata({
       imports: [
