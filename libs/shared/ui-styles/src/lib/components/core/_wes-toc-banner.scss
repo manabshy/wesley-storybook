@@ -102,9 +102,6 @@
     @include wes-make-row;
     @include media-breakpoint-up(lg) {
       height: 100%;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
     }
   }
 
@@ -174,6 +171,16 @@
         list-style: none;
       }
     }
+    @include media-breakpoint-up(lg) {
+
+      .wes-list-chevron.column-2 {
+        ul {
+          justify-content: space-between;
+          padding: 0px 25px;
+        }
+      }
+    }
+
     @media (min-width: 768px) {
       .wes-list-chevron.column-2 {
         ul {
@@ -181,8 +188,8 @@
           display: flex;
           flex-flow: row wrap;
           align-items: stretch;
-          justify-content: space-around;
-          padding: 0;
+          justify-content: space-between;
+          padding: 0 25px;
         }
       }
     }
