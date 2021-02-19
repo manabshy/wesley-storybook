@@ -181,6 +181,13 @@
       color: $global-colour-charcoal;
       border-left: 2px solid $global-colour-gold-900;
       padding-left: rem(30px);
+
+      &.lead {
+        font-weight: 400;
+        font-size: 24px;
+        letter-spacing: 0;
+        line-height: 36px;
+      }
     }
   }
 }

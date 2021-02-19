@@ -6,18 +6,18 @@ export default {
 
 const variants = {
   'On White': '',
-  'On White :: Collapsed': 'wes-content-block--collapse',
+  //   'On White :: Collapsed': 'wes-content-block--collapse',
   'On White :: Right Aligned': 'wes-content-block--right',
-  'On White :: Right Aligned :: Collapsed':
-    'wes-content-block--right wes-content-block--collapse',
+  //   'On White :: Right Aligned :: Collapsed':
+  //  'wes-content-block--right wes-content-block--collapse',
   'On Grey': 'wes-content-block--grey',
-  'On Grey :: Collapsed': 'wes-content-block--grey wes-content-block--collapse',
+  //   'On Grey :: Collapsed': 'wes-content-block--grey wes-content-block--collapse',
   'On Grey :: Right Aligned':
     'wes-content-block--right wes-content-block--grey',
-  'On Grey :: Right Aligned :: Collapsed':
-    'wes-content-block--right wes-content-block--grey wes-content-block--collapse',
-  'On White :: Campaign': 'wes-content-block--campaign',
-  'On Grey :: Campaign': 'wes-content-block--campaign wes-content-block--grey',
+  //   'On Grey :: Right Aligned :: Collapsed':
+  //     'wes-content-block--right wes-content-block--grey wes-content-block--collapse',
+  //   'On White :: Campaign': 'wes-content-block--campaign',
+  //   'On Grey :: Campaign': 'wes-content-block--campaign wes-content-block--grey',
 };
 
 export const contentBlock = () => ({
@@ -157,8 +157,10 @@ export const contentBlock = () => ({
                     <li>What should I do with my pension benefits when I take them?</li>
                  </ul>
                  <p>Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
-                 <h3 class="level3">L3 - Emphasis effect</h3>
-                 <p class="emphasis">I walked down the Kokusai Dori, the main street of the city, doubling back and weaving off to lose anybody who was trailing me. Unfortunately my alpha potential is still too weak to achieve invisibility, so I have to shake trailers the old-fashioned way.</p>
+                 
+                 <p class="emphasis">Emphasis effect: I walked down the Kokusai Dori, the main street of the city, doubling back and weaving off to lose anybody who was trailing me. Unfortunately my alpha potential is still too weak to achieve invisibility, so I have to shake trailers the old-fashioned way.</p>
+                 
+                 <p class="emphasis lead">Lead Emphasis effect: Poor weather precluding my morning outing, we yarned by the peat fire & the hours sped by like minutes. I spoke at length of Tilda & Jackson & also my fears of "gold fever" in San Francisco</p>
                  <h4 class="level3">L3 - Right</h4>
                  <p class="highlight" style="text-align: right">Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
                  <h5 class="level4">L4 - Lorem ipsum</h5>
