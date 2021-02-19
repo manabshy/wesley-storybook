@@ -42,7 +42,7 @@ const styleVariants = {
 
 export const tabs1 = () => ({
   template: `
-  <div class="wes-tabs {{variant}}">
+  <div class="wes-core-tabs {{variant}}">
     <div class="container">
       <h2 *ngIf="mainHeading.length > 0" class="text-md-center tab-header">{{mainHeading}}</h2>
       <!-- Nav tabs -->
