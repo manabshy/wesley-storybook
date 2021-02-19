@@ -46,6 +46,13 @@ table.wes-table {
     }
   }
 
+  &.centred-columns {
+    thead th,
+    tbody td {
+      text-align: center;
+    }
+  }
+
   @include media-breakpoint-up(md) {
     margin: 72px 0px;
   }
@@ -161,10 +168,6 @@ table.wes-table {
     }
     thead {
       background-color: transparent;
-
-      th {
-        text-align: center;
-      }
     }
     th,
     td {

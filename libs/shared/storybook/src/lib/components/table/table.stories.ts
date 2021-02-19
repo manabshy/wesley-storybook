@@ -75,7 +75,7 @@ export const style1 = () => ({
 export const style2 = () => ({
   template: `
     <div class="container wes-table-container">
-      <table class="wes-table {{variant}}  {{view}}">
+      <table class="wes-table centred-columns {{variant}} {{view}}">
       <caption *ngIf="caption">England and Wales NHS pension contributions</caption>
       <thead *ngIf="tableHeaders">
         <tr>
