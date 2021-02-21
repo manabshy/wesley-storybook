@@ -1,0 +1,44 @@
+.wes-footer {
+
+  .component.rich-text {
+    background-color: $color-grey;
+    padding-bottom: 24px;
+  }
+  ul {
+   list-style-type: none;
+   margin-left: -40px;
+   line-height: 40px;
+   li a {
+     color:$color-slate;
+   }
+   li.footer-nav__item a {
+    margin: 0 1.375rem 0 0;
+
+   }
+  }
+
+  .footer-data {
+    display: flex;
+    justify-content: space-between;
+    .footer-data-item {
+      margin-right: 24px;
+      h4 {
+        font-size: 19px;
+        width: 272px;
+        line-height: 1.75rem;
+        color: $color-brand-charcoal;
+      }
+      h4 + p {
+        line-height: 1.25rem;
+        font-size: 14px;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    .footer-data {
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+}
