@@ -34,7 +34,7 @@ export const contentBlock = () => ({
                  <p class="lead">Lead - Wesleyan Unit Trust Managers (WUTM) offers a trio of products that enable you to invest in fully managed unit trust funds, run by an award-winning team. Whether you’re looking to build your own investment or save for your children’s future, we’ve got a product for you.</p>
                  <h2 class="level2">L2 - What is a stocks and shares ISA?</h2>
                  
-                 <table class="wes-table transparent">
+                 <table class="wes-core-table transparent">
                    <caption>England and Wales NHS pension contributions</caption>
                    <thead>
                      <tr>
@@ -64,7 +64,7 @@ export const contentBlock = () => ({
               
                  <h2 class="level2">L2 - What is a stocks and shares ISA?</h2>
                  
-                 <table class="wes-table wide transparent">
+                 <table class="wes-core-table wide transparent">
                    <caption>England and Wales NHS pension contributions</caption>
                    <thead>
                      <tr>
