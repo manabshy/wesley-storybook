@@ -44,16 +44,16 @@
   color: $color-brand-charcoal;
   font-weight: bold;
   border-width: 0;
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   align-items: stretch;
   font-size: 16px;
   line-height: 24px;
   padding: 20px 36px;
   text-align: left;
-  align-self: flex-start;
 
   @include media-breakpoint-down(sm) {
+    display: flex;
     padding: 20px 20px;
     justify-content: center;
   }
