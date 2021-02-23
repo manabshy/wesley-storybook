@@ -5,10 +5,10 @@
 .wes-promo {
   @media (min-width: 1200px) {
     .wes-promo__message.cta {
-        width: 640px;
-        a.cta {
-          font-weight: bold!important;
-        }
+      width: 640px;
+      a.cta {
+        font-weight: bold !important;
+      }
     }
   }
   @include wes-make-full-width-component;
@@ -137,7 +137,7 @@
     @media (min-width: 768px) {
       .wes-promo__message.cta {
         a.cta {
-          text-decoration: none!important;
+          text-decoration: none !important;
           font-weight: bold !important;
         }
       }
@@ -148,7 +148,6 @@
           text-decoration: underline !important;
           font-weight: bold !important;
           cursor: pointer !important;
-
         }
       }
     }
@@ -213,6 +212,16 @@
         width: 100%;
       }
     }
+
+    .wes-button:not(:first-child) {
+      @include media-breakpoint-down(sm) {
+        margin-top: rem(24px);
+      }
+
+      @include media-breakpoint-up(md) {
+        margin-left: rem(38px);
+      }
+    }
   }
 
   &__footnote {
@@ -264,31 +273,6 @@
       line-height: rem(32px);
       display: flex;
       align-items: center;
-    }
-    // Icon for wes-promo should have icon-pack or revise icon scss
-    [class^='promo-icon-'],
-    [class*=' promo-icon-'] {
-      &::before {
-        content: ' ';
-        display: inline-block;
-        width: rem(24px);
-        height: rem(24px);
-        line-height: rem(32px);
-        background-repeat: no-repeat;
-        margin-right: rem(10px);
-        object-fit: contain;
-        background-position: center;
-      }
-    }
-    .promo-icon-profile {
-      &::before {
-        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%231E2630' fill='none' fill-rule='evenodd'%3E%3Cpath d='M.5 23.5c1.88-6.468 5.626-9.799 11.239-9.991.088-.009.175-.008.262-.007l.26-.002h0c5.613.201 9.36 3.532 11.239 10h0-23z' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='12' cy='6.5' r='6'/%3E%3C/g%3E%3C/svg%3E");
-      }
-    }
-    .promo-icon-medical {
-      &::before {
-        background-image: url("data:image/svg+xml,%3Csvg width='24' height='22' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%231E2630' fill='none' fill-rule='evenodd' stroke-linecap='round'%3E%3Cpath d='M17.5.5c-2.46 0-4.574 1.531-5.5 3.722C11.074 2.031 8.96.5 6.5.5 3.186.5.5 3.279.5 6.706v.518C.5 11.39 8 20.002 12 21.5c4-1.498 11.5-10.11 11.5-14.276v-.518C23.5 3.28 20.814.5 17.5.5z' stroke-linejoin='round'/%3E%3Cpath d='M6.5 5v5M4 7.5h5'/%3E%3C/g%3E%3C/svg%3E");
-      }
     }
   }
 }
