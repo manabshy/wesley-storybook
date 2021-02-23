@@ -4,15 +4,23 @@ import { AccordionModule } from './accordion.module';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import { select } from '@storybook/addon-knobs';
 
+
+
 const label = 'Colors';
 const options = {
-  white: '#F6F6F6',
-  grey: '#D9DADC',
-  none: '',
+  grey: '#F6F6F6',
+  white: '',
 };
-const defaultValue = options.white;
-const groupId = 'GROUP-ID1';
+const defaultValue = options.grey;
+const groupId = 'Colors';
 
+const label_size = 'Size';
+const size_options = {
+  large: false,
+  medium: true,
+};
+const defaultSize = size_options.large;
+const sizeId = 'Size';
 
 
 export default {
@@ -37,7 +45,6 @@ export const accordionFullWidth= () => ({
     value : select(label, options, defaultValue, groupId),
     type: 'fullwidth',
     toggle: (event: any) => {
-      console.log('some bindings work');
       console.log(event);
     },
   },
@@ -47,14 +54,15 @@ export const accordionFullWidth= () => ({
 
 export const custom= () => ({
   template: `
-  <wes-accordion [type]="type" [value]="value"></wes-accordion>
+  <wes-accordion [type]="type" [value]="value" [size]="size"></wes-accordion>
   `,
   props: {
     text: text('text', 'Accordion'),
     value : select(label, options, defaultValue, groupId),
+    size : select(label_size, size_options, defaultSize, sizeId),
+
     type: 'custom',
     toggle: (event: any) => {
-      console.log('some bindings work');
       console.log(event);
     },
   },

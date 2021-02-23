@@ -21,6 +21,7 @@ export class AccordionComponent {
   @Input() active = false;
   @Input() type = 'base';
   @Input() value;
+  @Input() size;
   toggleIcon;
   constructor(private el: ElementRef) {}
   /**

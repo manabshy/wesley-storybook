@@ -1,6 +1,10 @@
 //Sitecore SXA accordion styling
 .accordion {
-
+  @include media-breakpoint-up(lg) {
+    .container.wes-accordion {
+      width: 1024px;
+    }
+  }
   .component-content.header{
     font-size: $global-font-size-heading;
     font-family: $global-font-opensans;
@@ -21,7 +25,9 @@
     border-bottom: 1px solid $global-colour-grey-100;
     transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.3s;
 
+
     @include media-breakpoint-up(md) {
+
       @include rem(
         (
           padding: 24px 16px,
