@@ -9,13 +9,6 @@
   height: auto;
   overflow: hidden;
 
-  @include media-breakpoint-up(lg) {
-    height: 504px;
-  }
-  @include media-breakpoint-up(xl) {
-    height: 600px;
-  }
-
   &__wrapper {
     @include wes-make-container;
     height: 100%;
@@ -135,28 +128,32 @@
   }
 
   &__body {
-    @include wes-make-row;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   &__content {
-    @include wes-make-col-ready;
-    padding-top: 268px;
-    padding-bottom: rem(56px);
+    position: relative;
+    width: 100%;
+    margin-top: 268px;
+    margin-bottom: 56px;
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(md) {
       @include make-col(9);
-      padding-top: 488px;
-      padding-bottom: rem(90px);
+      margin-top: 488px;
+      margin-bottom: 90px;
     }
 
     @include media-breakpoint-up(lg) {
       @include make-col(7);
-      padding-top: 0;
-      padding-bottom: 0;
+      margin-top: 106px;
+      margin-bottom: 106px;
     }
 
     @include media-breakpoint-up(xl) {
       @include make-col(6);
+      margin-top: 154px;
+      margin-bottom: 154px;
     }
   }
 

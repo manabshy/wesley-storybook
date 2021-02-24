@@ -26,8 +26,8 @@ export default {
 
 export const style1 = () => ({
   template: `
-  <div class="container wes-table-container">
-  <table class="wes-table {{variant}} {{view}}">
+  <div class="container wes-core-table-container">
+  <table class="wes-core-table {{variant}} {{view}}">
     <caption *ngIf="caption">
       {{caption}}
     </caption>
@@ -74,8 +74,8 @@ export const style1 = () => ({
 
 export const style2 = () => ({
   template: `
-    <div class="container wes-table-container">
-      <table class="wes-table centred-columns {{variant}} {{view}}">
+    <div class="container wes-core-table-container">
+      <table class="wes-core-table centred-columns {{variant}} {{view}}">
       <caption *ngIf="caption">England and Wales NHS pension contributions</caption>
       <thead *ngIf="tableHeaders">
         <tr>

@@ -1,0 +1,164 @@
+// all svg icons placed in here and may be added to block or inline-block elements only
+// Icon for wes-promo should have icon-pack or revise icon scss
+[class^='promo-icon-'],
+[class*=' promo-icon-'] {
+  &::before {
+    content: ' ';
+    display: inline-block;
+    width: rem(24px);
+    height: rem(24px);
+    line-height: rem(32px);
+    background-repeat: no-repeat;
+    margin-right: rem(10px);
+    object-fit: contain;
+    background-position: center;
+  }
+}
+.promo-icon-profile {
+  &::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cg transform='translate(1 1)' stroke='%231E2630' stroke-width='2' fill='none' fill-rule='evenodd'%3E%3Ccircle stroke-linecap='round' cx='11' cy='5' r='5'/%3E%3Cpath d='M12 14c2.44 0 4.653.97 6.274 2.547a8.977 8.977 0 012.638 5.187h0l-19.856.252a8.973 8.973 0 012.58-5.35A8.972 8.972 0 0110 14h0z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+.promo-icon-medical {
+  &::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cg stroke='%231E2630' stroke-width='2' fill='none' fill-rule='evenodd' stroke-linecap='round'%3E%3Cpath d='M17.26 2C14.909 2 12.887 3.458 12 5.545 11.114 3.458 9.092 2 6.74 2 3.57 2 1 4.646 1 7.91v.493C1 12.372 8.173 20.573 12 22c3.827-1.426 11-9.628 11-13.597v-.492C23 4.646 20.43 2 17.26 2z' stroke-linejoin='round'/%3E%3Cpath d='M7 7v4M5 9h4'/%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+.promo-icon-gp {
+  &::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cg transform='translate(4 3)' fill='none' fill-rule='evenodd'%3E%3Cpath d='M2.115 3c-.583 5.333 1.051 8 4.901 8 3.85 0 5.47-2.667 4.858-8' stroke='%231E2630' stroke-width='2'/%3E%3Ccircle fill='%231E2630' cx='2' cy='2' r='2'/%3E%3Ccircle fill='%231E2630' cx='12' cy='2' r='2'/%3E%3Ccircle stroke='%231E2630' stroke-width='2' cx='16.5' cy='14.5' r='1.5'/%3E%3Cpath d='M7 11c-.141 2.679.098 4.334.717 4.967.449.46 1.346.898 2.283.898 1.338 0 3.122-.472 5-1.435' stroke='%231E2630' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+.promo-icon-dental {
+  &::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cg stroke='%231E2630' stroke-width='2' fill='none' fill-rule='evenodd'%3E%3Cpath d='M10.236 13.833c-.603 1.247-1.178 3.639-1.606 6.011-.81 4.489-2.26 4.19-4.35-.898C-.49 8.574-.058 2.678 5.577 1.257c3.007-.758 3.374.38 4.418.594.609.126 1.277.2 2.005.222l.43-.02a11.166 11.166 0 001.575-.202c1.044-.215 1.365-1.318 4.418-.594 5.64 1.339 6.072 7.235 1.297 17.69-2.09 5.086-3.54 5.386-4.35.897-.428-2.372-1.003-4.764-1.606-6.01-.359-.742-.947-1.212-1.764-1.411h0c-.817.199-1.405.669-1.764 1.41z'/%3E%3Cpath d='M5 10c.113-2.667 1.446-4 4-4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+.promo-icon-education {
+  &::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cg stroke='%231E2630' fill='none' fill-rule='evenodd'%3E%3Cg stroke-width='2'%3E%3Cpath d='M23.351 3L23 20.512l-9.19.188A1.923 1.923 0 0112 22a1.924 1.924 0 01-1.814-1.313h0H.65L1 3.177 9.739 3c.29.002.56.082.794.22.247.148.451.36.59.614h0L12 5.433l.877-1.599c.139-.254.343-.466.59-.613.236-.14.51-.221.803-.221h9.081z'/%3E%3Cpath d='M0 17h7c1.645 0 2.534.003 2.667.011C11.204 17.104 12 17.41 12 18M24 17h-7c-1.645 0-2.534.003-2.667.011C12.796 17.104 12 17.41 12 18' stroke-linejoin='bevel'/%3E%3Cpath stroke-linecap='square' d='M12 4.32V18'/%3E%3C/g%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M4.5 7.5h4M4.5 9.5h4M4.5 11.5h4M15.5 7.5h4M15.5 9.5h4M15.5 11.5h4'/%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+.promo-icon-legal {
+  &::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cg stroke='%231E2630' fill='none' fill-rule='evenodd'%3E%3Cpath d='M11.807 19.661c.308 0 .572.183.769.43.27.338.424.809.424 1.323h0v1.247H1v-1.247c0-.514.155-.985.424-1.323.197-.247.46-.43.77-.43h0z' stroke-width='2'/%3E%3Cg stroke-width='2'%3E%3Cpath d='M3.444 9.479L8.37 3.175l3.94 3.078-4.925 6.304z'/%3E%3Cpath stroke-linecap='round' d='M9.847 9.405l10.992 8.67'/%3E%3C/g%3E%3Cpath stroke-linecap='square' d='M8.259 13.875L1.955 8.949M13.8 6.782L7.496 1.857'/%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+.promo-icon-other {
+  &::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cg transform='translate(0 3.194)' fill='none' fill-rule='evenodd'%3E%3Cg transform='translate(0 2)' stroke='%231E2630' stroke-width='2'%3E%3Crect x='1' y='1.806' width='22' height='14' rx='3'/%3E%3Cpath stroke-linecap='square' d='M2 4.806l9 4M22 4.806l-9 4'/%3E%3C/g%3E%3Cpath d='M18.222 1c.244 0 .47.068.63.198h0L19 3.814H5V1.43c.308-.36.534-.429.778-.429h0z' stroke='%231E2630' stroke-width='2'/%3E%3Crect fill='%231E2630' x='9' y='8.806' width='6' height='4' rx='1'/%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+
+// usage @color encoded hex colour
+// e.g. black @include arrow-icon('%231E2630');
+// e.g. white @include arrow-icon('%23FFFFFF');
+@mixin arrow-icon($color) {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M9.827 2.21l.094.083 5 5a1 1 0 01.084 1.32l-.084.094-5 5a1 1 0 01-1.497-1.32l.083-.094L11.8 9H2a1 1 0 01-.117-1.993L2 7h9.8L8.507 3.707a1 1 0 01-.083-1.32l.083-.094a1 1 0 011.32-.083z' style='fill:#{$color};transition-delay: 0.4s;transition: fill ease-out 0.2s;' fill-rule='nonzero'/%3E%3C/svg%3E");
+}
+@mixin make-icon-button {
+  content: '';
+  display: inline-block;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  line-height: inherit;
+  min-width: 28px;
+  transition-delay: 0.4s;
+  transition: background-image 0.4s ease-in-out;
+}
+.button-icon-arrow-left {
+  &::before {
+    @include make-icon-button;
+    background-position: left center;
+    @include arrow-icon('%231E2630');
+  }
+}
+.button-icon-arrow-right {
+  &::after {
+    @include make-icon-button;
+    background-position: right center;
+    @include arrow-icon('%231E2630');
+  }
+}
+
+// wes buttons integration
+.wes-button.wes-button--on-light:not(:disabled):hover,
+.wes-button--on-light.wes-hero-banner-2__cta:not(:disabled):hover {
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    @include arrow-icon('%23FFFFFF');
+  }
+}
+
+.wes-button.wes-button--on-light.wes-button--outline:not(:disabled),
+.wes-button--on-light.wes-button--outline.wes-hero-banner-2__cta:not(:disabled),
+.wes-button.wes-button--on-light.wes-hero-banner-2__cta--secondary:not(:disabled),
+.wes-button--on-light.wes-hero-banner-2__cta.wes-hero-banner-2__cta--secondary:not(:disabled) {
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    @include arrow-icon('%2340474f');
+  }
+}
+
+.wes-button.wes-button--on-light:disabled,
+.wes-button--on-light.wes-hero-banner-2__cta:disabled,
+.wes-button.wes-button--on-gold:disabled,
+.wes-hero-banner-2__cta:disabled,
+.wes-button.wes-button--on-dark:disabled,
+.wes-button--on-dark.wes-hero-banner-2__cta:disabled {
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    // opacity: 0.25;
+    @include arrow-icon('rgba(179, 181, 185, 0.5)');
+    transform: none;
+  }
+}
+
+.wes-button.wes-button--on-gold:not(:disabled):hover,
+.wes-hero-banner-2__cta:not(:disabled):hover,
+.wes-button.wes-button--on-dark.wes-button--outline:not(:disabled),
+.wes-button--on-dark.wes-button--outline.wes-hero-banner-2__cta:not(:disabled),
+.wes-button.wes-button--on-dark.wes-hero-banner-2__cta--secondary:not(:disabled),
+.wes-button--on-dark.wes-hero-banner-2__cta.wes-hero-banner-2__cta--secondary:not(:disabled) {
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    @include arrow-icon('%23FFFFFF');
+  }
+}
+.wes-button.wes-button--on-gold.wes-button--outline:not(:disabled):hover,
+.wes-button--outline.wes-hero-banner-2__cta:not(:disabled):hover,
+.wes-button.wes-button--on-gold.wes-hero-banner-2__cta--secondary:not(:disabled):hover,
+.wes-hero-banner-2__cta.wes-hero-banner-2__cta--secondary:not(:disabled):hover {
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    @include arrow-icon('%2340474f');
+  }
+}
+.wes-button.wes-button--on-dark.wes-button--outline:not(:disabled):hover,
+.wes-button--on-dark.wes-button--outline.wes-hero-banner-2__cta:not(:disabled):hover,
+.wes-button.wes-button--on-dark.wes-hero-banner-2__cta--secondary:not(:disabled):hover,
+.wes-button--on-dark.wes-hero-banner-2__cta.wes-hero-banner-2__cta--secondary:not(:disabled):hover {
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    @include arrow-icon('%2340474f');
+  }
+}
+
+.wes-button.wes-button--on-light.wes-button--outline:not(:disabled),
+.wes-button--on-light.wes-button--outline.wes-hero-banner-2__cta:not(:disabled),
+.wes-button.wes-button--on-light.wes-hero-banner-2__cta--secondary:not(:disabled),
+.wes-button--on-light.wes-hero-banner-2__cta.wes-hero-banner-2__cta--secondary:not(:disabled) {
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    @include arrow-icon('%231e2630');
+  }
+}
+.wes-button.wes-button--on-light.wes-button--outline:not(:disabled):hover,
+.wes-button--on-light.wes-button--outline.wes-hero-banner-2__cta:not(:disabled):hover,
+.wes-button.wes-button--on-light.wes-hero-banner-2__cta--secondary:not(:disabled):hover,
+.wes-button--on-light.wes-hero-banner-2__cta.wes-hero-banner-2__cta--secondary:not(:disabled):hover {
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    @include arrow-icon('%2340474f');
+  }
+}
