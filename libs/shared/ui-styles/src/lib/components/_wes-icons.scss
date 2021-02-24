@@ -1,23 +1,4 @@
 // all svg icons placed in here and may be added to block or inline-block elements only
-
-[class^='wes-icon-'],
-[class*=' wes-icon-'] {
-  &:before {
-    content: '';
-    display: block;
-    background-repeat: no-repeat;
-    object-fit: contain;
-    background-position: center;
-    width: 24px;
-    height: 100%;
-    float: left;
-
-    // for button hovers transition
-    transition-delay: 0.4s;
-    transition: background-image 0.4s ease-in-out;
-  }
-}
-
 // Icon for wes-promo should have icon-pack or revise icon scss
 [class^='promo-icon-'],
 [class*=' promo-icon-'] {
@@ -75,17 +56,27 @@
 @mixin arrow-icon($color) {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M9.827 2.21l.094.083 5 5a1 1 0 01.084 1.32l-.084.094-5 5a1 1 0 01-1.497-1.32l.083-.094L11.8 9H2a1 1 0 01-.117-1.993L2 7h9.8L8.507 3.707a1 1 0 01-.083-1.32l.083-.094a1 1 0 011.32-.083z' style='fill:#{$color};transition-delay: 0.4s;transition: fill ease-out 0.2s;' fill-rule='nonzero'/%3E%3C/svg%3E");
 }
-.wes-icon-arrow-left {
+@mixin make-icon-button {
+  content: '';
+  display: inline-block;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  line-height: inherit;
+  min-width: 28px;
+  transition-delay: 0.4s;
+  transition: background-image 0.4s ease-in-out;
+}
+.button-icon-arrow-left {
   &::before {
-    width: 28px;
-    background-position: left 50%;
+    @include make-icon-button;
+    background-position: left center;
     @include arrow-icon('%231E2630');
   }
 }
-.wes-icon-arrow-right {
-  &::before {
-    width: 28px;
-    background-position: right 50%;
+.button-icon-arrow-right {
+  &::after {
+    @include make-icon-button;
+    background-position: right center;
     @include arrow-icon('%231E2630');
   }
 }
@@ -93,11 +84,9 @@
 // wes buttons integration
 .wes-button.wes-button--on-light:not(:disabled):hover,
 .wes-button--on-light.wes-hero-banner-2__cta:not(:disabled):hover {
-  .wes-icon-arrow-right,
-  .wes-icon-arrow-left {
-    &::before {
-      @include arrow-icon('%23FFFFFF');
-    }
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    @include arrow-icon('%23FFFFFF');
   }
 }
 
@@ -105,21 +94,23 @@
 .wes-button--on-light.wes-button--outline.wes-hero-banner-2__cta:not(:disabled),
 .wes-button.wes-button--on-light.wes-hero-banner-2__cta--secondary:not(:disabled),
 .wes-button--on-light.wes-hero-banner-2__cta.wes-hero-banner-2__cta--secondary:not(:disabled) {
-  .wes-icon-arrow-right,
-  .wes-icon-arrow-left {
-    &::before {
-      @include arrow-icon('%2340474f');
-    }
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    @include arrow-icon('%2340474f');
   }
 }
 
 .wes-button.wes-button--on-light:disabled,
-.wes-button--on-light.wes-hero-banner-2__cta:disabled {
-  .wes-icon-arrow-right,
-  .wes-icon-arrow-left {
-    &::before {
-      opacity: 0.25;
-    }
+.wes-button--on-light.wes-hero-banner-2__cta:disabled,
+.wes-button.wes-button--on-gold:disabled,
+.wes-hero-banner-2__cta:disabled,
+.wes-button.wes-button--on-dark:disabled,
+.wes-button--on-dark.wes-hero-banner-2__cta:disabled {
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    // opacity: 0.25;
+    @include arrow-icon('rgba(179, 181, 185, 0.5)');
+    transform: none;
   }
 }
 
@@ -129,33 +120,27 @@
 .wes-button--on-dark.wes-button--outline.wes-hero-banner-2__cta:not(:disabled),
 .wes-button.wes-button--on-dark.wes-hero-banner-2__cta--secondary:not(:disabled),
 .wes-button--on-dark.wes-hero-banner-2__cta.wes-hero-banner-2__cta--secondary:not(:disabled) {
-  .wes-icon-arrow-right,
-  .wes-icon-arrow-left {
-    &::before {
-      @include arrow-icon('%23FFFFFF');
-    }
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    @include arrow-icon('%23FFFFFF');
   }
 }
 .wes-button.wes-button--on-gold.wes-button--outline:not(:disabled):hover,
 .wes-button--outline.wes-hero-banner-2__cta:not(:disabled):hover,
 .wes-button.wes-button--on-gold.wes-hero-banner-2__cta--secondary:not(:disabled):hover,
 .wes-hero-banner-2__cta.wes-hero-banner-2__cta--secondary:not(:disabled):hover {
-  .wes-icon-arrow-right,
-  .wes-icon-arrow-left {
-    &::before {
-      @include arrow-icon('%2340474f');
-    }
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    @include arrow-icon('%2340474f');
   }
 }
 .wes-button.wes-button--on-dark.wes-button--outline:not(:disabled):hover,
 .wes-button--on-dark.wes-button--outline.wes-hero-banner-2__cta:not(:disabled):hover,
 .wes-button.wes-button--on-dark.wes-hero-banner-2__cta--secondary:not(:disabled):hover,
 .wes-button--on-dark.wes-hero-banner-2__cta.wes-hero-banner-2__cta--secondary:not(:disabled):hover {
-  .wes-icon-arrow-right,
-  .wes-icon-arrow-left {
-    &::before {
-      @include arrow-icon('%2340474f');
-    }
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    @include arrow-icon('%2340474f');
   }
 }
 
@@ -163,21 +148,17 @@
 .wes-button--on-light.wes-button--outline.wes-hero-banner-2__cta:not(:disabled),
 .wes-button.wes-button--on-light.wes-hero-banner-2__cta--secondary:not(:disabled),
 .wes-button--on-light.wes-hero-banner-2__cta.wes-hero-banner-2__cta--secondary:not(:disabled) {
-  .wes-icon-arrow-right,
-  .wes-icon-arrow-left {
-    &::before {
-      @include arrow-icon('%231e2630');
-    }
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    @include arrow-icon('%231e2630');
   }
 }
 .wes-button.wes-button--on-light.wes-button--outline:not(:disabled):hover,
 .wes-button--on-light.wes-button--outline.wes-hero-banner-2__cta:not(:disabled):hover,
 .wes-button.wes-button--on-light.wes-hero-banner-2__cta--secondary:not(:disabled):hover,
 .wes-button--on-light.wes-hero-banner-2__cta.wes-hero-banner-2__cta--secondary:not(:disabled):hover {
-  .wes-icon-arrow-right,
-  .wes-icon-arrow-left {
-    &::before {
-      @include arrow-icon('%2340474f');
-    }
+  &.button-icon-arrow-right::after,
+  &.button-icon-arrow-left::before {
+    @include arrow-icon('%2340474f');
   }
 }
