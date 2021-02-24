@@ -33,14 +33,14 @@ export const promo = () => ({
             </div>
             <div class="wes-promo__actions">
             <ng-container *ngIf="variant.indexOf('wes-promo--shout') > -1">
-            <a *ngIf="primaryCtaText.length > 0" class="wes-button wes-button--on-gold" href="javascript:void(0);">{{primaryCtaText}} <span aria-hidden="true" class="wes-icon-arrow-right"></span></a>
+            <a *ngIf="primaryCtaText.length > 0" class="wes-button wes-button--on-gold button-icon-arrow-right" href="javascript:void(0);">{{primaryCtaText}}</a>
 
-            <a *ngIf="secondaryCtaText.length > 0" class="wes-button wes-button--on-gold wes-button--outline" href="javascript:void(0);">{{secondaryCtaText}} <span aria-hidden="true" class="wes-icon-arrow-right"></span></a>
+            <a *ngIf="secondaryCtaText.length > 0" class="wes-button wes-button--on-gold wes-button--outline button-icon-arrow-right" href="javascript:void(0);">{{secondaryCtaText}}</a>
             </ng-container>
             <ng-container *ngIf="variant.indexOf('wes-promo--shout') == -1">
-            <a  *ngIf="primaryCtaText.length > 0" class="wes-button wes-button--on-light wes-button--outline" href="javascript:void(0);">{{primaryCtaText}} <span aria-hidden="true" class="wes-icon-arrow-right"></span></a>
+            <a  *ngIf="primaryCtaText.length > 0" class="wes-button wes-button--on-light wes-button--outline button-icon-arrow-right" href="javascript:void(0);">{{primaryCtaText}}</a>
 
-            <a *ngIf="secondaryCtaText.length > 0" class="wes-button wes-button--on-light" href="javascript:void(0);">{{secondaryCtaText}} <span aria-hidden="true" class="wes-icon-arrow-right"></span></a>
+            <a *ngIf="secondaryCtaText.length > 0" class="wes-button wes-button--on-light button-icon-arrow-right" href="javascript:void(0);">{{secondaryCtaText}}</a>
             </ng-container>
             </div>
             <div *ngIf="footnote" class="wes-promo__footnote" [innerHTML]="footnote">
@@ -117,14 +117,14 @@ export const promo_CTA = () => ({
             </div>
             <div class="wes-promo__actions">
             <ng-container *ngIf="variant.indexOf('wes-promo--shout') > -1">
-            <a *ngIf="primaryCtaText.length > 0" class="wes-button wes-button--on-gold" href="javascript:void(0);">{{primaryCtaText}} <span aria-hidden="true" class="wes-icon-arrow-right"></span></a>
+            <a *ngIf="primaryCtaText.length > 0" class="wes-button wes-button--on-gold button-icon-arrow-right" href="javascript:void(0);">{{primaryCtaText}}</a>
 
-            <a *ngIf="secondaryCtaText.length > 0" class="wes-button wes-button--on-gold wes-button--outline" href="javascript:void(0);">{{secondaryCtaText}} <span aria-hidden="true" class="wes-icon-arrow-right"></span></a>
+            <a *ngIf="secondaryCtaText.length > 0" class="wes-button wes-button--on-gold wes-button--outline button-icon-arrow-right" href="javascript:void(0);">{{secondaryCtaText}}</a>
             </ng-container>
             <ng-container *ngIf="variant.indexOf('wes-promo--shout') == -1">
-            <a  *ngIf="primaryCtaText.length > 0" class="wes-button wes-button--on-light wes-button--outline" href="javascript:void(0);">{{primaryCtaText}} <span aria-hidden="true" class="wes-icon-arrow-right"></span></a>
+            <a  *ngIf="primaryCtaText.length > 0" class="wes-button wes-button--on-light wes-button--outline button-icon-arrow-right" href="javascript:void(0);">{{primaryCtaText}}</a>
 
-            <a *ngIf="secondaryCtaText.length > 0" class="wes-button wes-button--on-light" href="javascript:void(0);">{{secondaryCtaText}} <span aria-hidden="true" class="wes-icon-arrow-right"></span></a>
+            <a *ngIf="secondaryCtaText.length > 0" class="wes-button wes-button--on-light button-icon-arrow-right" href="javascript:void(0);">{{secondaryCtaText}}</a>
             </ng-container>
             </div>
             <div *ngIf="footnote" class="wes-promo__footnote" [innerHTML]="footnote">
