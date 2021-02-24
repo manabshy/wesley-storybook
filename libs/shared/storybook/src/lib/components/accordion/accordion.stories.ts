@@ -4,69 +4,32 @@ import { AccordionModule } from './accordion.module';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import { select } from '@storybook/addon-knobs';
 
-
-
-const label = 'Colors';
-const options = {
-  grey: '#F6F6F6',
-  white: '',
-};
-const defaultValue = options.grey;
-const groupId = 'Colors';
-
-const label_size = 'Size';
-const size_options = {
-  large: false,
-  medium: true,
-};
-const defaultSize = size_options.large;
-const sizeId = 'Size';
-
-
 export default {
   title: 'Components/Accordion',
   decorators: [
     withKnobs,
     moduleMetadata({
-      imports: [
-        AccordionModule
-      ]
-    })
+      imports: [AccordionModule],
+    }),
   ],
-  component: AccordionComponent
+  component: AccordionComponent,
 };
 
-export const accordionFullWidth= () => ({
+const variants = {
+  'On White': 'wes-bg-solid-white',
+  'On Grey': 'wes-bg-solid-grey-50',
+};
+
+export const accordion = () => ({
   template: `
-  <wes-accordion [type]="type" [value]="value"></wes-accordion>
+  <wes-accordion [background]="background" [idAttribute]="id" [title]="title"></wes-accordion>
   `,
   props: {
-    text: text('text', 'Accordion'),
-    value : select(label, options, defaultValue, groupId),
-    type: 'fullwidth',
-    toggle: (event: any) => {
-      console.log(event);
-    },
+    title: text('title', 'Frequently Asked Question'),
+    id: text('id', 'frequentlyAskedQuestions'),
+    background: select('Variant', variants, ''),
   },
-  component: AccordionComponent
-});
-
-
-export const custom= () => ({
-  template: `
-  <wes-accordion [type]="type" [value]="value" [size]="size"></wes-accordion>
-  `,
-  props: {
-    text: text('text', 'Accordion'),
-    value : select(label, options, defaultValue, groupId),
-    size : select(label_size, size_options, defaultSize, sizeId),
-
-    type: 'custom',
-    toggle: (event: any) => {
-      console.log(event);
-    },
-  },
-  component: AccordionComponent
+  component: AccordionComponent,
 });
 
 /***/

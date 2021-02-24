@@ -19,51 +19,20 @@ export class AccordionComponent {
   @ViewChild(TemplateRef)
   content: TemplateRef<any>;
   @Input() active = false;
-  @Input() type = 'base';
-  @Input() value;
-  @Input() size;
-  toggleIcon;
-  constructor(private el: ElementRef) {}
-  /**
-   * If the panel is opened or closed
-   */
-  @Input() opened = false;
+  @Input() background = 'wes-bg-solid-white';
+  @Input() idAttribute: string = 'frequentlyAskedQuestions';
+  @Input() title: string = 'Frequently Asked Questions';
+  constructor() {}
 
-  /**
-   * Text to display in the group title bar
-   */
-  @Input() title: string;
-
-  opened_1: Boolean = false;
-  opened_2: Boolean = false;
-  /**
-   * Emitted when user clicks on group titlebar
-   * @type {EventEmitter<any>}
-   */
-  @Output() toggle: EventEmitter<any> = new EventEmitter<any>();
-
-  toggleMenu(event: number) {
-    if ( event === 0 ) {
-      this.toggleIcon = this.el.nativeElement.querySelector('.item.one');
-      if ( !this.toggleIcon.classList.contains('active')) {
-        this.toggleIcon.classList.add('active');
-      }
-      else {
-        this.toggleIcon.classList.remove('active');
-      }
-      this.opened_1 = !this.opened_1 ? true : false;
-    }
-    if ( event === 1 ) {
-      this.toggleIcon = this.el.nativeElement.querySelector('.item.two');
-      if ( !this.toggleIcon.classList.contains('active')) {
-        this.toggleIcon.classList.add('active');
-      }
-      else {
-        this.toggleIcon.classList.remove('active');
-      }
-      this.opened_2 = !this.opened_2 ? true : false;
+  toggleMenu(event: Event) {
+    const toggleIcon = (event.currentTarget as HTMLElement).parentElement;
+    const toggleDiv = toggleIcon.querySelector('.toggle-content');
+    if (!toggleIcon.classList.contains('active')) {
+      toggleIcon.classList.add('active');
+      toggleDiv.classList.remove('hidden');
+    } else {
+      toggleIcon.classList.remove('active');
+      toggleDiv.classList.add('hidden');
     }
   }
-
 }
-

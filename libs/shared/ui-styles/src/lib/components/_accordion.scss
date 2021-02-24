@@ -1,14 +1,53 @@
 //Sitecore SXA accordion styling
-.accordion {
+@mixin make-accordion-columns {
+  @include make-col(12);
   @include media-breakpoint-up(lg) {
-    .container.wes-accordion {
-      width: 1024px;
-    }
+    @include make-col-offset(1);
+    @include make-col(10);
   }
-  .component-content.header{
+}
+.accordion-heading {
+  @extend .container;
+  h2 {
+    @include make-accordion-columns;
     font-size: $global-font-size-heading;
     font-family: $global-font-opensans;
+
+    margin-top: 56px;
+    margin-bottom: 32px;
+    font-weight: normal;
+    color: $global-colour-charcoal;
+
+    @include media-breakpoint-up(md) {
+      margin-bottom: 40px;
+
+      margin-top: 96px;
+    }
+    @include media-breakpoint-up(lg) {
+      margin-bottom: 48px;
+    }
+    @include media-breakpoint-up(xl) {
+      margin-top: 112px;
+    }
   }
+}
+
+.component.accordion {
+  @extend .container;
+  padding-bottom: 56px;
+
+  @include media-breakpoint-up(md) {
+    padding-bottom: 96px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    padding-bottom: 112px;
+  }
+
+  > .component-content {
+    @include make-accordion-columns;
+  }
+
   .items {
     margin: 0;
     padding: 0;
@@ -16,43 +55,36 @@
 
   .item {
     list-style: none;
-    @include rem(
-      (
-        padding: 16px 8px,
-      )
-    );
 
     border-bottom: 1px solid $global-colour-grey-100;
     transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.3s;
 
-
-    @include media-breakpoint-up(md) {
-
-      @include rem(
-        (
-          padding: 24px 16px,
-        )
-      );
-    }
-
     &:first-child {
       border-top: 1px solid $global-colour-grey-100;
     }
-    @media (hover: hover) {
-      &:hover {
-        cursor: pointer;
-        box-sizing: border-box;
-        border-bottom-color: $global-colour-grey-900;
-      }
-    }
+
     .field-heading strong {
       font-weight: 600;
     }
-  }
-  .item {
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.active {
+      cursor: pointer;
+      border-color: transparent;
+      transition: all ease-in-out 0.3s;
+      outline: dotted 2px $global-colour-charcoal;
+    }
+
     .toggle-header {
+      padding: 14px 40px 14px 8px;
       position: relative;
-      padding-right: rem(32px);
+
+      @include media-breakpoint-up(md) {
+        padding: 22px 48px 22px 16px;
+      }
       &:after {
         content: '';
         position: absolute;
@@ -63,17 +95,12 @@
         transform: rotate(0deg);
         transform-origin: center;
         transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.3s;
-
         padding: 0;
         margin: 0;
         bottom: calc(50% - 8px);
-        @include rem(
-          (
-            width: 20px,
-            height: 12px,
-            right: 0,
-          )
-        );
+        width: 20px;
+        height: 12px;
+        right: 16px;
       }
     }
   }
@@ -81,37 +108,18 @@
   .item.active {
     .toggle-header {
       position: relative;
-      padding-right: rem(32px);
       &:after {
-        content: '';
-        position: absolute;
-        display: inline-block;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 9' class='c-icon c-icon-chevron' xmlns='http://www.w3.org/2000/svg' focusable='false'%3E%3Ctitle%3E Chevron %3C/title%3E%3Cg fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round' stroke='%23FEBD11' stroke-width='2'%3E%3Cpath d='M15 1L8 8M1 1l7 7-7-7z'/%3E%3C/g%3E%3C/svg%3E%0A");
-        background-size: contain;
-        background-repeat: no-repeat;
         transform: rotate(180deg);
         transform-origin: center;
         transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.3s;
-
-        padding: 0;
-        margin: 0;
-        bottom: calc(50% - 8px);
-        @include rem(
-          (
-            width: 20px,
-            height: 12px,
-            right: 0,
-          )
-        );
       }
     }
   }
 
   .toggle-content {
-    @include rem(
-      (
-        padding: 16px 0 8px 0,
-      )
-    );
+    padding: 16px 8px 10px 8px;
+    @include media-breakpoint-up(md) {
+      padding: 24px 16px 10px 16px;
+    }
   }
 }

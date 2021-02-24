@@ -1,120 +1,267 @@
-
-
 <!--- Full Width -->
-
-<div *ngIf="type==='fullwidth'" class="component accordion initialized">
-  <div class="component-content" [ngStyle]="{'background-color':value}">
-     <div>
-        <ul class="items">
-           <li class="item one">
-              <div class="toggle-header" (click)="toggleMenu(0)" tabindex="0">
-                 <div class="label">
-                    <div class="component content">
-                       <div class="component-content">
-                          <div class="field-heading"><strong>Accordion Item 1</strong></div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-              <div class="toggle-content" [ngClass]="{'hidden_one': !opened_1}">
-                 <div class="component content">
-                    <div class="component-content">
-                       <div class="field-content">
-                          <p style="box-sizing: inherit; font-size: 1.125rem; line-height: 1.688rem; font-weight: 400; margin-top: 10px; margin-bottom: 20px;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit. 1</p>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-           </li>
-           <li class="item two">
-              <div class="toggle-header" (click)="toggleMenu(1)" tabindex="-1">
-                 <div class="label">
-                    <div class="component content">
-                       <div class="component-content">
-                          <div class="field-heading"><strong>Accordion Item 2</strong></div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-              <div class="toggle-content" [ngClass]="{'hidden_two': !opened_2}">
-                 <div class="component content">
-                    <div class="component-content">
-                       <div class="field-content">
-                          <p style="box-sizing: inherit; font-size: 1.125rem; line-height: 1.688rem; font-weight: 400; margin-top: 10px; margin-bottom: 20px;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit. 2</p>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-           </li>
-        </ul>
-     </div>
+<div class="component rich-text">
+  <div class="accordion-heading">
+    <h2>{{ title }}</h2>
   </div>
 </div>
 
-<!--- Custom -->
-
-<div *ngIf="type==='custom'" class="component accordion snippet initialized">
-  <div class="component-content" [ngStyle]="{'background-color':value}">
-     <div class="snippet-inner">
-        <div class="snippet-container">
-           <div class="snippet initialized">
-                 <div class="container pb-3 pt-md-4" [ngClass]="{'wes-accordion': size}">
-                       <div class="rich-text pb-4 pb-lg-6 pb-md-5">
-                          <div class="component-content header">
-                            Frequently Asked Questions
-                          </div>
-                       </div>
-                       <div class="component accordion initialized" data-properties="{&quot;expandOnHover&quot;:false,&quot;expandedByDefault&quot;:false,&quot;speed&quot;:500,&quot;easing&quot;:&quot;swing&quot;,&quot;canOpenMultiple&quot;:true,&quot;canToggle&quot;:true,&quot;isControlEditable&quot;:false}">
-                          <div class="component-content">
-                             <div>
-                                <ul class="items">
-                                   <li class="item one">
-                                      <div class="toggle-header"  (click)="toggleMenu(0)"  tabindex="0">
-                                         <div class="label">
-                                            <div class="component content">
-                                               <div class="component-content">
-                                                  <div class="field-heading"><strong>Sed ut perspiciatis unde omnis iste natus error sit voluptatem?</strong></div>
-                                               </div>
-                                            </div>
-                                         </div>
-                                      </div>
-                                      <div class="toggle-content"  [ngClass]="{'hidden_one': !opened_1}">
-                                         <div class="component content">
-                                            <div class="component-content">
-                                               <div class="field-content">
-                                                  <p style="box-sizing: inherit; font-size: 1.125rem; line-height: 1.688rem; font-weight: 400; margin-top: 10px; margin-bottom: 20px;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit.</p>
-                                               </div>
-                                            </div>
-                                         </div>
-                                      </div>
-                                   </li>
-                                   <li class="item two">
-                                      <div class="toggle-header" (click)="toggleMenu(1)" tabindex="-1">
-                                         <div class="label">
-                                            <div class="component content">
-                                               <div class="component-content">
-                                                  <div class="field-heading"><strong>Sed ut perspiciatis unde omnis iste natus error sit voluptatem?</strong></div>
-                                               </div>
-                                            </div>
-                                         </div>
-                                      </div>
-                                      <div class="toggle-content" [ngClass]="{'hidden_two': !opened_2}">
-                                         <div class="component content">
-                                            <div class="component-content">
-                                               <div class="field-content">
-                                                  <p style="box-sizing: inherit; font-size: 1.125rem; line-height: 1.688rem; font-weight: 400; margin-top: 10px; margin-bottom: 20px;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit.</p>
-                                               </div>
-                                            </div>
-                                         </div>
-                                      </div>
-                                   </li>
-                                </ul>
-                             </div>
-                          </div>
-                       </div>
-                 </div>
-           </div>
-        </div>
-     </div>
+<div
+  class="component accordion initialized {{ background }}"
+  data-properties='{"expandOnHover":false,"expandedByDefault":false,"speed":500,"easing":"swing","canOpenMultiple":true,"canToggle":true,"isControlEditable":false}'
+>
+  <div class="component-content">
+    <div>
+      <ul class="items">
+        <li class="item">
+          <div
+            class="toggle-header"
+            (click)="toggleMenu($event)"
+            (keydown.enter)="toggleMenu($event)"
+            tabindex="0"
+          >
+            <div class="label">
+              <div class="component content">
+                <div class="component-content">
+                  <div class="field-heading">
+                    <strong>
+                      Is the With Profits ISA a stocks and shares ISA?
+                    </strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="toggle-content hidden">
+            <div class="component content">
+              <div class="component-content">
+                <div class="field-content">
+                  <p>
+                    Yes it is. We call ours a With Profits ISA as you're
+                    investing in our With Profits ISA Fund, but it works like
+                    most other stocks and shares ISAs. The money you save into
+                    your ISA is invested into the stock market by our
+                    investments team, to try and make your savings go further.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="item">
+          <div
+            class="toggle-header"
+            (click)="toggleMenu($event)"
+            (keydown.enter)="toggleMenu($event)"
+            tabindex="0"
+          >
+            <div class="label">
+              <div class="component content">
+                <div class="component-content">
+                  <div class="field-heading">
+                    <strong>Am I eligible for a With Profits ISA?</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="toggle-content hidden">
+            <div class="component content">
+              <div class="component-content">
+                <div class="field-content">
+                  <p>
+                    Our With Profits ISA is open to UK residents (for tax
+                    purposes) aged between 18 and 74. Before you can open your
+                    ISA, we'll just need you to complete a knowledge check to
+                    make sure you understand how the ISA works. To open an ISA
+                    with Wesleyan, you must also make sure you haven't
+                    contributed to another stocks and shares ISA in the same tax
+                    year.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="item">
+          <div
+            class="toggle-header"
+            (click)="toggleMenu($event)"
+            (keydown.enter)="toggleMenu($event)"
+            tabindex="0"
+          >
+            <div class="label">
+              <div class="component content">
+                <div class="component-content">
+                  <div class="field-heading">
+                    <strong>
+                      How much can I invest in a With Profits ISA?
+                    </strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="toggle-content hidden">
+            <div class="component content">
+              <div class="component-content">
+                <div class="field-content">
+                  <p>
+                    Each tax year (6th April to 5th April), there’s a certain
+                    amount of money you’re allowed to put into an ISA. For tax
+                    year 2020/2021, that allowance is £20,000. Just be aware
+                    that tax rules for ISAs can and do change, so the allowance
+                    may vary from year to year.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="item">
+          <div
+            class="toggle-header"
+            (click)="toggleMenu($event)"
+            (keydown.enter)="toggleMenu($event)"
+            tabindex="0"
+          >
+            <div class="label">
+              <div class="component content">
+                <div class="component-content">
+                  <div class="field-heading">
+                    <strong>How do I manage my With Profits ISA?</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="toggle-content hidden">
+            <div class="component content">
+              <div class="component-content">
+                <div class="field-content">
+                  <p>
+                    Once you've opened your ISA, you can top up and manage your
+                    account online, or if you prefer, by phone or post.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="item">
+          <div
+            class="toggle-header"
+            (click)="toggleMenu($event)"
+            (keydown.enter)="toggleMenu($event)"
+            tabindex="0"
+          >
+            <div class="label">
+              <div class="component content">
+                <div class="component-content">
+                  <div class="field-heading">
+                    <strong>
+                      Can I withdraw money from a With Profits ISA?
+                    </strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="toggle-content hidden">
+            <div class="component content">
+              <div class="component-content">
+                <div class="field-content">
+                  <p>
+                    The With Profits ISA is best suited to people who are able
+                    to commit for at least five years, so ideally, you should
+                    only invest money you won't need to touch in the short term.
+                    That said, you can withdraw money at any time if you need
+                    to, as long as you withdraw at least £500 each time.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="item">
+          <div
+            class="toggle-header"
+            (click)="toggleMenu($event)"
+            (keydown.enter)="toggleMenu($event)"
+            tabindex="0"
+          >
+            <div class="label">
+              <div class="component content">
+                <div class="component-content">
+                  <div class="field-heading">
+                    <strong>What does the With Profits Fund invest in?</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="toggle-content hidden">
+            <div class="component content">
+              <div class="component-content">
+                <div class="field-content">
+                  <p>
+                    The fund invests in a wide range of assets including UK and
+                    international shares, government and corporate debt,
+                    property, cash and more. If you'd like to see a full asset
+                    breakdown and a list of the fund's top holdings, take a look
+                    at the
+                    <a
+                      href="https://www.wesleyan.co.uk/pdf/58127/wesleyanwithprofitsisa"
+                      class="wes-link wes-text-m"
+                    >
+                      With Profits Fund factsheet.
+                    </a>
+                  </p>
+                  <p></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="item">
+          <div
+            class="toggle-header"
+            (click)="toggleMenu($event)"
+            (keydown.enter)="toggleMenu($event)"
+            tabindex="0"
+          >
+            <div class="label">
+              <div class="component content">
+                <div class="component-content">
+                  <div class="field-heading">
+                    <strong>How do bonuses work?</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="toggle-content hidden">
+            <div class="component content">
+              <div class="component-content">
+                <div class="field-content">
+                  <p>
+                    We regularly review the performance of our With Profits ISA
+                    Fund, and when results allow, we increase the value of your
+                    ISA by adding a bonus. We can’t guarantee a bonus every
+                    year, but when a bonus is paid, it’s added automatically to
+                    your ISA – you don’t need to do anything to claim it.
+                  </p>
+                  <p>
+                    Because of smoothing, where the With Profits Fund sometimes
+                    holds back your investment returns in periods of growth, you
+                    might also be due an additional bonus when you cash in your
+                    investment.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
