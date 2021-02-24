@@ -279,7 +279,7 @@
   &--disabled {
     border-color: $global-colour-grey-100;
     cursor: default;
-
+    // todo investigate why? this breaks arrow icon
     &:after {
       transform: translate3d(0, 100%, 0);
     }
