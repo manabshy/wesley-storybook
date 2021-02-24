@@ -57,7 +57,7 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M9.827 2.21l.094.083 5 5a1 1 0 01.084 1.32l-.084.094-5 5a1 1 0 01-1.497-1.32l.083-.094L11.8 9H2a1 1 0 01-.117-1.993L2 7h9.8L8.507 3.707a1 1 0 01-.083-1.32l.083-.094a1 1 0 011.32-.083z' style='fill:#{$color};transition-delay: 0.4s;transition: fill ease-out 0.2s;' fill-rule='nonzero'/%3E%3C/svg%3E");
 }
 @mixin make-icon-button {
-  content: ' ';
+  content: '';
   display: inline-block;
   background-repeat: no-repeat;
   object-fit: contain;
@@ -101,10 +101,16 @@
 }
 
 .wes-button.wes-button--on-light:disabled,
-.wes-button--on-light.wes-hero-banner-2__cta:disabled {
+.wes-button--on-light.wes-hero-banner-2__cta:disabled,
+.wes-button.wes-button--on-gold:disabled,
+.wes-hero-banner-2__cta:disabled,
+.wes-button.wes-button--on-dark:disabled,
+.wes-button--on-dark.wes-hero-banner-2__cta:disabled {
   &.button-icon-arrow-right::after,
   &.button-icon-arrow-left::before {
-    opacity: 0.25;
+    // opacity: 0.25;
+    @include arrow-icon('rgba(179, 181, 185, 0.5)');
+    transform: none;
   }
 }
 
