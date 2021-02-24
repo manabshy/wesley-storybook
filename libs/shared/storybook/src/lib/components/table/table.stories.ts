@@ -1,7 +1,6 @@
-import { addParameters } from '@storybook/angular';
+import { addParameters, Meta } from '@storybook/angular';
 import { array, select, object, text, withKnobs } from '@storybook/addon-knobs';
-
-addParameters({ docs: { iframeHeight: 500 } });
+import mdx from './table.mdx';
 
 const viewVariants = {
   standard: 'standard',
@@ -22,7 +21,13 @@ const style2Variants = {
 export default {
   title: 'Components/Table',
   decorators: [withKnobs],
-};
+  parameters: {
+    docs: {
+      iframeHeight: 500,
+      page: mdx,
+    },
+  },
+} as Meta;
 
 export const style1 = () => ({
   template: `
