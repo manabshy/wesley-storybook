@@ -25,6 +25,13 @@
       padding-right: 0;
     }
 
+    @include media-breakpoint-down(sm) {
+      .wes-cta-card__wrapper {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
     // add blocked content here
     > img.wes-image,
     > .wes-video-carousel__video,
