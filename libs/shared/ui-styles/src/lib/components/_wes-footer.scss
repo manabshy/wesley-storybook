@@ -15,7 +15,9 @@
       font-weight: 600;
       @include rem(font-size, 15px);
     }
+
     @include media-breakpoint-down(md) {
+
       li {
         &:nth-child(4),
         &:last-child {
@@ -25,6 +27,11 @@
     }
 
     @include media-breakpoint-up(sm) {
+      .c-navigation {
+        .footer-nav ul {
+        flex-wrap: none;
+        }
+      }
       &--footer-nav-secondary {
         margin-top: rem(30px);
         margin-bottom: rem(10px);
@@ -76,7 +83,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     @include media-breakpoint-up(md) {
-      flex-wrap: nowrap;
+      flex-wrap: none;
     }
     @include media-breakpoint-up(lg) {
       justify-content: end;

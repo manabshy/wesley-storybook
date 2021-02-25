@@ -1,5 +1,64 @@
+
 .wes-footer {
 
+  .footer-data-item  h4:before {
+    font-family: 'Glyphicons Halflings';
+    content: '';
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 9' class='c-icon c-icon-chevron' xmlns='http://www.w3.org/2000/svg' focusable='false'%3E%3Ctitle%3E Chevron %3C/title%3E%3Cg fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round' stroke='%23FEBD11' stroke-width='2'%3E%3Cpath d='M15 1L8 8M1 1l7 7-7-7z'/%3E%3C/g%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: rotate(0deg);
+    transform-origin: center;
+    transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.3s;
+    padding: 0;
+    margin: 0;
+    bottom: calc(50% - 8px);
+    float: right;
+    position: relative;
+    top: 5px;
+    @include rem(
+      (
+        width: 20px,
+        height: 12px,
+        right: 0,
+      )
+    );
+ }
+ .panel-heading.active a:before {
+   -webkit-transform: rotate(180deg);
+   -moz-transform: rotate(180deg);
+   transform: rotate(180deg);
+ }
+  .component.container {
+    box-shadow: 0px -20px 0 -16px #febd11;
+  }
+  @include media-breakpoint-up(xl) {
+    .footer-data-item  h4:before {
+      display: none;
+    }
+    .collapse {
+        display: block;
+        height: auto !important;
+        visibility: visible;
+      }
+      .collapsing{
+        position: relative;
+        height: unset !important;
+        overflow: hidden;
+      }
+  }
+  .links.top {
+    img {
+      transform: rotate(270deg);
+    }
+  }
+  .links {
+    a {
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+  }
   .component.rich-text {
     background-color: $color-grey;
     padding-bottom: 24px;

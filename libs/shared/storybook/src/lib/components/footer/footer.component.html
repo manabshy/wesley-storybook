@@ -1,12 +1,31 @@
 <footer class="wes-footer c-footer mt-5">
   <div class="component pt-6 pt-md-5 border-top">
     <div class="component container">
+      <div class="links top pt-3 pb-3">
+        <a class="wes-card-deck__card-cta" href="#">Back to top</a>
+        <img
+          _ngcontent-igi-c7=""
+          alt="arrow icon"
+          class="wes-icon wes-icon-size-m"
+          src="assets/icons/svg/icon-arrow.svg"
+        />
+      </div>
       <div class="component-content">
         <div class="border-top row component column-splitter">
-          <div class="footer-data col-12 col-sm-12 col-md-12 col-lg-12 pt-3">
+          <div
+            id="accordion"
+            class="footer-data col-12 col-sm-12 col-md-12 col-lg-12 pt-3"
+          >
             <div class="footer-data-item">
-              <h4>Personal</h4>
-              <ul>
+              <h4 data-toggle="collapse" data-target="#collapseOne">
+                Personal
+              </h4>
+              <ul
+                id="collapseOne"
+                class="collapse show"
+                aria-labelledby="headingOne"
+                data-parent="#accordion"
+              >
                 <li><a href="#">Financial Advice</a></li>
                 <li><a href="#">Savings & Investments</a></li>
                 <li><a href="#">Pensions & Refinement</a></li>
@@ -16,8 +35,15 @@
               </ul>
             </div>
             <div class="footer-data-item">
-              <h4>Business</h4>
-              <ul>
+              <h4 data-toggle="collapse" data-target="#collapseTwo">
+                Business
+              </h4>
+              <ul
+                id="collapseTwo"
+                class="collapse show"
+                aria-labelledby="headingTwo"
+                data-parent="#accordion"
+              >
                 <li><a href="#">Funding</a></li>
                 <li><a href="#">Insurance</a></li>
                 <li><a href="#">Investments</a></li>
@@ -25,8 +51,15 @@
               </ul>
             </div>
             <div class="footer-data-item">
-              <h4>Useful Information</h4>
-              <ul>
+              <h4 data-toggle="collapse" data-target="#collapseThree">
+                Useful Information
+              </h4>
+              <ul
+                id="collapseThree"
+                class="collapse show"
+                aria-labelledby="headingThree"
+                data-parent="#accordion"
+              >
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Wesleyan Bank</a></li>
                 <li><a href="#">News</a></li>
@@ -36,15 +69,48 @@
               </ul>
             </div>
             <div class="footer-data-item">
-              <h4>Financial advice that's all about you
+              <h4 data-toggle="collapse" data-target="#collapseFour">
+                Financial advice that's all about you
               </h4>
-              <p>Our consultants help doctors, dentists, teachers and lawyers achieve their goals through specialist financial advice.</p>
-            </div>
+              <p>
+                Our consultants help doctors, dentists, teachers and lawyers
+                achieve their goals through specialist financial advice.
+              </p>
 
+              <div
+                id="collapseThree"
+                aria-labelledby="headingThree"
+                data-parent="#accordion"
+                class="collapse show links pt-2"
+              >
+                <div>
+                  <a class="wes-card-deck__card-cta" href="#">
+                    Book an Appointment
+                  </a>
+                  <img
+                    _ngcontent-igi-c7=""
+                    alt="arrow icon"
+                    class="wes-icon wes-icon-size-m"
+                    src="assets/icons/svg/icon-arrow.svg"
+                  />
+                </div>
+                <div class="pt-1">
+                  <a class="wes-card-deck__card-cta" href="#">Contact us</a>
+                  <img
+                    _ngcontent-igi-c7=""
+                    alt="arrow icon"
+                    class="wes-icon wes-icon-size-m"
+                    src="assets/icons/svg/icon-arrow.svg"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="border-top row component column-splitter">
-          <div class="border-bottom col-12 col-sm-12 col-md-12 col-lg-12 order-sm-last">
+          <div
+            class="border-bottom col-12 col-sm-12 col-md-12 col-lg-12 order-sm-last"
+          >
             <nav
               class="component c-navigation c-navigation--footer-nav c-navigation--footer-nav-secondary"
             >
@@ -67,7 +133,7 @@
                     href="/cookies"
                     class="c-footer-nav__link"
                   >
-                  Terms & Conditions
+                    Terms & Conditions
                   </a>
                 </li>
                 <li class="footer-nav__item text-semi-bold item2 odd">
@@ -91,7 +157,7 @@
                     class="c-footer-nav__link"
                     target="_blank"
                   >
-                  Security
+                    Security
                   </a>
                 </li>
                 <li class="footer-nav__item text-semi-bold item4 odd">
@@ -102,7 +168,7 @@
                     class="c-footer-nav__link"
                     target="_blank"
                   >
-                  Cookies
+                    Cookies
                   </a>
                 </li>
                 <li class="footer-nav__item text-semi-bold item5 even">
@@ -113,7 +179,7 @@
                     class="c-footer-nav__link"
                     target="_blank"
                   >
-                  Modern Slavery Act
+                    Modern Slavery Act
                   </a>
                 </li>
                 <li class="footer-nav__item text-semi-bold item6 odd last">
@@ -124,23 +190,19 @@
                     class="c-footer-nav__link"
                     target="_blank"
                   >
-                  Accessibility
+                    Accessibility
                   </a>
                 </li>
               </ul>
             </nav>
           </div>
-
         </div>
 
         <div class="col-sm-4 col-md-3 col-lg-2 clearfix pl-0 pt-4">
           <nav class="c-navigation c-navigation--social-media">
             <ul class="c-list c-list--horizontal">
               <li class="item0 odd first">
-                <a
-                  href="https://www.facebook.com/wesleyanAS/"
-                  target="_blank"
-                >
+                <a href="https://www.facebook.com/wesleyanAS/" target="_blank">
                   <span class="sr-only">Facebook</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -149,12 +211,7 @@
                     viewBox="0 0 30 30"
                   >
                     <g fill="none" fill-rule="evenodd">
-                      <rect
-                        width="30"
-                        height="30"
-                        fill="#1877F2"
-                        rx="2"
-                      ></rect>
+                      <rect width="30" height="30" fill="#1877F2" rx="2"></rect>
                       <path
                         fill="#FFF"
                         d="M25,15.0611134 C25,9.50450982 20.5228516,5 15,5 C9.47714844,5 5,9.50450982 5,15.0611134 C5,20.0829059 8.65685547,24.24522 13.4375,25 L13.4375,17.969404 L10.8984375,17.969404 L10.8984375,15.0611134 L13.4375,15.0611134 L13.4375,12.8445244 C13.4375,10.3229578 14.9304297,8.93012242 17.2146484,8.93012242 C18.3087305,8.93012242 19.453125,9.12662854 19.453125,9.12662854 L19.453125,11.6026057 L18.1921484,11.6026057 C16.9499023,11.6026057 16.5625,12.3781564 16.5625,13.1738097 L16.5625,15.0611134 L19.3359375,15.0611134 L18.8925781,17.969404 L16.5625,17.969404 L16.5625,25 C21.3431445,24.24522 25,20.0829059 25,15.0611134"
@@ -248,7 +305,7 @@
                 regulated by the Financial Conduct Authority. Advice about
                 investments, insurance and mortgages is provided by Wesleyan
                 Financial Services Ltd.
-                <br>
+                <br />
                 <a
                   rel="noopener noreferrer"
                   href="https://www.wesleyan.co.uk/legal-disclaimer/"
@@ -272,7 +329,8 @@
               <p class="wes-text-xs">
                 ©
                 <span id="year">2021</span>
-                Wesleyan Assurance Society. All rights reserved, for UK use only.
+                Wesleyan Assurance Society. All rights reserved, for UK use
+                only.
               </p>
             </div>
           </div>
@@ -293,5 +351,4 @@
       </div>
     </div>
   </div>
-
 </footer>
