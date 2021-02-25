@@ -16,7 +16,8 @@
     padding-bottom: rem(112px);
   }
 
-  .wes-rich-text-scope {
+  .wes-rich-text-scope,
+  .wes-rich-text-campaign-scope {
     > .wes-callout__wrapper {
       padding-left: 0;
       padding-right: 0;
@@ -60,7 +61,8 @@
       > h5,
       > h6,
       > p,
-      > ul {
+      > ul,
+      > ol {
         @include make-col-offset(0);
         @include make-col(11);
       }
@@ -128,7 +130,8 @@
   }
 
   &.wes-content-block--right {
-    .wes-rich-text-scope {
+    .wes-rich-text-scope,
+    .wes-rich-text-campaign-scope {
       // large content
       @include media-breakpoint-up(lg) {
         // large col-9
