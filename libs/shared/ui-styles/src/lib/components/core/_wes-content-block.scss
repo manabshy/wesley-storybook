@@ -61,7 +61,7 @@
       > h5,
       > h6,
       > p,
-      span[scfieldtype],
+      > span[scfieldtype],
       > ul,
       > ol {
         @include make-col-offset(0);
@@ -78,7 +78,7 @@
       > h5,
       > h6,
       > p,
-      span[scfieldtype],
+      > span[scfieldtype],
       > ul,
       > ol,
       > table.wes-core-table {
@@ -106,7 +106,7 @@
       > h5,
       > h6,
       > p,
-      span[scfieldtype],
+      > span[scfieldtype],
       > ul,
       > ol,
       > table.wes-core-table {
@@ -145,7 +145,7 @@
         > h5,
         > h6,
         > p,
-        span[scfieldtype],
+        > span[scfieldtype],
         > ul,
         > ol,
         > table.wes-core-table {
@@ -172,7 +172,7 @@
         > h5,
         > h6,
         > p,
-        span[scfieldtype],
+        > span[scfieldtype],
         > ul,
         > ol,
         > table.wes-core-table {
