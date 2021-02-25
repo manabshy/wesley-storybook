@@ -2,7 +2,8 @@
 /// Wesleyan Content Block (Full Width) Component
 ////
 
-.wes-content-block {
+.wes-content-block,
+.wes-content-block--campaign {
   padding-top: rem(56px);
   padding-bottom: rem(56px);
 
@@ -18,15 +19,24 @@
 
   .wes-rich-text-scope,
   .wes-rich-text-campaign-scope {
-    > .wes-callout__wrapper {
+    > .wes-callout__wrapper,
+    > .wes-cta-card {
       padding-left: 0;
       padding-right: 0;
+    }
+
+    @include media-breakpoint-down(sm) {
+      .wes-cta-card__wrapper {
+        padding-left: 0;
+        padding-right: 0;
+      }
     }
 
     // add blocked content here
     > img.wes-image,
     > .wes-video-carousel__video,
-    > .wes-callout__wrapper {
+    > .wes-callout__wrapper,
+    > .wes-cta-card {
       margin-top: 40px;
       margin-bottom: 40px;
       @include media-breakpoint-up(md) {
@@ -157,6 +167,7 @@
         > .wes-video-carousel__video,
         > table.wes-core-table.wide,
         > .wes-callout__wrapper,
+        > .wes-cta-card,
         > .emphasis.lead {
           @include make-col-offset(1);
         }
@@ -183,6 +194,7 @@
         > img.wes-image,
         > .wes-video-carousel__video,
         > .wes-callout__wrapper,
+        > .wes-cta-card,
         > .emphasis.lead {
           @include make-col-offset(2);
         }
