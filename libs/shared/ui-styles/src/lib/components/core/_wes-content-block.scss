@@ -61,6 +61,7 @@
       > h5,
       > h6,
       > p,
+      > span[scfieldtype],
       > ul,
       > ol {
         @include make-col-offset(0);
@@ -77,6 +78,7 @@
       > h5,
       > h6,
       > p,
+      > span[scfieldtype],
       > ul,
       > ol,
       > table.wes-core-table {
@@ -104,6 +106,7 @@
       > h5,
       > h6,
       > p,
+      > span[scfieldtype],
       > ul,
       > ol,
       > table.wes-core-table {
@@ -142,6 +145,7 @@
         > h5,
         > h6,
         > p,
+        > span[scfieldtype],
         > ul,
         > ol,
         > table.wes-core-table {
@@ -168,6 +172,7 @@
         > h5,
         > h6,
         > p,
+        > span[scfieldtype],
         > ul,
         > ol,
         > table.wes-core-table {
@@ -187,4 +192,9 @@
   // &__body {
   //   @include wes-make-row; // TO:DO IE11 may need this delete when confirm with BE integration
   // }
+
+  // sitecore editor specific css
+  span[scfieldtype] {
+    display: block;
+  }
 }

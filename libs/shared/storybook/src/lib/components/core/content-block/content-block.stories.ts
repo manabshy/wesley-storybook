@@ -32,6 +32,13 @@ export const contentBlock = () => ({
               <div class="component rich-text wes-rich-text-scope">
                  <h1 class="level1">L1 - Unit trusts</h1>
                  <p class="lead">Lead - Wesleyan Unit Trust Managers (WUTM) offers a trio of products that enable you to invest in fully managed unit trust funds, run by an award-winning team. Whether you’re looking to build your own investment or save for your children’s future, we’ve got a product for you.</p>
+                 
+                 <h2 class="level2">Sitecore editor view</h2>
+
+                 <span scfieldtype="rich text" scdefaulttext="[No text in field]" contenteditable="true" class="scWebEditInput scEnabledChrome" id="fld_19B4F22CCB8C47559203FFE23638C448_B195CB5DF68B421F8C731C4E0D4BDC0E_en_1_dde329a9728842cebab8eff1be684694_2359_edit" sc-part-of="field">
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </span>
+                 
                  <h2 class="level2">L2 - What is a stocks and shares ISA?</h2>
                  
                  <table class="wes-core-table transparent">
