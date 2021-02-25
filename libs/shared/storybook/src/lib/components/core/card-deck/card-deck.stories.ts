@@ -21,7 +21,7 @@ const variants = {
   'On Grey :: With Icons :: Collapsed':
     'wes-card-deck--grey wes-card-deck--icons wes-card-deck--collapse',
   'Deck With Images and Icons': true,
-  'Deck Without Images and Icons': false
+  'Deck Without Images and Icons': false,
 };
 
 const defaultValue = variants['Deck With Images and Icons'];
@@ -62,8 +62,7 @@ export const cardDeck = () => ({
                   <!-- Rich text content -->
                 </div>
                 <div class="wes-card-deck__card-footer">
-                  <a class="wes-card-deck__card-cta" href="#">
-                  <span *ngIf="withILinkIcon === 'yes'" aria-hidden="true" class="icon-right-arrow"></span>
+                  <a class="wes-card-deck__card-cta" [ngClass]="{'icon-right-arrow': withILinkIcon === 'yes'}" href="#">
                   {{ cardLinkText }}
                   </a>
                 </div>
