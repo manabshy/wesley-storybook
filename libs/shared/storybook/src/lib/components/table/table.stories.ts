@@ -1,7 +1,6 @@
-import { addParameters } from '@storybook/angular';
+import { addParameters, Meta } from '@storybook/angular';
 import { array, select, object, text, withKnobs } from '@storybook/addon-knobs';
-
-addParameters({ docs: { iframeHeight: 500 } });
+import mdx from './table.mdx';
 
 const viewVariants = {
   standard: 'standard',
@@ -22,7 +21,13 @@ const style2Variants = {
 export default {
   title: 'Components/Table',
   decorators: [withKnobs],
-};
+  parameters: {
+    docs: {
+      iframeHeight: 500,
+      page: mdx,
+    },
+  },
+} as Meta;
 
 export const style1 = () => ({
   template: `
@@ -32,20 +37,22 @@ export const style1 = () => ({
       {{caption}}
     </caption>
     <thead>
-      <tr>
-        <th *ngFor="let tableHeader of tableHeaders">
-        {{tableHeader}}
-        </th>
+      <tr *ngFor="let tr of tableHeaders">
+        <ng-container *ngFor="let th of tr">
+          <th [attr.colSpan]="th.colSpan > 1 ? th.colSpan : null">
+          {{th.headerText}}
+          </th>
+        </ng-container>
       </tr>
     </thead>
     <tbody>
         <tr *ngFor="let tableRow of tableRowText;">
           <ng-container *ngFor="let tableColumn of tableRow; let i = index">
-              <td *ngIf="i > 0; else thTemplate" [attr.data-title]="tableHeaders[i]">
+              <td *ngIf="i > 0; else thTemplate" [attr.data-title]="tableHeaders[tableHeaders.length -1][i].headerText">
               {{tableColumn}}
               </td>
               <ng-template #thTemplate>
-                <th [attr.data-title]="tableHeaders[i]">
+                <th [attr.data-title]="tableHeaders[tableHeaders.length -1][i].headerText">
                 {{tableColumn}}
                 </th>
               </ng-template>
@@ -59,10 +66,12 @@ export const style1 = () => ({
     caption: text('caption', 'England and Wales NHS pension contributions'),
     view: select('view', viewVariants, 'standard'),
     variant: select('variant', style1Variants, 'transparent'),
-    tableHeaders: array('table headers', [
-      'Salary Range',
-      'Your contribution (before tax relief)',
-      'Employer’s contribution',
+    tableHeaders: object('table headers', [
+      [
+        { headerText: 'Salary Range', colSpan: 1 },
+        { headerText: 'Your contribution (before tax relief)', colSpan: 1 },
+        { headerText: 'Employer’s contribution', colSpan: 1 },
+      ],
     ]),
     tableRowText: object('table row text', [
       ['£15,432 - £21,477', '5%', '20.68%'],
