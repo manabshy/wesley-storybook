@@ -1,6 +1,11 @@
 //Sitecore SXA accordion styling
 .accordion {
 
+  @include media-breakpoint-up(lg) {
+  .component.container {
+        padding: 0px;
+    }
+  }
   .component-content.header{
     font-size: $global-font-size-heading;
     font-family: $global-font-opensans;
