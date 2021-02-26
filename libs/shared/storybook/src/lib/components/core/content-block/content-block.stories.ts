@@ -477,3 +477,37 @@ export const contentCampaign = () => ({
     variant: select('Variant', variants, ''),
   },
 });
+
+export const contentBlockRegression = () => ({
+  template: `
+   <div class="component wes-content-block wes-content-block--grey wes-content-block--campaign">
+<div class="wes-content-block__wrapper"><div class="wes-content-block__body">
+<div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
+
+    <div class="component wes-rich-text-campaign-scope">
+<h2>Teachers pension advice, tailored to you</h2>
+<p>When it comes to planning for retirement, it’s important that you understand the variety of options available to you, and that you seek expert advice.</p>
+<p>A Wesleyan Financial Services Consultant can advise and guide you through the various pension options available to you. Topics of discussion may include:</p>
+<ul class="bulleted">
+	<li>Early retirement and the options available to you</li>
+	<li>Understanding the intricacies of the Teachers’ Pension Scheme or your Local Government Pension Scheme</li>
+	<li>Understanding how much income you’ll need at different stages of your retirement</li>
+	<li>Discussing the best times to access any retirement income streams</li>
+	<li>How and when you can take your retirement benefits</li>
+	<li>Your entitlement to the flat-rate State Pension</li>
+	<li>Will the age discrimination case (McCloud Judgement) impact your pension?</li>
+</ul>    </div>
+</div></div></div></div>    </div>
+<div class="component wes-content-block wes-content-block--campaign">
+<div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
+
+    <div class="component wes-rich-text-campaign-scope">
+<p>Book your 15-minute call to get started on the road towards specialist retirement income planning advice for teachers. Whether you're looking to understand the Teachers’ Pension Scheme, discuss early retirement options or are just seeking general financial advice, we can match you with a Wesleyan Financial Services Consultant that specialises in the profession, to schedule an appointment at a time and place suited to you.</p>    </div>
+</div></div></div></div>    </div>
+
+<div class="component wes-content-block wes-content-block--grey wes-content-block--campaign"><div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder"><div class="component wes-rich-text-campaign-scope">
+<h2 class="level2">L2 - What is a stocks and shares ISA?</h2>
+<table class="wes-core-table transparent"><caption>England and Wales NHS pension contributions</caption><thead><tr><th>Salary Range</th><th>Your contribution (before tax relief)</th><th>Employer’s contribution</th></tr></thead><tbody><tr><th data-title="Salary Range">£15,432 - £21,477</th><td data-title="Your contribution (before tax relief)">5%</td><td data-title="Employer’s contribution">20.68%</td></tr><tr><th data-title="Salary Range">£21,477 - £41,477</th><td data-title="Your contribution (before tax relief)">5.6%</td><td data-title="Employer’s contribution">20.68%</td></tr><tr><th data-title="Salary Range">£41,477 - £100,000</th><td data-title="Your contribution (before tax relief)">7.1%</td><td data-title="Employer’s contribution">20.68%</td></tr></tbody></table>
+</div></div></div></div></div></div>
+   `,
+});
