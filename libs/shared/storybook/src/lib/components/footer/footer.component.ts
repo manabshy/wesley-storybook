@@ -16,17 +16,5 @@ import {
 export class FooterComponent {
   @ViewChild(TemplateRef)
   content: TemplateRef<any>;
-  @Input() active = false;
-  @Input() type = 'base';
-  @Input() cardCount;
-  @Input() cardTitle;
-  @Input() title;
-  @Input() message;
-  @Input() variant;
-  @Input() size;
-  @Input() value;
-  constructor(private el: ElementRef) {}
-
-
 }
 
