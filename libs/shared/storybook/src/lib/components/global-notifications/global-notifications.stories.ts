@@ -18,24 +18,35 @@ const styleVariants = {
   'Single Page': 'single-page',
 };
 
+function setNotificationCookie() {
+  // copy from here start cookie renderer
+  (function ($, cookieStore) {
+    var gn = $('#wes-globalnotification');
+    gn.on('hidden.bs.collapse', function () {
+      cookieStore.set('WesleyanGlobalNotification', true);
+    });
+  })();
+  // end global notification set cookie
+}
+
 const showNotification = function () {
   setTimeout(() => {
     const $ = global['$'];
-    const globalnotification = $('#globalnotification');
-    globalnotification.on('hidden.bs.collapse', function () {
+    const gn = $('#wes-globalnotification');
+    gn.on('hidden.bs.collapse', function () {
       const tm = setTimeout(() => {
-        globalnotification.collapse('show');
+        gn.collapse('show');
       }, 5000);
     });
   });
 };
 
 export const notifications = () => ({
-  template: `<div class="wes-global-notification fade show {{variant}}" id="globalnotification" aria-expanded="true" role="alert" aria-live="assertive" aria-atomic="true">
+  template: `<div class="wes-global-notification fade show {{variant}}" [attr.id]="variant !== 'single-page' ? 'wes-globalnotification': null" aria-expanded="true" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="container">
     <div class="wes-global-notification__header">
       <span class="me-auto">{{headerText}}</span>
-      <button *ngIf="variant !== 'single-page'" type="button" data-toggle="collapse" href="#globalnotification" class="wes-global-notification__close" data-target="#globalnotification" aria-label="Close"></button>
+      <button *ngIf="variant !== 'single-page'" type="button" data-toggle="collapse" class="wes-global-notification__close" data-target="#wes-globalnotification" aria-label="Close"></button>
     </div>
     <div *ngIf="bodyText.length > 0" class="wes-global-notification__body" [innerHtml]="bodyText"></div>
     <div *ngIf="timeStamp.length > 0 && withDateStamp == 'yes'" class="wes-global-notification__timestamp">
