@@ -20,12 +20,15 @@ const styleVariants = {
 
 function setNotificationCookie() {
   // copy from here start cookie renderer
-  (function ($, cookieStore) {
-    var gn = $('#wes-globalnotification');
-    gn.on('hidden.bs.collapse', function () {
-      cookieStore.set('WesleyanGlobalNotification', true);
-    });
-  })();
+  document.addEventListener('DOMContentLoaded', function (event) {
+    (function ($) {
+      debugger;
+      var gn = $('#wes-globalnotification');
+      gn.on('hidden.bs.collapse', function () {
+        document.cookie = 'WesleyanGlobalNotification=true; path=/';
+      });
+    })($);
+  });
   // end global notification set cookie
 }
 
@@ -34,6 +37,7 @@ const showNotification = function () {
     const $ = global['$'];
     const gn = $('#wes-globalnotification');
     gn.on('hidden.bs.collapse', function () {
+      document.cookie = 'WesleyanGlobalNotification=true; path=/';
       const tm = setTimeout(() => {
         gn.collapse('show');
       }, 5000);
