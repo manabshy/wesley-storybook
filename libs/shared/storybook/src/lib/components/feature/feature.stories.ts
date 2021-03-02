@@ -54,27 +54,3 @@ export const featureFullWidth= () => ({
   component: FeatureComponent
 });
 
-
-export const custom= () => ({
-  template: `
-  <wes-feature [count]="count" [type]="type" [value]="value"></wes-feature>
-  `,
-  props: {
-    text: text('text', 'feature'),
-    title: text('Title', 'Unit trust products from WUTM'),
-    cardCount: number('Number of cards', 6, { min: 2 }),
-    message: text(
-      'Message',
-      '<p>Wesleyan Unit Trust Managers (WUTM) products allow you to invest in fully managed unit trust funds, run by an award-winning team.</p>'
-    ),
-    cardTitle: text('Card title', 'Save your way'),
-    cardMessage: text(
-      'Card message',
-      '<p>A stocks and shares ISA invested in Wesleyan’s With Profits Fund, the With Profits ISA lets you share in Wesleyan’s financial success.</p>'
-    ),
-    cardLinkText: text('Card link text', 'Apply now'),
-  },
-  component: FeatureComponent
-});
-
-/***/
