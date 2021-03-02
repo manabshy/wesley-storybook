@@ -4,7 +4,7 @@
 
 .wes-promo {
   @media (min-width: 1200px) {
-    .wes-promo__message.cta {
+    .wes-promo__message{
       width: 640px;
       a.cta {
         font-weight: bold !important;
