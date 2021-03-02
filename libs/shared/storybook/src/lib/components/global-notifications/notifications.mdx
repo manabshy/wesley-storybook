@@ -1,0 +1,60 @@
+import { Meta, Canvas, Preview } from '@storybook/addon-docs/blocks';
+
+<Meta title="Notifications" />
+
+# Global Notifications
+
+The below markup with
+
+```
+<div
+    id="wes-globalnotification"
+    class="wes-global-notification fade show "
+    role="alert"
+    aria-atomic="true"
+    aria-live="assertive"
+  >
+    <div class="container">
+      <div class="wes-global-notification__header">
+        <span class="me-auto">Our phone lines are down...</span>
+        <button
+          class="wes-global-notification__close"
+          type="button"
+          aria-label="Close"
+          data-target="#wes-globalnotification"
+          data-toggle="collapse"
+          aria-expanded="true"
+        ></button>
+      </div>
+      <div class="wes-global-notification__body">
+        Trying to call us? We're having some technical problems.
+        <a>Find out more</a>
+      </div>
+      <div class="wes-global-notification__timestamp">
+        Updated 18th January 2021, 4pm
+      </div>
+    </div>
+  </div>
+```
+
+## The Important attributes inlude
+
+- **id** must be unique to thw whole document and used by `bootstrap.js` auto apply closeable functionality
+- **class="show"** (on container) and **aria-expanded="true"** (on button) are needed for open state. If one loads by default when cookie is available: **aria-expanded="false"** and **class="collapse"** The Global Notification is automatically hidden
+
+## Save session cookie in browser
+
+The following script should be integrated in order to set a cookie named `WesleyanGlobalNotification` in the browser session
+
+```
+<script>
+document.addEventListener('DOMContentLoaded', function (event) {
+    (function ($) {
+      var gn = $('#wes-globalnotification');
+      gn.on('hidden.bs.collapse', function () {
+        document.cookie = 'WesleyanGlobalNotification=true; path=/';
+      });
+    })($);
+  });
+</script>
+```
