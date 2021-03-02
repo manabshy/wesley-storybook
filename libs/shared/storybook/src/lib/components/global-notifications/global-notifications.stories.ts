@@ -23,7 +23,7 @@ const styleVariants = {
   'Single Page': 'single-page',
 };
 
-const showNotification = function () {
+const showNotification = () => {
   setTimeout(() => {
     const $ = global['$'];
     const gn = $('#wes-globalnotification');
