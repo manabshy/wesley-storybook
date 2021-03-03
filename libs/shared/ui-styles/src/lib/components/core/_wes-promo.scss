@@ -135,7 +135,7 @@
       }
     }
     @media (min-width: 768px) {
-      .wes-promo__message.cta {
+      .wes-promo__message {
         a.cta {
           text-decoration: none !important;
           font-weight: bold !important;
@@ -143,7 +143,7 @@
       }
     }
     @media (max-width: 767.98px) {
-      .wes-promo__message.cta {
+      .wes-promo__message {
         a.cta {
           text-decoration: underline !important;
           font-weight: bold !important;
