@@ -133,13 +133,13 @@ ul {
         padding: 0;
 
         li {
-          width: calc(50% - 52px);
+          width: calc(50% - 32px);
         }
       }
 
       @include media-breakpoint-up(lg) {
         li {
-          width: calc(50% - 67px);
+          width: calc(50% - 54px);
         }
       }
     }
