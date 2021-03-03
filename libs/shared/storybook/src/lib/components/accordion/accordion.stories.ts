@@ -30,8 +30,6 @@ export const accordion = () => ({
   <wes-accordion [background]="background" [idAttribute]="id" [title]="title"></wes-accordion>
   `,
   props: {
-    title: text('title', 'Frequently Asked Question'),
-    id: text('id', 'frequentlyAskedQuestions'),
     background: select('Variant', variants, ''),
   },
   component: AccordionComponent,
