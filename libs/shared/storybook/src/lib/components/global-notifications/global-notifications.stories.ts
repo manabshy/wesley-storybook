@@ -1,10 +1,19 @@
 import { select, text, withKnobs, optionsKnob } from '@storybook/addon-knobs';
+import * as jquery from 'jquery';
+import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min';
+import mdx from './notifications.mdx';
+
+global = { ...global, ...{ $: jquery, jQuery: jquery, bootstrap: bootstrap } };
 export default {
   title: 'Components/Global notifications',
-  decorators: [withKnobs],
+  // decorators: [withKnobs],
   parameters: {
     knobs: {
       escapeHTML: false,
+    },
+    docs: {
+      iframeHeight: 500,
+      page: mdx,
     },
   },
 };
@@ -14,24 +23,25 @@ const styleVariants = {
   'Single Page': 'single-page',
 };
 
-const hideNotification = function (e: Event) {
-  const target: HTMLButtonElement = e.target as HTMLButtonElement;
-  const selector = target.getAttribute('data-bs-dismiss');
-  const notification = target.closest(`.${selector}`);
-  notification.classList.remove('show');
-
-  const tm = setTimeout(() => {
-    notification.classList.add('show');
-    clearTimeout(tm);
-  }, 5000);
+const showNotification = () => {
+  setTimeout(() => {
+    const $ = global['$'];
+    const gn = $('#wes-globalnotification');
+    gn.on('hidden.bs.collapse', function () {
+      document.cookie = 'WesleyanGlobalNotification=true; path=/';
+      const tm = setTimeout(() => {
+        gn.collapse('show');
+      }, 5000);
+    });
+  });
 };
 
 export const notifications = () => ({
-  template: `<div class="wes-global-notification fade show {{variant}}" role="alert" aria-live="assertive" aria-atomic="true">
+  template: `<div class="wes-global-notification fade show {{variant}}" [attr.id]="variant !== 'single-page' ? 'wes-globalnotification': null" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="container">
     <div class="wes-global-notification__header">
       <span class="me-auto">{{headerText}}</span>
-      <button *ngIf="variant !== 'single-page'" type="button" (click)="clickClose($event)" class="wes-global-notification__close" data-bs-dismiss="wes-global-notification" aria-label="Close"></button>
+      <button *ngIf="variant !== 'single-page'" type="button" data-toggle="collapse" class="wes-global-notification__close" data-target="#wes-globalnotification" aria-expanded="true" aria-label="Close"></button>
     </div>
     <div *ngIf="bodyText.length > 0" class="wes-global-notification__body" [innerHtml]="bodyText"></div>
     <div *ngIf="timeStamp.length > 0 && withDateStamp == 'yes'" class="wes-global-notification__timestamp">
@@ -58,6 +68,17 @@ export const notifications = () => ({
         display: 'inline-radio',
       }
     ),
-    clickClose: hideNotification,
   },
 });
+
+notifications.decorators = [
+  withKnobs,
+  (storyFunc) => {
+    const story = storyFunc();
+    showNotification();
+    return {
+      ...story,
+      // template: `${story.template}`,
+    };
+  },
+];
