@@ -4,37 +4,19 @@
 
 .wes-resource-link {
   position: relative;
-  padding-top: 32px;
-  padding-bottom: 32px;
+
+  & + & {
+    margin-top: rem(24px);
+  }
 
   svg {
     position: absolute;
-    top: 40px;
-  }
-
-  @include media-breakpoint-up(md) {
-    &:first-child {
-      padding-top: 48px;
-      svg {
-        top: 56px;
-      }
-    }
-    &:last-child {
-      padding-bottom: 48px !important;
-    }
-  }
-
-  & + & {
-    padding-top: 0;
-    padding-bottom: 32px;
-
-    svg {
-      top: 8px;
-    }
+    left: 1px;
+    top: 6px;
   }
 
   &__body {
-    margin-left: 28px;
+    margin-left: rem(32px);
   }
 
   &__link {
@@ -43,6 +25,5 @@
 
   &__meta {
     white-space: nowrap;
-    margin-left: 8px;
   }
 }
