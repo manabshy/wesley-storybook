@@ -4,35 +4,97 @@
 
 .wes-content-block,
 .wes-content-block--campaign {
-  &:first-child {
-    padding-top: rem(48px);
+  padding-top: rem(48px);
+  padding-bottom: rem(48px);
+  &.wes-content-block--collapse {
+    padding-top: rem(24px);
+    padding-bottom: rem(24px);
   }
-  &:last-child {
-    padding-bottom: rem(48px);
-  }
-  padding-top: rem(24px);
-  padding-bottom: rem(24px);
 
   @include media-breakpoint-up(md) {
-    &:first-child {
-      padding-top: rem(72px);
+    padding-top: rem(72px);
+    padding-bottom: rem(72px);
+    &.wes-content-block--collapse {
+      padding-top: rem(36px);
+      padding-bottom: rem(36px);
     }
-    &:last-child {
-      padding-bottom: rem(72px);
-    }
-    padding-top: rem(36px);
-    padding-bottom: rem(36px);
   }
 
   @include media-breakpoint-up(xl) {
-    &:first-child {
-      padding-top: rem(112px);
+    padding-top: rem(112px);
+    padding-bottom: rem(112px);
+    &.wes-content-block--collapse {
+      padding-top: rem(56px);
+      padding-bottom: rem(56px);
     }
-    &:last-child {
-      padding-bottom: rem(112px);
+  }
+
+  &__wrapper {
+    @include wes-make-container;
+  }
+
+  &.wes-content-block--grey {
+    background-color: $global-colour-grey-50;
+  }
+
+  &.wes-content-block--right {
+    .wes-rich-text-scope,
+    .wes-rich-text-campaign-scope {
+      // large content
+      @include media-breakpoint-up(lg) {
+        // large col-9
+        > h1,
+        > h2,
+        > h3,
+        > h4,
+        > h5,
+        > h6,
+        > p,
+        > span[scfieldtype],
+        > ul,
+        > ol,
+        > table.wes-core-table {
+          @include make-col-offset(2);
+        }
+
+        // large col-11
+        > img,
+        > .wes-video-carousel__video,
+        > table.wes-core-table.wide,
+        > .wes-callout__wrapper,
+        > .wes-cta-card,
+        > .emphasis.lead {
+          @include make-col-offset(1);
+        }
+      }
+
+      // extra-large content
+      @include media-breakpoint-up(xl) {
+        // xlarge col-7
+        > h1,
+        > h2,
+        > h3,
+        > h4,
+        > h5,
+        > h6,
+        > p,
+        > span[scfieldtype],
+        > ul,
+        > ol,
+        > table.wes-core-table {
+          @include make-col-offset(3);
+        }
+
+        // large col-9
+        > img,
+        > .wes-video-carousel__video,
+        > .wes-callout__wrapper,
+        > .wes-cta-card,
+        > .emphasis.lead {
+          @include make-col-offset(2);
+        }
+      }
     }
-    padding-top: rem(56px);
-    padding-bottom: rem(56px);
   }
 
   .wes-rich-text-scope,
@@ -78,7 +140,17 @@
       width: 100%;
       height: auto;
     }
+  }
 
+  // sitecore editor specific css
+  span[scfieldtype] {
+    display: block;
+  }
+}
+
+.wes-content-block {
+  .wes-rich-text-scope,
+  .wes-rich-text-campaign-scope {
     // medium content
     @include media-breakpoint-up(md) {
       // medium col-11
@@ -96,6 +168,7 @@
         @include make-col(11);
       }
     }
+
     // large content
     @include media-breakpoint-up(lg) {
       // large col-9
@@ -115,7 +188,6 @@
       }
 
       // large col-11
-
       > img,
       > .wes-video-carousel__video,
       > table.wes-core-table.wide,
@@ -144,7 +216,6 @@
       }
 
       // large col-9
-
       > img,
       > .wes-video-carousel__video,
       > .emphasis.lead {
@@ -153,82 +224,73 @@
       }
     }
   }
+}
 
-  &__wrapper {
-    @include wes-make-container;
-  }
-
-  &.wes-content-block--grey {
-    background-color: $global-colour-grey-50;
-  }
-
-  &.wes-content-block--right {
-    .wes-rich-text-scope,
-    .wes-rich-text-campaign-scope {
-      // large content
-      @include media-breakpoint-up(lg) {
-        // large col-9
-        > h1,
-        > h2,
-        > h3,
-        > h4,
-        > h5,
-        > h6,
-        > p,
-        > span[scfieldtype],
-        > ul,
-        > ol,
-        > table.wes-core-table {
-          @include make-col-offset(2);
-        }
-
-        // large col-11
-
-        > img,
-        > .wes-video-carousel__video,
-        > table.wes-core-table.wide,
-        > .wes-callout__wrapper,
-        > .wes-cta-card,
-        > .emphasis.lead {
-          @include make-col-offset(1);
-        }
-      }
-
-      // extra-large content
-      @include media-breakpoint-up(xl) {
-        // xlarge col-7
-        > h1,
-        > h2,
-        > h3,
-        > h4,
-        > h5,
-        > h6,
-        > p,
-        > span[scfieldtype],
-        > ul,
-        > ol,
-        > table.wes-core-table {
-          @include make-col-offset(3);
-        }
-
-        // large col-9
-
-        > img,
-        > .wes-video-carousel__video,
-        > .wes-callout__wrapper,
-        > .wes-cta-card,
-        > .emphasis.lead {
-          @include make-col-offset(2);
-        }
+.wes-content-block--campaign {
+  .wes-rich-text-scope,
+  .wes-rich-text-campaign-scope {
+    // medium content
+    @include media-breakpoint-up(md) {
+      // medium col-11
+      > h1,
+      > h2,
+      > h3,
+      > h4,
+      > h5,
+      > h6,
+      > p,
+      > span[scfieldtype],
+      > ul,
+      > ol,
+      > table.wes-core-table {
+        @include make-col-offset(1);
+        @include make-col(10);
       }
     }
-  }
-  // &__body {
-  //   @include wes-make-row; // TO:DO IE11 may need this delete when confirm with BE integration
-  // }
 
-  // sitecore editor specific css
-  span[scfieldtype] {
-    display: block;
+    // large content
+    @include media-breakpoint-up(lg) {
+      // large col-9
+      > table.wes-core-table {
+        @include make-col-offset(1);
+        @include make-col(9);
+      }
+
+      // large col-11
+      > img,
+      > .wes-video-carousel__video,
+      > table.wes-core-table.wide,
+      > .emphasis.lead {
+        @include make-col-offset(1);
+        @include make-col(11);
+      }
+    }
+
+    // extra-large content
+    @include media-breakpoint-up(xl) {
+      // xlarge col-7
+      > h1,
+      > h2,
+      > h3,
+      > h4,
+      > h5,
+      > h6,
+      > p,
+      > span[scfieldtype],
+      > ul,
+      > ol,
+      > table.wes-core-table {
+        @include make-col-offset(1);
+        @include make-col(8);
+      }
+
+      // large col-9
+      > img,
+      > .wes-video-carousel__video,
+      > .emphasis.lead {
+        @include make-col-offset(1);
+        @include make-col(9);
+      }
+    }
   }
 }
