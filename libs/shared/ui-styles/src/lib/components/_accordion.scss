@@ -6,28 +6,36 @@
     @include make-col(10);
   }
 }
-.accordion-heading {
-  @extend .container;
-  h2 {
-    // @include make-accordion-columns;
-    font-size: $global-font-size-heading;
-    font-family: $global-font-opensans;
+.wes-content-block {
+  .wes-content-block__placeholder {
+    .wes-accordion-header {
+      margin-top: 8px;
+      margin-bottom: -16px; // content-block padding-bottom
 
-    margin-top: 56px;
-    margin-bottom: 32px;
-    font-weight: normal;
-    color: $global-colour-charcoal;
-
-    @include media-breakpoint-up(md) {
-      margin-bottom: 40px;
-
-      margin-top: 96px;
-    }
-    @include media-breakpoint-up(lg) {
-      margin-bottom: 48px;
-    }
-    @include media-breakpoint-up(xl) {
-      margin-top: 112px;
+      // font-family: $global-font-opensans;
+      font-size: 28px;
+      letter-spacing: 0;
+      line-height: 40px;
+      color: $global-colour-grey-1000;
+      font-weight: 400;
+      @include media-breakpoint-up(md) {
+        margin-top: 24px;
+        margin-bottom: -32px;
+        margin-left: -10px;
+        margin-right: -10px;
+        line-height: 44px;
+      }
+      @include media-breakpoint-up(lg) {
+        margin-top: 24px;
+        margin-bottom: -24px;
+        margin-left: calc(8.3333333333% + 10px);
+        max-width: calc(83.3333333333% - 20px);
+        flex: 0 0 83.3333333333%;
+      }
+      @include media-breakpoint-up(xl) {
+        margin-top: 0;
+        margin-bottom: -64px;
+      }
     }
   }
 }
