@@ -1,0 +1,97 @@
+.wes-card-feature {
+  @include media-breakpoint-up(lg) {
+    .wes-card-deck__wrapper {
+        width:1172px;
+    }
+    .wes-card-deck__wrapper.standard-feature {
+      width: 902px;
+    }
+    .wes-card-feature__header-content {
+      width: 672px;
+    }
+    .wes-card-deck__card-title {
+      text-align: center;
+      margin-right: 35px;
+    }
+    .wes-card-deck__card-message {
+      margin-left: 0px;
+    }
+  }
+  @media (max-width: 767.98px) {
+    .wes-card-deck__card-header {
+      .wes-card-deck__card-title {
+        margin-right: 0px !important;
+      }
+    }
+  }
+  @include media-breakpoint-down(small) {
+    .wes-card-feature__title {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+  }
+  @include media-breakpoint-down(md) {
+    .wes-card-feature__title {
+      width: unset;
+    }
+   .wes-card-deck__card-message {
+      margin-left: 32px;
+    }
+  }
+
+  .wes-card-feature__title {
+    font-family: 'Open Sans';
+    font-size: 32px;
+    letter-spacing: 0;
+    line-height: 44px;
+    text-align: center;
+    margin-top: 112px;
+  }
+  .wes-card-feature__header-content {
+    margin: auto;
+    height: 88px;
+    font-size: 32px;
+    font-family: 'Open Sans';
+  }
+  .wes-card-deck.feature {
+    .wes-card-deck__card-body {
+      padding: 1rem;
+    }
+    .wes-card-deck__card-title {
+      text-align: center;
+      margin-right: 35px;
+    }
+    .wes-card-deck__deck-item {
+      margin-bottom: 0px;
+    }
+    .wes-cta-card__icon {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .wes-card-deck__card-body {
+      background-color: #fff;
+    }
+    .wes-card-deck__card-message {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      font-weight: 400;
+      color: #40474f;
+      flex-grow: 1;
+      font-size: 18px;
+      letter-spacing: 0;
+      line-height: 28px;
+    }
+    .wes-cta-card__frame {
+      border: 1px solid #d9dadc;
+      border-radius: 0px;
+      box-shadow: 0 4px 0px 0px #febd11, 0 -12px 0 -8px #febd11;
+      }
+  }
+  .wes-card-deck.feature.plain-feature {
+    .wes-cta-card__frame {
+      box-shadow: none;
+      border: none;
+    }
+  }
+}

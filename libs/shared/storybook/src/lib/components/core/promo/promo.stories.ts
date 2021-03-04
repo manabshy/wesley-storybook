@@ -112,7 +112,7 @@ export const promo_CTA = () => ({
           <div class="wes-promo__trapezoid"></div>
           <div class="wes-promo__content">
             <h2 class="wes-promo__title">{{ title }}</h2>
-            <div class="wes-promo__message cta" [innerHTML]="message">
+            <div class="wes-promo__message" [innerHTML]="message">
               <!-- Rich text content -->
             </div>
             <div class="wes-promo__actions">

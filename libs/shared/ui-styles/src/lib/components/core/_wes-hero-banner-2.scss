@@ -130,6 +130,15 @@
   &__body {
     display: flex;
     flex-wrap: wrap;
+
+    @include media-breakpoint-up(lg) {
+      align-items: center;
+      min-height: 504px; //smallest variation
+    }
+
+    @include media-breakpoint-up(xl) {
+      min-height: 600px; //smallest variation
+    }
   }
 
   &__content {
@@ -146,14 +155,14 @@
 
     @include media-breakpoint-up(lg) {
       @include make-col(7);
-      margin-top: 106px;
-      margin-bottom: 106px;
+      margin-top: 74px;
+      margin-bottom: 74px;
     }
 
     @include media-breakpoint-up(xl) {
       @include make-col(6);
-      margin-top: 154px;
-      margin-bottom: 154px;
+      margin-top: 126px;
+      margin-bottom: 126px;
     }
   }
 
