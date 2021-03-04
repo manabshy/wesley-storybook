@@ -58,7 +58,7 @@
         }
 
         // large col-11
-        > img.wes-image,
+        > img,
         > .wes-video-carousel__video,
         > table.wes-core-table.wide,
         > .wes-callout__wrapper,
@@ -86,7 +86,7 @@
         }
 
         // large col-9
-        > img.wes-image,
+        > img,
         > .wes-video-carousel__video,
         > .wes-callout__wrapper,
         > .wes-cta-card,
@@ -113,7 +113,7 @@
     }
 
     // add blocked content here
-    > img.wes-image,
+    > img,
     > .wes-video-carousel__video,
     > .wes-callout__wrapper,
     > .wes-cta-card {
@@ -135,7 +135,7 @@
       }
     }
 
-    > img.wes-image,
+    > img,
     > .wes-video-carousel__video {
       width: 100%;
       height: auto;
@@ -188,7 +188,7 @@
       }
 
       // large col-11
-      > img.wes-image,
+      > img,
       > .wes-video-carousel__video,
       > table.wes-core-table.wide,
       > .emphasis.lead {
@@ -216,7 +216,7 @@
       }
 
       // large col-9
-      > img.wes-image,
+      > img,
       > .wes-video-carousel__video,
       > .emphasis.lead {
         @include make-col-offset(0);
@@ -257,7 +257,7 @@
       }
 
       // large col-11
-      > img.wes-image,
+      > img,
       > .wes-video-carousel__video,
       > table.wes-core-table.wide,
       > .emphasis.lead {
@@ -285,7 +285,7 @@
       }
 
       // large col-9
-      > img.wes-image,
+      > img,
       > .wes-video-carousel__video,
       > .emphasis.lead {
         @include make-col-offset(1);
