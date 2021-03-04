@@ -4,35 +4,29 @@
 
 .wes-content-block,
 .wes-content-block--campaign {
-  &:first-child {
-    padding-top: rem(48px);
+  padding-top: rem(48px);
+  padding-bottom: rem(48px);
+  &.wes-content-block--collapse {
+    padding-top: rem(24px);
+    padding-bottom: rem(24px);
   }
-  &:last-child {
-    padding-bottom: rem(48px);
-  }
-  padding-top: rem(24px);
-  padding-bottom: rem(24px);
 
   @include media-breakpoint-up(md) {
-    &:first-child {
-      padding-top: rem(72px);
+    padding-top: rem(72px);
+    padding-bottom: rem(72px);
+    &.wes-content-block--collapse {
+      padding-top: rem(36px);
+      padding-bottom: rem(36px);
     }
-    &:last-child {
-      padding-bottom: rem(72px);
-    }
-    padding-top: rem(36px);
-    padding-bottom: rem(36px);
   }
 
   @include media-breakpoint-up(xl) {
-    &:first-child {
-      padding-top: rem(112px);
+    padding-top: rem(112px);
+    padding-bottom: rem(112px);
+    &.wes-content-block--collapse {
+      padding-top: rem(56px);
+      padding-bottom: rem(56px);
     }
-    &:last-child {
-      padding-bottom: rem(112px);
-    }
-    padding-top: rem(56px);
-    padding-bottom: rem(56px);
   }
 
   &__wrapper {
