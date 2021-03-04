@@ -1,7 +1,7 @@
 
-<div class="wes-card-feature">
+<div class="wes-card-feature" [ngStyle]="{'background-color':bgcolor}">
   <div class="wes-card-feature__header-content">
-    <h2 class="wes-card-feature__title">{{ title }}</h2>
+    <p class="wes-card-feature__title pt-6">{{ title }}</p>
   </div>
   <div class="wes-card-deck feature" [ngClass]="variant">
     <div class="wes-cta-card__frame wes-card-deck__wrapper" [ngClass]="size" [ngStyle]="{'background-color':value}">

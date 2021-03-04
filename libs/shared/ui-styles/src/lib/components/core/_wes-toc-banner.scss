@@ -7,11 +7,9 @@
     a {
       @extend .wes-link;
     }
-
   }
 }
 .wes-toc-banner {
-
   @include wes-make-full-width-component;
 
   z-index: 0;
@@ -25,7 +23,6 @@
 
   &__wrapper {
     @include wes-make-container;
-    padding-bottom: 56px;
     height: 100%;
   }
 
@@ -108,22 +105,20 @@
   &__content {
     @include wes-make-col-ready;
 
-    padding-top: rem(128px);
-    padding-bottom: 0;
-
-    @include media-breakpoint-up(sm) {
-      padding-top: rem(262px);
-    }
+    padding-top: 128px;
+    padding-bottom: 56px;
 
     @include media-breakpoint-up(md) {
       @include make-col(11);
+      padding-top: 262px;
+      padding-bottom: 96px;
     }
 
     @include media-breakpoint-up(lg) {
       @include make-col(7);
 
-      padding-top: rem(96px);
-      padding-bottom: 0;
+      padding-top: 96px;
+      padding-bottom: 96px;
     }
 
     @include media-breakpoint-up(xl) {
@@ -171,25 +166,18 @@
         list-style: none;
       }
     }
-    @include media-breakpoint-up(lg) {
-
-      .wes-list-chevron.column-2 {
+    .wes-list-chevron {
+      padding: 0 0;
+      &.column-2 {
         ul {
-          justify-content: space-between;
-          padding: 0px 25px;
-        }
-      }
-    }
-
-    @media (min-width: 768px) {
-      .wes-list-chevron.column-2 {
-        ul {
-          width: 100%;
-          display: flex;
-          flex-flow: row wrap;
-          align-items: stretch;
-          justify-content: space-between;
-          padding: 0 25px;
+          padding-left: 24px;
+          @include media-breakpoint-up(md) {
+            width: 100%;
+            display: flex;
+            flex-flow: row wrap;
+            align-items: stretch;
+            justify-content: space-between;
+          }
         }
       }
     }
@@ -200,32 +188,29 @@
   }
 
   &__toc-content {
-    color:$global-colour-charcoal;
+    color: $global-colour-charcoal;
     @include make-col(12);
 
-    padding: rem(40px) 0;
+    padding: 40px 0;
 
     background-color: $global-colour-grey-50;
 
     @include media-breakpoint-up(md) {
-      margin-top: rem(96px);
-      padding: rem(48px) rem(20px) rem(24px);
+      padding: 48px 0 24px 0;
     }
 
     @include media-breakpoint-up(lg) {
-      margin: rem(64px) 0 0 0;
-      padding: rem(48px) rem(48px) rem(24px);
+      padding: 48px 48px 24px;
     }
 
     @include media-breakpoint-up(xl) {
-      margin-top: rem(72px);
-      padding: rem(56px) rem(56px) rem(32px);
+      padding: 56px 56px 32px;
     }
   }
 
   &__toc-content-header {
     @include wes-typeset(level4);
 
-    margin-bottom: rem(32px);
+    margin-bottom: 32px;
   }
 }
