@@ -38,6 +38,14 @@ h6.level4 {}
 h6.level5 {}
 h6.level6 {}
 
+/*accordion heading in rte*/
+h1.wes-accordion-header {}
+h2.wes-accordion-header {}
+h3.wes-accordion-header {}
+h4.wes-accordion-header {}
+h5.wes-accordion-header {}
+h6.wes-accordion-header {}
+
 p.promo {}
 p.lead {}
 p.regular {}
