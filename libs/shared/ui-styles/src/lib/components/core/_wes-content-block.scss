@@ -43,12 +43,12 @@
       // large content
       @include media-breakpoint-up(lg) {
         // large col-9
-        > h1,
-        > h2,
-        > h3,
-        > h4,
-        > h5,
-        > h6,
+        > h1:not(.wes-accordion-header),
+        > h2:not(.wes-accordion-header),
+        > h3:not(.wes-accordion-header),
+        > h4:not(.wes-accordion-header),
+        > h5:not(.wes-accordion-header),
+        > h6:not(.wes-accordion-header),
         > p,
         > span[scfieldtype],
         > ul,
@@ -71,12 +71,12 @@
       // extra-large content
       @include media-breakpoint-up(xl) {
         // xlarge col-7
-        > h1,
-        > h2,
-        > h3,
-        > h4,
-        > h5,
-        > h6,
+        > h1:not(.wes-accordion-header),
+        > h2:not(.wes-accordion-header),
+        > h3:not(.wes-accordion-header),
+        > h4:not(.wes-accordion-header),
+        > h5:not(.wes-accordion-header),
+        > h6:not(.wes-accordion-header),
         > p,
         > span[scfieldtype],
         > ul,
@@ -232,12 +232,12 @@
     // medium content
     @include media-breakpoint-up(md) {
       // medium col-11
-      > h1,
-      > h2,
-      > h3,
-      > h4,
-      > h5,
-      > h6,
+      > h1:not(.wes-accordion-header),
+      > h2:not(.wes-accordion-header),
+      > h3:not(.wes-accordion-header),
+      > h4:not(.wes-accordion-header),
+      > h5:not(.wes-accordion-header),
+      > h6:not(.wes-accordion-header),
       > p,
       > span[scfieldtype],
       > ul,
@@ -269,12 +269,12 @@
     // extra-large content
     @include media-breakpoint-up(xl) {
       // xlarge col-7
-      > h1,
-      > h2,
-      > h3,
-      > h4,
-      > h5,
-      > h6,
+      > h1:not(.wes-accordion-header),
+      > h2:not(.wes-accordion-header),
+      > h3:not(.wes-accordion-header),
+      > h4:not(.wes-accordion-header),
+      > h5:not(.wes-accordion-header),
+      > h6:not(.wes-accordion-header),
       > p,
       > span[scfieldtype],
       > ul,

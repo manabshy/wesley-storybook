@@ -37,13 +37,25 @@ export const accordion = () => ({
 
 export const sitecoreAccordion = () => ({
   template: `
-
+  <div class="component wes-content-block wes-content-block--campaign">
+  <div class="wes-content-block__wrapper">
+    <div class="wes-content-block__body">
+      <div class="wes-content-block__body-content">
+        <div class="wes-content-block__placeholder">
+          <div class="component wes-rich-text-campaign-scope">
+            <h2 class="wes-accordion-header">Frequently asked questions</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="component snippet initialized">
 <div class="component-content">
   <div class="snippet-inner">
     <div class="snippet-container">
       <div class="snippet initialized">
-        <div class="component pb-3 pt-3 pt-md-4 wes-bg-solid-white">
+        <div class="component wes-bg-solid-white">
           <div class="component container">
             <div class="component col-sm-12 col-lg-10 offset-lg-1">
               <div
