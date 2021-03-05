@@ -623,7 +623,186 @@ export const contentBlockRegression = () => ({
         <div class="component wes-rich-text-scope">
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> </div>
 
+<div class="component wes-rich-text-scope">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><br></p><p><img height="576" alt="man" width="1024" _languageinserted="true" src="/-/media/project/wesleyan/wesleyan/1024x576.jpg"><br></p>
+<table class="wes-core-table centred-columns transparent alternate-gold-columns standard">
+    <!--bindings={
+  "ng-reflect-ng-if": "England and Wales NHS pension "
+}--><caption>England and Wales NHS pension contributions</caption><!--bindings={
+  "ng-reflect-ng-if": ",Annuities,Cash lump sums,Draw"
+}-->
+    <thead>
+        <tr>
+            <!--bindings={
+  "ng-reflect-ng-for-of": ",Annuities,Cash lump sums,Draw"
+}-->
+            <th colspan="2">  </th>
+            <th> Annuities </th>
+            <th> Cash lump sums </th>
+            <th> Drawdown </th>
+            <th> Taking your whole pot as cash </th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--bindings={
+  "ng-reflect-ng-for-of": "Provides an income?,tick,cross"
+}-->
+        <tr>
+            <!--bindings={
+  "ng-reflect-ng-for-of": "Provides an income?,tick,cross"
+}--><!----><!--bindings={
+  "ng-reflect-ng-if": "true",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <th colspan="2"> Provides an income? </th>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Annuities"><span aria-label="tick" class="icon-tick"></span></td>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Cash lump sums"><span aria-label="cross" class="icon-cross"></span></td>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Drawdown"><span aria-label="tick" class="icon-tick"></span></td>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Taking your whole pot as cash"><span aria-label="cross" class="icon-cross"></span></td>
+            <!---->
+        </tr>
+        <tr>
+            <!--bindings={
+  "ng-reflect-ng-for-of": "Provides a secure income for l"
+}--><!----><!--bindings={
+  "ng-reflect-ng-if": "true",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <th colspan="2"> Provides a secure income for life? </th>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Annuities"><span aria-label="tick" class="icon-tick"></span></td>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Cash lump sums"><span aria-label="cross" class="icon-cross"></span></td>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Drawdown"><span aria-label="tick" class="icon-tick"></span></td>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Taking your whole pot as cash"><span aria-label="cross" class="icon-cross"></span></td>
+            <!---->
+        </tr>
+        <tr>
+            <!--bindings={
+  "ng-reflect-ng-for-of": "Allows you to change your inco"
+}--><!----><!--bindings={
+  "ng-reflect-ng-if": "true",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <th colspan="2"> Allows you to change your income? </th>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Annuities"><span aria-label="cross" class="icon-cross"></span></td>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Cash lump sums"><span aria-label="tick" class="icon-tick"></span></td>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Drawdown"><span aria-label="tick" class="icon-tick"></span></td>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Taking your whole pot as cash"><span aria-label="cross" class="icon-cross"></span></td>
+            <!---->
+        </tr>
+        <tr>
+            <!--bindings={
+  "ng-reflect-ng-for-of": "Is your remaining pot still in"
+}--><!----><!--bindings={
+  "ng-reflect-ng-if": "true",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <th colspan="2"> Is your remaining pot still invested? </th>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Annuities"><span aria-label="cross" class="icon-cross"></span></td>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Cash lump sums"><span aria-label="tick" class="icon-tick"></span></td>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Drawdown"><span aria-label="tick" class="icon-tick"></span></td>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Taking your whole pot as cash"><span aria-label="cross" class="icon-cross"></span></td>
+            <!---->
+        </tr>
+        <tr>
+            <!--bindings={
+  "ng-reflect-ng-for-of": "Affected by the stock market?,"
+}--><!----><!--bindings={
+  "ng-reflect-ng-if": "true",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <th colspan="2"> Affected by the stock market? </th>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Annuities"><span aria-label="tick" class="icon-tick"></span></td>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Cash lump sums"><span aria-label="tick" class="icon-tick"></span></td>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Drawdown"><span aria-label="tick" class="icon-tick"></span></td>
+            <!----><!----><!--bindings={
+  "ng-reflect-ng-if": "false",
+  "ng-reflect-ng-if-else": "[object Object]"
+}-->
+            <td data-title="Taking your whole pot as cash"><span aria-label="cross" class="icon-cross"></span></td>
+            <!---->
+        </tr>
+    </tbody>
+</table>    </div>
+
 </div></div></div></div></div>
+
+
 
 
    `,

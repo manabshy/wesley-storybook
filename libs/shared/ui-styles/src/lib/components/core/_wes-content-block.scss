@@ -59,7 +59,6 @@
 
         // large col-11
         > img,
-        > p img,
         > .wes-video-carousel__video,
         > table.wes-core-table.wide,
         > .wes-callout__wrapper,
@@ -88,7 +87,6 @@
 
         // large col-9
         > img,
-        > p img,
         > .wes-video-carousel__video,
         > .wes-callout__wrapper,
         > .wes-cta-card,
@@ -116,7 +114,6 @@
 
     // add blocked content here
     > img,
-    > p img,
     > .wes-video-carousel__video,
     > .wes-callout__wrapper,
     > .wes-cta-card {
@@ -193,7 +190,6 @@
 
       // large col-11
       > img,
-      > p img,
       > .wes-video-carousel__video,
       > table.wes-core-table.wide,
       > .emphasis.lead {
@@ -222,7 +218,6 @@
 
       // large col-9
       > img,
-      > p img,
       > .wes-video-carousel__video,
       > .emphasis.lead {
         @include make-col-offset(0);
@@ -264,7 +259,6 @@
 
       // large col-11
       > img,
-      > p img,
       > .wes-video-carousel__video,
       > table.wes-core-table.wide,
       > .emphasis.lead {
@@ -293,7 +287,6 @@
 
       // large col-9
       > img,
-      > p img,
       > .wes-video-carousel__video,
       > .emphasis.lead {
         @include make-col-offset(1);
