@@ -8,6 +8,7 @@
     }
     .wes-card-feature__header-content {
       width: 672px;
+      padding-top: 56px;
     }
     .wes-card-deck__card-title {
       text-align: center;
@@ -16,6 +17,12 @@
     .wes-card-deck__card-message {
       margin-left: 0px;
     }
+    .wes-card-deck__deck {
+      padding-left: 45px;
+    }
+    .wes-card-feature__title {
+      font-size: 32px;
+    }
   }
   @media (max-width: 767.98px) {
     .wes-card-deck__card-header {
@@ -23,30 +30,50 @@
         margin-right: 0px !important;
       }
     }
+    .wes-cta-card__frame {
+      box-shadow: 0 26px 0px -22px #febd11, 0 -26px 0 -22px #febd11 !important;
+    }
+    .wes-card-feature__header-content {
+      height: unset !important;
+      margin-bottom: 0px !important;
+    }
+    .wes-card-deck.feature.box-feature {
+      margin-top: 0px;
+    }
+    .wes-card-feature__header-content {
+      padding-top: 56px;
+    }
+    .wes-card-feature__title {
+      font-size: 28px !important;
+    }
+    .wes-card-deck__card-message {
+      margin-left: 25px;
+    }
   }
   @include media-breakpoint-down(small) {
     .wes-card-feature__title {
       margin-left: 20px;
       margin-right: 20px;
     }
-
   }
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-up(md) {
     .wes-card-feature__title {
       width: unset;
     }
    .wes-card-deck__card-message {
       margin-left: 32px;
     }
+    .wes-card-feature__header-content {
+      padding-top: 96px;
+      padding-bottom: 35px;
+    }
   }
 
   .wes-card-feature__title {
     font-family: 'Open Sans';
-    font-size: 32px;
     letter-spacing: 0;
     line-height: 44px;
     text-align: center;
-    margin-top: 112px;
   }
   .wes-card-feature__header-content {
     margin: auto;
@@ -85,7 +112,7 @@
     .wes-cta-card__frame {
       border: 1px solid #d9dadc;
       border-radius: 0px;
-      box-shadow: 0 4px 0px 0px #febd11, 0 -12px 0 -8px #febd11;
+      box-shadow: 0 37px 0px -33px #febd11, 0 -37px 0 -33px #febd11;
       }
   }
   .wes-card-deck.feature.plain-feature {
