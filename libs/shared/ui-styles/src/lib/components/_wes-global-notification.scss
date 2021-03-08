@@ -5,7 +5,7 @@
   border-image-source: linear-gradient(133.23deg, #febd11 0%, #fedd36 100%);
   border-image-slice: 1;
   color: $global-colour-grey-900;
-  padding: 24px 20px;
+  padding: 24px 0;
 
   &.fade {
     transition: opacity 0.15s linear;
@@ -23,18 +23,6 @@
     background-color: $global-colour-grey-900;
     color: $global-colour-white;
     border: 1px solid $global-colour-charcoal;
-  }
-
-  @include media-breakpoint-up(sm) {
-    padding: 24px 28px;
-  }
-
-  @include media-breakpoint-up(md) {
-    padding: 24px 36px;
-  }
-
-  @include media-breakpoint-up(lg) {
-    padding: 24px 60px;
   }
 
   &__header {
