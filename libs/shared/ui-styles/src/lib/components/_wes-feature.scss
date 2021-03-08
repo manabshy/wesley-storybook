@@ -122,3 +122,19 @@
     }
   }
 }
+.wes-card-feature.white-feature {
+  background-color: $color-grey;
+  .wes-card-deck.feature {
+    .wes-card-deck__card-body {
+    background-color: $global-colour-white;
+    }
+  }
+}
+.wes-card-feature.grey-feature {
+  background-color: $global-colour-white;
+  .wes-card-deck.feature {
+    .wes-card-deck__card-body,.wes-cta-card__frame {
+    background-color: $color-grey;
+    }
+  }
+}

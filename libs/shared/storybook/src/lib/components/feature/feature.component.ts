@@ -27,21 +27,4 @@ export class FeatureComponent {
   @Input() variant;
   @Input() size;
   @Input() value;
-
-  constructor() {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    //Add '${implements OnChanges}' to the class.
-    switch (this.value) {
-      case '#F6F6F6':
-        this.bgcolor = '#FFF';
-        break;
-      case '':
-        this.bgcolor = '#F6F6F6';
-        break;
-      default:
-        break;
-    }
-  }
 }
