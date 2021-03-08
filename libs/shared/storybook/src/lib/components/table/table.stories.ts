@@ -88,9 +88,13 @@ export const style2 = () => ({
       <caption *ngIf="caption">England and Wales NHS pension contributions</caption>
       <thead *ngIf="tableHeaders">
         <tr>
-          <th *ngFor="let tableHeader of tableHeaders; let i = index" [attr.colspan]="i === 0? 2 : null">
-            {{tableHeader}}
-          </th>
+          <ng-container *ngFor="let tableHeader of tableHeaders; let i = index" [attr.colspan]="i === 0? 2 : null">
+            <td *ngIf="i === 0" [attr.colspan]="i === 0? 2 : null">
+            </td>
+            <th *ngIf="i > 0" [attr.colspan]="i === 0? 2 : null">
+              {{tableHeader}}
+            </th>
+          </ng-container>
         </tr>
       </thead>
       <tbody>
