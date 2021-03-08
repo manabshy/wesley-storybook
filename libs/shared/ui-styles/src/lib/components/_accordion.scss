@@ -34,7 +34,13 @@
 .rich-text {
   .wes-accordion-header {
     @include makeaccordingheading;
-    margin-left: unset !important;
+    margin-left: -10px !important;
+    @include media-breakpoint-up(md) {
+      margin-left: -20px !important;
+    }
+    @include media-breakpoint-up(lg) {
+      margin-left: unset !important;
+    }
   }
 }
 
