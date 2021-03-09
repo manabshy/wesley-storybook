@@ -314,4 +314,13 @@
       background-size: cover;
     }
   }
+
+  &.scEnabledChrome {
+    .tab-content {
+      display: block;
+      .tab-pane {
+        visibility: visible;
+      }
+    }
+  }
 }
