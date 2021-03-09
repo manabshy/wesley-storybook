@@ -1,0 +1,91 @@
+$wes-icon-font-path: '~libs/shared/assets/src/assets/fonts';
+
+/*
+This file is generated using  https://icomoon.io/app
+svgs are downloadable from https://wesleyanassurance.invisionapp.com/console/Iconography-cki7fm1ve03wf016ga7ibdyx5/cklccdj2i00u9010tdvq02a66/inspect
+Please tell designers: Strokes get ignored when generating fonts. You can convert them to fills to prevent this.
+when fonts are updated update this sass file, location path to fonts, and lowercase all class names
+*/
+@font-face {
+  font-family: 'wes-font-icon';
+  src: url('#{$wes-icon-font-path}/wes-font-icon.ttf?xj4iwc') format('truetype'),
+    url('#{$wes-icon-font-path}/wes-font-icon.woff?xj4iwc') format('woff'),
+    url('#{$wes-icon-font-path}/wes-font-icon.svg?xj4iwc#wes-font-icon')
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^='wes-font-icon-'],
+[class*=' wes-font-icon-'] {
+  &:before {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'wes-font-icon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.wes-font-icon-arrow-right:before {
+  content: '\e900';
+}
+.wes-font-icon-user:before {
+  content: '\e901';
+}
+.wes-font-icon-alert:before {
+  content: '\e902';
+}
+.wes-font-icon-chat:before {
+  content: '\e903';
+}
+.wes-font-icon-plus:before {
+  content: '\e904';
+}
+.wes-font-icon-minus:before {
+  content: '\e905';
+}
+.wes-font-icon-close:before {
+  content: '\e906';
+}
+.wes-font-icon-tick:before {
+  content: '\e907';
+}
+.wes-font-icon-chevron-left:before {
+  content: '\e908';
+}
+.wes-font-icon-link:before {
+  content: '\e909';
+}
+.wes-font-icon-chevron-up:before {
+  content: '\e90a';
+}
+.wes-font-icon-chevron-right:before {
+  content: '\e90b';
+}
+.wes-font-icon-chevron-down:before {
+  content: '\e90c';
+}
+.wes-font-icon-clock:before {
+  content: '\e90d';
+}
+.wes-font-icon-search:before {
+  content: '\e90e';
+}
+.wes-font-icon-menu:before {
+  content: '\e90f';
+}
+.wes-font-icon-medical:before {
+  content: '\e910';
+}
+.wes-font-icon-dental:before {
+  content: '\e911';
+}
