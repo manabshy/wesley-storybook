@@ -304,11 +304,6 @@ $cb-video-spacing-s: 40px;
 
   @include media-breakpoint-up(lg) {
 
-    &.wes-content-block--collapse {
-    }
-
-    &.wes-content-block--right { }
-
     .wes-rich-text-scope,
     .wes-rich-text-campaign-scope {
       > h1,
@@ -339,11 +334,6 @@ $cb-video-spacing-s: 40px;
   }
 
   @include media-breakpoint-up(xl) {
-
-    &.wes-content-block--collapse {
-    }
-
-    &.wes-content-block--right { }
 
     .wes-rich-text-scope,
     .wes-rich-text-campaign-scope {
