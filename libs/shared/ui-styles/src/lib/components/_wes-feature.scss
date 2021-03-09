@@ -1,7 +1,14 @@
 .wes-card-feature {
+  padding: 0 20px;
+
+  .wes-card-deck__card-message {
+    p {
+      text-align: center;
+    }
+  }
   @include media-breakpoint-up(lg) {
     .wes-card-deck__wrapper {
-        width:1172px;
+      width: 1172px;
     }
     .wes-card-deck__wrapper.standard-feature {
       width: 902px;
@@ -12,7 +19,6 @@
     }
     .wes-card-deck__card-title {
       text-align: center;
-      margin-right: 35px;
     }
     .wes-card-deck__card-message {
       margin-left: 0px;
@@ -25,11 +31,6 @@
     }
   }
   @media (max-width: 767.98px) {
-    .wes-card-deck__card-header {
-      .wes-card-deck__card-title {
-        margin-right: 0px !important;
-      }
-    }
     .wes-cta-card__frame {
       box-shadow: 0 26px 0px -22px #febd11, 0 -26px 0 -22px #febd11 !important;
     }
@@ -45,24 +46,18 @@
     }
     .wes-card-feature__title {
       font-size: 28px !important;
-    }
-    .wes-card-deck__card-message {
-      margin-left: 25px;
+      padding-left: 64px;
+      padding-right: 64px;
     }
   }
-  @include media-breakpoint-down(small) {
+  @include media-breakpoint-only(xs) {
     .wes-card-feature__title {
-      margin-left: 20px;
-      margin-right: 20px;
+      padding-left: 24px;
+      padding-right: 24px;
     }
   }
+
   @include media-breakpoint-up(md) {
-    .wes-card-feature__title {
-      width: unset;
-    }
-   .wes-card-deck__card-message {
-      margin-left: 32px;
-    }
     .wes-card-feature__header-content {
       padding-top: 96px;
       padding-bottom: 35px;
@@ -87,13 +82,15 @@
     }
     .wes-card-deck__card-title {
       text-align: center;
-      margin-right: 35px;
     }
     .wes-card-deck__deck-item {
       margin-bottom: 0px;
     }
     .wes-cta-card__icon {
       text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0;
       margin-bottom: 24px;
     }
     .wes-card-deck__card-body {
@@ -113,7 +110,7 @@
       border: 1px solid #d9dadc;
       border-radius: 0px;
       box-shadow: 0 37px 0px -33px #febd11, 0 -37px 0 -33px #febd11;
-      }
+    }
   }
   .wes-card-deck.feature.plain-feature {
     .wes-cta-card__frame {
@@ -126,15 +123,16 @@
   background-color: $color-grey;
   .wes-card-deck.feature {
     .wes-card-deck__card-body {
-    background-color: $global-colour-white;
+      background-color: $global-colour-white;
     }
   }
 }
 .wes-card-feature.grey-feature {
   background-color: $global-colour-white;
   .wes-card-deck.feature {
-    .wes-card-deck__card-body,.wes-cta-card__frame {
-    background-color: $color-grey;
+    .wes-card-deck__card-body,
+    .wes-cta-card__frame {
+      background-color: $color-grey;
     }
   }
 }
