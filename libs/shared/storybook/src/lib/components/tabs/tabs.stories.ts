@@ -135,3 +135,160 @@ export const tabs1 = () => ({
     ]),
   },
 });
+
+export const sitecoreEditMode = () => ({
+  template: `
+  <div class="wes-core-tabs container-white scEnabledChrome">
+  <div class="container">
+    <h2 class="text-md-center tab-header">Three stages of cover…</h2>
+    <ul id="myTab" class="nav nav-tabs justify-content-center">
+      <li class="nav-item">
+        <a
+          id="shareinourprofits-tab"
+          class="nav-link active"
+          href="#shareinourprofits"
+          data-toggle="tab"
+        >
+          Share in our profits
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          id="findyourfinancialconsultant-tab"
+          class="nav-link"
+          href="#findyourfinancialconsultant"
+          data-toggle="tab"
+        >
+          Find your financial consultant
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          id="saveorinvest-tab"
+          class="nav-link"
+          href="#saveorinvest"
+          data-toggle="tab"
+        >
+          Save or invest?
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content">
+    <div id="shareinourprofits" class="tab-pane active">
+      <div class="container">
+        <div class="panel-heading">
+          <a
+            class="panel-title"
+            href="#collapseshareinourprofits"
+            data-parent=".tab-pane"
+            data-toggle="collapse"
+          >
+            Share in our profits
+          </a>
+        </div>
+        <div id="collapseshareinourprofits" class="panel collapse">
+          <div class="panel-text">
+            <div class="panel-text-heading">Share in our profits</div>
+            <div>
+              <p>
+                One of the key features of the Capital Investment Bond is that
+                it provides access to our Life With Profits Fund. As the name
+                suggests, the With Profits Fund includes Wesleyan’s profits and
+                losses from across the business - so it’s a chance to share in
+                our financial success.
+              </p>
+              <p><a>Find out more about the With Profits Fund here</a></p>
+            </div>
+          </div>
+          <div
+            class="panel-image"
+            style="background-image: url('http://placekitten.com/600/400')"
+          >
+             
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="findyourfinancialconsultant" class="tab-pane">
+      <div class="container">
+        <div class="panel-heading">
+          <a
+            class="panel-title"
+            href="#collapsefindyourfinancialconsultant"
+            data-parent=".tab-pane"
+            data-toggle="collapse"
+          >
+            Find your financial consultant
+          </a>
+        </div>
+        <div id="collapsefindyourfinancialconsultant" class="panel collapse">
+          <div class="panel-text">
+            <div class="panel-text-heading">Find your financial consultant</div>
+            <div>
+              <p>
+                Request an appointment to discuss your finances and we’ll match
+                you with a Financial Consultant that’s local to you.
+              </p>
+              <p>
+                Looking for a full financial review or just want to learn more
+                about one of our products? You can meet us in-person or via
+                video call, at a date and time that fits around your schedule.
+                And if you’re a doctor, dentist, lawyer or teacher, we’ll pair
+                you with a specialist adviser for your field.
+              </p>
+            </div>
+          </div>
+          <div
+            class="panel-image"
+            style="background-image: url('http://placekitten.com/408/287')"
+          >
+             
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="saveorinvest" class="tab-pane">
+      <div class="container">
+        <div class="panel-heading">
+          <a
+            class="panel-title"
+            href="#collapsesaveorinvest"
+            data-parent=".tab-pane"
+            data-toggle="collapse"
+          >
+            Save or invest?
+          </a>
+        </div>
+        <div id="collapsesaveorinvest" class="panel collapse">
+          <div class="panel-text">
+            <div class="panel-text-heading">Save or invest?</div>
+            <div>
+              <p>
+                When you’re saving for your child’s future, you might like the
+                security of saving in cash - but if you want to be more
+                adventurous with your money and look for potentially greater
+                gains, you could choose to invest in a stocks and shares junior
+                ISA instead. You can even contribute to both at once, though the
+                £9,000 overall limit still applies.
+              </p>
+              <p>
+                If you do choose to invest, remember that the value of
+                investments can fall as well as rise, and you may get back less
+                than you put in.
+              </p>
+            </div>
+          </div>
+          <div
+            class="panel-image"
+            style="background-image: url('http://placekitten.com/200/287')"
+          >
+             
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  `,
+});
