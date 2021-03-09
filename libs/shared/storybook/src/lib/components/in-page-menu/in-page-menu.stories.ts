@@ -1,24 +1,22 @@
-import { addParameters, moduleMetadata } from '@storybook/angular';
+import { addParameters } from '@storybook/angular';
 import {
-  array,
   select,
   text,
   withKnobs,
   optionsKnob,
   object,
 } from '@storybook/addon-knobs';
-import { Pipe, PipeTransform } from '@angular/core';
 
 addParameters({ docs: { iframeHeight: 500 } });
 
 export default {
   title: 'Components/InPageMenu',
   decorators: [withKnobs],
-  parameters: {
-    knobs: {
-      escapeHTML: false,
-    },
-  },
+  //   parameters: {
+  //     knobs: {
+  //       escapeHTML: false,
+  //     },
+  //   },
 };
 
 const styleVariants = {
@@ -28,7 +26,7 @@ const styleVariants = {
 
 export const inPageMenu = () => ({
   template: `
-  <nav aria-label="in page menu">
+  <nav aria-label="in page menu" class="{{variant}}">
     <h2>{{mainHeading}}</h2>
     <ul>
         <ng-container *ngFor="let menuItem of menuItems">
