@@ -32,14 +32,14 @@ export const contentBlock = () => ({
               <div class="component rich-text wes-rich-text-scope">
                  <h1 class="level1">L1 - Unit trusts</h1>
                  <p class="lead">Lead - Wesleyan Unit Trust Managers (WUTM) offers a trio of products that enable you to invest in fully managed unit trust funds, run by an award-winning team. Whether you’re looking to build your own investment or save for your children’s future, we’ve got a product for you.</p>
-                 
+
                  <h2 class="level2">Sitecore editor view</h2>
 
                  <span scfieldtype="rich text" scdefaulttext="[No text in field]" contenteditable="true" class="scWebEditInput scEnabledChrome" id="fld_19B4F22CCB8C47559203FFE23638C448_B195CB5DF68B421F8C731C4E0D4BDC0E_en_1_dde329a9728842cebab8eff1be684694_2359_edit" sc-part-of="field">
                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                   </span>
 
-                  <h2 class="level2">CTA Card</h2>       
+                  <h2 class="level2">CTA Card</h2>
                   <div class="wes-cta-card">
                   <div class="wes-cta-card__wrapper">
                   <div class="wes-cta-card__frame">
@@ -87,9 +87,9 @@ export const contentBlock = () => ({
                   </div>
                   </div>
                   </div>
-                 
+
                  <h2 class="level2">L2 - What is a stocks and shares ISA?</h2>
-                 
+
                  <table class="wes-core-table transparent">
                    <caption>England and Wales NHS pension contributions</caption>
                    <thead>
@@ -117,9 +117,9 @@ export const contentBlock = () => ({
                      </tr>
                    </tbody>
                  </table>
-              
+
                  <h2 class="level2">L2 - What is a stocks and shares ISA?</h2>
-                 
+
                  <table class="wes-core-table wide transparent">
                    <caption>England and Wales NHS pension contributions</caption>
                    <thead>
@@ -147,7 +147,7 @@ export const contentBlock = () => ({
                      </tr>
                    </tbody>
                  </table>
-               
+
                  <h2 class="level2">L2 - What is a stocks and shares ISA?</h2>
                  <p>I returned to the hotel for my midday cleaning and meditation. I ate some crackers, seaweed snacks and cashew nuts, and drank green tea from a vending machine outside my room. When I went out again after lunch the unclean receptionist gave me a map, and I chose a tourist spot to visit.</p>
                  <!--image-->
@@ -213,9 +213,9 @@ export const contentBlock = () => ({
                     <li>What should I do with my pension benefits when I take them?</li>
                  </ul>
                  <p>Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
-                 
+
                  <p class="emphasis">Emphasis effect: I walked down the Kokusai Dori, the main street of the city, doubling back and weaving off to lose anybody who was trailing me. Unfortunately my alpha potential is still too weak to achieve invisibility, so I have to shake trailers the old-fashioned way.</p>
-                 
+
                  <p class="emphasis lead">Lead Emphasis effect: Poor weather precluding my morning outing, we yarned by the peat fire & the hours sped by like minutes. I spoke at length of Tilda & Jackson & also my fears of "gold fever" in San Francisco</p>
                  <h4 class="level3">L3 - Right</h4>
                  <p class="highlight" style="text-align: right">Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
@@ -261,14 +261,14 @@ export const contentCampaign = () => ({
                <div class="component rich-text wes-rich-text-scope">
                   <h1 class="level1">L1 - Unit trusts</h1>
                   <p class="lead">Lead - Wesleyan Unit Trust Managers (WUTM) offers a trio of products that enable you to invest in fully managed unit trust funds, run by an award-winning team. Whether you’re looking to build your own investment or save for your children’s future, we’ve got a product for you.</p>
-                  
+
                   <h2 class="level2">Sitecore editor view</h2>
- 
+
                   <span scfieldtype="rich text" scdefaulttext="[No text in field]" contenteditable="true" class="scWebEditInput scEnabledChrome" id="fld_19B4F22CCB8C47559203FFE23638C448_B195CB5DF68B421F8C731C4E0D4BDC0E_en_1_dde329a9728842cebab8eff1be684694_2359_edit" sc-part-of="field">
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                    </span>
 
-                  <h2 class="level2">CTA Card</h2>       
+                  <h2 class="level2">CTA Card</h2>
                   <div class="wes-cta-card">
                   <div class="wes-cta-card__wrapper">
                   <div class="wes-cta-card__frame">
@@ -316,9 +316,9 @@ export const contentCampaign = () => ({
                   </div>
                   </div>
                   </div>
-                  
+
                   <h2 class="level2">L2 - What is a stocks and shares ISA?</h2>
-                  
+
                   <table class="wes-core-table transparent">
                     <caption>England and Wales NHS pension contributions</caption>
                     <thead>
@@ -346,9 +346,9 @@ export const contentCampaign = () => ({
                       </tr>
                     </tbody>
                   </table>
-               
+
                   <h2 class="level2">L2 - What is a stocks and shares ISA?</h2>
-                  
+
                   <table class="wes-core-table wide transparent">
                     <caption>England and Wales NHS pension contributions</caption>
                     <thead>
@@ -376,7 +376,7 @@ export const contentCampaign = () => ({
                       </tr>
                     </tbody>
                   </table>
-                
+
                   <h2 class="level2">L2 - What is a stocks and shares ISA?</h2>
                   <p>I returned to the hotel for my midday cleaning and meditation. I ate some crackers, seaweed snacks and cashew nuts, and drank green tea from a vending machine outside my room. When I went out again after lunch the unclean receptionist gave me a map, and I chose a tourist spot to visit.</p>
                   <!--image-->
@@ -442,9 +442,9 @@ export const contentCampaign = () => ({
                      <li>What should I do with my pension benefits when I take them?</li>
                   </ul>
                   <p>Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
-                  
+
                   <p class="emphasis">Emphasis effect: I walked down the Kokusai Dori, the main street of the city, doubling back and weaving off to lose anybody who was trailing me. Unfortunately my alpha potential is still too weak to achieve invisibility, so I have to shake trailers the old-fashioned way.</p>
-                  
+
                   <p class="emphasis lead">Lead Emphasis effect: Poor weather precluding my morning outing, we yarned by the peat fire & the hours sped by like minutes. I spoke at length of Tilda & Jackson & also my fears of "gold fever" in San Francisco</p>
                   <h4 class="level3">L3 - Right</h4>
                   <p class="highlight" style="text-align: right">Limits, exclusions and charges do apply. Full <a href="#">terms and conditions</a> of the policy and cover, including the policy benefits and exclusions, will be contained in the Policy Wording and Policy Summary.</p>
@@ -480,151 +480,507 @@ export const contentCampaign = () => ({
 
 export const contentBlockRegression = () => ({
   template: `
-   <div class="component wes-content-block wes-content-block--grey wes-content-block--campaign">
-<div class="wes-content-block__wrapper"><div class="wes-content-block__body">
-<div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
+<div class="snippet initialized">
 
-    <div class="component wes-rich-text-campaign-scope">
-<h2>Teachers pension advice, tailored to you</h2>
-<p>When it comes to planning for retirement, it’s important that you understand the variety of options available to you, and that you seek expert advice.</p>
-<p>A Wesleyan Financial Services Consultant can advise and guide you through the various pension options available to you. Topics of discussion may include:</p>
+    <div class="component wes-toc-banner">
+
+<div class="wes-toc-banner__wrapper"><div class="wes-toc-banner__body"><div class="wes-toc-banner__content"><h1 class="wes-toc-banner__title field-heading">NHS Pension Scheme Guide</h1><div class="wes-toc-banner__message"><p>
+The NHS pension scheme is a well-earned benefit for the hard workers of the health service.</p></div></div></div></div><div class="wes-toc-banner__toc-background"><div class="wes-toc-banner__toc-wrapper"><div class="wes-toc-banner_toc-body wes-list wes-list-chevron column-2"><div class="wes-toc-banner__toc-link wes-toc-banner__toc-content"><h2 class="wes-toc-banner__toc-content-header field-tocheading">On this page</h2><ul>
+  <li><a href="/" target="_blank">Where to start with saving for a house</a></li>
+  <li><a href="/" target="_blank">How to save for your deposit</a></li>
+  <li><a href="/" target="_blank">The best accounts for saving for a house</a></li>
+  <li><a href="/" target="_blank">The extra costs you’ll need to think about</a></li>
+  <li><a href="/" target="_blank">Other options for first-time buyers</a></li>
+  <li><a href="/" target="_blank">Maintaining the saving habit</a></li>
+</ul></div></div></div></div>
+        <div class="wes-toc-banner__shapes">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" id="wes-toc-banner__shapes-desktop" viewBox="0 0 1366 600" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <rect height="600" id="toc-supergraphic_xl-a" width="1366" x="0" y="0"></rect>
+                    <linearGradient id="toc-supergraphic_xl-c" x1="36.892%" x2="63.109%" y1="0%" y2="100%">
+                        <stop offset="0%" stop-color="#FEBD11"></stop>
+                        <stop offset="42.422%" stop-color="#FEDD36" stop-opacity=".3"></stop>
+                        <stop offset="100%" stop-color="#FEDD36" stop-opacity=".1"></stop>
+                    </linearGradient>
+                </defs>
+                <g fill="none" fill-rule="evenodd">
+                    <mask fill="#fff" id="toc-supergraphic_xl-b">
+                        <use xlink:href="#toc-supergraphic_xl-a"></use>
+                    </mask>
+                    <use xlink:href="#toc-supergraphic_xl-a" fill="#FFF"></use>
+                    <g mask="url(#toc-supergraphic_xl-b)">
+                        <g transform="translate(-269 -92)">
+                            <polygon fill="#FEBD11" points=".629 834 .629 0 957.082 0 1259.629 834"></polygon>
+                            <polygon fill="url(#toc-supergraphic_xl-c)" points="0 0 764 0 382 1059" transform="translate(378 92)"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" id="wes-toc-banner__shapes-mobile" viewBox="0 0 375 392" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <rect height="392" id="toc-supergraphic_xs-a" width="375" x="0" y="0"></rect>
+                    <linearGradient id="toc-supergraphic_xs-c" x1="36.862%" x2="63.139%" y1="0%" y2="100%">
+                        <stop offset="0%" stop-color="#FEBD11"></stop>
+                        <stop offset="60%" stop-color="#FEDD36" stop-opacity=".3"></stop>
+                        <stop offset="100%" stop-color="#FEDD36" stop-opacity=".1"></stop>
+                    </linearGradient>
+                </defs>
+                <g fill="none" fill-rule="evenodd">
+                    <mask fill="#fff" id="toc-supergraphic_xs-b">
+                        <use xlink:href="#toc-supergraphic_xs-a"></use>
+                    </mask>
+                    <use xlink:href="#toc-supergraphic_xs-a" fill="#FEBD11"></use>
+                    <rect fill="#FFF" height="148" mask="url(#toc-supergraphic_xs-b)" width="375"></rect>
+                    <rect fill="#FEBD11" height="244" mask="url(#toc-supergraphic_xs-b)" transform="matrix(1 0 0 -1 0 540)" width="375" y="148"></rect>
+                    <g mask="url(#toc-supergraphic_xs-b)">
+                        <g transform="translate(-49 4)">
+                            <polygon fill="#FEBD11" points="92.597 -92 573.403 -92 333 574" transform="rotate(-90 357.5 216.5)"></polygon>
+                            <polygon fill="url(#toc-supergraphic_xs-c)" points="58.88 -58.5 365.12 -58.5 212 365.5" transform="matrix(0 -1 -1 0 365.5 381.5)"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>
+    <div class="component wes-content-block wes-content-block--grey">
+<div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
+
+    <div class="component wes-rich-text-scope">
+<h1>L1 Heading</h1>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<h2>L2 Heading</h2>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<p class="highlight">HIGHLIGHT: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&nbsp;</p>
+<h3>L3 Heading</h3>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<h4>L4 Heading</h4>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 <ul class="bulleted">
-	<li>Early retirement and the options available to you</li>
-	<li>Understanding the intricacies of the Teachers’ Pension Scheme or your Local Government Pension Scheme</li>
-	<li>Understanding how much income you’ll need at different stages of your retirement</li>
-	<li>Discussing the best times to access any retirement income streams</li>
-	<li>How and when you can take your retirement benefits</li>
-	<li>Your entitlement to the flat-rate State Pension</li>
-	<li>Will the age discrimination case (McCloud Judgement) impact your pension?</li>
-</ul>    </div>
+    <li>bullet 1</li>
+    <li>bullet 2</li>
+    <li>bullet 3</li>
+    <li>bullet 4</li>
+</ul>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<ol class="numbered">
+    <li>number 1</li>
+    <li>number 2</li>
+    <li>number 3</li>
+    <li>number 4</li>
+</ol>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<p><img height="1200" alt="man with child looking at laptop" width="1800" src="/-/media/project/wesleyan/wesleyan/manchildlaptop.jpg"></p>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<div class="wes-video-carousel__video"><div class="wes-video-carousel__video-frame"><iframe allow="autoplay; fullscreen" allowfullscreen="1" border="0" frameborder="0" mozallowfullscreen="1" scrolling="no" src="https://video.wesleyan.co.uk/v.ihtml/player.html?token=244588c11a6b9731d586512913ee3293&amp;source=embed&amp;photo%5fid=64659215" style="width:100%; height:100%; position: absolute; top: 0; left: 0;" webkitallowfullscreen="1"></iframe></div></div>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<table class="wes-core-table transparent standard">
+    <caption>England and Wales NHS pension contributions</caption>
+    <thead>
+        <tr>
+            <th>Salary Range</th>
+            <th>Your contribution (before tax relief)</th>
+            <th>Employer’s contribution</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th data-title="Salary Range">£15,432 - £21,477</th>
+            <td data-title="Your contribution (before tax relief)">5%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£21,477 - £41,477</th>
+            <td data-title="Your contribution (before tax relief)">5.6%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£41,477 - £100,000</th>
+            <td data-title="Your contribution (before tax relief)">7.1%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+    </tbody>
+</table>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<table class="wes-core-table transparent wide">
+    <caption>England and Wales NHS pension contributions</caption>
+    <thead>
+        <tr>
+            <th>Salary Range</th>
+            <th>Your contribution (before tax relief)</th>
+            <th>Employer’s contribution</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th data-title="Salary Range">£15,432 - £21,477</th>
+            <td data-title="Your contribution (before tax relief)">5%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£21,477 - £41,477</th>
+            <td data-title="Your contribution (before tax relief)">5.6%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£41,477 - £100,000</th>
+            <td data-title="Your contribution (before tax relief)">7.1%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+    </tbody>
+</table>    </div>
 </div></div></div></div>    </div>
-<div class="component wes-content-block wes-content-block--campaign">
+    <div class="component wes-content-block wes-content-block--right">
 <div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
 
-    <div class="component wes-rich-text-campaign-scope">
-<p>Book your 15-minute call to get started on the road towards specialist retirement income planning advice for teachers. Whether you're looking to understand the Teachers’ Pension Scheme, discuss early retirement options or are just seeking general financial advice, we can match you with a Wesleyan Financial Services Consultant that specialises in the profession, to schedule an appointment at a time and place suited to you.</p>    </div>
+    <div class="component wes-rich-text-scope">
+<h1>L1 Heading</h1>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<h2>L2 Heading</h2>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<p class="highlight">HIGHLIGHT: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&nbsp;</p>
+<h3>L3 Heading</h3>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<h4>L4 Heading</h4>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<ul class="bulleted">
+    <li>bullet 1</li>
+    <li>bullet 2</li>
+    <li>bullet 3</li>
+    <li>bullet 4</li>
+</ul>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<ol class="numbered">
+    <li>number 1</li>
+    <li>number 2</li>
+    <li>number 3</li>
+    <li>number 4</li>
+</ol>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<p><img height="1200" alt="man with child looking at laptop" width="1800" src="/-/media/project/wesleyan/wesleyan/manchildlaptop.jpg"></p>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<div class="wes-video-carousel__video"><div class="wes-video-carousel__video-frame"><iframe allow="autoplay; fullscreen" allowfullscreen="1" border="0" frameborder="0" mozallowfullscreen="1" scrolling="no" src="https://video.wesleyan.co.uk/v.ihtml/player.html?token=244588c11a6b9731d586512913ee3293&amp;source=embed&amp;photo%5fid=64659215" style="width:100%; height:100%; position: absolute; top: 0; left: 0;" webkitallowfullscreen="1"></iframe></div></div><p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<table class="wes-core-table transparent standard">
+    <caption>England and Wales NHS pension contributions</caption>
+    <thead>
+        <tr>
+            <th>Salary Range</th>
+            <th>Your contribution (before tax relief)</th>
+            <th>Employer’s contribution</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th data-title="Salary Range">£15,432 - £21,477</th>
+            <td data-title="Your contribution (before tax relief)">5%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£21,477 - £41,477</th>
+            <td data-title="Your contribution (before tax relief)">5.6%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£41,477 - £100,000</th>
+            <td data-title="Your contribution (before tax relief)">7.1%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+    </tbody>
+</table>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<table class="wes-core-table transparent wide">
+    <caption>England and Wales NHS pension contributions</caption>
+    <thead>
+        <tr>
+            <th>Salary Range</th>
+            <th>Your contribution (before tax relief)</th>
+            <th>Employer’s contribution</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th data-title="Salary Range">£15,432 - £21,477</th>
+            <td data-title="Your contribution (before tax relief)">5%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£21,477 - £41,477</th>
+            <td data-title="Your contribution (before tax relief)">5.6%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£41,477 - £100,000</th>
+            <td data-title="Your contribution (before tax relief)">7.1%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+    </tbody>
+</table>    </div>
+</div></div></div></div>    </div>
+    <div class="component wes-content-block wes-content-block--grey">
+<div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
+
+    <div class="component wes-rich-text-scope">
+<h2>L2 Heading</h2>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>    </div>
 </div></div></div></div>    </div>
 
-<div class="component wes-content-block wes-content-block--grey wes-content-block--campaign"><div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder"><div class="component wes-rich-text-campaign-scope">
-<h2 class="level2">L2 - What is a stocks and shares ISA?</h2>
-<table class="wes-core-table transparent"><caption>England and Wales NHS pension contributions</caption><thead><tr><th>Salary Range</th><th>Your contribution (before tax relief)</th><th>Employer’s contribution</th></tr></thead><tbody><tr><th data-title="Salary Range">£15,432 - £21,477</th><td data-title="Your contribution (before tax relief)">5%</td><td data-title="Employer’s contribution">20.68%</td></tr><tr><th data-title="Salary Range">£21,477 - £41,477</th><td data-title="Your contribution (before tax relief)">5.6%</td><td data-title="Employer’s contribution">20.68%</td></tr><tr><th data-title="Salary Range">£41,477 - £100,000</th><td data-title="Your contribution (before tax relief)">7.1%</td><td data-title="Employer’s contribution">20.68%</td></tr></tbody></table>
-</div></div></div></div></div></div>
+    <div class="component wes-callout wes-callout--grey wes-callout--collapse">
+<div class="wes-callout__wrapper"><div class="wes-callout__body"><div class="wes-callout__body-content"><div class="wes-callout__frame"><h2 class="field-callout-title">How to save for your deposit</h2><div class="wes-callout__message"><p>Just as it's important to be realistic about what kind of house and mortgage you can afford, it's crucial to set a realistic timeframe for saving up the deposit. Estimates suggest it can take an average of 3.5 years for a couple to save their deposit, and that rises to 13.5 years if you're buying alone.</p></div></div></div></div></div>    </div>
 
-
-<div class="component wes-content-block">
+    <div class="component wes-content-block wes-content-block--grey wes-content-block--collapse">
 <div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
-<div class="component wes-rich-text-scope">
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> </div>
 
-<div class="component wes-core-resource-link">
-            <svg xmlns:xlink="http://www.w3.org/1999/xlink" height="17px" version="1.1" viewBox="0 0 17 17" width="17px" xmlns="http://www.w3.org/2000/svg">
-      <g fill="none" fill-rule="evenodd" id="Rework" stroke="none" stroke-linecap="round" stroke-width="1">
-         <g id="Product-Page_Doc-Links_XL" stroke="#1E2630" transform="translate(-94.000000, -321.000000)">
-            <g id="Important-Information" transform="translate(0.000000, -1783.000000)">
-               <g id="Contents" transform="translate(94.000000, 228.000000)">
-                  <g id="Key-Documents" transform="translate(0.000000, 1603.000000)">
-                     <g id="List-Bullet" transform="translate(0.000000, 112.000000)">
-                        <g id="03-List-Item-Copy" transform="translate(0.000000, 156.000000)">
-                           <g id="01-Bullet" transform="translate(0.000000, 5.000000)">
-                              <path d="M12.2103355,9.4801407 L14.8293831,6.86109308 C15.9865512,5.70392504 15.9865512,3.82778494 14.8293831,2.67061689 C13.6722151,1.51344885 11.796075,1.51344885 10.6389069,2.67061689 L8.0198593,5.28966451 C6.86269125,6.44683256 6.86269125,8.32297266 8.0198593,9.4801407" id="Rectangle"></path>
-                              <path d="M5.63890692,7.67061689 L3.0198593,10.2896645 C1.86269125,11.4468326 1.86269125,13.3229727 3.0198593,14.4801407 C4.17702734,15.6373087 6.05316744,15.6373087 7.21033549,14.4801407 L9.82938311,11.8610931 C10.9865512,10.703925 10.9865512,8.82778494 9.82938311,7.67061689" id="Rectangle"></path>
-                           </g>
-                        </g>
-                     </g>
-                  </g>
-               </g>
-            </g>
-         </g>
-      </g>
-   </svg>
-            <p class="wes-core-resource-link__body">
-                <a class="wes-core-resource-link__link" href="/cookies?sc_site=Wesleyan" disablewebedit="True">With Profits ISA Factsheet</a>
+    <div class="component wes-rich-text-scope">
+<h2>L2 Heading</h2>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>    </div>
+</div></div></div></div>    </div>
 
- 
+    <div class="component wes-emphasis wes-emphasis--grey wes-emphasis--collapse">
 
-                    <span class="wes-core-resource-link__meta">PDF (205KB)</span>
+<div class="wes-emphasis__wrapper"><div class="wes-emphasis__body"><div class="wes-emphasis__body-content"><div class="wes-emphasis__frame"><div class="wes-emphasis__message"><p>Emphasis - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec scelerisque magna, et consequat magna. Nulla a lacus molestie, tristique sapien eu, auctor ipsum. Praesent purus libero, aliquet ut odio eu, consequat fermentum libero.</p></div></div></div></div></div>    </div>
+    <div class="component wes-content-block wes-content-block--grey wes-content-block--collapse">
+<div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
 
- 
+    <div class="component wes-rich-text-scope">
+<h2>L2 Heading</h2>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>    </div>
+</div></div></div></div>    </div>
+    <div class="component wes-content-block wes-content-block--grey wes-content-block--collapse">
+<div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
 
-            </p>
-        </div>
+    <div class="component wes-rich-text-scope">
+<table class="wes-core-table transparent standard">
+    <caption>England and Wales NHS pension contributions</caption>
+    <thead>
+        <tr>
+            <th>Salary Range</th>
+            <th>Your contribution (before tax relief)</th>
+            <th>Employer’s contribution</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th data-title="Salary Range">£15,432 - £21,477</th>
+            <td data-title="Your contribution (before tax relief)">5%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£21,477 - £41,477</th>
+            <td data-title="Your contribution (before tax relief)">5.6%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£41,477 - £100,000</th>
+            <td data-title="Your contribution (before tax relief)">7.1%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+    </tbody>
+</table>    </div>
+</div></div></div></div>    </div>
+    <div class="component wes-content-block wes-content-block--grey wes-content-block--collapse">
+<div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
 
-        <div class="component wes-rich-text-scope">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> </div>
-        
-        <div class="component wes-core-resource-link">
-            <svg xmlns:xlink="http://www.w3.org/1999/xlink" height="17px" version="1.1" viewBox="0 0 17 17" width="17px" xmlns="http://www.w3.org/2000/svg">
-      <g fill="none" fill-rule="evenodd" id="Rework" stroke="none" stroke-linecap="round" stroke-width="1">
-         <g id="Product-Page_Doc-Links_XL" stroke="#1E2630" transform="translate(-94.000000, -321.000000)">
-            <g id="Important-Information" transform="translate(0.000000, -1783.000000)">
-               <g id="Contents" transform="translate(94.000000, 228.000000)">
-                  <g id="Key-Documents" transform="translate(0.000000, 1603.000000)">
-                     <g id="List-Bullet" transform="translate(0.000000, 112.000000)">
-                        <g id="03-List-Item-Copy" transform="translate(0.000000, 156.000000)">
-                           <g id="01-Bullet" transform="translate(0.000000, 5.000000)">
-                              <path d="M12.2103355,9.4801407 L14.8293831,6.86109308 C15.9865512,5.70392504 15.9865512,3.82778494 14.8293831,2.67061689 C13.6722151,1.51344885 11.796075,1.51344885 10.6389069,2.67061689 L8.0198593,5.28966451 C6.86269125,6.44683256 6.86269125,8.32297266 8.0198593,9.4801407" id="Rectangle"></path>
-                              <path d="M5.63890692,7.67061689 L3.0198593,10.2896645 C1.86269125,11.4468326 1.86269125,13.3229727 3.0198593,14.4801407 C4.17702734,15.6373087 6.05316744,15.6373087 7.21033549,14.4801407 L9.82938311,11.8610931 C10.9865512,10.703925 10.9865512,8.82778494 9.82938311,7.67061689" id="Rectangle"></path>
-                           </g>
-                        </g>
-                     </g>
-                  </g>
-               </g>
-            </g>
-         </g>
-      </g>
-   </svg>
-            <p class="wes-core-resource-link__body">
-                <a class="wes-core-resource-link__link" href="/cookies?sc_site=Wesleyan" disablewebedit="True">With Profits ISA Factsheet</a>
+    <div class="component wes-rich-text-scope">
+<h2>L2 Heading</h2>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>    </div>
+</div></div></div></div>    </div>
+    <div class="component wes-content-block wes-content-block--grey wes-content-block--collapse">
+<div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
 
- 
+    <div class="component wes-rich-text-scope">
+<table class="wes-core-table transparent wide">
+    <caption>England and Wales NHS pension contributions</caption>
+    <thead>
+        <tr>
+            <th>Salary Range</th>
+            <th>Your contribution (before tax relief)</th>
+            <th>Employer’s contribution</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th data-title="Salary Range">£15,432 - £21,477</th>
+            <td data-title="Your contribution (before tax relief)">5%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£21,477 - £41,477</th>
+            <td data-title="Your contribution (before tax relief)">5.6%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£41,477 - £100,000</th>
+            <td data-title="Your contribution (before tax relief)">7.1%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+    </tbody>
+</table>    </div>
+</div></div></div></div>    </div>
+    <div class="component wes-content-block wes-content-block--right wes-content-block--collapse">
+<div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
 
-                    <span class="wes-core-resource-link__meta">PDF (205KB)</span>
+    <div class="component wes-rich-text-scope">
+<h2>L2 Heading</h2>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>    </div>
+</div></div></div></div>    </div>
 
- 
+    <div class="component wes-callout wes-callout--right wes-callout--collapse">
+<div class="wes-callout__wrapper"><div class="wes-callout__body"><div class="wes-callout__body-content"><div class="wes-callout__frame"><h2 class="wes-callout__title field-callout-title">How to save for your deposit</h2><div class="wes-callout__message"><p>Just as it's important to be realistic about what kind of house and mortgage you can afford, it's crucial to set a realistic timeframe for saving up the deposit. Estimates suggest it can take an average of 3.5 years for a couple to save their deposit, and that rises to 13.5 years if you're buying alone.</p></div></div></div></div></div>    </div>
 
-            </p>
-        </div>
+    <div class="component wes-content-block wes-content-block--right wes-content-block--collapse">
+<div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
+
+    <div class="component wes-rich-text-scope">
+<h2>L2 Heading</h2>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>    </div>
+</div></div></div></div>    </div>
+
+    <div class="component wes-emphasis wes-emphasis--right wes-emphasis--collapse">
+
+<div class="wes-emphasis__wrapper"><div class="wes-emphasis__body"><div class="wes-emphasis__body-content"><div class="wes-emphasis__frame"><div class="wes-emphasis__message"><p>Emphasis: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec scelerisque magna, et consequat magna. Nulla a lacus molestie, tristique sapien eu, auctor ipsum. Praesent purus libero, aliquet ut odio eu, consequat fermentum libero.</p></div></div></div></div></div>    </div>
+    <div class="component wes-content-block wes-content-block--right wes-content-block--collapse">
+<div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
+
+    <div class="component wes-rich-text-scope">
+<h2>L2 Heading</h2>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>    </div>
+</div></div></div></div>    </div>
+    <div class="component wes-content-block wes-content-block--right wes-content-block--collapse">
+<div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
+
+    <div class="component wes-rich-text-scope">
+<table class="wes-core-table transparent standard">
+    <caption>England and Wales NHS pension contributions</caption>
+    <thead>
+        <tr>
+            <th>Salary Range</th>
+            <th>Your contribution (before tax relief)</th>
+            <th>Employer’s contribution</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th data-title="Salary Range">£15,432 - £21,477</th>
+            <td data-title="Your contribution (before tax relief)">5%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£21,477 - £41,477</th>
+            <td data-title="Your contribution (before tax relief)">5.6%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£41,477 - £100,000</th>
+            <td data-title="Your contribution (before tax relief)">7.1%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+    </tbody>
+</table>    </div>
+</div></div></div></div>    </div>
+    <div class="component wes-content-block wes-content-block--right wes-content-block--collapse">
+<div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
+
+    <div class="component wes-rich-text-scope">
+<h2>L2 Heading</h2>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>    </div>
+</div></div></div></div>    </div>
+    <div class="component wes-content-block wes-content-block--right wes-content-block--collapse">
+<div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
+
+    <div class="component wes-rich-text-scope">
+<table class="wes-core-table transparent wide">
+    <caption>England and Wales NHS pension contributions</caption>
+    <thead>
+        <tr>
+            <th>Salary Range</th>
+            <th>Your contribution (before tax relief)</th>
+            <th>Employer’s contribution</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th data-title="Salary Range">£15,432 - £21,477</th>
+            <td data-title="Your contribution (before tax relief)">5%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£21,477 - £41,477</th>
+            <td data-title="Your contribution (before tax relief)">5.6%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+        <tr>
+            <th data-title="Salary Range">£41,477 - £100,000</th>
+            <td data-title="Your contribution (before tax relief)">7.1%</td>
+            <td data-title="Employer’s contribution">20.68%</td>
+        </tr>
+    </tbody>
+</table>    </div>
+</div></div></div></div>    </div>
+    <div class="component wes-content-block wes-content-block--grey">
+<div class="wes-content-block__wrapper"><div class="wes-content-block__body"><div class="wes-content-block__body-content"><div class="wes-content-block__placeholder">
+
+    <div class="component wes-rich-text-scope">
+<h2>L2 Heading</h2>
+<p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>    </div>
 
 
-        <div class="component wes-core-resource-link">
-            <svg xmlns:xlink="http://www.w3.org/1999/xlink" height="17px" version="1.1" viewBox="0 0 17 17" width="17px" xmlns="http://www.w3.org/2000/svg">
-      <g fill="none" fill-rule="evenodd" id="Rework" stroke="none" stroke-linecap="round" stroke-width="1">
-         <g id="Product-Page_Doc-Links_XL" stroke="#1E2630" transform="translate(-94.000000, -321.000000)">
-            <g id="Important-Information" transform="translate(0.000000, -1783.000000)">
-               <g id="Contents" transform="translate(94.000000, 228.000000)">
-                  <g id="Key-Documents" transform="translate(0.000000, 1603.000000)">
-                     <g id="List-Bullet" transform="translate(0.000000, 112.000000)">
-                        <g id="03-List-Item-Copy" transform="translate(0.000000, 156.000000)">
-                           <g id="01-Bullet" transform="translate(0.000000, 5.000000)">
-                              <path d="M12.2103355,9.4801407 L14.8293831,6.86109308 C15.9865512,5.70392504 15.9865512,3.82778494 14.8293831,2.67061689 C13.6722151,1.51344885 11.796075,1.51344885 10.6389069,2.67061689 L8.0198593,5.28966451 C6.86269125,6.44683256 6.86269125,8.32297266 8.0198593,9.4801407" id="Rectangle"></path>
-                              <path d="M5.63890692,7.67061689 L3.0198593,10.2896645 C1.86269125,11.4468326 1.86269125,13.3229727 3.0198593,14.4801407 C4.17702734,15.6373087 6.05316744,15.6373087 7.21033549,14.4801407 L9.82938311,11.8610931 C10.9865512,10.703925 10.9865512,8.82778494 9.82938311,7.67061689" id="Rectangle"></path>
-                           </g>
-                        </g>
-                     </g>
-                  </g>
-               </g>
-            </g>
-         </g>
-      </g>
-   </svg>
-            <p class="wes-core-resource-link__body">
-                <a class="wes-core-resource-link__link" href="/cookies?sc_site=Wesleyan" disablewebedit="True">With Profits ISA Factsheet</a>
 
- 
+<div class="component accordion initialized" data-properties="{&quot;expandOnHover&quot;:false,&quot;expandedByDefault&quot;:false,&quot;speed&quot;:500,&quot;easing&quot;:&quot;swing&quot;,&quot;canOpenMultiple&quot;:true,&quot;canToggle&quot;:true,&quot;isControlEditable&quot;:false}">
+    <div class="component-content">
+                            <div>
+                <ul class="items">
+                        <li class="item">
+                                <div class="toggle-header" tabindex="0">
+                                    <div class="label">
 
-                    <span class="wes-core-resource-link__meta">PDF (205KB)</span>
+<div class="component content">
+    <div class="component-content">
+<div class="field-heading">accordion item 1</div>    </div>
+</div>
 
- 
+                                    </div>
+                                </div>
+                                <div class="toggle-content" style="display: none;">
 
-            </p>
-        </div>
-        <div class="component wes-core-resource-link"><svg xmlns:xlink="http://www.w3.org/1999/xlink" height="17px" version="1.1" viewBox="0 0 17 17" width="17px" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" id="Rework" stroke="none" stroke-linecap="round" stroke-width="1"><g id="Product-Page_Doc-Links_XL" stroke="#1E2630" transform="translate(-94.000000, -321.000000)"><g id="Important-Information" transform="translate(0.000000, -1783.000000)"><g id="Contents" transform="translate(94.000000, 228.000000)"><g id="Key-Documents" transform="translate(0.000000, 1603.000000)"><g id="List-Bullet" transform="translate(0.000000, 112.000000)"><g id="03-List-Item-Copy" transform="translate(0.000000, 156.000000)"><g id="01-Bullet" transform="translate(0.000000, 5.000000)"><path d="M12.2103355,9.4801407 L14.8293831,6.86109308 C15.9865512,5.70392504 15.9865512,3.82778494 14.8293831,2.67061689 C13.6722151,1.51344885 11.796075,1.51344885 10.6389069,2.67061689 L8.0198593,5.28966451 C6.86269125,6.44683256 6.86269125,8.32297266 8.0198593,9.4801407" id="Rectangle"></path><path d="M5.63890692,7.67061689 L3.0198593,10.2896645 C1.86269125,11.4468326 1.86269125,13.3229727 3.0198593,14.4801407 C4.17702734,15.6373087 6.05316744,15.6373087 7.21033549,14.4801407 L9.82938311,11.8610931 C10.9865512,10.703925 10.9865512,8.82778494 9.82938311,7.67061689" id="Rectangle"></path></g></g></g></g></g></g></g></g></svg><p class="wes-core-resource-link__body"><a class="wes-core-resource-link__link" disablewebedit="True" href="/cookies?sc_site=Wesleyan">With Profits ISA Factsheet</a><span class="wes-core-resource-link__meta">PDF (205KB)</span></p></div>
+<div class="component content">
+    <div class="component-content">
+<div class="field-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>    </div>
+</div>
 
-        <div class="component wes-rich-text-scope">
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> </div>
+                                </div>
+                        </li>
+                        <li class="item">
+                                <div class="toggle-header" tabindex="-1">
+                                    <div class="label">
 
-</div></div></div></div></div>
+<div class="component content">
+    <div class="component-content">
+<div class="field-heading">accordion item 1</div>    </div>
+</div>
+
+                                    </div>
+                                </div>
+                                <div class="toggle-content" style="display: none;">
+
+<div class="component content">
+    <div class="component-content">
+<div class="field-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>    </div>
+</div>
+
+                                </div>
+                        </li>
+                </ul>
+            </div>
+    </div>
+</div>
+</div></div></div></div>    </div>
+
+    <div class="component wes-promo">
+
+<div class="wes-promo__wrapper"><div class="wes-promo__body"><div class="wes-promo__trapezoid"></div><div class="wes-promo__content"><h2 class="wes-promo__title field-promo-title">Lorem ipsum dolor sit amet</h2><div class="wes-promo__message"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></div><div class="wes-promo__actions"><a data-variantitemid="{55B82D19-121A-4F96-B87C-E2A2DFC7A75C}" class="wes-button wes-button--on-light wes-button--outline button-icon-arrow-right" href="/404" data-variantfieldname="Promo Link One">Promo Link One</a><a data-variantitemid="{55B82D19-121A-4F96-B87C-E2A2DFC7A75C}" class="wes-button wes-button--on-light button-icon-arrow-right" href="/404" data-variantfieldname="Promo Link Two">Promo Link Two</a></div><div><p class="field-promo-footnote"></p><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p><p></p></div></div></div></div>    </div>
 
 
-   `,
+    <div class="component wes-card-deck wes-card-deck--grey">
+
+<div class="wes-card-deck__wrapper"><div class="wes-card-deck__header"><div class="wes-card-deck__header-content"><h2 class="wes-card-deck__title field-carddecktitle">Unit trust products from WUTM</h2><div class="wes-card-deck__message"><p>Wesleyan Unit Trust Managers (WUTM) products allow you to invest in fully managed unit trust funds, run by an award-winning team.</p></div></div></div><div class="wes-card-deck__deck"></div></div>    </div>
+</div>`,
 });
