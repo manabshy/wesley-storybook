@@ -47,6 +47,30 @@ $cb-highlight-spacing-s: 32px;
 $cb-video-spacing-m: 80px;
 $cb-video-spacing-s: 40px;
 
+@mixin cb-right($offset1, $offset2) {
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6,
+  > p,
+  > span[scfieldtype],
+  > ul,
+  > ol,
+  > table.wes-core-table {
+    @include make-col-offset($offset1);
+  }
+
+  > img,
+  > .wes-video-carousel__video,
+  > .wes-callout__wrapper,
+  > .wes-cta-card,
+  > .emphasis.lead {
+    @include make-col-offset($offset2);
+  }
+}
+
 .wes-content-block {
 
   padding-top: $cb-spacing-s;
@@ -115,8 +139,6 @@ $cb-video-spacing-s: 40px;
     margin-top: $cb-spacing-s-collapsed;
     padding-top: 0;
   }
-
-  &.wes-content-block--right { }
 
   &__wrapper {
     @include wes-make-container;
@@ -240,10 +262,9 @@ $cb-video-spacing-s: 40px;
     }
 
     &.wes-content-block--collapse {
-
+      margin-top: $cb-spacing-m-collapsed;
+      padding-top: 0;
     }
-
-    &.wes-content-block--right { }
 
     .wes-rich-text-scope,
     .wes-rich-text-campaign-scope {
@@ -304,6 +325,15 @@ $cb-video-spacing-s: 40px;
 
   @include media-breakpoint-up(lg) {
 
+    &.wes-content-block--right {
+      @include cb-right(2, 1);
+
+      .wes-rich-text-scope,
+      .wes-rich-text-campaign-scope {
+        @include cb-right(2, 1);
+      }
+    }
+
     .wes-rich-text-scope,
     .wes-rich-text-campaign-scope {
       > h1,
@@ -334,6 +364,15 @@ $cb-video-spacing-s: 40px;
   }
 
   @include media-breakpoint-up(xl) {
+
+    &.wes-content-block--right {
+      @include cb-right(3, 2);
+
+      .wes-rich-text-scope,
+      .wes-rich-text-campaign-scope {
+        @include cb-right(3, 2);
+      }
+    }
 
     .wes-rich-text-scope,
     .wes-rich-text-campaign-scope {
