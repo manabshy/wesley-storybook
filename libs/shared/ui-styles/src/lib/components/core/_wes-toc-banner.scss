@@ -6,6 +6,9 @@
   .wes-toc-banner__toc-link {
     a {
       @extend .wes-link;
+      font-size: 16px;
+      letter-spacing: 0;
+      line-height: 24px;
     }
   }
 }
