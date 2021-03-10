@@ -1,4 +1,3 @@
-
 import { text, array } from '@storybook/addon-knobs';
 
 export default {
@@ -7,7 +6,7 @@ export default {
 
 export const tocBanner = () => ({
   template: `
-    <div class="wes-toc-banner">
+    <div class="wes-toc-banner" role="banner">
       <div class="wes-toc-banner__wrapper">
         <div class="wes-toc-banner__body">
           <div class="wes-toc-banner__content">
@@ -25,7 +24,7 @@ export const tocBanner = () => ({
                 <h2 class="wes-toc-banner__toc-content-header">{{tocHeading}}</h2>
                 <ul>
                     <li *ngFor="let link of links">
-                        <a href="/" target="_blank">{{link}}</a>
+                        <a href="#">{{link}}</a>
                     </li>
                 </ul>
                 </div>
