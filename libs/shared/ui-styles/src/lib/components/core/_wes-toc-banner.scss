@@ -105,7 +105,7 @@
   &__content {
     @include wes-make-col-ready;
 
-    padding-top: 128px;
+    padding-top: 32.65%;
     padding-bottom: 56px;
 
     @include media-breakpoint-up(md) {
