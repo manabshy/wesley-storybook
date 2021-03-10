@@ -6,8 +6,8 @@ import { select } from '@storybook/addon-knobs';
 
 const label = 'Colors';
 const options = {
-  grey: '#F6F6F6',
-  white: '',
+  grey: 'grey-feature',
+  white: 'white-feature',
 };
 const defaultValue = options.white;
 const groupId = 'GROUP-ID1';
