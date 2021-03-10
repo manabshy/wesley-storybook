@@ -189,8 +189,8 @@ $cb-video-spacing-s: 40px;
     > img,
     > p img,
     > .wes-video-carousel__video {
-      width: 100%;
-      height: auto;
+      width: 100% !important;
+      height: auto  !important;
     }
 
     .highlight {
