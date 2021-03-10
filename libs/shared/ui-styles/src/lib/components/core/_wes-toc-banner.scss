@@ -121,13 +121,14 @@
       @include make-col(7);
 
       padding-top: 96px;
-      padding-bottom: 96px;
+      padding-bottom: 64px;
     }
 
     @include media-breakpoint-up(xl) {
       @include make-col(6);
 
-      padding-top: rem(112px);
+      padding-top: 112px;
+      padding-bottom: 72px;
     }
   }
 
