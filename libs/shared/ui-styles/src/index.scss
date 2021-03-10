@@ -39,6 +39,7 @@
 
 // Core components
 @import './lib/components/core/wes-content-block';
+@import './lib/components/core/wes-core-content-block';
 @import './lib/components/core/wes-card-deck';
 @import './lib/components/core/wes-promo';
 @import './lib/components/core/wes-billboard';
@@ -99,3 +100,5 @@
 @import './lib/components/wes-resource-link';
 @import './lib/components/wes-cassie-overrides';
 @import './lib/components/wes-global-notification';
+@import './lib/components/wes-in-page-menu';
+@import './lib/components/core/wes-font-icon';

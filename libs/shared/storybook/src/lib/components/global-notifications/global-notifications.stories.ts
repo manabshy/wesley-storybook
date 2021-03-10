@@ -37,7 +37,7 @@ const showNotification = () => {
 };
 
 export const notifications = () => ({
-  template: `<div class="wes-global-notification fade show {{variant}}" [attr.id]="variant !== 'single-page' ? 'wes-globalnotification': null" role="alert" aria-live="assertive" aria-atomic="true">
+  template: `<div class="wes-global-notification show {{variant}}" [attr.id]="variant !== 'single-page' ? 'wes-globalnotification': null" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="container">
     <div class="wes-global-notification__header">
       <span class="me-auto">{{headerText}}</span>

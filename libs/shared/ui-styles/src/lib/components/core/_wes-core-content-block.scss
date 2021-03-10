@@ -1,0 +1,354 @@
+////
+/// Wesleyan Content Block (Full Width) Component
+////
+
+$cb-spacing-xl: 112px;
+$cb-spacing-xl-collapsed: -48px;
+$cb-spacing-l: 96px;
+$cb-spacing-l-collapsed: -48px;
+$cb-spacing-m: 96px;
+$cb-spacing-m-collapsed: -48px;
+$cb-spacing-s: 56px;
+$cb-spacing-s-collapsed: -8px;
+
+$cb-l1-top-m: 72px;
+$cb-l1-bottom-m: 24px;
+$cb-l1-top-s: 56px;
+$cb-l1-bottom-s: 16px;
+
+$cb-l2-top-m: 72px;
+$cb-l2-bottom-m: 24px;
+$cb-l2-top-s: 56px;
+$cb-l2-bottom-s: 16px;
+
+$cb-l3-top-m: 48px;
+$cb-l3-bottom-m: 16px;
+$cb-l3-top-s: 48px;
+$cb-l3-bottom-s: 16px;
+
+$cb-l4-top-m: 40px;
+$cb-l4-bottom-m: 12px;
+$cb-l4-top-s: 40px;
+$cb-l4-bottom-s: 12px;
+
+$cb-list-spacing-m: 48px;
+$cb-list-item-spacing-m: 24px;
+$cb-list-spacing-s: 32px;
+$cb-list-item-spacing-s: 24px;
+
+$cb-paragraph-spacing-m: 24px;
+$cb-paragraph-spacing-s: 24px;
+$cb-paragraph-spacing-top-list-m: 48px;
+$cb-paragraph-spacing-top-list-s: 32px;
+
+$cb-highlight-spacing-m: 56px;
+$cb-highlight-spacing-s: 32px;
+
+$cb-video-spacing-m: 80px;
+$cb-video-spacing-s: 40px;
+
+@mixin cb-right($offset1, $col1, $offset2, $col2, $offset3, $col3) {
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6,
+  > p,
+  > span[scfieldtype],
+  > ul,
+  > ol,
+  > table.wes-core-table {
+    @include make-col-offset($offset1);
+    @include make-col($col1);
+  }
+
+  > .wes-video-carousel__video,
+  > table.wes-core-table.wide {
+    @include make-col-offset($offset2);
+    @include make-col($col2);
+  }
+
+  > img {
+    @include make-col-offset($offset3);
+    @include make-col($col3);
+  }
+}
+
+.wes-content-block {
+
+  padding-top: $cb-spacing-s;
+  padding-bottom: $cb-spacing-s;
+
+  & :first-child {
+    margin-top: 0;
+  }
+
+  h1,
+  .level1 {
+    margin-top: $cb-l1-top-s;
+    margin-bottom: $cb-l1-bottom-s;
+  }
+
+  h2,
+  .level2 {
+    margin-top: $cb-l2-top-s;
+    margin-bottom: $cb-l2-bottom-s;
+  }
+
+  h3,
+  .level3 {
+    margin-top: $cb-l3-top-s;
+    margin-bottom: $cb-l3-bottom-s;
+  }
+
+  h4,
+  h5,
+  h6,
+  level4,
+  level5,
+  level6 {
+    margin-top: $cb-l4-top-s;
+    margin-bottom: $cb-l4-bottom-s;
+  }
+
+  ul {
+    margin-top: $cb-list-spacing-s;
+    margin-bottom: $cb-list-spacing-s;
+
+    li {
+      margin-bottom: $cb-list-item-spacing-s;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  ul + p {
+    margin-top: $cb-paragraph-spacing-top-list-s;
+  }
+
+  p {
+    margin-top: $cb-paragraph-spacing-s;
+  }
+
+  @include highlight-styles;
+
+  &.wes-content-block--grey {
+    background-color: $global-colour-grey-50;
+  }
+
+  &.wes-content-block--collapse {
+    margin-top: $cb-spacing-s-collapsed;
+    padding-top: 0;
+  }
+
+  &__wrapper {
+    @include wes-make-container;
+  }
+
+  .wes-rich-text-scope,
+  .wes-rich-text-campaign-scope {
+    > .wes-callout__wrapper,
+    > .wes-cta-card {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    ul + p {
+      margin-top: $cb-paragraph-spacing-top-list-s;
+    }
+
+    .bulleted li {
+      margin-bottom: $cb-list-item-spacing-s;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .wes-video-carousel__video {
+      margin-top: $cb-video-spacing-s;
+      margin-bottom: $cb-video-spacing-s;
+    }
+
+    // add blocked content here
+    > img,
+    > .wes-callout__wrapper,
+    > .wes-cta-card {
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    > table.wes-core-table {
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    > img,
+    > p img,
+    > .wes-video-carousel__video {
+      width: 100% !important;
+      height: auto  !important;
+    }
+
+    .highlight {
+      margin-top: $cb-highlight-spacing-s;
+      margin-bottom: $cb-highlight-spacing-s;
+    }
+
+    p {
+      margin-top: $cb-paragraph-spacing-s;
+    }
+
+    @include media-breakpoint-down(sm) {
+      .wes-cta-card__wrapper {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
+  span[scfieldtype] {
+    display: block;
+  }
+
+  @include media-breakpoint-up(md) {
+
+    h1,
+    .level1 {
+      margin-top: $cb-l1-top-m;
+      margin-bottom: $cb-l1-bottom-m;
+    }
+
+    h2,
+    .level2 {
+      margin-top: $cb-l2-top-m;
+      margin-bottom: $cb-l2-bottom-m;
+    }
+
+    h3,
+    .level3 {
+      margin-top: $cb-l3-top-m;
+      margin-bottom: $cb-l3-bottom-m;
+    }
+
+    h4,
+    h5,
+    h6,
+    level4,
+    level5,
+    level6 {
+      margin-top: $cb-l4-top-m;
+      margin-bottom: $cb-l4-bottom-m;
+    }
+
+    ul {
+      margin-top: $cb-list-spacing-m;
+      margin-bottom: $cb-list-spacing-m;
+
+      li {
+        margin-bottom: $cb-list-item-spacing-m;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    ul + p {
+      margin-top: $cb-paragraph-spacing-top-list-m;
+    }
+
+    p {
+      margin-top: $cb-paragraph-spacing-m;
+    }
+
+    &.wes-content-block--collapse {
+      margin-top: $cb-spacing-m-collapsed;
+      padding-top: 0;
+    }
+
+    .wes-rich-text-scope,
+    .wes-rich-text-campaign-scope {
+      > h1,
+      > h2,
+      > h3,
+      > h4,
+      > h5,
+      > h6,
+      > p,
+      > span[scfieldtype],
+      > ul,
+      > ol {
+        @include make-col-offset(0);
+        @include make-col(11);
+      }
+
+      ul + p {
+        margin-top: $cb-paragraph-spacing-top-list-m;
+      }
+
+      .bulleted li {
+        margin-bottom: $cb-list-item-spacing-m;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .wes-video-carousel__video {
+        margin-top: $cb-video-spacing-m;
+        margin-bottom: $cb-video-spacing-m;
+      }
+
+      > img,
+      > .wes-callout__wrapper,
+      > .wes-cta-card {
+          margin-top: 80px;
+          margin-bottom: 80px;
+      }
+
+      > table.wes-core-table {
+          margin-top: 72px;
+          margin-bottom: 72px;
+      }
+
+      .highlight {
+        margin-top: $cb-highlight-spacing-m;
+        margin-bottom: $cb-highlight-spacing-m;
+      }
+
+      p {
+        margin-top: $cb-paragraph-spacing-m;
+      }
+    }
+
+  }
+
+  @include media-breakpoint-up(lg) {
+
+    &.wes-content-block--right {
+      @include cb-right(2, 9, 1, 11, 1, 11);
+
+      .wes-rich-text-scope,
+      .wes-rich-text-campaign-scope {
+        @include cb-right(2, 9, 1, 11, 1, 11);
+      }
+    }
+
+  }
+
+  @include media-breakpoint-up(xl) {
+
+    &.wes-content-block--right {
+      @include cb-right(3, 7, 1, 11, 2, 9);
+
+      .wes-rich-text-scope,
+      .wes-rich-text-campaign-scope {
+        @include cb-right(3, 7, 1, 11, 2, 9);
+      }
+    }
+  }
+}

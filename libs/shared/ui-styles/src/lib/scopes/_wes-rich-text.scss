@@ -2,6 +2,25 @@
 /// Wesleyan Rich Text Scope
 ////
 
+@mixin highlight-styles() {
+  .highlight:not([style*='text-align: right']) {
+    border-left: 2px solid $global-colour-gold-900;
+    padding-left: rem(16px);
+
+    @include media-breakpoint-up(md) {
+      padding-left: rem(24px);
+    }
+  }
+  .highlight[style*='text-align: right'] {
+    border-right: 2px solid $global-colour-gold-900;
+    padding-right: rem(16px);
+
+    @include media-breakpoint-up(md) {
+      padding-right: rem(24px);
+    }
+  }
+}
+
 @mixin wes-rich-text-scope-base {
   p,
   ul,
@@ -270,22 +289,7 @@
       @extend .wes-text-l;
     }
 
-    .highlight:not([style*='text-align: right']) {
-      border-left: 2px solid $global-colour-gold-900;
-      padding-left: rem(16px);
-
-      @include media-breakpoint-up(md) {
-        padding-left: rem(24px);
-      }
-    }
-    .highlight[style*='text-align: right'] {
-      border-right: 2px solid $global-colour-gold-900;
-      padding-right: rem(16px);
-
-      @include media-breakpoint-up(md) {
-        padding-right: rem(24px);
-      }
-    }
+    @include highlight-styles;
   }
 }
 

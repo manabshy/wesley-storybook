@@ -6,6 +6,9 @@
   .wes-toc-banner__toc-link {
     a {
       @extend .wes-link;
+      font-size: 16px;
+      letter-spacing: 0;
+      line-height: 24px;
     }
   }
 }
@@ -105,7 +108,7 @@
   &__content {
     @include wes-make-col-ready;
 
-    padding-top: 128px;
+    padding-top: 32.65%;
     padding-bottom: 56px;
 
     @include media-breakpoint-up(md) {
@@ -118,13 +121,14 @@
       @include make-col(7);
 
       padding-top: 96px;
-      padding-bottom: 96px;
+      padding-bottom: 64px;
     }
 
     @include media-breakpoint-up(xl) {
       @include make-col(6);
 
-      padding-top: rem(112px);
+      padding-top: 112px;
+      padding-bottom: 72px;
     }
   }
 
