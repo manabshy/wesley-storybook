@@ -1,4 +1,7 @@
 .wes-card-feature {
+  .wes-cta-card__frame {
+    border: none;
+  }
   @include media-breakpoint-up(lg) {
     .wes-card-deck__wrapper {
         width:1172px;
@@ -23,6 +26,9 @@
     .wes-card-feature__title {
       font-size: 32px;
     }
+    .wes-card-deck__card-title {
+      font-size: 19px;
+    }
   }
   @media (max-width: 767.98px) {
     .wes-card-deck__card-header {
@@ -31,7 +37,7 @@
       }
     }
     .wes-cta-card__frame {
-      box-shadow: 0 26px 0px -22px #febd11, 0 -26px 0 -22px #febd11 !important;
+      box-shadow: 0 22px 0px -18px #febd11, 0 -22px 0 -18px #febd11 !important;
     }
     .wes-card-feature__header-content {
       height: unset !important;
@@ -110,9 +116,8 @@
       line-height: 28px;
     }
     .wes-cta-card__frame {
-      border: 1px solid #d9dadc;
       border-radius: 0px;
-      box-shadow: 0 37px 0px -33px #febd11, 0 -37px 0 -33px #febd11;
+      box-shadow: 0 28px 0px -24px #febd11, 0 -28px 0 -24px #febd11;
       }
   }
   .wes-card-deck.feature.plain-feature {
