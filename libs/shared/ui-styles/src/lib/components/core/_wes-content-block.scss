@@ -2,7 +2,6 @@
 /// Wesleyan Content Block (Full Width) Component
 ////
 
-.wes-content-block,
 .wes-content-block--campaign {
   padding-top: rem(48px);
   padding-bottom: rem(48px);
@@ -139,91 +138,13 @@
     > p img,
     > .wes-video-carousel__video {
       width: 100% !important;
-      height: auto !important;
+      height: auto  !important;
     }
   }
 
   // sitecore editor specific css
   span[scfieldtype] {
     display: block;
-  }
-}
-
-.wes-content-block {
-  .wes-rich-text-scope,
-  .wes-rich-text-campaign-scope {
-    // medium content
-    @include media-breakpoint-up(md) {
-      // medium col-11
-      > h1,
-      > h2,
-      > h3,
-      > h4,
-      > h5,
-      > h6,
-      > p,
-      > span[scfieldtype],
-      > ul,
-      > ol {
-        @include make-col-offset(0);
-        @include make-col(11);
-      }
-    }
-
-    // large content
-    @include media-breakpoint-up(lg) {
-      // large col-9
-      > h1,
-      > h2,
-      > h3,
-      > h4,
-      > h5,
-      > h6,
-      > p,
-      > span[scfieldtype],
-      > ul,
-      > ol,
-      > table.wes-core-table {
-        @include make-col-offset(0);
-        @include make-col(9);
-      }
-
-      // large col-11
-      > img,
-      > .wes-video-carousel__video,
-      > table.wes-core-table.wide,
-      > .emphasis.lead {
-        @include make-col-offset(0);
-        @include make-col(11);
-      }
-    }
-
-    // extra-large content
-    @include media-breakpoint-up(xl) {
-      // xlarge col-7
-      > h1,
-      > h2,
-      > h3,
-      > h4,
-      > h5,
-      > h6,
-      > p,
-      > span[scfieldtype],
-      > ul,
-      > ol,
-      > table.wes-core-table {
-        @include make-col-offset(0);
-        @include make-col(7);
-      }
-
-      // large col-9
-      > img,
-      > .wes-video-carousel__video,
-      > .emphasis.lead {
-        @include make-col-offset(0);
-        @include make-col(9);
-      }
-    }
   }
 }
 
