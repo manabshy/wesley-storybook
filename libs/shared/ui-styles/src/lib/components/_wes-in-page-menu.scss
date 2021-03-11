@@ -40,6 +40,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    z-index: 0;
 
     @include media-breakpoint-up(lg) {
       flex-direction: row;
@@ -67,7 +68,8 @@
 
       &:active,
       &:focus {
-        outline: 1px dotted $global-colour-grey-1000;
+        outline: 2px dotted $global-colour-grey-1000;
+        z-index: 1;
       }
 
       a {
@@ -89,6 +91,9 @@
           border: 0 none;
           flex-direction: column;
           height: 100%;
+          margin: 0;
+          padding-left: 16px;
+          padding-right: 16px;
           justify-content: center;
           text-align: center;
         }
