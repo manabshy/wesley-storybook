@@ -55,6 +55,7 @@ $cb-video-spacing-s: 40px;
   > h5,
   > h6,
   > p,
+  > .wes-core-resource-link,
   > span[scfieldtype],
   > ul,
   > ol,
@@ -76,7 +77,6 @@ $cb-video-spacing-s: 40px;
 }
 
 .wes-content-block {
-
   padding-top: $cb-spacing-s;
   padding-bottom: $cb-spacing-s;
 
@@ -190,7 +190,7 @@ $cb-video-spacing-s: 40px;
     > p img,
     > .wes-video-carousel__video {
       width: 100% !important;
-      height: auto  !important;
+      height: auto !important;
     }
 
     .highlight {
@@ -215,7 +215,6 @@ $cb-video-spacing-s: 40px;
   }
 
   @include media-breakpoint-up(md) {
-
     h1,
     .level1 {
       margin-top: $cb-l1-top-m;
@@ -279,6 +278,7 @@ $cb-video-spacing-s: 40px;
       > h5,
       > h6,
       > p,
+      > .wes-core-resource-link,
       > span[scfieldtype],
       > ul,
       > ol {
@@ -306,13 +306,13 @@ $cb-video-spacing-s: 40px;
       > img,
       > .wes-callout__wrapper,
       > .wes-cta-card {
-          margin-top: 80px;
-          margin-bottom: 80px;
+        margin-top: 80px;
+        margin-bottom: 80px;
       }
 
       > table.wes-core-table {
-          margin-top: 72px;
-          margin-bottom: 72px;
+        margin-top: 72px;
+        margin-bottom: 72px;
       }
 
       .highlight {
@@ -324,11 +324,9 @@ $cb-video-spacing-s: 40px;
         margin-top: $cb-paragraph-spacing-m;
       }
     }
-
   }
 
   @include media-breakpoint-up(lg) {
-
     &.wes-content-block--right {
       @include cb-right(2, 9, 1, 11, 1, 11);
 
@@ -337,11 +335,9 @@ $cb-video-spacing-s: 40px;
         @include cb-right(2, 9, 1, 11, 1, 11);
       }
     }
-
   }
 
   @include media-breakpoint-up(xl) {
-
     &.wes-content-block--right {
       @include cb-right(3, 7, 1, 11, 2, 9);
 

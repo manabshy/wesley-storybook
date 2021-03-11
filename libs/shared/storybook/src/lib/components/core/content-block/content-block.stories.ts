@@ -33,6 +33,34 @@ export const contentBlock = () => ({
                  <h1 class="level1">L1 - Unit trusts</h1>
                  <p class="lead">Lead - Wesleyan Unit Trust Managers (WUTM) offers a trio of products that enable you to invest in fully managed unit trust funds, run by an award-winning team. Whether you’re looking to build your own investment or save for your children’s future, we’ve got a product for you.</p>
 
+                 <div class="component wes-core-resource-link">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" height="16px" version="1.1" viewBox="0 0 14 16" width="14px" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" fill-rule="evenodd" id="Rework" stroke="none" stroke-linejoin="round" stroke-width="1">
+         <g id="Product-Page_Doc-Links_XL" stroke="#1E2630" transform="translate(-96.000000, -270.000000)">
+            <g id="Important-Information" transform="translate(0.000000, -1783.000000)">
+               <g id="Contents" transform="translate(94.000000, 228.000000)">
+                  <g id="Key-Documents" transform="translate(0.000000, 1603.000000)">
+                     <g id="List-Bullet" transform="translate(0.000000, 112.000000)">
+                        <g id="03-List-Item" transform="translate(1.000000, 104.000000)">
+                           <g id="01-Bullet" transform="translate(1.000000, 6.000000)">
+                              <polygon id="Rectangle" points="0.5 0.5 9.77007185 0.5 13.5 5.24323273 13.5 15.5 0.5 15.5"></polygon>
+                              <path d="M8.5,0.5 C8.5,3.83333333 8.5,5.5 8.5,5.5 C8.5,5.5 10.1666667,5.5 13.5,5.5" id="Path-2"></path>
+                           </g>
+                        </g>
+                     </g>
+                  </g>
+               </g>
+            </g>
+         </g>
+      </g>
+   </svg>
+            <p class="wes-core-resource-link__body">
+                <a class="wes-core-resource-link__link" href="/cookies">With Profits ISA Factsheet</a>
+
+                    <span>&nbsp;</span><span class="wes-core-resource-link__meta">PDF (205KB)</span>
+
+            </p>
+        </div>
                  <h2 class="level2">Sitecore editor view</h2>
 
                  <span scfieldtype="rich text" scdefaulttext="[No text in field]" contenteditable="true" class="scWebEditInput scEnabledChrome" id="fld_19B4F22CCB8C47559203FFE23638C448_B195CB5DF68B421F8C731C4E0D4BDC0E_en_1_dde329a9728842cebab8eff1be684694_2359_edit" sc-part-of="field">
