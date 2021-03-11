@@ -57,25 +57,25 @@
     background-repeat: no-repeat;
     background-color: $global-colour-gold-900;
     // fallback for non rgba
-    background-image: linear-gradient(
-      153.27deg,
-      $global-colour-gold-900 0%,
-      #fef4c2 60%,
-      #fefbea 100%
+    background-image: linear-gradient (
+        153.27deg,
+        $global-colour-gold-900 0%,
+        #fef4c2 60%,
+        #fefbea 100%
     );
 
     background-image: linear-gradient(
-      153.27deg,
-      $global-colour-gold-900 0%,
-      rgba(254, 221, 54, 0.1) 100%
+        153.27deg,
+        $global-colour-gold-900 0%,
+        rgba(254, 221, 54, 0.1) 100%
     );
 
     @include media-breakpoint-up(md) {
       background-image: linear-gradient(
-        153.27deg,
-        $global-colour-gold-900 0%,
-        rgba(254, 221, 54, 0.3) 60%,
-        rgba(254, 221, 54, 0.1) 100%
+          153.27deg,
+          $global-colour-gold-900 0%,
+          rgba(254, 221, 54, 0.3) 60%,
+          rgba(254, 221, 54, 0.1) 100%
       );
     }
 
@@ -97,7 +97,10 @@
 
     @include media-breakpoint-up(sm) {
       svg#wes-hero-banner-2__shapes-mobile {
-        margin-top: 292px;
+        margin-top: 0;
+        position: absolute;
+        top: 30%;
+        left: 0;
       }
     }
 
@@ -105,9 +108,9 @@
       background-position-x: right;
       background-position-y: inherit;
       background-image: linear-gradient(
-        90deg,
-        $global-colour-gold-900 45%,
-        $global-colour-grey-900 44%
+          90deg,
+          $global-colour-gold-900 45%,
+          $global-colour-grey-900 44%
       );
 
       svg#wes-hero-banner-2__shapes-mobile {
@@ -147,10 +150,14 @@
     margin-top: 268px;
     margin-bottom: 56px;
 
+    @include media-breakpoint-between(sm, md) {
+      margin-top: 440px;
+    }
+
     @include media-breakpoint-up(md) {
       @include make-col(9);
       margin-top: 488px;
-      margin-bottom: 90px;
+      margin-bottom: 96px;
     }
 
     @include media-breakpoint-up(lg) {
