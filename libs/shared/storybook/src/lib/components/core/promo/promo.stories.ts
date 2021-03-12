@@ -19,7 +19,7 @@ const variants = {
 
 export const promo = () => ({
   template: `
-    <div class="wes-promo {{variant}}">
+    <div class="wes-promo {{variant}}" role="banner">
       <div class="wes-promo__wrapper">
         <div *ngIf="withImage == 'yes'" class="wes-promo__header">
           <div class="wes-promo__bg" style="background-image:url(http://placekitten.com/500/300)"></div>
@@ -103,7 +103,7 @@ export const promo = () => ({
 
 export const promo_CTA = () => ({
   template: `
-    <div class="wes-promo {{variant}}">
+    <div class="wes-promo {{variant}}" role="banner">
       <div class="wes-promo__wrapper">
         <div *ngIf="withImage == 'yes'" class="wes-promo__header">
           <div class="wes-promo__bg" style="background-image:url(http://placekitten.com/500/300)"></div>
