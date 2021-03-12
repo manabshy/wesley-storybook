@@ -6,7 +6,7 @@ export default {
 
 export const base = () => ({
   template: `
-    <div class="wes-hero-banner wes-hero-banner--campaign pb-11">
+    <div class="wes-hero-banner wes-hero-banner--campaign pb-11" role="banner">
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-lg-6">
@@ -16,7 +16,7 @@ export const base = () => ({
 
                 <p class="wes-hero-banner__sub-title">Let us help you retire early&hellip;</p>
 
-                <a class="wes-hero-banner__cta wes-button wes-button-cta" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">
+                <a class="wes-hero-banner__cta wes-button wes-button-cta" href="#" >
                   <span class="wes-button-label">Speak to our experts</span>
                   <svg xmlns:xlink="http://www.w3.org/1999/xlink" class="wes-icon wes-icon-size-m" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="none" stroke-linecap="round" stroke-width="1"><g stroke="#FEBD11" stroke-width="2" transform="translate(-293.000000, -340.000000)"><g transform="translate(0.000000, 72.000000)"><g transform="translate(97.000000, 88.000000)"><g transform="translate(0.000000, 160.000000)"><g transform="translate(32.000000, 20.000000)"><g transform="translate(164.000000, 0.000000)"><polyline class="svg-path-color-change" id="Rectangle" points="25 9 19 15 13 9" stroke-linejoin="round" transform="translate(19.000000, 12.000000) rotate(-90.000000) translate(-19.000000, -12.000000) "></polyline><line class="svg-path-color-change" id="Line" x1="21" x2="2" y1="12" y2="12"></line></g></g></g></g></g></g></g></svg>
                 </a>
@@ -121,18 +121,23 @@ export const base = () => ({
     </div>
   `,
   props: {
-    valuePropositionOnGrey: optionsKnob('Value proposition on grey', {
-      'Yes': 'yes', 
-      'No': 'no'
-    }, 'no', {
-      display: 'inline-radio',
-    }),
+    valuePropositionOnGrey: optionsKnob(
+      'Value proposition on grey',
+      {
+        Yes: 'yes',
+        No: 'no',
+      },
+      'no',
+      {
+        display: 'inline-radio',
+      }
+    ),
   },
 });
-  
+
 export const grey = () => ({
   template: `
-    <div class="wes-hero-banner wes-hero-banner--campaign-full-width">
+    <div class="wes-hero-banner wes-hero-banner--campaign-full-width" role="banner">
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-lg-6">
@@ -142,7 +147,7 @@ export const grey = () => ({
 
                 <p class="wes-hero-banner__sub-title">High-value home cover, for priceless peace of mind</p>
 
-                <a class="wes-hero-banner__cta wes-button-cta--orange-with-grey-hover wes-button wes-button-cta" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank">
+                <a class="wes-hero-banner__cta wes-button-cta--orange-with-grey-hover wes-button wes-button-cta" href="#">
                   <span class="wes-button-label">Get a quote</span>
                   <svg xmlns:xlink="http://www.w3.org/1999/xlink" class="wes-icon wes-icon-size-m" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="none" stroke-linecap="round" stroke-width="1"><g stroke="#FEBD11" stroke-width="2" transform="translate(-293.000000, -340.000000)"><g transform="translate(0.000000, 72.000000)"><g transform="translate(97.000000, 88.000000)"><g transform="translate(0.000000, 160.000000)"><g transform="translate(32.000000, 20.000000)"><g transform="translate(164.000000, 0.000000)"><polyline class="svg-path-color-change" id="Rectangle" points="25 9 19 15 13 9" stroke-linejoin="round" transform="translate(19.000000, 12.000000) rotate(-90.000000) translate(-19.000000, -12.000000) "></polyline><line class="svg-path-color-change" id="Line" x1="21" x2="2" y1="12" y2="12"></line></g></g></g></g></g></g></g></svg>
                 </a>
@@ -176,4 +181,3 @@ export const grey = () => ({
     </div>
   `,
 });
-  
