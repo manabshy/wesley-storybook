@@ -3,6 +3,9 @@
 ////
 
 @mixin highlight-styles() {
+  .highlight {
+    font-weight: 600;
+  }
   .highlight:not([style*='text-align: right']) {
     border-left: 2px solid $global-colour-gold-900;
     padding-left: rem(16px);
@@ -75,7 +78,7 @@
   .numbered {
     @extend .wes-list-numbered;
 
-    margin-top: 0 !important;
+    margin-top: 0;
   }
   .bulleted {
     @extend .wes-list-bullets;

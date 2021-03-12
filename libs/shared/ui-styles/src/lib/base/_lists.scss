@@ -75,8 +75,9 @@ ul {
     @include rem(
       (
         border-spacing: 0 $numbered-list-border-spacing,
-        margin-top: -$numbered-list-border-spacing,
-        margin-bottom: -$numbered-list-border-spacing,
+        // Commented out for: BUG 95600
+        //margin-top: -$numbered-list-border-spacing,
+        //margin-bottom: -$numbered-list-border-spacing,
       )
     );
 
