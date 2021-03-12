@@ -6,7 +6,7 @@ export default {
 
 export const heroBanner = () => ({
   template: `
-    <div class="wes-hero-banner-2">
+    <div class="wes-hero-banner-2" role="banner">
       <div class="wes-hero-banner-2__wrapper">
         <div class="wes-hero-banner-2__body">
           <div class="wes-hero-banner-2__content">
@@ -15,11 +15,11 @@ export const heroBanner = () => ({
               <p>{{subheading}}</p>
             </div>
             <div class="wes-hero-banner-2__actions">
-              <a *ngIf="primaryCtaText.length > 0" class="wes-hero-banner-2__cta" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank" [innerHTML]="primaryCtaText"></a>
-              <a *ngIf="secondaryCtaText.length > 0" class="wes-hero-banner-2__cta wes-hero-banner-2__cta--secondary" href="/savings-and-investments/with-profits-isa/before-you-begin" target="_blank" [innerHTML]="secondaryCtaText"></a>
+              <a *ngIf="primaryCtaText.length > 0" class="wes-hero-banner-2__cta" href="#" [innerHTML]="primaryCtaText"></a>
+              <a *ngIf="secondaryCtaText.length > 0" class="wes-hero-banner-2__cta wes-hero-banner-2__cta--secondary" href="#" [innerHTML]="secondaryCtaText"></a>
             </div>
             <div *ngIf="footnote" class="wes-hero-banner-2__footnote">
-              <p>{{footnote}} <a *ngIf="supportingLinkText.length > 0" class="wes-hero-banner-2__support-link" href="/" target="_blank" [innerHTML]="supportingLinkText"></a></p>
+              <p>{{footnote}} <a *ngIf="supportingLinkText.length > 0" class="wes-hero-banner-2__support-link" href="#" [innerHTML]="supportingLinkText"></a></p>
             </div>
           </div>
         </div>
