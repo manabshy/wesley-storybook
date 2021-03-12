@@ -5,7 +5,11 @@
   border-image-source: linear-gradient(133.23deg, #febd11 0%, #fedd36 100%);
   border-image-slice: 1;
   color: $global-colour-grey-900;
-  padding: 24px 0;
+
+  .container {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
 
   &.single-page {
     background-color: $global-colour-grey-900;
