@@ -51,6 +51,24 @@ when fonts are updated update this sass file, location path to fonts, and lowerc
   }
 }
 
+.wes-font-icon-legal:before {
+  content: '\e914';
+}
+.wes-font-icon-briefcase:before {
+  content: '\e915';
+}
+.wes-font-icon-gp:before {
+  content: '\e916';
+}
+.wes-font-icon-education:before {
+  content: '\e917';
+}
+.wes-font-icon-web-link:before {
+  content: '\e912';
+}
+.wes-font-icon-sheet:before {
+  content: '\e913';
+}
 .wes-font-icon-arrow-right:before {
   content: '\e900';
 }

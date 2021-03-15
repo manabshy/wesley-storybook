@@ -34,9 +34,14 @@ export const contentBlock = () => ({
                  <p class="lead">Lead - Wesleyan Unit Trust Managers (WUTM) offers a trio of products that enable you to invest in fully managed unit trust funds, run by an award-winning team. Whether you’re looking to build your own investment or save for your children’s future, we’ve got a product for you.</p>
 
                 <ul class="wes-core-resource-link">
-                    <li class="pdf"><a href="#">List item 1</a> PDF 300KB</li>
-                    <li class="link"><a href="#">List item 2</a></li>
-                    <li class="link"><a href="#">List item 3</a></li>
+                    <li class="wes-font-icon-sheet"><a href="#">List item 1</a> PDF 300KB</li>
+                    <li class="wes-font-icon-web-link"><a href="#">List item 2</a></li>
+                    <li class="wes-font-icon-web-link"><a href="#">List item 3</a></li>
+                </ul>
+                <ul class="wes-core-resource-link">
+                    <li class="wes-font-icon-sheet"><a href="#">List item 1</a> PDF 300KB</li>
+                    <li class="wes-font-icon-web-link"><a href="#">List item 2</a></li>
+                    <li class="wes-font-icon-web-link"><a href="#">List item 3</a></li>
                 </ul>
                  <h2 class="level2">Sitecore editor view</h2>
 

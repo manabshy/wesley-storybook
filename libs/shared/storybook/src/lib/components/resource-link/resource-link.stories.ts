@@ -84,19 +84,19 @@ export const contentBlockResourceLink = () => ({
         <div class="wes-content-block__placeholder">
           <div class="component wes-rich-text-scope">
             <ul class="wes-core-resource-link">
-              <li class="pdf"><a href="#">List item 1</a> PDF 300KB</li>
-              <li class="link"><a href="#">List item 2</a></li>
-              <li class="link"><a href="#">List item 3</a></li>
+              <li class="wes-font-icon-sheet"><a href="#">List item 1</a> PDF 300KB</li>
+              <li class="wes-font-icon-web-link"><a href="#">List item 2</a></li>
+              <li class="wes-font-icon-web-link"><a href="#">List item 3</a></li>
             </ul>
             <ul class="wes-core-resource-link">
-              <li class="pdf"><a href="#">List item 1</a> PDF 300KB</li>
-              <li class="link"><a href="#">List item 2</a></li>
-              <li class="link"><a href="#">List item 3</a></li>
+              <li class="wes-font-icon-sheet"><a href="#">List item 1</a> PDF 300KB</li>
+              <li class="wes-font-icon-web-link"><a href="#">List item 2</a></li>
+              <li class="wes-font-icon-web-link"><a href="#">List item 3</a></li>
             </ul>
             <ul class="wes-core-resource-link">
-              <li class="pdf"><a href="#">List item 1</a> PDF 300KB</li>
-              <li class="link"><a href="#">List item 2</a></li>
-              <li class="link"><a href="#">List item 3</a></li>
+              <li class="wes-font-icon-sheet"><a href="#">List item 1</a> PDF 300KB</li>
+              <li class="wes-font-icon-web-link"><a href="#">List item 2</a></li>
+              <li class="wes-font-icon-web-link"><a href="#">List item 3</a></li>
             </ul>
           </div>
         </div>

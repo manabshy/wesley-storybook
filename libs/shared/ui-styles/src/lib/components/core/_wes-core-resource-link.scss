@@ -1,11 +1,30 @@
 ul.wes-core-resource-link {
   list-style: none;
-  margin: 0;
+  margin: 0 !important;
   padding-top: 32px;
   padding-bottom: 32px;
 
   & + & {
     padding-top: 0;
     padding-bottom: 32px;
+  }
+
+  li {
+    font-size: 16px;
+    line-height: 24px;
+    color: $global-colour-grey-900;
+
+    &:before {
+      line-height: inherit;
+      margin-right: 12px;
+      vertical-align: middle;
+    }
+
+    a {
+      font-size: inherit;
+      line-height: inherit;
+      font-weight: 600;
+      color: $global-colour-charcoal;
+    }
   }
 }
