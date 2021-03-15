@@ -49,12 +49,14 @@ The following script should be integrated in order to set a cookie named `Wesley
 ```
 <script>
 document.addEventListener('DOMContentLoaded', function (event) {
-    (function ($) {
-      var gn = $('#wes-globalnotification');
-      gn.on('hidden.bs.collapse', function () {
+ (function ($) {
+  var gn = $('#wes-globalnotification');
+    gn.on('hidden.bs.collapse', function () {
+      if (GetAllCookies()['WesleyanFunctionalOptIn'] === 'yes') {
         document.cookie = 'WesleyanGlobalNotification=true; path=/';
-      });
-    })($);
-  });
+      }
+    });
+  })($);
+});
 </script>
 ```
