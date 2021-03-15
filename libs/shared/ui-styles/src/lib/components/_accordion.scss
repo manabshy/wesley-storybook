@@ -119,6 +119,11 @@
       outline: 0 none;
       transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.3s;
 
+      &:focus,
+      &:active {
+        outline: dotted 2px $global-colour-charcoal;
+      }
+
       @include media-breakpoint-up(md) {
         padding: 22px 52px 22px 16px;
       }
@@ -157,7 +162,6 @@
   .item.active {
     .toggle-header {
       position: relative;
-      outline: dotted 2px $global-colour-charcoal;
       &:after {
         transform: rotate(180deg);
         transform-origin: center;
