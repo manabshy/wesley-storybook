@@ -74,7 +74,7 @@ export const heroBanner = () => ({
     </div>
     <div [ngClass]="{'d-none': showTrustPilot === 'no'}">
     <!-- TrustBox widget - Micro Combo -->
-    <div class="trustpilot-widget" data-locale="en-GB" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="5ac4a6cda605e9000153b13b" data-style-height="60" data-style-width="100%" data-theme="light" data-font-family="Open Sans" data-text-color="#40474F">
+    <div class="trustpilot-widget wes-bg-solid-grey-50" data-locale="en-GB" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="5ac4a6cda605e9000153b13b" data-style-height="60" data-style-width="100%" data-theme="light" data-font-family="Open Sans" data-text-color="#40474F">
     <a href="https://uk.trustpilot.com/review/wesleyan.co.uk" target="_blank" rel="noopener">Trustpilot</a>
     </div>
     <!-- End TrustBox widget -->
