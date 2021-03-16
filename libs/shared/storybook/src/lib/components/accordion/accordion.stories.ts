@@ -37,149 +37,190 @@ export const accordion = () => ({
 
 export const sitecoreAccordion = () => ({
   template: `
-  
+  <div class="component wes-accordion">
+        <div class="component container">
+            <div class="component col-sm-12 col-lg-10 offset-lg-1">
+                <div class="component rich-text">
+                    <div class="component-content">
+                        <h2 class="wes-accordion-header">Frequently Asked Questions</h2>
+                    </div>
+                </div>
+                <div class="component accordion initialized" data-properties="{&quot;expandOnHover&quot;:false,&quot;expandedByDefault&quot;:false,&quot;speed&quot;:500,&quot;easing&quot;:&quot;swing&quot;,&quot;canOpenMultiple&quot;:true,&quot;canToggle&quot;:true,&quot;isControlEditable&quot;:false}">
+                    <div class="component-content">
+                        <div>
+                            <div>
+                                <ul class="items">
+                                        <li class="item active">
+                                                <div class="toggle-header" tabindex="0">
+                                                    <div class="label">
+                                                        
+<div class="component content">
+    <div class="component-content">
+<div class="field-heading"><p><b>Is the With Profits ISA a stocks and shares ISA?</b></p></div>    </div>
+</div>
 
-<div class="component campaign-content-container wes-content-block--campaign">
-<div class="wes-content-block__wrapper">
-  <div class="wes-content-block__body">
-    <div class="wes-content-block__body-content">
-      <div class="wes-content-block__placeholder">
-        <div class="component wes-rich-text-campaign-scope">
-          <h2 class="wes-accordion-header">Frequently asked questions</h2>
-        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="toggle-content" style="">
+                                                    
+<div class="component content">
+    <div class="component-content">
+<div class="field-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>    </div>
+</div>
 
-        <div
-          class="component accordion initialized"
-          data-properties='{"expandOnHover":false,"expandedByDefault":false,"speed":500,"easing":"swing","canOpenMultiple":true,"canToggle":true,"isControlEditable":false}'
-        >
-          <div class="component-content">
-            <div>
-              <ul class="items">
-                <li class="item active">
-                  <div class="toggle-header" tabindex="0">
-                    <div class="label">
-                      <div class="component content">
-                        <div class="component-content">
-                          <div class="field-heading">Accordion Item 1</div>
+                                                </div>
+                                        </li>
+                                        <li class="item">
+                                                <div class="toggle-header" tabindex="0">
+                                                    <div class="label">
+                                                        
+<div class="component content">
+    <div class="component-content">
+<div class="field-heading"><p><b>Am I eligible for a With Profits ISA?</b></p></div>    </div>
+</div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="toggle-content" style="display: none;">
+                                                    
+<div class="component content">
+    <div class="component-content">
+<div class="field-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>    </div>
+</div>
+
+                                                </div>
+                                        </li>
+                                        <li class="item">
+                                                <div class="toggle-header" tabindex="0">
+                                                    <div class="label">
+                                                        
+<div class="component content">
+    <div class="component-content">
+<div class="field-heading"><p><b>How much can I invest in a With Profits ISA?</b></p></div>    </div>
+</div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="toggle-content" style="display: none;">
+                                                    
+<div class="component content">
+    <div class="component-content">
+<div class="field-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>    </div>
+</div>
+
+                                                </div>
+                                        </li>
+                                </ul>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
-                  <div class="toggle-content" style="">
-                    <div class="component content">
-                      <div class="component-content">
-                        <div class="field-content">
-                          Sed ut perspiciatis unde omnis iste natus error sit
-                          voluptatem accusantium doloremque laudantium, totam
-                          rem aperiam, eaque ipsa quae ab illo inventore
-                          veritatis et quasi architecto beatae vitae dicta
-                          sunt explicabo. Nemo enim ipsam voluptatem quia
-                          voluptas sit aspernatur aut odit aut fugit, sed quia
-                          consequuntur magni dolores eos qui ratione
-                          voluptatem sequi nesciunt. Neque porro quisquam est,
-                          qui dolorem ipsum quia dolor sit amet consectetur
-                          adipisci velit.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="item">
-                  <div class="toggle-header" tabindex="-1">
-                    <div class="label">
-                      <div class="component content">
-                        <div class="component-content">
-                          <div class="field-heading">Accordion Item 2</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="toggle-content" style="display: none">
-                    <div class="component content">
-                      <div class="component-content">
-                        <div class="field-content">
-                          Sed ut perspiciatis unde omnis iste natus error sit
-                          voluptatem accusantium doloremque laudantium, totam
-                          rem aperiam, eaque ipsa quae ab illo inventore
-                          veritatis et quasi architecto beatae vitae dicta
-                          sunt explicabo. Nemo enim ipsam voluptatem quia
-                          voluptas sit aspernatur aut odit aut fugit, sed quia
-                          consequuntur magni dolores eos qui ratione
-                          voluptatem sequi nesciunt. Neque porro quisquam est,
-                          qui dolorem ipsum quia dolor sit amet consectetur
-                          adipisci velit.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="item">
-                  <div class="toggle-header" tabindex="-1">
-                    <div class="label">
-                      <div class="component content">
-                        <div class="component-content">
-                          <div class="field-heading">Accordion Item 3</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="toggle-content" style="display: none">
-                    <div class="component content">
-                      <div class="component-content">
-                        <div class="field-content">
-                          Sed ut perspiciatis unde omnis iste natus error sit
-                          voluptatem accusantium doloremque laudantium, totam
-                          rem aperiam, eaque ipsa quae ab illo inventore
-                          veritatis et quasi architecto beatae vitae dicta
-                          sunt explicabo. Nemo enim ipsam voluptatem quia
-                          voluptas sit aspernatur aut odit aut fugit, sed quia
-                          consequuntur magni dolores eos qui ratione
-                          voluptatem sequi nesciunt. Neque porro quisquam est,
-                          qui dolorem ipsum quia dolor sit amet consectetur
-                          adipisci velit.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="item">
-                  <div class="toggle-header" tabindex="-1">
-                    <div class="label">
-                      <div class="component content">
-                        <div class="component-content">
-                          <div class="field-heading">Accordion Item 4</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="toggle-content" style="display: none">
-                    <div class="component content">
-                      <div class="component-content">
-                        <div class="field-content">
-                          Sed ut perspiciatis unde omnis iste natus error sit
-                          voluptatem accusantium doloremque laudantium, totam
-                          rem aperiam, eaque ipsa quae ab illo inventore
-                          veritatis et quasi architecto beatae vitae dicta
-                          sunt explicabo. Nemo enim ipsam voluptatem quia
-                          voluptas sit aspernatur aut odit aut fugit, sed quia
-                          consequuntur magni dolores eos qui ratione
-                          voluptatem sequi nesciunt. Neque porro quisquam est,
-                          qui dolorem ipsum quia dolor sit amet consectetur
-                          adipisci velit.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
+
+    <div class="component wes-accordion wes-bg-solid-grey-50">
+        <div class="component container">
+            <div class="component col-sm-12 col-lg-10 offset-lg-1">
+                <div class="component rich-text">
+                    <div class="component-content">
+                        <h2 class="wes-accordion-header">Frequently Asked Questions</h2>
+                    </div>
+                </div>
+                <div class="component accordion initialized" data-properties="{&quot;expandOnHover&quot;:false,&quot;expandedByDefault&quot;:false,&quot;speed&quot;:500,&quot;easing&quot;:&quot;swing&quot;,&quot;canOpenMultiple&quot;:true,&quot;canToggle&quot;:true,&quot;isControlEditable&quot;:false}">
+                    <div class="component-content">
+                        <div>
+                            <div>
+                                <ul class="items">
+                                        <li class="item">
+                                                <div class="toggle-header" tabindex="0">
+                                                    <div class="label">
+                                                        
+<div class="component content">
+    <div class="component-content">
+<div class="field-heading"><p><b>Is the With Profits ISA a stocks and shares ISA?</b></p></div>    </div>
 </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="toggle-content" style="display: none;">
+                                                    
+<div class="component content">
+    <div class="component-content">
+<div class="field-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>    </div>
 </div>
+
+                                                </div>
+                                        </li>
+                                        <li class="item active">
+                                                <div class="toggle-header" tabindex="0">
+                                                    <div class="label">
+                                                        
+<div class="component content">
+    <div class="component-content">
+<div class="field-heading"><p><b>Am I eligible for a With Profits ISA?</b></p></div>    </div>
+</div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="toggle-content" style="">
+                                                    
+<div class="component content">
+    <div class="component-content">
+<div class="field-content">[No text in Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.field]</div>    </div>
+</div>
+
+                                                </div>
+                                        </li>
+                                        <li class="item">
+                                                <div class="toggle-header" tabindex="0">
+                                                    <div class="label">
+                                                        
+<div class="component content">
+    <div class="component-content">
+<div class="field-heading"><p><b>How much can I invest in a With Profits ISA?</b></p></div>    </div>
+</div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="toggle-content" style="display: none;">
+                                                    
+<div class="component content">
+    <div class="component-content">
+<div class="field-content">[No text in Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.field]</div>    </div>
+</div>
+
+                                                </div>
+                                        </li>
+                                        <li class="item">
+                                                <div class="toggle-header" tabindex="0">
+                                                    <div class="label">
+                                                        
+<div class="component content">
+    <div class="component-content">
+<div class="field-heading"><p><b>How do bonuses work?</b></p></div>    </div>
+</div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="toggle-content" style="display: none;">
+                                                    
+<div class="component content">
+    <div class="component-content">
+<div class="field-content">[No text in fiLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.eld]</div>    </div>
+</div>
+
+                                                </div>
+                                        </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
   `,
 });
 // sitecoreAccordion.decorators = [
