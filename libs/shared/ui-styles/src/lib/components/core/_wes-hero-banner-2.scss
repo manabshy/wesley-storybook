@@ -57,25 +57,21 @@
     background-repeat: no-repeat;
     background-color: $global-colour-gold-900;
     // fallback for non rgba
-    background-image: linear-gradient (
-        153.27deg,
-        $global-colour-gold-900 0%,
-        #fef4c2 60%,
-        #fefbea 100%
-    );
+    background-image: linear-gradient
+      (153.27deg, $global-colour-gold-900 0%, #fef4c2 60%, #fefbea 100%);
 
     background-image: linear-gradient(
-        153.27deg,
-        $global-colour-gold-900 0%,
-        rgba(254, 221, 54, 0.1) 100%
+      153.27deg,
+      $global-colour-gold-900 0%,
+      rgba(254, 221, 54, 0.1) 100%
     );
 
     @include media-breakpoint-up(md) {
       background-image: linear-gradient(
-          153.27deg,
-          $global-colour-gold-900 0%,
-          rgba(254, 221, 54, 0.3) 60%,
-          rgba(254, 221, 54, 0.1) 100%
+        153.27deg,
+        $global-colour-gold-900 0%,
+        rgba(254, 221, 54, 0.3) 60%,
+        rgba(254, 221, 54, 0.1) 100%
       );
     }
 
@@ -108,9 +104,9 @@
       background-position-x: right;
       background-position-y: inherit;
       background-image: linear-gradient(
-          90deg,
-          $global-colour-gold-900 45%,
-          $global-colour-grey-900 44%
+        90deg,
+        $global-colour-gold-900 45%,
+        $global-colour-grey-900 44%
       );
 
       svg#wes-hero-banner-2__shapes-mobile {
@@ -233,5 +229,32 @@
   &__support-link {
     @extend .wes-link;
     @extend .wes-link--on-gold;
+  }
+
+  .trustpilot-widget {
+    padding: 32px 0;
+    position: relative;
+    // background-color: $global-colour-grey-50;
+
+    @include media-breakpoint-up(sm) {
+      padding: 32px 72px;
+    }
+    @include media-breakpoint-up(md) {
+      padding: 40px 40px;
+    }
+    @include media-breakpoint-up(lg) {
+      padding: 48px 40px;
+    }
+    @include media-breakpoint-up(xl) {
+      padding: 48px 32px;
+    }
+    iframe {
+      height: 48px !important;
+      zoom: 1;
+
+      @include media-breakpoint-up(md) {
+        height: 24px !important;
+      }
+    }
   }
 }
