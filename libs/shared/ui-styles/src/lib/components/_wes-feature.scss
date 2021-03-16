@@ -28,12 +28,21 @@
     }
     .wes-card-deck__deck {
       padding-left: 32px;
+      padding-right: 32px;
+      margin:0;
     }
     .wes-card-feature__title {
       font-size: 32px;
     }
     .wes-card-deck__card-title {
       font-size: 19px;
+    }
+    .wes-card-deck__deck-item {
+      padding-right: 32px;
+      padding-left: 0px;
+      &:nth-child(3n)  {
+        padding-right: 0;
+      }
     }
   }
   @media (max-width: 767.98px) {
@@ -87,8 +96,7 @@
   }
   .wes-card-deck.feature {
     .wes-card-deck__card-body {
-      padding: 1rem;
-      padding-left: 0px;
+      padding: 1rem 0;
     }
     .wes-card-deck__card-title {
       text-align: center;
