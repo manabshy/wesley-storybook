@@ -1,45 +1,30 @@
-.wes-core-resource-link {
-  position: relative;
+ul.wes-core-resource-link {
+  list-style: none;
+  margin: 0 !important;
   padding-top: 32px;
   padding-bottom: 32px;
-
-  svg {
-    position: absolute;
-    top: 40px;
-  }
-
-  @include media-breakpoint-up(md) {
-    &:first-child {
-      padding-top: 48px;
-      svg {
-        top: 56px;
-      }
-    }
-    &:last-child {
-      padding-bottom: 48px !important;
-    }
-  }
 
   & + & {
     padding-top: 0;
     padding-bottom: 32px;
+  }
 
-    svg {
-      top: 8px;
+  li {
+    font-size: 16px;
+    line-height: 24px;
+    color: $global-colour-grey-900;
+
+    &:before {
+      line-height: inherit;
+      margin-right: 12px;
+      vertical-align: middle;
     }
-  }
 
-  &__body {
-    margin-top: 0 !important;
-    margin-left: 28px !important;
-  }
-
-  &__link {
-    @extend .wes-link;
-  }
-
-  &__meta {
-    white-space: nowrap;
-    margin-left: 8px;
+    a {
+      font-size: inherit;
+      line-height: inherit;
+      font-weight: 600;
+      color: $global-colour-charcoal;
+    }
   }
 }

@@ -72,6 +72,13 @@ export const wesIconFont = () => ({
         <div class="col-12">
             <h2>using in css</h2>
             <div class="d-flex flex-wrap mb-3 justify-content-between">
+            <span class="wes-font-icon-legal"></span>
+            <span class="wes-font-icon-briefcase"></span>
+            <span class="wes-font-icon-gp"></span>
+            <span class="wes-font-icon-education"></span>
+            <span class="wes-font-icon-web-link"></span>
+            <span class="wes-font-icon-sheet"></span>
+
             <span class="wes-font-icon-user"></span>
             <span class="wes-font-icon-arrow-right"></span>
             <span class="wes-font-icon-alert"></span>
@@ -92,6 +99,12 @@ export const wesIconFont = () => ({
             </div>
             <h2>using as html entity</h2>
             <div class="d-flex flex-wrap justify-content-between">
+            <span class="wes-font-icon">&#xe914;</span>
+            <span class="wes-font-icon">&#xe915;</span>
+            <span class="wes-font-icon">&#xe916;</span>
+            <span class="wes-font-icon">&#xe917;</span>
+            <span class="wes-font-icon">&#xe912;</span>
+            <span class="wes-font-icon">&#xe913;</span>
             <span class="wes-font-icon">&#xe900;</span>
             <span class="wes-font-icon">&#xe901;</span>
             <span class="wes-font-icon">&#xe902;</span>
