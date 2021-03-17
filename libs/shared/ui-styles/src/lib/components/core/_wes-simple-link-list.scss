@@ -105,11 +105,11 @@ $sll-list-item-spacing-m: 24px;
 
   .wes-simple-link-list__links {
     width: 100%;
-    @include make-container();
     padding: 0;
     margin-top: $sll-list-spacing-s;
     ul {
-      @include make-row();
+      display: flex;
+      flex-wrap: wrap;
       margin-right: 0;
       margin-left: 0;
       padding-left: 0;
@@ -201,10 +201,11 @@ $sll-list-item-spacing-m: 24px;
 
     .wes-simple-link-list__links {
       ul {
+        justify-content: flex-start;
         li {
           @include make-col(4);
           &:nth-child(even) {
-            @include make-col(8);
+            margin-right: 33.3333333333% !important;
           }
         }
       }
@@ -215,6 +216,9 @@ $sll-list-item-spacing-m: 24px;
         ul {
           li {
             @include make-col(4);
+            &:nth-child(even) {
+              margin-right: auto !important;
+            }
           }
         }
       }
