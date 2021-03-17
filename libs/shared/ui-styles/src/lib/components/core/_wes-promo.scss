@@ -4,6 +4,9 @@
 
 .wes-promo {
   @media (min-width: 1200px) {
+    .wes-button.wes-button--on-light.wes-button--outline:not(:disabled):hover {
+      color: $color-brand-charcoal;
+    }
     .wes-promo__message{
       width: 640px;
       a.cta {
@@ -226,7 +229,7 @@
 
   &__footnote {
     @include wes-typeset(small);
-
+    color: $color-brand-charcoal;
     margin-top: rem(24px);
   }
 
