@@ -38,9 +38,9 @@ export const promo = () => ({
             <a *ngIf="secondaryCtaText.length > 0" class="wes-button wes-button--on-gold wes-button--outline button-icon-arrow-right" href="javascript:void(0);">{{secondaryCtaText}}</a>
             </ng-container>
             <ng-container *ngIf="variant.indexOf('wes-promo--shout') == -1">
-            <a  *ngIf="primaryCtaText.length > 0" class="wes-button wes-button--on-light wes-button--outline button-icon-arrow-right" href="javascript:void(0);">{{primaryCtaText}}</a>
+            <a  *ngIf="primaryCtaText.length > 0" class="wes-button wes-button--on-light  button-icon-arrow-right" href="javascript:void(0);">{{primaryCtaText}}</a>
 
-            <a *ngIf="secondaryCtaText.length > 0" class="wes-button wes-button--on-light button-icon-arrow-right" href="javascript:void(0);">{{secondaryCtaText}}</a>
+            <a *ngIf="secondaryCtaText.length > 0" class="wes-button wes-button--on-light wes-button--outline button-icon-arrow-right" href="javascript:void(0);">{{secondaryCtaText}}</a>
             </ng-container>
             </div>
             <div *ngIf="footnote" class="wes-promo__footnote" [innerHTML]="footnote">
