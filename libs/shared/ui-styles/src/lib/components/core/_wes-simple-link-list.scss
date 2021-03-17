@@ -99,10 +99,6 @@ $sll-list-item-spacing-m: 24px;
     background-color: $global-colour-grey-50;
   }
 
-  &__wrapper {
-    @include wes-make-container;
-  }
-
   .wes-simple-link-list__links {
     width: 100%;
     padding: 0;
