@@ -28,12 +28,15 @@ $sll-l4-top-s: 40px;
 $sll-l4-bottom-s: 12px;
 
 $sll-paragraph-spacing-m: 24px;
-$sll-paragraph-spacing-s: 24px;
+$sll-paragraph-spacing-s: 16px;
 
 $sll-list-spacing-s: 24px;
 $sll-list-spacing-m: 24px;
 $sll-list-item-spacing-s: 24px;
 $sll-list-item-spacing-m: 24px;
+
+$sll-paragraph-list-spacing-total-m: 48px;
+$sll-paragraph-list-spacing-total-s: 32px;
 
 .wes-simple-link-list {
   padding-top: $sll-spacing-s;
@@ -102,7 +105,7 @@ $sll-list-item-spacing-m: 24px;
   .wes-simple-link-list__links {
     width: 100%;
     padding: 0;
-    margin-top: $sll-list-spacing-s;
+    margin-top: $sll-paragraph-list-spacing-total-s - $sll-list-item-spacing-s;
     ul {
       display: flex;
       flex-wrap: wrap;
@@ -129,6 +132,19 @@ $sll-list-item-spacing-m: 24px;
 
     padding-top: $sll-spacing-m;
     padding-bottom: $sll-spacing-m;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .level1,
+    .level2,
+    .level3,
+    .level4 {
+      @include make-col(11);
+    }
 
     h1,
     .level1 {
@@ -164,10 +180,15 @@ $sll-list-item-spacing-m: 24px;
     }
 
     .wes-simple-link-list__links {
-      margin-top: $sll-list-spacing-m;
+      margin-top: $sll-paragraph-list-spacing-total-m - $sll-list-item-spacing-m;
       ul {
         li {
           margin-top: $sll-list-item-spacing-m;
+
+          &:nth-child(2n) {
+            padding-left: 10px;
+          }
+
           @include make-col(6);
         }
       }
@@ -178,6 +199,7 @@ $sll-list-item-spacing-m: 24px;
         ul {
           li {
             margin-top: $sll-list-item-spacing-m;
+
             @include make-col(4);
           }
         }
@@ -190,6 +212,19 @@ $sll-list-item-spacing-m: 24px;
 
     padding-top: $sll-spacing-l;
     padding-bottom: $sll-spacing-l;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .level1,
+    .level2,
+    .level3,
+    .level4 {
+      @include make-col(9);
+    }
 
     p {
       @include make-col(9);
@@ -225,6 +260,19 @@ $sll-list-item-spacing-m: 24px;
 
     padding-top: $sll-spacing-xl;
     padding-bottom: $sll-spacing-xl;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .level1,
+    .level2,
+    .level3,
+    .level4 {
+      @include make-col(7);
+    }
 
     p {
       @include make-col-offset(0);
