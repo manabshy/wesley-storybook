@@ -2,134 +2,119 @@
 /// Wesleyan Campaign Header Component
 ////
 
-.wes-campaign-header {
-  height: rem(60px);
-  min-height: rem(60px);
-  border-width: 0;
-  padding-left: 0;
-  padding-right: 0;
-  z-index: 1;
+.wes-header {
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.15);
+  .topnavbar {
+    a {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      padding: 10px 16px;
+      color: $global-colour-white;
+      font-size: 14px;
+      font-weight: normal;
+      letter-spacing: 0;
+      line-height: 20px;
+      border-bottom: 2px solid transparent;
+      transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.2s;
 
-  @include media-breakpoint-up(md) {
-    height: rem(69px);
-  }
-
-  @include media-breakpoint-up(lg) {
-    height: rem(72px);
-  }
-
-  &:not(.c-header__main) {
-    @extend .c-header__main;
-  }
-
-  &__body {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-
-  &__logo {
-    @at-root {
-      .wes-campaign-header.js-is-sticky & {
-        @include media-breakpoint-down(sm) {
-          display: none;
+      &:not(.login) {
+        &:first-child {
+          padding-left: 0;
         }
-      }
-    }
-  }
-
-  &__actions {
-    display: none;
-    padding-right: rem(22px);
-
-    @include media-breakpoint-up(md) {
-      display: block;
-    }
-
-    @at-root {
-      .modal-open .wes-campaign-header--modal & {
-        display: none;
-      }
-
-      .wes-campaign-header.js-is-sticky & {
-        @include media-breakpoint-down(sm) {
-          display: block;
-          width: 100%;
-          padding-right: 0;
+        &:active,
+        &.active {
+          font-weight: 600;
+          border-bottom: 2px solid $global-colour-gold-900;
         }
-      }
-    }
-  }
-
-  &__cta.wes-button-cta {
-    @at-root {
-      .wes-campaign-header.js-is-sticky & {
-        @include media-breakpoint-down(sm) {
-          width: 100%;
+        &:focus {
+          font-weight: 600;
+          outline-offset: -2px;
+          outline: 2px dotted $global-colour-white;
+          text-decoration: underline;
         }
-
-        .wes-icon {
-          @include media-breakpoint-down(sm) {
-            height: rem(24px);
-            width: rem(24px);
-          }
+        &:hover {
+          font-weight: 600;
+          text-decoration: underline;
+        }
+        &:after {
+          content: attr(data-text);
+          content: attr(data-text) / '';
+          height: 0;
+          visibility: hidden;
+          overflow: hidden;
+          user-select: none;
+          pointer-events: none;
+          font-weight: 600;
         }
       }
     }
 
-    @include media-breakpoint-up(md) {
-      @include rem(
-        (
-          font-size: 12px,
-          line-height: 20px,
-          padding: 10px 24px,
-        )
-      );
-    }
-  }
+    a.login {
+      background-color: $global-colour-grey-50;
+      color: $global-colour-charcoal;
+      font-weight: 600;
+      padding: 10px 24px;
 
-  &__close {
-    display: none;
-    padding-right: rem(22px);
-
-    @at-root {
-      .modal-open .wes-campaign-header--modal & {
-        display: block;
+      &:hover,
+      &:active,
+      &.active {
+        background-color: $global-colour-gold-900;
+      }
+      &:focus {
+        outline-offset: -2px;
+        outline: 2px dotted $global-colour-grey-900;
       }
     }
   }
 
-  &__close-button {
-    background-color: transparent;
-    border: none;
+  .wes-logo {
+    margin-left: -20px;
   }
 
-  &.js-is-sticky {
-    z-index: $zindex-sticky;
-    width: 100%;
+  .masthead {
+    .menu-item {
+      flex-grow: 1;
+      flex-basis: 33.33%;
+      width: 33.33%;
+      min-width: 52px;
+      a {
+        padding: 18px 8px;
+        font-size: 12px;
+        letter-spacing: 0.25px;
+        line-height: 20px;
+        border-bottom: 2px solid transparent;
 
-    @include media-breakpoint-down(sm) {
-      position: fixed !important;
-      top: auto !important;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: rem(90px);
-      transform: translateY(100%);
-
-      @include rem(
-        (
-          padding: 16px $grid-gutter-width,
-        )
-      );
-    }
-
-    &.js-is-sticky--change {
-      transition: transform $anim-speed-quick $anim-ease-in-out;
-      transform: translateY(0);
+        &::before {
+          font-size: 16px;
+          height: 16px;
+          width: 16px;
+          line-height: 1;
+          margin-bottom: 3px;
+        }
+        &:active,
+        &:hover,
+        &.active {
+          border-bottom: 2px solid $global-colour-gold-900;
+        }
+        &:focus {
+          outline-offset: -2px;
+          outline: 2px dotted $global-colour-charcoal;
+          border-bottom: 2px solid transparent;
+        }
+      }
     }
   }
+}
+
+.wes-logo {
+  display: inline-block;
+  width: 154px;
+  height: 52px;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 154 52' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3Cfilter x='-2.2%25' y='-20.5%25' width='104.5%25' height='141.1%25' filterUnits='objectBoundingBox' id='a'%3E%3CfeOffset in='SourceAlpha' result='shadowOffsetOuter1'/%3E%3CfeGaussianBlur stdDeviation='6' in='shadowOffsetOuter1' result='shadowBlurOuter1'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0' in='shadowBlurOuter1' result='shadowMatrixOuter1'/%3E%3CfeMerge%3E%3CfeMergeNode in='shadowMatrixOuter1'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id='b' d='M23.026 17.964H.466V.255h22.56z'/%3E%3C/defs%3E%3Cg transform='translate(-43 -50)' filter='url(%23a)' fill='none' fill-rule='evenodd'%3E%3Cpath d='M78.39 84.842h-2.241l-2.926-8.07c-.264-.762-.579-1.656-.843-2.577h-.053a32.32 32.32 0 01-.844 2.55l-2.977 8.097h-2.189l-6.167-17.43h3.057l3.559 10.806c.29.867.527 1.682.764 2.523h.053c.21-.815.5-1.63.816-2.496l2.69-7.547-1.186-3.286h2.82l3.689 10.621c.343.973.659 1.787.87 2.63h.08c.183-.87.394-1.63.685-2.552l3.399-10.699h2.846l-5.903 17.43' fill='%2340474F'/%3E%3Cg transform='translate(86.015 67)'%3E%3Cmask id='c' fill='%23fff'%3E%3Cuse xlink:href='%23b'/%3E%3C/mask%3E%3Cpath fill='%2340474F' mask='url(%23c)' d='M.466 17.738V.412h9.277L8.9 2.778H3.234v4.916h5.64v2.367h-5.64v5.31H9.77v2.367H.466M17.097 18c-2.399 0-4.032-.788-5.14-1.499l1.16-2.076c.87.605 2.24 1.288 3.874 1.288 1.423 0 3.085-.631 3.085-2.209 0-2.655-4.191-3.18-6.3-5.52-.711-.789-1.186-1.76-1.186-3.103 0-2.524 1.95-4.626 5.456-4.626 1.845 0 3.215.473 4.111.946l-.026 2.576c-1.187-.71-2.531-1.208-3.954-1.208-1.502 0-2.74.63-2.74 1.996 0 3.42 7.59 3.314 7.59 8.624 0 2.918-2.583 4.811-5.93 4.811'/%3E%3C/g%3E%3Cpath fill='%2340474F' d='M111.915 84.738V67.412h2.74V82.37h6.353l-.708 2.367h-8.385M122.867 84.738V67.412h9.278l-.842 2.366h-5.668v4.916h5.641v2.367h-5.64v5.31h6.535v2.367h-9.304M142.292 77.85v6.888h-2.768v-6.942l-5.903-10.384h3.057l2.873 5.18c.474.841 1.027 1.866 1.397 2.708h.053c.396-.842.897-1.84 1.345-2.656l2.843-5.232h2.901l-5.798 10.437M159.105 84.738l-1.74-4.417h-6.43l-1.635 4.417h-2.741l6.72-17.379h1.924l6.88 17.379h-2.978zm-4.243-11.358c-.291-.868-.528-1.577-.633-2.13h-.026c-.16.605-.396 1.29-.686 2.103l-1.712 4.654h4.664l-1.607-4.627zM176.922 84.738l-8.17-10.648c-.844-1.105-1.319-1.788-1.74-2.498h-.053c.052.58.052 1.42.052 2.26v10.886h-2.74V67.412h2.794l7.854 10.253c.947 1.236 1.422 1.894 1.818 2.602h.053a66.38 66.38 0 01-.053-2.418V67.412h2.767v17.326h-2.582'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .js-stickybit-parent.has-wes-campaign-header {
