@@ -105,18 +105,27 @@ $cb-video-spacing-s: 40px;
   .level1 {
     margin-top: $cb-l1-top-s;
     margin-bottom: $cb-l1-bottom-s;
+    & + p {
+      margin-top: $cb-l1-bottom-s !important;
+    }
   }
 
   h2,
   .level2 {
     margin-top: $cb-l2-top-s;
     margin-bottom: $cb-l2-bottom-s;
+    & + p {
+      margin-top: $cb-l2-bottom-s !important;
+    }
   }
 
   h3,
   .level3 {
     margin-top: $cb-l3-top-s;
     margin-bottom: $cb-l3-bottom-s;
+    & + p {
+      margin-top: $cb-l3-bottom-s !important;
+    }
   }
 
   h4,
@@ -129,7 +138,7 @@ $cb-video-spacing-s: 40px;
     margin-bottom: $cb-l4-bottom-s;
 
     & + p {
-      margin-top: 0;
+      margin-top: $cb-l4-bottom-s !important;
     }
   }
 
@@ -156,6 +165,10 @@ $cb-video-spacing-s: 40px;
 
   @include highlight-styles;
 
+  .highlight {
+    color: #1E2630;
+  }
+
   &.wes-content-block--grey {
     background-color: $global-colour-grey-50;
   }
@@ -178,6 +191,8 @@ $cb-video-spacing-s: 40px;
     }
 
     ul, ol {
+      margin-top: $cb-list-spacing-s;
+      margin-bottom: $cb-list-spacing-s;
       & + p {
         margin-top: $cb-paragraph-spacing-top-list-s;
       }
@@ -260,18 +275,27 @@ $cb-video-spacing-s: 40px;
     .level1 {
       margin-top: $cb-l1-top-m;
       margin-bottom: $cb-l1-bottom-m;
+      & + p {
+        margin-top: $cb-l1-bottom-m !important;
+      }
     }
 
     h2,
     .level2 {
       margin-top: $cb-l2-top-m;
       margin-bottom: $cb-l2-bottom-m;
+      & + p {
+        margin-top: $cb-l2-bottom-m !important;
+      }
     }
 
     h3,
     .level3 {
       margin-top: $cb-l3-top-m;
       margin-bottom: $cb-l3-bottom-m;
+      & + p {
+        margin-top: $cb-l3-bottom-m !important;
+      }
     }
 
     h4,
@@ -282,6 +306,9 @@ $cb-video-spacing-s: 40px;
     level6 {
       margin-top: $cb-l4-top-m;
       margin-bottom: $cb-l4-bottom-m;
+      & + p {
+        margin-top: $cb-l4-bottom-m !important;
+      }
     }
 
     ul, ol {
@@ -333,6 +360,11 @@ $cb-video-spacing-s: 40px;
     .wes-rich-text-scope,
     .wes-rich-text-campaign-scope {
       @include cb-right(0, 11, 0, 12, 0, 12);
+
+      ul, ol {
+        margin-top: $cb-list-spacing-m;
+        margin-bottom: $cb-list-spacing-m;
+      }
 
       ul + p {
         margin-top: $cb-paragraph-spacing-top-list-m;
