@@ -159,6 +159,17 @@ $cb-video-spacing-s: 40px;
     }
   }
 
+  ol {
+    list-style: none;
+    li {
+      display: list-item !important;
+
+      &::before {
+        display: unset !important;
+      }
+    }
+  }
+
   p {
     margin-top: $cb-paragraph-spacing-s;
   }
