@@ -1,3 +1,7 @@
+import * as jquery from 'jquery';
+import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min';
+global = { ...global, ...{ $: jquery, jQuery: jquery, bootstrap: bootstrap } };
+
 export default {
   title: 'Campaigns/Header',
 };
@@ -34,21 +38,89 @@ export const base = () => ({
               <a href="#" aria-label="wesleyan logo" class="wes-logo"></a>
             </div>
             <div class="mr-auto"></div>
+            <!-- start mobile to large masthead //-->
             <div class="d-flex d-xl-none flex-wrap" role="group">
               <span class="menu-item" role="listitem">
               <a class="d-flex flex-column align-items-center wes-font-icon-user" href="#">Login</a>
               </span>
               <span class="menu-item" role="listitem">
-              <a class="d-flex flex-column align-items-center wes-font-icon-search" href="#">Search</a>
+              <a class="d-flex flex-column align-items-center wes-font-icon-search" data-toggle="collapse" href="#searchPanel" role="button" aria-expanded="false" aria-controls="searchPanel">Search</a>
               </span>
               <span class="menu-item" role="listitem">
-              <a class="d-flex flex-column align-items-center wes-font-icon-menu" href="#">Menu</a>
+              <a class="d-flex flex-column align-items-center wes-font-icon-menu"  data-toggle="collapse" href="#primaryNav" role="button" aria-expanded="false" aria-controls="primaryNav">Menu</a>
               </span>
             </div>
+            <!-- end mobile to large masthead //-->
+
+            <!-- start extra-large masthead //-->
+            <div class="d-none d-xl-flex flex-wrap" role="group">
+              <span class="menu-item" role="listitem">
+                <a class="d-flex flex-row align-items-center wes-font-icon-user" href="#">Book an appointment</a>
+              </span>
+              <span class="menu-item" role="listitem">
+                <a class="d-flex flex-row align-items-center wes-font-icon-user" href="#">Contact us</a>
+              </span>
+              <span class="menu-item" role="listitem">
+                <a class="d-flex flex-row align-items-center wes-font-icon-chat" href="#">Live chat</a>
+              </span>
+              <span class="menu-item" role="listitem">
+                <a class="d-flex flex-row align-items-center wes-font-icon-search" data-toggle="collapse" href="#searchPanel" role="button" aria-expanded="false" aria-controls="searchPanel">Search</a>
+              </span>
+            </div>
+            <!-- end extra-large masthead //-->
           </div>
         </div>
       </div>
       <!-- end masthead//-->
+
+      <!-- start primaryNav //-->
+      <div class="collapse primary-nav position-relative" id="primaryNav">
+        <div class="underlay position-absolute"></div>
+        <div class="position-absolute w-100 wes-bg-solid-white">
+          <div class="container primary-nav-container">
+            
+            <ul class="d-flex flex-column flex-xl-row align-items-stretch align-items-xl-center mega-menu">
+              <li>
+                <a href="#">Financial advice</a>
+              </li>
+              <li>
+                <a href="#">Save & Invest</a>
+              </li>
+              <li>
+                <a href="#">Retire</a>
+              </li>
+              <li>
+                <a href="#">Protect</a>
+              </li>
+              <li>
+                <a href="#">Mortgage</a>
+              </li>
+              <li>
+                <a href="#">Insure</a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+    <!-- end primaryNav //-->
+
+      <!-- start searchPanel //-->
+      <div class="collapse search-panel position-relative" id="searchPanel">
+        <div class="underlay position-absolute"></div>
+        <div class="position-absolute w-100 wes-bg-solid-white">
+          <div class="container pt-2 pb-2">
+            <div class="col-sm-12 col-md-10 offset-md-1 col-xl-8 offset-xl-2">
+                <form class="d-flex flex-row align-items-center search-form">
+                <input type="search" class="mr-auto" aria-label="Search" placeholder="How can we help you today?" />
+                <button type="submit"><span class="wes-font-icon">&#xe90e;</span></button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- end searchPanel //-->
+    stuff after
     </nav>
   </header>
     <!--
