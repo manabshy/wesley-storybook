@@ -13,7 +13,7 @@ const variants = {
 
 export const simpleLinkList = () => ({
   template: `
-    <div class="wes-simple-link-list {{variant}}" role="links">
+    <div class="wes-simple-link-list {{variant}}">
       <div class="wes-simple-link-list__wrapper container">
         <div class="wes-simple-link-list__body">
           <div class="wes-simple-link-list__content">
