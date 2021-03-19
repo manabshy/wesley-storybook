@@ -1,9 +1,12 @@
 ////
-/// Wesleyan Campaign Header Component
+/// Wesleyan Header Navigation styles
 ////
 
 .wes-header {
   position: relative;
+  a {
+    transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.2s;
+  }
   .topnavbar {
     a {
       display: inline-flex;
@@ -18,7 +21,6 @@
       letter-spacing: 0;
       line-height: 20px;
       border-bottom: 2px solid transparent;
-      transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.2s;
 
       &:not(.login) {
         &:first-child {
@@ -72,17 +74,12 @@
     }
   }
 
-  .wes-logo {
-    margin-left: -20px;
-  }
-
   .masthead {
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.15);
     .menu-item {
       flex-grow: 1;
       flex-basis: 33.33%;
       width: 33.33%;
-      min-width: 52px;
       a {
         padding: 18px 8px;
         font-size: 12px;
@@ -115,7 +112,9 @@
           @extend .wes-font-icon-close;
         }
       }
-
+      @include media-breakpoint-up(sm) {
+        min-width: 52px;
+      }
       @include media-breakpoint-up(xl) {
         flex-grow: 1;
         flex-basis: auto;
@@ -158,6 +157,15 @@
     height: 100vh;
   }
 
+  .mega-menu-shadow {
+    @include media-breakpoint-down(lg) {
+      box-shadow: inset 0 0 12px 0 rgb(0 0 0 / 15%);
+    }
+    @include media-breakpoint-up(xl) {
+      box-shadow: 0 6px 12px -6px rgb(0 0 0 / 15%);
+    }
+  }
+
   .search-form {
     input,
     button {
@@ -180,33 +188,45 @@
 
   .primary-nav {
     .primary-nav-container {
+      @include media-breakpoint-only(lg) {
+        padding-left: 0;
+        padding-right: 0;
+      }
       ul.mega-menu {
         list-style: none;
         padding: 0;
         margin: 0;
-
+        .mega-menu-item {
+          display: block;
+        }
         li {
           display: flex;
+          border-bottom: 1px solid $global-colour-grey-100;
+          @include media-breakpoint-only(xl) {
+            border: 0 none;
+          }
           a {
-            padding: 18px 20px;
+            padding: 18px 0;
             font-size: 18px;
             font-weight: 600;
             letter-spacing: 0;
             line-height: 28px;
-            border-bottom: 2px solid transparent;
             width: 100%;
-
-            &:hover {
-              border-bottom: 2px solid $global-colour-charcoal;
-            }
-            &:focus {
-              outline-offset: -2px;
-              outline: 2px dotted $global-colour-charcoal;
+            @include media-breakpoint-only(xl) {
               border-bottom: 2px solid transparent;
-            }
-            &.active,
-            &:active {
-              border-bottom: 2px solid $global-colour-gold-900;
+              margin: 0;
+              &:hover {
+                border-bottom: 2px solid $global-colour-charcoal;
+              }
+              &:focus {
+                outline-offset: -2px;
+                outline: 2px dotted $global-colour-charcoal;
+                border-bottom: 2px solid transparent;
+              }
+              &.active,
+              &:active {
+                border-bottom: 2px solid $global-colour-gold-900;
+              }
             }
           }
         }
@@ -244,6 +264,7 @@
 
 .wes-logo {
   display: inline-block;
+  margin-left: -18px;
   width: 154px;
   height: 52px;
   background-repeat: no-repeat;

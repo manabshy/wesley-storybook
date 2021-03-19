@@ -1,12 +1,22 @@
 import * as jquery from 'jquery';
 import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min';
+import mdx from './campaign.mdx';
 global = { ...global, ...{ $: jquery, jQuery: jquery, bootstrap: bootstrap } };
 
 export default {
   title: 'Campaigns/Header',
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+    docs: {
+      iframeHeight: 500,
+      page: mdx,
+    },
+  },
 };
 
-export const base = () => ({
+export const header = () => ({
   template: `
   <header>
     <nav class="wes-header">
@@ -35,7 +45,9 @@ export const base = () => ({
         <div class="container">
           <div class="d-flex flex-row align-items-center" role="list">
             <div class="d-flex">
-              <a href="#" aria-label="wesleyan logo" class="wes-logo"></a>
+              <a href="#" aria-label="wesleyan logo" class="wes-logo">
+                <span class="sr-only">Wesleyan</span>
+              </a>
             </div>
             <div class="mr-auto"></div>
             <!-- start mobile to large masthead //-->
@@ -76,27 +88,27 @@ export const base = () => ({
       <!-- start primaryNav //-->
       <div class="collapse primary-nav position-relative" id="primaryNav">
         <div class="underlay position-absolute"></div>
-        <div class="position-absolute w-100 wes-bg-solid-white">
+        <div class="position-absolute w-100 wes-bg-solid-white mega-menu-shadow">
           <div class="container primary-nav-container">
             
             <ul class="d-flex flex-column flex-xl-row align-items-stretch align-items-xl-center mega-menu">
               <li>
-                <a href="#">Financial advice</a>
+                <a href="#"><span class="mega-menu-item">Financial advice</span></a>
               </li>
               <li>
-                <a href="#">Save & Invest</a>
+                <a href="#"><span class="mega-menu-item">Save & Invest</span></a>
               </li>
               <li>
-                <a href="#">Retire</a>
+                <a href="#"><span class="mega-menu-item">Retire</span></a>
               </li>
               <li>
-                <a href="#">Protect</a>
+                <a href="#"><span class="mega-menu-item">Protect</span></a>
               </li>
               <li>
-                <a href="#">Mortgage</a>
+                <a href="#"><span class="mega-menu-item">Mortgage</span></a>
               </li>
               <li>
-                <a href="#">Insure</a>
+                <a href="#"><span class="mega-menu-item">Insure</span></a>
               </li>
             </ul>
             
@@ -120,9 +132,12 @@ export const base = () => ({
         </div>
       </div>
     <!-- end searchPanel //-->
-    stuff after
+    
     </nav>
   </header>
+  <main>
+    stuff after
+  </main>
     <!--
     <script>
         window.addEventListener('DOMContentLoaded', function (event) {
@@ -137,3 +152,25 @@ export const base = () => ({
     -->
   `,
 });
+
+header.decorators = [
+  (storyFunc) => {
+    const story = storyFunc();
+
+    setTimeout(() => {
+      const $ = global['$'];
+      var primarynav = $('#primaryNav');
+      var searchpanel = $('#searchPanel');
+      primarynav.on('show.bs.collapse', function () {
+        searchpanel.collapse('hide');
+      });
+      searchpanel.on('show.bs.collapse', function () {
+        primarynav.collapse('hide');
+      });
+    });
+
+    return {
+      ...story,
+    };
+  },
+];

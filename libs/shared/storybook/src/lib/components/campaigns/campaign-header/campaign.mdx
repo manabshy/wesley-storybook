@@ -1,0 +1,22 @@
+# Header Component for Wesleyan Website
+
+## Header js snippet
+
+```
+
+<script>
+    document.addEventListener('DOMContentLoaded', function (event) {
+        (function ($) {
+            var primarynav = $('#primaryNav');
+            var searchpanel = $('#searchPanel');
+            primarynav.on('show.bs.collapse', function () {
+            searchpanel.collapse('hide');
+            });
+            searchpanel.on('show.bs.collapse', function () {
+            primarynav.collapse('hide');
+            });
+        })($);
+    });
+</script>
+
+```
