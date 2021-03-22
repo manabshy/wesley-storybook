@@ -14,7 +14,7 @@ export const heroBanner = () => ({
             <div class="wes-hero-banner-2__message">
               <p>{{subheading}}</p>
             </div>
-            <div class="wes-hero-banner-2__actions">
+            <div *ngIf="primaryCtaText.length > 0 || secondaryCtaText.length > 0" class="wes-hero-banner-2__actions">
               <a *ngIf="primaryCtaText.length > 0" class="wes-hero-banner-2__cta" href="#" [innerHTML]="primaryCtaText"></a>
               <a *ngIf="secondaryCtaText.length > 0" class="wes-hero-banner-2__cta wes-hero-banner-2__cta--secondary" href="#" [innerHTML]="secondaryCtaText"></a>
             </div>
@@ -70,15 +70,16 @@ export const heroBanner = () => ({
                 </g>
                 </g>
             </g>
-            </svg>
+        </svg>
+      </div>
     </div>
-    <div [ngClass]="{'d-none': showTrustPilot === 'no'}">
-    <!-- TrustBox widget - Micro Combo -->
-    <div class="trustpilot-widget wes-bg-solid-grey-50" data-locale="en-GB" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="5ac4a6cda605e9000153b13b" data-style-height="60" data-style-width="100%" data-theme="light" data-font-family="Open Sans" data-text-color="#40474F">
-    <a href="https://uk.trustpilot.com/review/wesleyan.co.uk" target="_blank" rel="noopener">Trustpilot</a>
-    </div>
-    <!-- End TrustBox widget -->
-    </div>
+
+    <div class="wes-hero-banner-2__trustpilot wes-bg-solid-grey-50" [ngClass]="{'d-none': showTrustPilot === 'no'}">
+      <!-- TrustBox widget - Micro Combo -->
+      <div class="trustpilot-widget container" data-locale="en-GB" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="5ac4a6cda605e9000153b13b" data-style-height="60" data-style-width="100%" data-theme="light" data-font-family="Open Sans" data-text-color="#40474F">
+      <a href="https://uk.trustpilot.com/review/wesleyan.co.uk" target="_blank" rel="noopener">Trustpilot</a>
+      </div>
+      <!-- End TrustBox widget -->
     </div>
   `,
   props: {
