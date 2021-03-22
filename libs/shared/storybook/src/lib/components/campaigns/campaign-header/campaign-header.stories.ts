@@ -78,7 +78,7 @@ export const header = () => ({
                 <a class="d-flex flex-row align-items-center wes-font-icon-user" href="#">Contact us</a>
               </span>
               <span class="menu-item">
-                <a class="d-flex flex-row align-items-center wes-font-icon-chat" href="#">Live chat</a>
+                <a class="d-flex flex-row align-items-center wes-font-icon-chat" onclick="window.open(this.href,'Chat','width=484,height=361');return false;" href="#">Live chat</a>
               </span>
               <span class="menu-item">
                 <a class="d-flex flex-row align-items-center wes-font-icon-search" data-toggle="collapse" href="#searchPanel" role="button" aria-expanded="false" aria-controls="searchPanel">Search</a>
@@ -94,26 +94,108 @@ export const header = () => ({
       <div class="collapse primary-nav position-relative" id="primaryNav">
         <div class="underlay position-absolute"></div>
         <div class="position-absolute w-100 wes-bg-solid-white mega-menu-shadow">
-          <div class="container primary-nav-container">
+          <div class="container-xl primary-nav-container">
             
             <ul class="d-flex flex-column flex-xl-row align-items-stretch align-items-xl-center mega-menu">
-              <li>
-                <a href="#"><span class="mega-menu-item">Financial advice</span></a>
+              <li class="d-flex flex-column">
+                <span class="mega-menu-item">
+                  <a data-toggle="collapse" href="#financialAdviceMengaMenu" class="container" role="button" aria-expanded="false" aria-controls="financialAdviceMengaMenu">
+                    Financial advice
+                  </a>
+                  <span class="overlay"></span>
+                </span>
+                <div class="collapse mega-menu-container" id="financialAdviceMengaMenu">
+                  <div class="container d-flex flex-column flex-xl-row">
+                  <div class="d-flex flex-column mega-menu-body"> 
+                    <span class="mega-menu-item-label">
+                      Achieving your goals
+                    </span>
+                  </div>
+                  </div>
+                </div>
               </li>
-              <li>
-                <a href="#"><span class="mega-menu-item">Save & Invest</span></a>
+              <li class="d-flex flex-column">
+                <span class="mega-menu-item">
+                  <a data-toggle="collapse" href="#saveAndInvestMegaMenu" class="container" role="button" aria-expanded="false" aria-controls="saveAndInvestMegaMenu">Save & Invest</a>
+                  <span class="overlay"></span>
+                </span>
+                <div class="collapse mega-menu-container" id="saveAndInvestMegaMenu">
+                  <div class="container d-flex flex-column flex-xl-row">
+                  <div class="d-flex flex-column mega-menu-body"> 
+                    <span class="mega-menu-item-label">
+                      Achieving your goals
+                    </span>
+                  </div>
+                  </div>
+                </div>
               </li>
-              <li>
-                <a href="#"><span class="mega-menu-item">Retire</span></a>
+              <li class="d-flex flex-column">
+                <span class="mega-menu-item">
+                  <a data-toggle="collapse" href="#retireMegaMenu" class="container" role="button" aria-expanded="false" aria-controls="retireMegaMenu">Retire</a>
+                  <span class="overlay"></span>
+                </span>
+                <div class="collapse mega-menu-container" id="retireMegaMenu">
+                  <div class="container d-flex flex-column flex-xl-row">
+                  <div class="d-flex flex-column mega-menu-body"> 
+                    <span class="mega-menu-item-label">
+                      Achieving your goals
+                    </span>
+                  </div>
+                  </div>
+                </div>
               </li>
-              <li>
-                <a href="#"><span class="mega-menu-item">Protect</span></a>
+              <li class="d-flex flex-column">
+                <span class="mega-menu-item">
+                  <a data-toggle="collapse" href="#protectMegaMenu" class="container" role="button" aria-expanded="false" aria-controls="protectMegaMenu">Protect</a>
+                  <span class="overlay"></span>
+                </span>
+                <div class="collapse mega-menu-container" id="protectMegaMenu">
+                  <div class="container d-flex flex-column flex-xl-row">
+                  <div class="d-flex flex-column mega-menu-body"> 
+                    <span class="mega-menu-item-label">
+                      Achieving your goals
+                    </span>
+                  </div>
+                  </div>
+                </div>
               </li>
-              <li>
-                <a href="#"><span class="mega-menu-item">Mortgage</span></a>
+              <li class="d-flex flex-column">
+                <span class="mega-menu-item">
+                  <a data-toggle="collapse" href="#mortgageMegaMenu" class="container" role="button" aria-expanded="false" aria-controls="mortgageMegaMenu">Mortgage</a>
+                  <span class="overlay"></span>
+                </span>
+                <div class="collapse mega-menu-container" id="mortgageMegaMenu">
+                  <div class="container d-flex flex-column flex-xl-row">
+                    <div class="d-flex flex-column mega-menu-body"> 
+                      <span class="mega-menu-item-label">
+                        Borrowing Goals
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Buying your first home</a>
+                      </span>
+                    </div>
+                    <div class="d-flex flex-column mega-menu-body"> 
+                      <span class="mega-menu-item-label">
+                        Mortgages
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
-              <li>
-                <a href="#"><span class="mega-menu-item">Insure</span></a>
+              <li class="d-flex flex-column">
+                <span class="mega-menu-item">
+                  <a data-toggle="collapse" href="#insureMegaMenu" class="container" role="button" aria-expanded="false" aria-controls="insureMegaMenu">Insure</a>
+                  <span class="overlay"></span>
+                </span>
+                <div class="collapse mega-menu-container" id="insureMegaMenu">
+                  <div class="container d-flex flex-column flex-xl-row">
+                  <div class="d-flex flex-column mega-menu-body"> 
+                    <span class="mega-menu-item-label">
+                      Achieving your goals
+                    </span>
+                  </div>
+                  </div>
+                </div>
               </li>
             </ul>
             
@@ -166,11 +248,38 @@ header.decorators = [
       const $ = global['$'];
       var primarynav = $('#primaryNav');
       var searchpanel = $('#searchPanel');
+      var megamenucontainers = $('.mega-menu-container');
+      function hidePanel(panel) {
+        if (panel.hasClass('show')) {
+          panel.collapse('hide');
+        }
+      }
+      function hideAllMegaMenu() {
+        for (const element of megamenucontainers) {
+          hidePanel($(element));
+        }
+      }
+      function hideOpenMegaMenus(id) {
+        for (let index = 0; index < megamenucontainers.length; index++) {
+          var megamenucontainer = $(megamenucontainers[index]);
+          if (megamenucontainer.attr('id') !== id) {
+            hidePanel(megamenucontainer);
+          }
+        }
+      }
+      megamenucontainers.each(function () {
+        $(this).on('show.bs.collapse', function () {
+          var elementid = $(this).attr('id');
+          hideOpenMegaMenus(elementid);
+        });
+      });
       primarynav.on('show.bs.collapse', function () {
-        searchpanel.collapse('hide');
+        hidePanel(searchpanel);
+        hideAllMegaMenu();
       });
       searchpanel.on('show.bs.collapse', function () {
-        primarynav.collapse('hide');
+        hidePanel(primarynav);
+        hideAllMegaMenu();
       });
     });
 

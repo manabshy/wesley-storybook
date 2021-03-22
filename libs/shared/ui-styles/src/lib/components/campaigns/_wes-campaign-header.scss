@@ -78,8 +78,6 @@
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.15);
     .menu-item {
       flex-grow: 1;
-      flex-basis: 33.33%;
-      width: 33.33%;
       a {
         padding: 18px 8px;
         font-size: 12px;
@@ -133,6 +131,11 @@
         }
       }
     }
+    @include media-breakpoint-down(lg) {
+      .container {
+        padding-right: 0;
+      }
+    }
   }
 
   .search-panel {
@@ -159,7 +162,8 @@
 
   .mega-menu-shadow {
     @include media-breakpoint-down(lg) {
-      box-shadow: inset 0 0 12px 0 rgb(0 0 0 / 15%);
+      // box-shadow: inset 0 0 12px 0 rgb(0 0 0 / 15%);
+      border-top: 1px solid $global-colour-grey-100;
     }
     @include media-breakpoint-up(xl) {
       box-shadow: 0 6px 12px -6px rgb(0 0 0 / 15%);
@@ -188,33 +192,34 @@
 
   .primary-nav {
     .primary-nav-container {
-      @include media-breakpoint-only(lg) {
-        padding-left: 0;
-        padding-right: 0;
+      @include media-breakpoint-down(lg) {
+        &.container-xl {
+          padding-left: 0;
+          padding-right: 0;
+        }
       }
       ul.mega-menu {
         list-style: none;
         padding: 0;
         margin: 0;
         .mega-menu-item {
-          display: block;
-        }
-        li {
           display: flex;
-          border-bottom: 1px solid $global-colour-grey-100;
-          @include media-breakpoint-only(xl) {
-            border: 0 none;
-          }
+          width: 100%;
+          position: relative;
           a {
-            padding: 18px 0;
+            padding-top: 18px;
+            padding-bottom: 18px;
             font-size: 18px;
             font-weight: 600;
             letter-spacing: 0;
             line-height: 28px;
             width: 100%;
+            z-index: 1;
+            border-bottom: 1px solid $global-colour-grey-100;
             @include media-breakpoint-only(xl) {
               border-bottom: 2px solid transparent;
               margin: 0;
+              padding: 16px 20px;
               &:hover {
                 border-bottom: 2px solid $global-colour-charcoal;
               }
@@ -228,6 +233,102 @@
                 border-bottom: 2px solid $global-colour-gold-900;
               }
             }
+
+            @include media-breakpoint-down(lg) {
+              position: relative;
+              &[aria-expanded] {
+                padding-right: 48px;
+                &::after {
+                  @include mix-wes-font-icon;
+                  color: $global-colour-gold-900;
+                  content: '\e90c';
+                  position: absolute;
+                  right: 20px;
+                  top: 24px;
+                  font-size: 16px;
+                  transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.3s;
+                }
+              }
+
+              &[aria-expanded='false'] {
+                & + .overlay {
+                  display: none;
+                }
+              }
+              &[aria-expanded='true'] {
+                border-bottom-color: transparent;
+                & + .overlay {
+                  display: block;
+                  background: linear-gradient(
+                    133.23deg,
+                    $global-colour-gold-900 0%,
+                    $global-colour-yellow-700 100%
+                  );
+                  position: absolute;
+                  left: 0;
+                  top: -1px;
+                  bottom: 0;
+                  right: 0;
+                  z-index: 0;
+                }
+                &::after {
+                  color: $global-colour-charcoal;
+                  transform: rotate(180deg);
+                  transform-origin: center;
+                  transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.3s;
+                }
+              }
+            }
+          }
+        }
+        .mega-menu-item-label {
+          color: $global-colour-charcoal;
+          font-family: 'Bliss 2';
+          font-size: 16px;
+          font-weight: bold;
+          letter-spacing: 0.2px;
+          line-height: 24px;
+          padding-top: 28px;
+          padding-bottom: 12px;
+          text-transform: uppercase;
+        }
+        .mega-menu-container {
+          @include media-breakpoint-down(lg) {
+          }
+          @include media-breakpoint-only(xl) {
+            position: absolute;
+            top: 62px;
+            left: 0;
+            width: 100%;
+          }
+        }
+        .mega-menu-body {
+          @include media-breakpoint-only(xl) {
+            flex: 0 0 25%;
+            max-width: 25%;
+            padding-right: 14px;
+            padding-left: 14px;
+            &:first-child {
+              padding-left: 0;
+            }
+            &:last-child {
+              padding-right: 0;
+            }
+          }
+        }
+        .mega-menu-body-item {
+          a {
+            padding: 12px 0;
+            display: block;
+          }
+        }
+        li {
+          display: flex;
+          @include media-breakpoint-down(lg) {
+            flex-direction: column;
+          }
+          @include media-breakpoint-only(xl) {
+            border: 0 none;
           }
         }
       }
@@ -245,7 +346,6 @@
             border-top: 1px solid $global-colour-grey-100;
             li {
               a {
-                padding: 16px 20px;
                 font-weight: 400;
                 width: auto;
               }

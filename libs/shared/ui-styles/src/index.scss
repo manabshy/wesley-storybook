@@ -38,6 +38,7 @@
 @import './lib/scopes/wes-rich-text';
 
 // Core components
+@import './lib/components/core/wes-font-icon';
 @import './lib/components/core/wes-content-block';
 @import './lib/components/core/wes-core-content-block';
 @import './lib/components/core/wes-card-deck';
@@ -102,4 +103,3 @@
 @import './lib/components/wes-cassie-overrides';
 @import './lib/components/wes-global-notification';
 @import './lib/components/wes-in-page-menu';
-@import './lib/components/core/wes-font-icon';

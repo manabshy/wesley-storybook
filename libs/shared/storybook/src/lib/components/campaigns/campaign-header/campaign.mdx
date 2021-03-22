@@ -2,6 +2,8 @@
 
 ## Header js snippet
 
+Paste immediately after html markup
+
 ```
 
 <script>
@@ -9,14 +11,47 @@
         (function ($) {
             var primarynav = $('#primaryNav');
             var searchpanel = $('#searchPanel');
+            var megamenucontainers = $('.mega-menu-container');
+            function hidePanel(panel) {
+                if (panel.hasClass('show')) {
+                panel.collapse('hide');
+                }
+            }
+            function hideAllMegaMenu() {
+                for (const element of megamenucontainers) {
+                hidePanel($(element));
+                }
+            }
+            function hideOpenMegaMenus(id) {
+                for (let index = 0; index < megamenucontainers.length; index++) {
+                var megamenucontainer = $(megamenucontainers[index]);
+                if (megamenucontainer.attr('id') !== id) {
+                    hidePanel(megamenucontainer);
+                }
+                }
+            }
+            megamenucontainers.each(function () {
+                $(this).on('show.bs.collapse', function () {
+                var elementid = $(this).attr('id');
+                hideOpenMegaMenus(elementid);
+                });
+            });
             primarynav.on('show.bs.collapse', function () {
-            searchpanel.collapse('hide');
+                hidePanel(searchpanel);
+                hideAllMegaMenu();
             });
             searchpanel.on('show.bs.collapse', function () {
-            primarynav.collapse('hide');
+                hidePanel(primarynav);
+                hideAllMegaMenu();
             });
         })($);
     });
 </script>
 
 ```
+
+## live chat url
+
+Please input below URL into live chat href
+
+`https://livechat.wesleyan.co.uk/chat/chatstart.htm?domain=www.wesleyan.co.uk&amp;session=-`
