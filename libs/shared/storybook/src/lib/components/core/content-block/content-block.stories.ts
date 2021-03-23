@@ -222,7 +222,16 @@ export const contentCampaign = () => ({
                <div class="component rich-text wes-rich-text-scope">
                   <h1 class="level1">L1 - Unit trusts</h1>
                   <p class="lead">Lead - Wesleyan Unit Trust Managers (WUTM) offers a trio of products that enable you to invest in fully managed unit trust funds, run by an award-winning team. Whether you’re looking to build your own investment or save for your children’s future, we’ve got a product for you.</p>
-
+                    <ul class="wes-core-resource-link">
+                        <li class="wes-font-icon-sheet"><a href="#">List item 1</a> PDF 300KB</li>
+                        <li class="wes-font-icon-web-link"><a href="#">List item 2</a></li>
+                        <li class="wes-font-icon-web-link"><a href="#">List item 3</a></li>
+                    </ul>
+                    <ul class="wes-core-resource-link">
+                        <li class="wes-font-icon-sheet"><a href="#">List item 1</a> PDF 300KB</li>
+                        <li class="wes-font-icon-web-link"><a href="#">List item 2</a></li>
+                        <li class="wes-font-icon-web-link"><a href="#">List item 3</a></li>
+                    </ul>
                   <h2 class="level2">Sitecore editor view</h2>
 
                   <span scfieldtype="rich text" scdefaulttext="[No text in field]" contenteditable="true" class="scWebEditInput scEnabledChrome" id="fld_19B4F22CCB8C47559203FFE23638C448_B195CB5DF68B421F8C731C4E0D4BDC0E_en_1_dde329a9728842cebab8eff1be684694_2359_edit" sc-part-of="field">
