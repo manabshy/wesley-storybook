@@ -222,6 +222,7 @@
               border-bottom: 2px solid transparent;
               margin: 0;
               padding: 16px 20px;
+              font-weight: 400;
               &:hover {
                 border-bottom: 2px solid $global-colour-charcoal;
               }
@@ -335,12 +336,12 @@
           @include media-breakpoint-only(xl) {
             flex: 0 0 25%;
             max-width: 25%;
-            padding-right: 14px;
-            padding-left: 14px;
+            padding-right: 10px;
+            padding-left: 10px;
             &:first-child {
               padding-left: 0;
             }
-            &:last-child {
+            &:nth-child(3) {
               padding-right: 0;
             }
           }
@@ -349,6 +350,21 @@
           a {
             padding: 12px 0;
             display: block;
+          }
+        }
+        .mega-menu-promo {
+          background-color: $global-colour-grey-50;
+          padding: 40px 30px;
+
+          .menu-promo-header {
+            font-size: 19px;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 28px;
+            margin-bottom: 12px;
+          }
+          .menu-promo-body {
+            margin-bottom: 56px;
           }
         }
         li {
@@ -371,7 +387,6 @@
             border-top: 1px solid $global-colour-grey-100;
             li {
               a {
-                font-weight: 400;
                 width: auto;
               }
               &:first-child {

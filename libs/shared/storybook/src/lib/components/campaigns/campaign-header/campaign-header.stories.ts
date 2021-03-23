@@ -121,11 +121,86 @@ export const header = () => ({
                 </span>
                 <div class="collapse mega-menu-container" id="saveAndInvestMegaMenu">
                   <div class="container d-flex flex-column flex-xl-row">
-                  <div class="d-flex flex-column mega-menu-body"> 
-                    <span class="mega-menu-item-label">
-                      Achieving your goals
-                    </span>
-                  </div>
+                    <div class="d-flex flex-column mega-menu-body"> 
+                      <span class="mega-menu-item-label">
+                        Achieving your goals
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Getting started with investing</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Saving for a house</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Investing for children</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Investing for retirement</a>
+                      </span>
+                    </div>
+                    <div class="d-flex flex-column mega-menu-body"> 
+                      <span class="mega-menu-item-label">
+                        products
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Savings accounts</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">ISAs</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Investment plans</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">With profits funds</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Unit Trusts</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">With profits funds</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Investment calculator</a>
+                      </span>
+                    </div>
+                    <div class="d-flex flex-column mega-menu-body"> 
+                      <span class="mega-menu-item-label">
+                        WHY WESLEYAN
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Investing with Wesleyan</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Our investment team</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Investment plans</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Protecting you online</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Key information documents</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">With profits funds</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Investment calculator</a>
+                      </span>
+                    </div>
+                    <div class="d-none d-xl-flex flex-column mega-menu-promo"> 
+                        <span class="menu-promo-header">
+                          Investment advice that's all about you
+                        </span>
+                        <div class="menu-promo-body">
+                          Our consultants help doctors, dentists, teachers and lawyers acheive their goals through specialist investment advice.
+                        </div>
+                        <span class="menu-promo-cta">
+                          <a href="#" class="wes-button wes-button--on-light">Book an appointment</a>
+                        </span>
+                    </div>
                   </div>
                 </div>
               </li>
