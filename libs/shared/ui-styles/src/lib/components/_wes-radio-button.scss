@@ -34,6 +34,21 @@ $wes-radio-inner-checked-colour: $global-colour-gold-900;
       top: calc(50% - 12px);
     }
   }
+
+  &.error {
+    .wes-radio-frame {
+      border-color: $global-colour-gold-900;
+    }
+    
+    .wes-radio-background {
+      background-color: transparent;
+      border: 2px solid $global-colour-red-700;
+      height: 24px;
+      width: 24px;
+      left: calc(50% - 12px);
+      top: calc(50% - 12px);
+    }
+  }
 }
 
 .wes-radio-layout {
