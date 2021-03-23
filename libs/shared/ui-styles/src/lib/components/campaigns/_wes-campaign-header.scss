@@ -162,7 +162,6 @@
 
   .mega-menu-shadow {
     @include media-breakpoint-down(lg) {
-      // box-shadow: inset 0 0 12px 0 rgb(0 0 0 / 15%);
       border-top: 1px solid $global-colour-grey-100;
     }
     @include media-breakpoint-up(xl) {
@@ -206,6 +205,9 @@
           display: flex;
           width: 100%;
           position: relative;
+          @include media-breakpoint-only(xl) {
+            position: unset;
+          }
           a {
             padding-top: 18px;
             padding-bottom: 18px;
@@ -229,7 +231,8 @@
                 border-bottom: 2px solid transparent;
               }
               &.active,
-              &:active {
+              &:active,
+              &[aria-expanded='true'] {
                 border-bottom: 2px solid $global-colour-gold-900;
               }
             }
@@ -279,6 +282,28 @@
                 }
               }
             }
+
+            @include media-breakpoint-only(xl) {
+              position: unset;
+              &[aria-expanded='false'] {
+                & + .overlay {
+                  display: none;
+                }
+              }
+              &[aria-expanded='true'] {
+                & + .overlay {
+                  display: block;
+                  background-color: rgba(217, 218, 220, 0.9);
+                  position: absolute;
+                  left: 0;
+                  top: 62px;
+                  bottom: 0;
+                  right: 0;
+                  z-index: 0;
+                  height: 100vh;
+                }
+              }
+            }
           }
         }
         .mega-menu-item-label {
@@ -293,13 +318,17 @@
           text-transform: uppercase;
         }
         .mega-menu-container {
+          background-color: $global-colour-white;
+          z-index: 1;
           @include media-breakpoint-down(lg) {
           }
           @include media-breakpoint-only(xl) {
             position: absolute;
+            border-top: 1px solid transparent;
             top: 62px;
             left: 0;
             width: 100%;
+            box-shadow: inset 0 6px 12px -6px rgb(0 0 0 / 15%);
           }
         }
         .mega-menu-body {
@@ -337,10 +366,6 @@
     &.collapse {
       @include media-breakpoint-up(xl) {
         display: flex;
-
-        .underlay {
-          display: none;
-        }
         .primary-nav-container {
           ul.mega-menu {
             border-top: 1px solid $global-colour-grey-100;

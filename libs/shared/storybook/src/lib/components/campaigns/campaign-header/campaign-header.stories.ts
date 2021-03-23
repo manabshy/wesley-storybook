@@ -92,7 +92,7 @@ export const header = () => ({
 
       <!-- start primaryNav //-->
       <div class="collapse primary-nav position-relative" id="primaryNav">
-        <div class="underlay position-absolute"></div>
+        <div class="underlay position-absolute d-xl-none"></div>
         <div class="position-absolute w-100 wes-bg-solid-white mega-menu-shadow">
           <div class="container-xl primary-nav-container">
             
@@ -172,6 +172,18 @@ export const header = () => ({
                       </span>
                       <span class="mega-menu-body-item">
                         <a href="#">Buying your first home</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Remortgaging</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Investing in property</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Refurbishing your home</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Paying off your mortgage</a>
                       </span>
                     </div>
                     <div class="d-flex flex-column mega-menu-body"> 
