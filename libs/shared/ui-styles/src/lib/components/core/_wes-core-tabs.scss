@@ -169,6 +169,11 @@
       }
       .tab-pane {
         background-color: $global-colour-grey-50;
+        background-image: linear-gradient(
+          180deg,
+          $global-colour-grey-50 50%,
+          $global-colour-white 50%
+        );
       }
     }
 
@@ -178,6 +183,11 @@
       }
       .tab-pane {
         background-color: $global-colour-white;
+        background-image: linear-gradient(
+          180deg,
+          $global-colour-white 50%,
+          $global-colour-grey-50 50%
+        );
       }
     }
 
@@ -216,7 +226,7 @@
           top: $shadow-offset;
           left: auto;
           width: $shadow-offset;
-          box-shadow: 2px 1px 2px -2px rgba(0, 0, 0, 0.4);
+          box-shadow: 1px 4px 2px -2px rgba(0, 0, 0, 0.4);
         }
       }
       .panel-image {
@@ -284,6 +294,37 @@
           6: 1 1 0,
         );
         @each $name, $value in $tabs {
+          &:first-child:nth-last-child(n + #{$name}),
+          &:first-child:nth-last-child(n + #{$name}) ~ li {
+            flex: $value;
+          }
+        }
+      }
+    }
+
+    .panel {
+      padding: 72px 0 112px 0;
+
+      .panel-text {
+        padding: 48px 56px;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    .nav-tabs {
+      .nav-item {
+        // - Minimum amount of tabs: 2 (documented for each breakpoint)
+        // - Maximum amount of tabs: 6 (documented for each breakpoint)
+        text-align: center;
+        $xl-tabs: (
+          2: 31.33% 0 0,
+          3: 23.77% 0 0,
+          4: 23.77% 0 0,
+          5: 18% 0 0,
+          6: 1 1 0,
+        );
+        @each $name, $value in $xl-tabs {
           &:first-child:nth-last-child(n + #{$name}),
           &:first-child:nth-last-child(n + #{$name}) ~ li {
             flex: $value;
