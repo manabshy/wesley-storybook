@@ -1,6 +1,8 @@
 .wes-card-feature {
   padding: 0 20px;
-
+    .wes-card-deck {
+      padding-top: 72px;
+    }
   .wes-card-deck__card-message {
     p {
       text-align: center;
@@ -70,15 +72,15 @@
       padding-left: 24px;
       padding-right: 24px;
     }
-    .wes-card-deck {
-      padding-top: 40px;
+    .wes-card-deck.feature {
+      padding-top: 40px !important;
     }
   }
 
   @include media-breakpoint-up(md) {
     .wes-card-feature__header-content {
       padding-top: 96px;
-      padding-bottom: 35px;
+      padding-bottom: 72px;
     }
   }
 
@@ -95,6 +97,8 @@
     font-family: 'Open Sans';
   }
   .wes-card-deck.feature {
+      padding-top: 56px;
+
     .wes-card-deck__card-body {
       padding: 1rem 0;
     }

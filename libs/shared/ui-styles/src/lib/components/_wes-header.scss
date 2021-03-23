@@ -1,0 +1,51 @@
+
+
+.wes-header {
+  box-shadow: 0 4px 0px 0px $global-colour-gold-900, 0 0 0 -18px #febd11;
+  .container {
+    padding-bottom: 60px;
+  }
+  .wes-text-mega {
+    padding-top: 56px;
+    margin-bottom: 16px;
+    line-height: 48px;
+    font-size: 36px;
+  }
+   p:first-child {
+     font-size: 20px;
+     line-height: 32px;
+     color:$color-brand-charcoal;
+   }
+   p:nth-child(2) {
+    font-size: 18px;
+    line-height: 28px;
+    margin-top: 8px;
+    color:$global-colour-grey-900;
+   }
+  @include media-breakpoint-up(md) {
+    .container {
+      padding-bottom: 76px;
+      padding-right:62px;
+    }
+    .wes-text-mega {
+      padding-top: 72px;
+      margin-bottom: 16px;
+      line-height: 68px;
+      font-size: 54px;
+    }
+    p:first-child {
+      font-size: 24px;
+      line-height: 36px;
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    .container {
+      .wes-text-mega {
+        width: 672px;
+      }
+      p:first-child, p:nth-child(2) {
+        width: 672px;
+      }
+    }
+  }
+}
