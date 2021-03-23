@@ -40,7 +40,7 @@ export const style1 = () => ({
       <tr *ngFor="let tr of tableHeaders">
         <ng-container *ngFor="let th of tr">
           <th [attr.colSpan]="th.colSpan > 1 ? th.colSpan : null">
-          {{th.headerText}}
+          {{th?.headerText}}
           </th>
         </ng-container>
       </tr>
@@ -48,11 +48,11 @@ export const style1 = () => ({
     <tbody>
         <tr *ngFor="let tableRow of tableRowText;">
           <ng-container *ngFor="let tableColumn of tableRow; let i = index">
-              <td *ngIf="i > 0; else thTemplate" [attr.data-title]="tableHeaders[tableHeaders.length -1][i].headerText">
+              <td *ngIf="i > 0; else thTemplate" [attr.data-title]="tableHeaders[tableHeaders.length -1][i]?.headerText">
               {{tableColumn}}
               </td>
               <ng-template #thTemplate>
-                <th [attr.data-title]="tableHeaders[tableHeaders.length -1][i].headerText">
+                <th [attr.data-title]="tableHeaders[tableHeaders.length -1][i]?.headerText">
                 {{tableColumn}}
                 </th>
               </ng-template>
