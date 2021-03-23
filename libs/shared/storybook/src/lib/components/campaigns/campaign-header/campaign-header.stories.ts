@@ -197,10 +197,13 @@ export const header = () => ({
                         <div class="menu-promo-body">
                           Our consultants help doctors, dentists, teachers and lawyers acheive their goals through specialist investment advice.
                         </div>
-                        <span class="menu-promo-cta">
-                          <a href="#" class="wes-button wes-button--on-light">Book an appointment</a>
-                        </span>
+                        <a href="#" class="wes-button wes-button--on-light">Book an appointment</a>
                     </div>
+                  </div>
+                  <div class="container d-flex flex-column">
+                    <span class="mega-menu-item-label menu-footer">
+                      <a href="#" class="d-flex">save & invest overview <span class="wes-font-icon-arrow-right ml-1"></span></a>
+                    </span>
                   </div>
                 </div>
               </li>
@@ -265,7 +268,27 @@ export const header = () => ({
                       <span class="mega-menu-item-label">
                         Mortgages
                       </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Mortgage protection insurance</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Mortgage calculator</a>
+                      </span>
                     </div>
+                    <div class="d-none d-xl-flex flex-column mega-menu-promo"> 
+                      <span class="menu-promo-header">
+                        Investment advice that's all about you
+                      </span>
+                      <div class="menu-promo-body">
+                        Our consultants help doctors, dentists, teachers and lawyers acheive their goals through specialist investment advice.
+                      </div>
+                      <a href="#" class="wes-button wes-button--on-light">Book an appointment</a>
+                    </div>
+                  </div>
+                  <div class="container d-flex flex-column">
+                    <span class="mega-menu-item-label menu-footer">
+                      <a href="#" class="d-flex">mortgage overview <span class="wes-font-icon-arrow-right ml-1"></span></a>
+                    </span>
                   </div>
                 </div>
               </li>
@@ -276,11 +299,76 @@ export const header = () => ({
                 </span>
                 <div class="collapse mega-menu-container" id="insureMegaMenu">
                   <div class="container d-flex flex-column flex-xl-row">
-                  <div class="d-flex flex-column mega-menu-body"> 
-                    <span class="mega-menu-item-label">
-                      Achieving your goals
-                    </span>
+                    <div class="d-flex flex-column mega-menu-body"> 
+                      <span class="mega-menu-item-label">
+                        home insurance
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">High value home insurance</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Second home insurance</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Holiday home insurance</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Landlord insurance</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Insurance during building work</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Subsidence insurance</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Unoccupied house insurance</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Non standard home insurance</a>
+                      </span>
+                    </div>
+                    <div class="d-flex flex-column mega-menu-body"> 
+                      <span class="mega-menu-item-label">
+                        Travel Insurance
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">High net worth travel insurance</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Travel insurance for medics</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Medical elective travel insurance</a>
+                      </span>
+                    </div>
+                    <div class="d-flex flex-column mega-menu-body"> 
+                      <span class="mega-menu-item-label">
+                        Motor Insurance
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">High value motor insurance</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Gap insurance</a>
+                      </span>
+                    </div>
+                    <div class="d-flex flex-column mega-menu-body"> 
+                      <span class="mega-menu-item-label">
+                        Specialist Insurance
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">High net worth insurance</a>
+                      </span>
+                      <span class="mega-menu-body-item">
+                        <a href="#">Boat & yacht insurance</a>
+                      </span>
+                    </div>
                   </div>
+                  <div class="container d-flex flex-column">
+                    <span class="mega-menu-item-label menu-footer">
+                      <a href="#" class="d-flex">mortgage overview <span class="wes-font-icon-arrow-right ml-1"></span></a>
+                    </span>
                   </div>
                 </div>
               </li>

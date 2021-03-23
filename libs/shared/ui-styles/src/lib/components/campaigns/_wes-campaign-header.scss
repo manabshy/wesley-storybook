@@ -317,6 +317,17 @@
           padding-top: 28px;
           padding-bottom: 12px;
           text-transform: uppercase;
+          &.menu-footer {
+            padding-top: 24px;
+            padding-bottom: 40px;
+
+            .wes-font-icon-arrow-right {
+              color: $global-colour-gold-900;
+              margin-left: 13px;
+              margin-top: 1px;
+              font-size: 14px;
+            }
+          }
         }
         .mega-menu-container {
           background-color: $global-colour-white;
@@ -335,7 +346,7 @@
         .mega-menu-body {
           @include media-breakpoint-only(xl) {
             flex: 0 0 25%;
-            max-width: 25%;
+            max-width: 272px;
             padding-right: 10px;
             padding-left: 10px;
             &:first-child {
@@ -355,6 +366,9 @@
         .mega-menu-promo {
           background-color: $global-colour-grey-50;
           padding: 40px 30px;
+          margin-top: 32px;
+          max-width: 300px;
+          margin-left: auto;
 
           .menu-promo-header {
             font-size: 19px;
@@ -365,6 +379,13 @@
           }
           .menu-promo-body {
             margin-bottom: 56px;
+          }
+          .wes-button {
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 24px;
           }
         }
         li {
