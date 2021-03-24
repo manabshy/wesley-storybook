@@ -85,7 +85,7 @@ export const style2 = () => ({
   template: `
     <div class="container wes-core-table-container">
       <table class="wes-core-table centred-columns {{variant}} {{view}}">
-      <caption *ngIf="caption">England and Wales NHS pension contributions</caption>
+      <caption *ngIf="caption">{{caption}}</caption>
       <thead *ngIf="tableHeaders">
         <tr>
           <ng-container *ngFor="let tableHeader of tableHeaders; let i = index" [attr.colspan]="i === 0? 2 : null">
