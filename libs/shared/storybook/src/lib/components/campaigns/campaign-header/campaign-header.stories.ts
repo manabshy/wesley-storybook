@@ -1,426 +1,133 @@
-import * as jquery from 'jquery';
-import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min';
-import mdx from './campaign.mdx';
-global = { ...global, ...{ $: jquery, jQuery: jquery, bootstrap: bootstrap } };
-
 export default {
   title: 'Campaigns/Header',
-  parameters: {
-    knobs: {
-      escapeHTML: false,
-    },
-    docs: {
-      iframeHeight: 500,
-      page: mdx,
-    },
-  },
 };
-
-export const header = () => ({
+  
+export const base = () => ({
   template: `
-  <a class="sr-only sr-only-focusable skip-to-content" href="#content">
-    <div class="container">
-      <span class="skiplink-text">Skip to main content</span>
-    </div>
-  </a>
-  <header>
-    <nav class="wes-header">
-      <!-- topnavbar//-->
-      <div class="wes-bg-solid-grey-900 topnavbar">
-        <div class="container">
-          <div class="d-flex flex-row">
-            <div class="d-flex">
-              <a href="#" data-text="Personal">Personal</a>
-              <a href="#" data-text="Business">Business</a>
-            </div>  
-            <div class="mr-auto"></div>
-            <div class="d-none d-xl-flex">
-              <a href="#" data-text="Members area">Members area</a>
-              <a href="#" data-text="Fund prices">Fund prices</a>
-              <a href="#" data-text="Make a claim">Make a claim</a>
-              <a href="#" class="login" data-text="Login">Login</a>
-            </div>
-          </div>
+    <header class="c-header__main wes-campaign-header">
+      <div class="wes-campaign-header__body">
+        <a href="https://www.wesleyan.co.uk" class="wes-campaign-header__logo c-logo">
+          <span class="sr-only">Wesleyan</span>
+          <svg
+            height="30px"
+            viewBox="0 0 260 30"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <defs>
+              <polygon
+                id="logo-path-1"
+                points="38.281 29.94 0.775 29.94 0.775 0.425 38.281 0.425"
+              ></polygon>
+            </defs>
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g>
+                <g>
+                  <path
+                    d="M30.322,29.737 L26.597,29.737 L21.733,16.286 C21.295,15.016 20.771,13.526 20.332,11.992 L20.244,11.992 C19.805,13.526 19.323,14.972 18.841,16.242 L13.891,29.737 L10.252,29.737 L-6.99884595e-13,0.687 L5.082,0.687 L10.998,18.697 C11.48,20.141 11.875,21.5 12.269,22.901 L12.356,22.901 C12.707,21.544 13.189,20.186 13.714,18.741 L18.186,6.163 L16.213,0.687 L20.901,0.687 L27.035,18.389 C27.605,20.01 28.13,21.367 28.481,22.771 L28.613,22.771 C28.919,21.323 29.27,20.054 29.753,18.519 L35.404,0.687 L40.136,0.687 L30.322,29.737"
+                    fill="#50504D"
+                  ></path>
+                  <g transform="translate(43.000000, 0.000000)">
+                    <mask id="logo-mask-2" fill="white">
+                      <use xlink:href="#logo-path-1"></use>
+                    </mask>
+                    <g></g>
+                    <polyline
+                      fill="#50504D"
+                      mask="url(#logo-mask-2)"
+                      points="0.775 29.563 0.775 0.686 16.198 0.686 14.797 4.63 5.377 4.63 5.377 12.824 14.753 12.824 14.753 16.768 5.377 16.768 5.377 25.618 16.241 25.618 16.241 29.563 0.775 29.563"
+                    ></polyline>
+                    <path
+                      d="M28.423,30 C24.436,30 21.72,28.687 19.878,27.502 L21.807,24.041 C23.254,25.05 25.53,26.189 28.248,26.189 C30.614,26.189 33.376,25.136 33.376,22.507 C33.376,18.082 26.408,17.206 22.903,13.307 C21.72,11.992 20.931,10.372 20.931,8.135 C20.931,3.929 24.173,0.425 30.001,0.425 C33.069,0.425 35.347,1.214 36.836,2.001 L36.793,6.295 C34.82,5.113 32.585,4.281 30.219,4.281 C27.722,4.281 25.664,5.331 25.664,7.609 C25.664,13.307 38.281,13.131 38.281,21.982 C38.281,26.845 33.988,30 28.423,30"
+                      fill="#50504D"
+                      mask="url(#logo-mask-2)"
+                    ></path>
+                  </g>
+                  <polyline
+                    fill="#50504D"
+                    points="86.059 29.563 86.059 0.686 90.615 0.686 90.615 25.618 101.175 25.618 99.998 29.563 86.059 29.563"
+                  ></polyline>
+                  <polyline
+                    fill="#50504D"
+                    points="104.267 29.563 104.267 0.686 119.691 0.686 118.291 4.63 108.869 4.63 108.869 12.824 118.247 12.824 118.247 16.768 108.869 16.768 108.869 25.618 119.735 25.618 119.735 29.563 104.267 29.563"
+                  ></polyline>
+                  <path
+                    d="M136.56,18.082 L136.56,29.564 L131.959,29.564 L131.959,17.994 L122.145,0.687 L127.227,0.687 L132.003,9.319 C132.792,10.722 133.711,12.43 134.326,13.833 L134.414,13.833 C135.072,12.43 135.905,10.766 136.65,9.406 L141.377,0.687 L146.2,0.687 L136.56,18.082"
+                    fill="#50504D"
+                  ></path>
+                  <path
+                    d="M164.512,29.563 L161.62,22.202 L150.929,22.202 L148.211,29.563 L143.654,29.563 L154.827,0.599 L158.025,0.599 L169.462,29.563 L164.512,29.563 Z M157.458,10.633 C156.974,9.187 156.58,8.005 156.406,7.084 L156.362,7.084 C156.098,8.092 155.704,9.232 155.222,10.589 L152.375,18.345 L160.129,18.345 L157.458,10.633 L157.458,10.633 Z"
+                    fill="#50504D"
+                  ></path>
+                  <path
+                    d="M194.133,29.563 L180.55,11.817 C179.147,9.975 178.358,8.837 177.656,7.654 L177.57,7.654 C177.656,8.619 177.656,10.021 177.656,11.421 L177.656,29.563 L173.102,29.563 L173.102,0.686 L177.746,0.686 L190.803,17.775 C192.378,19.835 193.167,20.931 193.826,22.112 L193.913,22.112 C193.869,20.931 193.826,19.484 193.826,18.081 L193.826,0.686 L198.425,0.686 L198.425,29.563 L194.133,29.563"
+                    fill="#50504D"
+                  ></path>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </a>
+
+        <div class="wes-campaign-header__actions">
+          <a class="wes-campaign-header__cta wes-button wes-button-cta wes-button-cta--orange-with-grey-hover" href="#">
+            <span class="wes-button-label">Speak to our experts</span>
+            <svg
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              class="wes-icon wes-icon-size-s"
+              version="1.1"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fill-rule="evenodd"
+                stroke="none"
+                stroke-linecap="round"
+                stroke-width="1"
+              >
+                <g
+                  stroke="#40474f"
+                  stroke-width="2"
+                  transform="translate(-293.000000, -340.000000)"
+                >
+                  <g transform="translate(0.000000, 72.000000)">
+                    <g transform="translate(97.000000, 88.000000)">
+                      <g transform="translate(0.000000, 160.000000)">
+                        <g transform="translate(32.000000, 20.000000)">
+                          <g transform="translate(164.000000, 0.000000)">
+                            <polyline
+                              stroke="#40474f"
+                              class="svg-path-color-change"
+                              id="Rectangle"
+                              points="25 9 19 15 13 9"
+                              stroke-linejoin="round"
+                              transform="translate(19.000000, 12.000000) rotate(-90.000000) translate(-19.000000, -12.000000) "
+                            ></polyline>
+                            <line
+                              stroke="#40474f"
+                              class="svg-path-color-change"
+                              id="Line"
+                              x1="21"
+                              x2="2"
+                              y1="12"
+                              y2="12"
+                            ></line>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </a>
         </div>
       </div>
-      <!-- end topnavbar//-->
+    </header>
 
-      <!-- masthead//-->
-      <div class="wes-bg-solid-white masthead">
-        <div class="container">
-          <div class="d-flex flex-row align-items-center">
-            <div class="d-flex">
-              <a href="#" aria-label="wesleyan logo" class="wes-logo">
-                <span class="sr-only">Wesleyan</span>
-              </a>
-            </div>
-            <div class="mr-auto"></div>
-            <!-- start mobile to large masthead //-->
-            <div class="d-flex d-xl-none flex-wrap">
-              <span class="menu-item">
-              <a class="d-flex flex-column align-items-center wes-font-icon-user" href="#">Login</a>
-              </span>
-              <span class="menu-item">
-              <a class="d-flex flex-column align-items-center wes-font-icon-search" data-toggle="collapse" href="#searchPanel" role="button" aria-expanded="false" aria-controls="searchPanel">Search</a>
-              </span>
-              <span class="menu-item">
-              <a class="d-flex flex-column align-items-center wes-font-icon-menu"  data-toggle="collapse" href="#primaryNav" role="button" aria-expanded="false" aria-controls="primaryNav">Menu</a>
-              </span>
-            </div>
-            <!-- end mobile to large masthead //-->
 
-            <!-- start extra-large masthead //-->
-            <div class="d-none d-xl-flex flex-wrap">
-              <span class="menu-item">
-                <a class="d-flex flex-row align-items-center wes-font-icon-user" href="#">Book an appointment</a>
-              </span>
-              <span class="menu-item">
-                <a class="d-flex flex-row align-items-center wes-font-icon-user" href="#">Contact us</a>
-              </span>
-              <span class="menu-item">
-                <a class="d-flex flex-row align-items-center wes-font-icon-chat" onclick="window.open(this.href,'Chat','width=484,height=361');return false;" href="#">Live chat</a>
-              </span>
-              <span class="menu-item">
-                <a class="d-flex flex-row align-items-center wes-font-icon-search" data-toggle="collapse" href="#searchPanel" role="button" aria-expanded="false" aria-controls="searchPanel">Search</a>
-              </span>
-            </div>
-            <!-- end extra-large masthead //-->
-          </div>
-        </div>
-      </div>
-      <!-- end masthead //-->
-
-      <!-- start primaryNav //-->
-      <div class="collapse primary-nav position-relative" id="primaryNav">
-        <div class="underlay position-absolute d-xl-none"></div>
-        <div class="position-absolute w-100 wes-bg-solid-white mega-menu-shadow">
-          <div class="container-xl primary-nav-container">
-            
-            <ul class="d-flex flex-column flex-xl-row align-items-stretch align-items-xl-center mega-menu">
-              <li class="d-flex flex-column">
-                <span class="mega-menu-item">
-                  <a data-toggle="collapse" href="#financialAdviceMengaMenu" class="container" role="button" aria-expanded="false" aria-controls="financialAdviceMengaMenu">
-                    Financial advice
-                  </a>
-                  <span class="overlay"></span>
-                </span>
-                <div class="collapse mega-menu-container" id="financialAdviceMengaMenu">
-                  <div class="container d-flex flex-column flex-xl-row">
-                  <div class="d-flex flex-column mega-menu-body"> 
-                    <span class="mega-menu-item-label">
-                      Achieving your goals
-                    </span>
-                  </div>
-                  </div>
-                </div>
-              </li>
-              <li class="d-flex flex-column">
-                <span class="mega-menu-item">
-                  <a data-toggle="collapse" href="#saveAndInvestMegaMenu" class="container" role="button" aria-expanded="false" aria-controls="saveAndInvestMegaMenu">Save & Invest</a>
-                  <span class="overlay"></span>
-                </span>
-                <div class="collapse mega-menu-container" id="saveAndInvestMegaMenu">
-                  <div class="container d-flex flex-column flex-xl-row">
-                    <div class="d-flex flex-column mega-menu-body"> 
-                      <span class="mega-menu-item-label">
-                        Achieving your goals
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Getting started with investing</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Saving for a house</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Investing for children</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Investing for retirement</a>
-                      </span>
-                    </div>
-                    <div class="d-flex flex-column mega-menu-body"> 
-                      <span class="mega-menu-item-label">
-                        products
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Savings accounts</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">ISAs</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Investment plans</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">With profits funds</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Unit Trusts</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">With profits funds</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Investment calculator</a>
-                      </span>
-                    </div>
-                    <div class="d-flex flex-column mega-menu-body"> 
-                      <span class="mega-menu-item-label">
-                        WHY WESLEYAN
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Investing with Wesleyan</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Our investment team</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Investment plans</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Protecting you online</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Key information documents</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">With profits funds</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Investment calculator</a>
-                      </span>
-                    </div>
-                    <div class="d-none d-xl-flex flex-column mega-menu-promo"> 
-                        <span class="menu-promo-header">
-                          Investment advice that's all about you
-                        </span>
-                        <div class="menu-promo-body">
-                          Our consultants help doctors, dentists, teachers and lawyers acheive their goals through specialist investment advice.
-                        </div>
-                        <a href="#" class="wes-button wes-button--on-light">Book an appointment</a>
-                    </div>
-                  </div>
-                  <div class="container d-flex flex-column">
-                    <span class="mega-menu-item-label menu-footer">
-                      <a href="#" class="d-flex">save & invest overview <span class="wes-font-icon-arrow-right ml-1"></span></a>
-                    </span>
-                  </div>
-                </div>
-              </li>
-              <li class="d-flex flex-column">
-                <span class="mega-menu-item">
-                  <a data-toggle="collapse" href="#retireMegaMenu" class="container" role="button" aria-expanded="false" aria-controls="retireMegaMenu">Retire</a>
-                  <span class="overlay"></span>
-                </span>
-                <div class="collapse mega-menu-container" id="retireMegaMenu">
-                  <div class="container d-flex flex-column flex-xl-row">
-                  <div class="d-flex flex-column mega-menu-body"> 
-                    <span class="mega-menu-item-label">
-                      Achieving your goals
-                    </span>
-                  </div>
-                  </div>
-                </div>
-              </li>
-              <li class="d-flex flex-column">
-                <span class="mega-menu-item">
-                  <a data-toggle="collapse" href="#protectMegaMenu" class="container" role="button" aria-expanded="false" aria-controls="protectMegaMenu">Protect</a>
-                  <span class="overlay"></span>
-                </span>
-                <div class="collapse mega-menu-container" id="protectMegaMenu">
-                  <div class="container d-flex flex-column flex-xl-row">
-                  <div class="d-flex flex-column mega-menu-body"> 
-                    <span class="mega-menu-item-label">
-                      Achieving your goals
-                    </span>
-                  </div>
-                  </div>
-                </div>
-              </li>
-              <li class="d-flex flex-column">
-                <span class="mega-menu-item">
-                  <a data-toggle="collapse" href="#mortgageMegaMenu" class="container" role="button" aria-expanded="false" aria-controls="mortgageMegaMenu">Mortgage</a>
-                  <span class="overlay"></span>
-                </span>
-                <div class="collapse mega-menu-container" id="mortgageMegaMenu">
-                  <div class="container d-flex flex-column flex-xl-row">
-                    <div class="d-flex flex-column mega-menu-body"> 
-                      <span class="mega-menu-item-label">
-                        Borrowing Goals
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Buying your first home</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Remortgaging</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Investing in property</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Refurbishing your home</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Paying off your mortgage</a>
-                      </span>
-                    </div>
-                    <div class="d-flex flex-column mega-menu-body"> 
-                      <span class="mega-menu-item-label">
-                        Mortgages
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Mortgage protection insurance</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Mortgage calculator</a>
-                      </span>
-                    </div>
-                    <div class="d-none d-xl-flex flex-column mega-menu-promo"> 
-                      <span class="menu-promo-header">
-                        Investment advice that's all about you
-                      </span>
-                      <div class="menu-promo-body">
-                        Our consultants help doctors, dentists, teachers and lawyers acheive their goals through specialist investment advice.
-                      </div>
-                      <a href="#" class="wes-button wes-button--on-light">Book an appointment</a>
-                    </div>
-                  </div>
-                  <div class="container d-flex flex-column">
-                    <span class="mega-menu-item-label menu-footer">
-                      <a href="#" class="d-flex">mortgage overview <span class="wes-font-icon-arrow-right ml-1"></span></a>
-                    </span>
-                  </div>
-                </div>
-              </li>
-              <li class="d-flex flex-column">
-                <span class="mega-menu-item">
-                  <a data-toggle="collapse" href="#insureMegaMenu" class="container" role="button" aria-expanded="false" aria-controls="insureMegaMenu">Insure</a>
-                  <span class="overlay"></span>
-                </span>
-                <div class="collapse mega-menu-container" id="insureMegaMenu">
-                  <div class="container d-flex flex-column flex-xl-row">
-                    <div class="d-flex flex-column mega-menu-body"> 
-                      <span class="mega-menu-item-label">
-                        home insurance
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">High value home insurance</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Second home insurance</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Holiday home insurance</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Landlord insurance</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Insurance during building work</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Subsidence insurance</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Unoccupied house insurance</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Non standard home insurance</a>
-                      </span>
-                    </div>
-                    <div class="d-flex flex-column mega-menu-body"> 
-                      <span class="mega-menu-item-label">
-                        Travel Insurance
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">High net worth travel insurance</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Travel insurance for medics</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Medical elective travel insurance</a>
-                      </span>
-                    </div>
-                    <div class="d-flex flex-column mega-menu-body"> 
-                      <span class="mega-menu-item-label">
-                        Motor Insurance
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">High value motor insurance</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Gap insurance</a>
-                      </span>
-                    </div>
-                    <div class="d-flex flex-column mega-menu-body"> 
-                      <span class="mega-menu-item-label">
-                        Specialist Insurance
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">High net worth insurance</a>
-                      </span>
-                      <span class="mega-menu-body-item">
-                        <a href="#">Boat & yacht insurance</a>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="container d-flex flex-column">
-                    <span class="mega-menu-item-label menu-footer">
-                      <a href="#" class="d-flex">INSURANCE OVERVIEW <span class="wes-font-icon-arrow-right ml-1"></span></a>
-                    </span>
-                  </div>
-                </div>
-              </li>
-              <li class="d-flex flex-column d-xl-none">
-                <span class="mega-menu-item">
-                  <a class="container wes-font-icon-user" href="#">
-                  Book an appointment
-                  </a>
-                </span>
-              </li>
-              <li class="d-flex flex-column d-xl-none">
-                <span class="mega-menu-item">
-                  <a class="container wes-font-icon-user" href="#">
-                  Contact us
-                  </a>
-                </span>
-              </li>
-              <li class="d-flex flex-column d-xl-none">
-                <span class="mega-menu-item">
-                  <a class="container wes-font-icon-chat" onclick="window.open(this.href,'Chat','width=484,height=361');return false;" href="#">
-                  Live chat
-                  </a>
-                </span>
-              </li>
-            </ul>
-            
-          </div>
-        </div>
-      </div>
-    <!-- end primaryNav //-->
-
-      <!-- start searchPanel //-->
-      <div class="collapse search-panel position-relative" id="searchPanel" role="search">
-        <div class="underlay position-absolute"></div>
-        <div class="position-absolute w-100 wes-bg-solid-white">
-          <div class="container pt-2 pb-2">
-            <div class="col-sm-12 col-md-10 offset-md-1 col-xl-8 offset-xl-2">
-                <form class="d-flex flex-row align-items-center search-form">
-                <input type="search" class="mr-auto" aria-label="Search" placeholder="How can we help you today?" />
-                <button type="submit"><span class="wes-font-icon">&#xe90e;</span></button>
-                </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    <!-- end searchPanel //-->
-    
-    </nav>
-  </header>
-  <main id="content">
-    stuff after
-  </main>
     <!--
     <script>
         window.addEventListener('DOMContentLoaded', function (event) {
@@ -435,108 +142,3 @@ export const header = () => ({
     -->
   `,
 });
-
-export const simpleHeader = () => ({
-  template: `
-    <a class="sr-only sr-only-focusable skip-to-content" href="#content">
-      <div class="container">
-        <span class="skiplink-text">Skip to main content</span>
-      </div>
-    </a>
-    <header>
-    <nav class="wes-header simple-header">
-    <!-- masthead//-->
-    <div class="wes-bg-solid-white masthead">
-      <div class="container">
-        <div class="d-flex flex-row align-items-center">
-          <div class="d-flex">
-            <a href="#" aria-label="wesleyan logo" class="wes-logo">
-              <span class="sr-only">Wesleyan</span>
-            </a>
-          </div>
-          <div class="mr-auto"></div>
-          <div class="d-flex flex-wrap">
-            <span class="menu-item">
-              <a class="d-flex flex-row align-items-center wes-font-icon-arrow-right" href="#">Back to wesleyan.co.uk</a>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    </nav>
-    <main id="content"></main>
-    `,
-});
-
-header.decorators = [
-  (storyFunc) => {
-    const story = storyFunc();
-
-    setTimeout(() => {
-      const $ = global['$'];
-      var primarynav = $('#primaryNav');
-      var searchpanel = $('#searchPanel');
-      var megamenucontainers = $('.mega-menu-container');
-      function hidePanel(panel) {
-        if (panel.hasClass('show')) {
-          panel.collapse('hide');
-        }
-      }
-      function hideAllMegaMenu() {
-        for (const element of megamenucontainers) {
-          hidePanel($(element));
-        }
-      }
-      function hideOpenMegaMenus(id) {
-        for (let index = 0; index < megamenucontainers.length; index++) {
-          var megamenucontainer = $(megamenucontainers[index]);
-          if (megamenucontainer.attr('id') !== id) {
-            hidePanel(megamenucontainer);
-          }
-        }
-      }
-      megamenucontainers.each(function () {
-        $(this).on('show.bs.collapse', function () {
-          var elementid = $(this).attr('id');
-          hideOpenMegaMenus(elementid);
-        });
-      });
-      primarynav.on('show.bs.collapse', function () {
-        hidePanel(searchpanel);
-        hideAllMegaMenu();
-      });
-      searchpanel.on('show.bs.collapse', function () {
-        hidePanel(primarynav);
-        hideAllMegaMenu();
-      });
-
-      var possibleTriggers = document.querySelectorAll(
-        '.topnavbar a, .masthead a, .search-panel .container, .primary-nav a, .mega-menu-container .container'
-      );
-      document.addEventListener(
-        'mouseup',
-        function (e) {
-          var ele = e.target instanceof Node ? e.target : null;
-          // check if possible trigers sent event or contain the target
-          var possibleTrigger = null;
-          for (let index = 0; index < possibleTriggers.length; index++) {
-            const element = possibleTriggers[index];
-            if (element === ele || element.contains(ele)) {
-              possibleTrigger = ele;
-              break;
-            }
-          }
-          if (possibleTrigger === null) {
-            hideAllMegaMenu();
-            hidePanel(searchpanel);
-          }
-        },
-        false
-      );
-    });
-
-    return {
-      ...story,
-    };
-  },
-];
