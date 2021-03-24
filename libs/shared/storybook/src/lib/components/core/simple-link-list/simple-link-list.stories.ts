@@ -17,7 +17,7 @@ export const simpleLinkList = () => ({
       <div class="wes-simple-link-list__wrapper container">
         <div class="wes-simple-link-list__body">
           <div class="wes-simple-link-list__content">
-            <h1 class="wes-simple-link-list__title">{{ linkListTitle }}</h1>
+            <h2 class="wes-simple-link-list__title">{{ linkListTitle }}</h2>
             <div *ngIf="withParagraph == 'yes'" class="wes-simple-link-list__message">
               <p>
               {{linkListMessage}}
