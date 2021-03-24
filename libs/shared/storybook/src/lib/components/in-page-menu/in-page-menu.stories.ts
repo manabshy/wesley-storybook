@@ -25,16 +25,18 @@ const styleVariants = {
 
 export const inPageMenu = () => ({
   template: `
-  <nav aria-label="in page menu" class="wes-in-page-menu container {{variant}}">
-    <div class="row">
-        <div class="col-12">
-            <h2 class="heading">{{mainHeading}}</h2>
-            <ul>
-                <ng-container *ngFor="let menuItem of menuItems">
-                    <li><a [ngClass]="(showIcons==='yes' && menuItem.iconcss) ? menuItem.iconcss : null" href="#">{{menuItem.text}}</a></li>
-                </ng-container>
-            </ul>
-        </div>
+  <nav aria-label="in page menu" class="wes-in-page-menu {{variant}}">
+    <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <h2 class="heading">{{mainHeading}}</h2>
+              <ul>
+                  <ng-container *ngFor="let menuItem of menuItems">
+                      <li><a [ngClass]="(showIcons==='yes' && menuItem.iconcss) ? menuItem.iconcss : null" href="#">{{menuItem.text}}</a></li>
+                  </ng-container>
+              </ul>
+          </div>
+      </div>
     </div>
   </nav>
   `,
