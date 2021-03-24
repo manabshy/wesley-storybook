@@ -14,26 +14,26 @@ Paste immediately after html markup
             var megamenucontainers = $('.mega-menu-container');
             function hidePanel(panel) {
                 if (panel.hasClass('show')) {
-                panel.collapse('hide');
+                    panel.collapse('hide');
                 }
             }
             function hideAllMegaMenu() {
                 for (const element of megamenucontainers) {
-                hidePanel($(element));
+                    hidePanel($(element));
                 }
             }
             function hideOpenMegaMenus(id) {
                 for (let index = 0; index < megamenucontainers.length; index++) {
-                var megamenucontainer = $(megamenucontainers[index]);
-                if (megamenucontainer.attr('id') !== id) {
-                    hidePanel(megamenucontainer);
-                }
+                    var megamenucontainer = $(megamenucontainers[index]);
+                    if (megamenucontainer.attr('id') !== id) {
+                        hidePanel(megamenucontainer);
+                    }
                 }
             }
             megamenucontainers.each(function () {
                 $(this).on('show.bs.collapse', function () {
-                var elementid = $(this).attr('id');
-                hideOpenMegaMenus(elementid);
+                    var elementid = $(this).attr('id');
+                    hideOpenMegaMenus(elementid);
                 });
             });
             primarynav.on('show.bs.collapse', function () {
@@ -44,6 +44,27 @@ Paste immediately after html markup
                 hidePanel(primarynav);
                 hideAllMegaMenu();
             });
+            var possibleTriggers = document.querySelectorAll(
+            '.topnavbar a, .masthead a, .search-panel .container, .primary-nav a, .mega-menu-container .container'
+            );
+            document.addEventListener('mouseup', function (e) {
+                var ele = e.target instanceof Node ? e.target : null;
+                // check if possible trigers sent event or contain the target
+                var possibleTrigger = null;
+                for (let index = 0; index < possibleTriggers.length; index++) {
+                    const element = possibleTriggers[index];
+                    if (element === ele || element.contains(ele)) {
+                        possibleTrigger = ele;
+                        break;
+                    }
+                }
+                if (possibleTrigger === null) {
+                    hideAllMegaMenu();
+                    hidePanel(searchpanel);
+                }
+            },
+            false
+            );
         })($);
     });
 </script>

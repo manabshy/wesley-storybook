@@ -495,7 +495,8 @@ header.decorators = [
             }
           }
           if (possibleTrigger === null) {
-            console.log(ele);
+            hideAllMegaMenu();
+            hidePanel(searchpanel);
           }
         },
         false
