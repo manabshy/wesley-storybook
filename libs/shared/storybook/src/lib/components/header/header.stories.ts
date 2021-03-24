@@ -6,25 +6,12 @@ import { select } from '@storybook/addon-knobs';
 
 const label = 'Colors';
 const options = {
-  grey: '#F6F6F6',
-  white: '',
+  grey: 'grey-header',
+  white: 'white-header',
 };
 const defaultValue = options.white;
 const groupId = 'GROUP-ID1';
-const groupId2 = 'GROUP-ID2';
-const groupId3 = 'GROUP-ID3';
 
-const variant = 'Variants';
-const variantOptions = {
-  plain: 'plain-header',
-  box: 'box-header',
-};
-
-const size = 'Variants';
-const sizeOptions = {
- standard: 'simple-header',
- large: ''
-};
 export default {
   title: 'Components/Header',
   decorators: [
@@ -40,10 +27,10 @@ export default {
 
 export const footerFullWidth= () => ({
   template: `
-  <wes-header></wes-header>
+  <wes-header [value]="value"></wes-header>
   `,
   props: {
-
+    value : select(label, options, defaultValue, groupId),
   },
   component: HeaderComponent
 });
