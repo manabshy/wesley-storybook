@@ -14,7 +14,6 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class HeaderComponent {
-  @ViewChild(TemplateRef)
-  content: TemplateRef<any>;
+  @Input() value;
 }
 

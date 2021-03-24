@@ -1,6 +1,7 @@
 
 
 .wes-header {
+
   box-shadow: 0 4px 0px 0px $global-colour-gold-900, 0 0 0 -18px #febd11;
   .container {
     padding-bottom: 60px;
@@ -48,4 +49,7 @@
       }
     }
   }
+}
+.wes-header.grey-header {
+  background-color: $global-colour-grey-50;
 }
