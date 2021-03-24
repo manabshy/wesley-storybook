@@ -88,7 +88,7 @@ export const header = () => ({
           </div>
         </div>
       </div>
-      <!-- end masthead//-->
+      <!-- end masthead //-->
 
       <!-- start primaryNav //-->
       <div class="collapse primary-nav position-relative" id="primaryNav">
@@ -367,10 +367,31 @@ export const header = () => ({
                   </div>
                   <div class="container d-flex flex-column">
                     <span class="mega-menu-item-label menu-footer">
-                      <a href="#" class="d-flex">mortgage overview <span class="wes-font-icon-arrow-right ml-1"></span></a>
+                      <a href="#" class="d-flex">INSURANCE OVERVIEW <span class="wes-font-icon-arrow-right ml-1"></span></a>
                     </span>
                   </div>
                 </div>
+              </li>
+              <li class="d-flex flex-column d-xl-none">
+                <span class="mega-menu-item">
+                  <a class="container wes-font-icon-user" href="#">
+                  Book an appointment
+                  </a>
+                </span>
+              </li>
+              <li class="d-flex flex-column d-xl-none">
+                <span class="mega-menu-item">
+                  <a class="container wes-font-icon-user" href="#">
+                  Contact us
+                  </a>
+                </span>
+              </li>
+              <li class="d-flex flex-column d-xl-none">
+                <span class="mega-menu-item">
+                  <a class="container wes-font-icon-chat" onclick="window.open(this.href,'Chat','width=484,height=361');return false;" href="#">
+                  Live chat
+                  </a>
+                </span>
               </li>
             </ul>
             
@@ -397,7 +418,7 @@ export const header = () => ({
     
     </nav>
   </header>
-  <main>
+  <main id="content">
     stuff after
   </main>
     <!--
@@ -455,6 +476,25 @@ header.decorators = [
       searchpanel.on('show.bs.collapse', function () {
         hidePanel(primarynav);
         hideAllMegaMenu();
+      });
+
+      var possibleTriggers = document.querySelectorAll(
+        '.topnavbar a, .masthead a, .search-panel .container, .primary-nav a'
+      );
+      document.addEventListener('mouseup', function (e) {
+        var ele = e.target instanceof Node ? e.target : null;
+        // check if possible trigers sent event or contain the target
+        var possibleTrigger = null;
+        for (let index = 0; index < possibleTriggers.length; index++) {
+          const element = possibleTriggers[index];
+          if (element === ele || element.contains(ele)) {
+            possibleTrigger = ele;
+            break;
+          }
+        }
+        if (possibleTrigger === null) {
+          console.log(ele);
+        }
       });
     });
 

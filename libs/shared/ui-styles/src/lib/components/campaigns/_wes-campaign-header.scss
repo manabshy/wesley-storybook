@@ -141,6 +141,9 @@
   .search-panel {
     border-top: 1px solid $global-colour-grey-100;
     width: 100%;
+    @include media-breakpoint-only(xl) {
+      top: 62px;
+    }
     .container {
       z-index: $zindex-fixed;
       border-bottom: 2px solid $global-colour-gold-900;
@@ -282,6 +285,13 @@
                   transition: all cubic-bezier(0.37, 0, 0.63, 1) 0.3s;
                 }
               }
+              &[class^='wes-font-icon-'],
+              &[class*=' wes-font-icon-'] {
+                &:before {
+                  font-size: 16px;
+                  margin-right: 12px;
+                }
+              }
             }
 
             @include media-breakpoint-only(xl) {
@@ -304,6 +314,11 @@
                   height: 100vh;
                 }
               }
+            }
+            &:focus {
+              outline-offset: -2px;
+              outline: 2px dotted $global-colour-charcoal;
+              border-bottom: 2px solid transparent;
             }
           }
         }
@@ -328,13 +343,19 @@
               font-size: 14px;
             }
           }
+          a:focus {
+            outline-offset: -2px;
+            outline: 2px dotted $global-colour-charcoal;
+            border-bottom: 2px solid transparent;
+          }
         }
         .mega-menu-container {
-          background-color: $global-colour-white;
           z-index: 1;
           @include media-breakpoint-down(lg) {
+            background-color: $global-colour-grey-50;
           }
           @include media-breakpoint-only(xl) {
+            background-color: $global-colour-white;
             position: absolute;
             border-top: 1px solid transparent;
             top: 62px;
@@ -361,6 +382,11 @@
           a {
             padding: 12px 0;
             display: block;
+            &:focus {
+              outline-offset: -2px;
+              outline: 2px dotted $global-colour-charcoal;
+              border-bottom: 2px solid transparent;
+            }
           }
         }
         .mega-menu-promo {
