@@ -4,7 +4,7 @@ import mdx from './navigation.mdx';
 global = { ...global, ...{ $: jquery, jQuery: jquery, bootstrap: bootstrap } };
 
 export default {
-  title: 'HeaderNavigation',
+  title: 'Navigation/Header',
   parameters: {
     knobs: {
       escapeHTML: false,
@@ -24,7 +24,7 @@ export const header = () => ({
     </div>
   </a>
   <header>
-    <nav class="wes-header">
+    <nav class="wes-header-navigation">
       <!-- topnavbar//-->
       <div class="wes-bg-solid-grey-900 topnavbar">
         <div class="container">
@@ -529,6 +529,7 @@ header.decorators = [
           if (possibleTrigger === null) {
             hideAllMegaMenu();
             hidePanel(searchpanel);
+            hidePanel(primarynav);
           }
         },
         false
