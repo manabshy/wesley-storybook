@@ -1,6 +1,7 @@
 ul.wes-core-resource-link {
   list-style: none;
-  margin: 0 !important;
+  margin: 0;
+  padding: 0;
   padding-top: 32px;
   padding-bottom: 32px;
 
@@ -12,7 +13,11 @@ ul.wes-core-resource-link {
   li {
     font-size: 16px;
     line-height: 24px;
+    margin-bottom: 24px;
     color: $global-colour-grey-900;
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     &:before {
       line-height: inherit;
