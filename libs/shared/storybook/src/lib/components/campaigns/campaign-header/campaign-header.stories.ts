@@ -479,23 +479,27 @@ header.decorators = [
       });
 
       var possibleTriggers = document.querySelectorAll(
-        '.topnavbar a, .masthead a, .search-panel .container, .primary-nav a'
+        '.topnavbar a, .masthead a, .search-panel .container, .primary-nav a, .mega-menu-container .container'
       );
-      document.addEventListener('mouseup', function (e) {
-        var ele = e.target instanceof Node ? e.target : null;
-        // check if possible trigers sent event or contain the target
-        var possibleTrigger = null;
-        for (let index = 0; index < possibleTriggers.length; index++) {
-          const element = possibleTriggers[index];
-          if (element === ele || element.contains(ele)) {
-            possibleTrigger = ele;
-            break;
+      document.addEventListener(
+        'mouseup',
+        function (e) {
+          var ele = e.target instanceof Node ? e.target : null;
+          // check if possible trigers sent event or contain the target
+          var possibleTrigger = null;
+          for (let index = 0; index < possibleTriggers.length; index++) {
+            const element = possibleTriggers[index];
+            if (element === ele || element.contains(ele)) {
+              possibleTrigger = ele;
+              break;
+            }
           }
-        }
-        if (possibleTrigger === null) {
-          console.log(ele);
-        }
-      });
+          if (possibleTrigger === null) {
+            console.log(ele);
+          }
+        },
+        false
+      );
     });
 
     return {
