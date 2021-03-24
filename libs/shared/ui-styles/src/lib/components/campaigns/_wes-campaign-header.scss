@@ -447,6 +447,16 @@
       }
     }
   }
+
+  &.simple-header {
+    .wes-font-icon-arrow-right {
+      &::before {
+        margin-right: 12px;
+        color: $global-colour-gold-900;
+        transform: rotate(180deg);
+      }
+    }
+  }
 }
 
 .wes-logo {

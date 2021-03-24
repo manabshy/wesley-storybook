@@ -436,6 +436,38 @@ export const header = () => ({
   `,
 });
 
+export const simpleHeader = () => ({
+  template: `
+    <a class="sr-only sr-only-focusable skip-to-content" href="#content">
+      <div class="container">
+        <span class="skiplink-text">Skip to main content</span>
+      </div>
+    </a>
+    <header>
+    <nav class="wes-header simple-header">
+    <!-- masthead//-->
+    <div class="wes-bg-solid-white masthead">
+      <div class="container">
+        <div class="d-flex flex-row align-items-center">
+          <div class="d-flex">
+            <a href="#" aria-label="wesleyan logo" class="wes-logo">
+              <span class="sr-only">Wesleyan</span>
+            </a>
+          </div>
+          <div class="mr-auto"></div>
+          <div class="d-flex flex-wrap">
+            <span class="menu-item">
+              <a class="d-flex flex-row align-items-center wes-font-icon-arrow-right" href="#">Back to wesleyan.co.uk</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </nav>
+    <main id="content"></main>
+    `,
+});
+
 header.decorators = [
   (storyFunc) => {
     const story = storyFunc();
