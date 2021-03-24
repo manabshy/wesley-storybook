@@ -196,6 +196,12 @@
         border-bottom: 1px solid $global-colour-grey-100;
       }
     }
+
+    .item.active + li .toggle-header {
+
+        border-top: 1px solid $global-colour-grey-100;
+
+    }
   }
 
 
