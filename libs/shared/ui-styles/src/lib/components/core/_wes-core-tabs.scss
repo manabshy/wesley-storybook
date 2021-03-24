@@ -225,15 +225,14 @@
       }
       .panel-image,
       .panel-text {
-        min-height: 192px;
         @include media-breakpoint-up(md) {
-          min-height: 560px;
+          min-height: 310px;
         }
         @include media-breakpoint-up(lg) {
-          min-height: 464px;
+          min-height: 295px;
         }
         @include media-breakpoint-up(xl) {
-          min-height: 408px;
+          min-height: 280px;
         }
       }
     }
