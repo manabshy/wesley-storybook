@@ -444,7 +444,7 @@ export const simpleHeader = () => ({
       </div>
     </a>
     <header>
-    <nav class="wes-header simple-header">
+    <nav class="wes-header-navigation simple-header-nav">
     <!-- masthead//-->
     <div class="wes-bg-solid-white masthead">
       <div class="container">
