@@ -25,7 +25,7 @@ export default {
   component: HeaderComponent
 };
 
-export const footerFullWidth= () => ({
+export const simpleHeader= () => ({
   template: `
   <wes-header [value]="value"></wes-header>
   `,

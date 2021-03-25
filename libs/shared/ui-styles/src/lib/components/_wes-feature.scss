@@ -158,3 +158,23 @@
     }
   }
 }
+.wes-card-feature.complete-white-feature {
+  background-color: $global-colour-white;
+  .wes-card-deck.feature {
+    .wes-cta-card__frame {
+      box-shadow: none;
+    }
+  }
+}
+.wes-card-feature.complete-grey-feature {
+  background-color: $color-grey;
+  .wes-card-deck.feature {
+    .wes-cta-card__frame {
+      background-color: $color-grey;
+      box-shadow: none;
+    }
+    .wes-card-deck__card-body {
+      background-color: $color-grey;
+    }
+  }
+}
