@@ -57,6 +57,7 @@ $sll-paragraph-list-spacing-total-s: 32px;
   .level3,
   .level4 {
     color: $global-colour-charcoal;
+    font-weight: 400;
     &:first-child {
       margin-top: 0 !important;
     }
