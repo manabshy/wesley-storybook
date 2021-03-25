@@ -10,6 +10,14 @@ const options = {
   white: 'white-feature',
 };
 const defaultValue = options.white;
+
+const labelPlain = 'Colors';
+const optionsPlain = {
+  grey: 'complete-grey-feature',
+  white: 'complete-white-feature',
+};
+const defaultValuePlain = optionsPlain.white;
+
 const groupId = 'GROUP-ID1';
 const groupId2 = 'GROUP-ID2';
 const groupId3 = 'GROUP-ID3';
@@ -54,3 +62,17 @@ export const featureFullWidth= () => ({
   component: FeatureComponent
 });
 
+export const featurePlain= () => ({
+  template: `
+  <wes-feature [cardCount]="cardCount" [title]="title" [cardTitle]="cardTitle" [value]="value" [message]="message" [size]="size"></wes-feature>
+  `,
+  props: {
+    value : select(labelPlain, optionsPlain, defaultValuePlain, groupId),
+    size: select(size, sizeOptions, '' , groupId3 ),
+    title: text('Title', 'A flexible, tax-friendly way to invest for the future...'),
+    cardCount: number('Number of cards', 6, { min: 2 }),
+    message: 'Start your investment with a £1,000 lump sum or £100 per month.',
+    cardTitle: text('Card title', 'With Profits ISA'),
+  },
+  component: FeatureComponent
+});
