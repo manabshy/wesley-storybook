@@ -11,6 +11,7 @@
     margin-bottom: 16px;
     line-height: 48px;
     font-size: 36px;
+    color:$color-brand-charcoal;
   }
    p:first-child {
      font-size: 20px;
@@ -29,7 +30,7 @@
       padding-right:62px;
     }
     .wes-text-mega {
-      padding-top: 72px;
+      padding-top: 96px;
       margin-bottom: 16px;
       line-height: 68px;
       font-size: 54px;
@@ -42,6 +43,7 @@
   @include media-breakpoint-up(lg) {
     .container {
       .wes-text-mega {
+        padding-top:112px;
         width: 672px;
       }
       p:first-child, p:nth-child(2) {
