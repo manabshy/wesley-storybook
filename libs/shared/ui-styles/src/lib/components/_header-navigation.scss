@@ -457,6 +457,26 @@
       }
     }
   }
+
+  a[href='#searchPanel'],
+  a[href='#primaryNav'] {
+    &[aria-expanded='false'] {
+      .closed {
+        display: inline-block;
+      }
+      .opened {
+        display: none;
+      }
+    }
+    &[aria-expanded='true'] {
+      .closed {
+        display: none;
+      }
+      .opened {
+        display: inline-block;
+      }
+    }
+  }
 }
 
 .wes-logo {
