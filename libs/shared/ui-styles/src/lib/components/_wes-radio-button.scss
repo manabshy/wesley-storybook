@@ -19,7 +19,11 @@ $wes-radio-inner-checked-colour: $global-colour-gold-900;
 
 .wes-radio {
   cursor: pointer;
+  margin-bottom: 16px;
   -webkit-tap-highlight-color: transparent;
+  &:last-child {
+    margin-bottom: 0;
+  }
   &:focus {
     .wes-radio-frame {
       border-color: $global-colour-gold-900;
@@ -39,7 +43,7 @@ $wes-radio-inner-checked-colour: $global-colour-gold-900;
     .wes-radio-frame {
       border-color: $global-colour-gold-900;
     }
-    
+
     .wes-radio-background {
       background-color: transparent;
       border: 2px solid $global-colour-red-700;
