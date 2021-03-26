@@ -61,10 +61,16 @@ export const header = () => ({
               <a class="d-flex flex-column align-items-center wes-font-icon-user" href="#">Login</a>
               </span>
               <span class="menu-item">
-              <a class="d-flex flex-column align-items-center wes-font-icon-search" data-toggle="collapse" href="#searchPanel" role="button" aria-expanded="false" aria-controls="searchPanel">Search</a>
+              <a class="d-flex flex-column align-items-center wes-font-icon-search" data-toggle="collapse" href="#searchPanel" role="button" aria-expanded="false" aria-controls="searchPanel">
+                <span class="closed">Search</span>
+                <span class="opened">Close</span>
+              </a>
               </span>
               <span class="menu-item">
-              <a class="d-flex flex-column align-items-center wes-font-icon-menu"  data-toggle="collapse" href="#primaryNav" role="button" aria-expanded="false" aria-controls="primaryNav">Menu</a>
+              <a class="d-flex flex-column align-items-center wes-font-icon-menu"  data-toggle="collapse" href="#primaryNav" role="button" aria-expanded="false" aria-controls="primaryNav">
+                <span class="closed">Menu</span>
+                <span class="opened">Close</span>
+              </a>
               </span>
             </div>
             <!-- end mobile to large masthead //-->
@@ -81,7 +87,10 @@ export const header = () => ({
                 <a class="d-flex flex-row align-items-center wes-font-icon-chat" onclick="window.open(this.href,'Chat','width=484,height=361');return false;" href="#">Live chat</a>
               </span>
               <span class="menu-item">
-                <a class="d-flex flex-row align-items-center wes-font-icon-search" data-toggle="collapse" href="#searchPanel" role="button" aria-expanded="false" aria-controls="searchPanel">Search</a>
+                <a class="d-flex flex-row align-items-center wes-font-icon-search" data-toggle="collapse" href="#searchPanel" role="button" aria-expanded="false" aria-controls="searchPanel">
+                <span class="closed">Search</span>
+                <span class="opened">Close</span>
+                </a>
               </span>
             </div>
             <!-- end extra-large masthead //-->
