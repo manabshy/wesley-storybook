@@ -87,7 +87,10 @@ export const header = () => ({
                 <a class="d-flex flex-row align-items-center wes-font-icon-chat" onclick="window.open(this.href,'Chat','width=484,height=361');return false;" href="#">Live chat</a>
               </span>
               <span class="menu-item">
-                <a class="d-flex flex-row align-items-center wes-font-icon-search" data-toggle="collapse" href="#searchPanel" role="button" aria-expanded="false" aria-controls="searchPanel">Search</a>
+                <a class="d-flex flex-row align-items-center wes-font-icon-search" data-toggle="collapse" href="#searchPanel" role="button" aria-expanded="false" aria-controls="searchPanel">
+                <span class="closed">Search</span>
+                <span class="opened">Close</span>
+                </a>
               </span>
             </div>
             <!-- end extra-large masthead //-->

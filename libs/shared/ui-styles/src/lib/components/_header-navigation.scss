@@ -476,6 +476,9 @@
         display: inline-block;
       }
     }
+    @include media-breakpoint-only(xl) {
+      min-width: 102px;
+    }
   }
 }
 
