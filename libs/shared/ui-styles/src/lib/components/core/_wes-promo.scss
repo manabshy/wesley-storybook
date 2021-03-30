@@ -3,11 +3,11 @@
 ////
 
 .wes-promo {
+  .wes-button.wes-button--on-light.wes-button--outline:not(:disabled):hover {
+    color: $color-brand-charcoal;
+  }
   @media (min-width: 1200px) {
-    .wes-button.wes-button--on-light.wes-button--outline:not(:disabled):hover {
-      color: $color-brand-charcoal;
-    }
-    .wes-promo__message{
+    .wes-promo__message {
       width: 640px;
       a.cta {
         font-weight: bold !important;
