@@ -4,6 +4,7 @@
 
 .wes-emphasis {
   @include wes-make-full-width-component;
+  position: unset !important;
 
   padding-top: rem(56px);
   padding-bottom: rem(56px);
@@ -52,7 +53,7 @@
     }
 
     @at-root {
-      .wes-emphasis--right & {    
+      .wes-emphasis--right & {
         @include media-breakpoint-up(lg) {
           @include make-col-offset(1);
         }

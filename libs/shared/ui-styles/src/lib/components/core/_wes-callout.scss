@@ -5,6 +5,8 @@
 .wes-callout {
   @include wes-make-full-width-component;
 
+  position: unset !important;
+
   padding-top: rem(56px);
   padding-bottom: rem(56px);
 
